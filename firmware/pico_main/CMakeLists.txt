@@ -12,7 +12,6 @@ set(PICO_SDK_PATH "/tree/downloaded_tools/pico/pico-sdk")
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
-include(pico_extras_import.cmake)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g")
 project(experimental_schools_computer C CXX ASM)
@@ -33,6 +32,9 @@ pico_sdk_init()
 
 add_executable(experimental_schools_computer
   experimental_schools_computer.c
+  fsms.c
+  esc_fsms.c
+  match_token.c
 )
 
 #add_library( gcc111libbid_hard UNKNOWN IMPORTED)
