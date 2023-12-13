@@ -39,6 +39,19 @@
 
 #include "esc.h"
 
+////////////////////////////////////////////////////////////////////////////////
+
+#define TEXT_PARAMETER_LEN 40
+
+void serial_help(void);
+void prompt(void);
+
+int keypress = 0;
+int parameter = 0;
+int auto_increment_parameter = 0;
+int auto_increment_address   = 0;
+char text_parameter[TEXT_PARAMETER_LEN+1] = "";
+int address     = 0;
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -56,6 +69,14 @@ ESC_STATE esc_state;
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+void null_entry_fn(FSM_DATA *s, TOKEN tok)
+{
+}
+
+void null_every_fn(FSM_DATA *s, TOKEN tok)
+{
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // 
@@ -69,8 +90,8 @@ STATE esc_table[ ] =
     null_entry_fn,
     null_every_fn,
     {
-     {CTOK_NUMERIC,   STATE_COMP_INIT,  numeric_a},
-     {CTOK_ERROR,     STATE_COMP_INIT,  enter_error_state},
+     {CTOK_NUMERIC,   STATE_ESC_INIT,  NULL},
+     {CTOK_ERROR,     STATE_ESC_INIT,  NULL},
      {CTOK_END,       STATE_NULL,          NULL},
     }
    },
@@ -79,7 +100,7 @@ STATE esc_table[ ] =
     null_entry_fn,
     null_every_fn,
     {
-     {CTOK_NUMERIC,  STATE_COMP_ENT,      numeric_store},
+     {CTOK_NUMERIC,  STATE_ESC_ENT,      NULL},
      {CTOK_END,      STATE_NULL,          NULL},
     }
    },
@@ -103,268 +124,46 @@ void drive_fsms(void)
     {
       int tok = unqueue_token();
       
-      do_fsm(&esc_fsm, &state, tok);
+      do_fsm(&esc_fsm, &esc_state, tok);
     }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
+void cli_boot_mass(void)
+{
+  reset_usb_boot(0,0);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+// Serial loop command structure
+
+typedef void (*SERIAL_FPTR)(void);
+
+typedef struct
+{
+  char key;
+  char *desc;
+  SERIAL_FPTR fn;
+} SERIAL_COMMAND;
+
 SERIAL_COMMAND serial_cmds[] =
   {
-   {
-    'Q',
-    "Run as Emulator",
-    cli_emulator,
-   },
-   {
-    'p',
-    "Program mode",
-    cli_program_mode,
-   },
-   {
-    'c',
-    "Comp mode",
-    cli_comp_mode,
-   },
-   {
-    'r',
-    "Run mode",
-    cli_run_mode,
-   },
-   {
-    'h',
-    "Serial command help",
-    serial_help,
-   },
-   {
-    'l',
-    "Load emulation RAM from flash slot",
-    cli_load_ram,
-   },
-   {
-    'L',
-    "Load memory or program from flash slot",
-    cli_load_ram_mp,
-   },
-   {
-    's',
-    "Save emulation RAM to flash slot",
-    cli_save_ram,
-   },
-   {
-    'S',
-    "Save memory or program to flash slot",
-    cli_save_ram_mp,
-   },
    {
     '?',
     "Serial command help",
     serial_help,
    },
    {
-    'I',
-    "Display Information",
-    cli_display_dump,
-   },
-   {
-    'O',
-    "OLED Demo",
-    cli_oled_demo,
-   },
-   {
-    '=',
-    "Dump X",
-    cli_display_dump_x,
-   },
-   {
-    'd',
-    "Display RAM",
-    cli_display_prog_ram,
-   },
-   {
-    '+',
-    "Display KBD data",
-    cli_kbd_data,
-   },
-   {
-    'T',
-    "Test BCD",
-    cli_bcd_test,
-   },
-   {
-    '$',
-    "Display trace",
-    cli_display_trace,
-   },
-   {
-    'z',
-    "Zero parameter",
-    cli_zero_parameter,
-   },
-   {
-    'E',
-    "Erase program slot",
-    cli_erase_program_slot,
-   },
-   {
-    'D',
-    "Display program slot",
-    cli_display_program_slot,
-   },
-   {
-    'a',
-    "Display All Programs",
-    cli_slot_program_list,
-   },
-   {
-    'A',
-    "Set Address",
-    cli_set_address,
-   },
-   {
-    'W',
-    "Write Byte",
-    cli_write_byte,
-   },
-   {
-    '<',
-    "Display GPIO Functions",
-    print_gpio_functions,
-   },
-   {
-    '_',
-    "Clear All RAM",
-    cli_clear_ram,
-   },
-   {
-    '-',
-    "Clear Memory or Program RAM",
-    cli_clear_ram_mp,
-   },
-   {
-    '0',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '1',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '2',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '3',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '4',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '5',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '6',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '7',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '8',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '9',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    'B',
-    "Label Slot",
-    cli_label_slot,
-   },
-   {
-    'b',
-    "List Slot Labels",
-    cli_slot_label_list,
-   },
-   {
-    't',
-    "Enter Text Parameter",
-    cli_text_param,
-   },
-   {
-    '.',
-    "Toggle auto increment of parameter",
-    cli_toggle_auto_increment_parameter,
-   },
-   {
-    ',',
-    "Toggle auto increment of address",
-    cli_toggle_auto_increment_address,
-   },
-   {
     '!',
     "Boot to mass storage",
     cli_boot_mass,
    },
-   {
-    '*',
-    "Turn on LED",
-    cli_led_on,
-   },
-   {
-    '@',
-    "Run test sequence",
-    cli_run_test_sequence,
-   },
-   {
-    '~',
-    "Run all test sequence",
-    cli_run_all_test_sequence,
-   },
-   {
-    '#',
-    "Display test sequence results",
-    cli_display_test_sequence_results,
-   },
   };
 
-void serial_help(void)
-{
-  printf("\n");
-  
-  for(int i=0; i<sizeof(serial_cmds)/sizeof(SERIAL_COMMAND);i++)
-    {
-      if( *(serial_cmds[i].desc) != '*' )
-	{
-	  printf("\n%c:   %s", serial_cmds[i].key, serial_cmds[i].desc);
-	}
-    }
-  printf("\n0-9: Enter parameter digit");
-}
-
-
-void prompt(void)
-{
-  printf("\n\n(Text Parameter:'%s'", text_parameter);
-  printf("\n(Parameter (Program Num):%d (%04X) %c, Address (Slot Num):%d (%04X) %c) >",
-	 parameter, parameter, auto_increment_parameter?'A':' ',
-	 address,   address,   auto_increment_address?  'A':' ');
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -404,11 +203,63 @@ void serial_loop()
     }
 }
 
+void serial_help(void)
+{
+  printf("\n");
+  
+  for(int i=0; i<sizeof(serial_cmds)/sizeof(SERIAL_COMMAND);i++)
+    {
+      if( *(serial_cmds[i].desc) != '*' )
+	{
+	  printf("\n%c:   %s", serial_cmds[i].key, serial_cmds[i].desc);
+	}
+    }
+  printf("\n0-9: Enter parameter digit");
+}
+
+
+void prompt(void)
+{
+  printf("\n\n(Text Parameter:'%s'", text_parameter);
+  printf("\n(Parameter (Program Num):%d (%04X) %c, Address (Slot Num):%d (%04X) %c) >",
+	 parameter, parameter, auto_increment_parameter?'A':' ',
+	 address,   address,   auto_increment_address?  'A':' ');
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
 int main(void)
 {
+  ////////////////////////////////////////////////////////////////////////////////
+  //
+  // Overclock as needed
+  //
+  ////////////////////////////////////////////////////////////////////////////////
+  
+  //#define OVERCLOCK 135000
+  //#define OVERCLOCK 200000
+#define OVERCLOCK 270000
+  //#define OVERCLOCK 360000
+  
+#if OVERCLOCK > 270000
+  /* Above this speed needs increased voltage */
+  vreg_set_voltage(VREG_VOLTAGE_1_20);
+  sleep_ms(1000);
+#endif
+  
+  /* Overclock */
+  set_sys_clock_khz( OVERCLOCK, 1 );
+
+  stdio_init_all();
+
+  sleep_ms(2000);
+
+  printf("\n");
+  printf("\n                                  ********************************************");
+  printf("\n                                  * Experimental Schools Computer Simulation *");
+  printf("\n                                  ********************************************");
+  printf("\n");
 
   // Main loop
   while(1)

@@ -105,6 +105,7 @@ CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.obj
   /tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
   /tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_bootrom/include/pico/bootrom.h \
   ../fsms.h \
+  ../esc_fsms.h \
   ../esc.h
 
 CMakeFiles/experimental_schools_computer.dir/fsms.c.obj: ../fsms.c \

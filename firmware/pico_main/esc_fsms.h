@@ -73,3 +73,11 @@ extern TOKEN_INFO ctok_names[];
 extern TOKEN_INFO token_names[];
 
 char *name_of_token(TOKEN tok);
+
+//------------------------------------------------------------------------------
+
+enum
+  {
+   STATE_ESC_INIT = 1,
+   STATE_ESC_ENT,
+  };
