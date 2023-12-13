@@ -1,0 +1,131 @@
+#include "fsms.h"
+#include "esc.h"
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Compares a token to a 'classification token'
+// CTOKs can match more than one token, for example, CTOK_NUMERIC
+// matches any numeric token, like digits or the TOK_DOT token.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+int match_token(TOKEN tok, int ctok)
+{
+  int ret = 0;
+  
+  if( (tok != TOK_NO_TOK) && (tok!=CTOK_NONE) )
+    {
+#if DUMP_TOK_MATCH      
+      printf("\n%s  tok:%02X ctok:%02X", __FUNCTION__, tok, ctok);
+#endif
+    }
+  
+  switch(ctok)
+    {
+    case CTOK_DEFAULT:
+      switch(ctok)
+	{
+	case TOK_NONE:
+	case TOK_NO_TOK:
+	  ret = 0;
+	  break;
+	default:
+	  ret = 1;
+	  break;
+	}
+      break;
+      
+    case CTOK_AC:
+      if( tok == TOK_AC )
+	{
+	  ret = 1;
+	}
+      break;
+
+      // These tokens evaluate using the 'constant operator' if it has been set up
+    case CTOK_K_EVAL:
+      switch(tok)
+	{
+	case TOK_EQ:
+	case TOK_MEM_PL:
+	case TOK_MEM_MN:
+	  ret = 1;
+	  break;
+	}
+      break;
+      
+    case CTOK_NUMERIC:
+      switch(tok)
+	{
+	case TOK_0:
+	case TOK_1:
+	case TOK_2:
+	case TOK_3:
+	case TOK_4:
+	case TOK_5:
+	case TOK_6:
+	case TOK_7:
+	case TOK_8:
+	case TOK_9:
+	case TOK_DOT:
+	  ret = 1;
+	  break;
+	  
+	default:
+	  break;
+	}
+      break;
+
+    case CTOK_UNARY_OP:
+      switch(tok)
+	{
+	case TOK_LOG:
+	case TOK_LN:
+	case TOK_SQRT:
+	case TOK_EX:
+	case TOK_10X:
+	case TOK_SIN:
+	case TOK_COS:
+	case TOK_TAN:
+	case TOK_PLMN:
+	  ret = 1;
+	  break;
+	}
+      break;
+      
+    case CTOK_BINARY_OP:
+      switch(tok)
+	{
+	case TOK_TIMES:
+	case TOK_DIV:
+	case TOK_PL:
+	case TOK_MN:
+	case TOK_XY:
+	  ret = 1;
+	  break;
+	  
+	default:
+	  break;
+	}
+      break;
+      
+    default:
+      if( tok == ctok )
+	{
+	  ret = 1;
+	}
+	  
+      break;
+    }
+
+  if( (tok != TOK_NO_TOK) && (tok!=CTOK_NONE) )
+    {
+#if DUMP_TOK_MATCH      
+      printf("  ret=%d", ret);
+#endif
+    }
+  return(ret);
+}

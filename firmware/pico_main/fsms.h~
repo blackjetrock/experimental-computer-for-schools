@@ -1,0 +1,29 @@
+typedef struct _TRANSITION
+{
+  TOKEN stim;
+  int state;
+  FPTR fn;
+} TRANSITION;
+
+#define NUM_TRANS  20
+
+#define _STATE(XX)  XX, (char *) #XX
+  
+typedef struct _STATE
+{
+  int state_num;
+  char *state_name;
+  FPTR  entry_fn;                  // Called on entry
+  FPTR  pre_every_fn;              // Called before every stim is processed
+                                   // even if no transition is taken
+  TRANSITION trans[NUM_TRANS];
+} STATE;
+
+typedef struct _FSM
+{
+  const char *name;
+  int current_state;
+  STATE *table;
+} FSM;
+
+#define STATE_NULL 0

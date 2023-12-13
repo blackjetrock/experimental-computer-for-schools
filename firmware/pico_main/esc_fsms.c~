@@ -1,0 +1,196 @@
+////////////////////////////////////////////////////////////////////////////////
+
+#define CTOK_NAMES_LEN (sizeof(ctok_names)/sizeof(TOKEN_INFO))
+
+TOKEN_INFO ctok_names[] =
+  {
+   {CTOK_AC,           "CTOK_AC"},
+   {CTOK_BINARY_OP,    "CTOK_BINARY_OP"},
+   {CTOK_UNARY_OP,     "CTOK_UNARY_OP"},
+   
+   {CTOK_NUMERIC,      "CTOK_NUMERIC"},
+   {CTOK_OPERATOR,     "CTOK_OPERATOR"},
+   {CTOK_REPEAT_N,     "CTOK_REPEAT_N"},
+   {CTOK_REPEAT_1,     "CTOK_REPEAT_1"},
+   {CTOK_STOP_PROGRAM, "CTOK_STOP_PROGRAM"},
+
+   {CTOK_DEFAULT,      "CTOK_DEFAULT"},        // Always true, used as default at end of table
+   {CTOK_DONE,         "CTOK_DONE"},           // Signal from action
+   {CTOK_ERROR,        "CTOK_ERROR"},          // Signal from action
+   {CTOK_DONE_EARLY,   "CTOK_DONE_EARLY"},           // Signal from action
+   {CTOK_NONE,         "CTOK_NONE"},
+   {CTOK_END,          "CTOK_END"},
+  };
+#define TOKEN_NAMES_LEN (sizeof(token_names)/sizeof(TOKEN_INFO))
+
+TOKEN_INFO token_names[] =
+  {
+   {TOK_NONE, "TOK_NONE"},
+
+   {TOK_MAC, "TOK_MAC"},
+   {TOK_GOTO, "TOK_GOTO"},
+   {TOK_1X, "TOK_1X"},
+   {TOK_SUB, "TOK_SUB"},
+   {TOK_ST, "TOK_ST"},
+   {TOK_COLON, "TOK_COLON"},
+   {TOK_MJ, "TOK_MJ"},
+
+   {TOK_SQRT, "TOK_SQRT"},
+   {TOK_LOG, "TOK_LOG"},
+   {TOK_LN, "TOK_LN"},
+   {TOK_EX, "TOK_EX"},
+   {TOK_XY, "TOK_XY"},
+   {TOK_10X, "TOK_10X"},
+
+   {TOK_PLMN, "TOK_PLMN"},
+   {TOK_K, "TOK_K"},
+   {TOK_IF, "TOK_IF"},
+   {TOK_ARC, "TOK_ARC"},
+   {TOK_SIN, "TOK_SIN"},
+   {TOK_COS, "TOK_COS"},
+   {TOK_TAN, "TOK_TAN"},
+
+   {TOK_EQ, "TOK_EQ"},
+   {TOK_IM, "TOK_IM"},
+   {TOK_MR, "TOK_MR"},
+   {TOK_ENT, "TOK_ENT"},
+   {TOK_ANS, "TOK_ANS"},
+   {TOK_MPL, "TOK_MPL"},
+   {TOK_TIMES, "TOK_TIMES"},
+   {TOK_DIV, "TOK_DIV"},
+   {TOK_PL, "TOK_PL"},
+   {TOK_MN, "TOK_MN"},
+   {TOK_DOT, "TOK_DOT"},
+   {TOK_EXP, "TOK_EXP"},
+
+   {TOK_0, "TOK_0"},
+   {TOK_1, "TOK_1"},
+   {TOK_2, "TOK_2"},
+   {TOK_3, "TOK_3"},
+   {TOK_4, "TOK_4"},
+   {TOK_5, "TOK_5"},
+   {TOK_6, "TOK_6"},
+   {TOK_7, "TOK_7"},
+   {TOK_8, "TOK_8"},
+   {TOK_9, "TOK_9"},
+
+   {TOK_AC,      "TOK_AC"},
+   {TOK_C,       "TOK_C"},
+   {TOK_PERCENT, "TOK_PERCENT"},
+   {TOK_START,   "TOK_START"},
+   {TOK_NO_TOK,  "TOK_NO_TOK"},
+
+   {TOK_COMP_MODE,  "TOK_COMP_MODE"},
+   {TOK_WRITE_MODE, "TOK_WRITE_MODE"},
+   {TOK_RUN_MODE,   "TOK_RUN_MODE"},
+
+   {TOK_CUT_F,      "TOK_CUT_F"},
+   {TOK_CUT_CUT,    "TOK_CUT_CUT"},
+   {TOK_CUT_54,     "TOK_CUT_54"},
+
+   {TOK_PLACES_0,   "TOK_PLACES_0"},
+   {TOK_PLACES_1,   "TOK_PLACES_1"},
+   {TOK_PLACES_2,   "TOK_PLACES_2"},
+   {TOK_PLACES_3,   "TOK_PLACES_3"},
+   {TOK_PLACES_4,   "TOK_PLACES_4"},
+   {TOK_PLACES_6,   "TOK_PLACES_6"},
+     
+   {TOK_CLEAR_MODE, "TOK_CLEAR_MODE"},
+   {TOK_PRN,        "TOK_PRN"},
+   {TOK_I,          "TOK_I"},
+   {TOK_END,        "TOK_END"},
+   {TOK_CALL,       "TOK_CALL"},
+   {TOK_MC,         "TOK_MC"},
+   {TOK_EQ_2,       "TOK_EQ_2"},
+   {TOK_RETURN,     "TOK_RETURN"},
+  };
+
+char *name_of_token(TOKEN tok)
+{
+  for(int i=0; i<CTOK_NAMES_LEN; i++)
+    {
+      if( ctok_names[i].tok_value == tok )
+	{
+	  return((char *)ctok_names[i].tok_name);
+	}
+    }
+  for(int i=0; i<TOKEN_NAMES_LEN; i++)
+    {
+      if( token_names[i].tok_value == tok )
+	{
+	  return((char *)token_names[i].tok_name);
+	}
+    }
+   
+  return((char *)"TOK???");
+}
+
+TOKEN_INFO token_labels[] =
+  {
+   {TOK_NONE, "NONE"},
+
+   {TOK_MAC, "MAC"},
+   {TOK_GOTO, "GOTO"},
+   {TOK_1X, "1X"},
+   {TOK_SUB, "SUB"},
+   {TOK_ST, "ST"},
+   {TOK_COLON, ":"},
+   {TOK_MJ, "MJ"},
+
+   {TOK_SQRT, "SQRT"},
+   {TOK_LOG, "LOG"},
+   {TOK_LN, "LN"},
+   {TOK_EX, "EX"},
+   {TOK_XY, "XY"},
+   {TOK_10X, "10X"},
+
+   {TOK_PLMN, "PLMN"},
+   {TOK_K, "K"},
+   {TOK_IF, "IF"},
+   {TOK_ARC, "ARC"},
+   {TOK_SIN, "SIN"},
+   {TOK_COS, "COS"},
+   {TOK_TAN, "TAN"},
+
+   {TOK_EQ, "="},
+   {TOK_IM, "IM"},
+   {TOK_MR, "MR"},
+   {TOK_ENT, "ENT"},
+   {TOK_ANS, "ANS"},
+   {TOK_MPL, "MPL"},
+   {TOK_TIMES, "*"},
+   {TOK_DIV, "/"},
+   {TOK_PL, "+"},
+   {TOK_MN, "-"},
+   {TOK_DOT, "."},
+   {TOK_EXP, "EXP"},
+
+   {TOK_0, "0"},
+   {TOK_1, "1"},
+   {TOK_2, "2"},
+   {TOK_3, "3"},
+   {TOK_4, "4"},
+   {TOK_5, "5"},
+   {TOK_6, "6"},
+   {TOK_7, "7"},
+   {TOK_8, "8"},
+   {TOK_9, "9"},
+
+   {TOK_AC,      "AC"},
+   {TOK_C,       "C"},
+   {TOK_PERCENT, "%"},
+   {TOK_START,   "START"},
+   {TOK_NO_TOK,  "NO_TOK"},
+
+   {TOK_COMP_MODE,  "COMP_MODE"},
+   {TOK_WRITE_MODE, "WRITE_MODE"},
+   {TOK_RUN_MODE,   "RUN_MODE"},
+   {TOK_CLEAR_MODE, "CLEAR_MODE"},
+   {TOK_PRN,        "PR#"},
+   {TOK_I,          "I"},
+   {TOK_END,        "END"},
+   {TOK_MC,         "MC"},
+   {TOK_EQ_2,       "(=)"},
+   {TOK_RETURN,     "RETURN"},
+  };
+
