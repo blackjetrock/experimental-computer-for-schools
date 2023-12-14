@@ -20,8 +20,15 @@
 #define NUM_DBL_WORD_REGISTERS 2
 #define STORE_SIZE             200
 
+#define EMPTY_REGISTER         0xFFFFFFFF
+#define EMPTY_ADDRESS          0xFF
+
 #define DISPLAY_UPDATE         1
 #define DISPLAY_NO_UPDATE      0
+
+#define WORD_SIGN_PLUS         0xA
+#define WORD_SIGN_MINUS        0xB
+#define WORD_SIGN_NONE         0xF
 
 typedef uint32_t WORD;
 typedef uint64_t DOUBLE_WORD;
@@ -30,18 +37,27 @@ typedef uint64_t REGISTER_DOUBLE_WORD;
 typedef int BOOLEAN;
 typedef uint8_t ADDRESS;
 
+// Instruction fields
+#define INST_A_FIELD(INST) ((INST & 0xF0000000)>>28)
+#define INST_B_FIELD(INST) ((INST & 0x0F000000)>>28)
+#define INST_C_FIELD(INST) ((INST & 0x00F00000)>>28)
+#define INST_D_FIELD(INST) ((INST & 0x000F0000)>>28)
+#define INST_E_FIELD(INST) ((INST & 0x0000F000)>>28)
+#define INST_F_FIELD(INST) ((INST & 0x00000F00)>>28)
+#define INST_G_FIELD(INST) ((INST & 0x000000F0)>>28)
+#define INST_H_FIELD(INST) ((INST & 0x0000000F)>>28)
 
 
-#define R0 (R[0])
-#define R1 (R[1])
-#define R2 (R[2])
-#define R3 (R[3])
-#define R4 (R[4])
-#define R5 (R[5])
-#define R6 (R[6])
-#define R7 (R[7])
-#define R8 (RD[0])
-#define R9 (RD[1])
+#define R0 R[0]
+#define R1 R[1]
+#define R2 R[2]
+#define R3 R[3]
+#define R4 R[4]
+#define R5 R[5]
+#define R6 R[6]
+#define R7 R[7]
+#define R8 RD[0]
+#define R9 RD[1]
 
 
 
@@ -65,11 +81,14 @@ typedef struct _ESC_STATE
   
   BOOLEAN control_latch;
   BOOLEAN ki_reset_flag;
+
+  ADDRESS Ap1, Ap2, Ap3, Aa1, Aa2, Aa3;
   
   //--------------------------------------------------------------------
   // We can push a token into the FSM
   TOKEN insert_token;
   int update_display;
+  char stage;
   
 } ESC_STATE;
 

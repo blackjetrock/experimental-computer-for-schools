@@ -63,6 +63,55 @@ int address     = 0;
 
 ESC_STATE esc_state;
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Instruction decode
+//
+
+void stage_a_decode(ESC_STATE *s)
+{
+  
+  
+  // Check for invalid instructions
+
+  switch(INST_A_FIELD(s->instruction_register) )
+    {
+    case 0:
+    case 1:
+      break;
+
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      break;
+      
+    case 7:
+      // Absolute
+      
+      s->Aa1 = s->Ap1;
+      s->Aa2 = s->Ap2;
+      s->Aa3 = s->Ap3;
+      break;
+      
+    case 8:
+      // Relative
+      
+      s->Aa1 = s->Ap1 + s->R3; 
+      s->Aa2 = s->Ap2 + s->R4; 
+      s->Aa3 = s->Ap3 + s->R5; 
+      break;
+      
+    case 9:
+      // Indirect
+      s->Aa1 = s->store[s->Ap1];
+      s->Aa2 = s->store[s->Ap2];
+      s->Aa3 = s->store[s->Ap3];
+      break;
+    }
+  
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -70,12 +119,18 @@ ESC_STATE esc_state;
 
 void run_stage_a(ESC_STATE *s, int display)
 {
+  // Set instruction stage
+  s->stage = 'A';
+  
   // load aux iar
   s->aux_iar = s->iar;
   
   // Load instruction into instruction register
   s->instruction_register = s->store[s->aux_iar];
 
+  // Decode instruction
+  stage_a_decode(s);
+  
   s->update_display = display;
 }
 void run_stage_b(ESC_STATE *s, int display)
@@ -184,13 +239,14 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   es = (ESC_STATE *)s;
 
   // Everything cleared except IAR
-  
-  es->keyboard_register = 0xFFFFFFFF;
+
+  es->stage = ' ';
+  es->keyboard_register = EMPTY_ADDRESS;
   
   es->ki_reset_flag = 0;
-  es->address_register0 = 0xFFFFFFFF;
-  es->address_register1 = 0xFFFFFFFF;
-  es->address_register2 = 0xFFFFFFFF;
+  es->address_register0 = EMPTY_ADDRESS;
+  es->address_register1 = EMPTY_ADDRESS;
+  es->address_register2 = EMPTY_ADDRESS;
   
   // Re-display
   es->update_display = 1;
@@ -613,23 +669,36 @@ void update_display(ESC_STATE *s)
     {
       s->update_display = 0;
       printf("\n");
+
+
       printf("\nKeyboard register: %08X   IAR:%02X", s->keyboard_register, s->iar);
       printf("\n");
 
       // Print a representation of the TV display
+
+      // Line 1
       printf("\n%02X     %8s", s->iar, display_register_single_word(s->keyboard_register));
+
+      // Line 2
       if( s->ki_reset_flag )
 	{
 	  printf("\n%c",s->ki_reset_flag?'K':' ');
 	}
       else
 	{
-	  printf("\n%02X     %8s", s->aux_iar, display_register_single_word(s->instruction_register));
+	  printf("\n%02X    %8s%c",
+		 s->aux_iar,
+		 display_register_single_word(s->instruction_register),
+		 s->stage
+		 );
 	}
-      
+
+      // Line 3
       printf("\n");
       printf("\n");
       printf("\n");
+
+      // Line 6
       if( s->address_register2 != 0xFFFFFFFF )
 	{
 	  WORD w = s->store[s->address_register2];
