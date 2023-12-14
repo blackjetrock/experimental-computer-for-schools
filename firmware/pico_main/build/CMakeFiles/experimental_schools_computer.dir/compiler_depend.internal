@@ -8,6 +8,7 @@ CMakeFiles/experimental_schools_computer.dir/esc_fsms.c.obj
 
 CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.obj
  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c
+ /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/switches.h
  /usr/include/newlib/ctype.h
  /usr/include/newlib/_ansi.h
  /usr/include/newlib/newlib.h

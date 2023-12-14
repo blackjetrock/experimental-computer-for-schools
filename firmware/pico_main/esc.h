@@ -50,7 +50,7 @@ typedef struct _ESC_STATE
   REGISTER_SINGLE_WORD  R[NUM_WORD_REGISTERS];
   REGISTER_DOUBLE_WORD RD[NUM_DBL_WORD_REGISTERS];
   
-  WORD keyboard_register;
+  WORD    keyboard_register;
   ADDRESS address_register0;
   ADDRESS address_register1;
   ADDRESS address_register2;
@@ -64,6 +64,7 @@ typedef struct _ESC_STATE
   //--------------------------------------------------------------------
   // We can push a token into the FSM
   TOKEN insert_token;
+  int update_display;
   
 } ESC_STATE;
 

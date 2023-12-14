@@ -1,5 +1,6 @@
 CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.obj: \
  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c \
+ /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/switches.h \
  /usr/include/newlib/ctype.h /usr/include/newlib/_ansi.h \
  /usr/include/newlib/newlib.h /usr/include/newlib/_newlib_version.h \
  /usr/include/newlib/sys/config.h /usr/include/newlib/machine/ieeefp.h \

@@ -6,6 +6,7 @@ CMakeFiles/experimental_schools_computer.dir/esc_fsms.c.obj: ../esc_fsms.c \
   ../esc_fsms.h
 
 CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.obj: ../experimental_schools_computer.c \
+  ../switches.h \
   /usr/include/newlib/ctype.h \
   /usr/include/newlib/_ansi.h \
   /usr/include/newlib/newlib.h \
@@ -3221,10 +3222,6 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/pico-sdk
 
 /tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c:
 
-/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/include/pico/fix/rp2040_usb_device_enumeration.h:
-
-/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h:
-
 /tree/downloaded_tools/pico/pico-sdk/src/common/pico_base/include/pico/error.h:
 
 /usr/include/newlib/sys/_pthreadtypes.h:
@@ -3247,13 +3244,13 @@ generated/pico_base/pico/config_autogen.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/common/pico_base/include/pico/assert.h:
 
-/usr/include/newlib/sys/timespec.h:
-
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/critical_section.c:
 
 /usr/include/newlib/sys/select.h:
+
+/usr/include/newlib/sys/timespec.h:
 
 /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h:
 
@@ -3263,31 +3260,15 @@ generated/pico_base/pico/config_autogen.h:
 
 /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h:
 
-/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c:
-
-/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c:
-
-/usr/include/newlib/sys/string.h:
+/usr/include/newlib/sys/_timeval.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pwm.h:
 
 /usr/include/newlib/sys/_timespec.h:
 
-/usr/include/newlib/sys/_timeval.h:
+/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c:
 
-/usr/include/newlib/sys/_locale.h:
-
-/usr/include/newlib/sys/types.h:
-
-/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h:
-
-/tree/downloaded_tools/pico/pico-sdk/src/common/pico_base/include/pico/config.h:
-
-/usr/include/newlib/sys/sched.h:
-
-/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_bootrom/include/pico/bootrom/sf_table.h:
-
-/usr/include/newlib/sys/reent.h:
+/tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/defs.h:
 
@@ -3300,10 +3281,6 @@ generated/pico_base/pico/config_autogen.h:
 /tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h:
 
 /usr/include/newlib/machine/ieeefp.h:
-
-/usr/include/newlib/_newlib_version.h:
-
-/tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/common/pico_usb_reset_interface/include/pico/usb_reset_interface.h:
 
@@ -3328,6 +3305,20 @@ generated/pico_base/pico/config_autogen.h:
 /tree/downloaded_tools/pico/pico-sdk/src/common/pico_time/timeout_helper.c:
 
 /usr/include/newlib/stdio.h:
+
+/usr/include/newlib/_newlib_version.h:
+
+/tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h:
+
+/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c:
+
+/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c:
+
+/usr/include/newlib/sys/string.h:
+
+/tree/downloaded_tools/pico/pico-sdk/src/common/pico_base/include/pico/config.h:
+
+/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/watchdog.h:
 
@@ -3367,11 +3358,9 @@ generated/pico_base/pico/config_autogen.h:
 
 ../esc_fsms.c:
 
-/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c:
+/usr/include/newlib/sys/_sigset.h:
 
-/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h:
-
-/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h:
+/tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h:
 
@@ -3380,8 +3369,6 @@ generated/pico_base/pico/config_autogen.h:
 /tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c:
 
 /usr/include/newlib/alloca.h:
-
-/tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h:
 
 /tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c:
 
@@ -3392,6 +3379,22 @@ generated/pico_base/pico/config_autogen.h:
 generated/pico_base/pico/version.h:
 
 /usr/include/newlib/math.h:
+
+/usr/include/newlib/sys/_locale.h:
+
+/usr/include/newlib/sys/types.h:
+
+/usr/include/newlib/sys/sched.h:
+
+/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c:
+
+/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h:
+
+/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h:
+
+/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_bootrom/include/pico/bootrom/sf_table.h:
+
+/usr/include/newlib/sys/reent.h:
 
 /usr/include/newlib/sys/cdefs.h:
 
@@ -3427,7 +3430,9 @@ generated/pico_base/pico/version.h:
 
 /usr/include/newlib/machine/endian.h:
 
-/usr/include/newlib/sys/_sigset.h:
+/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/include/pico/fix/rp2040_usb_device_enumeration.h:
+
+/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/scb.h:
 
@@ -3462,6 +3467,8 @@ generated/pico_base/pico/version.h:
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h:
+
+../switches.h:
 
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pwm.h:
 
@@ -3550,10 +3557,6 @@ generated/pico_base/pico/version.h:
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h:
 
 /tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/device/usbd_pvt.h:
-
-/tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h:
-
-/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c:
 
 /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/bus_ctrl.h:
 

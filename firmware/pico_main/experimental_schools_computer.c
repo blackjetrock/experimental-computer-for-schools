@@ -10,6 +10,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#include "switches.h"
 
 #pragma GCC diagnostic ignored "-Wwrite-strings"
 
@@ -77,6 +78,30 @@ void null_every_fn(FSM_DATA *s, TOKEN tok)
 {
 }
 
+// Add digit to the keybord register
+void state_esc_numeric(FSM_DATA *s, TOKEN tok)
+{
+  int num = tok - TOK_KEY_0;
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+  
+  es->keyboard_register *= 16;
+  es->keyboard_register += num;
+
+  es->update_display = 1;
+}
+
+void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+  
+  es->keyboard_register = 0;
+  es->update_display = 1;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // 
@@ -90,9 +115,10 @@ STATE esc_table[ ] =
     null_entry_fn,
     null_every_fn,
     {
-     {CTOK_NUMERIC,   STATE_ESC_INIT,  NULL},
-     {CTOK_ERROR,     STATE_ESC_INIT,  NULL},
-     {CTOK_END,       STATE_NULL,          NULL},
+     {CTOK_NUMERIC,         STATE_ESC_INIT,  state_esc_numeric},
+     {TOK_KEY_NORMAL_RESET, STATE_ESC_INIT,  state_esc_normal_reset},
+     {CTOK_ERROR,           STATE_ESC_INIT,  NULL},
+     {CTOK_END,             STATE_NULL,      NULL},
     }
    },
    {
@@ -135,6 +161,18 @@ void cli_boot_mass(void)
   reset_usb_boot(0,0);
 }
 
+// Another digit pressed, update the parameter variable
+void cli_digit(void)
+{
+  printf("\n%d", keypress);
+  queue_token(TOK_KEY_0 + keypress - '0');
+}
+
+void cli_normal_reset(void)
+{
+  queue_token(TOK_KEY_NORMAL_RESET);
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -161,6 +199,61 @@ SERIAL_COMMAND serial_cmds[] =
     '!',
     "Boot to mass storage",
     cli_boot_mass,
+   },
+   {
+    '0',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    '1',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    '2',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    '3',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    '4',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    '5',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    '6',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    '7',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    '8',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    '9',
+    "*Digit",
+    cli_digit,
+   },
+   {
+    'N',
+    "Normal Reset",
+    cli_normal_reset,
    },
   };
 
@@ -229,6 +322,19 @@ void prompt(void)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+void update_display(ESC_STATE *s)
+{
+  if( s->update_display )
+    {
+      s->update_display = 0;
+      printf("\n");
+      printf("\nKeyboard register: %08X", s->keyboard_register);
+      printf("\n");
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 int main(void)
 {
   ////////////////////////////////////////////////////////////////////////////////
@@ -266,5 +372,6 @@ int main(void)
     {
       drive_fsms();
       serial_loop();
+      update_display(&esc_state);
     }
 }
