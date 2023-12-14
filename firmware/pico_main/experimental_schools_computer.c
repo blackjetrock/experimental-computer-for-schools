@@ -65,6 +65,32 @@ ESC_STATE esc_state;
 
 
 ////////////////////////////////////////////////////////////////////////////////
+
+// Execution
+
+void run_stage_a(ESC_STATE *s, int display)
+{
+  // load aux iar
+  s->aux_iar = s->iar;
+  
+  // Load instruction into instruction register
+  s->instruction_register = s->store[s->aux_iar];
+
+  s->update_display = display;
+}
+void run_stage_b(ESC_STATE *s, int display)
+{
+
+  s->update_display = display;
+}
+
+void run_stage_c(ESC_STATE *s, int display)
+{
+
+  s->update_display = display;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 //
 // State machines
 //
@@ -77,6 +103,8 @@ void null_entry_fn(FSM_DATA *s, TOKEN tok)
 void null_every_fn(FSM_DATA *s, TOKEN tok)
 {
 }
+
+
 
 // Load ADDR from KBD
 void state_esc_load_addr(FSM_DATA *s, TOKEN tok)
@@ -168,6 +196,66 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   es->update_display = 1;
 }
 
+void state_esc_a_disp(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  run_stage_a(es, DISPLAY_UPDATE);
+  es->update_display = 1;
+}
+
+void state_esc_b_disp(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  run_stage_b(es, DISPLAY_UPDATE);
+  es->update_display = 1;
+}
+
+void state_esc_c_disp(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  run_stage_c(es, DISPLAY_UPDATE);
+  es->update_display = 1;
+}
+
+void state_esc_a_no_disp(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  run_stage_a(es, DISPLAY_NO_UPDATE);
+  es->update_display = 1;
+}
+
+void state_esc_b_no_disp(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  run_stage_b(es, DISPLAY_NO_UPDATE);
+  es->update_display = 1;
+}
+
+void state_esc_c_no_disp(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  run_stage_c(es, DISPLAY_NO_UPDATE);
+  es->update_display = 1;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // 
@@ -188,6 +276,9 @@ STATE esc_table[ ] =
      {TOK_KEY_INCR_ADDR,    STATE_ESC_INIT,  state_esc_incr_addr},
      {TOK_KEY_DECR_ADDR,    STATE_ESC_INIT,  state_esc_decr_addr},
      {TOK_KEY_LOAD_STORE,   STATE_ESC_INIT,  state_esc_load_store},
+     {TOK_KEY_A,            STATE_ESC_INIT,  state_esc_a_disp},
+     {TOK_KEY_B,            STATE_ESC_INIT,  state_esc_b_disp},
+     {TOK_KEY_C,            STATE_ESC_INIT,  state_esc_c_disp},
      {CTOK_ERROR,           STATE_ESC_INIT,  NULL},
      {CTOK_END,             STATE_NULL,      NULL},
     }
@@ -237,6 +328,21 @@ void cli_digit(void)
 {
   printf("\n%d", keypress);
   queue_token(TOK_KEY_0 + keypress - '0');
+}
+
+void cli_key_a(void)
+{
+  queue_token(TOK_KEY_A);
+}
+
+void cli_key_b(void)
+{
+  queue_token(TOK_KEY_B);
+}
+
+void cli_key_c(void)
+{
+  queue_token(TOK_KEY_C);
 }
 
 void cli_normal_reset(void)
@@ -382,6 +488,21 @@ SERIAL_COMMAND serial_cmds[] =
     "Load STORE",
     cli_load_store,
    },
+   {
+    'a',
+    "A",
+    cli_key_a,
+   },
+   {
+    'b',
+    "B",
+    cli_key_b,
+   },
+   {
+    'c',
+    "C",
+    cli_key_c,
+   },
   };
 
 
@@ -497,7 +618,15 @@ void update_display(ESC_STATE *s)
 
       // Print a representation of the TV display
       printf("\n%02X     %8s", s->iar, display_register_single_word(s->keyboard_register));
-      printf("\n%c",s->ki_reset_flag?'K':' ');
+      if( s->ki_reset_flag )
+	{
+	  printf("\n%c",s->ki_reset_flag?'K':' ');
+	}
+      else
+	{
+	  printf("\n%02X     %8s", s->aux_iar, display_register_single_word(s->instruction_register));
+	}
+      
       printf("\n");
       printf("\n");
       printf("\n");

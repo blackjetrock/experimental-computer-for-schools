@@ -20,6 +20,9 @@
 #define NUM_DBL_WORD_REGISTERS 2
 #define STORE_SIZE             200
 
+#define DISPLAY_UPDATE         1
+#define DISPLAY_NO_UPDATE      0
+
 typedef uint32_t WORD;
 typedef uint64_t DOUBLE_WORD;
 typedef uint32_t REGISTER_SINGLE_WORD;
@@ -54,7 +57,8 @@ typedef struct _ESC_STATE
   ADDRESS address_register0;
   ADDRESS address_register1;
   ADDRESS address_register2;
-  
+
+  WORD    instruction_register;
   ADDRESS iar;
   ADDRESS aux_iar;
   ADDRESS link_register;
