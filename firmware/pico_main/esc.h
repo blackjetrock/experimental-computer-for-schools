@@ -25,7 +25,7 @@ typedef uint64_t DOUBLE_WORD;
 typedef uint32_t REGISTER_SINGLE_WORD;
 typedef uint64_t REGISTER_DOUBLE_WORD;
 typedef int BOOLEAN;
-typedef int ADDRESS;
+typedef uint8_t ADDRESS;
 
 
 
@@ -60,7 +60,8 @@ typedef struct _ESC_STATE
   ADDRESS link_register;
   
   BOOLEAN control_latch;
-
+  BOOLEAN ki_reset_flag;
+  
   //--------------------------------------------------------------------
   // We can push a token into the FSM
   TOKEN insert_token;

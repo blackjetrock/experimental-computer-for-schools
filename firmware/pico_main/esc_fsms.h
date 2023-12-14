@@ -26,7 +26,7 @@ enum {
       TOK_KEY_LOAD_IAR,
       TOK_KEY_LOAD_ADDR,
       TOK_KEY_LOAD_STORE,
-      TOK_KEY_DEC_ADDR,
+      TOK_KEY_DECR_ADDR,
       TOK_KEY_INCR_ADDR,
       TOK_KEY_NORMAL_RESET,
       

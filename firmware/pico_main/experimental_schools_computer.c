@@ -78,6 +78,63 @@ void null_every_fn(FSM_DATA *s, TOKEN tok)
 {
 }
 
+// Load ADDR from KBD
+void state_esc_load_addr(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  es->address_register2 = es->keyboard_register;
+
+  es->update_display = 1;
+}
+
+// Load store from KBD
+void state_esc_load_store(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  es->store[es->address_register2] = es->keyboard_register;
+
+  es->update_display = 1;
+}
+
+void state_esc_incr_addr(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  es->address_register2 += 1;
+
+  es->update_display = 1;
+}
+
+void state_esc_decr_addr(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  es->address_register2 -= 1;
+
+  es->update_display = 1;
+}
+
+// Load IAR from KBD
+void state_esc_load_iar(FSM_DATA *s, TOKEN tok)
+{
+  ESC_STATE *es;
+
+  es = (ESC_STATE *)s;
+
+  es->iar = es->keyboard_register;
+  es->update_display = 1;
+}
+
 // Add digit to the keybord register
 void state_esc_numeric(FSM_DATA *s, TOKEN tok)
 {
@@ -97,8 +154,17 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   ESC_STATE *es;
 
   es = (ESC_STATE *)s;
+
+  // Everything cleared except IAR
   
-  es->keyboard_register = 0;
+  es->keyboard_register = 0xFFFFFFFF;
+  
+  es->ki_reset_flag = 0;
+  es->address_register0 = 0xFFFFFFFF;
+  es->address_register1 = 0xFFFFFFFF;
+  es->address_register2 = 0xFFFFFFFF;
+  
+  // Re-display
   es->update_display = 1;
 }
 
@@ -117,6 +183,11 @@ STATE esc_table[ ] =
     {
      {CTOK_NUMERIC,         STATE_ESC_INIT,  state_esc_numeric},
      {TOK_KEY_NORMAL_RESET, STATE_ESC_INIT,  state_esc_normal_reset},
+     {TOK_KEY_LOAD_IAR,     STATE_ESC_INIT,  state_esc_load_iar},
+     {TOK_KEY_LOAD_ADDR,    STATE_ESC_INIT,  state_esc_load_addr},
+     {TOK_KEY_INCR_ADDR,    STATE_ESC_INIT,  state_esc_incr_addr},
+     {TOK_KEY_DECR_ADDR,    STATE_ESC_INIT,  state_esc_decr_addr},
+     {TOK_KEY_LOAD_STORE,   STATE_ESC_INIT,  state_esc_load_store},
      {CTOK_ERROR,           STATE_ESC_INIT,  NULL},
      {CTOK_END,             STATE_NULL,      NULL},
     }
@@ -172,6 +243,37 @@ void cli_normal_reset(void)
 {
   queue_token(TOK_KEY_NORMAL_RESET);
 }
+
+void cli_load_ki_reset(void)
+{
+  queue_token(TOK_KEY_KI_RESET);
+}
+
+void cli_load_iar(void)
+{
+  queue_token(TOK_KEY_LOAD_IAR);
+}
+
+void cli_incr_addr(void)
+{
+  queue_token(TOK_KEY_INCR_ADDR);
+}
+
+void cli_decr_addr(void)
+{
+  queue_token(TOK_KEY_DECR_ADDR);
+}
+
+void cli_load_addr(void)
+{
+  queue_token(TOK_KEY_LOAD_ADDR);
+}
+
+void cli_load_store(void)
+{
+  queue_token(TOK_KEY_LOAD_STORE);
+}
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -255,6 +357,31 @@ SERIAL_COMMAND serial_cmds[] =
     "Normal Reset",
     cli_normal_reset,
    },
+   {
+    'I',
+    "Load IAR",
+    cli_load_iar,
+   },
+   {
+    'A',
+    "Load ADDR",
+    cli_load_addr,
+   },
+   {
+    'i',
+    "Incr ADDR",
+    cli_incr_addr,
+   },
+   {
+    'd',
+    "Decr ADDR",
+    cli_decr_addr,
+   },
+   {
+    'S',
+    "Load STORE",
+    cli_load_store,
+   },
   };
 
 
@@ -322,14 +449,64 @@ void prompt(void)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+// Spaces if empty or the value (in hex)
+
+char *display_word(WORD w)
+{
+  static char result[16];
+  
+  sprintf(result, "%08X", w);
+  return(result);
+  
+}
+
+char *display_register_single_word(REGISTER_SINGLE_WORD x)
+{
+  static char result[16];
+  
+  if( x == 0xFFFFFFFF )
+    {
+      return("        ");
+    }
+
+  sprintf(result, "%08X", x);
+  return(result);
+}
+
+char *display_address(REGISTER_SINGLE_WORD x)
+{
+  static char result[16];
+  
+  if( x == 0xFFFFFFFF )
+    {
+      return("  ");
+    }
+
+  sprintf(result, "%02X", x);
+  return(result);
+}
+
 void update_display(ESC_STATE *s)
 {
   if( s->update_display )
     {
       s->update_display = 0;
       printf("\n");
-      printf("\nKeyboard register: %08X", s->keyboard_register);
+      printf("\nKeyboard register: %08X   IAR:%02X", s->keyboard_register, s->iar);
       printf("\n");
+
+      // Print a representation of the TV display
+      printf("\n%02X     %8s", s->iar, display_register_single_word(s->keyboard_register));
+      printf("\n%c",s->ki_reset_flag?'K':' ');
+      printf("\n");
+      printf("\n");
+      printf("\n");
+      if( s->address_register2 != 0xFFFFFFFF )
+	{
+	  WORD w = s->store[s->address_register2];
+	  printf("\n%s     %8s", display_address(s->address_register2), display_word(w));
+	}
+      
     }
 }
 
