@@ -25,6 +25,7 @@
 
 #define DISPLAY_UPDATE         1
 #define DISPLAY_NO_UPDATE      0
+#define MAX_LINE               16
 
 #define WORD_SIGN_PLUS         0xA
 #define WORD_SIGN_MINUS        0xB
@@ -61,7 +62,14 @@ typedef uint8_t ADDRESS;
 #define R8 RD[0]
 #define R9 RD[1]
 
+// IAR type registers have an implicit flag that addresses
+// one of the two 4 digit instructions in a register
 
+typedef struct _IAR
+{
+  ADDRESS address;
+  BOOLEAN a_flag;
+} IAR;
 
 typedef struct _ESC_STATE
 {
@@ -77,8 +85,11 @@ typedef struct _ESC_STATE
   ADDRESS address_register2;
 
   WORD    instruction_register;
-  ADDRESS iar;
-  ADDRESS aux_iar;
+
+  IAR iar;
+  IAR aux_iar;
+
+  
   ADDRESS link_register;
   
   BOOLEAN control_latch;
@@ -106,5 +117,8 @@ typedef struct _ESC_STATE
   char stage;
   
 } ESC_STATE;
+
+
+
 
 ////////////////////////////////////////////////////////////////////////////////

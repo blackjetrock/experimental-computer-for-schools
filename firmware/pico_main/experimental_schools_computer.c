@@ -63,6 +63,23 @@ int address     = 0;
 
 ESC_STATE esc_state;
 
+
+////////////////////////////////////////////////////////////////////////////////
+//
+
+void increment_iar(IAR *iar)
+{
+  if( iar->a_flag )
+    {
+      iar->address++;
+      iar->a_flag = 0;
+    }
+  else
+    {
+      iar->a_flag = !(iar->a_flag);
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Instruction decode
@@ -72,7 +89,7 @@ void stage_c_decode(ESC_STATE *s)
 {
   // Decode the instruction
   // First the digits 1-4
-  stage_b_decode_core(s, 0);
+  stage_c_decode(s);
 
   switch(s->inst_digit_a)
     {
@@ -224,7 +241,7 @@ void run_stage_a(ESC_STATE *s, int display)
   s->aux_iar = s->iar;
   
   // Load instruction into instruction register
-  s->instruction_register = s->store[s->aux_iar];
+  s->instruction_register = load_from_store(&(s->aux_iar));
 
   // Decode instruction
   stage_a_decode(s);
@@ -247,7 +264,8 @@ void run_stage_b(ESC_STATE *s, int display)
 
 void run_stage_c(ESC_STATE *s, int display)
 {
-
+  stage_c_decode(s);
+  
   s->update_display = display;
 }
 
@@ -320,7 +338,7 @@ void state_esc_load_iar(FSM_DATA *s, TOKEN tok)
 
   es = (ESC_STATE *)s;
 
-  es->iar = es->keyboard_register;
+  es->iar.address = es->keyboard_register;
   es->update_display = 1;
 }
 
@@ -736,7 +754,7 @@ void prompt(void)
 
 char *display_word(WORD w)
 {
-  static char result[16];
+  static char result[MAX_LINE];
   
   sprintf(result, "%08X", w);
   return(result);
@@ -745,7 +763,7 @@ char *display_word(WORD w)
 
 char *display_register_single_word(REGISTER_SINGLE_WORD x)
 {
-  static char result[16];
+  static char result[MAX_LINE];
   
   if( x == 0xFFFFFFFF )
     {
@@ -758,7 +776,7 @@ char *display_register_single_word(REGISTER_SINGLE_WORD x)
 
 char *display_address(REGISTER_SINGLE_WORD x)
 {
-  static char result[16];
+  static char result[MAX_LINE];
   
   if( x == 0xFFFFFFFF )
     {
@@ -766,6 +784,15 @@ char *display_address(REGISTER_SINGLE_WORD x)
     }
 
   sprintf(result, "%02X", x);
+  return(result);
+}
+
+
+char *display_iar(IAR iar)
+{
+  static char result[MAX_LINE];
+  
+  sprintf(result, "%08X%c", iar.address, iar.a_flag?'A':' ');
   return(result);
 }
 
@@ -777,13 +804,13 @@ void update_display(ESC_STATE *s)
       printf("\n");
 
 
-      printf("\nKeyboard register: %08X   IAR:%02X", s->keyboard_register, s->iar);
+      printf("\nKeyboard register: %08X   IAR:%02X", s->keyboard_register, display_iar(s->iar));
       printf("\n");
 
       // Print a representation of the TV display
 
       // Line 1
-      printf("\n%02X     %8s", s->iar, display_register_single_word(s->keyboard_register));
+      printf("\n%02X     %8s", display_iar(s->iar), display_register_single_word(s->keyboard_register));
 
       // Line 2
       if( s->ki_reset_flag )
@@ -793,7 +820,7 @@ void update_display(ESC_STATE *s)
       else
 	{
 	  printf("\n%02X    %8s%c",
-		 s->aux_iar,
+		 display_iar(s->aux_iar),
 		 display_register_single_word(s->instruction_register),
 		 s->stage
 		 );
