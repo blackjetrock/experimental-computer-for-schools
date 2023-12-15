@@ -68,13 +68,39 @@ ESC_STATE esc_state;
 // Instruction decode
 //
 
-void stage_a_decode(ESC_STATE *s)
+void stage_c_decode(ESC_STATE *s)
 {
-  
-  
-  // Check for invalid instructions
+  // Decode the instruction
+  // First the digits 1-4
+  stage_b_decode_core(s, 0);
 
-  switch(INST_A_FIELD(s->instruction_register) )
+  switch(s->inst_digit_a)
+    {
+    case 0:
+    case 1:
+      break;
+
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      break;
+      
+    case 7:
+    case 8:
+    case 9:
+      break;
+    }
+}
+
+void stage_b_decode_core(ESC_STATE *s, int shift)
+{
+  // Decode the instruction
+  // First the digits 1-4
+
+
+  switch(s->inst_digit_a)
     {
     case 0:
     case 1:
@@ -110,12 +136,84 @@ void stage_a_decode(ESC_STATE *s)
       s->Aa3 = s->store[s->Ap3];
       break;
     }
+}
+
+// Decode addresses ready for calculation
+void stage_b_decode(ESC_STATE *s)
+{
+  // Decode the instruction
+  // First the digits 1-4
+  stage_b_decode_core(s, 0);
+
+  switch(s->inst_digit_a)
+    {
+    case 0:
+    case 1:
+      break;
+
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      break;
+      
+    case 7:
+    case 8:
+    case 9:
+      // Indirect
+      s->Aa1 = s->store[s->Ap1];
+      s->Aa2 = s->store[s->Ap2];
+      s->Aa3 = s->store[s->Ap3];
+      break;
+    }
+}
+
+// Fetch instruction
+// Decode presumptive addresses
+
+void stage_a_decode(ESC_STATE *s)
+{
+  s->inst_digit_a = INST_A_FIELD(s->instruction_register,0);
+  s->inst_digit_b = INST_B_FIELD(s->instruction_register,0);
+  s->inst_digit_c = INST_C_FIELD(s->instruction_register,0);
+  s->inst_digit_d = INST_D_FIELD(s->instruction_register,0);
   
+  // Calculate the presumptive addresses
+  
+  switch(s->inst_digit_a)
+    {
+    case 0:
+    case 1:
+      // Register instructions
+      s->reginst_rc = s->inst_digit_c;
+      s->reginst_rd = s->inst_digit_d;
+      break;
+
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      break;
+      
+    case 7:
+    case 8:
+    case 9:
+      // 3 address instructions
+      s->Ap1 = INST_3_ADDR_1(s->instruction_register);
+      s->Ap2 = INST_3_ADDR_2(s->instruction_register);
+      s->Ap3 = INST_3_ADDR_3(s->instruction_register);
+      break;
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
 // Execution
+// Basic instructions are stored two to a word
+// The two instructions are processed, in turn, digit position 1-4
+// then digit position 5-8
 
 void run_stage_a(ESC_STATE *s, int display)
 {
@@ -133,9 +231,17 @@ void run_stage_a(ESC_STATE *s, int display)
   
   s->update_display = display;
 }
+
+//
+// Stage B
+//
+// The addresses have been alculated, now the instruction is executed
+//
+
 void run_stage_b(ESC_STATE *s, int display)
 {
-
+  stage_b_decode(s);
+  
   s->update_display = display;
 }
 

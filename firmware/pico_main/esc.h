@@ -38,15 +38,17 @@ typedef int BOOLEAN;
 typedef uint8_t ADDRESS;
 
 // Instruction fields
-#define INST_A_FIELD(INST) ((INST & 0xF0000000)>>28)
-#define INST_B_FIELD(INST) ((INST & 0x0F000000)>>28)
-#define INST_C_FIELD(INST) ((INST & 0x00F00000)>>28)
-#define INST_D_FIELD(INST) ((INST & 0x000F0000)>>28)
-#define INST_E_FIELD(INST) ((INST & 0x0000F000)>>28)
-#define INST_F_FIELD(INST) ((INST & 0x00000F00)>>28)
-#define INST_G_FIELD(INST) ((INST & 0x000000F0)>>28)
-#define INST_H_FIELD(INST) ((INST & 0x0000000F)>>28)
-
+#define INST_A_FIELD(INST,SHIFT) ((INST & (0xF0000000>>SHIFT))>>(28-SHIFT))
+#define INST_B_FIELD(INST,SHIFT) ((INST & (0x0F000000>>SHIFT))>>(28-SHIFT))
+#define INST_C_FIELD(INST,SHIFT) ((INST & (0x00F00000>>SHIFT))>>(28-SHIFT))
+#define INST_D_FIELD(INST,SHIFT) ((INST & (0x000F0000>>SHIFT))>>(28-SHIFT))
+#define INST_E_FIELD(INST,SHIFT) ((INST & (0x0000F000>>SHIFT))>>(28-SHIFT))
+#define INST_F_FIELD(INST,SHIFT) ((INST & (0x00000F00>>SHIFT))>>(28-SHIFT))
+#define INST_G_FIELD(INST,SHIFT) ((INST & (0x000000F0>>SHIFT))>>(28-SHIFT))
+#define INST_H_FIELD(INST,SHIFT) ((INST & (0x0000000F>>SHIFT))>>(28-SHIFT))
+#define INST_3_ADDR_1(INST) ((INST & 0x00FF0000)>>16)
+#define INST_3_ADDR_2(INST) ((INST & 0x0000FF00)>> 8)
+#define INST_3_ADDR_3(INST) ((INST & 0x000000FF)>> 0)
 
 #define R0 R[0]
 #define R1 R[1]
@@ -82,6 +84,19 @@ typedef struct _ESC_STATE
   BOOLEAN control_latch;
   BOOLEAN ki_reset_flag;
 
+  // Instruction processing
+  int inst_digit_a;
+  int inst_digit_b;
+  int inst_digit_c;
+  int inst_digit_d;
+  int inst_digit_e;
+  int inst_digit_f;
+  int inst_digit_g;
+  int inst_digit_h;
+
+  int reginst_rc;
+  int reginst_rd;
+  
   ADDRESS Ap1, Ap2, Ap3, Aa1, Aa2, Aa3;
   
   //--------------------------------------------------------------------
