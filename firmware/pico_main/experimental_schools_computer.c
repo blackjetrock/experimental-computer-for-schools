@@ -63,6 +63,11 @@ int address     = 0;
 
 ESC_STATE esc_state;
 
+////////////////////////////////////////////////////////////////////////////////
+WORD load_from_store(ESC_STATE *s, ADDRESS address)
+{
+  return(s->store[address]);
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -191,10 +196,28 @@ void stage_b_decode(ESC_STATE *s)
 
 void stage_a_decode(ESC_STATE *s)
 {
-  s->inst_digit_a = INST_A_FIELD(s->instruction_register,0);
-  s->inst_digit_b = INST_B_FIELD(s->instruction_register,0);
-  s->inst_digit_c = INST_C_FIELD(s->instruction_register,0);
-  s->inst_digit_d = INST_D_FIELD(s->instruction_register,0);
+  if( s->iar.a_flag )
+    {
+      s->inst_digit_e = INST_E_FIELD(s->instruction_register);
+      s->inst_digit_f = INST_F_FIELD(s->instruction_register);
+      s->inst_digit_g = INST_G_FIELD(s->instruction_register);
+      s->inst_digit_h = INST_H_FIELD(s->instruction_register);
+    }
+  else
+    {
+      s->inst_digit_a = INST_A_FIELD(s->instruction_register);
+      s->inst_digit_b = INST_B_FIELD(s->instruction_register);
+      s->inst_digit_c = INST_C_FIELD(s->instruction_register);
+      s->inst_digit_d = INST_D_FIELD(s->instruction_register);
+    }
+
+#if DEBUG_A_DECODE
+  printf("\nabcd = %d%d%d%d",
+	 s->inst_digit_a,
+	 s->inst_digit_b,
+	 s->inst_digit_c,
+	 s->inst_digit_d);
+#endif
   
   // Calculate the presumptive addresses
   
@@ -241,7 +264,7 @@ void run_stage_a(ESC_STATE *s, int display)
   s->aux_iar = s->iar;
   
   // Load instruction into instruction register
-  s->instruction_register = load_from_store(&(s->aux_iar));
+  s->instruction_register = load_from_store(s, s->aux_iar.address);
 
   // Decode instruction
   stage_a_decode(s);
@@ -338,7 +361,7 @@ void state_esc_load_iar(FSM_DATA *s, TOKEN tok)
 
   es = (ESC_STATE *)s;
 
-  es->iar.address = es->keyboard_register;
+  es->iar.address = (ADDRESS)es->keyboard_register;
   es->update_display = 1;
 }
 
@@ -371,6 +394,9 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   es->address_register0 = EMPTY_ADDRESS;
   es->address_register1 = EMPTY_ADDRESS;
   es->address_register2 = EMPTY_ADDRESS;
+
+  es->reginst_rc = NO_VALUE;
+  es->reginst_rd = NO_VALUE;
   
   // Re-display
   es->update_display = 1;
@@ -503,6 +529,53 @@ void cli_boot_mass(void)
   reset_usb_boot(0,0);
 }
 
+// Dump state info
+void cli_dump(void)
+{
+  ESC_STATE *s = &esc_state;
+
+  printf("\nState");
+  printf("\n=====");
+
+  printf("\nIAR     : %s", display_iar(s->iar));
+  printf("\nAux IAR : %s", display_iar(s->aux_iar));
+  printf("\nInst Reg: %08X", s->instruction_register);
+  printf("\nAddr R0 : %s", display_address(s->address_register0));
+  printf("\nAddr R1 : %s", display_address(s->address_register1));
+  printf("\nAddr R2 : %s", display_address(s->address_register2));
+
+  for(int i=0; i<NUM_WORD_REGISTERS; i++)
+    {
+      printf("\nR%d    : %s", i, display_register_single_word(s->R[i]));
+    }
+
+  for(int i=0; i<NUM_DBL_WORD_REGISTERS; i++)
+    {
+      printf("\nR%d    : %s", i+NUM_WORD_REGISTERS, display_register_double_word(s->RD[i]));
+    }
+  
+  printf("\n");
+  
+}
+
+// Dump Store
+void cli_dump_store(void)
+{
+    ESC_STATE *s = &esc_state;
+
+    for(int i=0; i<STORE_SIZE; i++)
+      {
+	if( (i % 5) == 0 )
+	  {
+	    printf("\n");
+	  }
+
+	printf("  %03d:%08X (1234.56-)", i, s->store[i]);
+      }
+    printf("\n");
+	   
+}
+
 // Another digit pressed, update the parameter variable
 void cli_digit(void)
 {
@@ -587,6 +660,16 @@ SERIAL_COMMAND serial_cmds[] =
     '!',
     "Boot to mass storage",
     cli_boot_mass,
+   },
+   {
+    '*',
+    "Dump State",
+    cli_dump,
+   },
+   {
+    '&',
+    "Dump Store",
+    cli_dump_store,
    },
    {
     '0',
@@ -774,6 +857,19 @@ char *display_register_single_word(REGISTER_SINGLE_WORD x)
   return(result);
 }
 
+char *display_register_double_word(REGISTER_DOUBLE_WORD x)
+{
+  static char result[MAX_LINE];
+  
+  if( x == 0xFFFFFFFFFFFFFFFFL )
+    {
+      return("        ");
+    }
+
+  sprintf(result, "%16lX", x);
+  return(result);
+}
+
 char *display_address(REGISTER_SINGLE_WORD x)
 {
   static char result[MAX_LINE];
@@ -790,10 +886,30 @@ char *display_address(REGISTER_SINGLE_WORD x)
 
 char *display_iar(IAR iar)
 {
-  static char result[MAX_LINE];
+  static char result2[MAX_LINE];
   
-  sprintf(result, "%08X%c", iar.address, iar.a_flag?'A':' ');
-  return(result);
+  sprintf(result2, "%02X%c", iar.address, iar.a_flag?'A':' ');
+  return(result2);
+}
+
+char *display_presumptive_address_1(ESC_STATE *s)
+{
+  static char result[MAX_LINE];
+
+  if( s->reginst_rc !=NO_VALUE )
+    {
+      sprintf(result,"R%s", s->reginst_rc);
+    }
+}
+
+char *display_presumptive_address_2(ESC_STATE *s)
+{
+  static char result[MAX_LINE];
+
+  if( s->reginst_rd !=NO_VALUE )
+    {
+      sprintf(result,"R%s", s->reginst_rd);
+    }
 }
 
 void update_display(ESC_STATE *s)
@@ -810,16 +926,18 @@ void update_display(ESC_STATE *s)
       // Print a representation of the TV display
 
       // Line 1
-      printf("\n%02X     %8s", display_iar(s->iar), display_register_single_word(s->keyboard_register));
+      printf("\n1: %02s     %8s",
+	     display_iar(s->iar),
+	     display_register_single_word(s->keyboard_register));
 
       // Line 2
       if( s->ki_reset_flag )
 	{
-	  printf("\n%c",s->ki_reset_flag?'K':' ');
+	  printf("\n2: %c",s->ki_reset_flag?'K':' ');
 	}
       else
 	{
-	  printf("\n%02X    %8s%c",
+	  printf("\n2: %2s    %8s%c",
 		 display_iar(s->aux_iar),
 		 display_register_single_word(s->instruction_register),
 		 s->stage
@@ -827,15 +945,16 @@ void update_display(ESC_STATE *s)
 	}
 
       // Line 3
-      printf("\n");
-      printf("\n");
-      printf("\n");
+      printf("\n3: %s",  display_presumptive_address_1(s));
+      printf("\n4: %s",  display_presumptive_address_2(s));
+      
+      printf("\n5: ");
 
       // Line 6
       if( s->address_register2 != 0xFFFFFFFF )
 	{
 	  WORD w = s->store[s->address_register2];
-	  printf("\n%s     %8s", display_address(s->address_register2), display_word(w));
+	  printf("\n6: %s     %8s", display_address(s->address_register2), display_word(w));
 	}
       
     }

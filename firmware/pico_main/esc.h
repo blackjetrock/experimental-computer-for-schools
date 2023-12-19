@@ -22,6 +22,7 @@
 
 #define EMPTY_REGISTER         0xFFFFFFFF
 #define EMPTY_ADDRESS          0xFF
+#define NO_VALUE               -1
 
 #define DISPLAY_UPDATE         1
 #define DISPLAY_NO_UPDATE      0
@@ -39,14 +40,14 @@ typedef int BOOLEAN;
 typedef uint8_t ADDRESS;
 
 // Instruction fields
-#define INST_A_FIELD(INST,SHIFT) ((INST & (0xF0000000>>SHIFT))>>(28-SHIFT))
-#define INST_B_FIELD(INST,SHIFT) ((INST & (0x0F000000>>SHIFT))>>(28-SHIFT))
-#define INST_C_FIELD(INST,SHIFT) ((INST & (0x00F00000>>SHIFT))>>(28-SHIFT))
-#define INST_D_FIELD(INST,SHIFT) ((INST & (0x000F0000>>SHIFT))>>(28-SHIFT))
-#define INST_E_FIELD(INST,SHIFT) ((INST & (0x0000F000>>SHIFT))>>(28-SHIFT))
-#define INST_F_FIELD(INST,SHIFT) ((INST & (0x00000F00>>SHIFT))>>(28-SHIFT))
-#define INST_G_FIELD(INST,SHIFT) ((INST & (0x000000F0>>SHIFT))>>(28-SHIFT))
-#define INST_H_FIELD(INST,SHIFT) ((INST & (0x0000000F>>SHIFT))>>(28-SHIFT))
+#define INST_A_FIELD(INST) ((INST & 0xF0000000)>>28)
+#define INST_B_FIELD(INST) ((INST & 0x0F000000)>>24)
+#define INST_C_FIELD(INST) ((INST & 0x00F00000)>>20)
+#define INST_D_FIELD(INST) ((INST & 0x000F0000)>>16)
+#define INST_E_FIELD(INST) ((INST & 0x0000F000)>>12)
+#define INST_F_FIELD(INST) ((INST & 0x00000F00)>> 8)
+#define INST_G_FIELD(INST) ((INST & 0x000000F0)>> 4)
+#define INST_H_FIELD(INST) ((INST & 0x0000000F)>> 0)
 #define INST_3_ADDR_1(INST) ((INST & 0x00FF0000)>>16)
 #define INST_3_ADDR_2(INST) ((INST & 0x0000FF00)>> 8)
 #define INST_3_ADDR_3(INST) ((INST & 0x000000FF)>> 0)
@@ -122,3 +123,13 @@ typedef struct _ESC_STATE
 
 
 ////////////////////////////////////////////////////////////////////////////////
+
+char *display_register_double_word(REGISTER_DOUBLE_WORD x);
+char *display_register_single_word(REGISTER_SINGLE_WORD x);
+char *display_iar(IAR iar);
+char *display_address(REGISTER_SINGLE_WORD x);
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+  

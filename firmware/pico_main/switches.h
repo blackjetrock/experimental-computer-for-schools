@@ -1,1 +1,2 @@
 #define DEBUG_CALC_STATE 1
+#define DEBUG_A_DECODE   1
