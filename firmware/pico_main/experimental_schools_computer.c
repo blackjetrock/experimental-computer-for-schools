@@ -219,7 +219,7 @@ void stage_b_decode(ESC_STATE *s)
       switch(s->inst_digit_b)
 	{
 	case 3:
-	  register_assign_literal(s, s->reginst_rc, s->reginst_rd);
+	  register_assign_literal(s, s->reginst_rc, s->reginst_literal);
 	  break;
 	}
       break;      
@@ -284,6 +284,15 @@ void stage_a_decode(ESC_STATE *s)
   switch(s->inst_digit_a)
     {
     case 0:
+      switch(s->inst_digit_b)
+	{
+	case 3:
+	  s->reginst_rc = s->inst_digit_c;
+	  s->reginst_literal = s->inst_digit_d;	  
+	  break;
+	}
+      break;
+      
     case 1:
       // Register instructions
       s->reginst_rc = s->inst_digit_c;
@@ -457,6 +466,7 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
 
   es->reginst_rc = NO_VALUE;
   es->reginst_rd = NO_VALUE;
+  es->reginst_literal = NO_VALUE;
   
   // Re-display
   es->update_display = 1;
@@ -618,8 +628,9 @@ void cli_dump(void)
   printf("\nInternal");
   printf("\n========");
 
-  printf("\nReg Inst Rc  : %d", s->reginst_rc);
-  printf("\nReg Inst Rd  : %d", s->reginst_rd);
+  printf("\nReg Inst Rc   : %d", s->reginst_rc);
+  printf("\nReg Inst Rd   : %d", s->reginst_rd);
+  printf("\nReg Inst Lit  : %d", s->reginst_literal);
 
   printf("\n");
 }
