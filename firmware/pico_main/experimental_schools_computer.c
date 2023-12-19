@@ -599,6 +599,13 @@ void cli_boot_mass(void)
   reset_usb_boot(0,0);
 }
 
+void cli_update_display(void)
+{
+  ESC_STATE *s = &esc_state;
+
+  s->update_display = 1;
+}
+
 // Dump state info
 void cli_dump(void)
 {
@@ -737,6 +744,11 @@ SERIAL_COMMAND serial_cmds[] =
     '!',
     "Boot to mass storage",
     cli_boot_mass,
+   },
+   {
+    '^',
+    "Update Display",
+    cli_update_display,
    },
    {
     '*',
