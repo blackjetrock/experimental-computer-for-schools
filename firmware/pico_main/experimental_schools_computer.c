@@ -62,11 +62,54 @@ int address     = 0;
 // The computer instance
 
 ESC_STATE esc_state;
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+char error_message[200];
+
+void error(void)
+{
+  printf("\n*** %s ***\n", error_message);
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
+
 WORD load_from_store(ESC_STATE *s, ADDRESS address)
 {
   return(s->store[address]);
+}
+
+void register_assign_literal(ESC_STATE *s, int dest, int literal)
+{
+  if( IS_SW_REGISTER(dest) )
+    {
+      s->R[dest] = (REGISTER_SINGLE_WORD) literal;
+    }
+  
+  if( IS_DW_REGISTER(dest) )
+    {
+      s->R[dest] = (REGISTER_DOUBLE_WORD) literal;
+    }
+}
+
+void register_assign_register(ESC_STATE *s, int dest, int src)
+{
+  if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src) )
+    {
+      s->R[dest] = s->R[src];
+      return;
+    }
+
+  if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src) )
+    {
+      s->R[dest] = s->R[src];
+      return;
+    }
+
+  // error
+  sprintf(error_message, "Registers of different sizes");
+  error();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -160,17 +203,34 @@ void stage_b_decode_core(ESC_STATE *s, int shift)
     }
 }
 
-// Decode addresses ready for calculation
+// Stage B
+// Decode absolute addresses
+// Execute if possible
+
 void stage_b_decode(ESC_STATE *s)
 {
   // Decode the instruction
   // First the digits 1-4
-  stage_b_decode_core(s, 0);
+  //  stage_b_decode_core(s, 0);
 
   switch(s->inst_digit_a)
     {
     case 0:
+      switch(s->inst_digit_b)
+	{
+	case 3:
+	  register_assign_literal(s, s->reginst_rc, s->reginst_rd);
+	  break;
+	}
+      break;      
     case 1:
+            switch(s->inst_digit_b)
+	{
+	case 3:
+	  register_assign_register(s, s->reginst_rc, s->reginst_rd);
+	  break;
+	}
+
       break;
 
     case 2:
@@ -555,7 +615,13 @@ void cli_dump(void)
     }
   
   printf("\n");
-  
+  printf("\nInternal");
+  printf("\n========");
+
+  printf("\nReg Inst Rc  : %d", s->reginst_rc);
+  printf("\nReg Inst Rd  : %d", s->reginst_rd);
+
+  printf("\n");
 }
 
 // Dump Store
@@ -870,6 +936,18 @@ char *display_register_double_word(REGISTER_DOUBLE_WORD x)
   return(result);
 }
 
+
+char *display_register_and_contents(ESC_STATE *s, int regno)
+{
+  static char result[MAX_LINE*2];
+  
+  if( IS_SW_REGISTER(regno) )
+    {
+      sprintf(result, "R%d   %s", regno, display_register_single_word(s->R[regno]));
+    }
+  return(result);
+}
+
 char *display_address(REGISTER_SINGLE_WORD x)
 {
   static char result[MAX_LINE];
@@ -898,8 +976,10 @@ char *display_presumptive_address_1(ESC_STATE *s)
 
   if( s->reginst_rc !=NO_VALUE )
     {
-      sprintf(result,"R%s", s->reginst_rc);
+      sprintf(result,"%s", display_register_and_contents(s, s->reginst_rc) );
     }
+
+  return(result);
 }
 
 char *display_presumptive_address_2(ESC_STATE *s)
@@ -908,55 +988,80 @@ char *display_presumptive_address_2(ESC_STATE *s)
 
   if( s->reginst_rd !=NO_VALUE )
     {
-      sprintf(result,"R%s", s->reginst_rd);
+      sprintf(result,"%s", display_register_and_contents(s, s->reginst_rd) );
     }
+
+  return(result);
 }
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Display update
+//
+// The display format is fairly fluid.
+// We append to a stringot get the display, this allows formatting in the
+// functions we call to be shown.
+//
 
 void update_display(ESC_STATE *s)
 {
+  char dsp[(MAX_LINE+5)*(NUM_LINES+2)+1];
+  char tmp[MAX_LINE*NUM_LINES+1];
+  
   if( s->update_display )
     {
       s->update_display = 0;
       printf("\n");
 
-
       printf("\nKeyboard register: %08X   IAR:%02X", s->keyboard_register, display_iar(s->iar));
       printf("\n");
 
+      //
       // Print a representation of the TV display
+      //
 
+      strcpy(dsp, "   012345678901234");
+	     
       // Line 1
-      printf("\n1: %02s     %8s",
+      sprintf(tmp, "\n1: %02s   %8s",
 	     display_iar(s->iar),
 	     display_register_single_word(s->keyboard_register));
-
+      strcat(dsp, tmp);
+      
       // Line 2
       if( s->ki_reset_flag )
 	{
-	  printf("\n2: %c",s->ki_reset_flag?'K':' ');
+	  sprintf(tmp, "\n2: %c",s->ki_reset_flag?'K':' ');
 	}
       else
 	{
-	  printf("\n2: %2s    %8s%c",
+	  sprintf(tmp, "\n2: %2s   %8s%c",
 		 display_iar(s->aux_iar),
 		 display_register_single_word(s->instruction_register),
 		 s->stage
 		 );
 	}
-
-      // Line 3
-      printf("\n3: %s",  display_presumptive_address_1(s));
-      printf("\n4: %s",  display_presumptive_address_2(s));
+      strcat(dsp, tmp);
       
-      printf("\n5: ");
-
+      // Line 3
+      sprintf(tmp, "\n3: %s",  display_presumptive_address_1(s));
+      strcat(dsp, tmp);
+      sprintf(tmp, "\n4: %s",  display_presumptive_address_2(s));
+      strcat(dsp, tmp);
+      
+      sprintf(tmp, "\n5: ");
+      strcat(dsp, tmp);
+      
       // Line 6
       if( s->address_register2 != 0xFFFFFFFF )
 	{
 	  WORD w = s->store[s->address_register2];
-	  printf("\n6: %s     %8s", display_address(s->address_register2), display_word(w));
+	  sprintf(tmp, "\n6: %s     %8s", display_address(s->address_register2), display_word(w));
 	}
-      
+      strcat(dsp, tmp);
+
+      // Now update the display output device(s)
+      printf("\n%s\n", dsp);
     }
 }
 

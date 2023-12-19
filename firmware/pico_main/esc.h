@@ -27,6 +27,7 @@
 #define DISPLAY_UPDATE         1
 #define DISPLAY_NO_UPDATE      0
 #define MAX_LINE               16
+#define NUM_LINES              6
 
 #define WORD_SIGN_PLUS         0xA
 #define WORD_SIGN_MINUS        0xB
@@ -63,6 +64,9 @@ typedef uint8_t ADDRESS;
 #define R8 RD[0]
 #define R9 RD[1]
 
+#define IS_SW_REGISTER(REGNO) ((REGNO >= 0) && (REGNO < NUM_WORD_REGISTERS))
+#define IS_DW_REGISTER(REGNO) ((REGNO >= NUM_WORD_REGISTERS) && (REGNO < NUM_WORD_REGISTERS+NUM_DBL_WORD_REGISTERS))
+  
 // IAR type registers have an implicit flag that addresses
 // one of the two 4 digit instructions in a register
 
