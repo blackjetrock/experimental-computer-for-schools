@@ -80,7 +80,7 @@ WORD load_from_store(ESC_STATE *s, ADDRESS address)
   return(s->store[address]);
 }
 
-void register_assign_literal(ESC_STATE *s, int dest, int literal)
+void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
 {
   if( IS_SW_REGISTER(dest) )
     {
@@ -93,17 +93,43 @@ void register_assign_literal(ESC_STATE *s, int dest, int literal)
     }
 }
 
-void register_assign_register(ESC_STATE *s, int dest, int src)
+void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int literal)
 {
-  if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src) )
+  if( IS_SW_REGISTER(dest) )
     {
-      s->R[dest] = s->R[src];
+      s->R[dest] = s->R[src] + (REGISTER_SINGLE_WORD) literal;
+    }
+  
+  if( IS_DW_REGISTER(dest) )
+    {
+      s->R[dest] = s->R[src] + (REGISTER_DOUBLE_WORD) literal;
+    }
+}
+
+void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, int src)
+{
+  if( IS_SW_REGISTER(dest) )
+    {
+      s->R[dest] = (REGISTER_SINGLE_WORD) literal - s->R[src];
+    }
+  
+  if( IS_DW_REGISTER(dest) )
+    {
+      s->R[dest] = (REGISTER_DOUBLE_WORD) literal - s->R[src];
+    }
+}
+
+void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int src2)
+{
+  if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
+    {
+      s->R[dest] = s->R[src1] + s->R[src2];
       return;
     }
 
-  if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src) )
+  if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
-      s->R[dest] = s->R[src];
+      s->R[dest] = s->R[src1] + s->R[src2];
       return;
     }
 
@@ -218,8 +244,20 @@ void stage_b_decode(ESC_STATE *s)
     case 0:
       switch(s->inst_digit_b)
 	{
+	case 0:
+	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rc, s->reginst_literal);
+	  break;
+
+	case 1:
+	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rc, -(s->reginst_literal));
+	  break;
+
+	case 2:
+	  register_assign_sub_literal_register(s, s->reginst_rc, s->reginst_literal, s->reginst_rc);
+	  break;
+	  
 	case 3:
-	  register_assign_literal(s, s->reginst_rc, s->reginst_literal);
+	  register_assign_register_literal(s, s->reginst_rc, s->reginst_literal);
 	  break;
 	}
       break;      
@@ -227,7 +265,7 @@ void stage_b_decode(ESC_STATE *s)
             switch(s->inst_digit_b)
 	{
 	case 3:
-	  register_assign_register(s, s->reginst_rc, s->reginst_rd);
+	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rd, 0);
 	  break;
 	}
 
@@ -286,6 +324,9 @@ void stage_a_decode(ESC_STATE *s)
     case 0:
       switch(s->inst_digit_b)
 	{
+	case 0:
+	case 1:
+	case 2:
 	case 3:
 	  s->reginst_rc = s->inst_digit_c;
 	  s->reginst_literal = s->inst_digit_d;	  
