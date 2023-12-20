@@ -72,6 +72,55 @@ void error(void)
   printf("\n*** %s ***\n", error_message);
 }
 
+char warning_message[200];
+
+void warning(void)
+{
+  printf("\n*** WARNING: %s ***\n", error_message);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// BCD
+//
+
+// Normalise a value after a binary addition
+
+REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
+{
+#if DEBUG_BCD_CORRECTION
+  printf("\nValue:%08X", v);
+#endif
+  
+  // Add 6 to each non-bcd digit
+  for(int i=0; i<sizeof(REGISTER_SINGLE_WORD)*2; i+=4)
+    {
+      // get digit value
+      int digit = ((v & (0xF << i)) >> i);
+
+#if DEBUG_BCD_CORRECTION
+      printf("\nDigit test:%d", digit);
+#endif
+      // Add 6 if not bcd
+      switch(digit)
+	{
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+	  v += (0x6<<i);
+	  break;
+	}
+    }
+  
+#if DEBUG_BCD_CORRECTION
+  printf("\nValue:%08X", v);
+#endif
+
+  return(v);
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -98,6 +147,7 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
   if( IS_SW_REGISTER(dest) )
     {
       s->R[dest] = s->R[src] + (REGISTER_SINGLE_WORD) literal;
+      s->R[dest] = single_sum_normalise(s->R[dest]);
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -111,6 +161,7 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
   if( IS_SW_REGISTER(dest) )
     {
       s->R[dest] = (REGISTER_SINGLE_WORD) literal - s->R[src];
+      s->R[dest] = single_sum_normalise(s->R[dest]);
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -124,6 +175,7 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
       s->R[dest] = s->R[src1] + s->R[src2];
+      s->R[dest] = single_sum_normalise(s->R[dest]);
       return;
     }
 
@@ -140,17 +192,65 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// IAR handling
+//
+// IAR is a simple two digit counter, plus a top half/bottom half flag for
+// 4 digit instructions
+//
+// Logic:
+//   Digit a determines type of instruction
+//    If a = 7,8, or 9 then IAR incremented and half flag cleared (it shouldn't be set)
+//    Otherwise
+//       If half flag is set then clear it and increment IAR
+//       Otherwise set half flag
+//
+////////////////////////////////////////////////////////////////////////////////
+//
 
-void increment_iar(IAR *iar)
+void next_iar(ESC_STATE *s)
 {
-  if( iar->a_flag )
+  int digit_a = INST_A_FIELD(s->instruction_register);
+  
+  switch(digit_a)
     {
-      iar->address++;
-      iar->a_flag = 0;
-    }
-  else
-    {
-      iar->a_flag = !(iar->a_flag);
+    case 7:
+    case 8:
+    case 9:
+      if( s->iar.a_flag )
+	{
+	  sprintf(warning_message, "8 digit instruction has A flag set");
+	  warning();
+	}
+      
+      // 8 digit instruction so move to next address
+      s->iar.address++;
+      s->iar.a_flag = 0;
+      break;
+      
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      if( s->iar.a_flag )
+	{
+	  s->iar.address++;
+	  s->iar.a_flag = 0;
+	}
+      else
+	{
+	  s->iar.a_flag = !(s->iar.a_flag);
+	}
+      break;
+      
+    default:
+      // error
+      sprintf(error_message, "Unknown digit a");
+      error();
+      
+      break;
     }
 }
 
@@ -158,17 +258,20 @@ void increment_iar(IAR *iar)
 //
 // Instruction decode
 //
+// Completes instructions that require a third stage
+// Moves IAR to next instruction
 
 void stage_c_decode(ESC_STATE *s)
 {
   // Decode the instruction
   // First the digits 1-4
-  stage_c_decode(s);
 
   switch(s->inst_digit_a)
     {
     case 0:
     case 1:
+      // Instruction complete, move IAR on
+      next_iar(s);
       break;
 
     case 2:
@@ -189,7 +292,6 @@ void stage_b_decode_core(ESC_STATE *s, int shift)
 {
   // Decode the instruction
   // First the digits 1-4
-
 
   switch(s->inst_digit_a)
     {
@@ -260,10 +362,16 @@ void stage_b_decode(ESC_STATE *s)
 	  register_assign_register_literal(s, s->reginst_rc, s->reginst_literal);
 	  break;
 	}
-      break;      
+      break;
+      
     case 1:
-            switch(s->inst_digit_b)
+      switch(s->inst_digit_b)
 	{
+	case 0:
+	  // Add registers
+	  register_assign_sum_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
+	    break;
+	  
 	case 3:
 	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rd, 0);
 	  break;
@@ -296,10 +404,10 @@ void stage_a_decode(ESC_STATE *s)
 {
   if( s->iar.a_flag )
     {
-      s->inst_digit_e = INST_E_FIELD(s->instruction_register);
-      s->inst_digit_f = INST_F_FIELD(s->instruction_register);
-      s->inst_digit_g = INST_G_FIELD(s->instruction_register);
-      s->inst_digit_h = INST_H_FIELD(s->instruction_register);
+      s->inst_digit_a = INST_E_FIELD(s->instruction_register);
+      s->inst_digit_b = INST_F_FIELD(s->instruction_register);
+      s->inst_digit_c = INST_G_FIELD(s->instruction_register);
+      s->inst_digit_d = INST_H_FIELD(s->instruction_register);
     }
   else
     {
@@ -390,6 +498,9 @@ void run_stage_a(ESC_STATE *s, int display)
 
 void run_stage_b(ESC_STATE *s, int display)
 {
+  // Set instruction stage
+  s->stage = 'B';
+
   stage_b_decode(s);
   
   s->update_display = display;
@@ -397,6 +508,9 @@ void run_stage_b(ESC_STATE *s, int display)
 
 void run_stage_c(ESC_STATE *s, int display)
 {
+  // Set instruction stage
+  s->stage = 'C';
+
   stage_c_decode(s);
   
   s->update_display = display;
@@ -513,54 +627,150 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   es->update_display = 1;
 }
 
-void state_esc_a_disp(FSM_DATA *s, TOKEN tok)
+void state_esc_ki_reset(FSM_DATA *s, TOKEN tok)
 {
   ESC_STATE *es;
 
   es = (ESC_STATE *)s;
 
-  run_stage_a(es, DISPLAY_UPDATE);
+  // Everything cleared except IAR
+
+  es->stage = ' ';
+  es->keyboard_register = EMPTY_ADDRESS;
+  
+  es->ki_reset_flag = 1;
+  es->address_register0 = EMPTY_ADDRESS;
+  es->address_register1 = EMPTY_ADDRESS;
+  es->address_register2 = EMPTY_ADDRESS;
+
+  es->reginst_rc = NO_VALUE;
+  es->reginst_rd = NO_VALUE;
+  es->reginst_literal = NO_VALUE;
+  
+  // Re-display
   es->update_display = 1;
 }
 
-void state_esc_b_disp(FSM_DATA *s, TOKEN tok)
+void state_esc_a_disp(FSM_DATA *es, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
 
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)es;
 
-  run_stage_b(es, DISPLAY_UPDATE);
-  es->update_display = 1;
+  switch(s->stage)
+    {
+    case ' ':
+      if( s->ki_reset_flag )
+	{
+	  s->instruction_register = s->keyboard_register;
+	}
+      
+      run_stage_a(s, DISPLAY_UPDATE);
+      break;
+
+    case 'A':
+      break;
+      
+    case 'B':
+      break;
+
+      // If in stage C then next instruction is ready to go
+    case 'C':
+      run_stage_a(s, DISPLAY_UPDATE);
+      break;
+    }
+  
+  s->update_display = 1;
 }
 
-void state_esc_c_disp(FSM_DATA *s, TOKEN tok)
+void state_esc_b_disp(FSM_DATA *es, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
 
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)es;
 
-  run_stage_c(es, DISPLAY_UPDATE);
-  es->update_display = 1;
+  switch(s->stage)
+    {
+    case ' ':
+      if( s->ki_reset_flag )
+	{
+	  s->instruction_register = s->keyboard_register;
+	}
+      
+      run_stage_a(s, DISPLAY_UPDATE);
+      run_stage_b(s, DISPLAY_UPDATE);
+      break;
+
+    case 'A':
+      run_stage_b(s, DISPLAY_UPDATE);
+      break;
+
+    case 'B':
+      break;
+
+    case 'C':
+      break;
+    }
+
+  s->update_display = 1;
 }
 
-void state_esc_a_no_disp(FSM_DATA *s, TOKEN tok)
+void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
 
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)es;
 
-  run_stage_a(es, DISPLAY_NO_UPDATE);
-  es->update_display = 1;
+    switch(s->stage)
+    {
+    case ' ':
+      if( s->ki_reset_flag )
+	{
+	  s->instruction_register = s->keyboard_register;
+	}
+      
+      run_stage_a(s, DISPLAY_UPDATE);
+      run_stage_b(s, DISPLAY_UPDATE);
+      run_stage_c(s, DISPLAY_UPDATE);
+      break;
+
+    case 'A':
+      run_stage_b(s, DISPLAY_UPDATE);
+      run_stage_c(s, DISPLAY_UPDATE);
+      break;
+
+    case 'B':
+      run_stage_c(s, DISPLAY_UPDATE);
+      break;
+
+    case 'C':
+      run_stage_a(s, DISPLAY_UPDATE);
+      run_stage_b(s, DISPLAY_UPDATE);
+      run_stage_c(s, DISPLAY_UPDATE);
+      break;
+    }
+
+  s->update_display = 1;
 }
 
-void state_esc_b_no_disp(FSM_DATA *s, TOKEN tok)
+void state_esc_a_no_disp(FSM_DATA *es, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
 
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)es;
 
-  run_stage_b(es, DISPLAY_NO_UPDATE);
-  es->update_display = 1;
+  run_stage_a(s, DISPLAY_NO_UPDATE);
+  s->update_display = 1;
+}
+
+void state_esc_b_no_disp(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s;
+
+  s = (ESC_STATE *)es;
+
+  run_stage_b(s, DISPLAY_NO_UPDATE);
+  s->update_display = 1;
 }
 
 void state_esc_c_no_disp(FSM_DATA *s, TOKEN tok)
@@ -588,6 +798,7 @@ STATE esc_table[ ] =
     {
      {CTOK_NUMERIC,         STATE_ESC_INIT,  state_esc_numeric},
      {TOK_KEY_NORMAL_RESET, STATE_ESC_INIT,  state_esc_normal_reset},
+     {TOK_KEY_KI_RESET,     STATE_ESC_INIT,  state_esc_ki_reset},
      {TOK_KEY_LOAD_IAR,     STATE_ESC_INIT,  state_esc_load_iar},
      {TOK_KEY_LOAD_ADDR,    STATE_ESC_INIT,  state_esc_load_addr},
      {TOK_KEY_INCR_ADDR,    STATE_ESC_INIT,  state_esc_incr_addr},
@@ -728,7 +939,7 @@ void cli_normal_reset(void)
   queue_token(TOK_KEY_NORMAL_RESET);
 }
 
-void cli_load_ki_reset(void)
+void cli_ki_reset(void)
 {
   queue_token(TOK_KEY_KI_RESET);
 }
@@ -756,6 +967,18 @@ void cli_load_addr(void)
 void cli_load_store(void)
 {
   queue_token(TOK_KEY_LOAD_STORE);
+}
+
+void cli_load_test_code(void)
+{
+  ESC_STATE *s = &esc_state;
+
+  // R5 and 6 have 2 and 3 in them
+  s->store[0] = 0x03520363;
+
+  // Add R5 and R6 and add 6
+  s->store[1] = 0x10560056;
+  
 }
 
 
@@ -800,6 +1023,11 @@ SERIAL_COMMAND serial_cmds[] =
     '&',
     "Dump Store",
     cli_dump_store,
+   },
+   {
+    'T',
+    "Load Test Code",
+    cli_load_test_code,
    },
    {
     '0',
@@ -855,6 +1083,11 @@ SERIAL_COMMAND serial_cmds[] =
     'N',
     "Normal Reset",
     cli_normal_reset,
+   },
+   {
+    'K',
+    "KI Reset",
+    cli_ki_reset,
    },
    {
     'I',
@@ -1139,9 +1372,9 @@ int main(void)
   //
   ////////////////////////////////////////////////////////////////////////////////
   
-  //#define OVERCLOCK 135000
+  #define OVERCLOCK 135000
   //#define OVERCLOCK 200000
-#define OVERCLOCK 270000
+  //#define OVERCLOCK 270000
   //#define OVERCLOCK 360000
   
 #if OVERCLOCK > 270000
@@ -1166,6 +1399,9 @@ int main(void)
   // Main loop
   while(1)
     {
+#if DEBUG_LOOP
+      printf("\nLoop");
+#endif
       drive_fsms();
       serial_loop();
       update_display(&esc_state);
