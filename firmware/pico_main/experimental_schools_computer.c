@@ -83,8 +83,9 @@ void warning(void)
 //
 // BCD
 //
-
+//
 // Normalise a value after a binary addition
+//
 
 REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
 {
@@ -93,7 +94,7 @@ REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
 #endif
   
   // Add 6 to each non-bcd digit
-  for(int i=0; i<sizeof(REGISTER_SINGLE_WORD)*2; i+=4)
+  for(int i=0; i<sizeof(REGISTER_SINGLE_WORD)*8; i+=4)
     {
       // get digit value
       int digit = ((v & (0xF << i)) >> i);
@@ -114,13 +115,17 @@ REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
 	  break;
 	}
     }
-  
+
 #if DEBUG_BCD_CORRECTION
   printf("\nValue:%08X", v);
 #endif
 
   return(v);
 }
+
+// BCD single word addition
+// Signed
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -882,7 +887,7 @@ void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
       break;
     }
   
-  s->update_display = 1;
+  s->update_display = display_flag;
 }
 
 
@@ -927,7 +932,7 @@ void state_esc_b_core(FSM_DATA *es, TOKEN tok, int display_flag)
       break;
     }
 
-  s->update_display = 1;
+  s->update_display = display_flag;
 }
 
 void state_esc_b_disp(FSM_DATA *es, TOKEN tok)
@@ -977,7 +982,7 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
       break;
     }
 
-  s->update_display = 1;
+  s->update_display = display_flag;
 }
 
 void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
@@ -1639,6 +1644,7 @@ void update_display(ESC_STATE *s)
   if( s->update_display )
     {
       s->update_display = 0;
+      
       printf("\n");
 
       printf("\nKeyboard register: %08X   IAR:%02X", s->keyboard_register, display_iar(s->iar));
