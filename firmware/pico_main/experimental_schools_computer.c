@@ -341,6 +341,8 @@ void stage_b_decode(ESC_STATE *s)
   // First the digits 1-4
   //  stage_b_decode_core(s, 0);
 
+  int extreme_left_digit = 0;
+    
   switch(s->inst_digit_a)
     {
     case 0:
@@ -361,6 +363,79 @@ void stage_b_decode(ESC_STATE *s)
 	case 3:
 	  register_assign_register_literal(s, s->reginst_rc, s->reginst_literal);
 	  break;
+
+	case 5:
+#if DEBUG_TEST
+	  printf("\nTEST (5) ");
+#endif
+	  switch(s->inst_digit_d)
+	    {
+	    case 0:
+#if DEBUG_TEST
+	      printf("\nTEST (5) ");
+#endif
+	      
+	      if( s->R[s->reginst_rc] == 0 )
+		{
+		  s->control_latch = 1;
+		}
+	      else
+		{
+		  s->control_latch = 0;
+		}
+	      break;
+	      
+	    case 1:
+	      if( s->R[s->reginst_rc] > 0 )
+		{
+		  s->control_latch = 1;
+		}
+	      else
+		{
+		  s->control_latch = 0;
+		}
+	      break;
+	      
+	    case 2:
+	      if( s->R[s->reginst_rc] < 0 )
+		{
+		  s->control_latch = 1;
+		}
+	      else
+		{
+		  s->control_latch = 0;
+		}
+	      break;
+	      
+	    case 3:
+
+	      if( IS_SW_REGISTER(s->reginst_rc) )
+		{
+		  extreme_left_digit = (s->reginst_rc & 0x00F00000) >> (5*4);
+		}
+
+	      if( IS_DW_REGISTER(s->reginst_rc) )
+		{
+		  extreme_left_digit = (s->reginst_rc & 0x0000F00000000000) >> (11*4);
+		}
+
+#if DEBUG_TEST
+		 printf("\nTEST extreme left:%d ", extreme_left_digit);
+#endif
+	      
+	      if( extreme_left_digit == 0 )
+		{
+		  s->control_latch = 1;
+		}
+	      else
+		{
+		  s->control_latch = 0;
+		}
+	      break;
+
+	    }
+	  break;
+
 	}
       break;
       
@@ -402,6 +477,8 @@ void stage_b_decode(ESC_STATE *s)
 
 void stage_a_decode(ESC_STATE *s)
 {
+
+  
   if( s->iar.a_flag )
     {
       s->inst_digit_a = INST_E_FIELD(s->instruction_register);
@@ -439,6 +516,12 @@ void stage_a_decode(ESC_STATE *s)
 	  s->reginst_rc = s->inst_digit_c;
 	  s->reginst_literal = s->inst_digit_d;	  
 	  break;
+	  
+	case 4:
+	  // Not used
+	  break;
+	  
+	  
 	}
       break;
       
@@ -866,12 +949,13 @@ void cli_dump(void)
   printf("\nState");
   printf("\n=====");
 
-  printf("\nIAR     : %s", display_iar(s->iar));
-  printf("\nAux IAR : %s", display_iar(s->aux_iar));
-  printf("\nInst Reg: %08X", s->instruction_register);
-  printf("\nAddr R0 : %s", display_address(s->address_register0));
-  printf("\nAddr R1 : %s", display_address(s->address_register1));
-  printf("\nAddr R2 : %s", display_address(s->address_register2));
+  printf("\nIAR           : %s", display_iar(s->iar));
+  printf("\nAux IAR       : %s", display_iar(s->aux_iar));
+  printf("\nInst Reg      : %08X", s->instruction_register);
+  printf("\nControl latch : %d", s->control_latch);
+  printf("\nAddr R0       : %s", display_address(s->address_register0));
+  printf("\nAddr R1       : %s", display_address(s->address_register1));
+  printf("\nAddr R2       : %s", display_address(s->address_register2));
 
   for(int i=0; i<NUM_WORD_REGISTERS; i++)
     {
@@ -978,7 +1062,11 @@ void cli_load_test_code(void)
 
   // Add R5 and R6 and add 6
   s->store[1] = 0x10560056;
-  
+
+  // Test R5
+  s->store[2] = 0x05530550;
+  s->store[2] = 0x05510552;
+  s->store[2] = 0x05530554;
 }
 
 

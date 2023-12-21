@@ -93,7 +93,6 @@ typedef struct _ESC_STATE
 
   IAR iar;
   IAR aux_iar;
-
   
   ADDRESS link_register;
   
