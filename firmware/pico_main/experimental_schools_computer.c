@@ -129,6 +129,12 @@ WORD load_from_store(ESC_STATE *s, ADDRESS address)
   return(s->store[address]);
 }
 
+REGISTER_DOUBLE_WORD get_register(ESC_STATE *s, int reg)
+{
+  return((REGISTER_DOUBLE_WORD)s->R[reg]);
+}
+
+
 void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
 {
   if( IS_SW_REGISTER(dest) )
@@ -331,9 +337,11 @@ void stage_b_decode_core(ESC_STATE *s, int shift)
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
 // Stage B
 // Decode absolute addresses
 // Execute if possible
+////////////////////////////////////////////////////////////////////////////////
 
 void stage_b_decode(ESC_STATE *s)
 {
@@ -436,6 +444,15 @@ void stage_b_decode(ESC_STATE *s)
 	    }
 	  break;
 
+	  // Shift (Rc) left d places 
+	case 6:
+	  register_assign_register_literal(s, s->reginst_rc, get_register(s, s->reginst_rc) << (4*(s->reginst_literal)));
+	  break;
+	  
+	  // Shift (Rc) right d places
+	case 7:
+	  register_assign_register_literal(s, s->reginst_rc, get_register(s, s->reginst_rc) >> (4*(s->reginst_literal)));
+	  break;
 	}
       break;
       
@@ -450,6 +467,21 @@ void stage_b_decode(ESC_STATE *s)
 	case 3:
 	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rd, 0);
 	  break;
+
+	  // Shift (Rc) left (Rd) places 
+	case 6:
+	  register_assign_register_literal(s,
+					   s->reginst_rc,
+					   get_register(s, s->reginst_rc) << (4*get_register(s, (s->reginst_rd))));
+	  break;
+	  
+	  // Shift (Rc) right (Rd) places
+	case 7:
+	  register_assign_register_literal(s,
+					   s->reginst_rc,
+					   get_register(s, s->reginst_rc) >> (4*get_register(s, (s->reginst_rd))));
+	  break;
+
 	}
 
       break;
@@ -521,7 +553,16 @@ void stage_a_decode(ESC_STATE *s)
 	  // Not used
 	  break;
 	  
-	  
+	case 5:
+	  // TEST
+	  // Performd in stage B
+	  break;
+
+	case 6:
+	case 7:
+	  s->reginst_rc = s->inst_digit_c;
+	  s->reginst_literal = s->inst_digit_d;	  
+	  break;
 	}
       break;
       
@@ -1065,8 +1106,11 @@ void cli_load_test_code(void)
 
   // Test R5
   s->store[2] = 0x05530550;
-  s->store[2] = 0x05510552;
-  s->store[2] = 0x05530554;
+  s->store[3] = 0x05510552;
+  s->store[4] = 0x05530554;
+
+  // Shift R5 left 1 place and back again
+  s->store[5] = 0x06510751;
 }
 
 
