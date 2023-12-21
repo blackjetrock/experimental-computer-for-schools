@@ -289,7 +289,7 @@ void stage_c_decode(ESC_STATE *s)
 	{
 	case 4:
 	  // Unconditional branch
-	  // IAr already set up.
+	  // IAR already set up.
 	  break;
 	}
       
@@ -591,7 +591,7 @@ void stage_a_decode(ESC_STATE *s)
   // Pre-calculate the Aa field of the instruction for some later
   // decoding
 
-  s->inst_aa = (s->inst_digit_c) *10 + (s->inst_digit_d);
+  s->inst_ap = (s->inst_digit_c) *10 + (s->inst_digit_d);
   
   // Calculate the presumptive addresses
   
@@ -851,7 +851,9 @@ void state_esc_ki_reset(FSM_DATA *s, TOKEN tok)
   es->update_display = 1;
 }
 
-void state_esc_a_disp(FSM_DATA *es, TOKEN tok)
+//------------------------------------------------------------------------------
+
+void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
 {
   ESC_STATE *s;
 
@@ -865,7 +867,7 @@ void state_esc_a_disp(FSM_DATA *es, TOKEN tok)
 	  s->instruction_register = s->keyboard_register;
 	}
       
-      run_stage_a(s, DISPLAY_UPDATE);
+      run_stage_a(s, display_flag);
       break;
 
     case 'A':
@@ -876,14 +878,27 @@ void state_esc_a_disp(FSM_DATA *es, TOKEN tok)
 
       // If in stage C then next instruction is ready to go
     case 'C':
-      run_stage_a(s, DISPLAY_UPDATE);
+      run_stage_a(s, display_flag);
       break;
     }
   
   s->update_display = 1;
 }
 
-void state_esc_b_disp(FSM_DATA *es, TOKEN tok)
+
+void state_esc_a_disp(FSM_DATA *es, TOKEN tok)
+{
+  state_esc_a_core(es, tok, DISPLAY_UPDATE);
+}
+
+void state_esc_a_no_disp(FSM_DATA *es, TOKEN tok)
+{
+  state_esc_a_core(es, tok, DISPLAY_NO_UPDATE);
+}
+
+//------------------------------------------------------------------------------
+
+void state_esc_b_core(FSM_DATA *es, TOKEN tok, int display_flag)
 {
   ESC_STATE *s;
 
@@ -897,12 +912,12 @@ void state_esc_b_disp(FSM_DATA *es, TOKEN tok)
 	  s->instruction_register = s->keyboard_register;
 	}
       
-      run_stage_a(s, DISPLAY_UPDATE);
-      run_stage_b(s, DISPLAY_UPDATE);
+      run_stage_a(s, display_flag);
+      run_stage_b(s, display_flag);
       break;
 
     case 'A':
-      run_stage_b(s, DISPLAY_UPDATE);
+      run_stage_b(s, display_flag);
       break;
 
     case 'B':
@@ -915,7 +930,19 @@ void state_esc_b_disp(FSM_DATA *es, TOKEN tok)
   s->update_display = 1;
 }
 
-void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
+void state_esc_b_disp(FSM_DATA *es, TOKEN tok)
+{
+  state_esc_b_core(es, tok, DISPLAY_UPDATE);
+}
+
+void state_esc_b_no_disp(FSM_DATA *es, TOKEN tok)
+{
+  state_esc_b_core(es, tok, DISPLAY_NO_UPDATE);
+}
+
+//------------------------------------------------------------------------------
+
+void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
 {
   ESC_STATE *s;
 
@@ -929,59 +956,41 @@ void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
 	  s->instruction_register = s->keyboard_register;
 	}
       
-      run_stage_a(s, DISPLAY_UPDATE);
-      run_stage_b(s, DISPLAY_UPDATE);
-      run_stage_c(s, DISPLAY_UPDATE);
+      run_stage_a(s, display_flag);
+      run_stage_b(s, display_flag);
+      run_stage_c(s, display_flag);
       break;
 
     case 'A':
-      run_stage_b(s, DISPLAY_UPDATE);
-      run_stage_c(s, DISPLAY_UPDATE);
+      run_stage_b(s, display_flag);
+      run_stage_c(s, display_flag);
       break;
 
     case 'B':
-      run_stage_c(s, DISPLAY_UPDATE);
+      run_stage_c(s, display_flag);
       break;
 
     case 'C':
-      run_stage_a(s, DISPLAY_UPDATE);
-      run_stage_b(s, DISPLAY_UPDATE);
-      run_stage_c(s, DISPLAY_UPDATE);
+      run_stage_a(s, display_flag);
+      run_stage_b(s, display_flag);
+      run_stage_c(s, display_flag);
       break;
     }
 
   s->update_display = 1;
 }
 
-void state_esc_a_no_disp(FSM_DATA *es, TOKEN tok)
+void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
 {
-  ESC_STATE *s;
-
-  s = (ESC_STATE *)es;
-
-  run_stage_a(s, DISPLAY_NO_UPDATE);
-  s->update_display = 1;
+  state_esc_c_core(es, tok, DISPLAY_UPDATE);
 }
 
-void state_esc_b_no_disp(FSM_DATA *es, TOKEN tok)
+void state_esc_c_no_disp(FSM_DATA *es, TOKEN tok)
 {
-  ESC_STATE *s;
-
-  s = (ESC_STATE *)es;
-
-  run_stage_b(s, DISPLAY_NO_UPDATE);
-  s->update_display = 1;
+  state_esc_c_core(es, tok, DISPLAY_NO_UPDATE);
 }
 
-void state_esc_c_no_disp(FSM_DATA *s, TOKEN tok)
-{
-  ESC_STATE *es;
-
-  es = (ESC_STATE *)s;
-
-  run_stage_c(es, DISPLAY_NO_UPDATE);
-  es->update_display = 1;
-}
+//------------------------------------------------------------------------------
 
 void state_esc_run(FSM_DATA *es, TOKEN tok)
 {
@@ -1242,6 +1251,26 @@ void cli_load_test_code(void)
 
 }
 
+void cli_load_test_code_2(void)
+{
+  ESC_STATE *s = &esc_state;
+
+  int i = 0;
+  
+  // R5 and 6 have 2 and 1 in them
+  s->store[i++] = 0x03520361;
+
+  // Add R5 and R6 and add 6
+  s->store[i++] = 0x10560000;
+
+  // Branch to 1 to count forever
+  s->store[i++] = 0x24012401;
+  
+  // Stop Executing
+  s->store[i++] = 0x06510751;
+
+}
+
 // We have two flags:
 //
 // Run: If set then program is executed
@@ -1249,11 +1278,19 @@ void cli_load_test_code(void)
 
 void cli_run(void)
 {
+  ESC_STATE *s = &esc_state;
+
+  s->update_display = 0;
+
   queue_token(TOK_KEY_RUN);
 }
 
 void cli_stop(void)
 {
+  ESC_STATE *s = &esc_state;
+
+  s->update_display = 0;
+
   queue_token(TOK_KEY_STOP);
 }
 
@@ -1304,6 +1341,11 @@ SERIAL_COMMAND serial_cmds[] =
     'T',
     "Load Test Code",
     cli_load_test_code,
+   },
+   {
+    'U',
+    "Load Test Code 2",
+    cli_load_test_code_2,
    },
    {
     '0',
