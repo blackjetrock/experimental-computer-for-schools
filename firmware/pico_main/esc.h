@@ -41,17 +41,18 @@ typedef int BOOLEAN;
 typedef uint8_t ADDRESS;
 
 // Instruction fields
-#define INST_A_FIELD(INST) ((INST & 0xF0000000)>>28)
-#define INST_B_FIELD(INST) ((INST & 0x0F000000)>>24)
-#define INST_C_FIELD(INST) ((INST & 0x00F00000)>>20)
-#define INST_D_FIELD(INST) ((INST & 0x000F0000)>>16)
-#define INST_E_FIELD(INST) ((INST & 0x0000F000)>>12)
-#define INST_F_FIELD(INST) ((INST & 0x00000F00)>> 8)
-#define INST_G_FIELD(INST) ((INST & 0x000000F0)>> 4)
-#define INST_H_FIELD(INST) ((INST & 0x0000000F)>> 0)
-#define INST_3_ADDR_1(INST) ((INST & 0x00FF0000)>>16)
-#define INST_3_ADDR_2(INST) ((INST & 0x0000FF00)>> 8)
-#define INST_3_ADDR_3(INST) ((INST & 0x000000FF)>> 0)
+#define INST_A_FIELD(INST)   ((INST & 0xF0000000)>>28)
+#define INST_B_FIELD(INST)   ((INST & 0x0F000000)>>24)
+#define INST_C_FIELD(INST)   ((INST & 0x00F00000)>>20)
+#define INST_D_FIELD(INST)   ((INST & 0x000F0000)>>16)
+#define INST_E_FIELD(INST)   ((INST & 0x0000F000)>>12)
+#define INST_F_FIELD(INST)   ((INST & 0x00000F00)>> 8)
+#define INST_G_FIELD(INST)   ((INST & 0x000000F0)>> 4)
+#define INST_H_FIELD(INST)   ((INST & 0x0000000F)>> 0)
+#define INST_3_ADDR_1(INST)  ((INST & 0x00FF0000)>>16)
+#define INST_3_ADDR_2(INST)  ((INST & 0x0000FF00)>> 8)
+#define INST_3_ADDR_3(INST)  ((INST & 0x000000FF)>> 0)
+#define INST_1_ADDR_AP(INST) ((INST & 0x000000FF)>> 0)
 
 #define R0 R[0]
 #define R1 R[1]
@@ -112,6 +113,8 @@ typedef struct _ESC_STATE
   int reginst_rc;
   int reginst_rd;
   int reginst_literal;
+  int inst_aa;
+  int inst_ap;
   
   ADDRESS Ap1, Ap2, Ap3, Aa1, Aa2, Aa3;
 

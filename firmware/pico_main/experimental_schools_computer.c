@@ -285,6 +285,14 @@ void stage_c_decode(ESC_STATE *s)
     case 4:
     case 5:
     case 6:
+      switch(s->inst_digit_b)
+	{
+	case 4:
+	  // Unconditional branch
+	  // IAr already set up.
+	  break;
+	}
+      
       break;
       
     case 7:
@@ -486,11 +494,59 @@ void stage_b_decode(ESC_STATE *s)
 
       break;
 
+      // Single address instructions
     case 2:
     case 3:
     case 4:
     case 5:
     case 6:
+      switch(s->inst_digit_a)
+	{
+	case 2:
+	  switch(s->inst_digit_b)
+	    {
+	    case 0:
+	      break;
+	      
+	    case 1:
+	      break;
+	      
+	    case 2:
+	      break;
+	      
+	    case 3:
+	      break;
+	      
+	    case 4:
+	      // Unconditional branch
+	      // Move the IAR on to the next address and store that in the link register
+	      next_iar(s);
+	      s->link_register = s->iar.address;
+
+	      // Now over-write that IAR with the address we want to jump to
+	      s->iar.address = s->inst_aa;
+	      s->iar.a_flag = 0;
+	      
+	      break;
+	      
+	    case 5:
+	      break;
+	      
+	    case 6:
+	      break;
+	      
+	    case 7:
+	      break;
+	      
+	    case 8:
+	      break;
+	      
+	    case 9:
+	      break;
+	      
+	    }
+	  break;
+	}
       break;
       
     case 7:
@@ -509,8 +565,6 @@ void stage_b_decode(ESC_STATE *s)
 
 void stage_a_decode(ESC_STATE *s)
 {
-
-  
   if( s->iar.a_flag )
     {
       s->inst_digit_a = INST_E_FIELD(s->instruction_register);
@@ -533,6 +587,11 @@ void stage_a_decode(ESC_STATE *s)
 	 s->inst_digit_c,
 	 s->inst_digit_d);
 #endif
+
+  // Pre-calculate the Aa field of the instruction for some later
+  // decoding
+
+  s->inst_aa = (s->inst_digit_c) *10 + (s->inst_digit_d);
   
   // Calculate the presumptive addresses
   
@@ -561,6 +620,7 @@ void stage_a_decode(ESC_STATE *s)
 	case 6:
 	case 7:
 	  s->reginst_rc = s->inst_digit_c;
+	  s->reginst_rd = s->inst_digit_d;
 	  s->reginst_literal = s->inst_digit_d;	  
 	  break;
 	}
@@ -573,10 +633,26 @@ void stage_a_decode(ESC_STATE *s)
       break;
 
     case 2:
+      // Absolute addressing
+      s->inst_aa = s->inst_ap;
+      break;
+
+      // relative addressing
     case 3:
+      s->inst_aa = s->inst_ap + get_register(s, s->R[3]);
+      break;
+
     case 4:
+      s->inst_aa = s->inst_ap + get_register(s, s->R[4]);
+      break;
+      
     case 5:
+      s->inst_aa = s->inst_ap + get_register(s, s->R[5]);
+      break;
+      
     case 6:
+      // Indirect addressing
+      s->inst_aa = s->store[s->inst_ap];
       break;
       
     case 7:
@@ -1059,7 +1135,7 @@ void cli_dump(void)
   printf("\nReg Inst Rc   : %d", s->reginst_rc);
   printf("\nReg Inst Rd   : %d", s->reginst_rd);
   printf("\nReg Inst Lit  : %d", s->reginst_literal);
-
+  printf("\nInst Aa       : %02X   ap : %02X ", s->inst_aa, s->inst_ap);
   printf("\n");
 }
 
@@ -1158,6 +1234,9 @@ void cli_load_test_code(void)
   // Shift R5 left 1 place and back again
   s->store[i++] = 0x06510751;
 
+  // Branch to zero
+  s->store[i++] = 0x24002400;
+  
   // Stop Executing
   s->store[i++] = 0x06510751;
 
