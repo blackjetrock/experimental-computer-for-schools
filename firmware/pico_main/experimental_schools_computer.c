@@ -907,6 +907,45 @@ void state_esc_c_no_disp(FSM_DATA *s, TOKEN tok)
   es->update_display = 1;
 }
 
+void state_esc_run(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  s->run = 1;
+}
+
+void state_esc_stop(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  s->stop = 1;
+}
+
+// Run at full speed
+
+void state_esc_execute(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  // If not running then exit, nothing to do
+  if( s->run )
+    {
+      // Check for stop
+      if( s->stop )
+	{
+	  // Turn off the execution
+	  // As we run to stage C for eah instruction this stops at the end
+	  // of stage C for the current instruction.
+	  s->run = 0;
+	  s->stop = 0;
+	  return;
+	}
+      
+      // Run to end of stage C repeatedly
+      state_esc_c_no_disp(s, tok);
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // 
@@ -931,6 +970,11 @@ STATE esc_table[ ] =
      {TOK_KEY_A,            STATE_ESC_INIT,  state_esc_a_disp},
      {TOK_KEY_B,            STATE_ESC_INIT,  state_esc_b_disp},
      {TOK_KEY_C,            STATE_ESC_INIT,  state_esc_c_disp},
+     {TOK_KEY_RUN,          STATE_ESC_INIT,  state_esc_run},
+     {TOK_KEY_STOP,         STATE_ESC_INIT,  state_esc_stop},
+     
+     // Exeute code at full speed
+     {TOK_NO_TOK,           STATE_ESC_INIT,  state_esc_execute},
      {CTOK_ERROR,           STATE_ESC_INIT,  NULL},
      {CTOK_END,             STATE_NULL,      NULL},
     }
@@ -993,7 +1037,7 @@ void cli_dump(void)
   printf("\nIAR           : %s", display_iar(s->iar));
   printf("\nAux IAR       : %s", display_iar(s->aux_iar));
   printf("\nInst Reg      : %08X", s->instruction_register);
-  printf("\nControl latch : %d", s->control_latch);
+  printf("\nControl latch : %d   Run:%d   Stop:%d", s->control_latch, s->run, s->stop);
   printf("\nAddr R0       : %s", display_address(s->address_register0));
   printf("\nAddr R1       : %s", display_address(s->address_register1));
   printf("\nAddr R2       : %s", display_address(s->address_register2));
@@ -1098,19 +1142,40 @@ void cli_load_test_code(void)
 {
   ESC_STATE *s = &esc_state;
 
+  int i = 0;
+  
   // R5 and 6 have 2 and 3 in them
-  s->store[0] = 0x03520363;
+  s->store[i++] = 0x03520363;
 
   // Add R5 and R6 and add 6
-  s->store[1] = 0x10560056;
+  s->store[i++] = 0x10560056;
 
   // Test R5
-  s->store[2] = 0x05530550;
-  s->store[3] = 0x05510552;
-  s->store[4] = 0x05530554;
+  s->store[i++] = 0x05530550;
+  s->store[i++] = 0x05510552;
+  s->store[i++] = 0x05530554;
 
   // Shift R5 left 1 place and back again
-  s->store[5] = 0x06510751;
+  s->store[i++] = 0x06510751;
+
+  // Stop Executing
+  s->store[i++] = 0x06510751;
+
+}
+
+// We have two flags:
+//
+// Run: If set then program is executed
+// Stop: If set then execution is stopped after next Stage C
+
+void cli_run(void)
+{
+  queue_token(TOK_KEY_RUN);
+}
+
+void cli_stop(void)
+{
+  queue_token(TOK_KEY_STOP);
 }
 
 
@@ -1212,6 +1277,16 @@ SERIAL_COMMAND serial_cmds[] =
     cli_digit,
    },
    {
+    'r',
+    "Run",
+    cli_run,
+   },
+   {
+    's',
+    "Stop",
+    cli_stop,
+   },
+   {
     'N',
     "Normal Reset",
     cli_normal_reset,
@@ -1293,6 +1368,9 @@ void serial_loop()
     }
   else
     {
+      // No key, so inject an 'idle' token into the fsms
+      queue_token(TOK_NO_TOK);
+      
       // I have found that I need to send something if the serial USB times out
       // otherwise I get lockups on the serial communications.
       // So, if we get a timeout we send a space and backspace it. And

@@ -114,6 +114,10 @@ typedef struct _ESC_STATE
   int reginst_literal;
   
   ADDRESS Ap1, Ap2, Ap3, Aa1, Aa2, Aa3;
+
+  // execution
+  int run;
+  int stop;
   
   //--------------------------------------------------------------------
   // We can push a token into the FSM
