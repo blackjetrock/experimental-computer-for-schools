@@ -125,6 +125,31 @@ REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
 
 // BCD single word addition
 // Signed
+//
+
+REGISTER_SINGLE_WORD bcd_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WORD b)
+{
+  REGISTER_SINGLE_WORD c;
+  
+  // Remove and save the signs
+
+  a_sign = SW_SIGN(a);
+  b_sign = SW_SIGN(b);
+
+  a = REMOVED_SW_SIGN(a);
+  b = REMOVED_SW_SIGN(b);
+
+  c = a + b;
+  c = single_sum_normalise(c);
+
+  if( OVERFLOW_SW(c) )
+    {
+      sprintf(error_message, "Overflow (%08X)", c);
+      error();
+    }
+
+  
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////

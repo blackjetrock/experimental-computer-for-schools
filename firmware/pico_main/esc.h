@@ -40,6 +40,19 @@ typedef uint64_t REGISTER_DOUBLE_WORD;
 typedef int BOOLEAN;
 typedef uint8_t ADDRESS;
 
+// Get the single word sign
+#define SW_SIGN(XX) ((XX & 0xF0000000)>>28)
+
+// Get the double word sign
+#define DW_SIGN(XX) ((XX & 0xF000000000000000)>>60)
+
+// Remove signs from values
+#define REMOVED_SW_SIGN(XX) (XX & 0x0FFFFFFF)
+#define REMOVED_DW_SIGN(XX) (XX & 0x0FFFFFFFFFFFFFFF)
+
+#define OVERFLOW_SW(XX) ((XX & 0xFF000000) != 0 )
+#define OVERFLOW_DW(XX) ((XX & 0xFF00000000000000) != 0 )
+
 // Instruction fields
 #define INST_A_FIELD(INST)   ((INST & 0xF0000000)>>28)
 #define INST_B_FIELD(INST)   ((INST & 0x0F000000)>>24)
