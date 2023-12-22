@@ -123,32 +123,166 @@ REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
   return(v);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Nines complement
+//
+
+REGISTER_SINGLE_WORD bcd_nines_complement(REGISTER_SINGLE_WORD n)
+{
+  return(0x00999999 - n);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
 // BCD single word addition
 // Signed
 //
+// Both positive: Add, check for overflow
+// Both negative: Add, check for overflow
+// One negative, one positive: Nines complement negative, add, drop carry, add one, check for overflow (inverted)
 
-REGISTER_SINGLE_WORD bcd_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WORD b)
+REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WORD b)
 {
   REGISTER_SINGLE_WORD c;
+  int a_sign;
+  int b_sign;
+
+#if DEBUG_SW_BCD_SUM
+  printf("\n--------------------------------");
+  printf("\n%s:a=%08X  b=%08X", __FUNCTION__, a, b);
+#endif
   
   // Remove and save the signs
 
   a_sign = SW_SIGN(a);
   b_sign = SW_SIGN(b);
 
+  
+#if DEBUG_SW_BCD_SUM
+  printf("\nasgn=%d  bsgn=%d", a_sign, b_sign);
+#endif
+
   a = REMOVED_SW_SIGN(a);
   b = REMOVED_SW_SIGN(b);
 
-  c = a + b;
-  c = single_sum_normalise(c);
-
-  if( OVERFLOW_SW(c) )
+  // If signs are different then we need to work out what the sign of the result is
+  int res_sign;
+  
+  if( a > b )
     {
+      res_sign = a_sign;
+    }
+  else
+    {
+      res_sign = b_sign;
+    }
+
+#if DEBUG_SW_BCD_SUM
+  printf("\na(rs)=%08X  b(rs)=%08X", a, b);
+#endif
+
+  // If both nubers are positive or both are negative the just add the digits
+  if( ((a_sign == WORD_SIGN_MINUS) && (b_sign == WORD_SIGN_MINUS)) ||
+      ((a_sign == WORD_SIGN_PLUS) && (b_sign == WORD_SIGN_PLUS)) )
+    {
+#if DEBUG_SW_BCD_SUM
+      printf("\nSigns identical");
+#endif
+
+      c = a + b;
+
+#if DEBUG_SW_BCD_SUM
+      printf("\nc=%08X", c);
+#endif
+
+      c = single_sum_normalise(c);
+
+#if DEBUG_SW_BCD_SUM
+      printf("\nc=%08X", c);
+#endif
+      
+      if( OVERFLOW_SW(c) )
+	{
+#if DEBUG_SW_BCD_SUM
+      printf("\nOverflow occurred");
+#endif
+	  sprintf(error_message, "Overflow (%08X)", c);
+	  error();
+	}
+
+      // Signs are unchanged
+      c = SET_SW_SIGN(c, a_sign);
+      return(c);
+    }
+
+  // If we get here then the signs of the numbers are different
+  // If number negative then use tens complemet
+#if DEBUG_SW_BCD_SUM
+      printf("\nSigns different");
+#endif
+
+  if( a_sign == WORD_SIGN_MINUS )
+    {
+      a = bcd_nines_complement(a);
+    }
+
+  if( b_sign == WORD_SIGN_MINUS )
+    {
+      b = bcd_nines_complement(b);
+    }
+
+#if DEBUG_SW_BCD_SUM
+  printf("\n%s:a=%08X  b=%08X", __FUNCTION__, a, b);
+#endif
+  
+#if DEBUG_SW_BCD_SUM
+      printf("\nSigns different");
+#endif
+
+      c = a + b;
+      c = single_sum_normalise(c);
+      
+#if DEBUG_SW_BCD_SUM
+      printf("\nc=%08X", c);
+#endif
+
+
+  // Overflow condition is reversed
+  if( !OVERFLOW_SW(c) )
+    {
+#if DEBUG_SW_BCD_SUM
+      printf("\nOverflow occurred");
+#endif
+
       sprintf(error_message, "Overflow (%08X)", c);
       error();
     }
 
+  // Drop the carry
+  c = CLEAR_SW_CARRY(c);
   
+  // Add one
+  c = c + 1;
+  c = single_sum_normalise(c);
+
+  // If result is negative then nines complement it and add one as we use sign plus digits form for numbers
+  // This format matches he floating point format
+  if( res_sign == WORD_SIGN_MINUS )
+    {
+      c = bcd_nines_complement(c);
+      c = c + 1;
+      c = single_sum_normalise(c);
+    }
+  
+  // The sign of the result will be that of the largest argument absoulte value
+  c = SET_SW_SIGN(c, res_sign);
+    
+#if DEBUG_SW_BCD_SUM
+  printf("\nc=%08X (9c:%08X)", c, bcd_nines_complement(c));
+#endif
+  
+  return(c);
 }
 
 
@@ -1281,10 +1415,61 @@ void cli_load_test_code(void)
 
 }
 
+void test_sw_add(int a, int b, int r)
+{
+  int c;
+  
+  c = bcd_sw_addition(a, b);
+  
+  printf("\n%08X + %08X = %08X : %s (r=%08X)", a, b, c, (c ==r)?"PASS":"FAIL", r);
+}
+
+typedef struct _SW_BCD_TEST
+{
+  int a;
+  int b;
+  int r;
+} SW_BCD_TEST;
+
+SW_BCD_TEST sw_bcd_test[] =
+  {
+   {0xA0000010, 0xA0000020, 0xA0000030},
+   {0xA0000020, 0xA0000010, 0xA0000030},
+   {0xA0000007, 0xA0000005, 0xA0000012},
+   {0xB0000020, 0xB0000010, 0xB0000030},
+   {0xA0123456, 0xA0654321, 0xA0777777},
+   {0xB0123456, 0xB0654321, 0xB0777777},
+   {0xB0077777, 0xB0777777, 0xB0855554},
+   {0xA0002345, 0xB0000045, 0xA0002300},
+   {0xA0000045, 0xB0002345, 0xB0002300},
+
+   {0xA0999900, 0xA0000099, 0xA0999999},
+   {0xA0999900, 0xA0000100, 0xA0000000},
+
+   {0xB0999900, 0xB0000099, 0xB0999999},
+   {0xB0999900, 0xB0000100, 0xB0000000},
+
+   
+  };
+
+#define NUM_SW_BCD_TEST (sizeof(sw_bcd_test)/sizeof(SW_BCD_TEST))
+
+void cli_test_bcd(void)
+{
+  int a, b, c;
+  
+  // Perform some arithmetic
+  for(int i=0; i<NUM_SW_BCD_TEST; i++)
+    {
+      test_sw_add(sw_bcd_test[i].a, sw_bcd_test[i].b, sw_bcd_test[i].r);
+    }
+  
+  printf("\n");
+}
+
 void cli_load_test_code_2(void)
 {
   ESC_STATE *s = &esc_state;
-
   int i = 0;
   
   // R5 and 6 have 2 and 1 in them
@@ -1356,6 +1541,11 @@ SERIAL_COMMAND serial_cmds[] =
     '^',
     "Update Display",
     cli_update_display,
+   },
+   {
+    '$',
+    "Test BCD",
+    cli_test_bcd,
    },
    {
     '*',

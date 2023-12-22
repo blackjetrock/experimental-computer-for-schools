@@ -47,12 +47,15 @@ typedef uint8_t ADDRESS;
 #define DW_SIGN(XX) ((XX & 0xF000000000000000)>>60)
 
 // Remove signs from values
-#define REMOVED_SW_SIGN(XX) (XX & 0x0FFFFFFF)
-#define REMOVED_DW_SIGN(XX) (XX & 0x0FFFFFFFFFFFFFFF)
+#define REMOVED_SW_SIGN(XX)    (XX & 0x0FFFFFFF)
+#define REMOVED_DW_SIGN(XX)    (XX & 0x0FFFFFFFFFFFFFFF)
 
-#define OVERFLOW_SW(XX) ((XX & 0xFF000000) != 0 )
-#define OVERFLOW_DW(XX) ((XX & 0xFF00000000000000) != 0 )
+#define OVERFLOW_SW(XX)        ((XX & 0xFF000000) != 0 )
+#define OVERFLOW_DW(XX)        ((XX & 0xFFFF000000000000) != 0 )
 
+#define CLEAR_SW_CARRY(XX)     (XX & 0xF0FFFFFF)
+#define SET_SW_SIGN(XX, SGN)   (REMOVED_SW_SIGN(XX) | (SGN <<28))
+  
 // Instruction fields
 #define INST_A_FIELD(INST)   ((INST & 0xF0000000)>>28)
 #define INST_B_FIELD(INST)   ((INST & 0x0F000000)>>24)
