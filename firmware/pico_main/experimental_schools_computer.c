@@ -494,7 +494,6 @@ void stage_b_decode_core(ESC_STATE *s, int shift)
       
     case 8:
       // Relative
-      
       s->Aa1 = s->Ap1 + s->R3; 
       s->Aa2 = s->Ap2 + s->R4; 
       s->Aa3 = s->Ap3 + s->R5; 
