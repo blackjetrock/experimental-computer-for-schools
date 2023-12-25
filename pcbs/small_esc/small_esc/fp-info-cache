@@ -1,4 +1,4 @@
--9204274987504888514
+-9204274990846734514
 8wTermBlk
 8wTermBlk
 
@@ -83181,12 +83181,12 @@ SRX882
 6
 6
 ajm_kicad
-Conn_uSDcard
-
-
+Hirose_FH12-30S-0.5SH_1x30-1MP_P0.50mm_Horizontal
+Hirose FH12, FFC/FPC connector, FH12-30S-0.5SH, 30 Pins per row (https://www.hirose.com/product/en/products/FH12/FH12-24S-0.5SH(55)/), generated with kicad-footprint-generator
+connector Hirose FH12 horizontal
 0
-13
-9
+32
+31
 mirotan-due-cassette-shield
 AG12864E
 STN/FSTN LCD 128x64 dot https://www.digchip.com/datasheets/parts/datasheet/1121/AG-12864E-pdf.php

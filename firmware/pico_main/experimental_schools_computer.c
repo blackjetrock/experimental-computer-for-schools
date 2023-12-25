@@ -1850,8 +1850,10 @@ char *display_presumptive_address_2(ESC_STATE *s)
 // functions we call to be shown.
 //
 
-void update_display(ESC_STATE *s)
+void update_display(void)
 {
+  ESC_STATE *s= &esc_state;
+  
   char dsp[(MAX_LINE+5)*(NUM_LINES+2)+1];
   char tmp[MAX_LINE*NUM_LINES+1];
   
@@ -1947,6 +1949,12 @@ int main(void)
   printf("\n                                  ********************************************");
   printf("\n");
 
+#ifdef ESC_USE_WIFI
+  printf("\n** Wifi Enabled **");
+	 
+  wifi_main();
+#else
+  printf("\n** Wifi NOT Enabled **");
   // Main loop
   while(1)
     {
@@ -1957,4 +1965,6 @@ int main(void)
       serial_loop();
       update_display(&esc_state);
     }
+  
+#endif
 }
