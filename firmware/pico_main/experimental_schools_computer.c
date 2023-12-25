@@ -62,6 +62,15 @@ int address     = 0;
 // The computer instance
 
 ESC_STATE esc_state;
+
+// Display
+char dsp[(MAX_LINE+5)*(NUM_LINES+2)+1];
+
+char *get_display(void)
+{
+  return(dsp);
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -1274,6 +1283,35 @@ void cli_update_display(void)
   s->update_display = 1;
 }
 
+char str_state[500];
+
+char *get_string_state(void)
+{
+  char line[80];
+  ESC_STATE *s = &esc_state;
+    
+  sprintf(str_state, "\nIAR           : %s", display_iar(s->iar));
+  
+  sprintf(line, "\nAux IAR       : %s", display_iar(s->aux_iar));
+  strcat(str_state, line);
+  
+  sprintf(line, "\nInst Reg      : %08X", s->instruction_register);
+  strcat(str_state, line);
+  
+  sprintf(line, "\nControl latch : %d   Run:%d   Stop:%d", s->control_latch, s->run, s->stop);
+  strcat(str_state, line);
+  
+  sprintf(line, "\nAddr R0       : %s", display_address(s->address_register0));
+  strcat(str_state, line);
+  
+  sprintf(line, "\nAddr R1       : %s", display_address(s->address_register1));
+  strcat(str_state, line);
+  
+  sprintf(line, "\nAddr R2       : %s", display_address(s->address_register2));
+  strcat(str_state, line);
+  return(str_state);
+}
+
 // Dump state info
 void cli_dump(void)
 {
@@ -1282,14 +1320,8 @@ void cli_dump(void)
   printf("\nState");
   printf("\n=====");
 
-  printf("\nIAR           : %s", display_iar(s->iar));
-  printf("\nAux IAR       : %s", display_iar(s->aux_iar));
-  printf("\nInst Reg      : %08X", s->instruction_register);
-  printf("\nControl latch : %d   Run:%d   Stop:%d", s->control_latch, s->run, s->stop);
-  printf("\nAddr R0       : %s", display_address(s->address_register0));
-  printf("\nAddr R1       : %s", display_address(s->address_register1));
-  printf("\nAddr R2       : %s", display_address(s->address_register2));
-
+  printf("\n%s", get_string_state());
+  
   for(int i=0; i<NUM_WORD_REGISTERS; i++)
     {
       printf("\nR%d    : %s", i, display_register_single_word(s->R[i]));
@@ -1854,7 +1886,7 @@ void update_display(void)
 {
   ESC_STATE *s= &esc_state;
   
-  char dsp[(MAX_LINE+5)*(NUM_LINES+2)+1];
+
   char tmp[MAX_LINE*NUM_LINES+1];
   
   if( s->update_display )

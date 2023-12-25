@@ -108,4 +108,7 @@ CMakeFiles/escw.dir/escw.c.obj: \
  /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/icmp.h \
  /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/icmp.h \
  /tree/projects/github/experimental-computer-for-schools/firmware/escw/dhcpserver/dhcpserver.h \
- /tree/projects/github/experimental-computer-for-schools/firmware/escw/dnsserver/dnsserver.h
+ /tree/projects/github/experimental-computer-for-schools/firmware/escw/dnsserver/dnsserver.h \
+ /tree/projects/github/experimental-computer-for-schools/firmware/escw/../pico_main/fsms.h \
+ /tree/projects/github/experimental-computer-for-schools/firmware/escw/../pico_main/esc_fsms.h \
+ /tree/projects/github/experimental-computer-for-schools/firmware/escw/../pico_main/esc.h

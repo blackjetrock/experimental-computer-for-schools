@@ -155,6 +155,11 @@ char *display_register_double_word(REGISTER_DOUBLE_WORD x);
 char *display_register_single_word(REGISTER_SINGLE_WORD x);
 char *display_iar(IAR iar);
 char *display_address(REGISTER_SINGLE_WORD x);
+char *get_string_state(void);
+void drive_fsms(void);
+void serial_loop();
+void update_display(void);
+char *get_display(void);
 
 ////////////////////////////////////////////////////////////////////////////////
 

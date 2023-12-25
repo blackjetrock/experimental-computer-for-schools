@@ -330,7 +330,10 @@ CMakeFiles/escw.dir/escw.c.obj: ../escw.c \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/icmp.h \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/icmp.h \
   ../dhcpserver/dhcpserver.h \
-  ../dnsserver/dnsserver.h
+  ../dnsserver/dnsserver.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c \
   /usr/include/newlib/assert.h \
@@ -10919,6 +10922,10 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/include/pico/unique_id.h
 
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.c.obj: /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.c \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h
+
 CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c.obj: /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/switches.h \
   /usr/include/newlib/ctype.h \
@@ -11023,16 +11030,84 @@ CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmw
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h
 
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.c.obj: /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.c \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h
 
-/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h:
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.c.obj: /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.c \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h
 
-/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h:
 
-/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h:
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pwm.h:
 
 /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c:
+
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c:
 
@@ -11172,6 +11247,8 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c:
 
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.c:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/sync.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h:
@@ -11277,6 +11354,8 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/tcp.h:
 
@@ -11526,8 +11605,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /usr/include/newlib/sys/lock.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c:
 
 /usr/include/newlib/newlib.h:
@@ -11555,6 +11632,10 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/def.h:
 
 /usr/include/newlib/sys/_timespec.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c:
+
+/usr/include/newlib/sys/_timeval.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/priv/memp_std.h:
 
@@ -11664,6 +11745,12 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c:
 
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/osal/osal.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h:
+
 /usr/include/newlib/ctype.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h:
@@ -11695,6 +11782,18 @@ generated/pico_base/pico/version.h:
 /usr/include/newlib/sys/_locale.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h:
+
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h:
+
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb/reset_interface.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_btbus.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c:
+
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.h:
 
@@ -11779,6 +11878,8 @@ generated/pico_base/pico/version.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c:
+
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c:
 
@@ -11922,12 +12023,6 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb/reset_interface.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_btbus.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c:
@@ -11949,13 +12044,3 @@ generated/pico_base/pico/version.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_mcu.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/osal/osal.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c:
-
-/usr/include/newlib/sys/_timeval.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c:
