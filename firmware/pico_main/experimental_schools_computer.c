@@ -958,6 +958,7 @@ void state_esc_load_iar(FSM_DATA *s, TOKEN tok)
   es = (ESC_STATE *)s;
 
   es->iar.address = (ADDRESS)es->keyboard_register;
+  es->iar.a_flag = 0;
   es->update_display = 1;
 }
 

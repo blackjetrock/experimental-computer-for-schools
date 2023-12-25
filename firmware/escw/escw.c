@@ -29,9 +29,30 @@
 #define POLL_TIME_S 5
 #define HTTP_GET "GET"
 #define HTTP_RESPONSE_HEADERS "HTTP/1.1 %d OK\nContent-Length: %d\nContent-Type: text/html; charset=utf-8\nConnection: close\n\n"
-#define LED_TEST_BODY "<html><body><h1>Experimental Schools Computer Simulation.</h1><p><pre>%s</pre></p><p>LED is %s</p><p><a href=\"?led=%d\">Turn led %s</a></p>"
+#define LED_TEST_BODY  "<html><body><h1>Experimental Schools Computer Simulation.</h1><p><pre>%s</pre></p>" \
+ "<p><a href=\"?key=21\">A</a> " \
+ "   <a href=\"?key=22\">B</a> " \
+ "   <a href=\"?key=23\">C</a>"  \
+  "  <a href=\"?key=2\">LOAD IAR</a>" \
+  "  <a href=\"?key=3\">LOAD ADDR</a>" \
+  "  <a href=\"?key=4\">LOAD STORE</a>" \
+  "  <a href=\"?key=11\">0</a>" \
+  "  <a href=\"?key=12\">1</a>" \
+  "  <a href=\"?key=13\">2</a>" \
+  "  <a href=\"?key=14\">3</a>" \
+  "  <a href=\"?key=15\">4</a>" \
+  "  <a href=\"?key=16\">5</a>" \
+  "  <a href=\"?key=17\">6</a>" \
+  "  <a href=\"?key=18\">7</a>" \
+  "  <a href=\"?key=19\">8</a>" \
+  "  <a href=\"?key=20\">9</a>" \
+ "</p>"
+#define LED_TEST_BODY2 "<p>LED is %s</p><p><a href=\"?led=%d\">Turn led %s</a></p>"
+#define LED_TEST_BODY3 "<p>LED is %s</p><p><a href=\"?led=%d\">Turn led %s</a></p>"
+#define LED_TEST_BODY4 "<p>LED is %s</p><p><a href=\"?led=%d\">Turn led %s</a></p>"
 #define END_BODY "</body></html>"
 #define LED_PARAM "led=%d"
+#define KEY_PARAM "key=%d"
 #define LED_TEST "/ledtest"
 #define LED_GPIO 0
 #define HTTP_RESPONSE_REDIRECT "HTTP/1.1 302 Redirect\nLocation: http://%s" LED_TEST "\n\n"
@@ -108,6 +129,8 @@ static int test_server_content(const char *request, const char *params, char *re
     cyw43_gpio_get(&cyw43_state, LED_GPIO, &value);
 
     int led_state = value;
+    int key_state;
+    
     int info_state = 0;
     
     // See if the user changed it
@@ -128,6 +151,11 @@ static int test_server_content(const char *request, const char *params, char *re
 		cyw43_gpio_set(&cyw43_state, 0, false);
 	      }
 	  }
+
+	int key_param = sscanf(params, KEY_PARAM, &key_state);
+
+	// Push key into FSM
+	queue_token(key_state);
       }
     
     // Generate result
