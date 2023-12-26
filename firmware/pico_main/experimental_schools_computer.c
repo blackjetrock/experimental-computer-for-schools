@@ -210,7 +210,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   printf("\na(rs)=%08X  b(rs)=%08X", a, b);
 #endif
 
-  // If both nubers are positive or both are negative the just add the digits
+  // If both numbers are positive or both are negative the just add the digits
   if( ((a_sign == WORD_SIGN_MINUS) && (b_sign == WORD_SIGN_MINUS)) ||
       ((a_sign == WORD_SIGN_PLUS) && (b_sign == WORD_SIGN_PLUS)) )
     {
@@ -998,6 +998,23 @@ void state_esc_numeric(FSM_DATA *s, TOKEN tok)
   es->keyboard_register *= 16;
   es->keyboard_register += num;
 
+  // Sign has to be plus or minus
+  // If sign not valid then make it plus
+
+  switch(SW_SIGN(es->keyboard_register))
+    {
+    case WORD_SIGN_MINUS:
+    case WORD_SIGN_PLUS:
+      // All ok
+      break;
+      
+    default:
+      // Force to Plus
+      es->keyboard_register = SET_SW_SIGN(es->keyboard_register, WORD_SIGN_PLUS);
+      break;
+      
+    }
+    
   es->update_display = 1;
 }
 
@@ -1904,7 +1921,7 @@ char *display_presumptive_address_2(ESC_STATE *s)
 // Display update
 //
 // The display format is fairly fluid.
-// We append to a stringot get the display, this allows formatting in the
+// We append to a string to get the display, this allows formatting in the
 // functions we call to be shown.
 //
 
