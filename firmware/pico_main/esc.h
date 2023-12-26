@@ -160,6 +160,7 @@ void drive_fsms(void);
 void serial_loop();
 void update_display(void);
 char *get_display(void);
+int wifi_main(void);
 
 ////////////////////////////////////////////////////////////////////////////////
 

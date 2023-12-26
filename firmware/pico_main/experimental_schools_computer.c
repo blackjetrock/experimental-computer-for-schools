@@ -142,6 +142,25 @@ REGISTER_SINGLE_WORD bcd_nines_complement(REGISTER_SINGLE_WORD n)
   return(0x00999999 - n);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+
+REGISTER_SINGLE_WORD invert_sw_sign(REGISTER_SINGLE_WORD n)
+{
+  REGISTER_SINGLE_WORD r = n;
+  
+  if( SW_SIGN(n) == WORD_SIGN_PLUS)
+    {
+      SET_SW_SIGN(r, WORD_SIGN_MINUS);
+    }
+
+  if( SW_SIGN(n) == WORD_SIGN_MINUS)
+    {
+      SET_SW_SIGN(r, WORD_SIGN_PLUS);
+    }
+  
+  return(r);
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // BCD single word addition
@@ -339,7 +358,7 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
 {
   if( IS_SW_REGISTER(dest) )
     {
-      s->R[dest] = (REGISTER_SINGLE_WORD) literal - s->R[src];
+      s->R[dest] = (REGISTER_SINGLE_WORD) bcd_sw_addition(literal, invert_sw_sign(s->R[src]));
       s->R[dest] = single_sum_normalise(s->R[dest]);
     }
   
@@ -353,7 +372,7 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
 {
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
-      s->R[dest] = s->R[src1] + s->R[src2];
+      s->R[dest] = bcd_sw_addition(s->R[src1], s->R[src2]);
       s->R[dest] = single_sum_normalise(s->R[dest]);
       return;
     }
@@ -402,7 +421,10 @@ void next_iar(ESC_STATE *s)
 	}
       
       // 8 digit instruction so move to next address
-      s->iar.address++;
+      s->iar.address = single_sum_normalise(s->iar.address+1);
+
+      // IAR only two digits
+      s->iar.address &= 0xFF;
       s->iar.a_flag = 0;
       break;
       
@@ -415,7 +437,10 @@ void next_iar(ESC_STATE *s)
     case 6:
       if( s->iar.a_flag )
 	{
-	  s->iar.address++;
+	  s->iar.address = single_sum_normalise(s->iar.address+1);
+
+	  // IAR only two digits
+	  s->iar.address &= 0xFF;
 	  s->iar.a_flag = 0;
 	}
       else

@@ -24,19 +24,257 @@
 
 #include "../pico_main/esc.h"
 
+
+#define KB_BODY "<!DOCTYPE html> \
+<html>  \
+<head>  \
+<style>  \
+body {  \
+  background-color:#E7E9EB;  \
+}  \
+  \
+#myDIV {  \
+  height:50px;  \
+  width: 50px;  \
+  background-color:#1010FF;  \
+  color:#FFFFFF;  \
+  border: 1px solid black;  \
+  border-radius:300px;  \
+  padding:10px;  \
+  text-align: center;  \
+  line-height: 21px  \
+}  \
+  \
+#myDIVs {  \
+  height:50px;  \
+  width: 50px;  \
+  background-color:#1010FF;  \
+  color:#FFFFFF;  \
+  border: 1px solid black;  \
+  border-radius:300px;  \
+  padding:10px;  \
+  text-align: center;  \
+  line-height: 45px  \
+}  \
+#myDIVsb {  \
+  height:50px;  \
+  width: 50px;  \
+  background-color:#1010FF;  \
+  color:#FFFFFF;  \
+  border: 1px solid black;  \
+  border-radius:300px;  \
+  padding:10px;  \
+  text-align: center;  \
+  line-height: 40px;   \
+  font-size: 25px;  \
+}  \
+  \
+#myDIV2 {  \
+  height:50px;  \
+  width: 50px;  \
+  background-color:#1010FF;  \
+  color:#FFFFFF;  \
+  border: 1px solid black;  \
+  border-radius:300px;  \
+  padding:10px;  \
+  text-align: center;  \
+  offset-position: 10px;  \
+  line-height: 21px  \
+}  \
+#myDIV2s {  \
+  height:50px;  \
+  width: 50px;  \
+  background-color:#1010FF;  \
+  color:#FFFFFF;  \
+  border: 1px solid black;  \
+  border-radius:300px;  \
+  padding:10px;  \
+  text-align: center;  \
+  offset-position: 10px;  \
+  line-height:45px;  \
+}  \
+#myDIV2sb {  \
+  height:50px;  \
+  width: 50px;  \
+  background-color:#1010FF;  \
+  color:#FFFFFF;  \
+  border: 1px solid black;  \
+  border-radius:300px;  \
+  padding:10px;  \
+  text-align: center;  \
+  offset-position: 10px;  \
+  line-height:45px;  \
+  font-size:25px;  \
+}  \
+  \
+table {  \
+  border-collapse: collapse;  \
+  <!-width: 100%;>  \
+}  \
+  \
+#myTable2 {  \
+  border-collapse: collapse;  \
+  margin-left: 40px;  \
+}  \
+  \
+th, td {  \
+  padding: 8px;  \
+  text-align: left;  \
+  border-bottom: 1px solid #ddd;  \
+}  \
+ a:link {  \
+  color: white;  \
+  text-decoration: none;  \
+}  \
+  \
+/* visited link */  \
+a:visited {  \
+  color: white;  \
+  text-decoration: none;  \
+}  \
+  \
+</style>  \
+</head>  \
+  \
+  \
+<body>  \
+  \
+<h1>Experimental Schools Computer Simulation</h1>  \
+ <p><pre>%s</pre></p> \
+<table>  \
+  <tr>  \
+<th><div id=\"myDIV\"><a href=\"?key=2\">load<br>i.a.r.</a></div></th>  \
+<th><div id=\"myDIV\"><a href=\"?key=3\">load<br>addr</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+  \
+<th><div id=\"myDIVs\"><a href=\"?key=8\">clear</a></div></th>  \
+<th><div id=\"myDIVsb\"><a href=\"?key=9\">-</a></div></th>  \
+<th><div id=\"myDIVsb\"><a href=\"?key=10\">.</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th><div id=\"myDIVsb\"><a href=\"?key=21\">A</a></div></th>  \
+<th><div id=\"myDIVs\"><a href=\"?key=24\">run</a></div></th>  \
+  \
+</tr>  \
+</table>  \
+  \
+<table id=\"myTable2\">  \
+<tr>  \
+<th><div id=\"myDIV2\"><a href=\"?key=4\">load<br>store</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th><div id=\"myDIV2sb\"><a href=\"?key=12\">1</a></div></th>  \
+<th><div id=\"myDIV2sb\"><a href=\"?key=13\">2</a></div></th>  \
+<th><div id=\"myDIV2sb\"><a href=\"?key=14\">3</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+  \
+<th><div id=\"myDIV2\" style=\"line-height: 35px; font-size: 25px\"><a href=\"?key=22\">B</a></div></th>  \
+<th><div id=\"myDIV2\" style=\"line-height: 35px\"><a href=\"?key=25\">stop</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th><div id=\"myDIV2\" style=\"line-height: 35px\"><a href=\"?key=27\">dump</a></div></th>  \
+  \
+</tr>  \
+</table>  \
+  \
+<table>  \
+  <tr>  \
+<th><div id=\"myDIV\"><a href=\"?key=5\">decr<br>addr</a></div></th>  \
+<th><div id=\"myDIV\"><a href=\"?key=6\">incr<br>addr</a></div></trh>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th><div id=\"myDIVsb\"><a href=\"?key=15\">4</a></div></th>  \
+<th><div id=\"myDIVsb\"><a href=\"?key=16\">5</a></div></th>  \
+<th><div id=\"myDIVsb\"><a href=\"?key=17\">6</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th><div id=\"myDIVsb\"><a href=\"?key=23\">C</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th><div id=\"myDIVs\"><a href=\"?key=28\">check</a></div></th>  \
+  \
+<tr>  \
+</table>  \
+  \
+<table id=\"myTable2\">  \
+<tr>  \
+<th><div id=\"myDIV2\"><a href=\"?key=7\">normal<br>reset</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th><div id=\"myDIV2sb\"><a href=\"?key=18\">7</a></div></th>  \
+<th><div id=\"myDIV2sb\"><a href=\"?key=19\">8</a></div></th>  \
+<th><div id=\"myDIV2sb\"><a href=\"?key=20\">9</a></div></th>  \
+<th><div id=\"myDIV2sb\"><a href=\"?key=11\">0</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th><div id=\"myDIV2\"><a href=\"?key=26\">K I<br>reset</a></div></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th></th>  \
+<th><div id=\"myDIV2s\"><a href=\"?key=29\">reload</a></div></th>  \
+  \
+</tr>  \
+</table>  \
+  \
+  \
+</body>  \
+</html>"
+  
 #define TCP_PORT 80
 #define DEBUG_printf printf
 #define POLL_TIME_S 5
 #define HTTP_GET "GET"
 #define HTTP_RESPONSE_HEADERS "HTTP/1.1 %d OK\nContent-Length: %d\nContent-Type: text/html; charset=utf-8\nConnection: close\n\n"
-#define LED_TEST_BODY  "<html><body><h1>Experimental Schools Computer Simulation.</h1><p><pre>%s</pre></p>" \
+#define LED_TEST_BODY  \
+  "<html><body><h1>Experimental Schools Computer Simulation.</h1><p><pre>%s</pre></p>" \
  "<p><a href=\"?key=21\">A</a> " \
  "   <a href=\"?key=22\">B</a> " \
  "   <a href=\"?key=23\">C</a>"  \
-  "  <a href=\"?key=2\">LOAD IAR</a>" \
+  "  <a href=\"?key=2\"><span style=\"border: 2px solid #000; border-radius: 150px; padding: 5px;\">load<br>iar</span></a>" \
   "  <a href=\"?key=3\">LOAD ADDR</a>" \
-  "  <a href=\"?key=4\">LOAD STORE</a>" \
-  "  <a href=\"?key=11\">0</a>" \
+  "  <a href=\"?key=4\">LOAD STORE</a></p>" \
+  "  <p><a href=\"?key=5\">INCR ADDR</a>" \
+  "  <a href=\"?key=6\">DECR ADDR</a>" \
+  "  <a href=\"?key=7\">NORMAL RESET</a></p>" \
+  "  <p><a href=\"?key=11\"><span style=\"border: 2px solid #000; border-radius: 150px; padding: 5px;\">0</span></a>" \
   "  <a href=\"?key=12\">1</a>" \
   "  <a href=\"?key=13\">2</a>" \
   "  <a href=\"?key=14\">3</a>" \
@@ -45,7 +283,8 @@
   "  <a href=\"?key=17\">6</a>" \
   "  <a href=\"?key=18\">7</a>" \
   "  <a href=\"?key=19\">8</a>" \
-  "  <a href=\"?key=20\">9</a>" \
+  "  <a href=\"?key=20\">9</a></p>" \
+  "  <p><span style=\"width: 200px; height: 200px; border: 2px solid #000; border-radius: 150px; padding: 5px;\">Text here</span><a href=\"?key=0\">REFRESH</a>" \
  "</p>"
 #define LED_TEST_BODY2 "<p>LED is %s</p><p><a href=\"?led=%d\">Turn led %s</a></p>"
 #define LED_TEST_BODY3 "<p>LED is %s</p><p><a href=\"?led=%d\">Turn led %s</a></p>"
@@ -70,7 +309,7 @@ typedef struct TCP_CONNECT_STATE_T_
   struct tcp_pcb *pcb;
   int sent_len;
   char headers[128];
-  char result[2048];
+  char result[4990];
   int header_len;
   int result_len;
   ip_addr_t *gw;
@@ -161,135 +400,157 @@ static int test_server_content(const char *request, const char *params, char *re
     // Generate result
     if (led_state)
       {
-	len = snprintf(result, max_result_len, LED_TEST_BODY, get_display(),  "ON", 0, "OFF");
+	len = snprintf(result, max_result_len, KB_BODY, get_display());
       }
     else
       {
-	len = snprintf(result, max_result_len, LED_TEST_BODY, get_display(), "OFF", 1, "ON");
+	len = snprintf(result, max_result_len, KB_BODY, get_display());
       }
 
 
-    strcat(result, END_BODY);
+    //strcat(result, END_BODY);
 
     len = strlen(result);
-    
+    printf("\nresult len= %d\n", len);
     }
   return len;
 }
 
-err_t tcp_server_recv(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err) {
+err_t tcp_server_recv(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err)
+{
   TCP_CONNECT_STATE_T *con_state = (TCP_CONNECT_STATE_T*)arg;
-  if (!p) {
-    DEBUG_printf("connection closed\n");
-    return tcp_close_client_connection(con_state, pcb, ERR_OK);
-  }
+  if (!p)
+    {
+      DEBUG_printf("connection closed\n");
+      return tcp_close_client_connection(con_state, pcb, ERR_OK);
+    }
+  
   assert(con_state && con_state->pcb == pcb);
-  if (p->tot_len > 0) {
-    DEBUG_printf("tcp_server_recv %d err %d\n", p->tot_len, err);
+  if (p->tot_len > 0)
+    {
+      DEBUG_printf("tcp_server_recv %d err %d\n", p->tot_len, err);
 #if 0
-    for (struct pbuf *q = p; q != NULL; q = q->next) {
-      DEBUG_printf("in: %.*s\n", q->len, q->payload);
-    }
+      for (struct pbuf *q = p; q != NULL; q = q->next) {
+	DEBUG_printf("in: %.*s\n", q->len, q->payload);
+      }
 #endif
-    // Copy the request into the buffer
-    pbuf_copy_partial(p, con_state->headers, p->tot_len > sizeof(con_state->headers) - 1 ? sizeof(con_state->headers) - 1 : p->tot_len, 0);
-
-    // Handle GET request
-    if (strncmp(HTTP_GET, con_state->headers, sizeof(HTTP_GET) - 1) == 0) {
-      char *request = con_state->headers + sizeof(HTTP_GET); // + space
-      char *params = strchr(request, '?');
-      if (params) {
-	if (*params) {
-	  char *space = strchr(request, ' ');
-	  *params++ = 0;
-	  if (space) {
-	    *space = 0;
+      // Copy the request into the buffer
+      pbuf_copy_partial(p, con_state->headers, p->tot_len > sizeof(con_state->headers) - 1 ? sizeof(con_state->headers) - 1 : p->tot_len, 0);
+      
+      // Handle GET request
+      if (strncmp(HTTP_GET, con_state->headers, sizeof(HTTP_GET) - 1) == 0)
+	{
+	  char *request = con_state->headers + sizeof(HTTP_GET); // + space
+	  char *params = strchr(request, '?');
+	  if (params)
+	    {
+	    if (*params)
+	      {
+	      char *space = strchr(request, ' ');
+	      *params++ = 0;
+	  if (space)
+	    {
+	      *space = 0;
+	    }
+	      }
+	    else
+	      {
+		params = NULL;
+	      }
+	    }
+	  
+	  // Generate content
+	  con_state->result_len = test_server_content(request, params, con_state->result, sizeof(con_state->result));
+	  DEBUG_printf("Request: %s?%s\n", request, params);
+	  DEBUG_printf("Result: %d\n", con_state->result_len);
+	  
+	  // Check we had enough buffer space
+	  if (con_state->result_len > sizeof(con_state->result) - 1) {
+	    DEBUG_printf("Too much result data %d\n", con_state->result_len);
+	    return tcp_close_client_connection(con_state, pcb, ERR_CLSD);
 	  }
-	} else {
-	  params = NULL;
-	}
-      }
-
-      // Generate content
-      con_state->result_len = test_server_content(request, params, con_state->result, sizeof(con_state->result));
-      DEBUG_printf("Request: %s?%s\n", request, params);
-      DEBUG_printf("Result: %d\n", con_state->result_len);
-
-      // Check we had enough buffer space
-      if (con_state->result_len > sizeof(con_state->result) - 1) {
-	DEBUG_printf("Too much result data %d\n", con_state->result_len);
-	return tcp_close_client_connection(con_state, pcb, ERR_CLSD);
-      }
-
-      // Generate web page
-      if (con_state->result_len > 0) {
-	con_state->header_len = snprintf(con_state->headers, sizeof(con_state->headers), HTTP_RESPONSE_HEADERS,
+	  
+	  // Generate web page
+	  if (con_state->result_len > 0) {
+	    con_state->header_len = snprintf(con_state->headers, sizeof(con_state->headers), HTTP_RESPONSE_HEADERS,
 					 200, con_state->result_len);
-	if (con_state->header_len > sizeof(con_state->headers) - 1) {
-	  DEBUG_printf("Too much header data %d\n", con_state->header_len);
-	  return tcp_close_client_connection(con_state, pcb, ERR_CLSD);
-	}
-      } else {
-	// Send redirect
-	con_state->header_len = snprintf(con_state->headers, sizeof(con_state->headers), HTTP_RESPONSE_REDIRECT,
-					 ipaddr_ntoa(con_state->gw));
-	DEBUG_printf("Sending redirect %s", con_state->headers);
-      }
+	    if (con_state->header_len > sizeof(con_state->headers) - 1) {
+	      DEBUG_printf("Too much header data %d\n", con_state->header_len);
+	      return tcp_close_client_connection(con_state, pcb, ERR_CLSD);
+	    }
+	  }
+	  else
+	    {
+	      // Send redirect
+	      con_state->header_len = snprintf(con_state->headers, sizeof(con_state->headers), HTTP_RESPONSE_REDIRECT,
+					       ipaddr_ntoa(con_state->gw));
+	      DEBUG_printf("Sending redirect %s", con_state->headers);
+	    }
+	  
+	  // Send the headers to the client
+	  con_state->sent_len = 0;
+	  err_t err = tcp_write(pcb, con_state->headers, con_state->header_len, 0);
+	  if (err != ERR_OK) {
+	    DEBUG_printf("failed to write header data %d\n", err);
+	    return tcp_close_client_connection(con_state, pcb, err);
+	  }
 
-      // Send the headers to the client
-      con_state->sent_len = 0;
-      err_t err = tcp_write(pcb, con_state->headers, con_state->header_len, 0);
-      if (err != ERR_OK) {
-	DEBUG_printf("failed to write header data %d\n", err);
-	return tcp_close_client_connection(con_state, pcb, err);
-      }
-
-      // Send the body to the client
-      if (con_state->result_len) {
-	err = tcp_write(pcb, con_state->result, con_state->result_len, 0);
-	if (err != ERR_OK) {
-	  DEBUG_printf("failed to write result data %d\n", err);
-	  return tcp_close_client_connection(con_state, pcb, err);
+	  // Send the body to the client
+	  if (con_state->result_len)
+	    {
+	      err = tcp_write(pcb, con_state->result, con_state->result_len, 0);
+	      if (err != ERR_OK)
+		{
+		  DEBUG_printf("failed to write result data %d\n", err);
+		  return tcp_close_client_connection(con_state, pcb, err);
+		}
+	    }
 	}
-      }
+      tcp_recved(pcb, p->tot_len);
     }
-    tcp_recved(pcb, p->tot_len);
-  }
+  
   pbuf_free(p);
   return ERR_OK;
 }
 
-static err_t tcp_server_poll(void *arg, struct tcp_pcb *pcb) {
+static err_t tcp_server_poll(void *arg, struct tcp_pcb *pcb)
+{
   TCP_CONNECT_STATE_T *con_state = (TCP_CONNECT_STATE_T*)arg;
   DEBUG_printf("tcp_server_poll_fn\n");
   return tcp_close_client_connection(con_state, pcb, ERR_OK); // Just disconnect clent?
 }
 
-static void tcp_server_err(void *arg, err_t err) {
+static void tcp_server_err(void *arg, err_t err)
+{
   TCP_CONNECT_STATE_T *con_state = (TCP_CONNECT_STATE_T*)arg;
-  if (err != ERR_ABRT) {
-    DEBUG_printf("tcp_client_err_fn %d\n", err);
-    tcp_close_client_connection(con_state, con_state->pcb, err);
-  }
+  if (err != ERR_ABRT)
+    {
+      DEBUG_printf("tcp_client_err_fn %d\n", err);
+      tcp_close_client_connection(con_state, con_state->pcb, err);
+    }
 }
 
-static err_t tcp_server_accept(void *arg, struct tcp_pcb *client_pcb, err_t err) {
+static err_t tcp_server_accept(void *arg, struct tcp_pcb *client_pcb, err_t err)
+{
   TCP_SERVER_T *state = (TCP_SERVER_T*)arg;
-  if (err != ERR_OK || client_pcb == NULL) {
-    DEBUG_printf("failure in accept\n");
-    return ERR_VAL;
-  }
+  if (err != ERR_OK || client_pcb == NULL)
+    {
+      DEBUG_printf("failure in accept\n");
+      return ERR_VAL;
+    }
   DEBUG_printf("client connected\n");
-
+  
   // Create the state for the connection
   TCP_CONNECT_STATE_T *con_state = calloc(1, sizeof(TCP_CONNECT_STATE_T));
-  if (!con_state) {
-    DEBUG_printf("failed to allocate connect state\n");
-    return ERR_MEM;
-  }
+  if (!con_state)
+    {
+      DEBUG_printf("failed to allocate connect state\n");
+      return ERR_MEM;
+    }
+  
   con_state->pcb = client_pcb; // for checking
   con_state->gw = &state->gw;
-
+  
   // setup connection to client
   tcp_arg(client_pcb, con_state);
   tcp_sent(client_pcb, tcp_server_sent);
@@ -300,77 +561,92 @@ static err_t tcp_server_accept(void *arg, struct tcp_pcb *client_pcb, err_t err)
   return ERR_OK;
 }
 
-static bool tcp_server_open(void *arg, const char *ap_name) {
+static bool tcp_server_open(void *arg, const char *ap_name)
+{
   TCP_SERVER_T *state = (TCP_SERVER_T*)arg;
+
   DEBUG_printf("starting server on port %d\n", TCP_PORT);
 
   struct tcp_pcb *pcb = tcp_new_ip_type(IPADDR_TYPE_ANY);
-  if (!pcb) {
-    DEBUG_printf("failed to create pcb\n");
-    return false;
-  }
 
-  err_t err = tcp_bind(pcb, IP_ANY_TYPE, TCP_PORT);
-  if (err) {
-    DEBUG_printf("failed to bind to port %d\n",TCP_PORT);
-    return false;
-  }
-
-  state->server_pcb = tcp_listen_with_backlog(pcb, 1);
-  if (!state->server_pcb) {
-    DEBUG_printf("failed to listen\n");
-    if (pcb) {
-      tcp_close(pcb);
+  if (!pcb)
+    {
+      DEBUG_printf("failed to create pcb\n");
+      return false;
     }
-    return false;
-  }
+  
+  err_t err = tcp_bind(pcb, IP_ANY_TYPE, TCP_PORT);
+  if (err)
+    {
+      DEBUG_printf("failed to bind to port %d\n",TCP_PORT);
+      return false;
+    }
+  
+  state->server_pcb = tcp_listen_with_backlog(pcb, 1);
 
+  if (!state->server_pcb)
+    {
+      DEBUG_printf("failed to listen\n");
+      if (pcb)
+	{
+	  tcp_close(pcb);
+	}
+      return false;
+    }
+  
   tcp_arg(state->server_pcb, state);
   tcp_accept(state->server_pcb, tcp_server_accept);
-
+  
   printf("Try connecting to '%s' (press 'd' to disable access point)\n", ap_name);
   return true;
 }
 
 // This "worker" function is called to safely perform work when instructed by key_pressed_func
-void key_pressed_worker_func(async_context_t *context, async_when_pending_worker_t *worker) {
+void key_pressed_worker_func(async_context_t *context, async_when_pending_worker_t *worker)
+{
   assert(worker->user_data);
   printf("Disabling wifi\n");
   cyw43_arch_disable_ap_mode();
   ((TCP_SERVER_T*)(worker->user_data))->complete = true;
 }
 
-static async_when_pending_worker_t key_pressed_worker = {
-							 .do_work = key_pressed_worker_func
-};
+static async_when_pending_worker_t key_pressed_worker =
+  {
+   .do_work = key_pressed_worker_func
+  };
 
 void key_pressed_func(void *param) {
   assert(param);
   int key = getchar_timeout_us(0); // get any pending key press but don't wait
-  if (key == 'd' || key == 'D') {
-    // We are probably in irq context so call wifi in a "worker"
-    async_context_set_work_pending(((TCP_SERVER_T*)param)->context, &key_pressed_worker);
-  }
+  if (key == 'd' || key == 'D')
+    {
+      // We are probably in irq context so call wifi in a "worker"
+      async_context_set_work_pending(((TCP_SERVER_T*)param)->context, &key_pressed_worker);
+    }
 }
 
-int wifi_main() {
+int wifi_main(void)
+{
   stdio_init_all();
-
+  
   TCP_SERVER_T *state = calloc(1, sizeof(TCP_SERVER_T));
-  if (!state) {
-    DEBUG_printf("failed to allocate state\n");
-    return 1;
-  }
+  if (!state)
+    {
+      DEBUG_printf("failed to allocate state\n");
+      return 1;
+    }
 
-  if (cyw43_arch_init()) {
-    DEBUG_printf("failed to initialise\n");
-    return 1;
-  }
-
+  if (cyw43_arch_init())
+    {
+      DEBUG_printf("failed to initialise\n");
+      return 1;
+    }
+  
   // Get notified if the user presses a key
   state->context = cyw43_arch_async_context();
   key_pressed_worker.user_data = state;
   async_context_add_when_pending_worker(cyw43_arch_async_context(), &key_pressed_worker);
+
   stdio_set_chars_available_callback(key_pressed_func, state);
 
   const char *ap_name = "SchoolsComputer";
@@ -392,38 +668,44 @@ int wifi_main() {
 
   // Start the dns server
   dns_server_t dns_server;
+
   dns_server_init(&dns_server, &state->gw);
 
-  if (!tcp_server_open(state, ap_name)) {
-    DEBUG_printf("failed to open server\n");
-    return 1;
-  }
-
+  if (!tcp_server_open(state, ap_name))
+    {
+      DEBUG_printf("failed to open server\n");
+      return 1;
+    }
+  
   state->complete = false;
-  while(!state->complete) {
-    // the following #ifdef is only here so this same example can be used in multiple modes;
-    // you do not need it in your code
+  
+  while(!state->complete)
+    {
+      // the following #ifdef is only here so this same example can be used in multiple modes;
+      // you do not need it in your code
 #if PICO_CYW43_ARCH_POLL
-    // if you are using pico_cyw43_arch_poll, then you must poll periodically from your
-    // main loop (not from a timer interrupt) to check for Wi-Fi driver or lwIP work that needs to be done.
-    cyw43_arch_poll();
-    // you can poll as often as you like, however if you have nothing else to do you can
-    // choose to sleep until either a specified time, or cyw43_arch_poll() has work to do:
-    cyw43_arch_wait_for_work_until(make_timeout_time_ms(1000));
+      // if you are using pico_cyw43_arch_poll, then you must poll periodically from your
+      // main loop (not from a timer interrupt) to check for Wi-Fi driver or lwIP work that needs to be done.
+      cyw43_arch_poll();
+      // you can poll as often as you like, however if you have nothing else to do you can
+      // choose to sleep until either a specified time, or cyw43_arch_poll() has work to do:
+      cyw43_arch_wait_for_work_until(make_timeout_time_ms(1000));
 #else
-    // if you are not using pico_cyw43_arch_poll, then Wi-FI driver and lwIP work
-    // is done via interrupt in the background. This sleep is just an example of some (blocking)
-    // work you might be doing.
-    //sleep_ms(1000);
-    drive_fsms();
-    serial_loop();
-    update_display();
-
+      // if you are not using pico_cyw43_arch_poll, then Wi-FI driver and lwIP work
+      // is done via interrupt in the background. This sleep is just an example of some (blocking)
+      // work you might be doing.
+      //sleep_ms(1000);
+      drive_fsms();
+      serial_loop();
+      update_display();
+      
 #endif
-  }
+    }
+  
   tcp_server_close(state);
   dns_server_deinit(&dns_server);
   dhcp_server_deinit(&dhcp_server);
   cyw43_arch_deinit();
+  
   return 0;
 }
