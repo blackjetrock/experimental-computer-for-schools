@@ -23,14 +23,14 @@
 #include "../pico_main/esc_fsms.h"
 
 #include "../pico_main/esc.h"
-
+//E7E9EB
 
 #define KB_BODY "<!DOCTYPE html> \
 <html>  \
 <head>  \
 <style>  \
 body {  \
-  background-color:#E7E9EB;  \
+  background-color:#FFA500 ;  \
 }  \
   \
 #myDIV {  \
@@ -120,7 +120,7 @@ table {  \
 th, td {  \
   padding: 8px;  \
   text-align: left;  \
-  border-bottom: 1px solid #ddd;  \
+  <!-border-bottom: 1px solid #ddd;>  \
 }  \
  a:link {  \
   color: white;  \
