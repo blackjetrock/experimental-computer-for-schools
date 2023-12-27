@@ -1,3 +1,0 @@
-/tree/projects/github/escw/build/pioasm/CMakeFiles/rebuild_cache.dir
-/tree/projects/github/escw/build/pioasm/CMakeFiles/edit_cache.dir
-/tree/projects/github/escw/build/pioasm/CMakeFiles/pioasm.dir

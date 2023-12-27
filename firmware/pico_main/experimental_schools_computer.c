@@ -331,7 +331,8 @@ void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
 {
   if( IS_SW_REGISTER(dest) )
     {
-      s->R[dest] = (REGISTER_SINGLE_WORD) literal;
+      s->R[dest] = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
+      
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -340,12 +341,18 @@ void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
     }
 }
 
+// Literal is always positive.
+
 void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int literal)
 {
   if( IS_SW_REGISTER(dest) )
     {
-      s->R[dest] = s->R[src] + (REGISTER_SINGLE_WORD) literal;
-      s->R[dest] = single_sum_normalise(s->R[dest]);
+      REGISTER_SINGLE_WORD t;
+
+      t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
+      
+      s->R[dest] = bcd_sw_addition(s->R[src], t);
+      //      s->R[dest] = single_sum_normalise(s->R[dest]);
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -358,8 +365,12 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
 {
   if( IS_SW_REGISTER(dest) )
     {
-      s->R[dest] = (REGISTER_SINGLE_WORD) bcd_sw_addition(literal, invert_sw_sign(s->R[src]));
-      s->R[dest] = single_sum_normalise(s->R[dest]);
+      REGISTER_SINGLE_WORD t;
+
+      t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_MINUS);
+
+      s->R[dest] = bcd_sw_addition((REGISTER_SINGLE_WORD) literal, t);
+      //      s->R[dest] = single_sum_normalise(s->R[dest]);
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -373,7 +384,8 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
       s->R[dest] = bcd_sw_addition(s->R[src1], s->R[src2]);
-      s->R[dest] = single_sum_normalise(s->R[dest]);
+      
+      //s->R[dest] = single_sum_normalise(s->R[dest]);
       return;
     }
 
@@ -1835,13 +1847,34 @@ char *display_word(WORD w)
 char *display_register_single_word(REGISTER_SINGLE_WORD x)
 {
   static char result[MAX_LINE];
+  int s;
+  char sc;
   
   if( x == 0xFFFFFFFF )
     {
       return("        ");
     }
 
-  sprintf(result, "%08X", x);
+  // Get sign
+  s = SW_SIGN(x);
+
+  switch(s)
+    {
+    case WORD_SIGN_MINUS:
+      sc = '-';
+      break;
+      
+    case WORD_SIGN_PLUS:
+      sc = ' ';
+      break;
+      
+    default:
+      sc = '?';
+      break;
+    }
+  
+  x = REMOVED_SW_SIGN(x);
+  sprintf(result, "%c%07X", sc, x);
   return(result);
 }
 
@@ -1928,8 +1961,6 @@ char *display_presumptive_address_2(ESC_STATE *s)
 void update_display(void)
 {
   ESC_STATE *s= &esc_state;
-  
-
   char tmp[MAX_LINE*NUM_LINES+1];
   
   if( s->update_display )
@@ -2038,7 +2069,7 @@ int main(void)
 #endif
       drive_fsms();
       serial_loop();
-      update_display(&esc_state);
+      update_display();
     }
   
 #endif
