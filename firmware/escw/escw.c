@@ -23,6 +23,7 @@
 #include "../pico_main/esc_fsms.h"
 
 #include "../pico_main/esc.h"
+
 //E7E9EB
 // orange:background-color:#FFA500 ;
 
@@ -738,6 +739,24 @@ static err_t tcp_server_sent(void *arg, struct tcp_pcb *pcb, u16_t len) {
   return ERR_OK;
 }
 
+char *get_new_display(void)
+{
+  // Spin, processing FSM until display update flag is set, then
+  // get the display and return
+  int i = 0;
+
+  printf("\nTCP Wait");
+  while(/*(esc_state.update_display == 0) && */(i < 20))
+    {
+      drive_fsms();
+      update_display();
+      i++;
+    }
+
+  printf("\nTCP Wait done i=%d ud=%d",i, esc_state.update_display);
+  return(get_display());
+}
+
 static int test_server_content(TCP_CONNECT_STATE_T *con_state, const char *request, const char *params, char *result, size_t max_result_len)
 {
   int len = 0;
@@ -816,11 +835,11 @@ static int test_server_content(TCP_CONNECT_STATE_T *con_state, const char *reque
     // Generate result
     if (led_state)
       {
-	len = snprintf(result, max_result_len, KB_BODY, get_display());
+	len = snprintf(result, max_result_len, KB_BODY, get_new_display());
       }
     else
       {
-	len = snprintf(result, max_result_len, KB_BODY, get_display());
+	len = snprintf(result, max_result_len, KB_BODY, get_new_display());
       }
 
 
