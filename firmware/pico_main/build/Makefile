@@ -316,6 +316,30 @@ match_token.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/match_token.c.s
 .PHONY : match_token.c.s
 
+oled.obj: oled.c.obj
+.PHONY : oled.obj
+
+# target to build an object file
+oled.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/oled.c.obj
+.PHONY : oled.c.obj
+
+oled.i: oled.c.i
+.PHONY : oled.i
+
+# target to preprocess a source file
+oled.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/oled.c.i
+.PHONY : oled.c.i
+
+oled.s: oled.c.s
+.PHONY : oled.s
+
+# target to generate assembly for a file
+oled.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/oled.c.s
+.PHONY : oled.c.s
+
 tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj: tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
 .PHONY : tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj
 
@@ -1920,6 +1944,9 @@ help:
 	@echo "... match_token.obj"
 	@echo "... match_token.i"
 	@echo "... match_token.s"
+	@echo "... oled.obj"
+	@echo "... oled.i"
+	@echo "... oled.s"
 	@echo "... tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj"
 	@echo "... tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.i"
 	@echo "... tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.s"

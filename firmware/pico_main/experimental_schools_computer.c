@@ -34,11 +34,101 @@
 #include "pico/multicore.h"
 #include "pico/bootrom.h"
 
+#include "oled.h"
 
 #include "fsms.h"
 #include "esc_fsms.h"
 
 #include "esc.h"
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// GPIOs
+//
+
+// KBD
+const int PIN_KBD_DRV0 =  0;
+const int PIN_KBD_DRV1 =  1;
+const int PIN_KBD_DRV2 =  2;
+const int PIN_KBD_DRV3 =  3;
+
+const int PIN_KBD_SENS0 =   4;
+const int PIN_KBD_SENS1 =   5;
+const int PIN_KBD_SENS2 =   6;
+const int PIN_KBD_SENS3 =   7;
+const int PIN_KBD_SENS4 =   8;
+const int PIN_KBD_SENS5 =   9;
+const int PIN_KBD_SENS6 =  10;
+
+//------------------------------------------------------------------------------
+//
+// Set up GPIOs for the keyboard
+
+void kbd_gpio_drv(const int gpio)
+{
+  gpio_init(gpio);
+  gpio_set_dir(gpio, GPIO_OUT);
+}
+
+void kbd_gpio_sens(const int gpio)
+{
+  gpio_init(gpio);
+  gpio_set_dir(gpio, GPIO_IN);
+  gpio_set_pulls (PIN_KBD_SENS0, 0, 1);
+}
+
+const int kbd_drv_gpios[] =
+  {
+   PIN_KBD_DRV0,   
+   PIN_KBD_DRV1,   
+   PIN_KBD_DRV2,   
+  };
+
+#define NUM_KBD_DRV (sizeof(kbd_drv_gpios)/sizeof(const int))
+
+const int kbd_sens_gpios[] =
+  {
+   PIN_KBD_SENS0,   
+   PIN_KBD_SENS1,   
+   PIN_KBD_SENS2,   
+   PIN_KBD_SENS3,   
+   PIN_KBD_SENS4,   
+   PIN_KBD_SENS5,   
+   PIN_KBD_SENS6,
+  };
+
+#define NUM_KBD_SENS (sizeof(kbd_sens_gpios)/sizeof(const int))
+
+void set_kbd_gpios(void)
+{
+  kbd_gpio_drv(PIN_KBD_DRV0);
+  kbd_gpio_drv(PIN_KBD_DRV1);
+  kbd_gpio_drv(PIN_KBD_DRV2);
+
+  kbd_gpio_sens(PIN_KBD_SENS0);
+  kbd_gpio_sens(PIN_KBD_SENS1);
+  kbd_gpio_sens(PIN_KBD_SENS2);
+  kbd_gpio_sens(PIN_KBD_SENS3);
+  kbd_gpio_sens(PIN_KBD_SENS4);
+  kbd_gpio_sens(PIN_KBD_SENS5);
+  kbd_gpio_sens(PIN_KBD_SENS6);
+    
+}
+
+int kbd_read_sense(void)
+{
+  int res = 0;
+  
+  for(int i=0; i<NUM_KBD_SENS; i++)
+    {
+      if( gpio_get(kbd_sens_gpios[i]) )
+	{
+	  res |= 1<<i;
+	}
+    }
+  return(res);
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1570,6 +1660,9 @@ void cli_load_test_code_2(void)
   // Stop Executing
   s->store[i++] = 0x06510751;
 
+  // Floating point
+  s->store[i++] = 0xB5314159;
+
 }
 
 // We have two flags:
@@ -1593,6 +1686,41 @@ void cli_stop(void)
   s->update_display = 0;
 
   queue_token(TOK_KEY_STOP);
+}
+
+void cli_key_key_test(void)
+{
+  int key;
+  
+  printf("\nKey test");
+
+      
+  while(1)
+    {
+      if( ((key = getchar_timeout_us(1000)) != PICO_ERROR_TIMEOUT))
+	{
+	  switch(key)
+	    {
+	    case '0':
+	    case '1':
+	    case '2':
+	    case '3':
+	      for(int i=0; i<NUM_KBD_DRV; i++)
+		{
+		  gpio_put(kbd_drv_gpios[i], 0);
+		}
+	      
+	      gpio_put(kbd_drv_gpios[key-'0'], 1);
+	      break;
+	      
+	    default:
+	      return;
+	      break;
+	    }
+	}
+      
+      printf("\n%d", kbd_read_sense());
+    }
 }
 
 
@@ -1763,6 +1891,11 @@ SERIAL_COMMAND serial_cmds[] =
     "C",
     cli_key_c,
    },
+   {
+    '%',
+    "Key test",
+    cli_key_key_test,
+   },
   };
 
 
@@ -1916,6 +2049,65 @@ char *display_address(REGISTER_SINGLE_WORD x)
   return(result);
 }
 
+char *display_instruction(WORD inst)
+{
+  static char result[MAX_LINE];
+  
+  sprintf(result, "%08X", inst);
+
+  return(result);
+}
+
+// Store can hold floating point or instruction
+
+char *display_store_word(WORD w)
+{
+  static char result[MAX_LINE];
+  static char result2[MAX_LINE];
+
+  int digit_a = INST_A_FIELD(w);
+  int digit_b = INST_B_FIELD(w);
+  
+  char sign_char = ' ';
+  
+  switch(digit_a)
+    {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+      // Instruction
+      sprintf(result, "%08X", w);
+      break;
+
+    default:
+      // Floating point
+      switch(digit_a)
+	{
+	case WORD_SIGN_MINUS:
+	  sign_char = '-';
+	  break;
+
+	default:
+	  break;
+	}
+
+      sprintf(result, "%c06X", sign_char, w);
+
+      // Insert deimal point
+      strncpy(result2, result, digit_b + 1);
+      strcat(result2, ".");
+      strcat(result2, result+digit_b+1+1);
+
+      break;
+    }
+}
 
 char *display_iar(IAR iar)
 {
@@ -1962,6 +2154,7 @@ void update_display(void)
 {
   ESC_STATE *s= &esc_state;
   char tmp[MAX_LINE*NUM_LINES+1];
+  int oledy = 0;
   
   if( s->update_display )
     {
@@ -1984,6 +2177,17 @@ void update_display(void)
 	     display_register_single_word(s->keyboard_register));
       strcat(dsp, tmp);
       
+#if OLED_ON
+      oled_clear_display(&oled0);
+      sprintf(tmp, "%02s   %8s",
+	     display_iar(s->iar),
+	     display_register_single_word(s->keyboard_register));
+
+      oled_set_xy(&oled0, 0, oledy);
+      oledy+=8;
+      oled_display_string(&oled0, tmp);
+#endif
+      
       // Line 2
       if( s->ki_reset_flag )
 	{
@@ -1993,17 +2197,53 @@ void update_display(void)
 	{
 	  sprintf(tmp, "\n2: %2s   %8s%c",
 		 display_iar(s->aux_iar),
-		 display_register_single_word(s->instruction_register),
+		 display_instruction(s->instruction_register),
 		 s->stage
 		 );
 	}
+
+#if OLED_ON
+      if( s->ki_reset_flag )
+	{
+	  sprintf(tmp, "%c",s->ki_reset_flag?'K':' ');
+	}
+      else
+	{
+	  sprintf(tmp, "%2s   %8s%c",
+		 display_iar(s->aux_iar),
+		 display_instruction(s->instruction_register),
+		 s->stage
+		 );
+	}
+
+      oled_set_xy(&oled0, 0, oledy);
+      oledy+=8;
+      oled_display_string(&oled0, tmp);
+#endif
+
       strcat(dsp, tmp);
       
       // Line 3
       sprintf(tmp, "\n3: %s",  display_presumptive_address_1(s));
       strcat(dsp, tmp);
+
+#if OLED_ON
+      sprintf(tmp, "%s",  display_presumptive_address_1(s));
+      oled_set_xy(&oled0, 0, oledy);
+      oledy+=8;
+      
+      oled_display_string(&oled0, tmp);
+#endif
+
       sprintf(tmp, "\n4: %s",  display_presumptive_address_2(s));
       strcat(dsp, tmp);
+
+#if OLED_ON
+      sprintf(tmp, "%s",  display_presumptive_address_2(s));
+      oled_set_xy(&oled0, 0, oledy);
+      oledy+=8;
+      oled_display_string(&oled0, tmp);
+#endif
       
       sprintf(tmp, "\n5: ");
       strcat(dsp, tmp);
@@ -2016,12 +2256,42 @@ void update_display(void)
 	}
       strcat(dsp, tmp);
 
+#if OLED_ON
+      if( s->address_register2 != 0xFFFFFFFF )
+	{
+	  WORD w = s->store[s->address_register2];
+	  sprintf(tmp, "%s     %8s", display_address(s->address_register2), display_word(w));
+	}
+
+      oled_set_xy(&oled0, 0, oledy);
+      oledy+=8;
+      oled_display_string(&oled0, tmp);
+#endif
+
       // Now update the display output device(s)
       printf("\n%s\n", dsp);
     }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+#if 0
+I2C_PORT_DESC i2c_bus_0 =
+  {
+   0, 18,
+   0, 7,
+  };
+
+#endif
+
+#if 0
+// Dummy structure
+I2C_SLAVE_DESC oled0 =
+  {
+   &i2c_bus_0,
+   0x78 >>1,
+  };
+
+#endif
 
 int main(void)
 {
@@ -2055,6 +2325,30 @@ int main(void)
   printf("\n                                  ********************************************");
   printf("\n");
 
+  // Set up GPIOs
+  set_kbd_gpios();
+  
+#if OLED_ON
+  // Set up OLED display
+  i2c_init(&i2c_bus_0);
+  
+  oled_setup(&oled0);
+#endif
+  
+#if OLED_ON
+  // Overall loop, which contains the polling loop and the menu loop
+  oled_clear_display(&oled0);
+  
+  oled_set_xy(&oled0, 20, 0);
+  oled_display_string(&oled0, "Experimental");
+
+  oled_set_xy(&oled0, 30, 8);
+  oled_display_string(&oled0, "Schools");
+
+  oled_set_xy(&oled0, 30, 16);
+  oled_display_string(&oled0, "Computer");
+#endif
+      
 #ifdef ESC_USE_WIFI
   printf("\n** Wifi Enabled **");
 	 

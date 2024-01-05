@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/experimental_schools_computer.dir/fsms.c.obj.d"
   "CMakeFiles/experimental_schools_computer.dir/match_token.c.obj"
   "CMakeFiles/experimental_schools_computer.dir/match_token.c.obj.d"
+  "CMakeFiles/experimental_schools_computer.dir/oled.c.obj"
+  "CMakeFiles/experimental_schools_computer.dir/oled.c.obj.d"
   "CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj"
   "CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj.d"
   "CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj"

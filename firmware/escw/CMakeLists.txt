@@ -25,6 +25,7 @@ add_executable(escw
   #picow_access_point.c
   dhcpserver/dhcpserver.c
   dnsserver/dnsserver.c
+  oled.c
   )
 #add_executable(escw
 #        picow_access_point.c
