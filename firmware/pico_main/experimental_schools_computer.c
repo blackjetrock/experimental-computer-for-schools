@@ -82,6 +82,7 @@ const int kbd_drv_gpios[] =
    PIN_KBD_DRV0,   
    PIN_KBD_DRV1,   
    PIN_KBD_DRV2,   
+   PIN_KBD_DRV3,   
   };
 
 #define NUM_KBD_DRV (sizeof(kbd_drv_gpios)/sizeof(const int))
@@ -104,6 +105,7 @@ void set_kbd_gpios(void)
   kbd_gpio_drv(PIN_KBD_DRV0);
   kbd_gpio_drv(PIN_KBD_DRV1);
   kbd_gpio_drv(PIN_KBD_DRV2);
+  kbd_gpio_drv(PIN_KBD_DRV3);
 
   kbd_gpio_sens(PIN_KBD_SENS0);
   kbd_gpio_sens(PIN_KBD_SENS1);
@@ -129,6 +131,207 @@ int kbd_read_sense(void)
   return(res);
 }
 
+// Scan the keyboard.
+// Drive each drive line and scan the sense lines, then feed the keycodes seen
+// into a simple state machine for debounce.
+// Debounce counts up to  press and dow to a release
+// Key codes injected into FSM on press
+
+#define NUM_KBD_T_SLOTS  10
+
+enum
+  {
+   KBD_DB_STATE_IDLE = 1,
+   KBD_DB_STATE_PRESSING,
+   KBD_DB_STATE_RELEASING,
+  };
+
+int kbd_t_slot = 0;
+int kbd_drv_i = 0;
+int kbd_sense = 0;
+int kbd_output_scan_code = 0;
+int kbd_last_output_scan_code = 0;
+int kbd_scan_code = 0;
+int kbd_last_scan_code = 0;
+int kbd_db_state = KBD_DB_STATE_IDLE;
+
+#define KBD_DB_COUNT_MAX 100
+int kbd_db_count = 0;
+
+void cli_kbd_dump(void)
+{
+  printf("\nKeyboard State\n");
+
+  printf("\nScan code:%03X Last scan code:%03X", kbd_scan_code, kbd_last_scan_code);
+  printf("\nOutput san code:%03X", kbd_output_scan_code);
+
+  printf("\nI:%d  T Slot:%d", kbd_drv_i, kbd_t_slot);
+  printf("\nSense:%02X", kbd_sense);
+}
+
+// Drive required sense line
+void kbd_drive(void)
+{
+  int i;
+
+  // Turn drive lines off
+  for(i=0; i<NUM_KBD_DRV; i++)
+    {
+      gpio_put(kbd_drv_gpios[i], 0);
+    }
+  
+  // Move to next drive line
+  kbd_drv_i = (kbd_drv_i + 1 ) % NUM_KBD_DRV;
+  
+  // Drive required line
+  gpio_put(kbd_drv_gpios[kbd_drv_i], 1);
+}
+
+// Send a keypress to the FSM
+
+struct _KEYMAP
+{
+  int scan_code;
+  TOKEN token;
+}
+  key_map[] =
+    {
+     {0x1C0, TOK_KEY_CLEAR},
+     {0x101, TOK_KEY_MINUS},
+     {0x102, TOK_KEY_DOT},
+     {0x090, TOK_KEY_0},
+     {0x104, TOK_KEY_1},
+     {0x108, TOK_KEY_2},
+     {0x110, TOK_KEY_3},
+     {0x120, TOK_KEY_4},
+     {0x140, TOK_KEY_5},
+     {0x081, TOK_KEY_6},
+     {0x082, TOK_KEY_7},
+     {0x084, TOK_KEY_8},
+     {0x088, TOK_KEY_9},
+     {0x010, TOK_KEY_DUMP},
+     {0x020, TOK_KEY_CHECK},
+     {0x040, TOK_KEY_RELOAD},
+
+     {0x1A0, TOK_KEY_NORMAL_RESET},
+     {0x002, TOK_KEY_KI_RESET},
+     {0x181, TOK_KEY_LOAD_IAR},
+     {0x182, TOK_KEY_LOAD_ADDR},
+     {0x190, TOK_KEY_INCR_ADDR},
+     {0x188, TOK_KEY_DECR_ADDR},
+     {0x184, TOK_KEY_LOAD_STORE},
+     {0x0A0, TOK_KEY_A},
+     {0x0C0, TOK_KEY_B},
+     {0x001, TOK_KEY_C},
+     {0x004, TOK_KEY_RUN},
+     {0x008, TOK_KEY_STOP},
+    };
+
+#define NUM_KEY_MAPS (sizeof(key_map)/sizeof(struct _KEYMAP))
+  
+void kbd_queue_key(int k)
+{
+  for(int i=0; i<NUM_KEY_MAPS; i++)
+    {
+      if( k == key_map[i].scan_code )
+	{
+	  queue_token(key_map[i].token);
+	  return;
+	}
+    }
+}
+
+// read scan code
+void kbd_read()
+{
+  // If the drive index is zero then reset the scan code
+  if( kbd_drv_i == 0 )
+    {
+      kbd_scan_code = 0;
+    }
+  
+  kbd_sense = kbd_read_sense();
+
+  // Only build scan code if a key is pressed
+  if( kbd_sense != 0 )
+    {
+      // Save last scan code
+      kbd_last_scan_code = kbd_scan_code;
+      
+      // Build scan code
+      kbd_scan_code = (kbd_drv_i << 7) | kbd_sense;
+    }
+  else
+    {
+    }
+
+  // On last drive, process the scan
+  if(kbd_drv_i == (NUM_KBD_DRV - 1))
+    {
+      // Copy scan code over
+      kbd_output_scan_code = kbd_scan_code;
+
+      // If scan code is different to the last scan code then if it is non zero,
+      // inject a keycode into the main FSM
+      if( (kbd_last_output_scan_code != kbd_output_scan_code) && (kbd_output_scan_code != 0) )
+	{
+	  //printf("\nKey:%03X", kbd_output_scan_code);
+	  kbd_queue_key(kbd_output_scan_code);
+	}
+
+      kbd_last_output_scan_code = kbd_output_scan_code;
+    }
+
+}
+
+void kbd_debounce(void)
+{
+  // Key pressed?
+  if( kbd_scan_code == 0 )
+    {
+      // No key pressed now
+      // Count down
+      if( kbd_db_count > 0 )
+	{
+	  kbd_db_count--;
+	}
+    }
+  else
+    {
+      // Key pressed now
+      // If same key pressed as last scan then count up, else count down
+      if( kbd_scan_code == kbd_last_scan_code )
+	{
+	  if( kbd_db_count < KBD_DB_COUNT_MAX )
+	    {
+	      kbd_db_count++;
+	    }
+	}
+      else
+	{
+	  if( kbd_db_count > 0 )
+	    {
+	      kbd_db_count--;
+	    }
+	}
+    }
+}
+
+void kbd_scan(void)
+{
+  kbd_t_slot = (kbd_t_slot + 1 ) % NUM_KBD_T_SLOTS;
+
+  switch(kbd_t_slot)
+    {
+    case 1:
+      kbd_drive();
+      break;
+
+    case 9:
+      kbd_read();      
+      break;
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1693,7 +1896,6 @@ void cli_key_key_test(void)
   int key;
   
   printf("\nKey test");
-
       
   while(1)
     {
@@ -1895,6 +2097,11 @@ SERIAL_COMMAND serial_cmds[] =
     '%',
     "Key test",
     cli_key_key_test,
+   },
+   {
+    '|',
+    "KBD Dump",
+    cli_kbd_dump,
    },
   };
 
@@ -2361,6 +2568,7 @@ int main(void)
 #if DEBUG_LOOP
       printf("\nLoop");
 #endif
+      kbd_scan();
       drive_fsms();
       serial_loop();
       update_display();
