@@ -808,7 +808,7 @@ void oled_error(char *str)
   oled_set_xy(&oled0, 0,0);
   oled_display_string(&oled0, str);
 
-  loop_delay(3000000);
+  sleep_ms(3000);
 }
 
 void oled_setup(I2C_SLAVE_DESC *slave)

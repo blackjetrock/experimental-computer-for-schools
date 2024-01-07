@@ -33,7 +33,7 @@
 #define WORD_SIGN_MINUS        0xB
 #define WORD_SIGN_NONE         0xF
 
-typedef uint32_t WORD;
+typedef uint32_t SINGLE_WORD;
 typedef uint64_t DOUBLE_WORD;
 typedef uint32_t REGISTER_SINGLE_WORD;
 typedef uint64_t REGISTER_DOUBLE_WORD;
@@ -96,17 +96,17 @@ typedef struct _IAR
 typedef struct _ESC_STATE
 {
   // Main store
-  WORD store[STORE_SIZE];
+  SINGLE_WORD store[STORE_SIZE];
 
   REGISTER_SINGLE_WORD  R[NUM_WORD_REGISTERS];
   REGISTER_DOUBLE_WORD RD[NUM_DBL_WORD_REGISTERS];
   
-  WORD    keyboard_register;
+  SINGLE_WORD    keyboard_register;
   ADDRESS address_register0;
   ADDRESS address_register1;
   ADDRESS address_register2;
 
-  WORD    instruction_register;
+  SINGLE_WORD    instruction_register;
 
   IAR iar;
   IAR aux_iar;

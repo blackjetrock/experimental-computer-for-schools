@@ -8,13 +8,16 @@ set(CMAKE_CXX_STANDARD 17)
 
 # initalize pico_sdk from installed location
 # (note this can come from environment, CMake cache etc)
-set(PICO_SDK_PATH "/tree/downloaded_tools/pico/pico-sdk")
+set(PICO_SDK_PATH    "/tree/downloaded_tools/pico/pico-sdk")
+set(PICO_EXTRAS_PATH "/tree/downloaded_tools/pico/pico-extras")
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
+include(pico_extras_import.cmake)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g")
 project(experimental_schools_computer C CXX ASM)
+
 set(PICO_COPY_TO_RAM 1)
 set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 
@@ -26,7 +29,7 @@ add_compile_definitions(PICO_USE_STACK_GUARDS=1)
 pico_sdk_init()
 
 # SD FAT LIB
-#add_subdirectory(/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI build)
+add_subdirectory(/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI build)
 
 # Add executable. Default name is the project name, version 0.1
 
@@ -36,6 +39,8 @@ add_executable(experimental_schools_computer
   esc_fsms.c
   match_token.c
   oled.c
+  sdcard.c
+
   )
 
 #add_library( gcc111libbid_hard UNKNOWN IMPORTED)
@@ -53,8 +58,9 @@ pico_enable_stdio_usb(experimental_schools_computer 1)
 target_link_libraries(experimental_schools_computer pico_stdlib )
 
 IF (NOT DEFINED N_SD_CARDS)
-    SET(N_SD_CARDS 1)
+  SET(N_SD_CARDS 1)
 ENDIF()
+
 target_compile_definitions(experimental_schools_computer PUBLIC N_SD_CARDS=${N_SD_CARDS})
 
 # Add any user requested libraries
@@ -65,9 +71,9 @@ target_link_libraries(experimental_schools_computer
         hardware_clocks
 	hardware_adc
 	hardware_dma
-#        pico_sd_card
+        pico_sd_card
         pico_multicore
-#	FatFs_SPI
+	FatFs_SPI
         )
 
 pico_add_extra_outputs(experimental_schools_computer)

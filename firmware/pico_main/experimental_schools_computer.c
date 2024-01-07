@@ -6,7 +6,12 @@
 //
 // Simulates the IBM experimental schools computer
 //
-// 
+// Runs on RP Pico
+// 0.96" OLED display
+// tactile switch keys
+//
+// USB CLI
+// Wifi hot spot with screen display 
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -35,6 +40,7 @@
 #include "pico/bootrom.h"
 
 #include "oled.h"
+#include "sdcard.h"
 
 #include "fsms.h"
 #include "esc_fsms.h"
@@ -227,7 +233,7 @@ struct _KEYMAP
      {0x008, TOK_KEY_STOP},
     };
 
-#define NUM_KEY_MAPS (sizeof(key_map)/sizeof(struct _KEYMAP))
+#define NUM_KEY_MAPS (sizeof(key_map)/sizeof( struct _KEYMAP))
   
 void kbd_queue_key(int k)
 {
@@ -609,7 +615,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 
 ////////////////////////////////////////////////////////////////////////////////
 
-WORD load_from_store(ESC_STATE *s, ADDRESS address)
+SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address)
 {
   return(s->store[address]);
 }
@@ -2175,7 +2181,7 @@ void prompt(void)
 
 // Spaces if empty or the value (in hex)
 
-char *display_word(WORD w)
+char *display_word(SINGLE_WORD w)
 {
   static char result[MAX_LINE];
   
@@ -2256,7 +2262,7 @@ char *display_address(REGISTER_SINGLE_WORD x)
   return(result);
 }
 
-char *display_instruction(WORD inst)
+char *display_instruction(SINGLE_WORD inst)
 {
   static char result[MAX_LINE];
   
@@ -2267,7 +2273,7 @@ char *display_instruction(WORD inst)
 
 // Store can hold floating point or instruction
 
-char *display_store_word(WORD w)
+char *display_store_word(SINGLE_WORD w)
 {
   static char result[MAX_LINE];
   static char result2[MAX_LINE];
@@ -2458,7 +2464,7 @@ void update_display(void)
       // Line 6
       if( s->address_register2 != 0xFFFFFFFF )
 	{
-	  WORD w = s->store[s->address_register2];
+	  SINGLE_WORD w = s->store[s->address_register2];
 	  sprintf(tmp, "\n6: %s     %8s", display_address(s->address_register2), display_word(w));
 	}
       strcat(dsp, tmp);
@@ -2466,7 +2472,7 @@ void update_display(void)
 #if OLED_ON
       if( s->address_register2 != 0xFFFFFFFF )
 	{
-	  WORD w = s->store[s->address_register2];
+	  SINGLE_WORD w = s->store[s->address_register2];
 	  sprintf(tmp, "%s     %8s", display_address(s->address_register2), display_word(w));
 	}
 
@@ -2542,6 +2548,37 @@ int main(void)
   oled_setup(&oled0);
 #endif
   
+  // Sets sd_ok flag for later use
+#if SD_ON   
+
+  printf("\nInitialising SD card driver...");
+
+#define SD_CARD 1
+
+  // Initialise SD card driver
+  sd_init_driver();
+
+  // Mount and unmount the SD card to set the sd_ok_flag up
+  mount_sd();
+  unmount_sd();
+  
+  oled_set_xy(&oled0, 0,21);
+  if( sd_ok_flag )
+    {
+      oled_display_string(&oled0, "SD card OK");
+      printf("\nSD card OK");
+    }
+  else
+    {
+      oled_display_string(&oled0, "SD card NOT OK");
+      printf("\nSD card NOT OK");
+    }
+  
+  sleep_ms(3000);
+#endif
+
+
+
 #if OLED_ON
   // Overall loop, which contains the polling loop and the menu loop
   oled_clear_display(&oled0);

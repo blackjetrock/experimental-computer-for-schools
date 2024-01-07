@@ -6,3 +6,4 @@
 *.elf.map
 *.obj
 *.obj.d
+pico_main/build

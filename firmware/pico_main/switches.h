@@ -6,4 +6,5 @@
 #define DEBUG_SW_BCD_SUM       0
 
 #define OLED_ON                1
+#define SD_ON                  1
 
