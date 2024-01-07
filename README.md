@@ -16,4 +16,8 @@ switches. The Pico can be a PicoW, in which case a WiFi access point is generate
 
 <h1>Wifi Version</h1>
 This version has a USB interface, and a Wifi interface (it generates a hot spot). The USB interface still works. The Wifi page shows the display and allows control from a web page. This version of the code runs on a Pico W and generates it's own access point.
+If building for a Pico W then use this command line:
+
+
+to initialise the build directory.
 
