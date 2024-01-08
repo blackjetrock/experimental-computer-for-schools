@@ -16,13 +16,13 @@
 #define PICO_SD_DAT0_PIN      19
 #define ENABLE_4_PIN           0
 
-#define PAK_DIR                "/ESC"
-
 typedef int boolean;
 
 extern boolean sd_ok_flag;
+extern char sd_error[200];
 
 void mount_sd(void);
 void unmount_sd(void);
-
+int cd_to_dir(char *to_dir);
+int file_list(char *dir);
 

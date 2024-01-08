@@ -11,6 +11,7 @@
 #include "sdcard.h"
 
 boolean sd_ok_flag = false;
+char sd_error[200];
 
 #if 0
 void oled_error(char *msg)
@@ -41,7 +42,7 @@ void mount_sd(void)
   
   if (FR_OK != fr)
     {
-      oled_error("Mount error");
+      sprintf(sd_error, "Mount error");
       return;
     }
 
@@ -53,35 +54,30 @@ void unmount_sd(void)
   f_unmount("0:");
 }
 
-#if 0
-void button_list(void)
+#if 1
+int file_list(char *dir)
 {
   int file_n = 0;
-  num_listfiles = 0;
+  int num_listfiles = 0;
   int i;
   
   char cwdbuf[FF_LFN_BUF] = {0};
   FRESULT fr;
   char const *p_dir;
 
-  //DEBUG_STOP;
-
   mount_sd();
   
-  if( cd_to_pak_dir(&oled0) )
-    {
-      unmount_sd();
-      return;
-    }
-
   f_chdrive("0:");
+
+  cd_to_dir(dir);
+  
   fr = f_getcwd(cwdbuf, sizeof cwdbuf);
 
   if (FR_OK != fr)
     {
-      printf("f_getcwd error: %s (%d)\n", FRESULT_str(fr), fr);
+      sprintf(sd_error, "f_getcwd error: %s (%d)\n", FRESULT_str(fr), fr);
       unmount_sd();
-      return;    f_chdrive("0:");
+      return(0);
     }
   
   p_dir = cwdbuf;
@@ -98,12 +94,12 @@ void button_list(void)
 
   if (FR_OK != fr)
     {
-      printf("f_findfirst error: %s (%d)\n", FRESULT_str(fr), fr);
+      sprintf(sd_error, "f_findfirst error: %s (%d)\n", FRESULT_str(fr), fr);
       unmount_sd();
-      return;
+      return(0);
     }
   
-  while( (fr == FR_OK) && fno.fname[0] && (num_listfiles < MAX_LISTFILES) )
+  while( (fr == FR_OK) && fno.fname[0]  )
     { 
       if (fno.fattrib & AM_DIR)
 	{
@@ -114,7 +110,7 @@ void button_list(void)
 	  char extension[40];
 	  char name[80];
 	   
-	  // If the file has an extension of .opk then display it
+	  // If the file has an extension of .esc then display it
 	  // otherwise ignore.
 	  extension[0] = '\0';
 
@@ -122,26 +118,9 @@ void button_list(void)
 	  
 	  if( sscanf(fno.fname, "%[^.].%s", name, extension) )
 	    {
-	      if( strcmp(extension, "opk") == 0 )
+	      if( strcmp(extension, "esc") == 0 )
 		{
-		  // Create a new menu element
-		  // we also don't want to display anything before the offset
-		  if( file_n >= file_offset )
-		    {
-		      // It is an opk file so display it
-		      strncpy(&(names[num_listfiles][0]), fno.fname, MAX_NAME);
-		       
-		      //	display.println(&(names[nu);
-		      listfiles[num_listfiles].text = &(names[num_listfiles][0]);
-		      listfiles[num_listfiles].type = BUTTON_ELEMENT;
-		      listfiles[num_listfiles].submenu = NULL;
-		      listfiles[num_listfiles].function = button_select_file;
-		       
-		      num_listfiles++;
-		    }
-		  
-		  // Next file
-		  file_n++;
+		  printf(" ESC");
 		}
 	    }
 	}
@@ -152,103 +131,55 @@ void button_list(void)
 
   printf("\n");
   
-  // terminate the menu
-  listfiles[num_listfiles].text = "";
-  listfiles[num_listfiles].type = MENU_END;
-  listfiles[num_listfiles].submenu = NULL;
-  listfiles[num_listfiles].function = button_select_file;
-
-
-#if 1// We know how big the menu is now
-  if( num_listfiles != 0 )
-    {
-      file_menu_size = num_listfiles;
-    }
-#endif
-
-  // Button actions modified
-  buttons[0].event_fn = but_ev_up;
-  buttons[1].event_fn = but_ev_down;
-  buttons[2].event_fn = but_ev_file_select;
-
-  // Set up menu of file names
-  current_menu = &(listfiles[0]);
-  draw_menu(&oled0, current_menu, false);
-
   unmount_sd();
+  return(1);
 }
 #endif
 
-int cd_to_pak_dir(void)
+// Change to directory
+// 0 on error, 1 on success
+
+int cd_to_dir(char *to_dir)
 {
   char line[40];
   FRESULT fr;
   char cwdbuf[FF_LFN_BUF] = {0};
   char const *p_dir;
-
-  //DEBUG_STOP
-
+  
   f_chdrive("0:");
-
-#if 0
+  
   // Are we in the pak directory already?
   fr = f_getcwd(cwdbuf, sizeof cwdbuf);
+  
   if (FR_OK != fr)
     {
-      oled_clear_display(slave);
-      oled_set_xy(slave, 0, 0);
-      sprintf(line, "cwd error");
-      oled_display_string(slave, line);
-
-      oled_set_xy(slave, 0, 8);
-      sprintf(line, "cwd:'%s'", cwdbuf);
-      oled_display_string(slave, line);
-      
-      return;
+      sprintf(sd_error, "getcwd error %d", fr);
+      return(0);
     }
-
-  if( strcmp(cwdbuf, PAK_DIR) != 0 )
+  
+  if( strcmp(cwdbuf, to_dir) != 0 )
     {
-#endif
-      
       // Change to the PAK directory
-      fr = f_chdir(PAK_DIR);
+      fr = f_chdir(to_dir);
+      
       if (FR_OK != fr)
 	{
-	  printf("\nError opening directory");
+	  sprintf(sd_error, "Error opening directory %d", fr);
+	  return(0);
 	}
-      
-#if 0
-      if (FR_OK != fr)
-	{
-	  oled_clear_display(slave);
-	  oled_set_xy(slave, 0, 0);
-	  sprintf(line, "Error opening");
-	  oled_display_string(slave, line);
-	  
-	  oled_set_xy(slave, 0, 8);
-	  sprintf(line, "directory");
-	  oled_display_string(slave, line);
-	  
-	  oled_set_xy(slave, 0, 16);
-	  sprintf(line, PAK_DIR);
-	  oled_display_string(slave, line);
-	  loop_delay(3000000);      
-	  return(1);
-	}
-#endif
-      
-#if 0      
     }
-#endif
-  return(0);
+  
+  return(1);
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Read and process the config file
 //
 ////////////////////////////////////////////////////////////////////////////////
 #if 0
+
 void process_config_file(I2C_SLAVE_DESC *slave)
 {
   char line[40];
@@ -500,6 +431,7 @@ void core_read(I2C_SLAVE_DESC *slave, char * arg)
   unmount_sd();
 }
 
+////////////////////////////////////////////////////////////////////////////////
 // Writes the buffer to a file.
 // Deletes any file that exists with the same name so that the resulting
 // file is the same size as the buffer

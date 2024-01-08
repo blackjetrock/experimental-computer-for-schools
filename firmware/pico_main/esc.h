@@ -28,6 +28,7 @@
 #define DISPLAY_NO_UPDATE      0
 #define MAX_LINE               16
 #define NUM_LINES              6
+#define MAX_FILE_LINE          200
 
 #define WORD_SIGN_PLUS         0xA
 #define WORD_SIGN_MINUS        0xB
@@ -164,5 +165,13 @@ int wifi_main(void);
 
 ////////////////////////////////////////////////////////////////////////////////
 
+#define ESC_DIR "/ESC"
 
-  
+typedef void (*FIELD_WORK_FN)(ESC_STATE *es, void *fi, char *line);
+
+typedef struct _FIELD_INFO
+{
+  char *name;
+  FIELD_WORK_FN fn;
+} FIELD_INFO;
+

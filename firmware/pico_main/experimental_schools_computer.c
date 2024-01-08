@@ -48,6 +48,14 @@
 #include "esc.h"
 
 ////////////////////////////////////////////////////////////////////////////////
+
+int write_state_to_file(ESC_STATE *es, char *fn);
+int read_file_into_state(char *fn, ESC_STATE *es);
+int cat_file(char *fn);
+
+void wfn_iar_address(ESC_STATE *es, void *fi, char *line);
+
+////////////////////////////////////////////////////////////////////////////////
 //
 // GPIOs
 //
@@ -1931,6 +1939,236 @@ void cli_key_key_test(void)
     }
 }
 
+void cli_file_list(void)
+{
+  if( !file_list(ESC_DIR) )
+    {
+      printf("\n\nError %s", sd_error);
+    }
+
+  // Write state
+  write_state_to_file(&esc_state, "state.esc");
+
+  cat_file("state.esc");
+}
+
+void cli_file_read_state(void)
+{
+  read_file_into_state("state.esc", &esc_state);
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Reads and prints a file
+//
+
+int cat_file(char *fn)
+{
+  char line[MAX_FILE_LINE];
+  char fileline[MAX_FILE_LINE];
+
+  mount_sd();
+  
+  if( !cd_to_dir(ESC_DIR) )
+    {
+      unmount_sd();
+      return(0);
+    }
+  
+  sprintf("Reading '%s'", fn);
+
+  FF_FILE *fp = ff_fopen(fn, "r");
+
+  if (fp == NULL)
+    {
+      printf("Failed to open:%s", fn);
+      unmount_sd();
+      return(0);
+    }
+  
+  // Get lines from the file
+  while( ff_fgets(&(fileline[0]), sizeof(fileline)-1, fp) != NULL )
+    {
+      printf("%s", fileline);
+    }
+  
+  ff_fclose(fp);
+  unmount_sd();
+  return(1);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Reads a state file and loads an ES state structure with that data
+//
+
+
+
+
+FIELD_INFO  field_info[] =
+  {
+   {"IAR_ADDRESS", wfn_iar_address},
+  };
+
+#define NUM_FIELD_INFO (sizeof(field_info)/sizeof(FIELD_INFO))
+
+void wfn_iar_address(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  
+  sscanf(line, "*IAR_ADDRESS:%X", &(es->iar.address));
+
+  printf("\nIAR address now:%08X", es->iar.address);
+}
+
+
+void read_state_field(char *line, ESC_STATE *es)
+{
+  char fieldname[MAX_FILE_LINE];
+  
+  // Ignore lines that don't start with a '*'
+  if( line[0] != '*' )
+    {
+      return;
+    }
+
+  // Get field name
+  sscanf(line, "*%[^:]:", fieldname);
+
+  // Process the field by name
+  for(int i=0; i<NUM_FIELD_INFO; i++)
+    {
+      if( strcmp(field_info[i].name, fieldname)==0 )
+	{
+	  printf("\nFound field %s", fieldname);
+	  (*field_info[i].fn)(&esc_state, &(field_info[i]), line);
+	}
+    }
+}
+
+  
+int read_file_into_state(char *fn, ESC_STATE *es)
+{
+  char line[MAX_FILE_LINE];
+  char fileline[MAX_FILE_LINE];
+
+  mount_sd();
+  
+  if( !cd_to_dir(ESC_DIR) )
+    {
+      unmount_sd();
+      return(0);
+    }
+  
+  sprintf("Reading '%s'", fn);
+
+  FF_FILE *fp = ff_fopen(fn, "r");
+
+  if (fp == NULL)
+    {
+      printf("Failed to open:%s", fn);
+      unmount_sd();
+      return(0);
+    }
+  
+  // Get lines from the file
+  while( ff_fgets(&(fileline[0]), sizeof(fileline)-1, fp) != NULL )
+    {
+      read_state_field(fileline, es);
+    }
+  
+  ff_fclose(fp);
+  unmount_sd();
+  return(1);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Writes the machine state to a file
+//
+// All files are written in the ESC directory
+
+int write_state_to_file(ESC_STATE *es, char *fn)
+{
+  char filename[20];
+  int i;
+  FRESULT fr;
+  FIL fp;
+  int bytes_written = 0;
+  char line[40];
+
+  sprintf(filename, "%s", fn);
+  
+  printf("\nWriting %s", filename);
+
+  mount_sd();
+  
+  if( !cd_to_dir(ESC_DIR) )
+    {
+      unmount_sd();
+      return(0);
+    }
+  
+  // Open file for writing
+  fr = f_open(&fp, filename, FA_CREATE_ALWAYS | FA_WRITE);
+
+  if (FR_OK != fr /*(&& FR_EXIST != fr)*/)
+    {
+      printf("Open error");
+      unmount_sd();
+      return(0);
+    }
+
+  f_printf(&fp, "# Experimental Schools Computer State File");
+
+  f_printf(&fp, "\n*IAR_ADDRESS:%08X", es->iar.address);
+  f_printf(&fp, "\n*IAR_A_FLAG:%08X",  es->iar.a_flag);
+  f_printf(&fp, "\n*KB_REGISTER:%08X", es->keyboard_register);
+  f_printf(&fp, "\n*ADDRESS_REGISTER_0:%08X", es->address_register0);
+  f_printf(&fp, "\n*ADDRESS_REGISTER_1:%08X", es->address_register1);
+  f_printf(&fp, "\n*ADDRESS_REGISTER_2:%08X", es->address_register2);
+
+  f_printf(&fp, "\n*INSTRUCTION_REGISTER:%08X", es->instruction_register);
+  f_printf(&fp, "\n*LINK_REGISTER:%08X",        es->link_register);
+    
+  for(int i=0;i<NUM_WORD_REGISTERS; i++)
+    {
+      f_printf(&fp, "\n*R%d:%08X", i, es->R[i]);
+    }
+
+  for(int i=0;i<NUM_DBL_WORD_REGISTERS; i++)
+    {
+      f_printf(&fp, "\n*R%d:%016lX", i+NUM_WORD_REGISTERS, es->R[i]);
+    }
+
+  f_printf(&fp, "\n*STORE:");
+  
+  for(int i=0; i<STORE_SIZE; i++)
+    {
+      if( (i % 8) == 0 )
+	{
+	  f_printf(&fp, "\n");
+	}
+      f_printf(&fp, "%08X ", es->store[i]);
+    }
+
+  f_printf(&fp, "\n");
+  fr = f_close(&fp);
+
+  if (FR_OK != fr)
+    {
+      printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
+      unmount_sd();
+      return(0);
+    }
+
+  unmount_sd();
+  
+  return(1);
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2109,6 +2347,17 @@ SERIAL_COMMAND serial_cmds[] =
     "KBD Dump",
     cli_kbd_dump,
    },
+   {
+    'F',
+    "File list",
+    cli_file_list,
+   },
+   {
+    'R',
+    "Read file into state",
+    cli_file_read_state,
+   },
+   
   };
 
 
@@ -2573,6 +2822,18 @@ int main(void)
       oled_display_string(&oled0, "SD card NOT OK");
       printf("\nSD card NOT OK");
     }
+
+  mount_sd();
+  if( !cd_to_dir("/ESC") )
+    {
+      printf("\nFailed to cd to /ESC directory");
+      printf("\n%s", sd_error);
+    }
+  else
+    {
+      printf("\n/ESC directory found");
+    }
+  unmount_sd();
   
   sleep_ms(3000);
 #endif
