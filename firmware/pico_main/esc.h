@@ -167,7 +167,7 @@ int wifi_main(void);
 
 #define ESC_DIR "/ESC"
 
-typedef void (*FIELD_WORK_FN)(ESC_STATE *es, void *fi, char *line);
+typedef int (*FIELD_WORK_FN)(ESC_STATE *es, void *fi, char *line);
 
 typedef struct _FIELD_INFO
 {
@@ -175,3 +175,4 @@ typedef struct _FIELD_INFO
   FIELD_WORK_FN fn;
 } FIELD_INFO;
 
+#define STORE_DATA_FILE_CHUNK_SIZE 8

@@ -53,7 +53,14 @@ int write_state_to_file(ESC_STATE *es, char *fn);
 int read_file_into_state(char *fn, ESC_STATE *es);
 int cat_file(char *fn);
 
-void wfn_iar_address(ESC_STATE *es, void *fi, char *line);
+int wfn_iar_address(ESC_STATE *es, void *fi, char *line);
+int wfn_iar_a_flag(ESC_STATE *es, void *fi, char *line);
+int wfn_kb_register(ESC_STATE *es, void *fi, char *line);
+int wfn_address_register(ESC_STATE *es, void *fi, char *line);
+int wfn_link_register(ESC_STATE *es, void *fi, char *line);
+int wfn_instruction_register(ESC_STATE *es, void *fi, char *line);
+int wfn_store_data(ESC_STATE *es, void *fi, char *line);
+int wfn_store(ESC_STATE *es, void *fi, char *line);
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -2004,25 +2011,189 @@ int cat_file(char *fn)
 // Reads a state file and loads an ES state structure with that data
 //
 
-
-
-
 FIELD_INFO  field_info[] =
   {
-   {"IAR_ADDRESS", wfn_iar_address},
+   {"*IAR_ADDRESS:",            wfn_iar_address},
+   {"*IAR_A_FLAG:",             wfn_iar_a_flag},
+   {"*KB_REGISTER:",            wfn_kb_register},
+   {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
+   {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
+   {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
+   {"*INSTRUCTION_REGISTER:",   wfn_instruction_register},
+   {"*LINK_REGISTER:",          wfn_link_register},
+   {"*LINK_REGISTER:",          wfn_store},
+   {"*LINK_REGISTER:",          wfn_store_data},
   };
 
 #define NUM_FIELD_INFO (sizeof(field_info)/sizeof(FIELD_INFO))
 
-void wfn_iar_address(ESC_STATE *es, void *fi, char *line)
+int wfn_iar_address(ESC_STATE *es, void *fi, char *line)
 {
   FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
   
-  sscanf(line, "*IAR_ADDRESS:%X", &(es->iar.address));
-
-  printf("\nIAR address now:%08X", es->iar.address);
+  if( sscanf(line, "*IAR_ADDRESS:%X", &value) == 1 )
+    {
+      es->iar.address = (ADDRESS)value;
+      
+      printf("\nIAR address now:%08X", es->iar.address);
+      return(1);
+    }
+  
+  return(0);
 }
 
+
+int wfn_iar_a_flag(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
+  
+  if( sscanf(line, "*IAR_A_FLAG:%X", &value) == 1 )
+    {
+      es->iar.a_flag = (BOOLEAN) value;
+      printf("\nIAR a_flag now:%08X", es->iar.a_flag);
+      return(1);
+    }
+  
+  return(0);
+}
+
+int wfn_kb_register(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value = 0;
+  
+  if( sscanf(line, "*KB_REGISTER:%X", &value) == 1 )
+    {
+      es->keyboard_register = (SINGLE_WORD)value;
+      
+      printf("\nKEYBOARD REGISTER now:%08X", es->keyboard_register);
+      return(1);
+    }
+
+  return(0);
+}
+
+int wfn_address_register(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int index;
+  int value;
+  
+  if( sscanf(line, "*ADDRESS_REGISTER_%d:%X", &index, &value) == 2 )
+    {
+      
+      switch(index)
+	{
+	case 0:
+	  es->address_register0 = (ADDRESS)value;
+	  break;
+	  
+	case 1:
+	  es->address_register1 = (ADDRESS)value;
+	  break;
+	  
+	case 2:
+	  es->address_register2 = (ADDRESS)value;
+	  break;
+	}
+      
+      printf("\nADDRESS_REGISTER_%d now:%08X", index, value);
+      return(1);
+    }
+
+  return(0);
+}
+
+int wfn_instruction_register(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
+  
+  if( sscanf(line, "*INSTRUCTION_REGISTER:%X", &value) == 1 )
+    {
+      es->instruction_register = (SINGLE_WORD) value;
+      printf("\nINSTRUCTION REGISTER now:%08X", es->instruction_register);
+      return(1);
+    }
+
+  return(0);
+}
+
+int wfn_link_register(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
+  
+  if( sscanf(line, "*LINK_REGISTER:%X", &value) == 1 )
+    {
+      es->link_register = (ADDRESS)value;
+      
+      printf("\nLINK REGISTER now:%08X", es->link_register);
+      return(1);
+    }
+
+  return(0);
+}
+
+int reading_store_data = 0;
+int reading_store_index = 0;
+
+int wfn_store(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
+  
+  if( strncmp(line, "*STORE:", strlen("*STORE:")) == 0 )
+    {
+      // Now reading store data, set flag so store data function
+      // knows data is for it
+      reading_store_data = 1;
+      printf("\nReading store data");
+
+      return(1);
+    }
+
+  return(0);
+}
+
+int wfn_store_data(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
+  int d[STORE_DATA_FILE_CHUNK_SIZE];
+  
+  if( reading_store_data )
+    {
+      // If line is in correct format then we read it, otherwise turn off
+      // reading of data
+      if( sscanf(line, "*%X %X %X %X %X %X %X %X",
+		 &(d[0]), &(d[1]), &(d[2]), &(d[3]),
+		 &(d[4]), &(d[5]), &(d[6]), &(d[7])
+		 ) == 8 )
+	{
+	  for( int i=0; i<STORE_DATA_FILE_CHUNK_SIZE; i++)
+	    {
+	      es->store[reading_store_index++] = (SINGLE_WORD) d[i];
+	    }
+	  
+	  return(1);
+	}
+      else
+	{
+	  // Not correct format, data must have ended
+	  reading_store_data = 0;
+	  reading_store_index = 0;
+
+	  return(0);
+	}
+    }
+
+  return(0);
+}
+
+//------------------------------------------------------------------------------
 
 void read_state_field(char *line, ESC_STATE *es)
 {
@@ -2034,20 +2205,15 @@ void read_state_field(char *line, ESC_STATE *es)
       return;
     }
 
-  // Get field name
-  sscanf(line, "*%[^:]:", fieldname);
-
-  // Process the field by name
+  // Check each line against known statements
   for(int i=0; i<NUM_FIELD_INFO; i++)
     {
-      if( strcmp(field_info[i].name, fieldname)==0 )
+      if( (*field_info[i].fn)(&esc_state, &(field_info[i]), line ) )
 	{
-	  printf("\nFound field %s", fieldname);
-	  (*field_info[i].fn)(&esc_state, &(field_info[i]), line);
+	  break;
 	}
     }
 }
-
   
 int read_file_into_state(char *fn, ESC_STATE *es)
 {
@@ -2148,9 +2314,9 @@ int write_state_to_file(ESC_STATE *es, char *fn)
   
   for(int i=0; i<STORE_SIZE; i++)
     {
-      if( (i % 8) == 0 )
+      if( (i % STORE_DATA_FILE_CHUNK_SIZE) == 0 )
 	{
-	  f_printf(&fp, "\n");
+	  f_printf(&fp, "\n*");
 	}
       f_printf(&fp, "%08X ", es->store[i]);
     }
