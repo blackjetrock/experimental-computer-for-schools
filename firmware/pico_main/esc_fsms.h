@@ -79,5 +79,5 @@ char *name_of_token(TOKEN tok);
 enum
   {
    STATE_ESC_INIT = 1,
-   STATE_ESC_ENT,
+   STATE_ESC_RELOAD,
   };

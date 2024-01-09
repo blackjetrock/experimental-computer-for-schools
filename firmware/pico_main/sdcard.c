@@ -12,6 +12,7 @@
 
 boolean sd_ok_flag = false;
 char sd_error[200];
+int max_filenum = 0;
 
 #if 0
 void oled_error(char *msg)
@@ -560,3 +561,89 @@ void button_read(struct MENU_ELEMENT *e)
   draw_menu(&oled0, current_menu, true);
 }
 #endif
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+int find_next_file_number(char *dir,char *scan_fmt, char *print_fmt, char *glob)
+{
+  int file_n = 0;
+  int num_listfiles = 0;
+  int i;
+  
+  char cwdbuf[FF_LFN_BUF] = {0};
+  FRESULT fr;
+  char const *p_dir;
+
+  mount_sd();
+  
+  if( !cd_to_dir(dir) )
+    {
+      printf("\nCould not cd to '%s'", dir);
+      unmount_sd();
+      return(0);
+    }
+  
+  fr = f_getcwd(cwdbuf, sizeof cwdbuf);
+
+  // printf will print to console
+  if (FR_OK != fr)
+    {
+      printf("f_getcwd error: %s (%d)\n", FRESULT_str(fr), fr);
+      unmount_sd();
+      return(0);
+    }
+  
+  p_dir = cwdbuf;
+
+  printf("\nFile num search: %s\n", p_dir);
+  
+  DIR dj;      /* Directory object */
+  FILINFO fno; /* File information */
+
+  memset(&dj, 0, sizeof dj);
+  memset(&fno, 0, sizeof fno);
+
+  max_filenum = 0;
+  
+  fr = f_findfirst(&dj, &fno, p_dir, glob);
+
+  if (FR_OK != fr)
+    {
+      unmount_sd();
+      printf("\nf_findfirst error: %s (%d)\n", FRESULT_str(fr), fr);
+      return(0);
+    }
+  
+  while( (fr == FR_OK) && fno.fname[0])
+    { 
+      if (fno.fattrib & AM_DIR)
+	{
+	  // Directory, we ignore these
+	}
+      else
+	{
+	  int filenum = 0;
+	  sscanf(fno.fname, scan_fmt, &filenum);
+
+	  if( filenum > max_filenum )
+	    {
+	      max_filenum = filenum;
+	    }
+	}
+       
+      fr = f_findnext(&dj, &fno); /* Search for next item */
+    }
+  
+  f_closedir(&dj);
+  unmount_sd();
+
+  printf("\nMax file number found: %d", max_filenum);
+  return(1);
+}
+
+

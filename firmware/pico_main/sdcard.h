@@ -20,9 +20,10 @@ typedef int boolean;
 
 extern boolean sd_ok_flag;
 extern char sd_error[200];
+extern int max_filenum;
 
 void mount_sd(void);
 void unmount_sd(void);
 int cd_to_dir(char *to_dir);
 int file_list(char *dir);
-
+int find_next_file_number(char *dir, char *scan_fmt, char *print_fmt, char *glob);

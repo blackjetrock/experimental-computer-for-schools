@@ -47,6 +47,7 @@
 
 #include "esc.h"
 
+
 ////////////////////////////////////////////////////////////////////////////////
 
 int write_state_to_file(ESC_STATE *es, char *fn);
@@ -1574,6 +1575,37 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// Scans the directory and works out the next file number to use
+//
+// Leaves max_filenum with that value
+//
+////////////////////////////////////////////////////////////////////////////////
+
+#define ESC_FILE_NAME_PRINT_FMT   "state%05d.esc"
+#define ESC_FILE_NAME_SCAN_FMT    "state%d.esc"
+#define ESC_FILE_NAME_GLOB        "state*.esc"
+
+// Write a state file to the next available file name
+
+void state_esc_dump(FSM_DATA *es, TOKEN tok)
+{
+  char filename[MAX_LINE];
+  
+  // Get next file number
+  find_next_file_number(ESC_DIR, ESC_FILE_NAME_SCAN_FMT, ESC_FILE_NAME_PRINT_FMT, ESC_FILE_NAME_GLOB);
+  sprintf(filename, ESC_FILE_NAME_PRINT_FMT, max_filenum+1);
+  
+  write_state_to_file(&esc_state, filename);
+
+  printf("\nWritten state to '%s", filename);
+}
+
+void state_esc_reload(FSM_DATA *es, TOKEN tok)
+{
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // 
 //
 ////////////////////////////////////////////////////////////////////////////////
@@ -1582,6 +1614,33 @@ STATE esc_table[ ] =
   {
    {
     _STATE(STATE_ESC_INIT),
+    null_entry_fn,
+    null_every_fn,
+    {
+     {CTOK_NUMERIC,         STATE_ESC_INIT,   state_esc_numeric},
+     {TOK_KEY_NORMAL_RESET, STATE_ESC_INIT,   state_esc_normal_reset},
+     {TOK_KEY_KI_RESET,     STATE_ESC_INIT,   state_esc_ki_reset},
+     {TOK_KEY_LOAD_IAR,     STATE_ESC_INIT,   state_esc_load_iar},
+     {TOK_KEY_LOAD_ADDR,    STATE_ESC_INIT,   state_esc_load_addr},
+     {TOK_KEY_INCR_ADDR,    STATE_ESC_INIT,   state_esc_incr_addr},
+     {TOK_KEY_DECR_ADDR,    STATE_ESC_INIT,   state_esc_decr_addr},
+     {TOK_KEY_LOAD_STORE,   STATE_ESC_INIT,   state_esc_load_store},
+     {TOK_KEY_A,            STATE_ESC_INIT,   state_esc_a_disp},
+     {TOK_KEY_B,            STATE_ESC_INIT,   state_esc_b_disp},
+     {TOK_KEY_C,            STATE_ESC_INIT,   state_esc_c_disp},
+     {TOK_KEY_RUN,          STATE_ESC_INIT,   state_esc_run},
+     {TOK_KEY_STOP,         STATE_ESC_INIT,   state_esc_stop},
+     {TOK_KEY_DUMP,         STATE_ESC_INIT,   state_esc_dump},
+     {TOK_KEY_RELOAD,       STATE_ESC_RELOAD, state_esc_reload},
+     
+     // Execute code at full speed
+     {TOK_NO_TOK,           STATE_ESC_INIT,  state_esc_execute},
+     {CTOK_ERROR,           STATE_ESC_INIT,  NULL},
+     {CTOK_END,             STATE_NULL,      NULL},
+    }
+   },
+   {
+    _STATE(STATE_ESC_RELOAD),
     null_entry_fn,
     null_every_fn,
     {
@@ -1603,15 +1662,6 @@ STATE esc_table[ ] =
      {TOK_NO_TOK,           STATE_ESC_INIT,  state_esc_execute},
      {CTOK_ERROR,           STATE_ESC_INIT,  NULL},
      {CTOK_END,             STATE_NULL,      NULL},
-    }
-   },
-   {
-    _STATE(STATE_ESC_ENT),
-    null_entry_fn,
-    null_every_fn,
-    {
-     {CTOK_NUMERIC,  STATE_ESC_ENT,      NULL},
-     {CTOK_END,      STATE_NULL,          NULL},
     }
    },
   };
