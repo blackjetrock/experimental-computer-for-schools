@@ -143,6 +143,7 @@ typedef struct _ESC_STATE
   // We can push a token into the FSM
   TOKEN insert_token;
   int update_display;
+  int reload_display;
   char stage;
   
 } ESC_STATE;

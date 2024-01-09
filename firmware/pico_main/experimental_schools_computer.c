@@ -549,9 +549,10 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 	{
 #if DEBUG_SW_BCD_SUM
       printf("\nOverflow occurred");
-#endif
+
 	  sprintf(error_message, "Overflow (%08X)", c);
 	  error();
+#endif
 	}
 
       // Signs are unchanged
@@ -1599,6 +1600,9 @@ void state_esc_dump(FSM_DATA *es, TOKEN tok)
 
   printf("\nWritten state to '%s", filename);
 }
+
+// Reload a state file.
+// Display all state files and allow the user to pick one.
 
 void state_esc_reload(FSM_DATA *es, TOKEN tok)
 {
@@ -2827,127 +2831,146 @@ char *display_presumptive_address_2(ESC_STATE *s)
 // We append to a string to get the display, this allows formatting in the
 // functions we call to be shown.
 //
+// Other display modes can over-ride the computer dislkay, e.g. the reload screen
+//
 
-void update_display(void)
+void update_computer_display(void)
 {
   ESC_STATE *s= &esc_state;
   char tmp[MAX_LINE*NUM_LINES+1];
   int oledy = 0;
   
+  s->update_display = 0;
+  
+  printf("\n");
+  
+  printf("\nKeyboard register: %08X   IAR:%02X", s->keyboard_register, display_iar(s->iar));
+  printf("\n");
+  
+  //
+  // Print a representation of the TV display
+  //
+  
+  strcpy(dsp, "   012345678901234");
+  
+  // Line 1
+  sprintf(tmp, "\n1: %02s   %8s",
+	  display_iar(s->iar),
+	  display_register_single_word(s->keyboard_register));
+  strcat(dsp, tmp);
+  
+#if OLED_ON
+  oled_clear_display(&oled0);
+  sprintf(tmp, "%02s   %8s",
+	  display_iar(s->iar),
+	  display_register_single_word(s->keyboard_register));
+  
+  oled_set_xy(&oled0, 0, oledy);
+  oledy+=8;
+  oled_display_string(&oled0, tmp);
+#endif
+  
+  // Line 2
+  if( s->ki_reset_flag )
+    {
+      sprintf(tmp, "\n2: %c",s->ki_reset_flag?'K':' ');
+    }
+  else
+    {
+      sprintf(tmp, "\n2: %2s   %8s%c",
+	      display_iar(s->aux_iar),
+	      display_instruction(s->instruction_register),
+	      s->stage
+	      );
+    }
+  
+#if OLED_ON
+  if( s->ki_reset_flag )
+    {
+      sprintf(tmp, "%c",s->ki_reset_flag?'K':' ');
+    }
+  else
+    {
+      sprintf(tmp, "%2s   %8s%c",
+	      display_iar(s->aux_iar),
+	      display_instruction(s->instruction_register),
+	      s->stage
+	      );
+    }
+  
+  oled_set_xy(&oled0, 0, oledy);
+  oledy+=8;
+  oled_display_string(&oled0, tmp);
+#endif
+  
+  strcat(dsp, tmp);
+  
+  // Line 3
+  sprintf(tmp, "\n3: %s",  display_presumptive_address_1(s));
+  strcat(dsp, tmp);
+  
+#if OLED_ON
+  sprintf(tmp, "%s",  display_presumptive_address_1(s));
+  oled_set_xy(&oled0, 0, oledy);
+  oledy+=8;
+  
+  oled_display_string(&oled0, tmp);
+#endif
+  
+  sprintf(tmp, "\n4: %s",  display_presumptive_address_2(s));
+  strcat(dsp, tmp);
+  
+#if OLED_ON
+  sprintf(tmp, "%s",  display_presumptive_address_2(s));
+  oled_set_xy(&oled0, 0, oledy);
+  oledy+=8;
+  oled_display_string(&oled0, tmp);
+#endif
+  
+  sprintf(tmp, "\n5: ");
+  strcat(dsp, tmp);
+  
+  // Line 6
+  if( s->address_register2 != 0xFFFFFFFF )
+    {
+      SINGLE_WORD w = s->store[s->address_register2];
+      sprintf(tmp, "\n6: %s     %8s", display_address(s->address_register2), display_word(w));
+    }
+  strcat(dsp, tmp);
+  
+#if OLED_ON
+  if( s->address_register2 != 0xFFFFFFFF )
+    {
+      SINGLE_WORD w = s->store[s->address_register2];
+      sprintf(tmp, "%s     %8s", display_address(s->address_register2), display_word(w));
+    }
+  
+  oled_set_xy(&oled0, 0, oledy);
+  oledy+=8;
+  oled_display_string(&oled0, tmp);
+#endif
+  
+  // Now update the display output device(s)
+  printf("\n%s\n", dsp);
+}
+
+
+void reload_display(void)
+{
+}
+
+void update_display(void)
+{
+  ESC_STATE *s= &esc_state;
+  
+  if( s->reload_display )
+    {
+      reload_display();
+    }
+  
   if( s->update_display )
     {
-      s->update_display = 0;
-      
-      printf("\n");
-
-      printf("\nKeyboard register: %08X   IAR:%02X", s->keyboard_register, display_iar(s->iar));
-      printf("\n");
-
-      //
-      // Print a representation of the TV display
-      //
-
-      strcpy(dsp, "   012345678901234");
-	     
-      // Line 1
-      sprintf(tmp, "\n1: %02s   %8s",
-	     display_iar(s->iar),
-	     display_register_single_word(s->keyboard_register));
-      strcat(dsp, tmp);
-      
-#if OLED_ON
-      oled_clear_display(&oled0);
-      sprintf(tmp, "%02s   %8s",
-	     display_iar(s->iar),
-	     display_register_single_word(s->keyboard_register));
-
-      oled_set_xy(&oled0, 0, oledy);
-      oledy+=8;
-      oled_display_string(&oled0, tmp);
-#endif
-      
-      // Line 2
-      if( s->ki_reset_flag )
-	{
-	  sprintf(tmp, "\n2: %c",s->ki_reset_flag?'K':' ');
-	}
-      else
-	{
-	  sprintf(tmp, "\n2: %2s   %8s%c",
-		 display_iar(s->aux_iar),
-		 display_instruction(s->instruction_register),
-		 s->stage
-		 );
-	}
-
-#if OLED_ON
-      if( s->ki_reset_flag )
-	{
-	  sprintf(tmp, "%c",s->ki_reset_flag?'K':' ');
-	}
-      else
-	{
-	  sprintf(tmp, "%2s   %8s%c",
-		 display_iar(s->aux_iar),
-		 display_instruction(s->instruction_register),
-		 s->stage
-		 );
-	}
-
-      oled_set_xy(&oled0, 0, oledy);
-      oledy+=8;
-      oled_display_string(&oled0, tmp);
-#endif
-
-      strcat(dsp, tmp);
-      
-      // Line 3
-      sprintf(tmp, "\n3: %s",  display_presumptive_address_1(s));
-      strcat(dsp, tmp);
-
-#if OLED_ON
-      sprintf(tmp, "%s",  display_presumptive_address_1(s));
-      oled_set_xy(&oled0, 0, oledy);
-      oledy+=8;
-      
-      oled_display_string(&oled0, tmp);
-#endif
-
-      sprintf(tmp, "\n4: %s",  display_presumptive_address_2(s));
-      strcat(dsp, tmp);
-
-#if OLED_ON
-      sprintf(tmp, "%s",  display_presumptive_address_2(s));
-      oled_set_xy(&oled0, 0, oledy);
-      oledy+=8;
-      oled_display_string(&oled0, tmp);
-#endif
-      
-      sprintf(tmp, "\n5: ");
-      strcat(dsp, tmp);
-      
-      // Line 6
-      if( s->address_register2 != 0xFFFFFFFF )
-	{
-	  SINGLE_WORD w = s->store[s->address_register2];
-	  sprintf(tmp, "\n6: %s     %8s", display_address(s->address_register2), display_word(w));
-	}
-      strcat(dsp, tmp);
-
-#if OLED_ON
-      if( s->address_register2 != 0xFFFFFFFF )
-	{
-	  SINGLE_WORD w = s->store[s->address_register2];
-	  sprintf(tmp, "%s     %8s", display_address(s->address_register2), display_word(w));
-	}
-
-      oled_set_xy(&oled0, 0, oledy);
-      oledy+=8;
-      oled_display_string(&oled0, tmp);
-#endif
-
-      // Now update the display output device(s)
-      printf("\n%s\n", dsp);
+      update_computer_display();
     }
 }
 
