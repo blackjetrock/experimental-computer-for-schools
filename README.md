@@ -11,7 +11,7 @@ Interaction with the simulator is over USB. It just requires a Pico. You can run
 
 <h1>PCB</h1>
 
-There is a PCB that has a Pico mounted on it. 
+There is a PCB that has a Pico mounted on it. This photo shows the PCB with a Pico W attached. The simulator code can be built with or without WiFi support.
 
 ![IMG_4442p1](https://github.com/blackjetrock/experimental-computer-for-schools/assets/31587992/ceb090f5-20b0-4658-b744-e295b8f3aa61)
 
