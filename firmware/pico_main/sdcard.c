@@ -672,6 +672,30 @@ void button_read(struct MENU_ELEMENT *e)
 }
 #endif
 
+void delete_file(char *dir, char *name)
+{
+  FRESULT fr;
+
+  mount_sd();
+  
+  if( !cd_to_dir(dir) )
+    {
+      printf("\nCould not cd to '%s'", dir);
+      unmount_sd();
+      return;
+    }
+  
+  fr = f_unlink(name);
+  
+  if (FR_OK != fr)
+    {
+      printf("\nFailed to delete file '%s'", name);
+    }
+  
+  unmount_sd();  
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 //

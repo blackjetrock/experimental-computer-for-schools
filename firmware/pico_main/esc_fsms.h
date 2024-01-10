@@ -80,4 +80,5 @@ enum
   {
    STATE_ESC_INIT = 1,
    STATE_ESC_RELOAD,
+   STATE_ESC_DELETE,
   };

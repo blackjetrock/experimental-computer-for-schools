@@ -1644,15 +1644,37 @@ void state_reload_clear(FSM_DATA *es, TOKEN tok)
   s->update_display = 1;
 }
 
+void state_reload_delete(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  s->delete_display = 1;
+  s->reload_display = 0;
+  s->update_display = 1;
+}
+
 void state_reload_reload(FSM_DATA *es, TOKEN tok)
 {
   ESC_STATE *s = (ESC_STATE *)es;
 
   read_file_into_state(&(file_list_data[0][0]), s);
-  
+
+  s->delete_display = 0;
   s->reload_display = 0;
   s->update_display = 1;
 }
+
+void state_delete_do_delete(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+  
+  delete_file( ESC_DIR, &(file_list_data[0][0]) );	\
+
+  s->delete_display = 0;
+  s->reload_display = 1;
+  s->update_display = 1;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -1696,8 +1718,20 @@ STATE esc_table[ ] =
     {
      {TOK_KEY_INCR_ADDR,    STATE_ESC_RELOAD,  state_reload_incr},
      {TOK_KEY_DECR_ADDR,    STATE_ESC_RELOAD,  state_reload_decr},
+     {TOK_KEY_CLEAR,        STATE_ESC_DELETE,  state_reload_delete},
      {TOK_KEY_RELOAD,       STATE_ESC_INIT,    state_reload_reload},
-     {TOK_KEY_CLEAR,        STATE_ESC_INIT,    state_reload_clear},
+     {TOK_KEY_KI_RESET,     STATE_ESC_INIT,    state_reload_clear},
+     {CTOK_END,             STATE_NULL,        NULL},
+    }
+   },
+   {
+    _STATE(STATE_ESC_DELETE),
+    null_entry_fn,
+    null_every_fn,
+    {
+     {TOK_KEY_NORMAL_RESET, STATE_ESC_RELOAD,  state_delete_do_delete},
+     {TOK_KEY_CLEAR,        STATE_ESC_RELOAD,  state_reload_clear},
+     {TOK_KEY_KI_RESET,     STATE_ESC_RELOAD,  state_reload_clear},
      {CTOK_END,             STATE_NULL,        NULL},
     }
    },
@@ -3002,6 +3036,21 @@ void update_reload_display(ESC_STATE *es)
     }
 }
 
+void update_delete_display(ESC_STATE *es)
+{
+  int oledy = 0;
+  char line[MAX_LINE+2];
+  
+  oled_clear_display(&oled0);
+
+  oled_set_xy(&oled0, 0, 8);
+  oled_display_string(&oled0, "Delete file?");
+
+  oled_set_xy(&oled0, 0, 16);
+  oled_display_string(&oled0, &(file_list_data[0][0]));
+  
+}
+
 void update_display(void)
 {
   ESC_STATE *s= &esc_state;
@@ -3013,6 +3062,10 @@ void update_display(void)
       if( s->reload_display )
 	{
 	  update_reload_display(s);
+	}
+      else if( s->delete_display )
+	{
+	  update_delete_display(s);
 	}
       else
 	{

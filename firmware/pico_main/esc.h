@@ -144,6 +144,8 @@ typedef struct _ESC_STATE
   TOKEN insert_token;
   int update_display;
   int reload_display;
+  int delete_display;
+  
   char stage;
 
   //---------------------------------------------------------------------
