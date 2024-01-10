@@ -6,10 +6,12 @@ The schools computer dates from around 1969 and ws an experimental machine that 
 This is a simulation of the machine. It can run code written for the original machine, well it
 could if any programs for the machine still exist.
 
-<h1>USB Version</h1>
-Interaction with this version of the simulator is over USB. It just requires a Pico.
+<h1>USB</h1>
+Interaction with the simulator is over USB. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi.
 
 <h1>PCB</h1>
+![IMG_4442p1](https://github.com/blackjetrock/experimental-computer-for-schools/assets/31587992/ceb090f5-20b0-4658-b744-e295b8f3aa61)
+
 There is a PCB that has a Pico mounted on it. This has a 0.96" OLED display that shows the same information 
 as the original machine displayed on a domestic TV. There is an SD ard for storage and a keyboard made from tactile 
 switches. The Pico can be a PicoW, in which case a WiFi access point is generated.
