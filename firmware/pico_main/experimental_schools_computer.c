@@ -63,6 +63,8 @@ int wfn_instruction_register(ESC_STATE *es, void *fi, char *line);
 int wfn_store_data(ESC_STATE *es, void *fi, char *line);
 int wfn_store(ESC_STATE *es, void *fi, char *line);
 
+void update_computer_display(ESC_STATE *es);
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // GPIOs
@@ -1590,13 +1592,14 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 
 void state_esc_dump(FSM_DATA *es, TOKEN tok)
 {
+  ESC_STATE *s = (ESC_STATE *)es;
   char filename[MAX_LINE];
   
   // Get next file number
   find_next_file_number(ESC_DIR, ESC_FILE_NAME_SCAN_FMT, ESC_FILE_NAME_PRINT_FMT, ESC_FILE_NAME_GLOB);
   sprintf(filename, ESC_FILE_NAME_PRINT_FMT, max_filenum+1);
   
-  write_state_to_file(&esc_state, filename);
+  write_state_to_file(s, filename);
 
   printf("\nWritten state to '%s", filename);
 }
@@ -1606,6 +1609,49 @@ void state_esc_dump(FSM_DATA *es, TOKEN tok)
 
 void state_esc_reload(FSM_DATA *es, TOKEN tok)
 {
+  ESC_STATE *s = (ESC_STATE *)es;
+  
+  s->reload_file_first = 0;
+  s->reload_display = 1;
+  s->update_display = 1;
+}
+
+void state_reload_incr(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+  
+  s->reload_file_first++;
+  s->update_display = 1;
+}
+
+void state_reload_decr(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+  
+  if( s->reload_file_first > 0 )
+    {
+      s->reload_file_first--;
+    }
+  
+  s->update_display = 1;
+}
+
+void state_reload_clear(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  s->reload_display = 0;
+  s->update_display = 1;
+}
+
+void state_reload_reload(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  read_file_into_state(&(file_list_data[0][0]), s);
+  
+  s->reload_display = 0;
+  s->update_display = 1;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1648,24 +1694,11 @@ STATE esc_table[ ] =
     null_entry_fn,
     null_every_fn,
     {
-     {CTOK_NUMERIC,         STATE_ESC_INIT,  state_esc_numeric},
-     {TOK_KEY_NORMAL_RESET, STATE_ESC_INIT,  state_esc_normal_reset},
-     {TOK_KEY_KI_RESET,     STATE_ESC_INIT,  state_esc_ki_reset},
-     {TOK_KEY_LOAD_IAR,     STATE_ESC_INIT,  state_esc_load_iar},
-     {TOK_KEY_LOAD_ADDR,    STATE_ESC_INIT,  state_esc_load_addr},
-     {TOK_KEY_INCR_ADDR,    STATE_ESC_INIT,  state_esc_incr_addr},
-     {TOK_KEY_DECR_ADDR,    STATE_ESC_INIT,  state_esc_decr_addr},
-     {TOK_KEY_LOAD_STORE,   STATE_ESC_INIT,  state_esc_load_store},
-     {TOK_KEY_A,            STATE_ESC_INIT,  state_esc_a_disp},
-     {TOK_KEY_B,            STATE_ESC_INIT,  state_esc_b_disp},
-     {TOK_KEY_C,            STATE_ESC_INIT,  state_esc_c_disp},
-     {TOK_KEY_RUN,          STATE_ESC_INIT,  state_esc_run},
-     {TOK_KEY_STOP,         STATE_ESC_INIT,  state_esc_stop},
-     
-     // Exeute code at full speed
-     {TOK_NO_TOK,           STATE_ESC_INIT,  state_esc_execute},
-     {CTOK_ERROR,           STATE_ESC_INIT,  NULL},
-     {CTOK_END,             STATE_NULL,      NULL},
+     {TOK_KEY_INCR_ADDR,    STATE_ESC_RELOAD,  state_reload_incr},
+     {TOK_KEY_DECR_ADDR,    STATE_ESC_RELOAD,  state_reload_decr},
+     {TOK_KEY_RELOAD,       STATE_ESC_INIT,    state_reload_reload},
+     {TOK_KEY_CLEAR,        STATE_ESC_INIT,    state_reload_clear},
+     {CTOK_END,             STATE_NULL,        NULL},
     }
    },
   };
@@ -2834,17 +2867,14 @@ char *display_presumptive_address_2(ESC_STATE *s)
 // Other display modes can over-ride the computer dislkay, e.g. the reload screen
 //
 
-void update_computer_display(void)
+void update_computer_display(ESC_STATE *es)
 {
-  ESC_STATE *s= &esc_state;
   char tmp[MAX_LINE*NUM_LINES+1];
   int oledy = 0;
   
-  s->update_display = 0;
-  
   printf("\n");
   
-  printf("\nKeyboard register: %08X   IAR:%02X", s->keyboard_register, display_iar(s->iar));
+  printf("\nKeyboard register: %08X   IAR:%02X", es->keyboard_register, display_iar(es->iar));
   printf("\n");
   
   //
@@ -2855,15 +2885,15 @@ void update_computer_display(void)
   
   // Line 1
   sprintf(tmp, "\n1: %02s   %8s",
-	  display_iar(s->iar),
-	  display_register_single_word(s->keyboard_register));
+	  display_iar(es->iar),
+	  display_register_single_word(es->keyboard_register));
   strcat(dsp, tmp);
   
 #if OLED_ON
   oled_clear_display(&oled0);
   sprintf(tmp, "%02s   %8s",
-	  display_iar(s->iar),
-	  display_register_single_word(s->keyboard_register));
+	  display_iar(es->iar),
+	  display_register_single_word(es->keyboard_register));
   
   oled_set_xy(&oled0, 0, oledy);
   oledy+=8;
@@ -2871,30 +2901,30 @@ void update_computer_display(void)
 #endif
   
   // Line 2
-  if( s->ki_reset_flag )
+  if( es->ki_reset_flag )
     {
-      sprintf(tmp, "\n2: %c",s->ki_reset_flag?'K':' ');
+      sprintf(tmp, "\n2: %c",es->ki_reset_flag?'K':' ');
     }
   else
     {
       sprintf(tmp, "\n2: %2s   %8s%c",
-	      display_iar(s->aux_iar),
-	      display_instruction(s->instruction_register),
-	      s->stage
+	      display_iar(es->aux_iar),
+	      display_instruction(es->instruction_register),
+	      es->stage
 	      );
     }
   
 #if OLED_ON
-  if( s->ki_reset_flag )
+  if( es->ki_reset_flag )
     {
-      sprintf(tmp, "%c",s->ki_reset_flag?'K':' ');
+      sprintf(tmp, "%c",es->ki_reset_flag?'K':' ');
     }
   else
     {
       sprintf(tmp, "%2s   %8s%c",
-	      display_iar(s->aux_iar),
-	      display_instruction(s->instruction_register),
-	      s->stage
+	      display_iar(es->aux_iar),
+	      display_instruction(es->instruction_register),
+	      es->stage
 	      );
     }
   
@@ -2906,22 +2936,22 @@ void update_computer_display(void)
   strcat(dsp, tmp);
   
   // Line 3
-  sprintf(tmp, "\n3: %s",  display_presumptive_address_1(s));
+  sprintf(tmp, "\n3: %s",  display_presumptive_address_1(es));
   strcat(dsp, tmp);
   
 #if OLED_ON
-  sprintf(tmp, "%s",  display_presumptive_address_1(s));
+  sprintf(tmp, "%s",  display_presumptive_address_1(es));
   oled_set_xy(&oled0, 0, oledy);
   oledy+=8;
   
   oled_display_string(&oled0, tmp);
 #endif
   
-  sprintf(tmp, "\n4: %s",  display_presumptive_address_2(s));
+  sprintf(tmp, "\n4: %s",  display_presumptive_address_2(es));
   strcat(dsp, tmp);
   
 #if OLED_ON
-  sprintf(tmp, "%s",  display_presumptive_address_2(s));
+  sprintf(tmp, "%s",  display_presumptive_address_2(es));
   oled_set_xy(&oled0, 0, oledy);
   oledy+=8;
   oled_display_string(&oled0, tmp);
@@ -2931,18 +2961,18 @@ void update_computer_display(void)
   strcat(dsp, tmp);
   
   // Line 6
-  if( s->address_register2 != 0xFFFFFFFF )
+  if( es->address_register2 != 0xFFFFFFFF )
     {
-      SINGLE_WORD w = s->store[s->address_register2];
-      sprintf(tmp, "\n6: %s     %8s", display_address(s->address_register2), display_word(w));
+      SINGLE_WORD w = es->store[es->address_register2];
+      sprintf(tmp, "\n6: %s     %8s", display_address(es->address_register2), display_word(w));
     }
   strcat(dsp, tmp);
   
 #if OLED_ON
-  if( s->address_register2 != 0xFFFFFFFF )
+  if( es->address_register2 != 0xFFFFFFFF )
     {
-      SINGLE_WORD w = s->store[s->address_register2];
-      sprintf(tmp, "%s     %8s", display_address(s->address_register2), display_word(w));
+      SINGLE_WORD w = es->store[es->address_register2];
+      sprintf(tmp, "%s     %8s", display_address(es->address_register2), display_word(w));
     }
   
   oled_set_xy(&oled0, 0, oledy);
@@ -2954,23 +2984,40 @@ void update_computer_display(void)
   printf("\n%s\n", dsp);
 }
 
-
-void reload_display(void)
+void update_reload_display(ESC_STATE *es)
 {
+  int oledy = 0;
+  char line[MAX_LINE+2];
+  
+  oled_clear_display(&oled0);
+  
+  file_partial_list(ESC_DIR, es->reload_file_first, 6);
+  
+  for(int i=0; i<FILE_LIST_DATA_LINES_MAX; i++)
+    {
+      oled_set_xy(&oled0, 0, oledy);
+      oledy+=8;
+      sprintf(line, "%c%s", (i==0)?'>':' ', file_list_data[i]);
+      oled_display_string(&oled0, line);
+    }
 }
 
 void update_display(void)
 {
   ESC_STATE *s= &esc_state;
   
-  if( s->reload_display )
-    {
-      reload_display();
-    }
-  
   if( s->update_display )
     {
-      update_computer_display();
+      s->update_display = 0;
+      
+      if( s->reload_display )
+	{
+	  update_reload_display(s);
+	}
+      else
+	{
+	  update_computer_display(s);
+	}
     }
 }
 

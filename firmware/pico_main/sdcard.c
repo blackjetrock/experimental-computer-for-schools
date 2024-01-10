@@ -55,6 +55,8 @@ void unmount_sd(void)
   f_unmount("0:");
 }
 
+// List files using printf
+
 #if 1
 int file_list(char *dir)
 {
@@ -136,6 +138,114 @@ int file_list(char *dir)
   return(1);
 }
 #endif
+
+// Get a partial list of files on the SD card.
+// The files start at a given point through the list of files
+// and is of the specified length
+
+char file_list_data[FILE_LIST_DATA_LINES_MAX][FILE_LIST_DATA_LINES_LEN];
+
+void file_clear_data(void)
+{
+  for(int i=0; i<FILE_LIST_DATA_LINES_MAX; i++)
+    {
+      file_list_data[i][0] = '\0';
+    }
+}
+
+int file_partial_list(char *dir, int first, int len)
+{
+  int file_n = 0;
+  int num_listfiles = 0;
+  int i;
+  int file_data_i = 0;
+  
+  char cwdbuf[FF_LFN_BUF] = {0};
+  FRESULT fr;
+  char const *p_dir;
+
+  mount_sd();
+  
+  f_chdrive("0:");
+
+  cd_to_dir(dir);
+  
+  fr = f_getcwd(cwdbuf, sizeof cwdbuf);
+
+  if (FR_OK != fr)
+    {
+      sprintf(sd_error, "f_getcwd error: %s (%d)\n", FRESULT_str(fr), fr);
+      unmount_sd();
+      return(0);
+    }
+  
+  p_dir = cwdbuf;
+
+  printf("\nPartial file list of: %s starting at %d, for length %d\n", p_dir, first, len);
+  
+  DIR dj;      /* Directory object */
+  FILINFO fno; /* File information */
+
+  memset(&dj, 0, sizeof dj);
+  memset(&fno, 0, sizeof fno);
+
+  fr = f_findfirst(&dj, &fno, p_dir, "*");
+
+  if (FR_OK != fr)
+    {
+      sprintf(sd_error, "f_findfirst error: %s (%d)\n", FRESULT_str(fr), fr);
+      unmount_sd();
+      return(0);
+    }
+
+  file_clear_data();
+  
+  while( (fr == FR_OK) && fno.fname[0]  )
+    { 
+      if (fno.fattrib & AM_DIR)
+	{
+	  // Directory, we gnore these
+	}
+      else
+	{
+	  char extension[40];
+	  char name[80];
+	   
+	  // If the file has an extension of .esc then display it
+	  // otherwise ignore.
+	  extension[0] = '\0';
+
+	  printf("\n%s", fno.fname);
+	  
+	  if( sscanf(fno.fname, "%[^.].%s", name, extension) == 2 )
+	    {
+	      if( strcmp(extension, "esc") == 0 )
+		{
+		  if( (file_n >= first) && (file_data_i < len) )
+		    {
+		      strcpy(&(file_list_data[file_data_i++][0]), fno.fname);
+		    }
+		  
+		  file_n++;
+		}
+	    }
+	}
+       
+      fr = f_findnext(&dj, &fno); /* Search for next item */
+    }
+  f_closedir(&dj);
+  
+  printf("\n");
+  for(int i=0; i<FILE_LIST_DATA_LINES_MAX; i++)
+    {
+      printf("\n%d: %s", i, &(file_list_data[i][0]));
+    }
+  printf("\n");
+  
+  unmount_sd();
+  return(1);
+}
+
 
 // Change to directory
 // 0 on error, 1 on success

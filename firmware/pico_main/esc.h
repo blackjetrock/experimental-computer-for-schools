@@ -145,7 +145,10 @@ typedef struct _ESC_STATE
   int update_display;
   int reload_display;
   char stage;
-  
+
+  //---------------------------------------------------------------------
+  int reload_file_first;
+
 } ESC_STATE;
 
 

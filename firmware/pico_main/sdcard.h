@@ -22,8 +22,14 @@ extern boolean sd_ok_flag;
 extern char sd_error[200];
 extern int max_filenum;
 
+#define FILE_LIST_DATA_LINES_MAX  8
+#define FILE_LIST_DATA_LINES_LEN 20
+
+extern char file_list_data[FILE_LIST_DATA_LINES_MAX][FILE_LIST_DATA_LINES_LEN];
+
 void mount_sd(void);
 void unmount_sd(void);
 int cd_to_dir(char *to_dir);
 int file_list(char *dir);
 int find_next_file_number(char *dir, char *scan_fmt, char *print_fmt, char *glob);
+int file_partial_list(char *dir, int first, int len);
