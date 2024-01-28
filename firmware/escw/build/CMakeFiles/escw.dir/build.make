@@ -167,38 +167,66 @@ CMakeFiles/escw.dir/dnsserver/dnsserver.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/dnsserver/dnsserver.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/projects/github/experimental-computer-for-schools/firmware/escw/dnsserver/dnsserver.c -o CMakeFiles/escw.dir/dnsserver/dnsserver.c.s
 
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj: /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj -MF CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj.d -o CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj -c /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c
 
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.i
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c > CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.i
 
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.s
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c -o CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.s
 
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj: /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj -MF CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj.d -o CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj -c /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c
 
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.i
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c > CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.i
 
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.s
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c -o CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.i: cmake_force
@@ -209,52 +237,10 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.s
 
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.s
-
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.i: cmake_force
@@ -268,7 +254,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.i: cmake_force
@@ -279,52 +265,10 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
 
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
-
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.i: cmake_force
@@ -337,7 +281,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.i: cmake_force
@@ -351,7 +295,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.i: cmake_force
@@ -365,7 +309,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/lock_core.c.i: cmake_force
@@ -379,7 +323,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/mutex.c.i: cmake_force
@@ -393,7 +337,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c.i: cmake_force
@@ -407,7 +351,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/time.c.i: cmake_force
@@ -421,7 +365,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/timeout_helper.c.i: cmake_force
@@ -435,7 +379,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.i: cmake_force
@@ -449,7 +393,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.i: cmake_force
@@ -463,7 +407,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.i: cmake_force
@@ -477,7 +421,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.i: cmake_force
@@ -488,10 +432,38 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.s
 
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
+
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.i: cmake_force
@@ -505,7 +477,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i: cmake_force
@@ -519,7 +491,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i: cmake_force
@@ -533,7 +505,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i: cmake_force
@@ -544,1465 +516,9 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj: CMakeFiles/escw.dir/flags.make
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.i"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
-
-CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.s"
-	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
-
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.i: cmake_force
@@ -2016,7 +532,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i: cmake_force
@@ -2030,7 +546,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.i: cmake_force
@@ -2043,7 +559,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.i: cmake_force
@@ -2054,9 +570,23 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.s"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.s
 
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
+
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.i: cmake_force
@@ -2069,7 +599,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.i: cmake_force
@@ -2083,7 +613,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i: cmake_force
@@ -2097,7 +627,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.i: cmake_force
@@ -2110,7 +640,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.i: cmake_force
@@ -2123,7 +653,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.i: cmake_force
@@ -2136,7 +666,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.i: cmake_force
@@ -2150,7 +680,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i: cmake_force
@@ -2164,7 +694,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.i: cmake_force
@@ -2177,7 +707,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.i: cmake_force
@@ -2191,7 +721,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i: cmake_force
@@ -2204,7 +734,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.i: cmake_force
@@ -2217,7 +747,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building ASM object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj   -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.i: cmake_force
@@ -2231,7 +761,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building CXX object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj"
 	/usr/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i: cmake_force
@@ -2245,7 +775,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i: cmake_force
@@ -2259,7 +789,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i: cmake_force
@@ -2273,7 +803,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i: cmake_force
@@ -2287,7 +817,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.i: cmake_force
@@ -2301,7 +831,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.i: cmake_force
@@ -2315,7 +845,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.i: cmake_force
@@ -2326,10 +856,38 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.s
 
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.s
+
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.i: cmake_force
@@ -2343,7 +901,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.i: cmake_force
@@ -2357,7 +915,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.i: cmake_force
@@ -2371,7 +929,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.i: cmake_force
@@ -2385,7 +943,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.i: cmake_force
@@ -2399,7 +957,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.i: cmake_force
@@ -2413,7 +971,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.i: cmake_force
@@ -2427,7 +985,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.i: cmake_force
@@ -2441,7 +999,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.i: cmake_force
@@ -2455,7 +1013,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.i: cmake_force
@@ -2469,7 +1027,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.i: cmake_force
@@ -2483,7 +1041,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.i: cmake_force
@@ -2497,7 +1055,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.i: cmake_force
@@ -2511,7 +1069,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.i: cmake_force
@@ -2525,7 +1083,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.i: cmake_force
@@ -2539,7 +1097,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.i: cmake_force
@@ -2553,7 +1111,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.i: cmake_force
@@ -2567,7 +1125,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.i: cmake_force
@@ -2581,7 +1139,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.i: cmake_force
@@ -2592,6 +1150,1728 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.s
 
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ip.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/mem.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/memp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/sys.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_alloc.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/altcp_tcp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/acd.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_lib.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/err.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netbuf.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netifapi.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/zepif.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/upap.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/utils.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/vj.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/exception.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_182) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_183) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_184) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj: /tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_185) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj -c /tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_186) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_187) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_188) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_189) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_190) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_191) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_192) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_193) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_194) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_195) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_196) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_197) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_198) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_199) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_200) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.s
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_201) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj -c /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c > CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s
+
 # Object files for target escw
 escw_OBJECTS = \
 "CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c.obj" \
@@ -2601,17 +2881,13 @@ escw_OBJECTS = \
 "CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.c.obj" \
 "CMakeFiles/escw.dir/dhcpserver/dhcpserver.c.obj" \
 "CMakeFiles/escw.dir/dnsserver/dnsserver.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj" \
+"CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj" \
+"CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj" \
@@ -2624,10 +2900,61 @@ escw_OBJECTS = \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj" \
@@ -2730,51 +3057,24 @@ escw_OBJECTS = \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj" \
 "CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj" \
-"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj"
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj" \
+"CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj"
 
 # External object files for target escw
 escw_EXTERNAL_OBJECTS =
@@ -2786,17 +3086,13 @@ escw.elf: CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-sch
 escw.elf: CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.c.obj
 escw.elf: CMakeFiles/escw.dir/dhcpserver/dhcpserver.c.obj
 escw.elf: CMakeFiles/escw.dir/dnsserver/dnsserver.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/sem.c.obj
@@ -2809,10 +3105,61 @@ escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/datetime.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c.obj
@@ -2915,56 +3262,34 @@ escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.obj
 escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj
+escw.elf: CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
 escw.elf: CMakeFiles/escw.dir/build.make
 escw.elf: pico-sdk/src/rp2_common/boot_stage2/bs2_default_padded_checksummed.S
 escw.elf: CMakeFiles/escw.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_182) "Linking CXX executable escw.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_202) "Linking CXX executable escw.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/escw.dir/link.txt --verbose=$(VERBOSE)
+	/usr/bin/arm-none-eabi-objcopy -Oihex /tree/projects/github/experimental-computer-for-schools/firmware/escw/build/escw.elf escw.hex
+	/usr/bin/arm-none-eabi-objcopy -Obinary /tree/projects/github/experimental-computer-for-schools/firmware/escw/build/escw.elf escw.bin
+	/usr/bin/arm-none-eabi-objdump -h /tree/projects/github/experimental-computer-for-schools/firmware/escw/build/escw.elf > escw.dis
+	/usr/bin/arm-none-eabi-objdump -d /tree/projects/github/experimental-computer-for-schools/firmware/escw/build/escw.elf >> escw.dis
+	elf2uf2/elf2uf2 /tree/projects/github/experimental-computer-for-schools/firmware/escw/build/escw.elf escw.uf2
 	/usr/bin/arm-none-eabi-objcopy -Oihex /tree/projects/github/experimental-computer-for-schools/firmware/escw/build/escw.elf escw.hex
 	/usr/bin/arm-none-eabi-objcopy -Obinary /tree/projects/github/experimental-computer-for-schools/firmware/escw/build/escw.elf escw.bin
 	/usr/bin/arm-none-eabi-objdump -h /tree/projects/github/experimental-computer-for-schools/firmware/escw/build/escw.elf > escw.dis

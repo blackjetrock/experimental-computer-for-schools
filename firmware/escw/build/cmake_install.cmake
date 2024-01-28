@@ -39,7 +39,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/pico_extras/cmake_install.cmake")
   include("/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/pico-sdk/cmake_install.cmake")
+  include("/tree/projects/github/experimental-computer-for-schools/firmware/escw/build/build/cmake_install.cmake")
 
 endif()
 

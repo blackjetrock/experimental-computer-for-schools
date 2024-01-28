@@ -335,6 +335,649 @@ CMakeFiles/escw.dir/escw.c.obj: ../escw.c \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h
 
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/diskio.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c \
+  /usr/include/newlib/stdlib.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/stdlib.h \
+  /usr/include/newlib/alloca.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c \
+  /usr/include/newlib/string.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/sys/_locale.h \
+  /usr/include/newlib/strings.h \
+  /usr/include/newlib/sys/string.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
+  /usr/include/newlib/stdio.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c \
+  /usr/include/newlib/inttypes.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/_intsup.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/include/newlib/sys/_locale.h \
+  /usr/include/newlib/string.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/strings.h \
+  /usr/include/newlib/sys/string.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
+  /usr/include/newlib/stdio.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/include/newlib/assert.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
+  /usr/include/newlib/stdio.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c \
+  /usr/include/newlib/errno.h \
+  /usr/include/newlib/sys/errno.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include-fixed/limits.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/stdlib.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/stdlib.h \
+  /usr/include/newlib/alloca.h \
+  /usr/include/newlib/string.h \
+  /usr/include/newlib/sys/_locale.h \
+  /usr/include/newlib/strings.h \
+  /usr/include/newlib/sys/string.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
+  /usr/include/newlib/stdio.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/f_util.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/ff_stdio.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/diskio.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/util.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/scb.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/rtc.h \
+  /usr/include/newlib/time.h \
+  /usr/include/newlib/machine/time.h \
+  /usr/include/newlib/sys/_locale.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/include/hardware/rtc.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/rtc.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/rtc.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/include/pico/util/datetime.h
+
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c \
   /usr/include/newlib/assert.h \
   /usr/include/newlib/_ansi.h \
@@ -8442,6 +9085,51 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h
 
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/include/hardware/adc.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/adc.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/resets.h
+
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/include/hardware/claim.h \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
@@ -8811,6 +9499,86 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/h
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/resets.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/include/hardware/rtc.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/rtc.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/rtc.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/resets.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/include/hardware/clocks.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/clocks.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h
+
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/resets.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_clocks/include/hardware/clocks.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/clocks.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj: /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
@@ -10922,6 +11690,92 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/p
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/include/pico/unique_id.h
 
+CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj: /tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
+  /tree/downloaded_tools/pico/pico-extras/src/common/pico_sd_card/include/pico/sd_card.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio_instructions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
+  pico_extras/src/rp2_common/pico_sd_card/sd_card.pio.h \
+  /tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/crc7.h \
+  /tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/crc-itu-t.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/code.h
+
 CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.c.obj: /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.c \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h
@@ -11026,6 +11880,20 @@ CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmw
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
   /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/include/pico/bootrom.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/f_util.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/ff_stdio.h \
+  /usr/include/newlib/errno.h \
+  /usr/include/newlib/sys/errno.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h
@@ -11100,6 +11968,192 @@ CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmw
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
   /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h
 
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj: /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c \
+  /usr/include/newlib/ctype.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/include/newlib/sys/_locale.h \
+  /usr/include/newlib/math.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/stdio.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /usr/include/newlib/stdlib.h \
+  /usr/include/newlib/machine/stdlib.h \
+  /usr/include/newlib/alloca.h \
+  /usr/include/newlib/string.h \
+  /usr/include/newlib/strings.h \
+  /usr/include/newlib/sys/string.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio_instructions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/include/hardware/flash.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/bus_ctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/busctrl.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.h
+
+CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj: /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/switches.h \
+  /usr/include/newlib/ctype.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h \
+  /usr/include/newlib/sys/_locale.h \
+  /usr/include/newlib/math.h \
+  /usr/include/newlib/sys/reent.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/sys/_types.h \
+  /usr/include/newlib/machine/_types.h \
+  /usr/include/newlib/sys/lock.h \
+  /usr/include/newlib/stdio.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/sys/types.h \
+  /usr/include/newlib/sys/_stdint.h \
+  /usr/include/newlib/machine/endian.h \
+  /usr/include/newlib/machine/_endian.h \
+  /usr/include/newlib/sys/select.h \
+  /usr/include/newlib/sys/_sigset.h \
+  /usr/include/newlib/sys/_timeval.h \
+  /usr/include/newlib/sys/timespec.h \
+  /usr/include/newlib/sys/_timespec.h \
+  /usr/include/newlib/sys/_pthreadtypes.h \
+  /usr/include/newlib/sys/sched.h \
+  /usr/include/newlib/machine/types.h \
+  /usr/include/newlib/sys/stdio.h \
+  /usr/include/newlib/stdlib.h \
+  /usr/include/newlib/machine/stdlib.h \
+  /usr/include/newlib/alloca.h \
+  /usr/include/newlib/string.h \
+  /usr/include/newlib/strings.h \
+  /usr/include/newlib/sys/string.h \
+  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/f_util.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/ff_stdio.h \
+  /usr/include/newlib/errno.h \
+  /usr/include/newlib/sys/errno.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  generated/pico_base/pico/version.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h
+
+
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c:
 
 /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.h:
 
@@ -11108,6 +12162,14 @@ CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmw
 /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c:
 
 /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.c:
+
+/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/crc-itu-t.h:
+
+pico_extras/src/rp2_common/pico_sd_card/sd_card.pio.h:
+
+/tree/downloaded_tools/pico/pico-extras/src/common/pico_sd_card/include/pico/sd_card.h:
+
+/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c:
 
@@ -11146,6 +12208,8 @@ CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmw
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sysinfo.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/include/pico/malloc.h:
+
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.h:
 
 /usr/lib/gcc/arm-none-eabi/9.2.1/include/float.h:
 
@@ -11195,6 +12259,10 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c:
 
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pio.h:
@@ -11205,15 +12273,7 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/ssi.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/ssi.h:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_flash/flash.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/include/pico/printf.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/scb.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/dma.c:
 
@@ -11231,11 +12291,19 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/include/hardware/claim.h:
 
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/adc.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/include/hardware/adc.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c:
+/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/crc7.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/include/pico/util/datetime.h:
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/pheap.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h:
 
@@ -11283,8 +12351,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c:
@@ -11298,12 +12364,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/critical_section.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/lock_core.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/sem.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_pvt.h:
 
@@ -11321,8 +12381,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/zepif.h:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/sio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/slipif.c:
@@ -11338,8 +12396,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppos.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c:
 
@@ -11357,9 +12413,95 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/multilink.c:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/tcp.h:
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_mcu.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c:
+
+/usr/include/newlib/sys/times.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/lowpan6_common.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_verify.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/lowpan6_ble.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c:
+
+/usr/include/newlib/c++/9.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/os_defines.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/lowpan6.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb/reset_interface.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_btbus.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/mutex.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/bridgeif_opts.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/bridgeif.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/dhcp6.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/bus_ctrl.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/watchdog.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/priv/sockets_priv.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/priv/api_msg.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/tcp.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/icmp.h:
 
@@ -11375,11 +12517,11 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/lowpan6_opts.h:
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/diskio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/ip.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/pbuf.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/ip6.h:
 
@@ -11395,6 +12537,8 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/ip4.h:
 
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/autoip.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/mem.h:
@@ -11405,6 +12549,8 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/pbuf.h:
 
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/include/pico/util/datetime.h:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/critical_section.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c:
@@ -11412,8 +12558,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/tusb.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/udp.h:
-
-/usr/include/newlib/sys/_intsup.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c:
 
@@ -11441,10 +12585,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_lwip/include/arch/cc.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/include/hardware/exception.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c:
-
 /usr/include/newlib/time.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/psm.h:
@@ -11456,10 +12596,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio_instructions.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/ip4_addr.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/stats.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/auth.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/video/video_device.c:
 
@@ -11473,9 +12609,7 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h:
 
-../dnsserver/dnsserver.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/fsm.c:
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_debug.h:
 
@@ -11493,13 +12627,11 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /usr/include/newlib/machine/stdlib.h:
 
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/ieee.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_verify.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/lowpan6_ble.h:
 
 /usr/include/newlib/sys/string.h:
 
@@ -11513,12 +12645,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/etharp.c:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c:
-
-/usr/include/newlib/sys/_pthreadtypes.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/netif.h:
 
 /usr/include/newlib/sys/_types.h:
@@ -11526,6 +12652,14 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/opt.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/error.h:
 
@@ -11541,10 +12675,6 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /usr/include/newlib/machine/endian.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/ppp/ppp_opts.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/priv/tcp_priv.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/uart.c:
@@ -11555,15 +12685,11 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /usr/include/newlib/sys/sched.h:
 
-/usr/include/newlib/c++/9.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/os_defines.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/lowpan6.h:
-
 /usr/include/newlib/sys/reent.h:
 
-/usr/include/newlib/string.h:
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/rtc.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eap.c:
+/usr/include/newlib/string.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/boards/include/boards/pico_w.h:
 
@@ -11573,15 +12699,13 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_country.h:
 
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/autoip.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c:
-
-/usr/include/newlib/machine/ieeefp.h:
 
 /usr/include/newlib/sys/cdefs.h:
 
@@ -11589,15 +12713,17 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/sockets.c:
 
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/osal/osal_pico.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c:
+
+/usr/include/newlib/stdio.h:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/icmp.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/bus_ctrl.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/timeouts.c:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/lowpan6_common.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/ip6_addr.h:
 
@@ -11617,6 +12743,12 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /usr/lib/gcc/arm-none-eabi/9.2.1/include-fixed/limits.h:
 
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_exception/include/hardware/exception.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/clocks.h:
 
 /usr/include/newlib/sys/timespec.h:
@@ -11633,11 +12765,19 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h:
 
 /usr/include/newlib/sys/_timespec.h:
 
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c:
 
 /usr/include/newlib/sys/_timeval.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/priv/memp_std.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c:
+
+/usr/include/newlib/_newlib_version.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c:
 
 generated/pico_base/pico/config_autogen.h:
 
@@ -11657,15 +12797,19 @@ generated/pico_base/pico/config_autogen.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c:
 
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/ppp/ppp_opts.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/f_util.h:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_driver/include/cyw43_configport.h:
-
-/usr/include/newlib/sys/times.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/eui64.c:
 
 /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h:
 
 generated/pico_base/pico/version.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/debug.h:
 
@@ -11705,6 +12849,8 @@ generated/pico_base/pico/version.h:
 
 /usr/include/newlib/strings.h:
 
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/include/pico/unique_id.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c:
@@ -11743,6 +12889,8 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/ip4_frag.h:
 
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.h:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/igmp.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/osal/osal.h:
@@ -11752,12 +12900,6 @@ generated/pico_base/pico/version.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/config.h:
 
 /usr/include/newlib/ctype.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c:
 
@@ -11783,21 +12925,119 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h:
 
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/dcd.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/priv/tcpip_priv.h:
+
 /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h:
 
 /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb/reset_interface.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_btbus.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6.c:
-
 /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/nd6.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/netbuf.h:
+
+../dnsserver/dnsserver.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/ssi.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.h:
+
+/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c:
+
+/usr/include/newlib/math.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_spi.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/sem.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/lock_core.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/raw.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/acd.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h:
+
+/usr/include/newlib/sys/_intsup.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c:
+
+/usr/include/newlib/sys/_pthreadtypes.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c:
+
+/usr/include/newlib/machine/ieeefp.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/ff_stdio.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/lowpan6_opts.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/zepif.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/util.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/rtc.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_printf/include/pico/printf.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/scb.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/rtc.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd.h:
 
 /usr/include/newlib/sys/errno.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_stats.h:
 
@@ -11809,12 +13049,6 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/dhcp6.h:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_internal.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/firmware/wifi_nvram_43439.h:
@@ -11822,12 +13056,6 @@ generated/pico_base/pico/version.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/slipif.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_spi.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_debug_pins.h:
 
@@ -11840,6 +13068,8 @@ generated/pico_base/pico/version.h:
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/inet6.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/etharp.h:
+
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/ethernet.h:
 
@@ -11857,9 +13087,13 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/etharp.h:
 
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.h:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/ethip6.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h:
+
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/include/hardware/rtc.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/tcpip.h:
 
@@ -11875,6 +13109,8 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/api_msg.c:
 
+/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.h:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_out.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/if_api.c:
@@ -11887,6 +13123,8 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/netdb.c:
 
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/netdb.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/dns.c:
@@ -11895,19 +13133,9 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/api/tcpip.c:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/def.c:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/dns.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/inet_chksum.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/osal/osal_pico.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c:
-
-/usr/include/newlib/stdio.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/magic.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/inet_chksum.h:
 
@@ -11915,15 +13143,13 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c:
 
+/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h:
+
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/init.c:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp.c:
+/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/init.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/nd6.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/netbuf.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_rand/rand.c:
 
@@ -11931,33 +13157,13 @@ generated/pico_base/pico/version.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/mld6.h:
 
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/raw.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/acd.h:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/types.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/prot/dhcp.h:
 
-/usr/include/newlib/_newlib_version.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/demand.c:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/snmp.h:
 
-/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv4/icmp.c:
-
-/usr/include/newlib/math.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c:
-
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_float/float_math.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_common.c:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/ioqspi.h:
 
@@ -11986,61 +13192,3 @@ generated/pico_base/pico/version.h:
 /usr/include/newlib/machine/_types.h:
 
 /tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/altcp.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_multicore/multicore.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ecp.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/priv/sockets_priv.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/watchdog.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/netif.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/raw.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/tcp_in.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ethernet.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/core/udp.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/bridgeif.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/mutex.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/netif/bridgeif_opts.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/device/dcd.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/include/lwip/priv/tcpip_priv.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ccp.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/ppp.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_base/include/pico/assert.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/lcp.c:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/tinyusb/src/common/tusb_mcu.h:
-
-/tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/lwip/src/netif/ppp/mppe.c:

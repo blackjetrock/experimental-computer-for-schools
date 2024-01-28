@@ -8,5 +8,5 @@
 *.obj.d
 pico_main/build
 *.internal
-#*#
+\#*\#
 .#*

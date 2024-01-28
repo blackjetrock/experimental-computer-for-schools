@@ -1,12 +1,16 @@
 cmake_minimum_required(VERSION 3.13)
 
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+
+set(PICO_SDK_PATH "/tree/downloaded_tools/pico/new_sdk/pico-sdk")
+set(PICO_EXTRAS_PATH "/tree/downloaded_tools/pico/pico-extras")
+
 include(pico_sdk_import.cmake)
+include(pico_extras_import.cmake)
 
 project(escw_project C CXX ASM)
 
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 17)
-set(PICO_SDK_PATH "/tree/downloaded_tools/pico/new_sdk/pico-sdk")
 set(PICO_COPY_TO_RAM 0)
 
 #set(WIFI_SSID "${WIFI_SSID}" CACHE INTERNAL "WiFi SSID for examples")
@@ -15,6 +19,9 @@ set(WIFI_SSID "SchoolsCompSim" CACHE INTERNAL "WiFi SSID for examples")
 set(WIFI_PASSWORD "schools" CACHE INTERNAL "WiFi password for examples")
 add_compile_definitions(ESC_USE_WIFI)
 pico_sdk_init()
+
+# SD FAT LIB
+add_subdirectory(/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI build)
 
 add_executable(escw
   ../pico_main/experimental_schools_computer.c
@@ -25,8 +32,11 @@ add_executable(escw
   #picow_access_point.c
   dhcpserver/dhcpserver.c
   dnsserver/dnsserver.c
-  oled.c
+  ../pico_main/oled.c
+  ../pico_main/sdcard.c
+
   )
+
 #add_executable(escw
 #        picow_access_point.c
 #        dhcpserver/dhcpserver.c
@@ -46,10 +56,30 @@ target_include_directories(escw PRIVATE
         )
       
       target_link_libraries(escw
-	pico_cyw43_arch_lwip_threadsafe_background
-        pico_multicore
 	pico_stdlib
 	)
+
+ IF (NOT DEFINED N_SD_CARDS)
+  SET(N_SD_CARDS 1)
+ENDIF()
+
+target_compile_definitions(escw PUBLIC N_SD_CARDS=${N_SD_CARDS})
+target_link_libraries(escw
+ #gcc111libbid_hard
+        #hardware_i2c
+     	pico_cyw43_arch_lwip_threadsafe_background
+        pico_multicore
+        hardware_pio
+        hardware_clocks
+	hardware_adc
+	hardware_dma
+        pico_sd_card
+        pico_multicore
+	FatFs_SPI
+        )
+      
+pico_add_extra_outputs(escw)
+
 #target_link_libraries(escw
 #        pico_cyw43_arch_lwip_threadsafe_background
 #        pico_stdlib

@@ -82,6 +82,19 @@ CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmw
  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_bootrom/include/pico/bootrom.h \
+ /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.h \
+ /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.h \
+ /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/f_util.h \
+ /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
+ /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
+ /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/ff_stdio.h \
+ /usr/include/newlib/errno.h /usr/include/newlib/sys/errno.h \
+ /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
+ /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h \
+ /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h \
+ /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+ /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
+ /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h

@@ -207,6 +207,84 @@ cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast:
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build.make pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build
 .PHONY : cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast
 
+#=============================================================================
+# Target rules for targets named pico_scanvideo_scanvideo_pio_h
+
+# Build rule for target.
+pico_scanvideo_scanvideo_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_scanvideo_scanvideo_pio_h
+.PHONY : pico_scanvideo_scanvideo_pio_h
+
+# fast build rule for target.
+pico_scanvideo_scanvideo_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/common/pico_scanvideo/CMakeFiles/pico_scanvideo_scanvideo_pio_h.dir/build.make pico_extras/src/common/pico_scanvideo/CMakeFiles/pico_scanvideo_scanvideo_pio_h.dir/build
+.PHONY : pico_scanvideo_scanvideo_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_audio_i2s_audio_i2s_pio_h
+
+# Build rule for target.
+pico_audio_i2s_audio_i2s_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_audio_i2s_audio_i2s_pio_h
+.PHONY : pico_audio_i2s_audio_i2s_pio_h
+
+# fast build rule for target.
+pico_audio_i2s_audio_i2s_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/build
+.PHONY : pico_audio_i2s_audio_i2s_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_audio_pwm_audio_pwm_pio_h
+
+# Build rule for target.
+pico_audio_pwm_audio_pwm_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_audio_pwm_audio_pwm_pio_h
+.PHONY : pico_audio_pwm_audio_pwm_pio_h
+
+# fast build rule for target.
+pico_audio_pwm_audio_pwm_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/build
+.PHONY : pico_audio_pwm_audio_pwm_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_audio_spdif_audio_spdif_pio_h
+
+# Build rule for target.
+pico_audio_spdif_audio_spdif_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_audio_spdif_audio_spdif_pio_h
+.PHONY : pico_audio_spdif_audio_spdif_pio_h
+
+# fast build rule for target.
+pico_audio_spdif_audio_spdif_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_spdif/CMakeFiles/pico_audio_spdif_audio_spdif_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_spdif/CMakeFiles/pico_audio_spdif_audio_spdif_pio_h.dir/build
+.PHONY : pico_audio_spdif_audio_spdif_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_sd_card_sd_card_pio_h
+
+# Build rule for target.
+pico_sd_card_sd_card_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_sd_card_sd_card_pio_h
+.PHONY : pico_sd_card_sd_card_pio_h
+
+# fast build rule for target.
+pico_sd_card_sd_card_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_sd_card/CMakeFiles/pico_sd_card_sd_card_pio_h.dir/build.make pico_extras/src/rp2_common/pico_sd_card/CMakeFiles/pico_sd_card_sd_card_pio_h.dir/build
+.PHONY : pico_sd_card_sd_card_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named pico_scanvideo_dpi_timing_pio_h
+
+# Build rule for target.
+pico_scanvideo_dpi_timing_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_scanvideo_dpi_timing_pio_h
+.PHONY : pico_scanvideo_dpi_timing_pio_h
+
+# fast build rule for target.
+pico_scanvideo_dpi_timing_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build.make pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build
+.PHONY : pico_scanvideo_dpi_timing_pio_h/fast
+
 dhcpserver/dhcpserver.obj: dhcpserver/dhcpserver.c.obj
 .PHONY : dhcpserver/dhcpserver.obj
 
@@ -278,6 +356,342 @@ escw.s: escw.c.s
 escw.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/escw.c.s
 .PHONY : escw.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.obj: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.obj
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.i: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i
+
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.s: tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s
+.PHONY : tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s
 
 tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.obj: tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.obj
 .PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.obj
@@ -3063,6 +3477,30 @@ tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.s
 .PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.c.s
 
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.obj: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.i: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.i
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.i
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.i
+
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.s: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
+
 tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.obj: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
 .PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.obj
 
@@ -3294,6 +3732,54 @@ tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.s: t
 tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
 .PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
+
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.obj: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
+
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.i: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i
+
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.s: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s
+
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.obj: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj
+
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.i: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.i
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.i
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.i
+
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.s: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.s
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.s
+.PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.c.s
 
 tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.obj: tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
 .PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.obj
@@ -4279,6 +4765,30 @@ tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
 .PHONY : tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
 
+tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.obj: tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj
+.PHONY : tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.obj
+
+# target to build an object file
+tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj
+.PHONY : tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj
+
+tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.i: tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i
+.PHONY : tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.i
+
+# target to preprocess a source file
+tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i
+.PHONY : tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i
+
+tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.s: tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
+.PHONY : tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.s
+
+# target to generate assembly for a file
+tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
+.PHONY : tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
+
 tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.obj: tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.c.obj
 .PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.obj
 
@@ -4375,6 +4885,54 @@ tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.c.s
 .PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.c.s
 
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.obj: tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.obj
+
+# target to build an object file
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.obj
+
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.i: tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.i
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.i
+
+# target to preprocess a source file
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.i
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.i
+
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.s: tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.s
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.s
+
+# target to generate assembly for a file
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.s
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.c.s
+
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.obj: tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.obj
+
+# target to build an object file
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.obj
+
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.i: tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.i
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.i
+
+# target to preprocess a source file
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.i
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.i
+
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.s: tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.s
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.s
+
+# target to generate assembly for a file
+tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.s
+.PHONY : tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -4388,6 +4946,12 @@ help:
 	@echo "... bs2_default_bin"
 	@echo "... bs2_default_padded_checksummed_asm"
 	@echo "... cyw43_driver_picow_cyw43_bus_pio_spi_pio_h"
+	@echo "... pico_audio_i2s_audio_i2s_pio_h"
+	@echo "... pico_audio_pwm_audio_pwm_pio_h"
+	@echo "... pico_audio_spdif_audio_spdif_pio_h"
+	@echo "... pico_scanvideo_dpi_timing_pio_h"
+	@echo "... pico_scanvideo_scanvideo_pio_h"
+	@echo "... pico_sd_card_sd_card_pio_h"
 	@echo "... bs2_default"
 	@echo "... escw"
 	@echo "... dhcpserver/dhcpserver.obj"
@@ -4399,6 +4963,48 @@ help:
 	@echo "... escw.obj"
 	@echo "... escw.i"
 	@echo "... escw.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.s"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.obj"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.i"
+	@echo "... tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.s"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.obj"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.i"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.s"
@@ -4747,6 +5353,9 @@ help:
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.obj"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.i"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/common/pico_util/queue.s"
+	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.obj"
+	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.i"
+	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_adc/adc.s"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.obj"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.i"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_claim/claim.s"
@@ -4776,6 +5385,12 @@ help:
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.obj"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.i"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_pll/pll.s"
+	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.obj"
+	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.i"
+	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_rtc/rtc.s"
+	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.obj"
+	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.i"
+	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_spi/spi.s"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.obj"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.i"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/hardware_sync/sync.s"
@@ -4899,6 +5514,9 @@ help:
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.obj"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.i"
 	@echo "... tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.s"
+	@echo "... tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.obj"
+	@echo "... tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.i"
+	@echo "... tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.s"
 	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.obj"
 	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.i"
 	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.s"
@@ -4911,6 +5529,12 @@ help:
 	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.obj"
 	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.i"
 	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/match_token.s"
+	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.obj"
+	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.i"
+	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/oled.s"
+	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.obj"
+	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.i"
+	@echo "... tree/projects/github/experimental-computer-for-schools/firmware/pico_main/sdcard.s"
 .PHONY : help
 
 
