@@ -44,7 +44,8 @@ To build the non-Wifi version,
 <code>cmake ..</code>
 
 in the 
-.code>experimental_schools_computer/build</code>
+
+<code>experimental_schools_computer/build</code>
 
 directory and then make as usual.
 
