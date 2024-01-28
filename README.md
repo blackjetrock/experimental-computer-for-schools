@@ -30,5 +30,22 @@ If building for a Pico W then use this command line:
 
 <code>cmake -DPICO_BOARD=pico_w -DWIFI_SSID="Schools" -DWIFI_PASSWORD="password" ..</code>
 
-to initialise the build directory.
+to initialise the build directory in the 
+
+<code>firmware/escw</code>
+
+directory. Then 
+
+<code>make</code>
+
+as usual.
+To build the non-Wifi version, 
+
+<code>cmake ..</code>
+
+in the 
+.code>experimental_schools_computer/build</code>
+
+directory and then make as usual.
+
 
