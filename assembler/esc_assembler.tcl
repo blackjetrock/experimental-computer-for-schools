@@ -83,8 +83,8 @@ set ::INST_INFO_3 {
 }
 
 set ::INST_INFO {
-    {"(R[0-9]+)<-(R[0-9]+)+([0-9]+)"   inst_1_00}
-    {"(R[0-9]+)<-(R[0-9]+)+(R[0-9]+)"  inst_1_01}
+    {"(R[0-9]+)[<][-](R[0-9]+)[+]([0-9]+)"   inst_1_00}
+    {"R([0-9]+)[<][-]R([0-9]+)[+]R([0-9]+)"  inst_1_01}
 
 }
 
@@ -135,7 +135,7 @@ proc inst_1_01 {line fmt} {
 	# return the opcode
 	return "01$a$c"	
     } else {
-	inst_error "INST failed:$fmt $line" 
+	inst_error "INST failed:'$fmt' '$line'" 
     }
     
 }
@@ -176,7 +176,7 @@ proc assemble {t pass} {
 	    set f [lindex $inst 0]
 	    set p [lindex $inst 1]
 
-	    set object [$p $f $line]
+	    set object [$p $line $f]
 	    puts "OBJ:$object"
 	}
 	
