@@ -2,24 +2,25 @@
 0047A                               	input b
 0048                                	input L
 0048A                               	J <- b
-0049                                	(R0,R1) <- L
+0049      2000                      	(R0,R1) <- L
 0049A                               	right shift R1 by (R0)
 0050      0300                      	R0 <- 0
 0050A                               	P <- [L]
 0051                                	Q <- L - P
-0051A   24BifP                   A: 	branch to B if P = 0
-0052                                	P <- P - 1
-0052A                               	N <- N * b
-0053      2451                      	branch to A
-0053A                            B: 	J <- sqrt J
-0054    24Cif1                      	branch to C if J = 1
-0054A                               	Q <- Q + Q
-0055   2403ifQ                      	branch to b if Q - 1 < 0
-0055A                               	Q <- Q -1
-0056                                	N <- N * J
-0056A     2453                      	branch to B
-0057                                	display b, L , N
-0057A     2447                      	branch to start
+0051A                               	P <- P - 1
+0052                                	N <- N * b
+0052A     2451                      	branch to A
+0053                             B: 	J <- sqrt J
+0053A     2001                      	(R0,R1) <- J
+0054      0111                      	R1 <- R1 - 1
+0054A     0510                      	test R1 = 0
+0055      2557                      	branch to C if cl 1
+0055A                               	Q <- Q + Q
+0056                                	Q <- Q -1
+0056A                               	N <- N * J
+0057      2453                      	branch to B
+0057A                            C: 	display b, L , N
+0058      2447                      	branch to start
 
 Equates
 -------
@@ -28,10 +29,19 @@ Equates
                    L EQU 0x0000 0
                    J EQU 0x0001 1
                    N EQU 0x001E 30
+                   b EQU 0x0003 3
+                   L EQU 0x0000 0
+                   J EQU 0x0001 1
+                   N EQU 0x001E 30
 
 Labels
 ------
 
-               start: 0x002F 47
-                   A: 0x0033 51
-                   B: 0x0035 53
+               start: 0x0047 
+                   A: 0x0051A
+                   B: 0x0053 
+                   C: 0x0057A
+               start: 0x0047 
+                   A: 0x0051A
+                   B: 0x0053 
+                   C: 0x0057A

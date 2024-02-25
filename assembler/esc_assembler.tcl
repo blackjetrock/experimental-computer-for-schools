@@ -84,7 +84,14 @@ set ::INST_INFO_3 {
 
 set ::INST_INFO {
     # Branches
+    {"branchto([a-zA-z0-9_]+)ifcl1"                   inst_1_branch    .5}
+    {"branchto([a-zA-z0-9_]+)ifcl0"                   inst_1_branch    .6}
     {"branchto([a-zA-z0-9_]+)"                        inst_1_branch    .4}
+
+    {"[(]R0,R1[)]<-([a-zA-Z0-9_]+)"                   inst_1_branch    .0}
+
+    # tests
+    {"testR([0-9]+)([a-zA-Z0-9_=><]+)"                   inst_1_test      05}
     
     # register addressing before literals
     {"R([0-9]+)[<][-]R([0-9]+)[+]R([0-9]+)"           inst_1_Rc_Rc_Rd  10}
@@ -160,6 +167,26 @@ proc determine_opcode_a {arg} {
 return "?"
 }
 
+set ::TABLE4_INFO {
+    {0 "^=0$" }
+    {1 "^>0$" }
+    {2 "^<0$" }
+    {3 "^LHD=0$" }
+    {4 "^RHD=0$" }
+}
+
+proc determine_opcode_d_test {arg} {
+    foreach t4 $::TABLE4_INFO {
+	set opcode_d [lindex $t4 0]
+	set fmt      [lindex $t4 1]
+
+	if { [regexp -- $fmt $arg] } {
+	    return $opcode_d
+	}
+    }
+return "?"
+}
+
 ################################################################################
 
 proc inst_1_branch {line fmt opcode} {
@@ -170,7 +197,27 @@ proc inst_1_branch {line fmt opcode} {
 	set opcode_a [determine_opcode_a $dest]
 	set opcode "$opcode_a[lindex [split $opcode ""] 1]"
 
-       	set retval "$opcode$dest"
+       	set retval "$opcode[format "%02d" $dest]"
+	
+	# Check arguments are valid
+
+	# return the opcode
+	return $retval
+	
+    } else {
+	inst_error "INST failed:$fmt $line" 
+    }
+    
+}
+
+proc inst_1_test {line fmt opcode} {
+    if { [regexp -- $fmt $line all c test] } {
+	set c [substitute_equates $c]
+	set c [substitute_labels $c]
+
+	set opcode_d [determine_opcode_d_test $test]
+
+       	set retval "$opcode$c$opcode_d"
 	
 	# Check arguments are valid
 
@@ -357,8 +404,11 @@ proc assemble {t pass} {
 	    lappend ::LABEL_NAMES $label
 
 	    # Addresses (labels) always point to the first instruction in a word
+	    # We store the flag with the label to detect errors, or fixes to the
+	    # branches
 	    
 	    set ::LABEL_VALUE($label) $::ADDRESS
+	    set ::LABEL_A_VALUE($label) $::ADDRESS_A
 	    set line $b
 	}
 
@@ -379,33 +429,37 @@ proc assemble {t pass} {
 	}
 	
 	# Find and assemble the instruction
-	set found 0
-	
-	foreach inst $::INST_INFO {
-	    set f [lindex $inst 0]
-	    set p [lindex $inst 1]
-	    set opcode [lindex $inst 2]
-	    if { [regexp -- $f $line] } {
-		set found 1
-		set object [$p $line $f $opcode]
-		puts -nonewline $::lstf [format "%04d%s %8s" $::ADDRESS $::ADDRESS_A_CHAR $object]
-		break
+	# Skip on pass 1
+
+	if { $pass > 1 } {
+	    set found 0
+	    
+	    foreach inst $::INST_INFO {
+		set f [lindex $inst 0]
+		set p [lindex $inst 1]
+		set opcode [lindex $inst 2]
+		if { [regexp -- $f $line] } {
+		    set found 1
+		    set object [$p $line $f $opcode]
+		    puts -nonewline $::lstf [format "%04d%s %8s" $::ADDRESS $::ADDRESS_A_CHAR $object]
+		    break
+		}
+	    }
+	    
+	    if { !$found } {
+		puts -nonewline $::lstf [format "%04d%s %8s" $::ADDRESS $::ADDRESS_A_CHAR ""]
+	    }
+	    
+	    # Tidy up the source and add that to the end
+	    # Align with the colon of labels
+	    
+	    if { [regexp -- {(.+):(.*)} $original_line all a b] } {
+		puts $::lstf [format "%20s: %s" $a $b]
+	    } else {
+		puts $::lstf [format "%20s  %s" "" $original_line]
 	    }
 	}
-
-	if { !$found } {
-	    puts -nonewline $::lstf [format "%04d%s %8s" $::ADDRESS $::ADDRESS_A_CHAR ""]
-	}
-
-	# Tidy up the source and add that to the end
-	# Align with the colon of labels
-
-	if { [regexp -- {(.+):(.*)} $original_line all a b] } {
-	    puts $::lstf [format "%20s: %s" $a $b]
-	} else {
-	    puts $::lstf [format "%20s  %s" "" $original_line]
-	}
-
+	
 	# Added complication is that there are 4 digit and 8 digit instructions. Two 4 digit
 	# instructions are packed into a word, one 8 digit in a word. There is therefore an
 	# 'A' flag which is used to address the second 4 digit instruction in a word. Branches cannot
@@ -436,9 +490,15 @@ proc dump_labels {} {
     puts $::lstf "------"
     puts $::lstf ""
     foreach labelname $::LABEL_NAMES {
-	set labelvalue $::LABEL_VALUE($labelname)
+	set labelvalue  $::LABEL_VALUE($labelname)
+	set labelavalue $::LABEL_A_VALUE($labelname)
+	if { $labelavalue } {
+	    set label_a "A"
+	} else {
+	    set label_a " "
+	}
 	
-	puts $::lstf [format "%20s: 0x%04X %d" $labelname $labelvalue $labelvalue]
+	puts $::lstf [format "%20s: 0x%04d%s" $labelname $labelvalue $label_a]
     }
 }
 
@@ -475,7 +535,10 @@ set done 0
 for {set pass 1} {!$done} {incr pass 1} {
 
     assemble $txt $pass
-    set done 1
+
+    if { $pass == 2 } {
+	set done 1
+    }
 }
 
 dump_equates

@@ -14,17 +14,22 @@ start:	N <- 1
 	R0 <- 0
 	P <- [L]
 	Q <- L - P
-A:	branch to B if P = 0
+A:	;branch to B if P = 0
 	P <- P - 1
 	N <- N * b
 	branch to A
 B:	J <- sqrt J
-	branch to C if J = 1
+	;branch to C if J = 1
+	(R0,R1) <- J
+	R1 <- R1 - 1
+	test R1 = 0
+	branch to C if cl 1
+	   
 	Q <- Q + Q
-	branch to b if Q - 1 < 0
+	   ;branch to b if Q - 1 < 0
 	Q <- Q -1
 	N <- N * J
 	branch to B
-	display b, L , N
+C:	display b, L , N
 	branch to start
 	
