@@ -25,7 +25,13 @@ start:	VAR_N <- CONST1 / CONST1
 	VAR_P <- (R0,R1)
 	
 	VAR_Q <- L - VAR_P
-A:	;branch to B if VAR_P = 0
+	;branch to B if VAR_P = 0
+	
+A:      (R0,R1) <- VAR_P
+        test R1 = 0
+        branch to C if cl 1
+        nop
+	
 	VAR_P <- VAR_P - CONST1
 	VAR_N <- VAR_N * b
 	branch to A

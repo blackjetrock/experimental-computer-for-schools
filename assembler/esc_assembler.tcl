@@ -97,6 +97,7 @@ set ::INST_INFO {
     {"^rightshiftR([0-9]+)by([0-9A-Za-z_]+)places$"   inst_1_Rc_d      07}
     {"^leftshiftR([0-9]+)byR([0-9]+)places$"          inst_1_Rc_Rd     16}
     {"^rightshiftR([0-9]+)by[(]R([0-9]+)[)]places$"   inst_1_Rc_Rd     17}
+    {"^nop$"                                          inst_1_nop       00}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[+]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .0}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[-]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .1}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[*]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .2}
@@ -383,6 +384,10 @@ proc inst_3_a_b_c {line fmt opcode} {
     
 }
 
+proc inst_1_nop {line fmt opcode} {
+    return "0000"
+}
+
 ################################################################################
 
 set ::EQUATE_NAMES {}
@@ -446,7 +451,6 @@ proc next_address {} {
 
 
 proc assemble {t pass} {
-
     
     foreach line [split $t "\n"] {
 	set ::LINE $line
@@ -468,16 +472,21 @@ proc assemble {t pass} {
 	if { [regexp "(.*)equ(.*)" $line all equate value] } {
 
 	    # Next two lines arein this order so we don't try to substitute this eqyate's value
-	    # befor eitis set up
+	    # before it is set up
 	    set ::EQUATE_VALUE($equate) [substitute_equates $value]
-	    lappend ::EQUATE_NAMES $equate
+	    if { [lsearch -exact $::EQUATE_NAMES $equate] == -1 } {
+		lappend ::EQUATE_NAMES $equate
+	    }
+	    
 	    #puts "EQ $equate = $::EQUATE_VALUE($equate)"
 	    continue
 	}
 	
 	# Store and remove labels
 	if { [regexp "(.*):(.*)" $line all label b] } {
-	    lappend ::LABEL_NAMES $label
+	    if { [lsearch -exact $::LABEL_NAMES $label] == -1 } {
+		lappend ::LABEL_NAMES $label
+	    }
 
 	    # Addresses (labels) always point to the first instruction in a word
 	    # We store the flag with the label to detect errors, or fixes to the
@@ -601,6 +610,9 @@ puts $lstfn
 set ::objf [open $objfn w]
 set ::lstf [open $lstfn w]
 set done 0
+
+set ::LABEL_NAMES {}
+set ::EQUATE_NAMES {}
 
 for {set pass 1} {!$done} {incr pass 1} {
 

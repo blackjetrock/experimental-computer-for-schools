@@ -8,30 +8,24 @@
 0035      0300                              R0 <- 0
 0035A     2104                      	VAR_P <- (R0,R1)
 0036  71070004                      	VAR_Q <- L - VAR_P
-0037  71040430                      	VAR_P <- VAR_P - CONST1
-0038  72020203                      	VAR_N <- VAR_N * b
-0039      2437                      	branch to A
-0039A     2001                      	(R0,R1) <- J
-0040      0000                      	R1 <- R1 - CONST1
-0040A     0510                      	test R1 = 0
-0041      2541                      	branch to C if cl 1
-0041A 70070707                      	VAR_Q <- VAR_Q + VAR_Q
-0042A 71070730                      	VAR_Q <- VAR_Q - CONST1
-0043A 72020201                      	VAR_N <- VAR_N * J
-0044A     2439                      	branch to B
-0045                             C: 	display b, L , VAR_N
-0045A     2431                      	branch to start
+0037      0000                              nop	
+0037A 71040430                      	VAR_P <- VAR_P - CONST1
+0038A 72020203                      	VAR_N <- VAR_N * b
+0039A     2437                      	branch to A
+0040      2001                      	(R0,R1) <- J
+0040A     0000                      	R1 <- R1 - CONST1
+0041      0510                      	test R1 = 0
+0041A     2542                      	branch to C if cl 1
+0042  70070707                      	VAR_Q <- VAR_Q + VAR_Q
+0043  71070730                      	VAR_Q <- VAR_Q - CONST1
+0044  72020201                      	VAR_N <- VAR_N * J
+0045      2440                      	branch to B
+0045A                            C: 	display b, L , VAR_N
+0046      2431                      	branch to start
 
 Equates
 -------
 
-                   b EQU 0x0003 3
-                   L EQU 0x0000 0
-                   J EQU 0x0001 1
-               VAR_N EQU 0x0002 2
-              CONST1 EQU 0x001E 30
-               VAR_P EQU 0x0004 4
-               VAR_Q EQU 0x0007 7
                    b EQU 0x0003 3
                    L EQU 0x0000 0
                    J EQU 0x0001 1
@@ -45,9 +39,5 @@ Labels
 
                start: 0x0031 
                    A: 0x0037 
-                   B: 0x0039A
-                   C: 0x0045 
-               start: 0x0031 
-                   A: 0x0037 
-                   B: 0x0039A
-                   C: 0x0045 
+                   B: 0x0040 
+                   C: 0x0045A
