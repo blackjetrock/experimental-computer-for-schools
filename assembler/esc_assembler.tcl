@@ -77,34 +77,30 @@
 #
 #
 
-set ::INST_INFO_3 {
-    {"([0-9]+)<-([0-9]+)-([0-9]+)"}
-    {"([0-9]+[(])<-([0-9]+)-([0-9]+))" }
-}
-
 set ::INST_INFO {
-    # Branches
     {"branchto([a-zA-z0-9_]+)ifcl1"                   inst_1_branch    .5}
     {"branchto([a-zA-z0-9_]+)ifcl0"                   inst_1_branch    .6}
     {"branchto([a-zA-z0-9_]+)"                        inst_1_branch    .4}
-
     {"[(]R0,R1[)]<-([a-zA-Z0-9_]+)"                   inst_1_branch    .0}
-
-    # tests
-    {"testR([0-9]+)([a-zA-Z0-9_=><]+)"                   inst_1_test      05}
-    
-    # register addressing before literals
+    {"([a-zA-Z0-9_]+)<-[(]R0,R1[)]"                   inst_1_branch    .1}
+    {"input([a-zA-Z0-9_]+)"                           inst_1_branch    .8}
+    {"testR([0-9]+)([a-zA-Z0-9_=><]+)"                inst_1_test      05}
     {"R([0-9]+)[<][-]R([0-9]+)[+]R([0-9]+)"           inst_1_Rc_Rc_Rd  10}
     {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"           inst_1_Rc_Rc_Rd  11}
     {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"           inst_1_Rc_Rd_Rc  12}
     {"^R([0-9]+)[<][-]R([0-9]+)$"                     inst_1_Rc_Rd     13}
-    
-    # Literals
     {"^R([0-9]+)[<][-]R([0-9]+)[+]([0-9A-Za-z_]+$)"   inst_1_Rc_Rc_d   00}
     {"^R([0-9]+)[<][-]R([0-9]+)[-]([0-9A-Za-z_]+$)"   inst_1_Rc_Rc_d   01}
     {"^R([0-9]+)[<][-]([0-9A-Za-z_]+)$"               inst_1_Rc_d      03}
-
-
+    {"^rightshiftR([0-9]+)by([0-9A-Za-z_]+)places$"   inst_1_Rc_d      07}
+    {"^leftshiftR([0-9]+)by([0-9A-Za-z_]+)places$"    inst_1_Rc_d      06}
+    {"^rightshiftR([0-9]+)by([0-9A-Za-z_]+)places$"   inst_1_Rc_d      07}
+    {"^leftshiftR([0-9]+)byR([0-9]+)places$"          inst_1_Rc_Rd     16}
+    {"^rightshiftR([0-9]+)by[(]R([0-9]+)[)]places$"   inst_1_Rc_Rd     17}
+    {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[+]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .0}
+    {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[-]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .1}
+    {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[*]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .2}
+    {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[/]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .3}
 }
 
 ################################################################################
@@ -334,6 +330,59 @@ proc inst_1_Rc_Rd_Rc {line fmt opcode} {
     }
 }
 
+#-------------------------------------------------------------------------------
+
+set ::OPCODE_A_3ADDR_INFO {
+
+    {8 "(R3|R4|R5)"}
+    {9 "[(].*[)]"}
+    {7 "[0-9a-zA_Z_]"}
+}
+
+proc determine_opcode_a_3addr {x} {
+    foreach y $::OPCODE_A_3ADDR_INFO {
+	set opcode [lindex $y 0]
+	set fmt    [lindex $y 1]
+
+	if { [regexp -- $fmt $x] } {
+	    return $opcode
+	}
+    }
+    return "?"
+}
+
+proc inst_3_a_b_c {line fmt opcode} {
+    
+    if { [regexp -- $fmt $line all a b c] } {
+	set a [substitute_equates $a]
+	set a [substitute_labels  $a]
+	set a [format "%02d" $a]
+	
+	set b [substitute_equates $b]
+	set b [substitute_labels  $b]
+	set b [format "%02d" $b]
+	
+	set c [substitute_equates $c]
+	set c [substitute_labels  $c]
+	set c [format "%02d" $c]
+	
+	set opcode_a [determine_opcode_a_3addr $a]
+	set opcode "$opcode_a[lindex [split $opcode ""] 1]"
+	
+       	set retval "$opcode$a$b$c"
+
+	# Skip an extra 4 digits on address increment
+	address_skip_extra
+	
+	# return the opcode
+	return $retval
+	
+    } else {
+	inst_error "INST failed:$fmt $line" 
+    }
+    
+}
+
 ################################################################################
 
 set ::EQUATE_NAMES {}
@@ -363,6 +412,33 @@ return $in
 set ::ADDRESS          0
 set ::ADDRESS_A        0
 set ::ADDRESS_A_CHAR " "
+set ::ADDRESS_SKIP_EXTRA 0
+
+proc address_skip_extra {{n 1}} {
+    set ::ADDRESS_SKIP_EXTRA $n
+}
+
+proc next_address_1 {} {
+    if { $::ADDRESS_A == 0 } {
+	set ::ADDRESS_A 1
+	set ::ADDRESS_A_CHAR A
+    } else {
+	set ::ADDRESS_A 0
+	set ::ADDRESS_A_CHAR " "
+	incr ::ADDRESS 1
+    }
+}
+
+## Move address counter on by one and then the extra count
+proc next_address {} {
+    next_address_1
+
+    for {set i 0} {$i<$::ADDRESS_SKIP_EXTRA} {incr i 1} {
+	next_address_1
+    }
+
+    set ::ADDRESS_SKIP_EXTRA 0
+}
 
 ################################################################################
 
@@ -438,6 +514,8 @@ proc assemble {t pass} {
 		set f [lindex $inst 0]
 		set p [lindex $inst 1]
 		set opcode [lindex $inst 2]
+		puts ">>>'$f'"
+		puts ">>>'$line'"
 		if { [regexp -- $f $line] } {
 		    set found 1
 		    set object [$p $line $f $opcode]
@@ -466,15 +544,7 @@ proc assemble {t pass} {
 	# jump to this second instruction, so NOPs have to be inserted if needed
 	# If an 8 digfit instruction follows a four digit instruction in the first half of a word then
 	# a NOP has to be inserted
-
-	if { $::ADDRESS_A == 0 } {
-	    set ::ADDRESS_A 1
-	    set ::ADDRESS_A_CHAR A
-	} else {
-	    set ::ADDRESS_A 0
-	    set ::ADDRESS_A_CHAR " "
-	    incr ::ADDRESS 1
-	}
+	next_address
     }
 }
 

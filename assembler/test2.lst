@@ -1,26 +1,26 @@
-0047                         start: 	N <- 1
-0047A                               	input b
-0048                                	input L
-0048A                               	J <- b
-0049      2000                      	(R0,R1) <- L
-0049A                               	right shift R1 by (R0)
-0050      0300                      	R0 <- 0
-0050A                               	P <- [L]
-0051                                	Q <- L - P
-0051A                               	P <- P - 1
-0052                                	N <- N * b
-0052A     2451                      	branch to A
-0053                             B: 	J <- sqrt J
-0053A     2001                      	(R0,R1) <- J
-0054      0111                      	R1 <- R1 - 1
-0054A     0510                      	test R1 = 0
-0055      2557                      	branch to C if cl 1
-0055A                               	Q <- Q + Q
-0056                                	Q <- Q -1
-0056A                               	N <- N * J
-0057      2453                      	branch to B
-0057A                            C: 	display b, L , N
-0058      2447                      	branch to start
+0031  73023030               start: 	VAR_N <- CONST1 / CONST1
+0032      2803                      	input b
+0032A     2800                      	input L
+0033      2003                      	(R0,R1) <- b
+0033A     2101                      	J <- (R0,R1)
+0034      2000                      	(R0,R1) <- L	
+0034A     1710                      	right shift R1 by (R0) places
+0035      0300                              R0 <- 0
+0035A     2104                      	VAR_P <- (R0,R1)
+0036  71070004                      	VAR_Q <- L - VAR_P
+0037  71040430                      	VAR_P <- VAR_P - CONST1
+0038  72020203                      	VAR_N <- VAR_N * b
+0039      2437                      	branch to A
+0039A     2001                      	(R0,R1) <- J
+0040      0000                      	R1 <- R1 - CONST1
+0040A     0510                      	test R1 = 0
+0041      2541                      	branch to C if cl 1
+0041A 70070707                      	VAR_Q <- VAR_Q + VAR_Q
+0042A 71070730                      	VAR_Q <- VAR_Q - CONST1
+0043A 72020201                      	VAR_N <- VAR_N * J
+0044A     2439                      	branch to B
+0045                             C: 	display b, L , VAR_N
+0045A     2431                      	branch to start
 
 Equates
 -------
@@ -28,20 +28,26 @@ Equates
                    b EQU 0x0003 3
                    L EQU 0x0000 0
                    J EQU 0x0001 1
-                   N EQU 0x001E 30
+               VAR_N EQU 0x0002 2
+              CONST1 EQU 0x001E 30
+               VAR_P EQU 0x0004 4
+               VAR_Q EQU 0x0007 7
                    b EQU 0x0003 3
                    L EQU 0x0000 0
                    J EQU 0x0001 1
-                   N EQU 0x001E 30
+               VAR_N EQU 0x0002 2
+              CONST1 EQU 0x001E 30
+               VAR_P EQU 0x0004 4
+               VAR_Q EQU 0x0007 7
 
 Labels
 ------
 
-               start: 0x0047 
-                   A: 0x0051A
-                   B: 0x0053 
-                   C: 0x0057A
-               start: 0x0047 
-                   A: 0x0051A
-                   B: 0x0053 
-                   C: 0x0057A
+               start: 0x0031 
+                   A: 0x0037 
+                   B: 0x0039A
+                   C: 0x0045 
+               start: 0x0031 
+                   A: 0x0037 
+                   B: 0x0039A
+                   C: 0x0045 
