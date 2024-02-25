@@ -1,0 +1,37 @@
+0000                         start: 	N <- 1
+0000A                               	input b
+0001                                	input L
+0001A                               	J <- b
+0002                                	(R0,R1) <- L
+0002A                               	right shift R1 by (R0)
+0003      0300                      	R0 <- 0
+0003A                               	P <- [L]
+0004                                	Q <- L - P
+0004A                            A: 	branch to B if P = 0
+0005                                	P <- P - 1
+0005A                               	N <- N * b
+0006                                	branch to A
+0006A                            B: 	J <- sqrt J
+0007                                	branch to C if J = 1
+0007A                               	Q <- Q + Q
+0008                                	branch to b if Q - 1 < 0
+0008A                               	Q <- Q -1
+0009                                	N <- N * J
+0009A                               	branch to B
+000A                                	display b, L , N
+000AA                               	branch to start
+
+Equates
+-------
+
+                   b EQU 0x0003 3
+                   L EQU 0x0000 0
+                   J EQU 0x0001 1
+                   N EQU 0x001E 30
+
+Labels
+------
+
+               start: 0x0000 0
+                   A: 0x0004 4
+                   B: 0x0006 6
