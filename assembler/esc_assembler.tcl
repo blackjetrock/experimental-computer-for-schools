@@ -83,11 +83,20 @@ set ::INST_INFO_3 {
 }
 
 set ::INST_INFO {
+    # Branches
+    {"branchto([a-zA-z0-9_]+)"                        inst_1_branch    .4}
+    
     # register addressing before literals
-    {"R([0-9]+)[<][-]R([0-9]+)[+]R([0-9]+)"  inst_1_10}
+    {"R([0-9]+)[<][-]R([0-9]+)[+]R([0-9]+)"           inst_1_Rc_Rc_Rd  10}
+    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"           inst_1_Rc_Rc_Rd  11}
+    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"           inst_1_Rc_Rd_Rc  12}
+    {"^R([0-9]+)[<][-]R([0-9]+)$"                     inst_1_Rc_Rd     13}
+    
     # Literals
-    {"R([0-9]+)[<][-]R([0-9]+)[+]([0-9A-Za-z_]+)"   inst_1_00}
-    {"R([0-9]+)[<][-]([0-9A-Za-z_]+)"        inst_1_03}
+    {"^R([0-9]+)[<][-]R([0-9]+)[+]([0-9A-Za-z_]+$)"   inst_1_Rc_Rc_d   00}
+    {"^R([0-9]+)[<][-]R([0-9]+)[-]([0-9A-Za-z_]+$)"   inst_1_Rc_Rc_d   01}
+    {"^R([0-9]+)[<][-]([0-9A-Za-z_]+)$"               inst_1_Rc_d      03}
+
 
 }
 
@@ -95,6 +104,7 @@ set ::INST_INFO {
 
 proc inst_error {e} {
     puts "\n*** ERROR *** $e"
+    puts "\n$::LINE"
 }
 
 ################################################################################
@@ -130,21 +140,39 @@ proc check_literal {retval a} {
 
 ################################################################################
 
-proc inst_1_00 {line fmt} {
-    if { [regexp -- $fmt $line all a b c] } {
+set ::TABLE6_INFO {
+    {2 "^([a-zA-Z0-9_]+)$" }
+    {3 "^([a-zA-Z0-9_]+)+R3+$" }
+    {4 "^([a-zA-Z0-9_]+)+R4$" }
+    {5 "^([a-zA-Z0-9_]+)+R5$" }
+    {6 "^(\([a-zA-Z0-9_]+\))$" }
+}
 
-	set a [substitute_equates $a]
-	set b [substitute_equates $b]
-	set c [substitute_equates $c]
+proc determine_opcode_a {arg} {
+    foreach t6 $::TABLE6_INFO {
+	set opcode_a [lindex $t6 0]
+	set fmt      [lindex $t6 1]
 
-       	set retval "00$a$c"
+	if { [regexp -- $fmt $arg] } {
+	    return $opcode_a
+	}
+    }
+return "?"
+}
+
+################################################################################
+
+proc inst_1_branch {line fmt opcode} {
+    if { [regexp -- $fmt $line all dest] } {
+	set dest [substitute_equates $dest]
+	set dest [substitute_labels $dest]
+
+	set opcode_a [determine_opcode_a $dest]
+	set opcode "$opcode_a[lindex [split $opcode ""] 1]"
+
+       	set retval "$opcode$dest"
 	
 	# Check arguments are valid
-	set retval [check_same $retval $a $b]
-
-	set retval [check_register $retval $a]
-	set retval [check_register $retval $b]
-	set retval [check_register $retval $c]
 
 	# return the opcode
 	return $retval
@@ -155,13 +183,37 @@ proc inst_1_00 {line fmt} {
     
 }
 
-proc inst_1_03 {line fmt} {
+proc inst_1_Rc_Rc_d {line fmt opcode} {
+    if { [regexp -- $fmt $line all a b c] } {
+
+	set a [substitute_equates $a]
+	set b [substitute_equates $b]
+	set c [substitute_equates $c]
+
+       	set retval "$opcode$a$c"
+	
+	# Check arguments are valid
+	set retval [check_same $retval $a $b]
+
+	set retval [check_register $retval $a]
+	set retval [check_literal $retval $c]
+
+	# return the opcode
+	return $retval
+	
+    } else {
+	inst_error "INST failed:$fmt $line" 
+    }
+    
+}
+
+proc inst_1_Rc_d {line fmt opcode} {
     if { [regexp -- $fmt $line all c d] } {
 
 	set c [substitute_equates $c]
 	set d [substitute_equates $d]
 
-	set retval "03$c[expr $d]"
+	set retval "$opcode$c[expr $d]"
 	
 	set retval [check_register $retval $c]
 	set retval [check_literal $retval $d]
@@ -174,15 +226,34 @@ proc inst_1_03 {line fmt} {
     
 }
 
+proc inst_1_Rc_Rd {line fmt opcode} {
+    if { [regexp -- $fmt $line all c d] } {
 
-proc inst_1_10 {line fmt} {
+	set c [substitute_equates $c]
+	set d [substitute_equates $d]
+
+	set retval "$opcode$c[expr $d]"
+	
+	set retval [check_register $retval $c]
+	set retval [check_register $retval $d]
+
+	# return the opcode
+	return $retval
+    } else {
+	inst_error "INST failed:'$fmt' '$line'" 
+    }
+    
+}
+
+
+proc inst_1_Rc_Rc_Rd {line fmt opcode} {
     if { [regexp -- $fmt $line all a b c] } {
 
 	set a [substitute_equates $a]
 	set b [substitute_equates $b]
 	set c [substitute_equates $c]
 
-	set retval "10$a$c"
+	set retval "$opcode$a$c"
 	
 	# Check arguments are valid
 	set retval [check_same $retval $a $b]
@@ -193,7 +264,27 @@ proc inst_1_10 {line fmt} {
     } else {
 	inst_error "INST failed:'$fmt' '$line'" 
     }
-    
+}
+
+proc inst_1_Rc_Rd_Rc {line fmt opcode} {
+    if { [regexp -- $fmt $line all a b c] } {
+
+	set a [substitute_equates $a]
+	set b [substitute_equates $b]
+	set c [substitute_equates $c]
+
+	set retval "$opcode$a$c"
+	
+	# Check arguments are valid
+	set retval [check_same $retval $a $c]
+	set retval [check_register $retval $a]
+	set retval [check_register $retval $c]
+	
+	# return the opcode
+	return $retval
+    } else {
+	inst_error "INST failed:'$fmt' '$line'" 
+    }
 }
 
 ################################################################################
@@ -205,6 +296,16 @@ proc substitute_equates {in} {
     foreach eq $::EQUATE_NAMES {
 	#puts "eq:'$eq'"
 	set in [string map "$eq [set ::EQUATE_VALUE($eq)]" $in]
+    }
+    
+return $in
+}
+
+proc substitute_labels {in} {
+
+    foreach lab $::LABEL_NAMES {
+	#puts "label:'$lab'"
+	set in [string map "$lab [set ::LABEL_VALUE($lab)]" $in]
     }
     
 return $in
@@ -225,6 +326,8 @@ proc assemble {t pass} {
 
     
     foreach line [split $t "\n"] {
+	set ::LINE $line
+	
 	#puts "<<'$line'"
 
 	set original_line $line
@@ -240,11 +343,15 @@ proc assemble {t pass} {
 	
 	# Handle equates
 	if { [regexp "(.*)equ(.*)" $line all equate value] } {
+
+	    # Next two lines arein this order so we don't try to substitute this eqyate's value
+	    # befor eitis set up
+	    set ::EQUATE_VALUE($equate) [substitute_equates $value]
 	    lappend ::EQUATE_NAMES $equate
-	    set ::EQUATE_VALUE($equate) $value
 	    #puts "EQ $equate = $::EQUATE_VALUE($equate)"
 	    continue
 	}
+	
 	# Store and remove labels
 	if { [regexp "(.*):(.*)" $line all label b] } {
 	    lappend ::LABEL_NAMES $label
@@ -262,6 +369,14 @@ proc assemble {t pass} {
 	if { $length == 0 } {
 	    continue
 	}
+
+	# ORG
+	if { [regexp "org(.*)" $line all value] } {
+	    set ::ADDRESS [substitute_equates $value]
+	    set ::ADDRESS_A 0
+	    set ::ADDRESS_A_CHAR " "
+	    continue
+	}
 	
 	# Find and assemble the instruction
 	set found 0
@@ -269,16 +384,17 @@ proc assemble {t pass} {
 	foreach inst $::INST_INFO {
 	    set f [lindex $inst 0]
 	    set p [lindex $inst 1]
+	    set opcode [lindex $inst 2]
 	    if { [regexp -- $f $line] } {
 		set found 1
-		set object [$p $line $f]
-		puts -nonewline $::lstf [format "%04X%s %8s" $::ADDRESS $::ADDRESS_A_CHAR $object]
+		set object [$p $line $f $opcode]
+		puts -nonewline $::lstf [format "%04d%s %8s" $::ADDRESS $::ADDRESS_A_CHAR $object]
 		break
 	    }
 	}
 
 	if { !$found } {
-	    puts -nonewline $::lstf [format "%04X%s %8s" $::ADDRESS $::ADDRESS_A_CHAR ""]
+	    puts -nonewline $::lstf [format "%04d%s %8s" $::ADDRESS $::ADDRESS_A_CHAR ""]
 	}
 
 	# Tidy up the source and add that to the end

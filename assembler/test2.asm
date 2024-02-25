@@ -3,6 +3,8 @@
 	J equ 1
 	N   equ  30
 
+	org 47
+	
 start:	N <- 1
 	input b
 	input L

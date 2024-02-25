@@ -1,25 +1,25 @@
-0000                         start: 	N <- 1
-0000A                               	input b
-0001                                	input L
-0001A                               	J <- b
-0002                                	(R0,R1) <- L
-0002A                               	right shift R1 by (R0)
-0003      0300                      	R0 <- 0
-0003A                               	P <- [L]
-0004                                	Q <- L - P
-0004A                            A: 	branch to B if P = 0
-0005                                	P <- P - 1
-0005A                               	N <- N * b
-0006                                	branch to A
-0006A                            B: 	J <- sqrt J
-0007                                	branch to C if J = 1
-0007A                               	Q <- Q + Q
-0008                                	branch to b if Q - 1 < 0
-0008A                               	Q <- Q -1
-0009                                	N <- N * J
-0009A                               	branch to B
-000A                                	display b, L , N
-000AA                               	branch to start
+0047                         start: 	N <- 1
+0047A                               	input b
+0048                                	input L
+0048A                               	J <- b
+0049                                	(R0,R1) <- L
+0049A                               	right shift R1 by (R0)
+0050      0300                      	R0 <- 0
+0050A                               	P <- [L]
+0051                                	Q <- L - P
+0051A   24BifP                   A: 	branch to B if P = 0
+0052                                	P <- P - 1
+0052A                               	N <- N * b
+0053      2451                      	branch to A
+0053A                            B: 	J <- sqrt J
+0054    24Cif1                      	branch to C if J = 1
+0054A                               	Q <- Q + Q
+0055   2403ifQ                      	branch to b if Q - 1 < 0
+0055A                               	Q <- Q -1
+0056                                	N <- N * J
+0056A     2453                      	branch to B
+0057                                	display b, L , N
+0057A     2447                      	branch to start
 
 Equates
 -------
@@ -32,6 +32,6 @@ Equates
 Labels
 ------
 
-               start: 0x0000 0
-                   A: 0x0004 4
-                   B: 0x0006 6
+               start: 0x002F 47
+                   A: 0x0033 51
+                   B: 0x0035 53
