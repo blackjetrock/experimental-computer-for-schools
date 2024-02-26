@@ -402,12 +402,19 @@ proc inst_1_Rc_Rd_Rc {line fmt opcode} {
 #-------------------------------------------------------------------------------
 
 set ::OPCODE_A_3ADDR_INFO {
-
-    {8 "(R3|R4|R5)"}
-    {9 "[(].*[)]"}
-    {7 "[0-9a-zA_Z_]"}
+    {8 "R[3-5]"}
+    {7 "[0-9a-zA_Z_]+"}
+    {9 "[(][0-9a-zA_Z_]+[)]" }
 }
 
+set ::OPCODE_CD_3ADDR_INFO {
+
+    {8 "([0-9a-zA_Z_]+)[+*/-]R[3-5]"}
+    {7 "([0-9a-zA_Z_]+)"}
+    {9 "[(]([0-9a-zA_Z_]+)[)]"}
+}
+
+#    {9 "[(](.*)[)]"}
 proc determine_opcode_a_3addr {x} {
     foreach y $::OPCODE_A_3ADDR_INFO {
 	set opcode [lindex $y 0]
@@ -420,20 +427,44 @@ proc determine_opcode_a_3addr {x} {
     return "?"
 }
 
+proc determine_opcode_cd_3addr {x} {
+    foreach y $::OPCODE_CD_3ADDR_INFO {
+	set opcode [lindex $y 0]
+	set fmt    [lindex $y 1]
+
+	if { [regexp -- $fmt $x all v] } {
+	    dbg "Found $fmt"
+	    return $v
+	}
+    }
+    return "--"
+}
+
 proc inst_3_a_b_c {line fmt opcode} {
     
     if { [regexp -- $fmt $line all a b c] } {
 	set a [substitute_equates $a]
 	set a [substitute_labels  $a]
-	set a [format "%02d" $a]
 	
 	set b [substitute_equates $b]
 	set b [substitute_labels  $b]
-	set b [format "%02d" $b]
 	
 	set c [substitute_equates $c]
 	set c [substitute_labels  $c]
+
+	dbg "a='$a' b='$b' c='$c'"
+
+	set a [determine_opcode_cd_3addr $a]
+	set b [determine_opcode_cd_3addr $b]
+	set c [determine_opcode_cd_3addr $c]
+
+	dbg "a='$a' b='$b' c='$c'"
+	
+	set a [format "%02d" $a]
+	set b [format "%02d" $b]
 	set c [format "%02d" $c]
+
+	dbg "a='$a' b='$b' c='$c'"
 	
 	set opcode_a [determine_opcode_a_3addr $a]
 	set opcode "$opcode_a[lindex [split $opcode ""] 1]"
