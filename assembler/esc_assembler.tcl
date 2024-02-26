@@ -78,27 +78,33 @@
 #
 
 set ::INST_INFO {
-    {"branchto([a-zA-z0-9_]+)ifcl1"                   inst_1_branch    .5}
-    {"branchto([a-zA-z0-9_]+)ifcl0"                   inst_1_branch    .6}
-    {"branchto([a-zA-z0-9_]+)"                        inst_1_branch    .4}
-    {"[(]R0,R1[)]<-([a-zA-Z0-9_]+)"                   inst_1_branch    .0}
-    {"([a-zA-Z0-9_]+)<-[(]R0,R1[)]"                   inst_1_branch    .1}
-    {"input([a-zA-Z0-9_]+)"                           inst_1_branch    .8}
-    {"testR([0-9]+)([a-zA-Z0-9_=><]+)"                inst_1_test      05}
-    {"R([0-9]+)[<][-]R([0-9]+)[+]R([0-9]+)"           inst_1_Rc_Rc_Rd  10}
-    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"           inst_1_Rc_Rc_Rd  11}
-    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"           inst_1_Rc_Rd_Rc  12}
-    {"^R([0-9]+)[<][-]R([0-9]+)$"                     inst_1_Rc_Rd     13}
-    {"^R([0-9]+)[<][-]R([0-9]+)[+]([0-9A-Za-z_]+$)"   inst_1_Rc_Rc_d   00}
-    {"^R([0-9]+)[<][-]R([0-9]+)[-]([0-9A-Za-z_]+$)"   inst_1_Rc_Rc_d   01}
-    {"^R([0-9]+)[<][-]([0-9A-Za-z_]+)$"               inst_1_Rc_d      03}
-    {"^rightshiftR([0-9]+)by([0-9A-Za-z_]+)places$"   inst_1_Rc_d      07}
-    {"^leftshiftR([0-9]+)by([0-9A-Za-z_]+)places$"    inst_1_Rc_d      06}
-    {"^rightshiftR([0-9]+)by([0-9A-Za-z_]+)places$"   inst_1_Rc_d      07}
-    {"^leftshiftR([0-9]+)byR([0-9]+)places$"          inst_1_Rc_Rd     16}
-    {"^rightshiftR([0-9]+)by[(]R([0-9]+)[)]places$"   inst_1_Rc_Rd     17}
-    {"^nop$"                                          inst_1_nop       00}
-    {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[+]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .0}
+    {"^nop$"                                                              inst_1_nop       00}
+    {"^R([0-9]+)[<][-]R([0-9]+)[+]([0-9A-Za-z_]+$)"                       inst_1_Rc_Rc_d   00}
+    {"^R([0-9]+)[<][-]R([0-9]+)[-]([0-9A-Za-z_]+$)"                       inst_1_Rc_Rc_d   01}
+    {"^R([0-9]+)[<][-]([0-9A-Za-z_]+)$"                                   inst_1_Rc_d      03}
+
+    {"testR([0-9]+)([a-zA-Z0-9_=><]+)"                                    inst_1_test      05}
+    {"^leftshiftR([0-9]+)by([0-9A-Za-z_]+)places$"                        inst_1_Rc_d      06}
+    {"^rightshiftR([0-9]+)by([0-9A-Za-z_]+)places$"                       inst_1_Rc_d      07   "0. complete"}
+
+    {"R([0-9]+)[<][-]R([0-9]+)[+]R([0-9]+)"                               inst_1_Rc_Rc_Rd  10}
+    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"                               inst_1_Rc_Rc_Rd  11}
+    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"                               inst_1_Rc_Rd_Rc  12}
+    {"^R([0-9]+)[<][-]R([0-9]+)$"                                         inst_1_Rc_Rd     13}
+    {"copysignandrhsixdigitsofR([0-9]+)intoR([0-9]+)"                     inst_1_Rd_Rc     14}
+    
+    {"^leftshiftR([0-9]+)byR([0-9]+)places$"                              inst_1_Rc_Rd     16}
+    {"^rightshiftR([0-9]+)by[(]R([0-9]+)[)]places$"                       inst_1_Rc_Rd     17}
+
+    {"branchto([a-zA-z0-9_]+)ifcl1"                                       inst_1_branch    .5   "2. .. 6."}  
+    {"branchto([a-zA-z0-9_]+)ifcl0"                                       inst_1_branch    .6}
+    {"branchto([a-zA-z0-9_]+)"                                            inst_1_branch    .4}
+    {"[(]R0,R1[)]<-([a-zA-Z0-9_]+)"                                       inst_1_branch    .0}
+    {"([a-zA-Z0-9_]+)<-[(]R0,R1[)]"                                       inst_1_branch    .1}
+    {"input([a-zA-Z0-9_]+)"                                               inst_1_branch    .8}
+
+
+    {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[+]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .0  "7. .. 9."}   
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[-]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .1}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[*]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .2}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[/]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .3}
@@ -272,6 +278,25 @@ proc inst_1_Rc_d {line fmt opcode} {
 
 proc inst_1_Rc_Rd {line fmt opcode} {
     if { [regexp -- $fmt $line all c d] } {
+
+	set c [substitute_equates $c]
+	set d [substitute_equates $d]
+
+	set retval "$opcode$c[expr $d]"
+	
+	set retval [check_register $retval $c]
+	set retval [check_register $retval $d]
+
+	# return the opcode
+	return $retval
+    } else {
+	inst_error "INST failed:'$fmt' '$line'" 
+    }
+    
+}
+
+proc inst_1_Rd_Rc {line fmt opcode} {
+    if { [regexp -- $fmt $line all d c] } {
 
 	set c [substitute_equates $c]
 	set d [substitute_equates $d]

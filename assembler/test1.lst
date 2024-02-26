@@ -1,7 +1,12 @@
-0000      0352                      	R5  <-   X              ; Comment
-0000A     0361                      	R6 <-     INC
-0001      1056                loop: 	R5 <-      R5 + R6
-0001A                               	BR loop
+0004A     0352                      	R5  <-   X              ; Comment
+0005      0361                      	R6 <-     INC
+0005A     0000                loop: 	R5 <-      R5 + R6
+0006      2405                      	branch to  loop
+0006A     1490                      	copy sign and rh six digits of R0 into R9
+0007      1462                      	copy sign and rh six digits of R2 into R6
+0007A     1445                      	copy sign and rh six digits of R5 into R4
+0008      1427                      	copy sign and rh six digits of R7 into R2
+0008A     1409                      	copy sign and rh six digits of R9 into R0
 
 Equates
 -------
@@ -12,5 +17,5 @@ Equates
 Labels
 ------
 
-               start: 0x0000 0
-                loop: 0x0001 1
+               start: 0x0004A
+                loop: 0x0005A
