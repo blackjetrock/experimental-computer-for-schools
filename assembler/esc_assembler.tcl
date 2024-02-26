@@ -113,7 +113,8 @@ set ::INST_INFO {
     {"input([a-zA-Z0-9_]+)"                                               inst_1_branch    .8}
 
 
-    {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[+]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .0  "7. .. 9."}   
+    {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+[+][0-9A-Za-z_+)(]+)[+]([0-9A-Za-z_+)(]+[+][0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .0  "7. .. 9."}
+    {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_)(]+)[+]([0-9A-Za-z_)(]+)$"  inst_3_a_b_c      .0  "7. .. 9."}   
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[-]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .1}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[*]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .2}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[/]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .3}
@@ -409,9 +410,9 @@ set ::OPCODE_A_3ADDR_INFO {
 
 set ::OPCODE_CD_3ADDR_INFO {
 
-    {8 "([0-9a-zA_Z_]+)[+*/-]R[3-5]"}
-    {7 "([0-9a-zA_Z_]+)"}
+    {8 "([0-9a-zA_Z_]+)[+*/-][(]R[3-5][)]"}
     {9 "[(]([0-9a-zA_Z_]+)[)]"}
+    {7 "([0-9a-zA_Z_]+)"}
 }
 
 #    {9 "[(](.*)[)]"}
@@ -443,6 +444,8 @@ proc determine_opcode_cd_3addr {x} {
 proc inst_3_a_b_c {line fmt opcode} {
     
     if { [regexp -- $fmt $line all a b c] } {
+	dbg "a='$a' b='$b' c='$c'"
+	
 	set a [substitute_equates $a]
 	set a [substitute_labels  $a]
 	
