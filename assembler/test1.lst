@@ -12,16 +12,37 @@
 0049      1967                        	stop and display R6 and R7
 0049A     1968                        	display (R6) and (R8)
 0050      1923                        	stop and display (R2) and (R3)
-0050A     1490                        	copy sign and rh six digits of R0 into R9
-0051      1462                        	copy sign and rh six digits of R2 into R6
-0051A     1445                        	copy sign and rh six digits of R5 into R4
-0052      1427                        	copy sign and rh six digits of R7 into R2
-0052A     1409                        	copy sign and rh six digits of R9 into R0
+0050A     2042                        	(R0, R1) <- 42
+0051      3042                        	(R0, R1) <- 42+(R3)
+0051A     4042                        	(R0, R1) <- 42+(R4)
+0052      5042                        	(R0, R1) <- 42+(R5)
+0052A     6042                        	(R0, R1) <- (42)	
+0053      2078                        	(R0, R1) <- VAR_Y
+0053A     3078                        	(R0, R1) <- VAR_Y+(R3)
+0054      4078                        	(R0, R1) <- VAR_Y+(R4)
+0054A     5078                        	(R0, R1) <- VAR_Y+(R5)
+0055      6078                        	(R0, R1) <- (VAR_Y)	
+0055A     2142                        	42 <- (R0, R1)
+0056      3142                        	42+(R3) <- (R0, R1)
+0056A     4142                        	42+(R4) <- (R0, R1)
+0057      5142                        	42+(R5) <- (R0, R1)
+0057A     6142                        	(42)	 <- (R0, R1)
+0058      2178                        	VAR_Y <- (R0, R1)
+0058A     3178                        	VAR_Y+(R3) <- (R0, R1)
+0059      4178                        	VAR_Y+(R4) <- (R0, R1)
+0059A     5178                        	VAR_Y+(R5) <- (R0, R1)
+0060      6178                        	(VAR_Y)	 <- (R0, R1)
+0060A     1490                        	copy sign and rh six digits of R0 into R9
+0061      1462                        	copy sign and rh six digits of R2 into R6
+0061A     1445                        	copy sign and rh six digits of R5 into R4
+0062      1427                        	copy sign and rh six digits of R7 into R2
+0062A     1409                        	copy sign and rh six digits of R9 into R0
 
 Equates
 -------
 
                    X EQU 0002
+               VAR_Y EQU 0078
                  INC EQU 0001
 
 Labels

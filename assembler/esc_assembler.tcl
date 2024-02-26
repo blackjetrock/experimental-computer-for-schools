@@ -77,7 +77,8 @@
 #
 #
 
-set ::PASS 0
+set ::DEBUG      1
+set ::PASS       0
 set ::NUM_PASSES 3
 
 set ::INST_INFO {
@@ -104,8 +105,8 @@ set ::INST_INFO {
     {"^displayR([0-9]+)andR([0-9]+)$"                                     inst_1_Rc_Rd     19}
 
     
-    {"[(]R0,R1[)]<-([a-zA-Z0-9_]+)"                                       inst_1_branch    .0   "2. .. 6."}  
-    {"([a-zA-Z0-9_]+)<-[(]R0,R1[)]"                                       inst_1_branch    .1}
+    {"[(]R0,R1[)]<-([a-zA-Z0-9_)(+]+)"                                    inst_1_branch    .0   "2. .. 6."}  
+    {"([a-zA-Z0-9_)(+]+)<-[(]R0,R1[)]"                                    inst_1_branch    .1}
     {"branchto([a-zA-z0-9_]+)ifcl1"                                       inst_1_branch    .5}
     {"branchto([a-zA-z0-9_]+)ifcl0"                                       inst_1_branch    .6}
     {"branchto([a-zA-z0-9_]+)$"                                           inst_1_branch    .4}
@@ -116,6 +117,14 @@ set ::INST_INFO {
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[-]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .1}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[*]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .2}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[/]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .3}
+}
+
+################################################################################
+
+proc dbg {str} {
+    if { $::DEBUG } {
+	puts $str
+    }
 }
 
 ################################################################################
@@ -160,22 +169,27 @@ proc check_literal {retval a} {
 
 set ::TABLE6_INFO {
     {2 "^([a-zA-Z0-9_]+)$" }
-    {3 "^([a-zA-Z0-9_]+)+R3+$" }
-    {4 "^([a-zA-Z0-9_]+)+R4$" }
-    {5 "^([a-zA-Z0-9_]+)+R5$" }
-    {6 "^(\([a-zA-Z0-9_]+\))$" }
+    {3 "^([a-zA-Z0-9_]+)[+][(]R3[)]+$" }
+    {4 "^([a-zA-Z0-9_]+)[+][(]R4[)]$" }
+    {5 "^([a-zA-Z0-9_]+)[+][(]R5[)]$" }
+    {6 "^[(]([a-zA-Z0-9_]+)[)]$" }
 }
 
 proc determine_opcode_a {arg} {
+    dbg "Arg:'$arg'"
+    
     foreach t6 $::TABLE6_INFO {
 	set opcode_a [lindex $t6 0]
 	set fmt      [lindex $t6 1]
 
-	if { [regexp -- $fmt $arg] } {
-	    return $opcode_a
+	dbg "f='$fmt'"
+	if { [regexp -- $fmt $arg all v] } {
+	    dbg "Found"
+	    return [list $opcode_a $v]
 	}
     }
-return "?"
+    
+    return { "?" "--" }
 }
 
 set ::TABLE4_INFO {
@@ -208,15 +222,26 @@ proc inst_1_branch {line fmt opcode} {
 	set dest [substitute_labels $dest]
 	puts "  Branch dest:$dest"
 
-	set opcode_a [determine_opcode_a $dest]
+	set opcode_a_lst [determine_opcode_a $dest]
+
+	dbg $opcode_a_lst
+	
+	set opcode_a [lindex $opcode_a_lst 0]
+	set dest     [lindex $opcode_a_lst 1]
+	
 	set opcode "$opcode_a[lindex [split $opcode ""] 1]"
 
+	if { 0 } {
 	if { [catch {
 	    set od [format "%02d" $dest]
 	}]
 	 } {
 	    set od "--"
 	}
+	} else {
+	    set od [format "%02d" $dest]
+	}
+	
 	
        	set retval "$opcode$od"
 	
