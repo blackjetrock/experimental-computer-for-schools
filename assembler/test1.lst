@@ -1,13 +1,13 @@
                       				; Comment
                       org45
-                      	R5  <-   X              ; Comment
-0045      0352                        	R5  <-   X              ; Comment
+                      	R5  <-   VAR_X              ; Comment
+0045      0000                        	R5  <-   VAR_X              ; Comment
 0045A     0361                        	R6 <-     INC
 0046      0000                  loop: 	R5 <-      R5 + R6
 0046A     2446                        	branch to  loop
 0047      2546                        	branch to  loop if cl 1	
 0047A     2646                                branch to  loop	if cl 0
-0048                                  	display X
+0048                                  	display VAR_X
 0048A     1956                        	display R5 and R6
 0049      1967                        	stop and display R6 and R7
 0049A     1968                        	display (R6) and (R8)
@@ -38,17 +38,21 @@
 0062      1427                        	copy sign and rh six digits of R7 into R2
 0062A     1409                        	copy sign and rh six digits of R9 into R0
 0063  70232425                                 23  <-  24  +  25
-0064  70232425                                 23+(R3)  <-  24+(R3)  + 25+(R3)
+0064  80232425                                 23+(R3)  <-  24+(R3)  + 25+(R3)
 0065  70232404                                 23  <-  24  + (R4)
 0066  70232405                                 23  <-  24  + (R5)
 0067  70232403                                 23  <-  24  + (R3)
-0068  70232425                                (23) <- (24) + (25)
+0068  90232425                                (23) <- (24) + (25)
+0069  79777879                                display VAR_X, VAR_Y, VAR_Z
+0070  89777879                        	display VAR_X+(R3), VAR_Y+(R4), VAR_Z+(R5)
+0071  99777879                        	display (VAR_X), (VAR_Y), (VAR_Z)
 
 Equates
 -------
 
-                   X EQU 0002
+               VAR_X EQU 0077
                VAR_Y EQU 0078
+               VAR_Z EQU 0079
                  INC EQU 0001
 
 Labels

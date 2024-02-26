@@ -30,8 +30,8 @@
 0044A 71070730                        	VAR_Q <- VAR_Q - CONST1
 0045A 72020201                        	VAR_N <- VAR_N * J
 0046A     2441                        	branch to B
-0047                               C: 	display b, L , VAR_N
-0047A     2431                        	branch to start
+0047  79030002                     C: 	display b, L , VAR_N
+0048      2431                        	branch to start
 
 Equates
 -------

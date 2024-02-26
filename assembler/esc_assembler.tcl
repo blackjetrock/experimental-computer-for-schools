@@ -118,6 +118,7 @@ set ::INST_INFO {
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[-]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .1}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[*]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .2}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[/]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .3}
+    {"^display([0-9a-zA-Z_+)(]+)[,]([0-9A-Za-z_+)(]+)[,]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .9}
 }
 
 ################################################################################
@@ -232,7 +233,7 @@ proc inst_1_branch {line fmt opcode} {
 	
 	set opcode "$opcode_a[lindex [split $opcode ""] 1]"
 
-	if { 0 } {
+	if { 1 } {
 	if { [catch {
 	    set od [format "%02d" $dest]
 	}]
@@ -404,8 +405,8 @@ proc inst_1_Rc_Rd_Rc {line fmt opcode} {
 
 set ::OPCODE_A_3ADDR_INFO {
     {8 "R[3-5]"}
-    {7 "[0-9a-zA_Z_]+"}
     {9 "[(][0-9a-zA_Z_]+[)]" }
+    {7 "[0-9a-zA_Z_]+"}
 }
 
 set ::OPCODE_CD_3ADDR_INFO {
@@ -415,12 +416,13 @@ set ::OPCODE_CD_3ADDR_INFO {
     {7 "([0-9a-zA_Z_]+)"}
 }
 
-#    {9 "[(](.*)[)]"}
 proc determine_opcode_a_3addr {x} {
     foreach y $::OPCODE_A_3ADDR_INFO {
 	set opcode [lindex $y 0]
 	set fmt    [lindex $y 1]
 
+	dbg "FMT:'$fmt' x:'$x'"
+	
 	if { [regexp -- $fmt $x] } {
 	    return $opcode
 	}
@@ -444,7 +446,7 @@ proc determine_opcode_cd_3addr {x} {
 proc inst_3_a_b_c {line fmt opcode} {
     
     if { [regexp -- $fmt $line all a b c] } {
-	dbg "a='$a' b='$b' c='$c'"
+	dbg "a='$a' b='$b' c='$c' before subst"
 	
 	set a [substitute_equates $a]
 	set a [substitute_labels  $a]
@@ -455,8 +457,11 @@ proc inst_3_a_b_c {line fmt opcode} {
 	set c [substitute_equates $c]
 	set c [substitute_labels  $c]
 
-	dbg "a='$a' b='$b' c='$c'"
+	dbg "a='$a' b='$b' c='$c' after eq/lab"
 
+	# Save the original form of the argument so we can detect the addressing mode later
+	set a1 $a
+	
 	set a [determine_opcode_cd_3addr $a]
 	set b [determine_opcode_cd_3addr $b]
 	set c [determine_opcode_cd_3addr $c]
@@ -469,7 +474,7 @@ proc inst_3_a_b_c {line fmt opcode} {
 
 	dbg "a='$a' b='$b' c='$c'"
 	
-	set opcode_a [determine_opcode_a_3addr $a]
+	set opcode_a [determine_opcode_a_3addr $a1]
 	set opcode "$opcode_a[lindex [split $opcode ""] 1]"
 	
        	set retval "$opcode$a$b$c"
@@ -497,7 +502,7 @@ set ::EQUATE_NAMES {}
 proc substitute_equates {in} {
 
     foreach eq $::EQUATE_NAMES {
-	#puts "eq:'$eq'"
+	puts "eq:'$eq'= [set ::EQUATE_VALUE($eq)]"
 	set in [string map "$eq [set ::EQUATE_VALUE($eq)]" $in]
     }
     
