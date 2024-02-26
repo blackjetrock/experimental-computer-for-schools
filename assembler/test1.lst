@@ -1,21 +1,31 @@
-0004A     0352                      	R5  <-   X              ; Comment
-0005      0361                      	R6 <-     INC
-0005A     0000                loop: 	R5 <-      R5 + R6
-0006      2405                      	branch to  loop
-0006A     1490                      	copy sign and rh six digits of R0 into R9
-0007      1462                      	copy sign and rh six digits of R2 into R6
-0007A     1445                      	copy sign and rh six digits of R5 into R4
-0008      1427                      	copy sign and rh six digits of R7 into R2
-0008A     1409                      	copy sign and rh six digits of R9 into R0
+                      				; Comment
+                      org45
+                      	R5  <-   X              ; Comment
+0045      0352                        	R5  <-   X              ; Comment
+0045A     0361                        	R6 <-     INC
+0046      0000                  loop: 	R5 <-      R5 + R6
+0046A     2446                        	branch to  loop
+0047      2546                        	branch to  loop if cl 1	
+0047A     2646                                branch to  loop	if cl 0
+0048                                  	display X
+0048A     1956                        	display R5 and R6
+0049      1967                        	stop and display R6 and R7
+0049A     1968                        	display (R6) and (R8)
+0050      1923                        	stop and display (R2) and (R3)
+0050A     1490                        	copy sign and rh six digits of R0 into R9
+0051      1462                        	copy sign and rh six digits of R2 into R6
+0051A     1445                        	copy sign and rh six digits of R5 into R4
+0052      1427                        	copy sign and rh six digits of R7 into R2
+0052A     1409                        	copy sign and rh six digits of R9 into R0
 
 Equates
 -------
 
-                   X EQU 0x0002 2
-                 INC EQU 0x0001 1
+                   X EQU 0002
+                 INC EQU 0001
 
 Labels
 ------
 
-               start: 0x0004A
-                loop: 0x0005A
+               start: 0045 
+                loop: 0046 

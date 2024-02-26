@@ -98,7 +98,12 @@ set ::INST_INFO {
     
     {"^leftshiftR([0-9]+)byR([0-9]+)places$"                              inst_1_Rc_Rd     16}
     {"^rightshiftR([0-9]+)by[(]R([0-9]+)[)]places$"                       inst_1_Rc_Rd     17}
+    {"^stopanddisplay[(]R([0-9]+)[)]and[(]R([0-9]+)[)]$"                  inst_1_Rc_Rd     19}
+    {"^display[(]R([0-9]+)[)]and[(]R([0-9]+)[)]$"                         inst_1_Rc_Rd     19}
+    {"^stopanddisplayR([0-9]+)andR([0-9]+)$"                              inst_1_Rc_Rd     19}
+    {"^displayR([0-9]+)andR([0-9]+)$"                                     inst_1_Rc_Rd     19}
 
+    
     {"[(]R0,R1[)]<-([a-zA-Z0-9_]+)"                                       inst_1_branch    .0   "2. .. 6."}  
     {"([a-zA-Z0-9_]+)<-[(]R0,R1[)]"                                       inst_1_branch    .1}
     {"branchto([a-zA-z0-9_]+)ifcl1"                                       inst_1_branch    .5}
@@ -564,6 +569,7 @@ proc assemble {t} {
 	    set ::ADDRESS [substitute_equates $value]
 	    set ::ADDRESS_A 0
 	    set ::ADDRESS_A_CHAR " "
+	    lst [format "%20s  %s" "" $line]
 	    continue
 	}
 	
