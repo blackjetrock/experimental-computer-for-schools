@@ -29,12 +29,17 @@ start:	VAR_N <- CONST1 / CONST1
 	
 A:      (R0,R1) <- VAR_P
         test R1 = 0
-        branch to C if cl 1
+        branch to B if cl 1
         nop
 	
-	VAR_P <- VAR_P - CONST1
+	;VAR_P <- VAR_P - CONST1
+	R1 <- R1 - 1
+	VAR_P <- (R0,R1)
+	
 	VAR_N <- VAR_N * b
 	branch to A
+	nop
+	
 B:	;J <- sqrt J
 	;branch to C if J = 1
 	(R0,R1) <- J
