@@ -77,6 +77,9 @@
 #
 #
 
+set ::PASS 0
+set ::NUM_PASSES 3
+
 set ::INST_INFO {
     {"^nop$"                                                              inst_1_nop       00}
     {"^R([0-9]+)[<][-]R([0-9]+)[+]([0-9A-Za-z_]+$)"                       inst_1_Rc_Rc_d   00}
@@ -96,11 +99,11 @@ set ::INST_INFO {
     {"^leftshiftR([0-9]+)byR([0-9]+)places$"                              inst_1_Rc_Rd     16}
     {"^rightshiftR([0-9]+)by[(]R([0-9]+)[)]places$"                       inst_1_Rc_Rd     17}
 
-    {"branchto([a-zA-z0-9_]+)ifcl1"                                       inst_1_branch    .5   "2. .. 6."}  
-    {"branchto([a-zA-z0-9_]+)ifcl0"                                       inst_1_branch    .6}
-    {"branchto([a-zA-z0-9_]+)"                                            inst_1_branch    .4}
-    {"[(]R0,R1[)]<-([a-zA-Z0-9_]+)"                                       inst_1_branch    .0}
+    {"[(]R0,R1[)]<-([a-zA-Z0-9_]+)"                                       inst_1_branch    .0   "2. .. 6."}  
     {"([a-zA-Z0-9_]+)<-[(]R0,R1[)]"                                       inst_1_branch    .1}
+    {"branchto([a-zA-z0-9_]+)ifcl1"                                       inst_1_branch    .5}
+    {"branchto([a-zA-z0-9_]+)ifcl0"                                       inst_1_branch    .6}
+    {"branchto([a-zA-z0-9_]+)$"                                           inst_1_branch    .4}
     {"input([a-zA-Z0-9_]+)"                                               inst_1_branch    .8}
 
 
@@ -194,13 +197,23 @@ return "?"
 
 proc inst_1_branch {line fmt opcode} {
     if { [regexp -- $fmt $line all dest] } {
+	puts "  Branch dest:$dest"
 	set dest [substitute_equates $dest]
+	puts "  Branch dest:$dest"
 	set dest [substitute_labels $dest]
+	puts "  Branch dest:$dest"
 
 	set opcode_a [determine_opcode_a $dest]
 	set opcode "$opcode_a[lindex [split $opcode ""] 1]"
 
-       	set retval "$opcode[format "%02d" $dest]"
+	if { [catch {
+	    set od [format "%02d" $dest]
+	}]
+	 } {
+	    set od "--"
+	}
+	
+       	set retval "$opcode$od"
 	
 	# Check arguments are valid
 
@@ -430,7 +443,7 @@ return $in
 proc substitute_labels {in} {
 
     foreach lab $::LABEL_NAMES {
-	#puts "label:'$lab'"
+	puts "label:'$lab'  -> $::LABEL_VALUE($lab)"
 	set in [string map "$lab [set ::LABEL_VALUE($lab)]" $in]
     }
     
@@ -470,12 +483,27 @@ proc next_address {} {
     set ::ADDRESS_SKIP_EXTRA 0
 }
 
+
 ################################################################################
+
+proc lst_no_nl {str} {
+    if { $::PASS == $::NUM_PASSES } {
+	puts -nonewline $::lstf $str
+    }
+}
+
+proc lst {str} {
+    if { $::PASS == $::NUM_PASSES } {
+	puts $::lstf $str
+    }
+}
+
+#-------------------------------------------------------------------------------
 
 # Output goes to the .obj and .lst files
 
 
-proc assemble {t pass} {
+proc assemble {t} {
     
     foreach line [split $t "\n"] {
 	set ::LINE $line
@@ -486,6 +514,7 @@ proc assemble {t pass} {
 	
 	# Remove comments
 	if { [regexp "(.*);(.*)" $line all a b] } {
+	    lst [format "%20s  %s" "" $line]
 	    set line $a
 	}
 
@@ -539,39 +568,38 @@ proc assemble {t pass} {
 	}
 	
 	# Find and assemble the instruction
-	# Skip on pass 1
+	# Assemble all the passes and emit listing only on last pass
+	
+	set found 0
 
-	if { $pass > 1 } {
-	    set found 0
+	# Tidy up the source and add that to the end
+	# Align with the colon of labels
+	
+	if { [regexp -- {(.+):(.*)} $original_line all a b] } {
+	    set src [format "%20s: %s" $a $b]
+	} else {
+	    set src [format "%20s  %s" "" $original_line]
+	}
+	
+	foreach inst $::INST_INFO {
+	    set f [lindex $inst 0]
+	    set p [lindex $inst 1]
+	    set opcode [lindex $inst 2]
+	    puts ">>>'$f'"
+	    puts ">>>'$line'"
 	    
-	    foreach inst $::INST_INFO {
-		set f [lindex $inst 0]
-		set p [lindex $inst 1]
-		set opcode [lindex $inst 2]
-		puts ">>>'$f'"
-		puts ">>>'$line'"
-		if { [regexp -- $f $line] } {
-		    set found 1
-		    set object [$p $line $f $opcode]
-		    puts -nonewline $::lstf [format "%04d%s %8s" $::ADDRESS $::ADDRESS_A_CHAR $object]
-		    break
-		}
-	    }
-	    
-	    if { !$found } {
-		puts -nonewline $::lstf [format "%04d%s %8s" $::ADDRESS $::ADDRESS_A_CHAR ""]
-	    }
-	    
-	    # Tidy up the source and add that to the end
-	    # Align with the colon of labels
-	    
-	    if { [regexp -- {(.+):(.*)} $original_line all a b] } {
-		puts $::lstf [format "%20s: %s" $a $b]
-	    } else {
-		puts $::lstf [format "%20s  %s" "" $original_line]
+	    if { [regexp -- $f $line] } {
+		set found 1
+		set object [$p $line $f $opcode]
+		lst [format "%04d%s %8s  %s" $::ADDRESS $::ADDRESS_A_CHAR $object $src]
+		break
 	    }
 	}
 	
+	if { !$found } {
+	    lst [format "%04d%s %8s  %s" $::ADDRESS $::ADDRESS_A_CHAR "" $src]
+	}
+    	
 	# Added complication is that there are 4 digit and 8 digit instructions. Two 4 digit
 	# instructions are packed into a word, one 8 digit in a word. There is therefore an
 	# 'A' flag which is used to address the second 4 digit instruction in a word. Branches cannot
@@ -589,10 +617,11 @@ proc assemble {t pass} {
 ################################################################################
 
 proc dump_labels {} {
-    puts $::lstf ""
-    puts $::lstf "Labels"
-    puts $::lstf "------"
-    puts $::lstf ""
+    lst ""
+    lst "Labels"
+    lst "------"
+    lst ""
+    
     foreach labelname $::LABEL_NAMES {
 	set labelvalue  $::LABEL_VALUE($labelname)
 	set labelavalue $::LABEL_A_VALUE($labelname)
@@ -602,19 +631,20 @@ proc dump_labels {} {
 	    set label_a " "
 	}
 	
-	puts $::lstf [format "%20s: 0x%04d%s" $labelname $labelvalue $label_a]
+	lst [format "%20s: %04d%s" $labelname $labelvalue $label_a]
     }
 }
 
 proc dump_equates {} {
-    puts $::lstf ""
-    puts $::lstf "Equates"
-    puts $::lstf "-------"
-    puts $::lstf ""
+    lst ""
+    lst "Equates"
+    lst "-------"
+    lst ""
+
     foreach eqname $::EQUATE_NAMES {
 	set equatevalue $::EQUATE_VALUE($eqname)
 	
-	puts $::lstf [format "%20s EQU 0x%04X %d" $eqname $equatevalue $equatevalue]
+	lst [format "%20s EQU %04d" $eqname $equatevalue]
     }
 }
 
@@ -634,19 +664,16 @@ puts $lstfn
 
 set ::objf [open $objfn w]
 set ::lstf [open $lstfn w]
-set done 0
 
 set ::LABEL_NAMES {}
 set ::EQUATE_NAMES {}
 
-for {set pass 1} {!$done} {incr pass 1} {
-
-    assemble $txt $pass
-
-    if { $pass == 2 } {
-	set done 1
-    }
+for {set ::PASS 1} {$::PASS <= $::NUM_PASSES} {incr ::PASS 1} {
+    assemble $txt
 }
+
+# Reset pass so following output comes out
+set ::PASS $::NUM_PASSES
 
 dump_equates
 dump_labels
