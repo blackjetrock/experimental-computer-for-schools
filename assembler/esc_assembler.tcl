@@ -77,12 +77,18 @@
 #
 #
 
-set ::DEBUG      1
+set ::DEBUG      0
 set ::PASS       0
 set ::NUM_PASSES 3
 
 set ::INST_INFO {
     {"^nop$"                                                              inst_1_nop       00}
+    {"^dw([0-9]+)$"                                                       inst_1_dw        00}
+
+    {"R([0-9]+)[<][-]R([0-9]+)[+]R([0-9]+)"                               inst_1_Rc_Rc_Rd  10}
+    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"                               inst_1_Rc_Rc_Rd  11}
+    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"                               inst_1_Rc_Rd_Rc  12}
+
     {"^R([0-9]+)[<][-]R([0-9]+)[+]([0-9A-Za-z_]+$)"                       inst_1_Rc_Rc_d   00}
     {"^R([0-9]+)[<][-]R([0-9]+)[-]([0-9A-Za-z_]+$)"                       inst_1_Rc_Rc_d   01}
     {"^R([0-9]+)[<][-]([0-9A-Za-z_]+)$"                                   inst_1_Rc_d      03}
@@ -91,9 +97,6 @@ set ::INST_INFO {
     {"^leftshiftR([0-9]+)by([0-9A-Za-z_]+)places$"                        inst_1_Rc_d      06}
     {"^rightshiftR([0-9]+)by([0-9A-Za-z_]+)places$"                       inst_1_Rc_d      07   "0. complete"}
 
-    {"R([0-9]+)[<][-]R([0-9]+)[+]R([0-9]+)"                               inst_1_Rc_Rc_Rd  10}
-    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"                               inst_1_Rc_Rc_Rd  11}
-    {"R([0-9]+)[<][-]R([0-9]+)[-]R([0-9]+)"                               inst_1_Rc_Rd_Rc  12}
     {"^R([0-9]+)[<][-]R([0-9]+)$"                                         inst_1_Rc_Rd     13}
     {"copysignandrhsixdigitsofR([0-9]+)intoR([0-9]+)"                     inst_1_Rd_Rc     14}
     
@@ -118,6 +121,9 @@ set ::INST_INFO {
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[-]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .1}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[*]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .2}
     {"^([0-9a-zA-Z_+)(]+)[<][-]([0-9A-Za-z_+)(]+)[/]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .3}
+    {"^branchto([0-9a-zA-Z_+)(]+)if([0-9a-zA-Z_+)(]+)[=]([0-9a-zA-Z_+)(]+)$"  inst_3_a_b_c  .4}
+    {"^branchto([0-9a-zA-Z_+)(]+)if([0-9a-zA-Z_+)(]+)[>]([0-9a-zA-Z_+)(]+)$"  inst_3_a_b_c  .5}
+    {"^branchto([0-9a-zA-Z_+)(]+)if[|]([0-9a-zA-Z_+)(]+)[|][>][|]([0-9a-zA-Z_+)(]+)[|]$"  inst_3_a_b_c  .6}
     {"^display([0-9a-zA-Z_+)(]+)[,]([0-9A-Za-z_+)(]+)[,]([0-9A-Za-z_+)(]+)$"  inst_3_a_b_c      .9}
 }
 
@@ -131,9 +137,13 @@ proc dbg {str} {
 
 ################################################################################
 
+set ::ERRORS 0
+
 proc inst_error {e} {
     puts "\n*** ERROR *** $e"
     puts "\n$::LINE"
+
+    incr ::ERRORS 1
 }
 
 ################################################################################
@@ -218,11 +228,11 @@ return "?"
 
 proc inst_1_branch {line fmt opcode} {
     if { [regexp -- $fmt $line all dest] } {
-	puts "  Branch dest:$dest"
+	dbg "  Branch dest:$dest"
 	set dest [substitute_equates $dest]
-	puts "  Branch dest:$dest"
+	dbg "  Branch dest:$dest"
 	set dest [substitute_labels $dest]
-	puts "  Branch dest:$dest"
+	dbg "  Branch dest:$dest"
 
 	set opcode_a_lst [determine_opcode_a $dest]
 
@@ -491,6 +501,19 @@ proc inst_3_a_b_c {line fmt opcode} {
     
 }
 
+#-------------------------------------------------------------------------------
+
+proc inst_1_dw  {line fmt opcode} {
+    if { [regexp -- $fmt $line all a] } {
+	dbg "DW: a='$a'"
+	set a1 [format "%04d" [string trimleft $a "0"]]
+	dbg "'$a1'"
+	return $a1
+    }
+    
+    return "...."
+}
+
 proc inst_1_nop {line fmt opcode} {
     return "0000"
 }
@@ -502,7 +525,7 @@ set ::EQUATE_NAMES {}
 proc substitute_equates {in} {
 
     foreach eq $::EQUATE_NAMES {
-	puts "eq:'$eq'= [set ::EQUATE_VALUE($eq)]"
+	dbg "eq:'$eq'= [set ::EQUATE_VALUE($eq)]"
 	set in [string map "$eq [set ::EQUATE_VALUE($eq)]" $in]
     }
     
@@ -512,7 +535,7 @@ return $in
 proc substitute_labels {in} {
 
     foreach lab $::LABEL_NAMES {
-	puts "label:'$lab'  -> $::LABEL_VALUE($lab)"
+	dbg "label:'$lab'  -> $::LABEL_VALUE($lab)"
 	set in [string map "$lab [set ::LABEL_VALUE($lab)]" $in]
     }
     
@@ -577,8 +600,6 @@ proc assemble {t} {
     foreach line [split $t "\n"] {
 	set ::LINE $line
 	
-	#puts "<<'$line'"
-
 	set original_line $line
 	
 	# Remove comments
@@ -589,7 +610,6 @@ proc assemble {t} {
 
 	# Remove spaces
 	set line [string map {" " "" "\t" ""} $line]
-	#puts "---'$line'"
 	
 	# Handle equates
 	if { [regexp "(.*)equ(.*)" $line all equate value] } {
@@ -621,7 +641,6 @@ proc assemble {t} {
 	}
 
 	set length [string length $line]
-#	puts "\[$length\]>>$line "
 
 	# If length is zero then ignore the line
 	if { $length == 0 } {
@@ -655,13 +674,19 @@ proc assemble {t} {
 	    set f [lindex $inst 0]
 	    set p [lindex $inst 1]
 	    set opcode [lindex $inst 2]
-	    puts ">>>'$f'"
-	    puts ">>>'$line'"
 	    
 	    if { [regexp -- $f $line] } {
 		set found 1
+		dbg "----------------------------------------"
+		dbg "ASM:Line:'$line'"
+		dbg "ASM:FMT :'$f'"
+
 		set object [$p $line $f $opcode]
+
+		dbg "ASM: obj:'$object'"
 		lst [format "%04d%s %8s  %s" $::ADDRESS $::ADDRESS_A_CHAR $object $src]
+
+		emit_object $object
 		break
 	    }
 	}
@@ -677,6 +702,93 @@ proc assemble {t} {
 	# If an 8 digfit instruction follows a four digit instruction in the first half of a word then
 	# a NOP has to be inserted
 	next_address
+    }
+}
+
+################################################################################
+#
+# Emit object in various ways
+#
+#
+
+proc start_emit_object {filename} {
+    set ::ascobjfn  [string map {.asm .ascii.obj}  $filename]
+    set ::cfnobjfn  [string map {.asm .cfn.c}      $filename]
+    set ::fascobjfn [string map {.asm .fascii.obj} $filename]
+
+    filename_display "C Function file"             $::cfnobjfn
+    filename_display "ASCII object file"           $::ascobjfn
+    filename_display "Formatted ASCII object file" $::fascobjfn
+
+    set ::cfnobjf  [open $::cfnobjfn  w]
+    set ::ascobjf  [open $::ascobjfn  w]
+    set ::fascobjf [open $::fascobjfn w]
+
+    puts $::cfnobjf "void cli_load_xxxx(void)"
+    puts $::cfnobjf "    \{"
+    puts $::cfnobjf "    "
+    puts $::cfnobjf "  ESC_STATE *s = &esc_state;"
+    puts $::cfnobjf "  int i = 0;"
+    puts $::cfnobjf "  "
+}
+
+proc end_emit_object {} {
+
+    # Complete data?
+    
+    if { $::c_collected != 0 } {
+	set pad "0000"
+	puts $::cfnobjf "  s->store[i++] = 0x$::c_collect$pad;"
+    }
+    
+    puts $::cfnobjf "\}"
+    puts $::cfnobjf ""
+
+    close $::cfnobjf
+    
+    close $::ascobjf
+
+    puts $::fascobjf ""
+    
+    close $::fascobjf
+}
+
+set ::b_count 0
+
+set ::c_collected 0
+set ::c_collect ""
+
+proc emit_object {obj} {
+
+    if { $::PASS != $::NUM_PASSES } {
+	return
+    }
+    
+    # Split the object into two character units (bytes, really for the simulation and probablky the real machine)
+    
+    foreach {a b} [split $obj ""] {
+
+	# C Function output for CLI load
+	set ::c_collect "$::c_collect$a$b"
+	incr ::c_collected 2
+
+	if { $::c_collected == 8 } {
+	    puts $::cfnobjf "  s->store\[i++\] = 0x$::c_collect;"
+	    set ::c_collect ""
+	    set ::c_collected 0
+	}
+	
+	# Ascii output
+	puts -nonewline $::ascobjf "$a$b "
+
+	# Formatted ascii
+	if { ($::b_count % 8) == 0 } {
+	    puts -nonewline $::fascobjf [format "\n%04d: " [expr $::b_count / 4]]
+	}
+
+	puts -nonewline $::fascobjf "$a$b "
+
+	incr ::b_count 1
     }
 }
 
@@ -720,25 +832,38 @@ proc dump_equates {} {
 
 ################################################################################
 
+proc filename_display {desc fn} {
+    set width 40
+    set s [format "%-$width\s: %s" $desc $fn]
+    puts $s
+}
+
+################################################################################
+
 set filename [lindex $argv 0]
+
+filename_display "Input file" $filename
 
 set fn [open $filename]
 set txt [read $fn]
 close $fn
 
-set objfn [string map {.asm .obj} $filename]
+start_emit_object $filename
+
 set lstfn [string map {.asm .lst} $filename]
 
-puts $objfn
-puts $lstfn
 
-set ::objf [open $objfn w]
+
+filename_display  "List file" $lstfn
+
+
 set ::lstf [open $lstfn w]
 
 set ::LABEL_NAMES {}
 set ::EQUATE_NAMES {}
 
 for {set ::PASS 1} {$::PASS <= $::NUM_PASSES} {incr ::PASS 1} {
+    set ::ERRORS 0
     assemble $txt
 }
 
@@ -748,7 +873,22 @@ set ::PASS $::NUM_PASSES
 dump_equates
 dump_labels
 
-close $::objf
+
+switch $::ERRORS {
+    1 {
+	set s ""
+    }
+    
+    default {
+	set s "s"
+    }
+}
+
+puts "$::ERRORS error$s"
+lst ""
+lst  "$::ERRORS error$s"
+
+
 close $::lstf
 
-
+end_emit_object

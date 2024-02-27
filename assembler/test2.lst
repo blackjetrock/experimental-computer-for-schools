@@ -14,42 +14,50 @@
                       	;branch to B if VAR_P = 0
 0037      2004                     A:       (R0,R1) <- VAR_P
 0037A     0510                                test R1 = 0
-0038      2541                                branch to B if cl 1
+0038      2542                                branch to B if cl 1
 0038A     0000                                nop
                       	;VAR_P <- VAR_P - CONST1
 0039      0111                        	R1 <- R1 - 1
 0039A     2104                        	VAR_P <- (R0,R1)
 0040  72020203                        	VAR_N <- VAR_N * b
 0041      2437                        	branch to A
+0041A     0000                        	nop
                       B:	;J <- sqrt J
+0042      7401                                dw 7401
+0042A     0130                        	dw 0130
                       	;branch to C if J = 1
-0041A     2001                        	(R0,R1) <- J
-0042      0000                        	R1 <- R1 - CONST1
-0042A     0510                        	test R1 = 0
-0043      2547                        	branch to C if cl 1
-0043A 70070707                        	VAR_Q <- VAR_Q + VAR_Q
+0043      2001                        	(R0,R1) <- J
+0043A     0111                        	R1 <- R1 - 1
+0044      0510                        	test R1 = 0
+0044A     2551                        	branch to C if cl 1
+0045  70070707                        	VAR_Q <- VAR_Q + VAR_Q
                       	   ;branch to b if VAR_Q - 1 < 0
-0044A 71070730                        	VAR_Q <- VAR_Q - CONST1
-0045A 72020201                        	VAR_N <- VAR_N * J
-0046A     2441                        	branch to B
-0047  79030002                     C: 	display b, L , VAR_N
-0048      2431                        	branch to start
+0046  71290730                        	   VAR_WORKING <- VAR_Q - CONST1
+0047      7429                        	   dw 7429
+0047A     2942                        	   dw 2942
+0048  71070730                        	VAR_Q <- VAR_Q - CONST1
+0049  72020201                        	VAR_N <- VAR_N * J
+0050      2442                        	branch to B
+0050A     0000                        	nop
+0051  79030002                     C: 	display b, L , VAR_N
+0052      2431                        	branch to start
 
 Equates
 -------
 
-                   b EQU 0003
                    L EQU 0000
                    J EQU 0001
                VAR_N EQU 0002
-              CONST1 EQU 0030
+                   b EQU 0003
                VAR_P EQU 0004
                VAR_Q EQU 0007
+         VAR_WORKING EQU 0029
+              CONST1 EQU 0030
 
 Labels
 ------
 
                start: 0031 
                    A: 0037 
-                   B: 0041A
-                   C: 0047 
+                   B: 0042 
+                   C: 0051 
