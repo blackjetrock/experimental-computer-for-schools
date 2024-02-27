@@ -53,9 +53,13 @@ I have created an assembler that assembles instructions expressed in the verbose
 
 <h1>Documents</h1>
 
-A First Course on the Schools's Computer
-This is a document that provided a ourse on programming the computer. It has several programs written for the machine.
+<h2>A First Course on the Schools's Computer</h2>
+This is a document that provided a course on programming the computer. It has several programs written for the machine.
 
-Experimental Computer for Schools
-Desribes the hardware and code design of the machine.
+<h2>Experimental Computer for Schools</h2>
+Describes the hardware and code design of the machine.
+
+<h2>Flowcharts</h2>
+This is a four page document that has flowcharts and programs for log<sub>b</sub>N and b<sup>L</sup>.
+The programs use an extracode that isn't in the standard set, which is a square root instruction. The instruction also has a jump and the jump part is used in the programs without use of the square root operation.
 
