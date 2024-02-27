@@ -49,4 +49,14 @@ in the
 
 directory and then make as usual.
 
+<h1>Assembler</h1>
+I have created an assembler that assembles instructions expressed in the verbose comments seen in the documents available for this computer. 
+
+<h1>Documents</h1>
+
+A First Course on the Schools's Computer
+This is a document that provided a ourse on programming the computer. It has several programs written for the machine.
+
+Experimental Computer for Schools
+Desribes the hardware and code design of the machine.
 
