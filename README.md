@@ -2,8 +2,7 @@
 
 The schools computer dates from around 1969 and was an experimental machine that was never sold. It was designed to be used in schools to teach the basics of computer design and programming. The hardware was based on the same components that the IBM system 360 used. The computer was programmed in machine code, and unlike modern machines the machine code is BCD based, not binary. There are 'extracodes' in the system that are analogous to subroutines, these provided floating point arithmetic at the machine code level. The extracodes could be replaced with user code if desired, and provide a completely different set of functions.
 
-This is a simulation of the machine. It can run code written for the original machine, well it
-could if any programs for the machine still exist.
+This is a simulation of the machine. It can run code written for the original machine.
 
 <h1>USB</h1>
 Interaction with the simulator is over USB. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi.
