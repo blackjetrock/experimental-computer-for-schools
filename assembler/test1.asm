@@ -26,7 +26,6 @@ loop:	R5 <-      R5 + R6
 	branch to  loop
 	branch to  loop if cl 1	
         branch to  loop	if cl 0
-	display VAR_X
 	display R5 and R6
 	stop and display R6 and R7
 	display (R6) and (R8)

@@ -738,7 +738,7 @@ proc end_emit_object {} {
     
     if { $::c_collected != 0 } {
 	set pad "0000"
-	puts $::cfnobjf "  s->store[i++] = 0x$::c_collect$pad;"
+	puts $::cfnobjf "  s->store\[i++\] = 0x$::c_collect$pad;"
     }
     
     puts $::cfnobjf "\}"

@@ -16,49 +16,48 @@
 0051      2450                        	branch to  loop
 0051A     2550                        	branch to  loop if cl 1	
 0052      2650                                branch to  loop	if cl 0
-0052A                                 	display VAR_X
-0053      1956                        	display R5 and R6
-0053A     1967                        	stop and display R6 and R7
-0054      1968                        	display (R6) and (R8)
-0054A     1923                        	stop and display (R2) and (R3)
-0055      2042                        	(R0, R1) <- 42
-0055A     3042                        	(R0, R1) <- 42+(R3)
-0056      4042                        	(R0, R1) <- 42+(R4)
-0056A     5042                        	(R0, R1) <- 42+(R5)
-0057      6042                        	(R0, R1) <- (42)	
-0057A     2078                        	(R0, R1) <- VAR_Y
-0058      3078                        	(R0, R1) <- VAR_Y+(R3)
-0058A     4078                        	(R0, R1) <- VAR_Y+(R4)
-0059      5078                        	(R0, R1) <- VAR_Y+(R5)
-0059A     6078                        	(R0, R1) <- (VAR_Y)	
-0060      2142                        	42 <- (R0, R1)
-0060A     3142                        	42+(R3) <- (R0, R1)
-0061      4142                        	42+(R4) <- (R0, R1)
-0061A     5142                        	42+(R5) <- (R0, R1)
-0062      6142                        	(42)	 <- (R0, R1)
-0062A     2178                        	VAR_Y <- (R0, R1)
-0063      3178                        	VAR_Y+(R3) <- (R0, R1)
-0063A     4178                        	VAR_Y+(R4) <- (R0, R1)
-0064      5178                        	VAR_Y+(R5) <- (R0, R1)
-0064A     6178                        	(VAR_Y)	 <- (R0, R1)
-0065      1490                        	copy sign and rh six digits of R0 into R9
-0065A     1462                        	copy sign and rh six digits of R2 into R6
-0066      1445                        	copy sign and rh six digits of R5 into R4
-0066A     1427                        	copy sign and rh six digits of R7 into R2
-0067      1409                        	copy sign and rh six digits of R9 into R0
-0067A 70232425                                 23  <-  24  +  25
-0068A 80232425                                 23+(R3)  <-  24+(R3)  + 25+(R3)
-0069A 90232425                                (23) <- (24) + (25)
-0070A 79777879                                display VAR_X, VAR_Y, VAR_Z
-0071A 89777879                        	display VAR_X+(R3), VAR_Y+(R4), VAR_Z+(R5)
-0072A 99777879                        	display (VAR_X), (VAR_Y), (VAR_Z)
-0073A 71232425                                23  <-  24  -  25	
-0074A 74507778                                branch to loop if VAR_X = VAR_Y
-0075A 75507778                        	branch to loop if VAR_X > VAR_Y
-0076A 76507778                        	branch to loop if |VAR_X| > |VAR_Y|
-0077A 84507778                                branch to loop+(R3) if VAR_X+(R4) = VAR_Y+(R5)
-0078A 85507778                        	branch to loop+(R3) if VAR_X+(R4) > VAR_Y+(R5)
-0079A 86507778                        	branch to loop+(R3) if |VAR_X+(R4)| > |VAR_Y+(R5)|
+0052A     1956                        	display R5 and R6
+0053      1967                        	stop and display R6 and R7
+0053A     1968                        	display (R6) and (R8)
+0054      1923                        	stop and display (R2) and (R3)
+0054A     2042                        	(R0, R1) <- 42
+0055      3042                        	(R0, R1) <- 42+(R3)
+0055A     4042                        	(R0, R1) <- 42+(R4)
+0056      5042                        	(R0, R1) <- 42+(R5)
+0056A     6042                        	(R0, R1) <- (42)	
+0057      2078                        	(R0, R1) <- VAR_Y
+0057A     3078                        	(R0, R1) <- VAR_Y+(R3)
+0058      4078                        	(R0, R1) <- VAR_Y+(R4)
+0058A     5078                        	(R0, R1) <- VAR_Y+(R5)
+0059      6078                        	(R0, R1) <- (VAR_Y)	
+0059A     2142                        	42 <- (R0, R1)
+0060      3142                        	42+(R3) <- (R0, R1)
+0060A     4142                        	42+(R4) <- (R0, R1)
+0061      5142                        	42+(R5) <- (R0, R1)
+0061A     6142                        	(42)	 <- (R0, R1)
+0062      2178                        	VAR_Y <- (R0, R1)
+0062A     3178                        	VAR_Y+(R3) <- (R0, R1)
+0063      4178                        	VAR_Y+(R4) <- (R0, R1)
+0063A     5178                        	VAR_Y+(R5) <- (R0, R1)
+0064      6178                        	(VAR_Y)	 <- (R0, R1)
+0064A     1490                        	copy sign and rh six digits of R0 into R9
+0065      1462                        	copy sign and rh six digits of R2 into R6
+0065A     1445                        	copy sign and rh six digits of R5 into R4
+0066      1427                        	copy sign and rh six digits of R7 into R2
+0066A     1409                        	copy sign and rh six digits of R9 into R0
+0067  70232425                                 23  <-  24  +  25
+0068  80232425                                 23+(R3)  <-  24+(R3)  + 25+(R3)
+0069  90232425                                (23) <- (24) + (25)
+0070  79777879                                display VAR_X, VAR_Y, VAR_Z
+0071  89777879                        	display VAR_X+(R3), VAR_Y+(R4), VAR_Z+(R5)
+0072  99777879                        	display (VAR_X), (VAR_Y), (VAR_Z)
+0073  71232425                                23  <-  24  -  25	
+0074  74507778                                branch to loop if VAR_X = VAR_Y
+0075  75507778                        	branch to loop if VAR_X > VAR_Y
+0076  76507778                        	branch to loop if |VAR_X| > |VAR_Y|
+0077  84507778                                branch to loop+(R3) if VAR_X+(R4) = VAR_Y+(R5)
+0078  85507778                        	branch to loop+(R3) if VAR_X+(R4) > VAR_Y+(R5)
+0079  86507778                        	branch to loop+(R3) if |VAR_X+(R4)| > |VAR_Y+(R5)|
 
 Equates
 -------

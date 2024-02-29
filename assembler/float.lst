@@ -1,0 +1,15 @@
+                      	; Floating point extracodes
+                      	;
+0001      6010                 f_add:   (R0,R1) <- (VAR_FIN)
+
+Equates
+-------
+
+             VAR_FIN EQU 0010
+
+Labels
+------
+
+               f_add: 0001 
+
+0 errors
