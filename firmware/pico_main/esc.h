@@ -56,6 +56,7 @@ typedef uint8_t ADDRESS;
 
 #define CLEAR_SW_CARRY(XX)     (XX & 0xF0FFFFFF)
 #define SET_SW_SIGN(XX, SGN)   (REMOVED_SW_SIGN(XX) | (SGN <<28))
+#define SET_DW_SIGN(XX, SGN)   (REMOVED_DW_SIGN(XX) | ((DOUBLE_WORD)SGN <<60))
   
 // Instruction fields
 #define INST_A_FIELD(INST)   ((INST & 0xF0000000)>>28)
@@ -82,6 +83,9 @@ typedef uint8_t ADDRESS;
 #define R8 RD[0]
 #define R9 RD[1]
 
+#define SW_REG_CONTENTS(RR) (s->R[RR])
+#define DW_REG_CONTENTS(RR) (s->RD[RR-8])
+  
 #define IS_SW_REGISTER(REGNO) ((REGNO >= 0) && (REGNO < NUM_WORD_REGISTERS))
 #define IS_DW_REGISTER(REGNO) ((REGNO >= NUM_WORD_REGISTERS) && (REGNO < NUM_WORD_REGISTERS+NUM_DBL_WORD_REGISTERS))
   

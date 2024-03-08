@@ -460,7 +460,103 @@ REGISTER_SINGLE_WORD bcd_nines_complement(REGISTER_SINGLE_WORD n)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+
+// Get sign from any size register
+
+int any_size_sign(ESC_STATE *s, int regno)
+{
+  if( IS_SW_REGISTER(regno) )
+    {
+      return( SW_SIGN(SW_REG_CONTENTS(regno)) );
+    }
+
+  if( IS_DW_REGISTER(regno) )
+    {
+      return( DW_SIGN(DW_REG_CONTENTS(regno)) );
+    }
+
+  sprintf(error_message, "Unrecognised register:R%d", regno);
+  error();
+}
+
+void set_any_size_sign(ESC_STATE *s, int regno, int sign)
+{
+  if( IS_SW_REGISTER(regno) )
+    {
+      int sign;
+      int reg_contents = SW_REG_CONTENTS(regno);
+      sign = SET_SW_SIGN(reg_contents, sign);
+      
+      SW_REG_CONTENTS(regno) = sign;
+      return;
+    }
+
+  if( IS_DW_REGISTER(regno) )
+    {
+      int sign;
+      int reg_contents = DW_REG_CONTENTS(regno);
+      sign = SET_DW_SIGN(reg_contents, sign);
+      
+      DW_REG_CONTENTS(regno) = sign;
+      return;
+    }
+
+  sprintf(error_message, "Unrecognised register:R%d", regno);
+  error();
+
+}
+
+
+void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
+{
+  if( IS_SW_REGISTER(regno) )
+    {
+      int reg_contents = SW_REG_CONTENTS(regno);
+      
+      SW_REG_CONTENTS(regno) = (reg_contents & 0xF0000000) | rh6;
+      return;
+    }
+
+  if( IS_DW_REGISTER(regno) )
+    {
+      int reg_contents = DW_REG_CONTENTS(regno);
+      DW_REG_CONTENTS(regno) = (reg_contents & 0xF000000000000000) | rh6;
+      return;
+    }
+
+  sprintf(error_message, "Unrecognised register:R%d", regno);
+  error();
+
+}
+
+//------------------------------------------------------------------------------
 //
+// Get and set the RH 6 digits of any size register
+//
+
+SINGLE_WORD any_size_rh6(ESC_STATE *s, int regno)
+{
+  if( IS_SW_REGISTER(regno) )
+    {
+      int reg_contents = SW_REG_CONTENTS(regno);
+      reg_contents &= 0x00FFFFFF;      
+      printf("\nRH6 of %d is %08X", regno, reg_contents);
+      return(reg_contents);
+    }
+
+  if( IS_DW_REGISTER(regno) )
+    {
+      DOUBLE_WORD reg_contents = DW_REG_CONTENTS(regno);
+      reg_contents &= 0x00FFFFFF;      
+      //      DW_REG_CONTENTS(regno) = sign;
+      return((SINGLE_WORD)reg_contents);
+    }
+
+  sprintf(error_message, "Unrecognised register:R%d", regno);
+  error();
+}
+
+//------------------------------------------------------------------------------
 
 REGISTER_SINGLE_WORD invert_sw_sign(REGISTER_SINGLE_WORD n)
 {
@@ -478,6 +574,7 @@ REGISTER_SINGLE_WORD invert_sw_sign(REGISTER_SINGLE_WORD n)
   
   return(r);
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // BCD single word addition
@@ -885,7 +982,8 @@ void stage_b_decode(ESC_STATE *s)
   //  stage_b_decode_core(s, 0);
 
   int extreme_left_digit = 0;
-    
+  int src_sign;
+  
   switch(s->inst_digit_a)
     {
     case 0:
@@ -1003,6 +1101,17 @@ void stage_b_decode(ESC_STATE *s)
 	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rd, 0);
 	  break;
 
+	  // Copy right hand 6 digits of Rd into Rc. Works with single and double length registers
+	case 4:
+	  // First the sign
+	  src_sign = any_size_sign(s, s->reginst_rd);
+	  set_any_size_sign(s, s->reginst_rc, src_sign);
+
+	  // Then the RH six digits
+	  int rh6 = any_size_rh6(s, s->reginst_rd);
+	  set_any_size_rh6(s, s->reginst_rc, rh6);
+	  break;
+	  
 	  // Shift (Rc) left (Rd) places 
 	case 6:
 	  register_assign_register_literal(s,
@@ -1992,7 +2101,8 @@ void cli_load_test_code_2(void)
 {
   ESC_STATE *s = &esc_state;
   int i = 0;
-  
+
+#if 0  
   // R5 and 6 have 2 and 1 in them
   s->store[i++] = 0x03520361;
 
@@ -2007,7 +2117,24 @@ void cli_load_test_code_2(void)
 
   // Floating point
   s->store[i++] = 0xB5314159;
+#endif
 
+#if 1
+  // R5 and 6 have 2 and 1 in them
+  // test copying of six and RH six digits from one register to another
+
+  // Set registers up
+  s->R[0] = 0x00123456;
+  s->RD[0] = 0x00876543008765432L;
+  s->R[1] = 0x00000000;
+
+  // Copy d into c: 0 into 1
+  s->store[i++] = 0x14101418;
+
+  printf("\nSetup Test 2");
+  printf("\nSet up R[8] = %016llX", s->RD[0]);
+#endif
+  
 }
 
 // We have two flags:
@@ -2428,7 +2555,7 @@ int write_state_to_file(ESC_STATE *es, char *fn)
 
   for(int i=0;i<NUM_DBL_WORD_REGISTERS; i++)
     {
-      f_printf(&fp, "\n*R%d:%016lX", i+NUM_WORD_REGISTERS, es->R[i]);
+      f_printf(&fp, "\n*R%d:%016llX", i+NUM_WORD_REGISTERS, es->R[i]);
     }
 
   f_printf(&fp, "\n*STORE:");
@@ -2747,7 +2874,7 @@ char *display_register_single_word(REGISTER_SINGLE_WORD x)
       break;
       
     case WORD_SIGN_PLUS:
-      sc = ' ';
+      sc = '+';
       break;
       
     default:
@@ -2769,7 +2896,7 @@ char *display_register_double_word(REGISTER_DOUBLE_WORD x)
       return("        ");
     }
 
-  sprintf(result, "%16lX", x);
+  sprintf(result, "%16llX", x);
   return(result);
 }
 
