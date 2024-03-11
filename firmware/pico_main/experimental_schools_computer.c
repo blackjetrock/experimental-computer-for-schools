@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 //
 // Experimental Schools Computer Simulator
 //
@@ -47,8 +47,75 @@
 
 #include "esc.h"
 
+////////////////////////////////////////////////////////////////////////////////
+
+#define TEXT_PARAMETER_LEN 40
+
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Tests
+//
+
+// Initialise registers and store
+typedef enum _INIT_CODE
+{
+ IC_SET_REG_N = 10,
+ IC_SET_REG_V,
+ IC_SET_STORE_A,
+ IC_SET_STORE_V,
+ IC_END,
+} INIT_CODE;
+
+typedef struct _INIT_INFO
+{
+  INIT_CODE code;
+  uint64_t   n;
+} INIT_INFO;
+
+typedef enum _TEST_CODE
+{
+ TC_REG_N = 10,
+ TC_STORE_N,
+ TC_MUST_BE,
+ TC_END,
+} TEST_CODE;
+
+typedef struct _TEST_INFO
+{
+  TEST_CODE code;
+  uint64_t   n;
+} TEST_INFO;
+
+typedef struct _ESC_TEST_INFO
+{
+  char         *desc;
+  INIT_INFO    *init_codes;
+  TOKEN        *seq;
+  TEST_INFO    *result_codes;
+  int          passed;
+} ESC_TEST_INFO;
+
+#define NUM_TESTS (sizeof(tests)/sizeof(ESC_TEST_INFO))
+
+////////////////////////////////////////////////////////////////////////////////
+
+int keypress = 0;
+int parameter = 0;
+int auto_increment_parameter = 0;
+int auto_increment_address   = 0;
+char text_parameter[TEXT_PARAMETER_LEN+1] = "";
+int address              = 0;
+int test_number          = 0;
+int test_run_single_test = 0;
+int test_running         = 0;
+int test_done_init       = 0;
+int test_step            = 0;
+
+////////////////////////////////////////////////////////////////////////////////
+
+void serial_help(void);
+void prompt(void);
 
 int write_state_to_file(ESC_STATE *es, char *fn);
 int read_file_into_state(char *fn, ESC_STATE *es);
@@ -64,6 +131,10 @@ int wfn_store_data(ESC_STATE *es, void *fi, char *line);
 int wfn_store(ESC_STATE *es, void *fi, char *line);
 
 void update_computer_display(ESC_STATE *es);
+void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n);
+REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n);
+
+ESC_TEST_INFO tests[];
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -266,7 +337,7 @@ void kbd_queue_key(int k)
 }
 
 // read scan code
-void kbd_read()
+void kbd_read(ESC_STATE *s)
 {
   // If the drive index is zero then reset the scan code
   if( kbd_drv_i == 0 )
@@ -287,6 +358,120 @@ void kbd_read()
     }
   else
     {
+      // No key pressed, check for a running test
+      if( test_running )
+	{
+	  // Initialise?
+	  if( test_done_init )
+	    {
+	      // Init done, queue token
+	      TOKEN t = tests[test_number].seq[test_step];
+	      int i = 0;
+	      int rn = -1;
+	      int done = 0;
+	      
+	      switch(t)
+		{
+		case TOK_NONE:
+		  // Test sequence finished
+		  // Test results
+
+		  // Assume passed
+		  tests[test_number].passed = 1;
+		  
+		  printf("\nChecking results for test: %s", tests[test_number].desc);
+		  
+		  while(!done)
+		    {
+		      switch(tests[test_number].result_codes[i].code)
+			{
+			case TC_REG_N:
+			  rn = tests[test_number].result_codes[i].n;
+			  printf("\ntesting R[%d]", rn);
+			  break;
+			  
+			case TC_MUST_BE:
+			  if( rn != -1 )
+			    {
+			      if( read_any_size_register(s, rn) == tests[test_number].result_codes[i].n )
+				{
+				  // All OK
+				  printf("\nR[%d] == %08xd, OK", rn, tests[test_number].result_codes[i].n);
+				}
+			      else
+				{
+				  // Not OK
+				  printf("\nR[%d] <> %016llx", rn, tests[test_number].result_codes[i].n);
+				  tests[test_number].passed = 0;
+				}
+			    }
+			  break;
+			  
+			case TC_END:
+			  printf("\nResult check done\n");
+			  done = 1;
+			  test_running = 0;
+			  break;
+			  
+			default:
+			  printf("\nUnknown test TC code (test %d, i=%d, code=%d)", test_number, i, tests[test_number].result_codes[i].code);
+			  test_running = 0;
+			  done = 1;
+			  break;
+			}
+		      
+		      i++;
+		    }
+
+		  
+		  break;
+
+		default:
+		  queue_token(t);
+		  test_step++;
+		  break;
+		}
+	      
+	    }
+	  else
+	    {
+	      // Init not done, do it
+	      int i = 0;
+	      int rn = 0;
+	      int done = 0;
+
+	      printf("\nInitialising test: %s", tests[test_number].desc);
+	      
+	      while(!done)
+		{
+		  switch(tests[test_number].init_codes[i].code)
+		    {
+		    case IC_SET_REG_N:
+		      rn = tests[test_number].init_codes[i].n;
+		      break;
+
+		    case IC_SET_REG_V:
+		      register_assign_register_uint64(s, rn, tests[test_number].init_codes[i].n );
+		      break;
+		      
+		    case IC_END:
+		      done = 1;
+		      test_done_init = 1;
+
+		      // Set up test sequence step number
+		      test_step = 0;
+		      break;
+		      
+		    default:
+		      printf("\nUnknown test IC code (test %d, i=%d)", test_number, i);
+		      test_running = 0;
+		      break;
+		    }
+
+		  i++;
+		}
+	    }
+	}
     }
 
   // On last drive, process the scan
@@ -341,7 +526,8 @@ void kbd_debounce(void)
     }
 }
 
-void kbd_scan(void)
+
+void kbd_scan(ESC_STATE *s)
 {
   kbd_t_slot = (kbd_t_slot + 1 ) % NUM_KBD_T_SLOTS;
 
@@ -352,25 +538,12 @@ void kbd_scan(void)
       break;
 
     case 9:
-      kbd_read();      
+      kbd_read(s);      
       break;
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-#define TEXT_PARAMETER_LEN 40
-
-void serial_help(void);
-void prompt(void);
-
-int keypress = 0;
-int parameter = 0;
-int auto_increment_parameter = 0;
-int auto_increment_address   = 0;
-char text_parameter[TEXT_PARAMETER_LEN+1] = "";
-int address     = 0;
-
+  
 ////////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -403,6 +576,30 @@ char warning_message[200];
 void warning(void)
 {
   printf("\n*** WARNING: %s ***\n", error_message);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Read any register
+//
+// Always returns a double word as it could be a double word register
+//
+
+REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
+{
+  if( IS_SW_REGISTER(n) )
+    {
+      return((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n));
+    }
+
+  if( IS_DW_REGISTER(n) )
+    {
+      return((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n));
+    }
+
+  sprintf(error_message, "Unrecognised register:R%d", n);
+  error();
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -812,6 +1009,25 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
 
   // error
   sprintf(error_message, "Registers of different sizes");
+  error();
+}
+
+void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
+{
+  if( IS_SW_REGISTER(dest) )
+    {
+      SW_REG_CONTENTS(dest) = (REGISTER_SINGLE_WORD)n;
+      return;
+    }
+
+  if( IS_DW_REGISTER(dest) )
+    {
+      DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) n;
+      return;
+    }
+
+  // error
+  sprintf(error_message, "Register unknown *%d), dest");
   error();
 }
 
@@ -2216,6 +2432,97 @@ void cli_file_read_state(void)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// test 1
+//
+
+INIT_INFO test_init_1[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    0x123456},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    0x987654321},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_1[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_2,
+   TOK_KEY_2,
+   TOK_KEY_3,
+   TOK_KEY_3,
+   TOK_KEY_5,
+   TOK_NONE,
+  };
+
+
+TEST_INFO test_res_1[] =
+  {
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0x123456},
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0x987654321L},
+
+   {TC_END,     0},
+
+  };
+
+ESC_TEST_INFO tests[] =
+  {
+   {"KB Input",  test_init_1, test_seq_1, test_res_1, 0},
+   {"KB Input",  test_init_1, test_seq_1, test_res_1, 0},
+  };
+  
+////////////////////////////////////////////////////////////////////////////////
+//
+// Run tests
+//
+//
+// Each test is a sequence of inputs to the state machine
+//
+// The store and registers can be loaded before the test starts.
+// The store and registers can be tested after the test has ended.
+//
+
+void cli_run_single_test(void)
+{
+  
+  test_number = parameter;
+  test_run_single_test = 1;
+  test_running   = 1;
+  test_done_init = 0;
+}
+
+void cli_run_tests(void)
+{
+  // Get test number to run
+  
+  // Clear everything?
+  // Set up registers
+  // Set up store
+  // Run tokens
+  // Test results
+  
+}
+
+void cli_test_results(void)
+{
+
+  printf("\nTest results\n");
+
+  for(int i=0; i<NUM_TESTS; i++)
+    {
+      printf("\n%03d: %s   %s", i, tests[i].desc, tests[i].passed?"Passed":"Failed");
+    }
+
+  printf("\n");
+  
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // Reads and prints a file
 //
 
@@ -2771,6 +3078,21 @@ SERIAL_COMMAND serial_cmds[] =
     "Read file into state",
     cli_file_read_state,
    },
+   {
+    '-',
+    "Run test",
+    cli_run_single_test,
+   },
+   {
+    '=',
+    "Run all tests",
+    cli_run_tests,
+   },
+   {
+    '@',
+    "Test results",
+    cli_test_results,
+   },
    
   };
 
@@ -3304,8 +3626,6 @@ int main(void)
   sleep_ms(3000);
 #endif
 
-
-
 #if OLED_ON
   // Overall loop, which contains the polling loop and the menu loop
   oled_clear_display(&oled0);
@@ -3326,13 +3646,14 @@ int main(void)
   wifi_main();
 #else
   printf("\n** Wifi NOT Enabled **");
+  
   // Main loop
   while(1)
     {
 #if DEBUG_LOOP
       printf("\nLoop");
 #endif
-      kbd_scan();
+      kbd_scan(&esc_state);
       drive_fsms();
       serial_loop();
       update_display();
