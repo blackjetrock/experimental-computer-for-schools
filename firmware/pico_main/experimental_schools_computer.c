@@ -59,13 +59,13 @@
 
 // Initialise registers and store
 typedef enum _INIT_CODE
-{
- IC_SET_REG_N = 10,
- IC_SET_REG_V,
- IC_SET_STORE_A,
- IC_SET_STORE_V,
- IC_END,
-} INIT_CODE;
+  {
+   IC_SET_REG_N = 10,
+   IC_SET_REG_V,
+   IC_SET_STORE_A,
+   IC_SET_STORE_V,
+   IC_END,
+  } INIT_CODE;
 
 typedef struct _INIT_INFO
 {
@@ -73,13 +73,18 @@ typedef struct _INIT_INFO
   uint64_t   n;
 } INIT_INFO;
 
+// The followinf enum is also used to identify registers other than R0..9
+// when testing results. E.g. IAR
+
 typedef enum _TEST_CODE
-{
- TC_REG_N = 10,
- TC_STORE_N,
- TC_MUST_BE,
- TC_END,
-} TEST_CODE;
+  {
+   TC_REG_N = 20,
+   TC_REG_IAR,
+   TC_REG_KI,
+   TC_STORE_N,
+   TC_MUST_BE,
+   TC_END,
+  } TEST_CODE;
 
 typedef struct _TEST_INFO
 {
@@ -336,6 +341,9 @@ void kbd_queue_key(int k)
     }
 }
 
+int test_loop_count = 0;
+#define TEST_EVERY_N_LOOPS  5
+
 // read scan code
 void kbd_read(ESC_STATE *s)
 {
@@ -358,117 +366,147 @@ void kbd_read(ESC_STATE *s)
     }
   else
     {
-      // No key pressed, check for a running test
-      if( test_running )
-	{
-	  // Initialise?
-	  if( test_done_init )
-	    {
-	      // Init done, queue token
-	      TOKEN t = tests[test_number].seq[test_step];
-	      int i = 0;
-	      int rn = -1;
-	      int done = 0;
-	      
-	      switch(t)
-		{
-		case TOK_NONE:
-		  // Test sequence finished
-		  // Test results
+      // No key pressed, check for a running test after N idle loops
+      // We allow the FSMs to run for a while between keystrokes
 
-		  // Assume passed
-		  tests[test_number].passed = 1;
+      if( (++test_loop_count) <= TEST_EVERY_N_LOOPS )
+	{
+	  // Wait another loop before running test
+	}
+      else
+	{      
+	  test_loop_count = 0;
+	  
+	  if( test_running )
+	    {
+	      // Initialise?
+	      if( test_done_init )
+		{
+		  // Init done, queue token
+		  TOKEN t = tests[test_number].seq[test_step];
+		  int i = 0;
+		  int rn = -1;
+		  int done = 0;
+	      
+		  switch(t)
+		    {
+		    case TOK_NONE:
+		      // Test sequence finished
+		      // Test results
+
+		      // Assume passed
+		      tests[test_number].passed = 1;
 		  
-		  printf("\nChecking results for test: %s", tests[test_number].desc);
+		      printf("\nChecking results for test: %s", tests[test_number].desc);
 		  
+		      while(!done)
+			{
+			  switch(tests[test_number].result_codes[i].code)
+			    {
+			    case TC_REG_N:
+			      rn = tests[test_number].result_codes[i].n;
+			      printf("\nTesting R[%d]", rn);
+			      break;
+
+			    case TC_REG_IAR:
+			    case TC_REG_KI:
+			      rn = tests[test_number].result_codes[i].code;
+			      break;
+			  
+			    case TC_MUST_BE:
+			      if( rn != -1 )
+				{
+				  switch(rn)
+				    {
+				    case TC_REG_N:
+				    case TC_STORE_N:
+				    case TC_MUST_BE:
+				    case TC_END:
+				      printf("\nTest code %d used as registerindex compare");
+				      break;
+				  
+				    case TC_REG_IAR:
+				    case TC_REG_KI:
+				    default:
+				      if( read_any_size_register(s, rn) == tests[test_number].result_codes[i].n )
+					{
+					  // All OK
+					  printf("\nR[%d] == %08xd, OK", rn, tests[test_number].result_codes[i].n);
+					}
+				      else
+					{
+					  // Not OK
+					  printf("\nR[%d] <> %016llx", rn, tests[test_number].result_codes[i].n);
+					  tests[test_number].passed = 0;
+					}
+				      break;
+				    }
+				}
+			      break;
+			  
+			    case TC_END:
+			      printf("\nResult check done\n");
+			      done = 1;
+			      test_running = 0;
+			      break;
+			  
+			    default:
+			      printf("\nUnknown test TC code (test %d, i=%d, code=%d)", test_number, i, tests[test_number].result_codes[i].code);
+			      test_running = 0;
+			      done = 1;
+			      break;
+			    }
+		      
+			  i++;
+			}
+
+		  
+		      break;
+
+		    default:
+		      queue_token(t);
+		      test_step++;
+		      break;
+		    }
+	      
+		}
+	      else
+		{
+		  // Init not done, do it
+		  int i = 0;
+		  int rn = 0;
+		  int done = 0;
+
+		  printf("\nInitialising test: %s", tests[test_number].desc);
+	      
 		  while(!done)
 		    {
-		      switch(tests[test_number].result_codes[i].code)
+		      switch(tests[test_number].init_codes[i].code)
 			{
-			case TC_REG_N:
-			  rn = tests[test_number].result_codes[i].n;
-			  printf("\ntesting R[%d]", rn);
+			case IC_SET_REG_N:
+			  rn = tests[test_number].init_codes[i].n;
 			  break;
-			  
-			case TC_MUST_BE:
-			  if( rn != -1 )
-			    {
-			      if( read_any_size_register(s, rn) == tests[test_number].result_codes[i].n )
-				{
-				  // All OK
-				  printf("\nR[%d] == %08xd, OK", rn, tests[test_number].result_codes[i].n);
-				}
-			      else
-				{
-				  // Not OK
-				  printf("\nR[%d] <> %016llx", rn, tests[test_number].result_codes[i].n);
-				  tests[test_number].passed = 0;
-				}
-			    }
+
+			case IC_SET_REG_V:
+			  register_assign_register_uint64(s, rn, tests[test_number].init_codes[i].n );
 			  break;
-			  
-			case TC_END:
-			  printf("\nResult check done\n");
+		      
+			case IC_END:
 			  done = 1;
-			  test_running = 0;
+			  test_done_init = 1;
+
+			  // Set up test sequence step number
+			  test_step = 0;
 			  break;
-			  
+		      
 			default:
-			  printf("\nUnknown test TC code (test %d, i=%d, code=%d)", test_number, i, tests[test_number].result_codes[i].code);
+			  printf("\nUnknown test IC code (test %d, i=%d)", test_number, i);
 			  test_running = 0;
-			  done = 1;
 			  break;
 			}
-		      
+
 		      i++;
 		    }
-
-		  
-		  break;
-
-		default:
-		  queue_token(t);
-		  test_step++;
-		  break;
-		}
-	      
-	    }
-	  else
-	    {
-	      // Init not done, do it
-	      int i = 0;
-	      int rn = 0;
-	      int done = 0;
-
-	      printf("\nInitialising test: %s", tests[test_number].desc);
-	      
-	      while(!done)
-		{
-		  switch(tests[test_number].init_codes[i].code)
-		    {
-		    case IC_SET_REG_N:
-		      rn = tests[test_number].init_codes[i].n;
-		      break;
-
-		    case IC_SET_REG_V:
-		      register_assign_register_uint64(s, rn, tests[test_number].init_codes[i].n );
-		      break;
-		      
-		    case IC_END:
-		      done = 1;
-		      test_done_init = 1;
-
-		      // Set up test sequence step number
-		      test_step = 0;
-		      break;
-		      
-		    default:
-		      printf("\nUnknown test IC code (test %d, i=%d)", test_number, i);
-		      test_running = 0;
-		      break;
-		    }
-
-		  i++;
 		}
 	    }
 	}
@@ -587,6 +625,16 @@ void warning(void)
 
 REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
 {
+  if( n == TC_REG_IAR )
+    {
+      return((REGISTER_DOUBLE_WORD)s->iar.address);
+    }
+
+  if( n == TC_REG_KI )
+    {
+      return((REGISTER_DOUBLE_WORD)s->keyboard_register);
+    }
+  
   if( IS_SW_REGISTER(n) )
     {
       return((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n));
@@ -844,7 +892,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
       if( OVERFLOW_SW(c) )
 	{
 #if DEBUG_SW_BCD_SUM
-      printf("\nOverflow occurred");
+	  printf("\nOverflow occurred");
 
 	  sprintf(error_message, "Overflow (%08X)", c);
 	  error();
@@ -859,7 +907,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   // If we get here then the signs of the numbers are different
   // If number negative then use tens complemet
 #if DEBUG_SW_BCD_SUM
-      printf("\nSigns different");
+  printf("\nSigns different");
 #endif
 
   if( a_sign == WORD_SIGN_MINUS )
@@ -877,14 +925,14 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 #endif
   
 #if DEBUG_SW_BCD_SUM
-      printf("\nSigns different");
+  printf("\nSigns different");
 #endif
 
-      c = a + b;
-      c = single_sum_normalise(c);
+  c = a + b;
+  c = single_sum_normalise(c);
       
 #if DEBUG_SW_BCD_SUM
-      printf("\nc=%08X", c);
+  printf("\nc=%08X", c);
 #endif
 
 
@@ -1277,7 +1325,7 @@ void stage_b_decode(ESC_STATE *s)
 		}
 
 #if DEBUG_TEST
-		 printf("\nTEST extreme left:%d ", extreme_left_digit);
+	      printf("\nTEST extreme left:%d ", extreme_left_digit);
 #endif
 	      
 	      if( extreme_left_digit == 0 )
@@ -1311,7 +1359,7 @@ void stage_b_decode(ESC_STATE *s)
 	case 0:
 	  // Add registers
 	  register_assign_sum_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
-	    break;
+	  break;
 	  
 	case 3:
 	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rd, 0);
@@ -1818,7 +1866,7 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
 
   s = (ESC_STATE *)es;
 
-    switch(s->stage)
+  switch(s->stage)
     {
     case ' ':
       if( s->ki_reset_flag )
@@ -2104,10 +2152,14 @@ char *get_string_state(void)
 {
   char line[80];
   ESC_STATE *s = &esc_state;
-    
+
+  
   sprintf(str_state, "\nIAR           : %s", display_iar(s->iar));
   
   sprintf(line, "\nAux IAR       : %s", display_iar(s->aux_iar));
+  strcat(str_state, line);
+
+  sprintf(line, "\nKI            : %s", display_register_double_word(s->keyboard_register));
   strcat(str_state, line);
   
   sprintf(line, "\nInst Reg      : %08X", s->instruction_register);
@@ -2161,18 +2213,18 @@ void cli_dump(void)
 // Dump Store
 void cli_dump_store(void)
 {
-    ESC_STATE *s = &esc_state;
+  ESC_STATE *s = &esc_state;
 
-    for(int i=0; i<STORE_SIZE; i++)
-      {
-	if( (i % 5) == 0 )
-	  {
-	    printf("\n");
-	  }
+  for(int i=0; i<STORE_SIZE; i++)
+    {
+      if( (i % 5) == 0 )
+	{
+	  printf("\n");
+	}
 
-	printf("  %03d:%08X (1234.56-)", i, s->store[i]);
-      }
-    printf("\n");
+      printf("  %03d:%08X (1234.56-)", i, s->store[i]);
+    }
+  printf("\n");
 	   
 }
 
@@ -2441,13 +2493,20 @@ INIT_INFO test_init_1[] =
    {IC_SET_REG_V,    0x123456},
    {IC_SET_REG_N,    8},
    {IC_SET_REG_V,    0x987654321},
-
    {IC_END,          0},
   };
 
 TOKEN test_seq_1[] =
   {
    TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
    TOK_KEY_2,
    TOK_KEY_2,
    TOK_KEY_3,
@@ -2463,7 +2522,6 @@ TEST_INFO test_res_1[] =
    {TC_MUST_BE, 0x123456},
    {TC_REG_N,   8},
    {TC_MUST_BE, 0x987654321L},
-
    {TC_END,     0},
 
   };
@@ -3357,7 +3415,7 @@ void update_computer_display(ESC_STATE *es)
   
   printf("\n");
   
-  printf("\nKeyboard register: %08X   IAR:%02X", es->keyboard_register, display_iar(es->iar));
+  printf("\nKeyboard register: %s   IAR:%02X", display_register_double_word(es->keyboard_register), display_iar(es->iar));
   printf("\n");
   
   //
@@ -3551,7 +3609,7 @@ int main(void)
   //
   ////////////////////////////////////////////////////////////////////////////////
   
-  #define OVERCLOCK 135000
+#define OVERCLOCK 135000
   //#define OVERCLOCK 200000
   //#define OVERCLOCK 270000
   //#define OVERCLOCK 360000
