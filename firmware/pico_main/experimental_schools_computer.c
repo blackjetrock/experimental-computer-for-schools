@@ -86,19 +86,29 @@ typedef enum _TEST_CODE
    TC_END,
   } TEST_CODE;
 
+// Load the store before running the test. Words are terminated by a -1
+
+#define TEST_LOAD_STORE_LEN 100
+
+typedef struct _TEST_LOAD_STORE
+{
+  int data[TEST_LOAD_STORE_LEN];
+} TEST_LOAD_STORE;
+
 typedef struct _TEST_INFO
 {
-  TEST_CODE code;
-  uint64_t   n;
+  TEST_CODE       code;
+  uint64_t        n;
 } TEST_INFO;
 
 typedef struct _ESC_TEST_INFO
 {
-  char         *desc;
-  INIT_INFO    *init_codes;
-  TOKEN        *seq;
-  TEST_INFO    *result_codes;
-  int          passed;
+  char            *desc;
+  INIT_INFO       *init_codes;
+  TOKEN           *seq;
+  TEST_INFO       *result_codes;
+  int              passed;
+  TEST_LOAD_STORE *store_data;
 } ESC_TEST_INFO;
 
 #define NUM_TESTS (sizeof(tests)/sizeof(ESC_TEST_INFO))
@@ -460,7 +470,26 @@ void kbd_read(ESC_STATE *s)
 			  i++;
 			}
 
-		  
+		      // test has run, see if we should run another, or stop
+		      
+		      if( !test_run_single_test )
+			{
+			  // Move to next test if there is one
+			  test_number++;
+
+			  if( strcmp( tests[test_number].desc, "--END--") != 0 )
+			    {
+			      test_run_single_test = 0;
+			      test_running   = 1;
+			      test_done_init = 0;
+			    }
+			  else
+			    {
+			      // End of tests, stop
+			      test_running = 0;
+			    }
+			}
+		      
 		      break;
 
 		    default:
@@ -468,6 +497,7 @@ void kbd_read(ESC_STATE *s)
 		      test_step++;
 		      break;
 		    }
+
 	      
 		}
 	      else
@@ -478,7 +508,13 @@ void kbd_read(ESC_STATE *s)
 		  int done = 0;
 
 		  printf("\nInitialising test: %s", tests[test_number].desc);
-	      
+
+		  // Load the store
+		  for(int i=0; (i<TEST_LOAD_STORE_LEN) && (tests[test_number].store_data->data[i] != -1); i++)
+		    {
+		      s->store[i] = tests[test_number].store_data->data[i];
+		    }
+		  
 		  while(!done)
 		    {
 		      switch(tests[test_number].init_codes[i].code)
@@ -1254,22 +1290,31 @@ void stage_b_decode(ESC_STATE *s)
       switch(s->inst_digit_b)
 	{
 	case 0:
+	  // (Rc) <= (Rc) + d
 	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rc, s->reginst_literal);
 	  break;
 
 	case 1:
+	  // (Rc) <= (Rc) - d
 	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rc, -(s->reginst_literal));
 	  break;
 
 	case 2:
+	  // (Rc) <= d - (Rc)
 	  register_assign_sub_literal_register(s, s->reginst_rc, s->reginst_literal, s->reginst_rc);
 	  break;
 	  
 	case 3:
+	  // (Rc) <= d
 	  register_assign_register_literal(s, s->reginst_rc, s->reginst_literal);
 	  break;
 
+	case 4:
+	  // Not used
+	  break;
+	  
 	case 5:
+	  // Test (Rc)
 #if DEBUG_TEST
 	  printf("\nTEST (5) ");
 #endif
@@ -1350,6 +1395,14 @@ void stage_b_decode(ESC_STATE *s)
 	case 7:
 	  register_assign_register_literal(s, s->reginst_rc, get_register(s, s->reginst_rc) >> (4*(s->reginst_literal)));
 	  break;
+
+	case 8:
+	  // Not used
+	  break;
+
+	case 9:
+	  // Not used
+	  break;
 	}
       break;
       
@@ -1360,8 +1413,18 @@ void stage_b_decode(ESC_STATE *s)
 	  // Add registers
 	  register_assign_sum_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
 	  break;
+
+	case 1:
+	  // Subtract registers (Rc)-(Rd)
+	  break;
+	  
+	case 2:
+	  // Subtract registers (Rd)-(Rc)
+	  break;
 	  
 	case 3:
+	  // Register assign (Rc) <-(Rd)
+	  
 	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rd, 0);
 	  break;
 
@@ -1374,6 +1437,10 @@ void stage_b_decode(ESC_STATE *s)
 	  // Then the RH six digits
 	  int rh6 = any_size_rh6(s, s->reginst_rd);
 	  set_any_size_rh6(s, s->reginst_rc, rh6);
+	  break;
+
+	case 5:
+	  // Not used
 	  break;
 	  
 	  // Shift (Rc) left (Rd) places 
@@ -1390,6 +1457,13 @@ void stage_b_decode(ESC_STATE *s)
 					   get_register(s, s->reginst_rc) >> (4*get_register(s, (s->reginst_rd))));
 	  break;
 
+	case 8:
+	  // Not used
+	  break;
+
+	case 9:
+	  // Stop and display (Rc) and (Rd)
+	  break;
 	}
 
       break;
@@ -1406,15 +1480,35 @@ void stage_b_decode(ESC_STATE *s)
 	  switch(s->inst_digit_b)
 	    {
 	    case 0:
+	      // Copy (Aa) into Ro and Ri as follows. If Aa contains
+	      // data (recognisable by a sign in digit position 1), copy the
+	      // exponent digit into Ro and the sign and significant digits into
+	      // Ri. If Aa contains an instruction (recognisable by a decimal
+	      // digit in position 1), copy the left-hand four digits into Ro and
+	      // the right-hand four digits into Ri
+
 	      break;
 	      
 	    case 1:
+
+	      // Store (Ro) and (RO in location Aa in data format; i.e. copy (Ro)
+	      // into the exponent position, and copy (RO into the sign and
+	      // significant digit positions. If the number is outside the range
+	      // that can be held in a storage location, set the ERROR indicator
+	      // and stop
+	      // Store (Ro) and (RO in location A in instruction format; i.e.
+
 	      break;
 	      
 	    case 2:
+	      // Store (Ro) and (RO in location Aa in instruction format; i.e.
+	      // copy (Ro) into the left-hand four digit positions and (RO into
+	      // the right-hand four digit positions
+
 	      break;
 	      
 	    case 3:
+	      // Not used
 	      break;
 	      
 	    case 4:
@@ -1430,29 +1524,60 @@ void stage_b_decode(ESC_STATE *s)
 	      break;
 	      
 	    case 5:
+	      // Branch if control latch is 1
+	      if( s->control_latch == 1 )
+		{
+		  // Move the IAR on to the next address and store that in the link register
+		  next_iar(s);
+		  s->link_register = s->iar.address;
+		  
+		  // Now over-write that IAR with the address we want to jump to
+		  s->iar.address = s->inst_aa;
+		  s->iar.a_flag = 0;
+		}
 	      break;
 	      
 	    case 6:
+	      // Branch if control latch is 1
+	      if( s->control_latch == 0 )
+		{
+		  // Move the IAR on to the next address and store that in the link register
+		  next_iar(s);
+		  s->link_register = s->iar.address;
+		  
+		  // Now over-write that IAR with the address we want to jump to
+		  s->iar.address = s->inst_aa;
+		  s->iar.a_flag = 0;
+		}
+
 	      break;
 	      
 	    case 7:
+	      // Store contents of link address in Aa
+	      s->store[s->inst_aa] = s->link_register;
 	      break;
 	      
 	    case 8:
+	      // Input
+	      // Stop and when restarted transfer keyboard register contents into Aa
 	      break;
 	      
 	    case 9:
+	      // Display
+	      // Stop and display (Aa)
 	      break;
 	      
 	    }
 	  break;
 	}
       break;
-      
+
+      // Three address instructions
     case 7:
     case 8:
     case 9:
       // Indirect
+      // Not indirect only, though
       s->Aa1 = s->store[s->Ap1];
       s->Aa2 = s->store[s->Ap2];
       s->Aa3 = s->store[s->Ap3];
@@ -1514,7 +1639,7 @@ void stage_a_decode(ESC_STATE *s)
 	  
 	case 5:
 	  // TEST
-	  // Performd in stage B
+	  // Performed in stage B
 	  break;
 
 	case 6:
@@ -1730,7 +1855,7 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   // Everything cleared except IAR
 
   es->stage = ' ';
-  es->keyboard_register = EMPTY_ADDRESS;
+  es->keyboard_register = 0x00;
   
   es->ki_reset_flag = 0;
   es->address_register0 = EMPTY_ADDRESS;
@@ -1754,7 +1879,7 @@ void state_esc_ki_reset(FSM_DATA *s, TOKEN tok)
   // Everything cleared except IAR
 
   es->stage = ' ';
-  es->keyboard_register = EMPTY_ADDRESS;
+  es->keyboard_register = 0x00;
   
   es->ki_reset_flag = 1;
   es->address_register0 = EMPTY_ADDRESS;
@@ -2484,7 +2609,9 @@ void cli_file_read_state(void)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// test 1
+// Test 1
+//
+// Keyboard input
 //
 
 INIT_INFO test_init_1[] =
@@ -2526,10 +2653,70 @@ TEST_INFO test_res_1[] =
 
   };
 
+TEST_LOAD_STORE test_1_store =
+  {
+   {0x12345678, 0x112233, -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 2
+//
+// Register instructions
+//
+
+INIT_INFO test_init_2[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    0x123456},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    0x987654321},
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_2[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_2,
+   TOK_KEY_2,
+   TOK_KEY_3,
+   TOK_KEY_3,
+   TOK_KEY_5,
+   TOK_NONE,
+  };
+
+
+TEST_INFO test_res_2[] =
+  {
+   // Original register contents must be unchanged
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0x123456},
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0x987654321L},
+
+   // Copied value must be there
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0x123456},
+   
+   {TC_END,     0},
+
+  };
+
+////////////////////////////////////////////////////////////////////////////////
+
 ESC_TEST_INFO tests[] =
   {
-   {"KB Input",  test_init_1, test_seq_1, test_res_1, 0},
-   {"KB Input",  test_init_1, test_seq_1, test_res_1, 0},
+   {"KB Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
+   {"KB Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
+   {"--END--",   test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
   };
   
 ////////////////////////////////////////////////////////////////////////////////
@@ -2554,14 +2741,12 @@ void cli_run_single_test(void)
 
 void cli_run_tests(void)
 {
-  // Get test number to run
-  
-  // Clear everything?
-  // Set up registers
-  // Set up store
-  // Run tokens
-  // Test results
-  
+  // Set test number to first test
+  test_number = 0;
+
+  test_run_single_test = 0;
+  test_running   = 1;
+  test_done_init = 0;
 }
 
 void cli_test_results(void)
@@ -2571,7 +2756,10 @@ void cli_test_results(void)
 
   for(int i=0; i<NUM_TESTS; i++)
     {
-      printf("\n%03d: %s   %s", i, tests[i].desc, tests[i].passed?"Passed":"Failed");
+      if( strcmp(tests[i].desc, "--END--") != 0 )
+	{
+	  printf("\n%03d: %s   %s", i, tests[i].desc, tests[i].passed?"Passed":"Failed");
+	}
     }
 
   printf("\n");
