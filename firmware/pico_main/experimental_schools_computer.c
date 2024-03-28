@@ -470,15 +470,18 @@ void kbd_read(ESC_STATE *s)
 			  i++;
 			}
 
-		      // test has run, see if we should run another, or stop
+		      // Test has run, see if we should run another, or stop
 		      
 		      if( !test_run_single_test )
 			{
+			  printf("\nMoving to next test...");
+			  
 			  // Move to next test if there is one
 			  test_number++;
 
 			  if( strcmp( tests[test_number].desc, "--END--") != 0 )
 			    {
+
 			      test_run_single_test = 0;
 			      test_running   = 1;
 			      test_done_init = 0;
@@ -487,6 +490,8 @@ void kbd_read(ESC_STATE *s)
 			    {
 			      // End of tests, stop
 			      test_running = 0;
+			      
+			      printf("\nTest END marker found, stopping tests...");
 			    }
 			}
 		      
@@ -2609,12 +2614,12 @@ void cli_file_read_state(void)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Test 1
+// Test 0
 //
 // Keyboard input
 //
 
-INIT_INFO test_init_1[] =
+INIT_INFO test_init_0[] =
   {
    {IC_SET_REG_N,    0},
    {IC_SET_REG_V,    0x123456},
@@ -2623,7 +2628,7 @@ INIT_INFO test_init_1[] =
    {IC_END,          0},
   };
 
-TOKEN test_seq_1[] =
+TOKEN test_seq_0[] =
   {
    TOK_KEY_NORMAL_RESET,
    TOK_KEY_0,
@@ -2643,7 +2648,7 @@ TOKEN test_seq_1[] =
   };
 
 
-TEST_INFO test_res_1[] =
+TEST_INFO test_res_0[] =
   {
    {TC_REG_N,   0},
    {TC_MUST_BE, 0x123456},
@@ -2653,9 +2658,58 @@ TEST_INFO test_res_1[] =
 
   };
 
-TEST_LOAD_STORE test_1_store =
+TEST_LOAD_STORE test_0_store =
   {
    {0x12345678, 0x112233, -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 1
+//
+// Register instructions
+//
+
+INIT_INFO test_init_1[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    0x123456},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    0x987654321},
+   {IC_END,          0},
+  };
+
+// Run just one instruction at 00
+
+TOKEN test_seq_1[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+   TOK_KEY_C,
+   TOK_NONE,
+  };
+
+
+TEST_INFO test_res_1[] =
+  {
+   // Original register contents must be unchanged
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0x123456},
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0x987654321L},
+
+   // Copied value must be there
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0x123456},
+   
+   {TC_END,     0},
+
+  };
+
+TEST_LOAD_STORE test_1_store =
+  {
+   {0x13100000, -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2710,13 +2764,19 @@ TEST_INFO test_res_2[] =
 
   };
 
+TEST_LOAD_STORE test_2_store =
+  {
+   {0x12345678, 0x112233, -1},
+  };
+
 ////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
-   {"KB Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
-   {"KB Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
-   {"--END--",   test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
+   {"KB Input",        test_init_0, test_seq_0, test_res_0, 0, &test_0_store},
+   {"Register Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
+   {"Test 3",          test_init_2, test_seq_2, test_res_2, 0, &test_2_store},
+   {"--END--",         test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
   };
   
 ////////////////////////////////////////////////////////////////////////////////
@@ -2758,13 +2818,70 @@ void cli_test_results(void)
     {
       if( strcmp(tests[i].desc, "--END--") != 0 )
 	{
-	  printf("\n%03d: %s   %s", i, tests[i].desc, tests[i].passed?"Passed":"Failed");
+	  printf("\n%03d: %-20s   %-10s", i, tests[i].desc, tests[i].passed?"Passed":"Failed");
 	}
     }
 
   printf("\n");
   
 
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+// We allow digits to enter a new value for the parameter
+
+void cli_enter_parameter()
+{
+  int  key;
+  int done = 0;
+
+  printf("\nEnter parameter: (ESC or <RETURN> to exit)");
+  
+  parameter = 0;
+  
+  while(!done)
+    {
+      if( ((key = getchar_timeout_us(1000)) != PICO_ERROR_TIMEOUT))
+	{
+	  switch(key)
+	    {
+	    case '0':
+	    case '1':
+	    case '2':
+	    case '3':
+	    case '4':
+	    case '5':
+	    case '6':
+	    case '7':
+	    case '8':
+	    case '9':
+	      parameter *= 10;
+	      parameter += (key - '0');
+	      prompt();
+	      break;
+	      
+	    case 27:
+	    case 13:
+	    case 10:
+	      done = 1;
+	      break;
+	      
+	    default:
+	      break;
+	    }
+	}
+      else
+	{
+	  // I have found that I need to send something if the serial USB times out
+	  // otherwise I get lockups on the serial communications.
+	  // So, if we get a timeout we send a space and backspace it. And
+	  // flush the stdio, but that didn't fix the problem but seems like a good idea.
+	  stdio_flush();
+	  //printf(" \b");
+	}
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3163,6 +3280,11 @@ SERIAL_COMMAND serial_cmds[] =
     '!',
     "Boot to mass storage",
     cli_boot_mass,
+   },
+   {
+    'z',
+    "Enter parameter value",
+    cli_enter_parameter,
    },
    {
     '^',
