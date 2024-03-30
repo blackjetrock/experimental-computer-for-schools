@@ -59,7 +59,6 @@ int match_token(TOKEN tok, int ctok)
 	case TOK_KEY_7:
 	case TOK_KEY_8:
 	case TOK_KEY_9:
-	case TOK_KEY_DOT:
 	  ret = 1;
 	  break;
 	  
