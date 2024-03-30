@@ -1876,7 +1876,6 @@ void state_esc_dot(FSM_DATA *s, TOKEN tok)
   // Sign set to plus
   // Minus key will over-ride at the end of entry
   es->keyboard_register = SET_SW_SIGN(es->keyboard_register, WORD_SIGN_PLUS);
-
     
   es->update_display = 1;
 
@@ -2415,6 +2414,16 @@ void cli_digit(void)
 {
   printf("\n%d", keypress);
   queue_token(TOK_KEY_0 + keypress - '0');
+}
+
+void cli_dot(void)
+{
+  queue_token(TOK_KEY_DOT);
+}
+
+void cli_minus(void)
+{
+  queue_token(TOK_KEY_MINUS);
 }
 
 void cli_key_a(void)
@@ -3419,6 +3428,16 @@ SERIAL_COMMAND serial_cmds[] =
     cli_digit,
    },
    {
+    '-',
+    "*Digit",
+    cli_minus,
+   },
+   {
+    '.',
+    "*Digit",
+    cli_dot,
+   },
+   {
     'r',
     "Run",
     cli_run,
@@ -3499,7 +3518,7 @@ SERIAL_COMMAND serial_cmds[] =
     cli_file_read_state,
    },
    {
-    '-',
+    '+',
     "Run test",
     cli_run_single_test,
    },
@@ -3777,7 +3796,7 @@ void update_computer_display(ESC_STATE *es)
   
   printf("\n");
   
-  printf("\nKeyboard register: %s   IAR:%02X", display_register_double_word(es->keyboard_register), display_iar(es->iar));
+  printf("\nKeyboard register: %s   IAR:%8s", display_register_double_word(es->keyboard_register), display_iar(es->iar));
   printf("\n");
   
   //
