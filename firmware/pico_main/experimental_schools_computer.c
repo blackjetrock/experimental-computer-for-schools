@@ -725,7 +725,7 @@ REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
 	case 14:
 	case 15:
 	  v += (0x6<<i);
-	  printf("\n  Added 6:%d", digit);
+	  printf("\n  Added 6:%08X", v);
 	  break;
 	}
     }
@@ -863,6 +863,70 @@ REGISTER_SINGLE_WORD invert_sw_sign(REGISTER_SINGLE_WORD n)
   return(r);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// 32 bits BCD addition, positive only (no sign digit)
+//
+////////////////////////////////////////////////////////////////////////////////
+#if 1
+REGISTER_SINGLE_WORD bcd_addition_32(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WORD b)
+{
+  REGISTER_SINGLE_WORD c = 0;
+  
+  // Add each digit, testing for digit >=10 and also propagating carry to next digit
+  //
+  // Add 6 to each non-bcd digit
+
+  int carry = 0;
+  
+  for(int i=0; i<sizeof(REGISTER_SINGLE_WORD)*8; i+=4)
+    {
+      // Get digit value
+      int a_digit = ((a & (0xF << i)) >> i);
+      int b_digit = ((b & (0xF << i)) >> i);
+      int c_digit = a_digit + b_digit + carry;
+      carry = 0;
+      
+#if DEBUG_BCD_CORRECTION
+      printf("\n%s: Add: a:%d + b:%d = %d", __FUNCTION__, a_digit, b_digit, c_digit);
+#endif
+      // Add 6 if not bcd, we may need to propagate a carry (9+9 = 18, so 6 is added and 24 results
+      // which is 0x18)
+      
+      switch(c_digit)
+	{
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+	case 16:
+	case 17:
+	case 18:
+	  // Add 6, then propagate a carry
+	  c_digit = (c_digit + 6) % 16;
+	  carry = 1;
+	  break;
+	}
+
+      // Build c, a digit at a time
+      c += (c_digit << i);
+
+#if DEBUG_BCD_CORRECTION
+      printf("\n%s: Result so far: %08X", __FUNCTION__, c);
+#endif
+
+    }
+
+#if DEBUG_BCD_CORRECTION
+  printf("\n%s: Result: %08X", __FUNCTION__, c);
+#endif
+  
+  return(c);
+  
+}
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 // BCD single word addition
@@ -920,7 +984,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
       printf("\nSigns identical");
 #endif
 
-      c = a + b;
+      c = bcd_addition_32(a, b);
 
 #if DEBUG_SW_BCD_SUM
       printf("\nc=%08X", c);
@@ -971,7 +1035,8 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   printf("\nSigns different");
 #endif
 
-  c = a + b;
+  c = bcd_addition_32(a, b);
+  
   c = single_sum_normalise(c);
       
 #if DEBUG_SW_BCD_SUM
@@ -992,17 +1057,18 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 
   // Drop the carry
   c = CLEAR_SW_CARRY(c);
-  
-  // Add one
-  c = c + 1;
-  c = single_sum_normalise(c);
 
+  // Add one
+  c = bcd_addition_32(c, 1);
+  
+  c = single_sum_normalise(c);
+  
   // If result is negative then nines complement it and add one as we use sign plus digits form for numbers
-  // This format matches he floating point format
+  // This format matches the floating point format
   if( res_sign == WORD_SIGN_MINUS )
     {
       c = bcd_nines_complement(c);
-      c = c + 1;
+      c = bcd_addition_32(c, 1);
       c = single_sum_normalise(c);
     }
   
@@ -1849,6 +1915,8 @@ void state_esc_load_iar(FSM_DATA *s, TOKEN tok)
 // Add digit to the keybord register
 //
 ////////////////////////////////////////////////////////////////////////////////
+
+// Preserve sign
 
 void state_esc_numeric(FSM_DATA *s, TOKEN tok)
 {
