@@ -2830,9 +2830,9 @@ TEST_LOAD_STORE test_0_store =
 INIT_INFO test_init_1[] =
   {
    {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    0x123456},
+   {IC_SET_REG_V,    SW_PLUS(0x123456)},
    {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    0x987654321},
+   {IC_SET_REG_V,    SW_MINUS(0x987654321)},
    {IC_END,          0},
   };
 
@@ -3740,7 +3740,14 @@ char *display_register_single_word(REGISTER_SINGLE_WORD x)
     }
   
   x = REMOVED_SW_SIGN(x);
-  sprintf(result, "%c%07X", sc, x);
+  if( sc == '?' )
+    {
+      sprintf(result, "%01X%07X", s, x);
+    }
+  else
+    {
+      sprintf(result, "%c%07X", sc, x);
+    }
   return(result);
 }
 
