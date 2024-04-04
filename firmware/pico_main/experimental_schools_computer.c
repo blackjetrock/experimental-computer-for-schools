@@ -1859,6 +1859,9 @@ void state_esc_load_addr(FSM_DATA *s, TOKEN tok)
 
   es->address_register2 = BOUND_ADDRESS(es->keyboard_register);
 
+  // Clear the keyboard register
+  es->keyboard_register = EMPTY_REGISTER;
+  
   es->update_display = 1;
 }
 
@@ -2850,7 +2853,6 @@ TOKEN test_seq_1[] =
    TOK_NONE,
   };
 
-
 TEST_INFO test_res_1[] =
   {
    // Original register contents must be unchanged
@@ -2930,12 +2932,70 @@ TEST_LOAD_STORE test_2_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 3
+//
+// Register instructions
+//
+
+INIT_INFO test_init_3[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    0x123456},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    0x987654321},
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_3[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_9,
+   TOK_KEY_8,
+   TOK_KEY_DOT,
+   TOK_KEY_LOAD_ADDR,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_0,
+   TOK_KEY_2,
+   TOK_KEY_2,
+   TOK_KEY_3,
+   TOK_KEY_3,
+   TOK_KEY_5,
+   TOK_NONE,
+  };
+
+
+TEST_INFO test_res_3[] =
+  {
+   // Original register contents must be unchanged
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0x123456},
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0x987654321L},
+
+   // Copied value must be there
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0x123456},
+   
+   {TC_END,     0},
+
+  };
+
+TEST_LOAD_STORE test_3_store =
+  {
+   {0x12345678, 0x112233, -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
    {"KB Input",        test_init_0, test_seq_0, test_res_0, 0, &test_0_store},
    {"Register Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
    {"Test 3",          test_init_2, test_seq_2, test_res_2, 0, &test_2_store},
+   {"ADDR inc/dec",    test_init_3, test_seq_3, test_res_3, 0, &test_3_store},
    {"--END--",         test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
   };
   
