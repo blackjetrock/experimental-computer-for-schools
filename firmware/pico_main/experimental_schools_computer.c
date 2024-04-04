@@ -865,7 +865,8 @@ REGISTER_SINGLE_WORD invert_sw_sign(REGISTER_SINGLE_WORD n)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// 32 bits BCD addition, positive only (no sign digit)
+// 24 bits BCD addition, positive only (no sign digit or exponent)
+// 
 //
 ////////////////////////////////////////////////////////////////////////////////
 #if 1
@@ -919,8 +920,11 @@ REGISTER_SINGLE_WORD bcd_addition_32(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 
     }
 
+  // Mask out the top two digits as there is probably an overflow from a nines-complement addition
+  c &= 0x00FFFFFF;
+  
 #if DEBUG_BCD_CORRECTION
-  printf("\n%s: Result: %08X", __FUNCTION__, c);
+    printf("\n%s: Result: %08X", __FUNCTION__, c);
 #endif
   
   return(c);
