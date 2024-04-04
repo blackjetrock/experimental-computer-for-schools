@@ -1848,13 +1848,15 @@ void null_every_fn(FSM_DATA *s, TOKEN tok)
 
 
 // Load ADDR from KBD
+// Address needs to be limited to valid range
+
 void state_esc_load_addr(FSM_DATA *s, TOKEN tok)
 {
   ESC_STATE *es;
 
   es = (ESC_STATE *)s;
 
-  es->address_register2 = es->keyboard_register;
+  es->address_register2 = BOUND_ADDRESS(es->keyboard_register);
 
   es->update_display = 1;
 }
@@ -1882,7 +1884,7 @@ void state_esc_incr_addr(FSM_DATA *s, TOKEN tok)
   one = 1;
   one = SET_SW_SIGN(one, WORD_SIGN_PLUS);
 
-  es->address_register2 = bcd_sw_addition(es->address_register2, one);
+  es->address_register2 = BOUND_ADDRESS(bcd_sw_addition(es->address_register2, one));
 
   es->update_display = 1;
 }
@@ -1897,7 +1899,7 @@ void state_esc_decr_addr(FSM_DATA *s, TOKEN tok)
   minus_1 = 1;
   minus_1 = SET_SW_SIGN(minus_1, WORD_SIGN_MINUS);
 
-  es->address_register2 = bcd_sw_addition(es->address_register2, minus_1);
+  es->address_register2 = (BOUND_ADDRESS(bcd_sw_addition(es->address_register2, minus_1)));
 
   es->update_display = 1;
 }
