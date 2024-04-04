@@ -698,6 +698,7 @@ REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
 //
 // Normalise a value after a binary addition
 //
+//
 
 REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
 {
@@ -724,6 +725,7 @@ REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
 	case 14:
 	case 15:
 	  v += (0x6<<i);
+	  printf("\n  Added 6:%d", digit);
 	  break;
 	}
     }
@@ -1017,9 +1019,16 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 
 ////////////////////////////////////////////////////////////////////////////////
 
+// Address is signed so has to have that stripped. It is never negative.
+
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address)
 {
-  return(s->store[address]);
+  return(s->store[REMOVED_SW_SIGN(address)]);
+}
+
+void write_sw_to_store(ESC_STATE *s, ADDRESS address, REGISTER_SINGLE_WORD d)
+{
+  s->store[REMOVED_SW_SIGN(address)] = d;
 }
 
 REGISTER_DOUBLE_WORD get_register(ESC_STATE *s, int reg)
@@ -1267,9 +1276,9 @@ void stage_b_decode_core(ESC_STATE *s, int shift)
       
     case 9:
       // Indirect
-      s->Aa1 = s->store[s->Ap1];
-      s->Aa2 = s->store[s->Ap2];
-      s->Aa3 = s->store[s->Ap3];
+      s->Aa1 = load_from_store(s, s->Ap1);
+      s->Aa2 = load_from_store(s, s->Ap2);
+      s->Aa3 = load_from_store(s, s->Ap3);
       break;
     }
 }
@@ -1559,7 +1568,8 @@ void stage_b_decode(ESC_STATE *s)
 	      
 	    case 7:
 	      // Store contents of link address in Aa
-	      s->store[s->inst_aa] = s->link_register;
+	      write_sw_to_store(s, s->inst_aa, s->link_register);
+	      //s->store[s->inst_aa] = s->link_register;
 	      break;
 	      
 	    case 8:
@@ -1583,9 +1593,14 @@ void stage_b_decode(ESC_STATE *s)
     case 9:
       // Indirect
       // Not indirect only, though
+      s->Aa1 = load_from_store(s, s->Ap1);
+      s->Aa2 = load_from_store(s, s->Ap2);
+      s->Aa3 = load_from_store(s, s->Ap3);
+#if 0
       s->Aa1 = s->store[s->Ap1];
       s->Aa2 = s->store[s->Ap2];
       s->Aa3 = s->store[s->Ap3];
+#endif
       break;
     }
 }
@@ -1682,7 +1697,7 @@ void stage_a_decode(ESC_STATE *s)
       
     case 6:
       // Indirect addressing
-      s->inst_aa = s->store[s->inst_ap];
+      s->inst_aa = load_from_store(s, s->inst_ap);
       break;
       
     case 7:
@@ -1781,7 +1796,8 @@ void state_esc_load_store(FSM_DATA *s, TOKEN tok)
 
   es = (ESC_STATE *)s;
 
-  es->store[es->address_register2] = es->keyboard_register;
+  write_sw_to_store(es, es->address_register2, es->keyboard_register);
+  //  es->store[es->address_register2] = es->keyboard_register;
 
   es->update_display = 1;
 }
@@ -1789,10 +1805,14 @@ void state_esc_load_store(FSM_DATA *s, TOKEN tok)
 void state_esc_incr_addr(FSM_DATA *s, TOKEN tok)
 {
   ESC_STATE *es;
-
+  REGISTER_SINGLE_WORD one;
+  
   es = (ESC_STATE *)s;
 
-  es->address_register2 += 1;
+  one = 1;
+  one = SET_SW_SIGN(one, WORD_SIGN_PLUS);
+
+  es->address_register2 = bcd_sw_addition(es->address_register2, one);
 
   es->update_display = 1;
 }
@@ -1800,10 +1820,14 @@ void state_esc_incr_addr(FSM_DATA *s, TOKEN tok)
 void state_esc_decr_addr(FSM_DATA *s, TOKEN tok)
 {
   ESC_STATE *es;
-
+  REGISTER_SINGLE_WORD minus_1;
+  
   es = (ESC_STATE *)s;
 
-  es->address_register2 -= 1;
+  minus_1 = 1;
+  minus_1 = SET_SW_SIGN(minus_1, WORD_SIGN_MINUS);
+
+  es->address_register2 = bcd_sw_addition(es->address_register2, minus_1);
 
   es->update_display = 1;
 }
@@ -3673,6 +3697,7 @@ char *display_register_and_contents(ESC_STATE *s, int regno)
   return(result);
 }
 
+// Addresses are in the same format as registers, BCD with sign (always positive)
 char *display_address(REGISTER_SINGLE_WORD x)
 {
   static char result[MAX_LINE];
@@ -3786,7 +3811,7 @@ char *display_presumptive_address_2(ESC_STATE *s)
 // We append to a string to get the display, this allows formatting in the
 // functions we call to be shown.
 //
-// Other display modes can over-ride the computer dislkay, e.g. the reload screen
+// Other display modes can over-ride the computer display, e.g. the reload screen
 //
 
 void update_computer_display(ESC_STATE *es)
@@ -3885,7 +3910,7 @@ void update_computer_display(ESC_STATE *es)
   // Line 6
   if( es->address_register2 != 0xFFFFFFFF )
     {
-      SINGLE_WORD w = es->store[es->address_register2];
+      SINGLE_WORD w = load_from_store(es, es->address_register2);
       sprintf(tmp, "\n6: %s     %8s", display_address(es->address_register2), display_word(w));
     }
   strcat(dsp, tmp);
@@ -3893,7 +3918,7 @@ void update_computer_display(ESC_STATE *es)
 #if OLED_ON
   if( es->address_register2 != 0xFFFFFFFF )
     {
-      SINGLE_WORD w = es->store[es->address_register2];
+      SINGLE_WORD w = load_from_store(es, es->address_register2);
       sprintf(tmp, "%s     %8s", display_address(es->address_register2), display_word(w));
     }
   

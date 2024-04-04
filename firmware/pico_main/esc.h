@@ -20,8 +20,11 @@
 #define NUM_DBL_WORD_REGISTERS 2
 #define STORE_SIZE             200
 
-#define EMPTY_REGISTER         0xFFFFFFFF
-#define EMPTY_ADDRESS          0xFF
+
+#define EMPTY_REGISTER         0xA0000000
+
+// Address of +0
+#define EMPTY_ADDRESS          0xA0000000
 #define NO_VALUE               -1
 
 #define DISPLAY_UPDATE         1
@@ -39,7 +42,7 @@ typedef uint64_t DOUBLE_WORD;
 typedef uint32_t REGISTER_SINGLE_WORD;
 typedef uint64_t REGISTER_DOUBLE_WORD;
 typedef int BOOLEAN;
-typedef uint8_t ADDRESS;
+typedef uint32_t ADDRESS;
 
 // Get the single word sign
 #define SW_SIGN(XX) ((XX & 0xF0000000)>>28)
@@ -51,8 +54,8 @@ typedef uint8_t ADDRESS;
 #define REMOVED_SW_SIGN(XX)    (XX & 0x0FFFFFFF)
 #define REMOVED_DW_SIGN(XX)    (XX & 0x0FFFFFFFFFFFFFFF)
 
-#define OVERFLOW_SW(XX)        ((XX & 0xFF000000) != 0 )
-#define OVERFLOW_DW(XX)        ((XX & 0xFFFF000000000000) != 0 )
+#define OVERFLOW_SW(XX)        ((XX & 0x0F000000) != 0 )
+#define OVERFLOW_DW(XX)        ((XX & 0x000F000000000000) != 0 )
 
 #define CLEAR_SW_CARRY(XX)     (XX & 0xF0FFFFFF)
 #define SET_SW_SIGN(XX, SGN)   (REMOVED_SW_SIGN(XX) | (SGN <<28))
