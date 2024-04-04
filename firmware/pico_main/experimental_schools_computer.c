@@ -905,6 +905,7 @@ REGISTER_SINGLE_WORD bcd_addition_32(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 	case 16:
 	case 17:
 	case 18:
+	case 19:
 	  // Add 6, then propagate a carry
 	  c_digit = (c_digit + 6) % 16;
 	  carry = 1;

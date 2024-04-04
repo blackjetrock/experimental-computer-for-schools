@@ -45,7 +45,7 @@ typedef int BOOLEAN;
 typedef uint32_t ADDRESS;
 
 // Bound an address, force to positive
-#define BOUND_ADDRESS(XXX) (XXX>199?199:(SW_PLUS(XXX)))
+#define BOUND_ADDRESS(XXX) SW_PLUS((XXX&0x00FFFFFF)>0x199?0x199:XXX)
 
 // Get the single word sign
 #define SW_SIGN(XX) ((XX & 0xF0000000)>>28)
