@@ -73,16 +73,18 @@ typedef struct _INIT_INFO
   uint64_t   n;
 } INIT_INFO;
 
-// The followinf enum is also used to identify registers other than R0..9
+// The following enum is also used to identify registers other than R0..9
 // when testing results. E.g. IAR
 
 typedef enum _TEST_CODE
   {
    TC_REG_N = 20,
    TC_REG_IAR,
+   TC_REG_ADDR,
    TC_REG_KI,
    TC_STORE_N,
    TC_MUST_BE,
+   TC_END_SECTION,    // End of sub section results. Check up to here (or a TC_END) by TOK_TEST_CHECK_RES token
    TC_END,
   } TEST_CODE;
 
@@ -354,6 +356,8 @@ void kbd_queue_key(int k)
 int test_loop_count = 0;
 #define TEST_EVERY_N_LOOPS  5
 
+int test_res_i = 0;
+
 // read scan code
 void kbd_read(ESC_STATE *s)
 {
@@ -394,33 +398,46 @@ void kbd_read(ESC_STATE *s)
 		{
 		  // Init done, queue token
 		  TOKEN t = tests[test_number].seq[test_step];
-		  int i = 0;
+
 		  int rn = -1;
 		  int done = 0;
-	      
+
+#if DEBUG_TEST_SEQ
+		  printf("\n  Token:%d", t);
+#endif
 		  switch(t)
 		    {
 		    case TOK_NONE:
+		    case TOK_TEST_CHECK_RES:
+		      
 		      // Test sequence finished
 		      // Test results
 
-		      // Assume passed
-		      tests[test_number].passed = 1;
 		  
 		      printf("\nChecking results for test: %s", tests[test_number].desc);
 		  
 		      while(!done)
 			{
-			  switch(tests[test_number].result_codes[i].code)
+#if DEBUG_TEST_SEQ
+			  printf("\n  TC code:%d", t);
+#endif
+
+			  switch(tests[test_number].result_codes[test_res_i].code)
 			    {
+
 			    case TC_REG_N:
-			      rn = tests[test_number].result_codes[i].n;
+			      rn = tests[test_number].result_codes[test_res_i].n;
 			      printf("\nTesting R[%d]", rn);
 			      break;
 
 			    case TC_REG_IAR:
 			    case TC_REG_KI:
-			      rn = tests[test_number].result_codes[i].code;
+			    case TC_REG_ADDR:
+
+			      rn = tests[test_number].result_codes[test_res_i].code;
+#if DEBUG_TEST_SEQ
+			      printf("\n  TC_REG_xxx:%d rn=%d", t, rn);
+#endif
 			      break;
 			  
 			    case TC_MUST_BE:
@@ -437,37 +454,57 @@ void kbd_read(ESC_STATE *s)
 				  
 				    case TC_REG_IAR:
 				    case TC_REG_KI:
+				    case TC_REG_ADDR:
 				    default:
-				      if( read_any_size_register(s, rn) == tests[test_number].result_codes[i].n )
+				      if( read_any_size_register(s, rn) == tests[test_number].result_codes[test_res_i].n )
 					{
+#if DEBUG_TEST_SEQ
 					  // All OK
-					  printf("\nR[%d] == %08xd, OK", rn, tests[test_number].result_codes[i].n);
+					  printf("\nR[%d] == %08xd, OK", rn, tests[test_number].result_codes[test_res_i].n);
+#endif
 					}
 				      else
 					{
+#if DEBUG_TEST_SEQ
 					  // Not OK
-					  printf("\nR[%d] <> %016llx", rn, tests[test_number].result_codes[i].n);
+					  printf("\nR[%d] <> %016llx", rn, tests[test_number].result_codes[test_res_i].n);
+#endif
 					  tests[test_number].passed = 0;
 					}
 				      break;
 				    }
 				}
 			      break;
-			  
+
+			    case TC_END_SECTION:
+			      // All ok, we aren't done yet, keep going
+#if DEBUG_TEST_SEQ
+			      printf("\nTC_END_SECTION");
+			      done = 1;			      
+#endif
+			      break;
+			      
 			    case TC_END:
+#if DEBUG_TEST_SEQ
 			      printf("\nResult check done\n");
+#endif
 			      done = 1;
 			      test_running = 0;
+
+			      // Reset result pointer ready for next test
+			      test_res_i = 0;
 			      break;
 			  
 			    default:
-			      printf("\nUnknown test TC code (test %d, i=%d, code=%d)", test_number, i, tests[test_number].result_codes[i].code);
+#if DEBUG_TEST_SEQ
+			      printf("\nUnknown test TC code (test %d, i=%d, code=%d)", test_number, test_res_i, tests[test_number].result_codes[test_res_i].code);
+#endif
 			      test_running = 0;
 			      done = 1;
 			      break;
 			    }
 		      
-			  i++;
+			  test_res_i++;
 			}
 
 		      // Test has run, see if we should run another, or stop
@@ -674,6 +711,11 @@ REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
   if( n == TC_REG_KI )
     {
       return((REGISTER_DOUBLE_WORD)s->keyboard_register);
+    }
+
+  if( n == TC_REG_ADDR )
+    {
+      return((REGISTER_DOUBLE_WORD)s->address_register2);
     }
   
   if( IS_SW_REGISTER(n) )
@@ -2954,15 +2996,7 @@ TOKEN test_seq_3[] =
    TOK_KEY_8,
    TOK_KEY_DOT,
    TOK_KEY_LOAD_ADDR,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_2,
-   TOK_KEY_2,
-   TOK_KEY_3,
-   TOK_KEY_3,
-   TOK_KEY_5,
+   TOK_TEST_CHECK_RES,
    TOK_NONE,
   };
 
@@ -2970,16 +3004,10 @@ TOKEN test_seq_3[] =
 TEST_INFO test_res_3[] =
   {
    // Original register contents must be unchanged
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0x123456},
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0x987654321L},
-
-   // Copied value must be there
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0x123456},
-   
-   {TC_END,     0},
+   {TC_REG_ADDR,    0},
+   {TC_MUST_BE,     0xA0000098},
+   {TC_END_SECTION, 0},   
+   {TC_END,         0},
 
   };
 
@@ -3014,6 +3042,10 @@ void cli_run_single_test(void)
 {
   
   test_number = parameter;
+
+  // Assume passed
+  tests[test_number].passed = 1;
+		      
   test_run_single_test = 1;
   test_running   = 1;
   test_done_init = 0;
@@ -3024,6 +3056,21 @@ void cli_run_tests(void)
   // Set test number to first test
   test_number = 0;
 
+  int done = 0;
+  int t = 0;
+  
+  while(!done)
+    {
+      if( strcmp( tests[t].desc, "--END--") == 0 )
+	{
+	  done = 1;
+	  continue;
+	}
+      
+      tests[t].passed = 1;
+      t++;
+    }
+  
   test_run_single_test = 0;
   test_running   = 1;
   test_done_init = 0;

@@ -56,6 +56,8 @@ enum {
       TOK_KEY_CHECK     = 28,
       TOK_KEY_RELOAD    = 29,
 
+      // Check results at this point
+      TOK_TEST_CHECK_RES,
 };
 
 //------------------------------------------------------------------------------
