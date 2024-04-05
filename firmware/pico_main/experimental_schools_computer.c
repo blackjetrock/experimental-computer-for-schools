@@ -419,7 +419,7 @@ void kbd_read(ESC_STATE *s)
 		      while(!done)
 			{
 #if DEBUG_TEST_SEQ
-			  printf("\n  TC code:%d", t);
+			  printf("\n  Test_res_i:%d TC code:%d", test_res_i, t);
 #endif
 
 			  switch(tests[test_number].result_codes[test_res_i].code)
@@ -480,8 +480,11 @@ void kbd_read(ESC_STATE *s)
 			      // All ok, we aren't done yet, keep going
 #if DEBUG_TEST_SEQ
 			      printf("\nTC_END_SECTION");
-			      done = 1;			      
+
 #endif
+			      // Skip the end section code
+			      test_step++;
+			      done = 1;			      
 			      break;
 			      
 			    case TC_END:
@@ -508,39 +511,49 @@ void kbd_read(ESC_STATE *s)
 			}
 
 		      // Test has run, see if we should run another, or stop
-		      
-		      if( !test_run_single_test )
+		      // If we have checked results due to a section end then continue running the test
+		      if( test_running )
 			{
-			  printf("\nMoving to next test...");
+#if DEBUG_TEST_SEQ
+			  printf("\nTC_SECTION_END so continuing...");
+#endif
 			  
-			  // Move to next test if there is one
-			  test_number++;
-
-			  if( strcmp( tests[test_number].desc, "--END--") != 0 )
-			    {
-
-			      test_run_single_test = 0;
-			      test_running   = 1;
-			      test_done_init = 0;
-			    }
-			  else
-			    {
-			      // End of tests, stop
-			      test_running = 0;
-			      
-			      printf("\nTest END marker found, stopping tests...");
-			    }
 			}
-		      
+		      else
+			{
+			  if( !test_run_single_test )
+			    {
+			      printf("\nMoving to next test...");
+			      
+			      // Move to next test if there is one
+			      test_number++;
+			      
+			      if( strcmp( tests[test_number].desc, "--END--") != 0 )
+				{
+				  
+				  test_run_single_test = 0;
+				  test_running   = 1;
+				  test_done_init = 0;
+				}
+			      else
+				{
+				  // End of tests, stop
+				  test_running = 0;
+				  
+				  printf("\nTest END marker found, stopping tests...");
+				}
+			    }
+			} 
 		      break;
-
+		      
 		    default:
+#if DEBUG_TEST_SEQ
+		      printf("\n Queing token %d", t);
+#endif
 		      queue_token(t);
 		      test_step++;
 		      break;
 		    }
-
-	      
 		}
 	      else
 		{
@@ -2997,6 +3010,10 @@ TOKEN test_seq_3[] =
    TOK_KEY_DOT,
    TOK_KEY_LOAD_ADDR,
    TOK_TEST_CHECK_RES,
+   TOK_KEY_INCR_ADDR,
+   TOK_TEST_CHECK_RES,
+   TOK_KEY_INCR_ADDR,
+   TOK_KEY_INCR_ADDR,
    TOK_NONE,
   };
 
@@ -3006,6 +3023,9 @@ TEST_INFO test_res_3[] =
    // Original register contents must be unchanged
    {TC_REG_ADDR,    0},
    {TC_MUST_BE,     0xA0000098},
+   {TC_END_SECTION, 0},   
+   {TC_REG_ADDR,    0},
+   {TC_MUST_BE,     0xA0000099},
    {TC_END_SECTION, 0},   
    {TC_END,         0},
 
