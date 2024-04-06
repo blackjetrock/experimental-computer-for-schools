@@ -21,6 +21,7 @@
 
 #include <ctype.h>
 #include <math.h>
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -57,6 +58,8 @@
 // Tests
 //
 
+#define MAX_TEST_FAIL_BUFFER 80
+
 // Initialise registers and store
 typedef enum _INIT_CODE
   {
@@ -88,6 +91,33 @@ typedef enum _TEST_CODE
    TC_END,
   } TEST_CODE;
 
+char *tc_names[] =
+  {
+   "TC_REG_N",
+   "TC_REG_IAR",
+   "TC_REG_ADDR",
+   "TC_REG_KI",
+   "TC_STORE_N",
+   "TC_MUST_BE",
+   "TC_END_SECTION",
+   "TC_END",
+  };
+
+#define MAX_TC_REG_BUF 20
+
+char tc_reg_buffer[MAX_TC_REG_BUF];
+
+char *tc_reg_name(TEST_CODE tc)
+{
+  if( tc < TC_REG_N )
+    {
+      snprintf(tc_reg_buffer, MAX_TC_REG_BUF, "%d", tc);
+      return(tc_reg_buffer);
+    }
+  
+  return(tc_names[tc-TC_REG_N]);
+}
+
 // Load the store before running the test. Words are terminated by a -1
 
 #define TEST_LOAD_STORE_LEN 100
@@ -111,9 +141,56 @@ typedef struct _ESC_TEST_INFO
   TEST_INFO       *result_codes;
   int              passed;
   TEST_LOAD_STORE *store_data;
+  char             fail_text[MAX_TEST_FAIL_BUFFER];
 } ESC_TEST_INFO;
 
 #define NUM_TESTS (sizeof(tests)/sizeof(ESC_TEST_INFO))
+
+//------------------------------------------------------------------------------
+//
+// Test failure information
+//
+
+
+
+char test_fail_buffer[MAX_TEST_FAIL_BUFFER];
+
+void clear_test_fail_buffer(void)
+{
+  test_fail_buffer[0] = '\0';
+}
+
+// Add more information to the test fail buffer
+void test_fail_info(char *fmt, ...)
+{
+  char line[MAX_TEST_FAIL_BUFFER];
+  
+  va_list args;
+  va_start(args, fmt);
+
+  vsnprintf(line, MAX_TEST_FAIL_BUFFER, fmt, args);
+  va_end(args);
+
+  printf("\n-----------%s---", line);
+  
+  // How much space is available for more text?
+  // Include a space delimiter and the newline at the end.
+  int n = MAX_TEST_FAIL_BUFFER-strlen(test_fail_buffer)-1-1;
+
+  printf("\nn=%d, strlen(tfb)=%d strlen(line)=%d", n, strlen(test_fail_buffer), strlen(line));
+  
+  if( n < 0 )
+    {
+      test_fail_buffer[0] = '!';
+      printf("\n***%s***%d**", test_fail_buffer, n);
+      return;
+    }
+
+  strcat(test_fail_buffer, " ");
+  strncat(test_fail_buffer, line, n);
+
+  printf("\n+++++++++++%s+++", test_fail_buffer);
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -449,7 +526,7 @@ void kbd_read(ESC_STATE *s)
 				    case TC_STORE_N:
 				    case TC_MUST_BE:
 				    case TC_END:
-				      printf("\nTest code %d used as registerindex compare");
+				      printf("\nTest code %d used as register index compare");
 				      break;
 				  
 				    case TC_REG_IAR:
@@ -469,6 +546,8 @@ void kbd_read(ESC_STATE *s)
 					  // Not OK
 					  printf("\nR[%d] <> %016llx", rn, tests[test_number].result_codes[test_res_i].n);
 #endif
+					  test_fail_info("R[%s] <> %016llx", tc_reg_name(rn), tests[test_number].result_codes[test_res_i].n);
+
 					  tests[test_number].passed = 0;
 					}
 				      break;
@@ -523,10 +602,17 @@ void kbd_read(ESC_STATE *s)
 			{
 			  if( !test_run_single_test )
 			    {
+			      // Copy fail text, if test failed
+			      if( !tests[test_number].passed )
+				{
+				  strcpy(tests[test_number].fail_text, test_fail_buffer);
+				}
+			      
 			      printf("\nMoving to next test...");
 			      
 			      // Move to next test if there is one
 			      test_number++;
+			      clear_test_fail_buffer();
 			      
 			      if( strcmp( tests[test_number].desc, "--END--") != 0 )
 				{
@@ -2969,9 +3055,9 @@ TEST_INFO test_res_2[] =
   {
    // Original register contents must be unchanged
    {TC_REG_N,   0},
-   {TC_MUST_BE, 0x123456},
+   {TC_MUST_BE, 0xA0123456},
    {TC_REG_N,   8},
-   {TC_MUST_BE, 0x987654321L},
+   {TC_MUST_BE, 0xA0000987654321L},
 
    // Copied value must be there
    {TC_REG_N,   1},
@@ -3025,7 +3111,7 @@ TEST_INFO test_res_3[] =
    {TC_MUST_BE,     0xA0000098},
    {TC_END_SECTION, 0},   
    {TC_REG_ADDR,    0},
-   {TC_MUST_BE,     0xA0000099},
+   {TC_MUST_BE,     0xA0000098},
    {TC_END_SECTION, 0},   
    {TC_END,         0},
 
@@ -3040,11 +3126,11 @@ TEST_LOAD_STORE test_3_store =
 
 ESC_TEST_INFO tests[] =
   {
-   {"KB Input",        test_init_0, test_seq_0, test_res_0, 0, &test_0_store},
-   {"Register Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
-   {"Test 3",          test_init_2, test_seq_2, test_res_2, 0, &test_2_store},
-   {"ADDR inc/dec",    test_init_3, test_seq_3, test_res_3, 0, &test_3_store},
-   {"--END--",         test_init_1, test_seq_1, test_res_1, 0, &test_1_store},
+   {"KB Input",        test_init_0, test_seq_0, test_res_0, 0, &test_0_store, ""},
+   {"Register Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
+   {"Test 3",          test_init_2, test_seq_2, test_res_2, 0, &test_2_store, ""},
+   {"ADDR inc/dec",    test_init_3, test_seq_3, test_res_3, 0, &test_3_store, ""},
+   {"--END--",         test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
   };
   
 ////////////////////////////////////////////////////////////////////////////////
@@ -3065,10 +3151,14 @@ void cli_run_single_test(void)
 
   // Assume passed
   tests[test_number].passed = 1;
-		      
+  tests[test_number].fail_text[0] = '\0';
+  
   test_run_single_test = 1;
   test_running   = 1;
   test_done_init = 0;
+
+  
+  clear_test_fail_buffer();
 }
 
 void cli_run_tests(void)
@@ -3086,7 +3176,8 @@ void cli_run_tests(void)
 	  done = 1;
 	  continue;
 	}
-      
+
+      tests[test_number].fail_text[t] = '\0';
       tests[t].passed = 1;
       t++;
     }
@@ -3094,6 +3185,7 @@ void cli_run_tests(void)
   test_run_single_test = 0;
   test_running   = 1;
   test_done_init = 0;
+  clear_test_fail_buffer();
 }
 
 void cli_test_results(void)
@@ -3105,12 +3197,11 @@ void cli_test_results(void)
     {
       if( strcmp(tests[i].desc, "--END--") != 0 )
 	{
-	  printf("\n%03d: %-20s   %-10s", i, tests[i].desc, tests[i].passed?"Passed":"Failed");
+	  printf("\n%03d: %-20s   %-10s %s", i, tests[i].desc, tests[i].passed?"Passed":"Failed", tests[i].fail_text);
 	}
     }
 
   printf("\n");
-  
 
 }
 
