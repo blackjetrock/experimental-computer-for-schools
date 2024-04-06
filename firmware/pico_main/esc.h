@@ -65,6 +65,8 @@ typedef uint32_t ADDRESS;
 #define SET_DW_SIGN(XX, SGN)   (REMOVED_DW_SIGN(XX) | ((DOUBLE_WORD)SGN <<60))
 #define SW_PLUS(XX)            SET_SW_SIGN(XX, WORD_SIGN_PLUS)
 #define SW_MINUS(XX)           SET_SW_SIGN(XX, WORD_SIGN_MINUS)
+#define DW_PLUS(XX)            SET_DW_SIGN(XX, WORD_SIGN_PLUS)
+#define DW_MINUS(XX)           SET_DW_SIGN(XX, WORD_SIGN_MINUS)
 
 // Instruction fields
 #define INST_A_FIELD(INST)   ((INST & 0xF0000000)>>28)

@@ -2981,7 +2981,7 @@ INIT_INFO test_init_1[] =
    {IC_SET_REG_N,    0},
    {IC_SET_REG_V,    SW_PLUS(0x123456)},
    {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    SW_MINUS(0x987654321)},
+   {IC_SET_REG_V,    DW_MINUS(0x987654321)},
    {IC_END,          0},
   };
 
@@ -3000,13 +3000,13 @@ TEST_INFO test_res_1[] =
   {
    // Original register contents must be unchanged
    {TC_REG_N,   0},
-   {TC_MUST_BE, 0x123456},
+   {TC_MUST_BE, 0xa0123456},
    {TC_REG_N,   8},
-   {TC_MUST_BE, 0x987654321L},
+   {TC_MUST_BE, 0xb000000987654321L},
 
    // Copied value must be there
    {TC_REG_N,   1},
-   {TC_MUST_BE, 0x123456},
+   {TC_MUST_BE, 0xa0123456},
    
    {TC_END,     0},
 
