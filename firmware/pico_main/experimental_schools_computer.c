@@ -1696,6 +1696,7 @@ void stage_b_decode(ESC_STATE *s)
 	  
 	case 2:
 	  // Subtract registers (Rd)-(Rc)
+	  register_assign_sub_register_register(s, s->reginst_rc, s->reginst_rd, s->reginst_rc);
 	  break;
 	  
 	case 3:
@@ -3071,6 +3072,9 @@ TOKEN test_seq_1[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
@@ -3127,6 +3131,11 @@ TEST_INFO test_res_1[] =
    {TC_MUST_BE, 0xa0000001},
    {TC_END_SECTION, 0},   
 
+   //Subtract R1 from R0
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xb0123455},
+   {TC_END_SECTION, 0},   
+
    
    {TC_END,     0},
 
@@ -3140,6 +3149,7 @@ TEST_LOAD_STORE test_1_store =
     0x03120119,      // Load R1 with 2, subtract 9 from R1
     0x13121012,      // Assign R1, R2,  Add R1 and R2
     0x03251112,      // load R1 with 5, subtract R2 from R1
+    0x12010000,      // Subtract R1 from R0
     -1},
   };
 
