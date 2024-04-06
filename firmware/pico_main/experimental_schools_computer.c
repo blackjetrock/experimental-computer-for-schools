@@ -58,7 +58,7 @@
 // Tests
 //
 
-#define MAX_TEST_FAIL_BUFFER 80
+#define MAX_TEST_FAIL_BUFFER 160
 
 // Initialise registers and store
 typedef enum _INIT_CODE
@@ -546,7 +546,7 @@ void kbd_read(ESC_STATE *s)
 					  // Not OK
 					  printf("\nR[%d] <> %016llx", rn, tests[test_number].result_codes[test_res_i].n);
 #endif
-					  test_fail_info("R[%s] <> %016llx", tc_reg_name(rn), tests[test_number].result_codes[test_res_i].n);
+					  test_fail_info("R[%s] (%016llx) <> %016llx", tc_reg_name(rn), read_any_size_register(s, rn), tests[test_number].result_codes[test_res_i].n);
 
 					  tests[test_number].passed = 0;
 					}
@@ -699,7 +699,9 @@ void kbd_read(ESC_STATE *s)
       // inject a keycode into the main FSM
       if( (kbd_last_output_scan_code != kbd_output_scan_code) && (kbd_output_scan_code != 0) )
 	{
-	  //printf("\nKey:%03X", kbd_output_scan_code);
+#if DEBUG_KEY_SCAN
+	  printf("\nKey:%03X", kbd_output_scan_code);
+#endif
 	  kbd_queue_key(kbd_output_scan_code);
 	}
 
@@ -3025,7 +3027,7 @@ TEST_LOAD_STORE test_1_store =
 INIT_INFO test_init_2[] =
   {
    {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    0x123456},
+   {IC_SET_REG_V,    0xa0123456},
    {IC_SET_REG_N,    8},
    {IC_SET_REG_V,    0x987654321},
    {IC_END,          0},
@@ -3055,13 +3057,13 @@ TEST_INFO test_res_2[] =
   {
    // Original register contents must be unchanged
    {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0123456},
+   {TC_MUST_BE, 0xa0123456},
    {TC_REG_N,   8},
-   {TC_MUST_BE, 0xA0000987654321L},
+   {TC_MUST_BE, 0x00000987654321L},
 
    // Copied value must be there
    {TC_REG_N,   1},
-   {TC_MUST_BE, 0x123456},
+   {TC_MUST_BE, 0xa0123456},
    
    {TC_END,     0},
 
@@ -3096,10 +3098,27 @@ TOKEN test_seq_3[] =
    TOK_KEY_DOT,
    TOK_KEY_LOAD_ADDR,
    TOK_TEST_CHECK_RES,
+
    TOK_KEY_INCR_ADDR,
    TOK_TEST_CHECK_RES,
+
    TOK_KEY_INCR_ADDR,
+   TOK_TEST_CHECK_RES,
+
    TOK_KEY_INCR_ADDR,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_2,
+   TOK_KEY_DOT,
+   TOK_KEY_LOAD_ADDR,
+   TOK_TEST_CHECK_RES,
+   
+   TOK_KEY_DECR_ADDR,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_DECR_ADDR,
+   TOK_TEST_CHECK_RES,
    TOK_NONE,
   };
 
@@ -3110,9 +3129,31 @@ TEST_INFO test_res_3[] =
    {TC_REG_ADDR,    0},
    {TC_MUST_BE,     0xA0000098},
    {TC_END_SECTION, 0},   
+
    {TC_REG_ADDR,    0},
-   {TC_MUST_BE,     0xA0000098},
+   {TC_MUST_BE,     0xA0000099},
    {TC_END_SECTION, 0},   
+
+   {TC_REG_ADDR,    0},
+   {TC_MUST_BE,     0xA0000100},
+   {TC_END_SECTION, 0},   
+
+   {TC_REG_ADDR,    0},
+   {TC_MUST_BE,     0xA0000101},
+   {TC_END_SECTION, 0},   
+
+   {TC_REG_ADDR,    0},
+   {TC_MUST_BE,     0xA0000002},
+   {TC_END_SECTION, 0},   
+
+   {TC_REG_ADDR,    0},
+   {TC_MUST_BE,     0xA0000001},
+   {TC_END_SECTION, 0},   
+
+   {TC_REG_ADDR,    0},
+   {TC_MUST_BE,     0xA0000000},
+   {TC_END_SECTION, 0},   
+
    {TC_END,         0},
 
   };
@@ -3128,7 +3169,7 @@ ESC_TEST_INFO tests[] =
   {
    {"KB Input",        test_init_0, test_seq_0, test_res_0, 0, &test_0_store, ""},
    {"Register Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
-   {"Test 3",          test_init_2, test_seq_2, test_res_2, 0, &test_2_store, ""},
+   {"Test 2",          test_init_2, test_seq_2, test_res_2, 0, &test_2_store, ""},
    {"ADDR inc/dec",    test_init_3, test_seq_3, test_res_3, 0, &test_3_store, ""},
    {"--END--",         test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
   };
@@ -3872,7 +3913,9 @@ void serial_loop()
 	{
 	  if( serial_cmds[i].key == key )
 	    {
-
+#if DEBUG_SERIAL
+	      printf("\nKey:%d (0x%02X)", key, key);
+#endif
 	      keypress = key;
 	      (*serial_cmds[i].fn)();
 	      prompt();
