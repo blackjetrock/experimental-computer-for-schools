@@ -1298,7 +1298,8 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
     {
       REGISTER_SINGLE_WORD t;
 
-      t = SET_SW_SIGN((REGISTER_SINGLE_WORD) s->R[src], WORD_SIGN_MINUS);
+      t       = SET_SW_SIGN((REGISTER_SINGLE_WORD) s->R[src], WORD_SIGN_MINUS);
+      literal = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal,   WORD_SIGN_PLUS);
 
       s->R[dest] = bcd_sw_addition((REGISTER_SINGLE_WORD) literal, t);
       //      s->R[dest] = single_sum_normalise(s->R[dest]);
@@ -3006,6 +3007,8 @@ INIT_INFO test_init_1[] =
   {
    {IC_SET_REG_N,    0},
    {IC_SET_REG_V,    SW_PLUS(0x123456)},
+   {IC_SET_REG_N,    2},
+   {IC_SET_REG_V,    SW_PLUS(0x5)},
    {IC_SET_REG_N,    8},
    {IC_SET_REG_V,    DW_MINUS(0x987654321)},
    {IC_END,          0},
@@ -3021,6 +3024,9 @@ TOKEN test_seq_1[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
    
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -3053,6 +3059,11 @@ TEST_INFO test_res_1[] =
    {TC_MUST_BE, 0xa0123455},
    {TC_END_SECTION, 0},   
 
+   // Two subtracted from R1
+   {TC_REG_N,   2},
+   {TC_MUST_BE, 0xa0000003},
+   {TC_END_SECTION, 0},   
+
    
    {TC_END,     0},
 
@@ -3062,7 +3073,7 @@ TEST_LOAD_STORE test_1_store =
   {
    {
     0x13100011,      // Copy R0 to R1, Add 1 to R1
-    0x01120000,      // Subtract 1 from R1
+    0x01120228,      // Subtract 1 from R1, subtract R2 from 8
     -1},
   };
 
