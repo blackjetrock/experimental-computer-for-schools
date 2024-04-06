@@ -596,7 +596,6 @@ void kbd_read(ESC_STATE *s)
 #if DEBUG_TEST_SEQ
 			  printf("\nTC_SECTION_END so continuing...");
 #endif
-			  
 			}
 		      else
 			{
@@ -627,6 +626,14 @@ void kbd_read(ESC_STATE *s)
 				  test_running = 0;
 				  
 				  printf("\nTest END marker found, stopping tests...");
+				}
+			    }
+			  else
+			    {
+			      // Copy fail text, if test failed
+			      if( !tests[test_number].passed )
+				{
+				  strcpy(tests[test_number].fail_text, test_fail_buffer);
 				}
 			    }
 			} 
@@ -1291,9 +1298,27 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
     {
       REGISTER_SINGLE_WORD t;
 
-      t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_MINUS);
+      t = SET_SW_SIGN((REGISTER_SINGLE_WORD) s->R[src], WORD_SIGN_MINUS);
 
       s->R[dest] = bcd_sw_addition((REGISTER_SINGLE_WORD) literal, t);
+      //      s->R[dest] = single_sum_normalise(s->R[dest]);
+    }
+  
+  if( IS_DW_REGISTER(dest) )
+    {
+      s->R[dest] = (REGISTER_DOUBLE_WORD) literal - s->R[src];
+    }
+}
+
+void register_assign_sub_register_literal(ESC_STATE *s, int dest, int src, int literal)
+{
+  if( IS_SW_REGISTER(dest) )
+    {
+      REGISTER_SINGLE_WORD t;
+
+      t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_MINUS);
+
+      s->R[dest] = bcd_sw_addition((REGISTER_SINGLE_WORD) t, s->R[src]);
       //      s->R[dest] = single_sum_normalise(s->R[dest]);
     }
   
@@ -1524,7 +1549,7 @@ void stage_b_decode(ESC_STATE *s)
 
 	case 1:
 	  // (Rc) <= (Rc) - d
-	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rc, -(s->reginst_literal));
+	  register_assign_sub_register_literal(s, s->reginst_rc, s->reginst_rc, s->reginst_literal);
 	  break;
 
 	case 2:
@@ -2994,6 +3019,10 @@ TOKEN test_seq_1[] =
    TOK_KEY_LOAD_IAR,
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
+   
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -3018,6 +3047,11 @@ TEST_INFO test_res_1[] =
    {TC_MUST_BE, 0xa0123457},
    {TC_END_SECTION, 0},   
 
+   // Two subtracted from R1
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xa0123455},
+   {TC_END_SECTION, 0},   
+
    
    {TC_END,     0},
 
@@ -3025,7 +3059,10 @@ TEST_INFO test_res_1[] =
 
 TEST_LOAD_STORE test_1_store =
   {
-   {0x13100011, -1},
+   {
+    0x13100011,      // Copy R0 to R1, Add 1 to R1
+    0x01120000,      // Subtract 1 from R1
+    -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
