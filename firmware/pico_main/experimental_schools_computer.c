@@ -930,13 +930,13 @@ void set_any_size_sign(ESC_STATE *s, int regno, int sign)
 {
   if( IS_SW_REGISTER(regno) )
     {
-      s->R[regno] = SET_SW_SIGN(s->R[regno], sign);
+      SW_REG_CONTENTS(regno) = SET_SW_SIGN(s->R[regno], sign);
       return;
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      s->RD[regno-8] = SET_DW_SIGN(s->RD[regno-8], sign);
+      DW_REG_CONTENTS(regno) = SET_DW_SIGN(s->RD[regno-8], sign);
       return;
     }
 
@@ -1556,7 +1556,11 @@ void stage_b_decode(ESC_STATE *s)
   //  stage_b_decode_core(s, 0);
 
   int extreme_left_digit = 0;
+  int extreme_right_digit = 0;
   int src_sign;
+  int is_gt_zero = 0;
+  int is_zero = 0;
+  int is_lt_zero = 0;
   
   switch(s->inst_digit_a)
     {
@@ -1595,10 +1599,99 @@ void stage_b_decode(ESC_STATE *s)
 	  switch(s->inst_digit_d)
 	    {
 	    case 0:
+	      is_zero = 0;
+	      
 #if DEBUG_TEST
 	      printf("\nTEST (5) ");
 #endif
-	      if( s->R[s->reginst_rc] == 0 )
+	      
+	      if( IS_SW_REGISTER(s->reginst_rc) )
+		{
+		  if( (SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) == 0 )
+		    {
+		      is_zero = 1;
+		    }
+		}
+
+	      if( IS_DW_REGISTER(s->reginst_rc) )
+		{
+		  if( (DW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
+		    {
+		      is_zero = 1;
+		    }
+		}
+	      
+	      if( is_zero )
+		{
+#if DEBUG_TEST
+		  printf("\nCL = 1 after test (is = 0)");
+#endif
+		  s->control_latch = 1;
+		}
+	      else
+		{
+#if DEBUG_TEST
+		  printf("\nCL = 0 after test (is not = 0)");
+#endif
+		  s->control_latch = 0;
+		}
+	      break;
+	      
+	    case 1:
+	      is_gt_zero = 0;
+	      
+	      if( IS_SW_REGISTER(s->reginst_rc) )
+		{
+		  if( (SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_PLUS) && ((SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) != 0) )
+		    {
+		      is_gt_zero = 1;
+		    }
+		}
+
+	      if( IS_DW_REGISTER(s->reginst_rc) )
+		{
+		  if( (DW_SIGN(DW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_PLUS) && ((DW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFFFFFFFF) != 0) )
+		    {
+		      is_gt_zero = 1;
+		    }
+		}
+	      
+	      if( is_gt_zero )
+		{
+#if DEBUG_TEST
+		  printf("\nCL = 1 after test (is > 0)");
+#endif
+		  s->control_latch = 1;
+		}
+	      else
+		{
+#if DEBUG_TEST
+		  printf("\nCL = 0 after test (is not > 0)");
+#endif
+		  s->control_latch = 0;
+		}
+	      break;
+	      
+	    case 2:
+	      is_lt_zero = 0;
+	      
+	      if( IS_SW_REGISTER(s->reginst_rc) )
+		{
+		  if( SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+		    {
+		      is_lt_zero = 1;
+		    }
+		}
+
+	      if( IS_DW_REGISTER(s->reginst_rc) )
+		{
+		  if( DW_SIGN(DW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+		    {
+		      is_lt_zero = 1;
+		    }
+		}
+	      
+	      if( is_lt_zero )
 		{
 #if DEBUG_TEST
 		  printf("\nCL = 1 after test");
@@ -1612,40 +1705,19 @@ void stage_b_decode(ESC_STATE *s)
 #endif
 		  s->control_latch = 0;
 		}
-	      break;
-	      
-	    case 1:
-	      if( s->R[s->reginst_rc] > 0 )
-		{
-		  s->control_latch = 1;
-		}
-	      else
-		{
-		  s->control_latch = 0;
-		}
-	      break;
-	      
-	    case 2:
-	      if( s->R[s->reginst_rc] < 0 )
-		{
-		  s->control_latch = 1;
-		}
-	      else
-		{
-		  s->control_latch = 0;
-		}
+
 	      break;
 	      
 	    case 3:
 
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_left_digit = (s->reginst_rc & 0x00F00000) >> (5*4);
+		  extreme_left_digit = (SW_REG_CONTENTS(s->reginst_rc) & 0x00F00000) >> (5*4);
 		}
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_left_digit = (s->reginst_rc & 0x0000F00000000000) >> (11*4);
+		  extreme_left_digit = (DW_REG_CONTENTS(s->reginst_rc) & 0x0000F00000000000) >> (11*4);
 		}
 
 #if DEBUG_TEST
@@ -1662,9 +1734,35 @@ void stage_b_decode(ESC_STATE *s)
 		}
 	      break;
 
+
+	    case 4:
+	      if( IS_SW_REGISTER(s->reginst_rc) )
+		{
+		  extreme_right_digit = (SW_REG_CONTENTS(s->reginst_rc) & 0x0000000F) >> 0;
+		}
+	      
+	      if( IS_DW_REGISTER(s->reginst_rc) )
+		{
+		  extreme_right_digit = (DW_REG_CONTENTS(s->reginst_rc) & 0x000000000000000F) >> 0;
+		}
+	      
+#if DEBUG_TEST
+	      printf("\nTEST extreme right:%d ", extreme_right_digit);
+#endif
+	      
+	      if( extreme_right_digit == 0 )
+		{
+		  s->control_latch = 1;
+		}
+	      else
+		{
+		  s->control_latch = 0;
+		}
+	      break;
+	      
 	    }
 	  break;
-
+	  
 	  // Shift (Rc) left d places 
 	case 6:
 	  register_assign_register_literal(s, s->reginst_rc, get_register(s, s->reginst_rc) << (4*(s->reginst_literal)));
@@ -3392,7 +3490,7 @@ INIT_INFO test_init_5[] =
    {IC_SET_REG_V,    SW_MINUS(0x1)},
    {IC_SET_REG_N,    3},
    {IC_SET_REG_V,    SW_PLUS(0x00111111)},
-   {IC_SET_REG_N,    3},
+   {IC_SET_REG_N,    4},
    {IC_SET_REG_V,    SW_PLUS(0x00111110)},
    {IC_SET_REG_N,    8},
    {IC_SET_REG_V,    DW_PLUS(0xA000000987654321)},
@@ -3413,12 +3511,26 @@ TOKEN test_seq_5[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
 TEST_INFO test_res_5[] =
   {
-   // Original register contents must be unchanged
+   // Test control latch after TEST instructions
+   {TC_CL,          0},
+   {TC_MUST_BE,     1},
+   {TC_END_SECTION, 0},
+
+   {TC_CL,          0},
+   {TC_MUST_BE,     0},
+   {TC_END_SECTION, 0},
+
    {TC_CL,          0},
    {TC_MUST_BE,     1},
    {TC_END_SECTION, 0},
@@ -3434,7 +3546,7 @@ TEST_LOAD_STORE test_5_store =
   {
    {
     0x05000510,      // TEST R0=0, TEST R1=0
-    0x14390000,      // RH 6 dig of R9 into R3
+    0x05110501,      // TEST R1>0, TEST R0>0
     -1},
   };
 
