@@ -2993,6 +2993,10 @@ TOKEN test_seq_1[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
    TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
@@ -3007,6 +3011,13 @@ TEST_INFO test_res_1[] =
    // Copied value must be there
    {TC_REG_N,   1},
    {TC_MUST_BE, 0xa0123456},
+   {TC_END_SECTION, 0},   
+
+   // One added to R1
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xa0123457},
+   {TC_END_SECTION, 0},   
+
    
    {TC_END,     0},
 
@@ -3014,7 +3025,7 @@ TEST_INFO test_res_1[] =
 
 TEST_LOAD_STORE test_1_store =
   {
-   {0x13100000, -1},
+   {0x13100011, -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3061,10 +3072,6 @@ TEST_INFO test_res_2[] =
    {TC_REG_N,   8},
    {TC_MUST_BE, 0x00000987654321L},
 
-   // Copied value must be there
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0123456},
-   
    {TC_END,     0},
 
   };
