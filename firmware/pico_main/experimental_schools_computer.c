@@ -1866,7 +1866,7 @@ void stage_a_decode(ESC_STATE *s)
     }
 
 #if DEBUG_A_DECODE
-  printf("\nabcd = %d%d%d%d",
+  printf("\n*******abcd = %d%d%d%d",
 	 s->inst_digit_a,
 	 s->inst_digit_b,
 	 s->inst_digit_c,
@@ -3033,6 +3033,18 @@ TOKEN test_seq_1[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
@@ -3064,6 +3076,26 @@ TEST_INFO test_res_1[] =
    {TC_MUST_BE, 0xa0000003},
    {TC_END_SECTION, 0},   
 
+   // Load R1 with 2
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xa0000002},
+   {TC_END_SECTION, 0},   
+
+   // Subtract 9 from R1
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xb0000007},
+   {TC_END_SECTION, 0},   
+
+   // Assign R1 and R2
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xa0000003},
+   {TC_END_SECTION, 0},   
+
+   // Add R1 and R2
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xa0000006},
+   {TC_END_SECTION, 0},   
+
    
    {TC_END,     0},
 
@@ -3074,6 +3106,8 @@ TEST_LOAD_STORE test_1_store =
    {
     0x13100011,      // Copy R0 to R1, Add 1 to R1
     0x01120228,      // Subtract 1 from R1, subtract R2 from 8
+    0x03120119,      // Load R1 with 2, subtract 9 from R1
+    0x13121012,      // Assign R1, R2,  Add R1 and R2
     -1},
   };
 
