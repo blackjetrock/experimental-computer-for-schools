@@ -3258,7 +3258,7 @@ TEST_LOAD_STORE test_3_store =
 ESC_TEST_INFO tests[] =
   {
    {"KB Input",        test_init_0, test_seq_0, test_res_0, 0, &test_0_store, ""},
-   {"Register Input",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
+   {"Reg Inst 0[0-3],1[0-3]",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
    {"Test 2",          test_init_2, test_seq_2, test_res_2, 0, &test_2_store, ""},
    {"ADDR inc/dec",    test_init_3, test_seq_3, test_res_3, 0, &test_3_store, ""},
    {"--END--",         test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
@@ -3328,7 +3328,7 @@ void cli_test_results(void)
     {
       if( strcmp(tests[i].desc, "--END--") != 0 )
 	{
-	  printf("\n%03d: %-20s   %-10s %s", i, tests[i].desc, tests[i].passed?"Passed":"Failed", tests[i].fail_text);
+	  printf("\n%03d: %-30s   %-10s %s", i, tests[i].desc, tests[i].passed?"Passed":"Failed", tests[i].fail_text);
 	}
     }
 
