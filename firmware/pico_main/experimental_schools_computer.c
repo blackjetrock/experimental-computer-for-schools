@@ -84,6 +84,7 @@ typedef enum _TEST_CODE
    TC_REG_N = 20,
    TC_REG_IAR,
    TC_REG_ADDR,
+   TC_CL,
    TC_REG_KI,
    TC_STORE_N,
    TC_MUST_BE,
@@ -96,6 +97,7 @@ char *tc_names[] =
    "TC_REG_N",
    "TC_REG_IAR",
    "TC_REG_ADDR",
+   "TC_CL",
    "TC_REG_KI",
    "TC_STORE_N",
    "TC_MUST_BE",
@@ -510,6 +512,7 @@ void kbd_read(ESC_STATE *s)
 			    case TC_REG_IAR:
 			    case TC_REG_KI:
 			    case TC_REG_ADDR:
+			    case TC_CL:
 
 			      rn = tests[test_number].result_codes[test_res_i].code;
 #if DEBUG_TEST_SEQ
@@ -532,6 +535,7 @@ void kbd_read(ESC_STATE *s)
 				    case TC_REG_IAR:
 				    case TC_REG_KI:
 				    case TC_REG_ADDR:
+				    case TC_CL:
 				    default:
 				      if( read_any_size_register(s, rn) == tests[test_number].result_codes[test_res_i].n )
 					{
@@ -824,6 +828,11 @@ REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
   if( n == TC_REG_ADDR )
     {
       return((REGISTER_DOUBLE_WORD)s->address_register2);
+    }
+
+  if( n == TC_CL )
+    {
+      return(s->control_latch);
     }
   
   if( IS_SW_REGISTER(n) )
@@ -1581,7 +1590,7 @@ void stage_b_decode(ESC_STATE *s)
 	case 5:
 	  // Test (Rc)
 #if DEBUG_TEST
-	  printf("\nTEST (5) ");
+	  printf("\nTEST (5) [R%d] = %08X", s->reginst_rc, s->R[s->reginst_rc]);
 #endif
 	  switch(s->inst_digit_d)
 	    {
@@ -1589,13 +1598,18 @@ void stage_b_decode(ESC_STATE *s)
 #if DEBUG_TEST
 	      printf("\nTEST (5) ");
 #endif
-	      
 	      if( s->R[s->reginst_rc] == 0 )
 		{
+#if DEBUG_TEST
+		  printf("\nCL = 1 after test");
+#endif
 		  s->control_latch = 1;
 		}
 	      else
 		{
+#if DEBUG_TEST
+		  printf("\nCL = 0 after test");
+#endif
 		  s->control_latch = 0;
 		}
 	      break;
@@ -1917,6 +1931,7 @@ void stage_a_decode(ESC_STATE *s)
 	case 5:
 	  // TEST
 	  // Performed in stage B
+	  s->reginst_rc = s->inst_digit_c;
 	  break;
 
 	case 6:
@@ -3293,7 +3308,7 @@ TEST_LOAD_STORE test_3_store =
 //
 // Test 4
 //
-// Register instructions
+// Copy RH 6 digits instructions
 //
 // 
 
@@ -3313,8 +3328,6 @@ INIT_INFO test_init_4[] =
    {IC_SET_REG_V,    DW_MINUS(0xA000112233445566)},
    {IC_END,          0},
   };
-
-// Run just one instruction at 00
 
 TOKEN test_seq_4[] =
   {
@@ -3362,15 +3375,80 @@ TEST_LOAD_STORE test_4_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 5
+//
+// TEST instructions
+//
+// 
+
+INIT_INFO test_init_5[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    2},
+   {IC_SET_REG_V,    SW_MINUS(0x1)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x00111111)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x00111110)},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    DW_PLUS(0xA000000987654321)},
+   {IC_SET_REG_N,    9},
+   {IC_SET_REG_V,    DW_MINUS(0xA000112233445566)},
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_5[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_5[] =
+  {
+   // Original register contents must be unchanged
+   {TC_CL,          0},
+   {TC_MUST_BE,     1},
+   {TC_END_SECTION, 0},
+
+   {TC_CL,          0},
+   {TC_MUST_BE,     0},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_5_store =
+  {
+   {
+    0x05000510,      // TEST R0=0, TEST R1=0
+    0x14390000,      // RH 6 dig of R9 into R3
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
-   {"KB Input",        test_init_0, test_seq_0, test_res_0, 0, &test_0_store, ""},
+   {"KB Input",                test_init_0, test_seq_0, test_res_0, 0, &test_0_store, ""},
    {"Reg Inst 0[0-3],1[0-3]",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
-   {"Test 2",          test_init_2, test_seq_2, test_res_2, 0, &test_2_store, ""},
-   {"ADDR inc/dec",    test_init_3, test_seq_3, test_res_3, 0, &test_3_store, ""},
-   {"RH 6 Digits",     test_init_4, test_seq_4, test_res_4, 0, &test_4_store, ""},
-   {"--END--",         test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
+   {"Test 2",                  test_init_2, test_seq_2, test_res_2, 0, &test_2_store, ""},
+   {"ADDR inc/dec",            test_init_3, test_seq_3, test_res_3, 0, &test_3_store, ""},
+   {"RH 6 Digits",             test_init_4, test_seq_4, test_res_4, 0, &test_4_store, ""},
+   {"TEST",                    test_init_5, test_seq_5, test_res_5, 0, &test_5_store, ""},
+   {"--END--",                 test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
   };
   
 ////////////////////////////////////////////////////////////////////////////////
