@@ -1350,6 +1350,27 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
   error();
 }
 
+void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int src2)
+{
+  if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
+    {
+      s->R[dest] = bcd_sw_addition(s->R[src1], SET_SW_SIGN((REGISTER_SINGLE_WORD) s->R[src2], WORD_SIGN_MINUS));
+      
+      //s->R[dest] = single_sum_normalise(s->R[dest]);
+      return;
+    }
+
+  if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_DW_REGISTER(src2) )
+    {
+      s->R[dest] = s->R[src1] + s->R[src2];
+      return;
+    }
+
+  // error
+  sprintf(error_message, "Registers of different sizes");
+  error();
+}
+
 void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
 {
   if( IS_SW_REGISTER(dest) )
@@ -1670,6 +1691,7 @@ void stage_b_decode(ESC_STATE *s)
 
 	case 1:
 	  // Subtract registers (Rc)-(Rd)
+	  register_assign_sub_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
 	  break;
 	  
 	case 2:
@@ -3024,7 +3046,13 @@ TOKEN test_seq_1[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
    
-   TOK_KEY_C,
+   TOK_KEY_C,                 // One added to R1
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,                // r1-2
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,                 //
    TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
@@ -3040,8 +3068,6 @@ TOKEN test_seq_1[] =
    TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -3096,6 +3122,11 @@ TEST_INFO test_res_1[] =
    {TC_MUST_BE, 0xa0000006},
    {TC_END_SECTION, 0},   
 
+   // Subtract R2 from R1 after loading R2 with 5
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xa0000001},
+   {TC_END_SECTION, 0},   
+
    
    {TC_END,     0},
 
@@ -3108,6 +3139,7 @@ TEST_LOAD_STORE test_1_store =
     0x01120228,      // Subtract 1 from R1, subtract R2 from 8
     0x03120119,      // Load R1 with 2, subtract 9 from R1
     0x13121012,      // Assign R1, R2,  Add R1 and R2
+    0x03251112,      // load R1 with 5, subtract R2 from R1
     -1},
   };
 
