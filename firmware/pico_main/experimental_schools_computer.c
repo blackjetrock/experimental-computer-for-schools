@@ -921,29 +921,19 @@ void set_any_size_sign(ESC_STATE *s, int regno, int sign)
 {
   if( IS_SW_REGISTER(regno) )
     {
-      int sign;
-      int reg_contents = SW_REG_CONTENTS(regno);
-      sign = SET_SW_SIGN(reg_contents, sign);
-      
-      SW_REG_CONTENTS(regno) = sign;
+      s->R[regno] = SET_SW_SIGN(s->R[regno], sign);
       return;
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      int sign;
-      int reg_contents = DW_REG_CONTENTS(regno);
-      sign = SET_DW_SIGN(reg_contents, sign);
-      
-      DW_REG_CONTENTS(regno) = sign;
+      s->RD[regno-8] = SET_DW_SIGN(s->RD[regno-8], sign);
       return;
     }
 
   sprintf(error_message, "Unrecognised register:R%d", regno);
   error();
-
 }
-
 
 void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
 {
@@ -1701,7 +1691,6 @@ void stage_b_decode(ESC_STATE *s)
 	  
 	case 3:
 	  // Register assign (Rc) <-(Rd)
-	  
 	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rd, 0);
 	  break;
 
@@ -1709,11 +1698,16 @@ void stage_b_decode(ESC_STATE *s)
 	case 4:
 	  // First the sign
 	  src_sign = any_size_sign(s, s->reginst_rd);
+	  printf("\nsrc_sign=%d", src_sign);
+	  
 	  set_any_size_sign(s, s->reginst_rc, src_sign);
 
+	  printf("\nR[]=%08X", s->R[s->reginst_rc]);
+	  
 	  // Then the RH six digits
 	  int rh6 = any_size_rh6(s, s->reginst_rd);
 	  set_any_size_rh6(s, s->reginst_rc, rh6);
+	  printf("\nR[]=%08X", s->R[s->reginst_rc]);
 	  break;
 
 	case 5:
@@ -3296,6 +3290,78 @@ TEST_LOAD_STORE test_3_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 4
+//
+// Register instructions
+//
+// 
+
+INIT_INFO test_init_4[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x123456)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    2},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    DW_PLUS(0xA000000987654321)},
+   {IC_SET_REG_N,    9},
+   {IC_SET_REG_V,    DW_MINUS(0xA000112233445566)},
+   {IC_END,          0},
+  };
+
+// Run just one instruction at 00
+
+TOKEN test_seq_4[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_4[] =
+  {
+   // Original register contents must be unchanged
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xa0123456},
+   {TC_END_SECTION, 0},
+   
+   {TC_REG_N,   2},
+   {TC_MUST_BE, 0xa0654321},
+   {TC_END_SECTION, 0},   
+
+   {TC_REG_N,   3},
+   {TC_MUST_BE, 0xb0445566},
+   {TC_END_SECTION, 0},   
+
+   {TC_END,     0},
+
+  };
+
+TEST_LOAD_STORE test_4_store =
+  {
+   {
+    0x14101428,      // RH 6 dig of R0 into R1, RH 6 dig of R8 into R2
+    0x14390000,      // RH 6 dig of R9 into R3
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
@@ -3303,6 +3369,7 @@ ESC_TEST_INFO tests[] =
    {"Reg Inst 0[0-3],1[0-3]",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
    {"Test 2",          test_init_2, test_seq_2, test_res_2, 0, &test_2_store, ""},
    {"ADDR inc/dec",    test_init_3, test_seq_3, test_res_3, 0, &test_3_store, ""},
+   {"RH 6 Digits",     test_init_4, test_seq_4, test_res_4, 0, &test_4_store, ""},
    {"--END--",         test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
   };
   

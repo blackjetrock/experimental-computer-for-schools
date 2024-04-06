@@ -61,7 +61,7 @@ typedef uint32_t ADDRESS;
 #define OVERFLOW_DW(XX)        ((XX & 0x000F000000000000) != 0 )
 
 #define CLEAR_SW_CARRY(XX)     (XX & 0xF0FFFFFF)
-#define SET_SW_SIGN(XX, SGN)   (REMOVED_SW_SIGN(XX) | (SGN <<28))
+#define SET_SW_SIGN(XX, SGN)   (REMOVED_SW_SIGN(XX) | (SGN << 28))
 #define SET_DW_SIGN(XX, SGN)   (REMOVED_DW_SIGN(XX) | ((DOUBLE_WORD)SGN <<60))
 #define SW_PLUS(XX)            SET_SW_SIGN(XX, WORD_SIGN_PLUS)
 #define SW_MINUS(XX)           SET_SW_SIGN(XX, WORD_SIGN_MINUS)
