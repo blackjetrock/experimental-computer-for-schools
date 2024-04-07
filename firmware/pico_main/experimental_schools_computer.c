@@ -2051,7 +2051,6 @@ void stage_b_decode(ESC_STATE *s)
 	  // Now over-write that IAR with the address we want to jump to
 	  s->iar.address = s->inst_aa;
 	  s->iar.a_flag = 0;
-	  
 	  break;
 	  
 	case 5:
@@ -2195,15 +2194,15 @@ void stage_a_decode(ESC_STATE *s)
 
       // relative addressing
     case 3:
-      s->inst_aa = s->inst_ap + get_register(s, s->R[3]);
+      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
       break;
 
     case 4:
-      s->inst_aa = s->inst_ap + get_register(s, s->R[4]);
+      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
       break;
       
     case 5:
-      s->inst_aa = s->inst_ap + get_register(s, s->R[5]);
+      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
       break;
       
     case 6:
@@ -4062,6 +4061,64 @@ TEST_LOAD_STORE test_8_store =
     0x20012204,
     -1},
   };
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 9
+//
+// Branches
+// 
+// 
+
+INIT_INFO test_init_9[] =
+  {
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    4},
+   {IC_SET_REG_V,    SW_PLUS(0x10)},
+   {IC_SET_REG_N,    5},
+   {IC_SET_REG_V,    SW_PLUS(0x20)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_9[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_9[] =
+  {
+   
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000002},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000001},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_9_store =
+  {
+   {
+    0x24020000,
+    0x35100000,
+    0x34000000,
+    0x00000000,
+    -1},
+  };
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4077,6 +4134,7 @@ ESC_TEST_INFO tests[] =
    {"Left Shift",              test_init_6, test_seq_6, test_res_6, 0, &test_6_store, ""},
    {"Right Shift",             test_init_7, test_seq_7, test_res_7, 0, &test_7_store, ""},
    {"Inst 20",                 test_init_8, test_seq_8, test_res_8, 0, &test_8_store, ""},
+   {"Branches",                test_init_9, test_seq_9, test_res_9, 0, &test_9_store, ""},
    {"--END--",                 test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
   };
   
