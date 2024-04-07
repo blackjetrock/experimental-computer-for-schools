@@ -52,6 +52,37 @@
 
 #define TEXT_PARAMETER_LEN 40
 
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+#define MAX_ERROR_BUFFER 200
+
+void error_msg(char *fmt, ...)
+{
+  char line[MAX_ERROR_BUFFER];
+  
+  va_list args;
+  va_start(args, fmt);
+
+  vsnprintf(line, MAX_ERROR_BUFFER, fmt, args);
+  va_end(args);
+
+  printf("\n*** %s ***\n", line);
+}
+
+void warning_msg(char *fmt, ...)
+{
+  char line[MAX_ERROR_BUFFER];
+  
+  va_list args;
+  va_start(args, fmt);
+
+  vsnprintf(line, MAX_ERROR_BUFFER, fmt, args);
+  va_end(args);
+
+  printf("\n*** WARNING: %s ***\n", line);
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -480,6 +511,7 @@ void kbd_read(ESC_STATE *s)
 		  TOKEN t = tests[test_number].seq[test_step];
 
 		  int rn = -1;
+		  int test_type = TC_END;		  
 		  int done = 0;
 
 #if DEBUG_TEST_SEQ
@@ -495,17 +527,24 @@ void kbd_read(ESC_STATE *s)
 
 		  
 		      printf("\nChecking results for test: %s", tests[test_number].desc);
-		  
+		      // Which type of test do we do?
+		      test_type = TC_END;
+			  
 		      while(!done)
 			{
 #if DEBUG_TEST_SEQ
 			  printf("\n  Test_res_i:%d TC code:%d", test_res_i, t);
 #endif
-
 			  switch(tests[test_number].result_codes[test_res_i].code)
 			    {
+			    case TC_STORE_N:
+			      test_type = TC_STORE_N;
+			      rn = tests[test_number].result_codes[test_res_i].n;
+			      printf("\nTesting store[%04X]", rn);
+			      break;
 
 			    case TC_REG_N:
+			      test_type = TC_REG_N;
 			      rn = tests[test_number].result_codes[test_res_i].n;
 			      printf("\nTesting R[%d]", rn);
 			      break;
@@ -522,44 +561,73 @@ void kbd_read(ESC_STATE *s)
 			      break;
 			  
 			    case TC_MUST_BE:
-			      if( rn != -1 )
+			      printf("\ntest type: %s", tc_reg_name(test_type));
+			      switch(test_type)
 				{
-				  switch(rn)
+				  // Test against the store
+				case TC_STORE_N:
+				  if( s->store[rn] == tests[test_number].result_codes[test_res_i].n )
 				    {
-				    case TC_REG_N:
-				    case TC_STORE_N:
-				    case TC_MUST_BE:
-				    case TC_END:
-				      printf("\nTest code %d used as register index compare");
-				      break;
-				  
-				    case TC_REG_IAR:
-				    case TC_REG_KI:
-				    case TC_REG_ADDR:
-				    case TC_CL:
-				    default:
-				      if( read_any_size_register(s, rn) == tests[test_number].result_codes[test_res_i].n )
-					{
 #if DEBUG_TEST_SEQ
-					  // All OK
-					  printf("\nR[%d] == %08xd, OK", rn, tests[test_number].result_codes[test_res_i].n);
+				      printf("\nStore[%02X] (%08X) == %08X", rn, s->store[rn], tests[test_number].result_codes[test_res_i].n);
 #endif
-					}
-				      else
-					{
+				    }
+				  else
+				    {
 #if DEBUG_TEST_SEQ
-					  // Not OK
-					  printf("\nR[%d] <> %016llx", rn, tests[test_number].result_codes[test_res_i].n);
+				      // Not OK
+				      printf("\nStore[%02X] (%08X) <> %08X", rn, s->store[rn], tests[test_number].result_codes[test_res_i].n);
 #endif
-					  test_fail_info("R[%s] (%016llx) <> %016llx", tc_reg_name(rn), read_any_size_register(s, rn), tests[test_number].result_codes[test_res_i].n);
+				      test_fail_info("Store[%02X] (%016llx) <> %016llx", rn, s->store[rn], tests[test_number].result_codes[test_res_i].n);
+				      tests[test_number].passed = 0;
+				    }
+				  break;
 
-					  tests[test_number].passed = 0;
+				  // Test against a register
+				case TC_END:
+				case TC_REG_N:
+				  if( rn != -1 )
+				    {
+				      switch(rn)
+					{
+					case TC_REG_N:
+					case TC_STORE_N:
+					case TC_MUST_BE:
+					case TC_END:
+					  printf("\nTest code %d used as register index compare");
+					  break;
+					  
+					case TC_REG_IAR:
+					case TC_REG_KI:
+					case TC_REG_ADDR:
+					case TC_CL:
+					default:
+					  if( read_any_size_register(s, rn) == tests[test_number].result_codes[test_res_i].n )
+					    {
+#if DEBUG_TEST_SEQ
+					      // All OK
+					      printf("\nR[%d] == %08xd, OK", rn, tests[test_number].result_codes[test_res_i].n);
+#endif
+					    }
+					  else
+					    {
+#if DEBUG_TEST_SEQ
+					      // Not OK
+					      printf("\nR[%d] <> %016llx", rn, tests[test_number].result_codes[test_res_i].n);
+#endif
+					      test_fail_info("R[%s] (%016llx) <> %016llx", tc_reg_name(rn), read_any_size_register(s, rn), tests[test_number].result_codes[test_res_i].n);
+					      
+					      tests[test_number].passed = 0;
+					    }
+					  break;
 					}
 				      break;
 				    }
+				  break;
 				}
+			      test_type = TC_END;
 			      break;
-
+			      
 			    case TC_END_SECTION:
 			      // All ok, we aren't done yet, keep going
 #if DEBUG_TEST_SEQ
@@ -790,22 +858,6 @@ char *get_display(void)
   return(dsp);
 }
 
-////////////////////////////////////////////////////////////////////////////////
-//
-//
-char error_message[200];
-
-void error(void)
-{
-  printf("\n*** %s ***\n", error_message);
-}
-
-char warning_message[200];
-
-void warning(void)
-{
-  printf("\n*** WARNING: %s ***\n", error_message);
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -846,9 +898,7 @@ REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
       return((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n));
     }
 
-  sprintf(error_message, "Unrecognised register:R%d", n);
-  error();
-
+  error_msg("Unrecognised register:R%d", n);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -868,9 +918,7 @@ REGISTER_DOUBLE_WORD read_any_size_register_absolute(ESC_STATE *s, int n)
       return(REMOVED_DW_SIGN((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n)));
     }
 
-  sprintf(error_message, "Unrecognised register:R%d", n);
-  error();
-
+  error_msg("Unrecognised register:R%d", n);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -945,8 +993,7 @@ int any_size_sign(ESC_STATE *s, int regno)
       return( DW_SIGN(DW_REG_CONTENTS(regno)) );
     }
 
-  sprintf(error_message, "Unrecognised register:R%d", regno);
-  error();
+  error_msg("Unrecognised register:R%d", regno);
 }
 
 void set_any_size_sign(ESC_STATE *s, int regno, int sign)
@@ -963,8 +1010,7 @@ void set_any_size_sign(ESC_STATE *s, int regno, int sign)
       return;
     }
 
-  sprintf(error_message, "Unrecognised register:R%d", regno);
-  error();
+  error_msg("Unrecognised register:R%d", regno);
 }
 
 void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
@@ -984,8 +1030,7 @@ void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
       return;
     }
 
-  sprintf(error_message, "Unrecognised register:R%d", regno);
-  error();
+  error_msg("Unrecognised register:R%d", regno);
 
 }
 
@@ -1012,8 +1057,7 @@ SINGLE_WORD any_size_rh6(ESC_STATE *s, int regno)
       return((SINGLE_WORD)reg_contents);
     }
 
-  sprintf(error_message, "Unrecognised register:R%d", regno);
-  error();
+  error_msg("Unrecognised register:R%d", regno);
 }
 
 //------------------------------------------------------------------------------
@@ -1097,7 +1141,7 @@ REGISTER_SINGLE_WORD bcd_addition_32(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   c &= 0x00FFFFFF;
   
 #if DEBUG_BCD_CORRECTION
-    printf("\n%s: Result: %08X", __FUNCTION__, c);
+  printf("\n%s: Result: %08X", __FUNCTION__, c);
 #endif
   
   return(c);
@@ -1178,8 +1222,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 #if DEBUG_SW_BCD_SUM
 	  printf("\nOverflow occurred");
 
-	  sprintf(error_message, "Overflow (%08X)", c);
-	  error();
+	  error_msg( "Overflow (%08X)", c);
 #endif
 	}
 
@@ -1228,8 +1271,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
       printf("\nOverflow occurred");
 #endif
 
-      sprintf(error_message, "Overflow (%08X)", c);
-      error();
+      error_msg("Overflow (%08X)", c);
     }
 
   // Drop the carry
@@ -1259,19 +1301,36 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   return(c);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Convert BCD to binary
+//
+
+int bcd_to_binary(SINGLE_WORD bcd)
+{
+  char line[20];
+  int binary;
+  
+  sprintf(line, "%X", bcd);
+  sscanf(line, "%d", &binary);
+  return(binary);
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
 // Address is signed so has to have that stripped. It is never negative.
-
+//
+// It is also in BCd so has to be converted to binary to get an array index
+// for the store array
+//
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address)
 {
-  return(s->store[REMOVED_SW_SIGN(address)]);
+  return(s->store[bcd_to_binary(REMOVED_SW_SIGN(address))]);
 }
 
 void write_sw_to_store(ESC_STATE *s, ADDRESS address, REGISTER_SINGLE_WORD d)
 {
-  s->store[REMOVED_SW_SIGN(address)] = d;
+  s->store[bcd_to_binary(REMOVED_SW_SIGN(address))] = d;
 }
 
 REGISTER_DOUBLE_WORD get_register(ESC_STATE *s, int reg)
@@ -1368,8 +1427,7 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
     }
 
   // error
-  sprintf(error_message, "Registers of different sizes");
-  error();
+  error_msg("Registers of different sizes");
 }
 
 void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int src2)
@@ -1389,8 +1447,7 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
     }
 
   // error
-  sprintf(error_message, "Registers of different sizes");
-  error();
+  error_msg("Registers of different sizes");
 }
 
 void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
@@ -1408,43 +1465,41 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
     }
 
   // error
-  sprintf(error_message, "Register unknown *%d), dest");
-  error();
+  error_msg("Register unknown *%d), dest");
 }
 
 
-#define SHIFT_INST(SHIFT_TYPE,SHIFT_OP)                                     \
-                                                                            \
-void register_ ## SHIFT_TYPE ## _shift(ESC_STATE *s, int dest, int n)       \
-{                                                                           \
-  int sign;                                                                 \
-  REGISTER_SINGLE_WORD sw_data;                                             \
-  REGISTER_DOUBLE_WORD dw_data;                                             \
-                                                                            \
-  if( IS_SW_REGISTER(dest) )                                                \
-    {                                                                       \
-      sign = SW_SIGN(SW_REG_CONTENTS(dest));                                \
-      sw_data = REMOVED_SW_SIGN(SW_REG_CONTENTS(dest)) SHIFT_OP (4*n);      \
-      sw_data = REMOVED_SW_UNUSED(sw_data);                                 \
-      SW_REG_CONTENTS(dest) = SET_SW_SIGN(sw_data, sign);                   \
-      return;                                                               \
-    }                                                                       \
-                                                                            \
-  if( IS_DW_REGISTER(dest) )                                                \
-    {                                                                       \
-      sign = DW_SIGN(DW_REG_CONTENTS(dest));                                \
-      dw_data = REMOVED_DW_SIGN(DW_REG_CONTENTS(dest)) SHIFT_OP (4*n);      \
-      dw_data = REMOVED_DW_UNUSED(dw_data);                                 \
-      DW_REG_CONTENTS(dest) = SET_DW_SIGN(dw_data, sign);                   \
-      return;                                                               \
-    }                                                                       \
-                                                                            \
-  sprintf(error_message, "%s: Register unknown *%d", __FUNCTION__, dest);   \
-  error();								    \
+#define SHIFT_INST(SHIFT_TYPE,SHIFT_OP)					\
+									\
+  void register_ ## SHIFT_TYPE ## _shift(ESC_STATE *s, int dest, int n)	\
+  {									\
+    int sign;								\
+    REGISTER_SINGLE_WORD sw_data;					\
+    REGISTER_DOUBLE_WORD dw_data;					\
+									\
+    if( IS_SW_REGISTER(dest) )						\
+      {									\
+	sign = SW_SIGN(SW_REG_CONTENTS(dest));				\
+	sw_data = REMOVED_SW_SIGN(SW_REG_CONTENTS(dest)) SHIFT_OP (4*n); \
+	sw_data = REMOVED_SW_UNUSED(sw_data);				\
+	SW_REG_CONTENTS(dest) = SET_SW_SIGN(sw_data, sign);		\
+	return;								\
+      }									\
+									\
+    if( IS_DW_REGISTER(dest) )						\
+      {									\
+	sign = DW_SIGN(DW_REG_CONTENTS(dest));				\
+	dw_data = REMOVED_DW_SIGN(DW_REG_CONTENTS(dest)) SHIFT_OP (4*n); \
+	dw_data = REMOVED_DW_UNUSED(dw_data);				\
+	DW_REG_CONTENTS(dest) = SET_DW_SIGN(dw_data, sign);		\
+	return;								\
+      }									\
+									\
+    error_msg("%s: Register unknown *%d", __FUNCTION__, dest);		\
   }
 
 SHIFT_INST(left,<<)
-SHIFT_INST(right,>>)
+  SHIFT_INST(right,>>)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -1460,10 +1515,12 @@ SHIFT_INST(right,>>)
 //       If half flag is set then clear it and increment IAR
 //       Otherwise set half flag
 //
+// Note: IAR is BCD
+//
 ////////////////////////////////////////////////////////////////////////////////
 //
 
-void next_iar(ESC_STATE *s)
+  void next_iar(ESC_STATE *s)
 {
   int digit_a = INST_A_FIELD(s->instruction_register);
   
@@ -1474,12 +1531,11 @@ void next_iar(ESC_STATE *s)
     case 9:
       if( s->iar.a_flag )
 	{
-	  sprintf(warning_message, "8 digit instruction has A flag set");
-	  warning();
+	  warning_msg("8 digit instruction has A flag set");
 	}
       
       // 8 digit instruction so move to next address
-      s->iar.address = single_sum_normalise(s->iar.address+1);
+      s->iar.address = single_sum_normalise(bcd_addition_32(s->iar.address,1));
 
       // IAR only two digits
       s->iar.address &= 0xFF;
@@ -1495,7 +1551,7 @@ void next_iar(ESC_STATE *s)
     case 6:
       if( s->iar.a_flag )
 	{
-	  s->iar.address = single_sum_normalise(s->iar.address+1);
+	  s->iar.address = single_sum_normalise(bcd_addition_32(s->iar.address,1));
 
 	  // IAR only two digits
 	  s->iar.address &= 0xFF;
@@ -1509,8 +1565,7 @@ void next_iar(ESC_STATE *s)
       
     default:
       // error
-      sprintf(error_message, "Unknown digit a");
-      error();
+      error_msg("Unknown digit a");
       
       break;
     }
@@ -1544,6 +1599,8 @@ void stage_c_decode(ESC_STATE *s)
       switch(s->inst_digit_b)
 	{
 	case 0:
+	case 1:
+	case 2:
 	  next_iar(s);
 	  break;
 	  
@@ -1921,37 +1978,63 @@ void stage_b_decode(ESC_STATE *s)
 	case 0:
 	  // Copy (Aa) into R0 and R1 as follows. If Aa contains
 	  // data (recognisable by a sign in digit position 1), copy the
-	  // exponent digit into Ro and the sign and significant digits into
-	  // Ri. If Aa contains an instruction (recognisable by a decimal
+	  // exponent digit into R0 and the sign and significant digits into
+	  // R1. If Aa contains an instruction (recognisable by a decimal
 	  // digit in position 1), copy the left-hand four digits into Ro and
 	  // the right-hand four digits into Ri
-	  store_value = s->store[s->inst_aa];
+	  store_value = load_from_store(s, s->inst_aa);
 	  
-	  if( (STORE_SIGN(store_value)==WORD_SIGN_PLUS) || (STORE_SIGN(store_value)==WORD_SIGN_MINUS) )
+	  if( (STORE_GET_SIGN(store_value)==WORD_SIGN_PLUS) || (STORE_GET_SIGN(store_value)==WORD_SIGN_MINUS) )
 	    {
 	      // Data (value)
-	      s->R[0] = STORE_EXPONENT(store_value);
-	      s->R[1] = STORE_DIGITS(store_value);
-	      s->R[1] = SET_SW_SIGN(s->R[1], STORE_SIGN(store_value));
+	      s->R[0] = STORE_GET_EXPONENT(store_value);
+	      s->R[0] = SET_SW_SIGN(s->R[0], WORD_SIGN_PLUS);
+	      s->R[1] = STORE_GET_DIGITS(store_value);
+	      s->R[1] = SET_SW_SIGN(s->R[1], STORE_GET_SIGN(store_value));
 	    }
 	  else
 	    {
 	      // Instruction
-	      s->R[0] = STORE_LH4_DIGITS(store_value);
-	      s->R[1] = STORE_RH4_DIGITS(store_value);
+	      s->R[0] = STORE_GET_LH4_DIGITS(store_value);
+	      s->R[0] = SET_SW_SIGN(s->R[0], WORD_SIGN_PLUS);
+	      s->R[1] = STORE_GET_RH4_DIGITS(store_value);
+	      s->R[1] = SET_SW_SIGN(s->R[1], WORD_SIGN_PLUS);
 	    }
 	  
 	  break;
 	  
 	case 1:
 	  
-	  // Store (Ro) and (RO in location Aa in data format; i.e. copy (Ro)
+	  // Store (R0) and (R1) in location Aa in data format; i.e. copy (R0)
 	  // into the exponent position, and copy (RO into the sign and
 	  // significant digit positions. If the number is outside the range
 	  // that can be held in a storage location, set the ERROR indicator
 	  // and stop
 	  // Store (Ro) and (RO in location A in instruction format; i.e.
+	  store_value = 0;
+#if DEBUG_INST_21
+	  printf("\nStore value: 0x%08X", store_value);
+	  printf("\nR0:%08X R1:%08X", s->R[0], s-> R[1]);
+#endif
+
+	  store_value = STORE_SET_EXPONENT(store_value, s->R[0]);
+#if DEBUG_INST_21
+	  printf("\nStore value: 0x%08X", store_value);
+#endif
+	  store_value = STORE_SET_SIGN(    store_value, SW_SIGN(s->R[1]));
+#if DEBUG_INST_21
+	  printf("\nStore value: 0x%08X", store_value);
+#endif
+	  store_value = STORE_SET_DIGITS(  store_value, SW_DIGITS(s->R[1]));
+#if DEBUG_INST_21
+	  printf("\nStore value: 0x%08X", store_value);
+#endif
+	  write_sw_to_store(s, s->inst_aa, store_value);
 	  
+#if DEBUG_INST_21
+	  printf("\nINST 20");
+	  printf("\nWriting %08X to store location %02X", store_value, s->inst_aa);
+#endif
 	  break;
 	  
 	case 2:
@@ -2034,11 +2117,6 @@ void stage_b_decode(ESC_STATE *s)
       s->Aa1 = load_from_store(s, s->Ap1);
       s->Aa2 = load_from_store(s, s->Ap2);
       s->Aa3 = load_from_store(s, s->Ap3);
-#if 0
-      s->Aa1 = s->store[s->Ap1];
-      s->Aa2 = s->store[s->Ap2];
-      s->Aa3 = s->store[s->Ap3];
-#endif
       break;
     }
 }
@@ -2241,7 +2319,6 @@ void state_esc_load_store(FSM_DATA *s, TOKEN tok)
   es = (ESC_STATE *)s;
 
   write_sw_to_store(es, es->address_register2, es->keyboard_register);
-  //  es->store[es->address_register2] = es->keyboard_register;
 
   es->update_display = 1;
 }
@@ -3926,13 +4003,17 @@ INIT_INFO test_init_8[] =
 TOKEN test_seq_8[] =
   {
    TOK_KEY_NORMAL_RESET,
+   TOK_KEY_1,
    TOK_KEY_0,
-   TOK_KEY_2,
    TOK_KEY_LOAD_IAR,
 
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -3943,16 +4024,19 @@ TEST_INFO test_res_8[] =
   {
    
    {TC_REG_N,   0},
-   {TC_MUST_BE, 0x5},
+   {TC_MUST_BE, 0xa0000005},
    {TC_REG_N,   1},
    {TC_MUST_BE, 0xa0310732},
    {TC_END_SECTION, 0},
 
    {TC_REG_N,   0},
-   {TC_MUST_BE, 0x1234},
+   {TC_MUST_BE, 0xa0001234},
    {TC_REG_N,   1},
-   {TC_MUST_BE, 0x5678},
+   {TC_MUST_BE, 0xa0005678},
    {TC_END_SECTION, 0},
+
+   {TC_STORE_N,   0x3},
+   {TC_MUST_BE, 0xa5310732},
 
    {TC_END,     0},
   };
@@ -3962,7 +4046,16 @@ TEST_LOAD_STORE test_8_store =
    {
     SW_PLUS(0x05310732),
     0x12345678,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
     0x20002001,
+    0x20002103,
     -1},
   };
 

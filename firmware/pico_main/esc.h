@@ -49,12 +49,19 @@ typedef uint32_t ADDRESS;
 
 // Get the single word sign
 #define SW_SIGN(XX)            ((XX & 0xF0000000)>>28)
+#define SW_DIGITS(XX)          ((XX & 0x00FFFFFF)>>0 )
 
-#define STORE_EXPONENT(XX)     ((XX & 0x0F000000)>>24)
-#define STORE_DIGITS(XX)       ((XX & 0x00FFFFFF)>>0 )
-#define STORE_SIGN(XX)         ((XX & 0xF0000000)>>28)
-#define STORE_LH4_DIGITS(XX)   ((XX & 0xFFFF0000)>>16)
-#define STORE_RH4_DIGITS(XX)   ((XX & 0x0000FFFF)>>0 )
+#define STORE_GET_EXPONENT(XX)     ((XX & 0x0F000000)>>24)
+#define STORE_GET_DIGITS(XX)       ((XX & 0x00FFFFFF)>>0 )
+#define STORE_GET_SIGN(XX)         ((XX & 0xF0000000)>>28)
+#define STORE_GET_LH4_DIGITS(XX)   ((XX & 0xFFFF0000)>>16)
+#define STORE_GET_RH4_DIGITS(XX)   ((XX & 0x0000FFFF)>>0 )
+
+#define STORE_SET_EXPONENT(XX,EE)   ((XX & 0xF0FFFFFF) | ((EE & 0x0000000F) <<24))
+#define STORE_SET_DIGITS(XX,EE)     ((XX & 0xFF000000) | ((EE & 0x00FFFFFF) <<0 ))
+#define STORE_SET_SIGN(XX,EE)       ((XX & 0x0FFFFFFF) | ((EE & 0x0000000F) <<28))
+#define STORE_SET_LH4_DIGITS(XX,EE) ((XX & 0x0000FFFF) | ((EE & 0x0000FFFF) <<16))
+#define STORE_SET_RH4_DIGITS(XX,EE) ((XX & 0xFFFF0000) | ((EE & 0x0000FFFF) <<0 ))
 
 // Get the double word sign
 #define DW_SIGN(XX)            ((XX & 0xF000000000000000)>>60)
