@@ -2207,7 +2207,11 @@ void stage_a_decode(ESC_STATE *s)
       
     case 6:
       // Indirect addressing
-      s->inst_aa = load_from_store(s, s->inst_ap);
+      s->inst_aa = load_from_store(s, REMOVED_SW_SIGN(s->inst_ap));
+      
+#if DEBUG_ADDR_MODES
+      printf("\naa:%08X", s->inst_aa);
+#endif
       break;
       
     case 7:
@@ -4124,6 +4128,10 @@ TEST_INFO test_res_9[] =
    {TC_MUST_BE, 0x00000018},
    {TC_END_SECTION, 0},
 
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000024},
+   {TC_END_SECTION, 0},
+
    {TC_END,     0},
   };
 
@@ -4136,8 +4144,8 @@ TEST_LOAD_STORE test_9_store =
     0x00000000,    // 03
     0x00000000,    // 04
     0x00000000,    // 05
-    0xA0000007,    // 06
-    0x00000000,    // 07
+    0xA0000006,    // 06
+    0x00000024,    // 07
     0x00000000,    // 08
     0x00000000,    // 09
     0x00000000,    // 10
