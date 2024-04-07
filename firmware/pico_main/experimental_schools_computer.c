@@ -1899,6 +1899,7 @@ void stage_b_decode(ESC_STATE *s)
 
 	case 9:
 	  // Stop and display (Rc) and (Rd)
+
 	  break;
 	}
 
