@@ -54,12 +54,15 @@ I have created an assembler that assembles instructions expressed in the verbose
 <h1>Documents</h1>
 
 <h2>A First Course on the Schools's Computer</h2>
-This is a document that provided a course on programming the computer. It has several programs written for the machine.
+This is a document that provided a course on programming the computer, there is only one known paper copy of this document, but it has been
+copied and put together into a PDF document. It has several programs written for the machine, which are the only ones I know of from the time
+when the machine was trialled. These programs almost exclusively use the extracodes for the programs, not the half-word basic instructions. Those instructions must have been used to implement
+the extracodes themselves in the store from address 100 to 199. 
 
 <h2>Experimental Computer for Schools</h2>
-Describes the hardware and code design of the machine.
+Describes the hardware and code design of the machine. This is a technical description of the machine, and contains no program listings at all.
 
 <h2>Flowcharts</h2>
 This is a four page document that has flowcharts and programs for log<sub>b</sub>N and b<sup>L</sup>.
-The programs use an extracode that isn't in the standard set, which is a square root instruction. The instruction also has a jump and the jump part is used in the programs without use of the square root operation.
+The programs use an extracode that isn't in the standard set, which is a square root instruction. The instruction also has a jump and the jump part is used in the programs without use of the square root operation. Together with the first course on the school's computer these are the only known programs for the computer.
 
