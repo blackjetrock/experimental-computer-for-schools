@@ -56,6 +56,8 @@ typedef uint32_t ADDRESS;
 // Remove signs from values
 #define REMOVED_SW_SIGN(XX)    (XX & 0x0FFFFFFF)
 #define REMOVED_DW_SIGN(XX)    (XX & 0x0FFFFFFFFFFFFFFF)
+#define REMOVED_SW_UNUSED(XX)  (XX & 0xF0FFFFFF)
+#define REMOVED_DW_UNUSED(XX)  (XX & 0xF000FFFFFFFFFFFF)
 
 #define OVERFLOW_SW(XX)        ((XX & 0x0F000000) != 0 )
 #define OVERFLOW_DW(XX)        ((XX & 0x000F000000000000) != 0 )

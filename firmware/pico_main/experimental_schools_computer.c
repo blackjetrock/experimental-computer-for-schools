@@ -229,6 +229,7 @@ int wfn_store(ESC_STATE *es, void *fi, char *line);
 void update_computer_display(ESC_STATE *es);
 void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n);
 REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n);
+REGISTER_DOUBLE_WORD read_any_size_register_absolute(ESC_STATE *s, int n);
 
 ESC_TEST_INFO tests[];
 
@@ -852,6 +853,28 @@ REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// Read any register and return absolute value
+//
+
+REGISTER_DOUBLE_WORD read_any_size_register_absolute(ESC_STATE *s, int n)
+{
+  if( IS_SW_REGISTER(n) )
+    {
+      return(REMOVED_SW_SIGN((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n)));
+    }
+
+  if( IS_DW_REGISTER(n) )
+    {
+      return(REMOVED_DW_SIGN((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n)));
+    }
+
+  sprintf(error_message, "Unrecognised register:R%d", n);
+  error();
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // BCD
 //
 //
@@ -1389,6 +1412,40 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
   error();
 }
 
+
+#define SHIFT_INST(SHIFT_TYPE,SHIFT_OP)                                     \
+                                                                            \
+void register_ ## SHIFT_TYPE ## _shift(ESC_STATE *s, int dest, int n)       \
+{                                                                           \
+  int sign;                                                                 \
+  REGISTER_SINGLE_WORD sw_data;                                             \
+  REGISTER_DOUBLE_WORD dw_data;                                             \
+                                                                            \
+  if( IS_SW_REGISTER(dest) )                                                \
+    {                                                                       \
+      sign = SW_SIGN(SW_REG_CONTENTS(dest));                                \
+      sw_data = REMOVED_SW_SIGN(SW_REG_CONTENTS(dest)) SHIFT_OP (4*n);      \
+      sw_data = REMOVED_SW_UNUSED(sw_data);                                 \
+      SW_REG_CONTENTS(dest) = SET_SW_SIGN(sw_data, sign);                   \
+      return;                                                               \
+    }                                                                       \
+                                                                            \
+  if( IS_DW_REGISTER(dest) )                                                \
+    {                                                                       \
+      sign = DW_SIGN(DW_REG_CONTENTS(dest));                                \
+      dw_data = REMOVED_DW_SIGN(DW_REG_CONTENTS(dest)) SHIFT_OP (4*n);      \
+      dw_data = REMOVED_DW_UNUSED(dw_data);                                 \
+      DW_REG_CONTENTS(dest) = SET_DW_SIGN(dw_data, sign);                   \
+      return;                                                               \
+    }                                                                       \
+                                                                            \
+  sprintf(error_message, "%s: Register unknown *%d", __FUNCTION__, dest);   \
+  error();								    \
+  }
+
+SHIFT_INST(left,<<)
+SHIFT_INST(right,>>)
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // IAR handling
@@ -1765,12 +1822,12 @@ void stage_b_decode(ESC_STATE *s)
 	  
 	  // Shift (Rc) left d places 
 	case 6:
-	  register_assign_register_literal(s, s->reginst_rc, get_register(s, s->reginst_rc) << (4*(s->reginst_literal)));
+	  register_left_shift(s, s->reginst_rc, s->reginst_literal);
 	  break;
 	  
 	  // Shift (Rc) right d places
 	case 7:
-	  register_assign_register_literal(s, s->reginst_rc, get_register(s, s->reginst_rc) >> (4*(s->reginst_literal)));
+	  register_right_shift(s, s->reginst_rc, s->reginst_literal);
 	  break;
 
 	case 8:
@@ -1828,16 +1885,12 @@ void stage_b_decode(ESC_STATE *s)
 	  
 	  // Shift (Rc) left (Rd) places 
 	case 6:
-	  register_assign_register_literal(s,
-					   s->reginst_rc,
-					   get_register(s, s->reginst_rc) << (4*get_register(s, (s->reginst_rd))));
+	  register_left_shift(s, s->reginst_rc, read_any_size_register_absolute(s, s->reginst_rd));
 	  break;
 	  
 	  // Shift (Rc) right (Rd) places
 	case 7:
-	  register_assign_register_literal(s,
-					   s->reginst_rc,
-					   get_register(s, s->reginst_rc) >> (4*get_register(s, (s->reginst_rd))));
+	  register_right_shift(s, s->reginst_rc, read_any_size_register_absolute(s, s->reginst_rd));
 	  break;
 
 	case 8:
@@ -3626,6 +3679,219 @@ TEST_LOAD_STORE test_5_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 6
+//
+// Shift left instructions
+//
+// 
+
+INIT_INFO test_init_6[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x2)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x00123456)},
+   {IC_SET_REG_N,    4},
+   {IC_SET_REG_V,    SW_PLUS(0x00123456)},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+   {IC_SET_REG_N,    9},
+   {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_6[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_6[] =
+  {
+   
+   {TC_REG_N,   3},
+   {TC_MUST_BE, 0xa0234560},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   3},
+   {TC_MUST_BE, 0xa0456000},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   4},
+   {TC_MUST_BE, 0xa0234560},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   4},
+   {TC_MUST_BE, 0xa0456000},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xa000234567890120},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xa000456789012000},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   9},
+   {TC_MUST_BE, 0xa000234567890120},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   9},
+   {TC_MUST_BE, 0xa000456789012000},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_6_store =
+  {
+   {
+    0x06310632,
+    0x16401641,
+    0x06810682,
+    0x16901691,
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 7
+//
+// Shift right instructions
+//
+// 
+
+INIT_INFO test_init_7[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x2)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x00123456)},
+   {IC_SET_REG_N,    4},
+   {IC_SET_REG_V,    SW_PLUS(0x00123456)},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+   {IC_SET_REG_N,    9},
+   {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_7[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_7[] =
+  {
+   
+   {TC_REG_N,   3},
+   {TC_MUST_BE, 0xa0012345},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   3},
+   {TC_MUST_BE, 0xa0000123},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   4},
+   {TC_MUST_BE, 0xa0012345},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   4},
+   {TC_MUST_BE, 0xa0000123},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xa000012345678901},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xa000000123456789},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   9},
+   {TC_MUST_BE, 0xa000012345678901},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   9},
+   {TC_MUST_BE, 0xa000000123456789},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_7_store =
+  {
+   {
+    0x07310732,
+    0x17401741,
+    0x07810782,
+    0x17901791,
+    -1},
+  };
+
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
@@ -3635,6 +3901,8 @@ ESC_TEST_INFO tests[] =
    {"ADDR inc/dec",            test_init_3, test_seq_3, test_res_3, 0, &test_3_store, ""},
    {"RH 6 Digits",             test_init_4, test_seq_4, test_res_4, 0, &test_4_store, ""},
    {"TEST",                    test_init_5, test_seq_5, test_res_5, 0, &test_5_store, ""},
+   {"Left Shift",              test_init_6, test_seq_6, test_res_6, 0, &test_6_store, ""},
+   {"Right Shift",             test_init_7, test_seq_7, test_res_7, 0, &test_7_store, ""},
    {"--END--",                 test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
   };
   
