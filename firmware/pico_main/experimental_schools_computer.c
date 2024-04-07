@@ -2105,7 +2105,9 @@ void stage_b_decode(ESC_STATE *s)
 	  
 	case 9:
 	  // Display
+
 	  // Stop and display (Aa)
+	  s->stop = 1;
 	  break;
 	  
 	}
@@ -2668,7 +2670,7 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
       if( s->stop )
 	{
 	  // Turn off the execution
-	  // As we run to stage C for eah instruction this stops at the end
+	  // As we run to stage C for each instruction this stops at the end
 	  // of stage C for the current instruction.
 	  s->run = 0;
 	  s->stop = 0;
@@ -4222,6 +4224,10 @@ TOKEN test_seq_10[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
@@ -4234,6 +4240,10 @@ TEST_INFO test_res_10[] =
 
    {TC_REG_IAR,   0},
    {TC_MUST_BE, 0x00000011},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000015},
    {TC_END_SECTION, 0},
 
    {TC_END,     0},
@@ -4253,7 +4263,7 @@ TEST_LOAD_STORE test_10_store =
     0x00000000,    // 08
     0x00000000,    // 09
     0x05102520,    // 10
-    0x00000000,    // 11
+    0x05102615,    // 11
     0x00000000,    // 12
     0x00000000,    // 13
     0x00000000,    // 14
