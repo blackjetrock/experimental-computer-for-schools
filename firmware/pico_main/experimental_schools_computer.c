@@ -3421,9 +3421,9 @@ INIT_INFO test_init_4[] =
    {IC_SET_REG_N,    3},
    {IC_SET_REG_V,    SW_PLUS(0x0)},
    {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_PLUS(0xA000000987654321)},
+   {IC_SET_REG_V,    DW_PLUS (0xA000000987654321L)},
    {IC_SET_REG_N,    9},
-   {IC_SET_REG_V,    DW_MINUS(0xA000112233445566)},
+   {IC_SET_REG_V,    DW_MINUS(0xA000112233445566L)},
    {IC_END,          0},
   };
 
@@ -3493,9 +3493,9 @@ INIT_INFO test_init_5[] =
    {IC_SET_REG_N,    4},
    {IC_SET_REG_V,    SW_PLUS(0x00111110)},
    {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_PLUS(0xA000000987654321)},
+   {IC_SET_REG_V,    DW_PLUS (0xA000056987654321)},
    {IC_SET_REG_N,    9},
-   {IC_SET_REG_V,    DW_MINUS(0xA000112233445566)},
+   {IC_SET_REG_V,    DW_MINUS(0xA000112233445560)},
    {IC_END,          0},
   };
 
@@ -3504,6 +3504,24 @@ TOKEN test_seq_5[] =
    TOK_KEY_NORMAL_RESET,
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
@@ -3567,6 +3585,30 @@ TEST_INFO test_res_5[] =
    {TC_MUST_BE,     0},
    {TC_END_SECTION, 0},
 
+   {TC_CL,          0},
+   {TC_MUST_BE,     1},
+   {TC_END_SECTION, 0},
+
+   {TC_CL,          0},
+   {TC_MUST_BE,     0},
+   {TC_END_SECTION, 0},
+
+   {TC_CL,          0},
+   {TC_MUST_BE,     1},
+   {TC_END_SECTION, 0},
+
+   {TC_CL,          0},
+   {TC_MUST_BE,     0},
+   {TC_END_SECTION, 0},
+
+   {TC_CL,          0},
+   {TC_MUST_BE,     1},
+   {TC_END_SECTION, 0},
+
+   {TC_CL,          0},
+   {TC_MUST_BE,     0},
+   {TC_END_SECTION, 0},
+
    {TC_END,     0},
   };
 
@@ -3577,6 +3619,9 @@ TEST_LOAD_STORE test_5_store =
     0x05110501,      // TEST R1>0, TEST R0>0
     0x05220502,      // TEST R1<0, TEST R0<0
     0x05330543,      // TEST LH digit R3=0, TEST LH digit R4=0
+    0x05440534,      // TEST RH digit R4=0, TEST RH digit R3=0
+    0x05830593,      // TEST LH digit R8=0, TEST LH digit R9=0
+    0x05940584,      // TEST RH digit R9=0, TEST RH digit R8=0
     -1},
   };
 
