@@ -2018,17 +2018,8 @@ void stage_b_decode(ESC_STATE *s)
 #endif
 
 	  store_value = STORE_SET_EXPONENT(store_value, s->R[0]);
-#if DEBUG_INST_21
-	  printf("\nStore value: 0x%08X", store_value);
-#endif
 	  store_value = STORE_SET_SIGN(    store_value, SW_SIGN(s->R[1]));
-#if DEBUG_INST_21
-	  printf("\nStore value: 0x%08X", store_value);
-#endif
 	  store_value = STORE_SET_DIGITS(  store_value, SW_DIGITS(s->R[1]));
-#if DEBUG_INST_21
-	  printf("\nStore value: 0x%08X", store_value);
-#endif
 	  write_sw_to_store(s, s->inst_aa, store_value);
 	  
 #if DEBUG_INST_21
