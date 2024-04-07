@@ -561,7 +561,7 @@ void kbd_read(ESC_STATE *s)
 			      break;
 			  
 			    case TC_MUST_BE:
-			      printf("\ntest type: %s", tc_reg_name(test_type));
+			      printf("\nTest type: %s", tc_reg_name(test_type));
 			      switch(test_type)
 				{
 				  // Test against the store
@@ -569,7 +569,7 @@ void kbd_read(ESC_STATE *s)
 				  if( s->store[rn] == tests[test_number].result_codes[test_res_i].n )
 				    {
 #if DEBUG_TEST_SEQ
-				      printf("\nStore[%02X] (%08X) == %08X", rn, s->store[rn], tests[test_number].result_codes[test_res_i].n);
+				      printf("\nStore[%02X] (%08X) == %08llX", rn, s->store[rn], tests[test_number].result_codes[test_res_i].n);
 #endif
 				    }
 				  else
@@ -2010,28 +2010,31 @@ void stage_b_decode(ESC_STATE *s)
 	  // significant digit positions. If the number is outside the range
 	  // that can be held in a storage location, set the ERROR indicator
 	  // and stop
-	  // Store (Ro) and (RO in location A in instruction format; i.e.
 	  store_value = 0;
-#if DEBUG_INST_21
-	  printf("\nStore value: 0x%08X", store_value);
-	  printf("\nR0:%08X R1:%08X", s->R[0], s-> R[1]);
-#endif
-
 	  store_value = STORE_SET_EXPONENT(store_value, s->R[0]);
 	  store_value = STORE_SET_SIGN(    store_value, SW_SIGN(s->R[1]));
 	  store_value = STORE_SET_DIGITS(  store_value, SW_DIGITS(s->R[1]));
 	  write_sw_to_store(s, s->inst_aa, store_value);
 	  
 #if DEBUG_INST_21
-	  printf("\nINST 20");
+	  printf("\nINST 21");
 	  printf("\nWriting %08X to store location %02X", store_value, s->inst_aa);
 #endif
 	  break;
 	  
 	case 2:
-	  // Store (Ro) and (RO in location Aa in instruction format; i.e.
-	  // copy (Ro) into the left-hand four digit positions and (RO into
+	  // Store (R0) and (R1) in location Aa in instruction format; i.e.
+	  // copy (R0) into the left-hand four digit positions and (R1) into
 	  // the right-hand four digit positions
+	  store_value = 0;
+	  store_value = STORE_SET_LH4_DIGITS(store_value, s->R[0]);
+	  store_value = STORE_SET_RH4_DIGITS(store_value, s->R[1]);
+	  write_sw_to_store(s, s->inst_aa, store_value);
+	  
+#if DEBUG_INST_22
+	  printf("\nINST 22");
+	  printf("\nWriting %08X to store location %02X", store_value, s->inst_aa);
+#endif
 	  
 	  break;
 	  
@@ -4008,6 +4011,10 @@ TOKEN test_seq_8[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
@@ -4028,7 +4035,12 @@ TEST_INFO test_res_8[] =
 
    {TC_STORE_N,   0x3},
    {TC_MUST_BE, 0xa5310732},
-
+   {TC_END_SECTION, 0},
+   
+   {TC_STORE_N,   0x4},
+   {TC_MUST_BE, 0x12345678},
+   {TC_END_SECTION, 0},
+   
    {TC_END,     0},
   };
 
@@ -4047,6 +4059,7 @@ TEST_LOAD_STORE test_8_store =
     0x0,
     0x20002001,
     0x20002103,
+    0x20012204,
     -1},
   };
 

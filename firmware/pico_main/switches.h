@@ -9,6 +9,7 @@
 #define DEBUG_KEY_SCAN         0
 
 #define DEBUG_INST_21          1
+#define DEBUG_INST_22          1
 
 #define OLED_ON                1
 #define SD_ON                  1
