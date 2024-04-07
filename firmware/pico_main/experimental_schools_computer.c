@@ -2065,10 +2065,15 @@ void stage_b_decode(ESC_STATE *s)
 	      s->iar.address = s->inst_aa;
 	      s->iar.a_flag = 0;
 	    }
+	  else
+	    {
+	      // Move to next IAR if test fails
+	      next_iar(s);
+	    }
 	  break;
 	  
 	case 6:
-	  // Branch if control latch is 1
+	  // Branch if control latch is 0
 	  if( s->control_latch == 0 )
 	    {
 	      // Move the IAR on to the next address and store that in the link register
@@ -2078,6 +2083,11 @@ void stage_b_decode(ESC_STATE *s)
 	      // Now over-write that IAR with the address we want to jump to
 	      s->iar.address = s->inst_aa;
 	      s->iar.a_flag = 0;
+	    }
+	  else
+	    {
+	      // Move to next IAR if test fails
+	      next_iar(s);
 	    }
 	  
 	  break;
@@ -4065,6 +4075,8 @@ TEST_LOAD_STORE test_8_store =
     0x20012204,
     -1},
   };
+
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Test 9
@@ -4172,22 +4184,116 @@ TEST_LOAD_STORE test_9_store =
     -1},
   };
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 10
+//
+// Branches
+// 
+// 
+
+INIT_INFO test_init_10[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    4},
+   {IC_SET_REG_V,    SW_MINUS(0x02)},
+   {IC_SET_REG_N,    5},
+   {IC_SET_REG_V,    SW_PLUS(0x20)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_10[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_10[] =
+  {
+   
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000010},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000011},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_10_store =
+  {
+   {
+    0x05002510,    // 00
+    0x00000000,    // 01
+    0x00000000,    // 02
+    0x00000000,    // 03
+    0x00000000,    // 04
+    0x00000000,    // 05
+    0x00000000,    // 06
+    0x00000000,    // 07
+    0x00000000,    // 08
+    0x00000000,    // 09
+    0x05102520,    // 10
+    0x00000000,    // 11
+    0x00000000,    // 12
+    0x00000000,    // 13
+    0x00000000,    // 14
+    0x00000000,    // 15
+    0x00000000,    // 16
+    0x00000000,    // 17
+    0x64070000,    // 18
+    0x00000000,    // 19
+    0x00000000,    // 20
+    0x00000000,    // 21
+    0x00000000,    // 22
+    0x00000000,    // 23
+    0x00000000,    // 24
+    0x00000000,    // 25
+    0x00000000,    // 26
+    0x00000000,    // 27
+    0x00000000,    // 28
+    0x00000000,    // 29
+    0x44200000,    // 30
+    -1},
+  };
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
-   {"KB Input",                test_init_0, test_seq_0, test_res_0, 0, &test_0_store, ""},
-   {"Reg Inst 0[0-3],1[0-3]",  test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
-   {"Test 2",                  test_init_2, test_seq_2, test_res_2, 0, &test_2_store, ""},
-   {"ADDR inc/dec",            test_init_3, test_seq_3, test_res_3, 0, &test_3_store, ""},
-   {"RH 6 Digits",             test_init_4, test_seq_4, test_res_4, 0, &test_4_store, ""},
-   {"TEST",                    test_init_5, test_seq_5, test_res_5, 0, &test_5_store, ""},
-   {"Left Shift",              test_init_6, test_seq_6, test_res_6, 0, &test_6_store, ""},
-   {"Right Shift",             test_init_7, test_seq_7, test_res_7, 0, &test_7_store, ""},
-   {"Inst 20",                 test_init_8, test_seq_8, test_res_8, 0, &test_8_store, ""},
-   {"Branches",                test_init_9, test_seq_9, test_res_9, 0, &test_9_store, ""},
-   {"--END--",                 test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
+   {"KB Input",                test_init_0,  test_seq_0,  test_res_0,  0, &test_0_store,  ""},
+   {"Reg Inst 0[0-3],1[0-3]",  test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
+   {"Test 2",                  test_init_2,  test_seq_2,  test_res_2,  0, &test_2_store,  ""},
+   {"ADDR inc/dec",            test_init_3,  test_seq_3,  test_res_3,  0, &test_3_store,  ""},
+   {"RH 6 Digits",             test_init_4,  test_seq_4,  test_res_4,  0, &test_4_store,  ""},
+   {"TEST",                    test_init_5,  test_seq_5,  test_res_5,  0, &test_5_store,  ""},
+   {"Left Shift",              test_init_6,  test_seq_6,  test_res_6,  0, &test_6_store,  ""},
+   {"Right Shift",             test_init_7,  test_seq_7,  test_res_7,  0, &test_7_store,  ""},
+   {"Inst 20",                 test_init_8,  test_seq_8,  test_res_8,  0, &test_8_store,  ""},
+   {"Branches",                test_init_9,  test_seq_9,  test_res_9,  0, &test_9_store,  ""},
+   {"CL=1,0 Branches",         test_init_10, test_seq_10, test_res_10, 0, &test_10_store, ""},
+   
+   {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
   
 ////////////////////////////////////////////////////////////////////////////////
