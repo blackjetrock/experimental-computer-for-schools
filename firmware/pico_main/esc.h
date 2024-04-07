@@ -48,10 +48,18 @@ typedef uint32_t ADDRESS;
 #define BOUND_ADDRESS(XXX) SW_PLUS((XXX&0x00FFFFFF)>0x199?0x199:XXX)
 
 // Get the single word sign
-#define SW_SIGN(XX) ((XX & 0xF0000000)>>28)
+#define SW_SIGN(XX)            ((XX & 0xF0000000)>>28)
+
+#define STORE_EXPONENT(XX)     ((XX & 0x0F000000)>>24)
+#define STORE_DIGITS(XX)       ((XX & 0x00FFFFFF)>>0 )
+#define STORE_SIGN(XX)         ((XX & 0xF0000000)>>28)
+#define STORE_LH4_DIGITS(XX)   ((XX & 0xFFFF0000)>>16)
+#define STORE_RH4_DIGITS(XX)   ((XX & 0x0000FFFF)>>0 )
 
 // Get the double word sign
-#define DW_SIGN(XX) ((XX & 0xF000000000000000)>>60)
+#define DW_SIGN(XX)            ((XX & 0xF000000000000000)>>60)
+
+
 
 // Remove signs from values
 #define REMOVED_SW_SIGN(XX)    (XX & 0x0FFFFFFF)

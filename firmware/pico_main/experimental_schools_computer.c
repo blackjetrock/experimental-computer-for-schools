@@ -1543,6 +1543,10 @@ void stage_c_decode(ESC_STATE *s)
     case 6:
       switch(s->inst_digit_b)
 	{
+	case 0:
+	  next_iar(s);
+	  break;
+	  
 	case 4:
 	  // Unconditional branch
 	  // IAR already set up.
@@ -1618,7 +1622,8 @@ void stage_b_decode(ESC_STATE *s)
   int is_gt_zero = 0;
   int is_zero = 0;
   int is_lt_zero = 0;
-  
+  REGISTER_SINGLE_WORD  store_value;
+	  
   switch(s->inst_digit_a)
     {
     case 0:
@@ -1911,102 +1916,112 @@ void stage_b_decode(ESC_STATE *s)
     case 4:
     case 5:
     case 6:
-      switch(s->inst_digit_a)
+      switch(s->inst_digit_b)
 	{
-	case 2:
-	  switch(s->inst_digit_b)
+	case 0:
+	  // Copy (Aa) into R0 and R1 as follows. If Aa contains
+	  // data (recognisable by a sign in digit position 1), copy the
+	  // exponent digit into Ro and the sign and significant digits into
+	  // Ri. If Aa contains an instruction (recognisable by a decimal
+	  // digit in position 1), copy the left-hand four digits into Ro and
+	  // the right-hand four digits into Ri
+	  store_value = s->store[s->inst_aa];
+	  
+	  if( (STORE_SIGN(store_value)==WORD_SIGN_PLUS) || (STORE_SIGN(store_value)==WORD_SIGN_MINUS) )
 	    {
-	    case 0:
-	      // Copy (Aa) into Ro and Ri as follows. If Aa contains
-	      // data (recognisable by a sign in digit position 1), copy the
-	      // exponent digit into Ro and the sign and significant digits into
-	      // Ri. If Aa contains an instruction (recognisable by a decimal
-	      // digit in position 1), copy the left-hand four digits into Ro and
-	      // the right-hand four digits into Ri
-
-	      break;
-	      
-	    case 1:
-
-	      // Store (Ro) and (RO in location Aa in data format; i.e. copy (Ro)
-	      // into the exponent position, and copy (RO into the sign and
-	      // significant digit positions. If the number is outside the range
-	      // that can be held in a storage location, set the ERROR indicator
-	      // and stop
-	      // Store (Ro) and (RO in location A in instruction format; i.e.
-
-	      break;
-	      
-	    case 2:
-	      // Store (Ro) and (RO in location Aa in instruction format; i.e.
-	      // copy (Ro) into the left-hand four digit positions and (RO into
-	      // the right-hand four digit positions
-
-	      break;
-	      
-	    case 3:
-	      // Not used
-	      break;
-	      
-	    case 4:
-	      // Unconditional branch
+	      // Data (value)
+	      s->R[0] = STORE_EXPONENT(store_value);
+	      s->R[1] = STORE_DIGITS(store_value);
+	      s->R[1] = SET_SW_SIGN(s->R[1], STORE_SIGN(store_value));
+	    }
+	  else
+	    {
+	      // Instruction
+	      s->R[0] = STORE_LH4_DIGITS(store_value);
+	      s->R[1] = STORE_RH4_DIGITS(store_value);
+	    }
+	  
+	  break;
+	  
+	case 1:
+	  
+	  // Store (Ro) and (RO in location Aa in data format; i.e. copy (Ro)
+	  // into the exponent position, and copy (RO into the sign and
+	  // significant digit positions. If the number is outside the range
+	  // that can be held in a storage location, set the ERROR indicator
+	  // and stop
+	  // Store (Ro) and (RO in location A in instruction format; i.e.
+	  
+	  break;
+	  
+	case 2:
+	  // Store (Ro) and (RO in location Aa in instruction format; i.e.
+	  // copy (Ro) into the left-hand four digit positions and (RO into
+	  // the right-hand four digit positions
+	  
+	  break;
+	  
+	case 3:
+	  // Not used
+	  break;
+	  
+	case 4:
+	  // Unconditional branch
+	  // Move the IAR on to the next address and store that in the link register
+	  next_iar(s);
+	  s->link_register = s->iar.address;
+	  
+	  // Now over-write that IAR with the address we want to jump to
+	  s->iar.address = s->inst_aa;
+	  s->iar.a_flag = 0;
+	  
+	  break;
+	  
+	case 5:
+	  // Branch if control latch is 1
+	  if( s->control_latch == 1 )
+	    {
 	      // Move the IAR on to the next address and store that in the link register
 	      next_iar(s);
 	      s->link_register = s->iar.address;
-
+	      
 	      // Now over-write that IAR with the address we want to jump to
 	      s->iar.address = s->inst_aa;
 	      s->iar.a_flag = 0;
-	      
-	      break;
-	      
-	    case 5:
-	      // Branch if control latch is 1
-	      if( s->control_latch == 1 )
-		{
-		  // Move the IAR on to the next address and store that in the link register
-		  next_iar(s);
-		  s->link_register = s->iar.address;
-		  
-		  // Now over-write that IAR with the address we want to jump to
-		  s->iar.address = s->inst_aa;
-		  s->iar.a_flag = 0;
-		}
-	      break;
-	      
-	    case 6:
-	      // Branch if control latch is 1
-	      if( s->control_latch == 0 )
-		{
-		  // Move the IAR on to the next address and store that in the link register
-		  next_iar(s);
-		  s->link_register = s->iar.address;
-		  
-		  // Now over-write that IAR with the address we want to jump to
-		  s->iar.address = s->inst_aa;
-		  s->iar.a_flag = 0;
-		}
-
-	      break;
-	      
-	    case 7:
-	      // Store contents of link address in Aa
-	      write_sw_to_store(s, s->inst_aa, s->link_register);
-	      //s->store[s->inst_aa] = s->link_register;
-	      break;
-	      
-	    case 8:
-	      // Input
-	      // Stop and when restarted transfer keyboard register contents into Aa
-	      break;
-	      
-	    case 9:
-	      // Display
-	      // Stop and display (Aa)
-	      break;
-	      
 	    }
 	  break;
+	  
+	case 6:
+	  // Branch if control latch is 1
+	  if( s->control_latch == 0 )
+	    {
+	      // Move the IAR on to the next address and store that in the link register
+	      next_iar(s);
+	      s->link_register = s->iar.address;
+	      
+	      // Now over-write that IAR with the address we want to jump to
+	      s->iar.address = s->inst_aa;
+	      s->iar.a_flag = 0;
+	    }
+	  
+	  break;
+	  
+	case 7:
+	  // Store contents of link address in Aa
+	  write_sw_to_store(s, s->inst_aa, s->link_register);
+	  //s->store[s->inst_aa] = s->link_register;
+	  break;
+	  
+	case 8:
+	  // Input
+	  // Stop and when restarted transfer keyboard register contents into Aa
+	  break;
+	  
+	case 9:
+	  // Display
+	  // Stop and display (Aa)
+	  break;
+	  
 	}
       break;
 
@@ -3891,6 +3906,66 @@ TEST_LOAD_STORE test_7_store =
     -1},
   };
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 8
+//
+// Instructions [2-6]0
+// 
+// 
+
+INIT_INFO test_init_8[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_8[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_2,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_8[] =
+  {
+   
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0x5},
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xa0310732},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0x1234},
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0x5678},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_8_store =
+  {
+   {
+    SW_PLUS(0x05310732),
+    0x12345678,
+    0x20002001,
+    -1},
+  };
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -3904,6 +3979,7 @@ ESC_TEST_INFO tests[] =
    {"TEST",                    test_init_5, test_seq_5, test_res_5, 0, &test_5_store, ""},
    {"Left Shift",              test_init_6, test_seq_6, test_res_6, 0, &test_6_store, ""},
    {"Right Shift",             test_init_7, test_seq_7, test_res_7, 0, &test_7_store, ""},
+   {"Inst 20",                 test_init_8, test_seq_8, test_res_8, 0, &test_8_store, ""},
    {"--END--",                 test_init_1, test_seq_1, test_res_1, 0, &test_1_store, ""},
   };
   
