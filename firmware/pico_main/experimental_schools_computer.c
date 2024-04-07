@@ -2145,7 +2145,7 @@ void stage_a_decode(ESC_STATE *s)
   // Pre-calculate the Aa field of the instruction for some later
   // decoding
 
-  s->inst_ap = (s->inst_digit_c) *10 + (s->inst_digit_d);
+  s->inst_ap = (s->inst_digit_c) * 16 + (s->inst_digit_d);
   
   // Calculate the presumptive addresses
   
@@ -4074,7 +4074,7 @@ INIT_INFO test_init_9[] =
    {IC_SET_REG_N,    3},
    {IC_SET_REG_V,    SW_PLUS(0x1)},
    {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_PLUS(0x10)},
+   {IC_SET_REG_V,    SW_MINUS(0x02)},
    {IC_SET_REG_N,    5},
    {IC_SET_REG_V,    SW_PLUS(0x20)},
 
@@ -4086,6 +4086,12 @@ TOKEN test_seq_9[] =
    TOK_KEY_NORMAL_RESET,
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
@@ -4107,16 +4113,51 @@ TEST_INFO test_res_9[] =
    {TC_MUST_BE, 0x00000001},
    {TC_END_SECTION, 0},
 
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000030},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000018},
+   {TC_END_SECTION, 0},
+
    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_9_store =
   {
    {
-    0x24020000,
-    0x35100000,
-    0x34000000,
-    0x00000000,
+    0x24020000,    // 00
+    0x54100000,    // 01
+    0x34000000,    // 02
+    0x00000000,    // 03
+    0x00000000,    // 04
+    0x00000000,    // 05
+    0x00000000,    // 06
+    0x00000000,    // 07
+    0x00000000,    // 08
+    0x00000000,    // 09
+    0x00000000,    // 10
+    0x00000000,    // 11
+    0x00000000,    // 12
+    0x00000000,    // 13
+    0x00000000,    // 14
+    0x00000000,    // 15
+    0x00000000,    // 16
+    0x00000000,    // 17
+    0x00000000,    // 18
+    0x00000000,    // 19
+    0x00000000,    // 20
+    0x00000000,    // 21
+    0x00000000,    // 22
+    0x00000000,    // 23
+    0x00000000,    // 24
+    0x00000000,    // 25
+    0x00000000,    // 26
+    0x00000000,    // 27
+    0x00000000,    // 28
+    0x00000000,    // 29
+    0x44200000,    // 30
     -1},
   };
 
