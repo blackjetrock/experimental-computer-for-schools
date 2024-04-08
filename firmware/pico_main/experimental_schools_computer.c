@@ -266,6 +266,7 @@ ESC_TEST_INFO tests[];
 void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...);
 char *display_register_and_contents(ESC_STATE *s, int regno);
 char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address);
+char *display_store_word(SINGLE_WORD w);
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -1513,7 +1514,7 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
   int exp_a, exp_b, exp_r;
   int exp_diff;
   int digits_a, digits_b;
-  int sign_a, sign_b;
+  int sign_a, sign_b, sign_r;
   int digits_r;
   SINGLE_WORD result;
   
@@ -1533,23 +1534,26 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
   if( exp_a > exp_b )
     {
       // We shift a
-      for(int i= (exp_a - exp_b); i>0; i++)
+      for(int i= (exp_a - exp_b); i>0; i--)
 	{
 	  digits_a >>= 4;
 	}
       exp_r = exp_b;
+      sign_r = sign_b;
     }
   else
     {
       // We shift b
-      for(int i= (exp_b - exp_a); i>0; i++)
+      for(int i= (exp_b - exp_a); i>0; i--)
 	{
 	  digits_b >>= 4;
 	}
       exp_r = exp_a;
+      sign_r = sign_a;
     }
 
 #if DEBUG_FP
+  printf("\nexp_a:%016X  exp_b:%016X", exp_a, exp_b);
   printf("\ndigits_a:%016X  digits_b:%016X", digits_a, digits_b); 
 #endif
 
@@ -1557,7 +1561,14 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
   result = bcd_sw_addition(SET_SW_SIGN(digits_a, sign_a), SET_SW_SIGN(digits_b,sign_b));
 
   // Put exponent back
-  STORE_SET_EXPONENT(result,exp_r);
+  result = STORE_SET_EXPONENT(result,exp_r);
+
+#if DEBUG_FP
+  printf("\na:%s", display_store_word(a));
+  printf("\nb:%s", display_store_word(b));
+  printf("\nresult:%s", display_store_word(result));
+  
+#endif
   
   // Find smaller number and shift it so the exponents are the same
   return(result);
@@ -4636,9 +4647,9 @@ TEST_LOAD_STORE test_11_store =
   {
    {
     0x70010203,    // 00
-    0xA0000003,    // 01
-    0xA0000004,    // 02
-    0xA0000005,    // 03
+    0xA0000000,    // 01
+    0xA2000150,    // 02
+    0xA1000050,    // 03
 
     -1},
   };
@@ -5581,10 +5592,26 @@ char *display_store_word(SINGLE_WORD w)
   static char result[MAX_LINE];
   static char result2[MAX_LINE];
 
+  result2[0] ='\0';
+  result2[1] ='\0';
+  
   int digit_a = INST_A_FIELD(w);
   int digit_b = INST_B_FIELD(w);
-  
   char sign_char = ' ';
+
+  switch(digit_a)
+    {
+    case WORD_SIGN_PLUS:
+      sign_char = '+';
+      break;
+      
+    case WORD_SIGN_MINUS:
+      sign_char = '-';
+      break;
+      
+    default:
+      break;
+    }
   
   switch(digit_a)
     {
@@ -5599,30 +5626,23 @@ char *display_store_word(SINGLE_WORD w)
     case 8:
     case 9:
       // Instruction
-      sprintf(result, "%08X", w);
+      sprintf(result, "%c%06X", sign_char, w);
       break;
 
     default:
       // Floating point
-      switch(digit_a)
-	{
-	case WORD_SIGN_MINUS:
-	  sign_char = '-';
-	  break;
+      sprintf(result, "%c%06X", sign_char, w);
 
-	default:
-	  break;
-	}
-
-      sprintf(result, "%c06X", sign_char, w);
-
-      // Insert deimal point
-      strncpy(result2, result, digit_b + 1);
+      // Insert decimal point
+      result2[0] = sign_char;
+      strncat(result2, result+3, 6-digit_b);
       strcat(result2, ".");
-      strcat(result2, result+digit_b+1+1);
-
+      strncat(result2, result+3+6-digit_b, digit_b);
+      strcpy(result, result2);
       break;
     }
+
+  return(result);
 }
 
 char *display_iar(IAR iar)
