@@ -5626,7 +5626,7 @@ char *display_store_word(SINGLE_WORD w)
     case 8:
     case 9:
       // Instruction
-      sprintf(result, "  %c%06X", sign_char, w);
+      sprintf(result, "  %c%08X", sign_char, w);
       break;
 
     default:
