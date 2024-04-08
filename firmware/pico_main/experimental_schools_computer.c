@@ -5562,7 +5562,7 @@ void update_computer_display(ESC_STATE *es)
     }
   else
     {
-      sprintf(tmp, "\n2: %2s   %8s%c",
+      sprintf(tmp, "\n2: %2s  %8s %c",
 	      display_iar(es->aux_iar),
 	      display_instruction(es->instruction_register),
 	      es->stage
@@ -5576,7 +5576,7 @@ void update_computer_display(ESC_STATE *es)
     }
   else
     {
-      sprintf(tmp, "%2s   %8s%c",
+      sprintf(tmp, "%2s  %8s %c",
 	      display_iar(es->aux_iar),
 	      display_instruction(es->instruction_register),
 	      es->stage
