@@ -1501,8 +1501,67 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
     error_msg("%s: Register unknown *%d", __FUNCTION__, dest);		\
   }
 
-SHIFT_INST(left,<<)
-  SHIFT_INST(right,>>)
+SHIFT_INST(left,<<);
+SHIFT_INST(right,>>);
+
+////////////////////////////////////////////////////////////////////////////////
+
+// Floating point operations
+
+SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
+{
+  int exp_a, exp_b, exp_r;
+  int exp_diff;
+  int digits_a, digits_b;
+  int sign_a, sign_b;
+  int digits_r;
+  SINGLE_WORD result;
+  
+  digits_a  =  STORE_GET_DIGITS(a);
+  digits_b  =  STORE_GET_DIGITS(b);
+  sign_a =  STORE_GET_SIGN(a);
+  sign_b =  STORE_GET_SIGN(b);
+  
+  exp_a = STORE_GET_EXPONENT(a);
+  exp_b = STORE_GET_EXPONENT(b);
+
+#if DEBUG_FP
+  printf("\n%s: ", __FUNCTION__);
+  printf("\na:%016X  b:%016X", a, b); 
+#endif
+  
+  if( exp_a > exp_b )
+    {
+      // We shift a
+      for(int i= (exp_a - exp_b); i>0; i++)
+	{
+	  digits_a >>= 4;
+	}
+      exp_r = exp_b;
+    }
+  else
+    {
+      // We shift b
+      for(int i= (exp_b - exp_a); i>0; i++)
+	{
+	  digits_b >>= 4;
+	}
+      exp_r = exp_a;
+    }
+
+#if DEBUG_FP
+  printf("\ndigits_a:%016X  digits_b:%016X", digits_a, digits_b); 
+#endif
+
+  // Add digits
+  result = bcd_sw_addition(SET_SW_SIGN(digits_a, sign_a), SET_SW_SIGN(digits_b,sign_b));
+
+  // Put exponent back
+  STORE_SET_EXPONENT(result,exp_r);
+  
+  // Find smaller number and shift it so the exponents are the same
+  return(result);
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -1583,6 +1642,8 @@ SHIFT_INST(left,<<)
 
 void stage_c_decode(ESC_STATE *s, int display)
 {
+  SINGLE_WORD a1v, a2v, a3v;
+  
   // Decode the instruction
   // First the digits 1-4
 
@@ -1618,6 +1679,59 @@ void stage_c_decode(ESC_STATE *s, int display)
     case 7:
     case 8:
     case 9:
+
+      switch(s->inst_digit_b)
+	{
+	  //(Aa1) <- (Aa2) + (Aa3)
+	case 0:
+#if DEBUG_FP
+	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
+#endif
+	  a2v = load_from_store(s, s->Aa2);
+	  a3v = load_from_store(s, s->Aa3);
+
+	  a1v = fp_add(a2v, a3v);
+	  write_sw_to_store(s, s->Aa1, a1v);
+	  break;
+
+	  //(Aa1) <- (Aa2) - (Aa3)
+	case 1:
+	  break;
+	  
+	  //(Aa1) <- (Aa2) * (Aa3)
+	case 2:
+	  break;
+	  
+	  //(Aa1) <- (Aa2) / (Aa3)
+	case 3:
+	  break;
+
+	  // Branch to (Aa1) if (Aa2) = (Aa3)
+	case 4:
+	  break;
+
+	  // Branch to (Aa1) if (Aa2) > (Aa3)
+	case 5:
+	  break;
+
+	  // Branch to |(Aa1)| if |(Aa2)| < |(Aa3)|
+	case 6:
+	  break;
+
+	  // Branch to (Aa1) if (Aa3) <> 0 and store link address in Aa2
+	case 7:
+	  break;
+	  
+	  // Input and display. When restarted KB register is copied to Aa1
+	  // While stopped (Aa1), (Aa2) and (Aa3) are displayed.
+	case 8:
+	  break;
+	  
+ 	  // Stop and display (Aa1), (Aa2) and (Aa3).
+	case 9:
+	  break;
+
+	}
       break;
     }
 }
@@ -1647,9 +1761,9 @@ void stage_b_decode_core(ESC_STATE *s, int shift, int display)
       s->Aa2 = s->Ap2;
       s->Aa3 = s->Ap3;
 
-      display_on_line(s, display, 3, "%3d         %3d", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3d         %3d", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3d         %3d", s->Ap3, s->Aa3);
+      display_on_line(s, display, 3, "%3X         %3X", s->Ap1, s->Aa1);
+      display_on_line(s, display, 4, "%3X         %3X", s->Ap2, s->Aa2);
+      display_on_line(s, display, 5, "%3X         %3X", s->Ap3, s->Aa3);
       display_on_line(s, display, 6, "");
 
       break;
@@ -1672,9 +1786,9 @@ void stage_b_decode_core(ESC_STATE *s, int shift, int display)
       s->Aa2 = load_from_store(s, s->Ap2);
       s->Aa3 = load_from_store(s, s->Ap3);
 
-      display_on_line(s, display, 3, "%3d         %3d", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3d         %3d", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3d         %3d", s->Ap3, s->Aa3);
+      display_on_line(s, display, 3, "%3X         %3X", s->Ap1, s->Aa1);
+      display_on_line(s, display, 4, "%3X         %3X", s->Ap2, s->Aa2);
+      display_on_line(s, display, 5, "%3X         %3X", s->Ap3, s->Aa3);
       display_on_line(s, display, 6, "");
       break;
     }
@@ -2243,6 +2357,16 @@ void stage_b_decode(ESC_STATE *s, int display)
 
       // Three address instructions
     case 7:
+      s->Aa1 = s->Ap1;
+      s->Aa2 = s->Ap2;
+      s->Aa3 = s->Ap3;
+      display_on_line(s, display, 3, "%3X", s->Aa1);
+      display_on_line(s, display, 4, "%3X", s->Aa2);
+      display_on_line(s, display, 5, "%3X", s->Aa3);
+      display_on_line(s, display, 6, "");
+
+      break;
+      
     case 8:
     case 9:
       // Indirect
@@ -2407,9 +2531,9 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->Ap1 = INST_3_ADDR_1(s->instruction_register);
       s->Ap2 = INST_3_ADDR_2(s->instruction_register);
       s->Ap3 = INST_3_ADDR_3(s->instruction_register);
-      display_on_line(s, display, 3, "%3d", s->Ap1);
-      display_on_line(s, display, 4, "%3d", s->Ap2);
-      display_on_line(s, display, 5, "%3d", s->Ap3);
+      display_on_line(s, display, 3, "%3X", s->Ap1);
+      display_on_line(s, display, 4, "%3X", s->Ap2);
+      display_on_line(s, display, 5, "%3X", s->Ap3);
       display_on_line(s, display, 6, "");
       break;
     }
@@ -4463,6 +4587,61 @@ TEST_LOAD_STORE test_10_store =
     0x44200000,    // 30
     -1},
   };
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 11
+//
+// FP addition
+// 
+// 
+
+INIT_INFO test_init_11[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    4},
+   {IC_SET_REG_V,    SW_MINUS(0x02)},
+   {IC_SET_REG_N,    5},
+   {IC_SET_REG_V,    SW_PLUS(0x20)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_11[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_11[] =
+  {
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000015},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_11_store =
+  {
+   {
+    0x70010203,    // 00
+    0xA0000003,    // 01
+    0xA0000004,    // 02
+    0xA0000005,    // 03
+
+    -1},
+  };
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4480,6 +4659,7 @@ ESC_TEST_INFO tests[] =
    {"Inst 20",                 test_init_8,  test_seq_8,  test_res_8,  0, &test_8_store,  ""},
    {"Branches",                test_init_9,  test_seq_9,  test_res_9,  0, &test_9_store,  ""},
    {"CL=1,0 Branches",         test_init_10, test_seq_10, test_res_10, 0, &test_10_store, ""},
+   {"Fp Addition",             test_init_11, test_seq_11, test_res_11, 0, &test_11_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
