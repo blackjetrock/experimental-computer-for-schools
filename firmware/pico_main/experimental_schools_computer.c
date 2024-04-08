@@ -267,6 +267,7 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...);
 char *display_register_and_contents(ESC_STATE *s, int regno);
 char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address);
 char *display_store_word(SINGLE_WORD w);
+SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -570,19 +571,19 @@ void kbd_read(ESC_STATE *s)
 				{
 				  // Test against the store
 				case TC_STORE_N:
-				  if( s->store[rn] == tests[test_number].result_codes[test_res_i].n )
+				  if( load_from_store(s, rn) == tests[test_number].result_codes[test_res_i].n )
 				    {
 #if DEBUG_TEST_SEQ
-				      printf("\nStore[%02X] (%08X) == %08llX", rn, s->store[rn], tests[test_number].result_codes[test_res_i].n);
+				      printf("\nStore[%02X] (%08X) == %08llX", rn, load_from_store(s, rn), tests[test_number].result_codes[test_res_i].n);
 #endif
 				    }
 				  else
 				    {
 #if DEBUG_TEST_SEQ
 				      // Not OK
-				      printf("\nStore[%02X] (%08X) <> %08X", rn, s->store[rn], tests[test_number].result_codes[test_res_i].n);
+				      printf("\nStore[%02X] (%08X) <> %08X", rn, load_from_store(s, rn), tests[test_number].result_codes[test_res_i].n);
 #endif
-				      test_fail_info("Store[%02X] (%016llx) <> %016llx", rn, s->store[rn], tests[test_number].result_codes[test_res_i].n);
+				      test_fail_info("Store[%02X] (%016llx) <> %016llx", rn, load_from_store(s, rn), tests[test_number].result_codes[test_res_i].n);
 				      tests[test_number].passed = 0;
 				    }
 				  break;
@@ -1324,7 +1325,7 @@ int bcd_to_binary(SINGLE_WORD bcd)
 
 // Address is signed so has to have that stripped. It is never negative.
 //
-// It is also in BCd so has to be converted to binary to get an array index
+// It is also in BCD so has to be converted to binary to get an array index
 // for the store array
 //
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address)
@@ -1703,6 +1704,13 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	  a1v = fp_add(a2v, a3v);
 	  write_sw_to_store(s, s->Aa1, a1v);
+
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 6, "");
+
+	  next_iar(s);
 	  break;
 
 	  //(Aa1) <- (Aa2) - (Aa3)
@@ -4631,13 +4639,20 @@ TOKEN test_seq_11[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
 TEST_INFO test_res_11[] =
   {
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000015},
+   {TC_STORE_N,   0x21},
+   {TC_MUST_BE, 0xA1001132},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,   0x20},
+   {TC_MUST_BE, 0xA1000882},
    {TC_END_SECTION, 0},
 
    {TC_END,     0},
@@ -4646,11 +4661,37 @@ TEST_INFO test_res_11[] =
 TEST_LOAD_STORE test_11_store =
   {
    {
-    0x70010203,    // 00
-    0xA0000000,    // 01
-    0xA2000150,    // 02
-    0xA1000050,    // 03
-
+    0x70212223,    // 00
+    0x70202324,    // 01
+    0x00000000,    // 02
+    0x00000000,    // 03
+    0x00000000,    // 04
+    0x00000000,    // 05
+    0x00000000,    // 06
+    0x00000000,    // 07
+    0x00000000,    // 08
+    0x00000000,    // 09
+    0x00000000,    // 10
+    0x00000000,    // 11
+    0x00000000,    // 12
+    0x00000000,    // 13
+    0x00000000,    // 14
+    0x00000000,    // 15
+    0x00000000,    // 16
+    0x00000000,    // 17
+    0x00000000,    // 18
+    0x00000000,    // 19
+    0x00000000,    // 20
+    0x00000000,    // 21
+    0xA1000125,    // 22
+    0xA3100701,    // 23
+    0xB1000125,    // 24
+    0x00000000,    // 25
+    0x00000000,    // 26
+    0x00000000,    // 27
+    0x00000000,    // 28
+    0x00000000,    // 29
+    0x44200000,    // 30
     -1},
   };
 
@@ -5598,7 +5639,7 @@ char *display_store_word(SINGLE_WORD w)
   int digit_a = INST_A_FIELD(w);
   int digit_b = INST_B_FIELD(w);
   char sign_char = ' ';
-
+  
   switch(digit_a)
     {
     case WORD_SIGN_PLUS:
@@ -5626,19 +5667,21 @@ char *display_store_word(SINGLE_WORD w)
     case 8:
     case 9:
       // Instruction
-      sprintf(result, "  %c%08X", sign_char, w);
+      sprintf(result, "%08X", w);
       break;
 
     default:
       // Floating point
-      sprintf(result, "  %c%06X ", sign_char, w);
+      sprintf(result, "%c%08X", sign_char, w);
 
+      sprintf(result2, "%c", sign_char);
+      
       // Insert decimal point
-      result2[0] = sign_char;
       strncat(result2, result+3, 6-digit_b);
-      strcat(result2, ".");
+      strcat( result2, ".");
       strncat(result2, result+3+6-digit_b, digit_b);
-      strcpy(result, result2);
+      strcat( result2, "");
+      strcpy( result, result2);
       break;
     }
 
