@@ -5590,71 +5590,6 @@ void update_computer_display(ESC_STATE *es)
   
   strcat(dsp, tmp);
 
-  
-#if 0
-  // Old disply method
-  
-  //------------------------------------------------------------------------------
-  // Line 3
-  //------------------------------------------------------------------------------
-
-  
-  sprintf(tmp, "\n3: %s",  display_presumptive_address_1(es));
-  strcat(dsp, tmp);
-  
-#if OLED_ON
-  sprintf(tmp, "%s",  display_presumptive_address_1(es));
-  oled_set_xy(&oled0, 0, oledy);
-  oledy+=8;
-  
-  oled_display_string(&oled0, tmp);
-#endif
-
-  //------------------------------------------------------------------------------
-  // Line 4
-  //------------------------------------------------------------------------------
-  
-  sprintf(tmp, "\n4: %s",  display_presumptive_address_2(es));
-  strcat(dsp, tmp);
-  
-#if OLED_ON
-  sprintf(tmp, "%s",  display_presumptive_address_2(es));
-  oled_set_xy(&oled0, 0, oledy);
-  oledy+=8;
-  oled_display_string(&oled0, tmp);
-#endif
-
-  //------------------------------------------------------------------------------
-  // Line 5
-  //------------------------------------------------------------------------------
-  
-  sprintf(tmp, "\n5: ");
-  strcat(dsp, tmp);
-
-  //------------------------------------------------------------------------------
-  // Line 6
-  //------------------------------------------------------------------------------
-  
-  if( es->address_register2 != 0xFFFFFFFF )
-    {
-      SINGLE_WORD w = load_from_store(es, es->address_register2);
-      sprintf(tmp, "\n6: %s     %8s", display_address(es->address_register2), display_word(w));
-    }
-  strcat(dsp, tmp);
-  
-#if OLED_ON
-  if( es->address_register2 != 0xFFFFFFFF )
-    {
-      SINGLE_WORD w = load_from_store(es, es->address_register2);
-      sprintf(tmp, "%s     %8s", display_address(es->address_register2), display_word(w));
-    }
-  
-  oled_set_xy(&oled0, 0, oledy);
-  oledy+=8;
-  oled_display_string(&oled0, tmp);
-#endif
-
-#else
   // Display the lower four lines that have been set up
   for(int i=3; i<=6; i++)
     {
@@ -5668,8 +5603,6 @@ void update_computer_display(ESC_STATE *es)
       strcat(dsp, &(display_line[i-1][0]));
 #endif
     }
-  
-#endif
   
   // Now update the display output device(s)
   printf("\n%s\n", dsp);

@@ -43,15 +43,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  19 .debug_ranges 00015aa8  00000000  00000000  00154c88  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_line   0004f946  00000000  00000000  0016a730  2**0
+ 20 .debug_line   0004f941  00000000  00000000  0016a730  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_str    0000ca3c  00000000  00000000  001ba076  2**0
+ 21 .debug_str    0000ca3c  00000000  00000000  001ba071  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_frame  00006010  00000000  00000000  001c6ab4  2**2
+ 22 .debug_frame  00006010  00000000  00000000  001c6ab0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .stab         0000003c  00000000  00000000  001ccac4  2**2
+ 23 .stab         0000003c  00000000  00000000  001ccac0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 24 .stabstr      00000075  00000000  00000000  001ccb00  2**0
+ 24 .stabstr      00000075  00000000  00000000  001ccafc  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/experimental_schools_computer.elf:     file format elf32-littlearm
