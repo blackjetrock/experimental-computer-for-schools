@@ -5631,7 +5631,7 @@ char *display_store_word(SINGLE_WORD w)
 
     default:
       // Floating point
-      sprintf(result, "%c%06X", sign_char, w);
+      sprintf(result, "  %c%06X ", sign_char, w);
 
       // Insert decimal point
       result2[0] = sign_char;
