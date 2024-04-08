@@ -3272,7 +3272,7 @@ void cli_dump_store(void)
 	  printf("\n");
 	}
 
-      printf("  %03d:%08X (1234.56-)", i, s->store[i]);
+      printf("  %03d:%08X (%s)", i, s->store[i], display_store_word(s->store[i]));
     }
   printf("\n");
 	   
@@ -5626,7 +5626,7 @@ char *display_store_word(SINGLE_WORD w)
     case 8:
     case 9:
       // Instruction
-      sprintf(result, "%c%06X", sign_char, w);
+      sprintf(result, "  %c%06X", sign_char, w);
       break;
 
     default:
