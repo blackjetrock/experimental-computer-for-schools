@@ -1073,12 +1073,12 @@ REGISTER_SINGLE_WORD invert_sw_sign(REGISTER_SINGLE_WORD n)
   
   if( SW_SIGN(n) == WORD_SIGN_PLUS)
     {
-      SET_SW_SIGN(r, WORD_SIGN_MINUS);
+      r = SET_SW_SIGN(r, WORD_SIGN_MINUS);
     }
 
   if( SW_SIGN(n) == WORD_SIGN_MINUS)
     {
-      SET_SW_SIGN(r, WORD_SIGN_PLUS);
+      r = SET_SW_SIGN(r, WORD_SIGN_PLUS);
     }
   
   return(r);
@@ -1697,6 +1697,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  //(Aa1) <- (Aa2) + (Aa3)
 	case 0:
 #if DEBUG_FP
+	  printf("\nFP Addition");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
 #endif
 	  a2v = load_from_store(s, s->Aa2);
@@ -1706,7 +1707,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
 	  display_on_line(s, display, 6, "");
 
@@ -1715,6 +1716,30 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	  //(Aa1) <- (Aa2) - (Aa3)
 	case 1:
+	  // Perform addition but reverse sign of second argument
+#if DEBUG_FP
+	  printf("\nFP Subtraction");
+	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
+#endif
+	  a2v = load_from_store(s, s->Aa2);
+	  a3v = load_from_store(s, s->Aa3);
+
+	  a3v = invert_sw_sign(a3v);
+
+#if DEBUG_FP
+	  printf("\nA3v=%X", a3v);
+#endif
+
+	  a1v = fp_add(a2v, a3v);
+	  write_sw_to_store(s, s->Aa1, a1v);
+
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 6, "");
+
+	  next_iar(s);
+
 	  break;
 	  
 	  //(Aa1) <- (Aa2) * (Aa3)
@@ -4695,6 +4720,95 @@ TEST_LOAD_STORE test_11_store =
     -1},
   };
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 12
+//
+// FP addition
+// 
+// 
+
+INIT_INFO test_init_12[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    4},
+   {IC_SET_REG_V,    SW_MINUS(0x02)},
+   {IC_SET_REG_N,    5},
+   {IC_SET_REG_V,    SW_PLUS(0x20)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_12[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_12[] =
+  {
+   {TC_STORE_N,     0x21},
+   {TC_MUST_BE,     0xB1000882},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,     0x20},
+   {TC_MUST_BE,     0xA1001132},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_12_store =
+  {
+   {
+    0x71212223,    // 00
+    0x71202324,    // 01
+    0x00000000,    // 02
+    0x00000000,    // 03
+    0x00000000,    // 04
+    0x00000000,    // 05
+    0x00000000,    // 06
+    0x00000000,    // 07
+    0x00000000,    // 08
+    0x00000000,    // 09
+    0x00000000,    // 10
+    0x00000000,    // 11
+    0x00000000,    // 12
+    0x00000000,    // 13
+    0x00000000,    // 14
+    0x00000000,    // 15
+    0x00000000,    // 16
+    0x00000000,    // 17
+    0x00000000,    // 18
+    0x00000000,    // 19
+    0x00000000,    // 20
+    0x00000000,    // 21
+    0xA1000125,    // 22
+    0xA3100701,    // 23
+    0xB1000125,    // 24
+    0x00000000,    // 25
+    0x00000000,    // 26
+    0x00000000,    // 27
+    0x00000000,    // 28
+    0x00000000,    // 29
+    0x44200000,    // 30
+    -1},
+  };
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -4712,6 +4826,7 @@ ESC_TEST_INFO tests[] =
    {"Branches",                test_init_9,  test_seq_9,  test_res_9,  0, &test_9_store,  ""},
    {"CL=1,0 Branches",         test_init_10, test_seq_10, test_res_10, 0, &test_10_store, ""},
    {"Fp Addition",             test_init_11, test_seq_11, test_res_11, 0, &test_11_store, ""},
+   {"Fp Subtraction",          test_init_12, test_seq_12, test_res_12, 0, &test_12_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
