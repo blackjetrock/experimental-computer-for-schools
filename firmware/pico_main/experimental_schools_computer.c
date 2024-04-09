@@ -2116,6 +2116,54 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	  // Branch to (Aa1) if (Aa2) = (Aa3)
 	case 4:
+#if DEBUG_FP
+	  printf("\nBranch to Aa1 if (Aa2) = (Aa3)");
+	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
+#endif
+	  a1v = load_from_store(s, s->Aa1);
+	  a2v = load_from_store(s, s->Aa2);
+	  a3v = load_from_store(s, s->Aa3);
+
+#if DEBUG_FP
+	  printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
+#endif
+
+	  // move to next IAR, in case the branch isn't taken.
+	  next_iar(s);
+
+	  // Subtract the values and look for zero as that will account for different forms of the same value,
+	  // e.g:   A1000050 and A2000500
+	  // which are both 5 (5.0 and 5.00)
+	  SINGLE_WORD tst = fp_subtract(a2v, a3v);
+
+#if DEBUG_FP
+	  printf("\ntst=%08X", tst);
+#endif
+	  
+	  if( (tst & 0x00FFFFFF) == 0 )
+	    {
+#if DEBUG_FP
+	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
+	      printf("\n**Branch taken**");
+#endif
+	      
+	      s->iar.address = a1v;
+	      s->iar.a_flag = 0;
+	    }
+	  else
+	    {
+#if DEBUG_FP
+	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
+	      printf("\n**Branch NOT taken**");
+#endif
+	    }
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 6, "");
+
+
+	  
 	  break;
 
 	  // Branch to (Aa1) if (Aa2) > (Aa3)
@@ -5459,6 +5507,95 @@ TEST_LOAD_STORE test_sv_store =
     0x00000000,    // 16
     -1},
   };
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 16
+//
+// Floating point branch
+// 
+// 
+
+INIT_INFO test_init_16[] =
+  {
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_16[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_16[] =
+  {
+   {TC_STORE_N,     0x21},
+   {TC_MUST_BE,     0xA0000005},
+   {TC_END_SECTION, 0},
+   
+   {TC_STORE_N,     0x10},
+   {TC_MUST_BE,     0xB3010000},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,     0x13},
+   {TC_MUST_BE,     0xA3010000},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,     0x16},
+   {TC_MUST_BE,     0xA4031428},
+   {TC_END_SECTION, 0},
+   
+   {TC_STORE_N,     0x16},
+   {TC_MUST_BE,     0xA4031428},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_16_store =
+  {
+   {
+    0x74101516,    // 00
+    0x00000000,    // 01
+    0x00000000,    // 02
+    0x00000000,    // 03
+    0x00000000,    // 04
+    0x00000000,    // 05
+    0x00000000,    // 06
+    0x00000000,    // 07
+    0x00000000,    // 08
+    0x00000000,    // 09
+    0x00000000,    // 10
+    0x00000000,    // 11
+    0x00000000,    // 12
+    0x00000000,    // 13
+    0x00000000,    // 14
+    0xA2000500,    // 15
+    0xA1000050,    // 16
+    -1},
+  };
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -5481,6 +5618,7 @@ ESC_TEST_INFO tests[] =
    {"Fp Multiply",             test_init_13, test_seq_13, test_res_13, 0, &test_13_store, ""},
    {"Fp Divide",               test_init_14, test_seq_14, test_res_14, 0, &test_14_store, ""},
    {"Surface & volume",        test_init_sv, test_seq_sv, test_res_sv, 0, &test_sv_store, ""},
+   {"Fp Branches",             test_init_16, test_seq_16, test_res_16, 0, &test_16_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
