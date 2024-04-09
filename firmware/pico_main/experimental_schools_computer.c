@@ -1583,6 +1583,20 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
   return(result);
 }
 
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// FP Subtract
+//
+////////////////////////////////////////////////////////////////////////////////
+
+SINGLE_WORD fp_subtract(SINGLE_WORD a, SINGLE_WORD b)
+{
+  b = invert_sw_sign(b);
+
+  return(fp_add(a, b));
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // FP Multiply
@@ -1678,6 +1692,189 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
   
   // Put exponent back
   result = STORE_SET_EXPONENT(result, exp_r);
+
+  // Put sign back
+  if( sign_a == sign_b )
+    {
+      sign_r = WORD_SIGN_PLUS;
+    }
+  else
+    {
+      sign_r = WORD_SIGN_MINUS;
+    }
+
+  result = STORE_SET_SIGN(result, sign_r);
+  
+#if DEBUG_FP
+  printf("\na:%s", display_store_word(a));
+  printf("\nb:%s", display_store_word(b));
+  printf("\nresult:%s", display_store_word(result));
+  
+#endif
+  
+  // Find smaller number and shift it so the exponents are the same
+  return(result);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// FP Divide
+//
+////////////////////////////////////////////////////////////////////////////////
+
+// result = a / b
+
+SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
+{
+  int exp_a, exp_b, exp_r;
+  int exp_diff;
+  int digits_a, digits_b, digits_r;
+  int sign_a, sign_b, sign_r;
+  SINGLE_WORD result;
+  SINGLE_WORD shifted_digits;   // arg a shifted
+  SINGLE_WORD tested_digits;    // arg b test against and subtracted from
+  SINGLE_WORD added_digits;         // number added to result
+  
+  digits_a  =  STORE_GET_DIGITS(a);
+  digits_b  =  STORE_GET_DIGITS(b);
+  sign_a =  STORE_GET_SIGN(a);
+  sign_b =  STORE_GET_SIGN(b);
+  exp_a = STORE_GET_EXPONENT(a);
+  exp_b = STORE_GET_EXPONENT(b);
+
+  // The number added is a 1, but is in various digit positions
+  // Sign added just before addition
+  added_digits = 1;
+
+  // Always shift arg b
+  shifted_digits = digits_b;
+
+  // Always test against arg a
+  tested_digits = digits_a;
+
+  // result digits, sign and exponent added later
+  digits_r = 0;
+  digits_r = STORE_SET_SIGN(digits_r, WORD_SIGN_PLUS);
+
+  // Work without sign or exponent
+  shifted_digits = STORE_SET_SIGN(shifted_digits, WORD_SIGN_PLUS);
+  tested_digits  = STORE_SET_SIGN(tested_digits,  WORD_SIGN_PLUS);
+  
+#if DEBUG_FP
+  printf("\n%s: ", __FUNCTION__);
+  printf("\na:%016X  b:%016X", a, b); 
+  printf("\nadded_digits   = %016X", added_digits);
+  printf("\ntested_digits  = %016X", tested_digits);
+  printf("\nshifted_digits = %016X", shifted_digits);
+#endif
+
+
+  // We shift until a non zero digit is in RH side of shifted digits
+  int number_of_shifts = 1;
+
+  if( (shifted_digits & 0x00FFFFFF)  == 0 )
+    {
+      // Divide by zero
+      // Error
+      return(0xA0999999);
+    }
+  
+  while( (shifted_digits & 0x00F00000) == 0 )
+    {
+      shifted_digits <<=4;
+      added_digits <<= 4;
+      number_of_shifts++;
+    }
+  
+  // We add one arg <digit> number of times then shift until all 6 digits are
+  // processed.
+  // Exponent then sorted out (added)
+  // Sign then sorted out (xor'd)
+  // Any overflow with addition => error
+  
+#if DEBUG_FP
+  printf("\n**After initial shift left**");
+  printf("\ndigits_r       = %016X", digits_r);
+  printf("\nadded_digits   = %016X", added_digits);
+  printf("\ntested_digits  = %016X", tested_digits);
+  printf("\nshifted_digits = %016X", shifted_digits);
+#endif
+
+  int out = 10;
+  number_of_shifts = 6;
+  added_digits = 0x00100000;
+  
+  for(int i=0; (i<number_of_shifts) && (out > 0); i++,out--)
+  {
+    // Can we subtract?
+#if DEBUG_FP
+	printf("\n**Sub possible?**");
+	printf("\ndigits_r       = %016X", digits_r);
+	printf("\nadded_digits   = %016X", added_digits);
+	printf("\ntested_digits  = %016X", tested_digits);
+	printf("\nshifted_digits = %016X", shifted_digits);
+#endif
+    
+    while( REMOVED_SW_SIGN(tested_digits) >= REMOVED_SW_SIGN(shifted_digits) )
+      {
+#if DEBUG_FP
+	printf("\n**Can subtract**");
+#endif
+
+	// Add one to digit position
+	digits_r = fp_add(digits_r, added_digits);
+
+        tested_digits = fp_subtract(tested_digits, shifted_digits);
+#if DEBUG_FP
+	printf("\n**In Loop**");
+	printf("\ndigits_r       = %016X", digits_r);
+	printf("\nadded_digits   = %016X", added_digits);
+	printf("\ntested_digits  = %016X", tested_digits);
+	printf("\nshifted_digits = %016X", shifted_digits);
+#endif
+
+      }
+
+    // Move to next position
+    // Remove sign
+    shifted_digits = REMOVED_SW_SIGN(shifted_digits);
+    added_digits  = REMOVED_SW_SIGN(added_digits);
+    
+    // Shift
+    added_digits   >>= 4;
+    shifted_digits >>= 4;
+    shifted_digits = STORE_SET_SIGN(shifted_digits, WORD_SIGN_PLUS);
+    added_digits   = STORE_SET_SIGN(added_digits,  WORD_SIGN_PLUS);
+  }
+
+
+  
+#if DEBUG_FP
+  printf("\n**out of loops**");
+  printf("\ndigits_r       = %016X", digits_r);
+  printf("\nadded_digits   = %016X", added_digits);
+  printf("\ntested_digits  = %016X", tested_digits);
+  printf("\nshifted_digits = %016X", shifted_digits);
+#endif
+  
+  
+#if DEBUG_FP
+  printf("\nexp_a :%016X  exp_b :%016X", exp_a, exp_b);
+  printf("\nsign_a:%016X  sign_b:%016X", sign_a, sign_b);
+  printf("\ndigits_a:%016X  digits_b:%016X digits_r:%016X", digits_a, digits_b, digits_r); 
+#endif
+
+  result = digits_r;
+
+  exp_r = exp_a + exp_b;
+
+  if( exp_r > 6 )
+    {
+      // Overflow
+    }
+  
+  // Put exponent back as same number of decimal places as arg b
+  result = STORE_SET_EXPONENT(result, exp_b);
 
   // Put sign back
   if( sign_a == sign_b )
@@ -1851,13 +2048,11 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a2v = load_from_store(s, s->Aa2);
 	  a3v = load_from_store(s, s->Aa3);
 
-	  a3v = invert_sw_sign(a3v);
-
 #if DEBUG_FP
 	  printf("\nA3v=%X", a3v);
 #endif
 
-	  a1v = fp_add(a2v, a3v);
+	  a1v = fp_subtract(a2v, a3v);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -1872,7 +2067,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  //(Aa1) <- (Aa2) * (Aa3)
 	case 2:
 #if DEBUG_FP
-	  printf("\nFP Subtraction");
+	  printf("\nFP Multiply");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
 #endif
 	  a2v = load_from_store(s, s->Aa2);
@@ -1896,6 +2091,27 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	  //(Aa1) <- (Aa2) / (Aa3)
 	case 3:
+#if DEBUG_FP
+	  printf("\nFP Divide");
+	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
+#endif
+	  a2v = load_from_store(s, s->Aa2);
+	  a3v = load_from_store(s, s->Aa3);
+
+#if DEBUG_FP
+	  printf("\nA3v=%X", a3v);
+#endif
+
+	  a1v = fp_divide(a2v, a3v);
+	  write_sw_to_store(s, s->Aa1, a1v);
+
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 6, "");
+
+	  next_iar(s);
+
 	  break;
 
 	  // Branch to (Aa1) if (Aa2) = (Aa3)
@@ -5043,6 +5259,93 @@ TEST_LOAD_STORE test_13_store =
     0x44200000,    // 30
     -1},
   };
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 14
+//
+// FP divide
+// 
+// 
+
+INIT_INFO test_init_14[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    4},
+   {IC_SET_REG_V,    SW_MINUS(0x02)},
+   {IC_SET_REG_N,    5},
+   {IC_SET_REG_V,    SW_PLUS(0x20)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_14[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_14[] =
+  {
+   {TC_STORE_N,     0x21},
+   {TC_MUST_BE,     0xA1000050},
+   {TC_END_SECTION, 0},
+   
+   {TC_STORE_N,     0x20},
+   {TC_MUST_BE,     0xB0000010},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_14_store =
+  {
+   {
+    0x73212223,    // 00
+    0x73101112,    // 01
+    0x00000000,    // 02
+    0x00000000,    // 03
+    0x00000000,    // 04
+    0x00000000,    // 05
+    0x00000000,    // 06
+    0x00000000,    // 07
+    0x00000000,    // 08
+    0x00000000,    // 09
+    0x00000000,    // 10
+    0xA2010000,    // 11
+    0xB0000010,    // 12
+    0x00000000,    // 13
+    0x00000000,    // 14
+    0x00000000,    // 15
+    0x00000000,    // 16
+    0x00000000,    // 17
+    0x00000000,    // 18
+    0x00000000,    // 19
+    0x00000000,    // 20
+    0x00000000,    // 21
+    0xA0000015,    // 22
+    0xA1000030,    // 23
+    0xB0000125,    // 24
+    0xB1000050,    // 25
+    0x00000000,    // 26
+    0x00000000,    // 27
+    0x00000000,    // 28
+    0x00000000,    // 29
+    0x44200000,    // 30
+    -1},
+  };
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -5063,6 +5366,7 @@ ESC_TEST_INFO tests[] =
    {"Fp Addition",             test_init_11, test_seq_11, test_res_11, 0, &test_11_store, ""},
    {"Fp Subtraction",          test_init_12, test_seq_12, test_res_12, 0, &test_12_store, ""},
    {"Fp Multiply",             test_init_13, test_seq_13, test_res_13, 0, &test_13_store, ""},
+   {"Fp Divide",               test_init_14, test_seq_14, test_res_14, 0, &test_14_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
