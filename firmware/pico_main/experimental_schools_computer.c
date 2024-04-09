@@ -1770,7 +1770,7 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
 
 
   // We shift until a non zero digit is in RH side of shifted digits
-  int number_of_shifts = 1;
+  int number_of_shifts = 0;
 
   if( (shifted_digits & 0x00FFFFFF)  == 0 )
     {
@@ -1778,13 +1778,15 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
       // Error
       return(0xA0999999);
     }
-  
+
+#if 1
   while( (shifted_digits & 0x00F00000) == 0 )
     {
       shifted_digits <<=4;
       added_digits <<= 4;
       number_of_shifts++;
     }
+#endif
   
   // We add one arg <digit> number of times then shift until all 6 digits are
   // processed.
@@ -1799,55 +1801,51 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
   printf("\ntested_digits  = %016X", tested_digits);
   printf("\nshifted_digits = %016X", shifted_digits);
 #endif
-
-  int out = 10;
-  number_of_shifts = 6;
+  
+  int out = 100;
   added_digits = 0x00100000;
   
-  for(int i=0; (i<number_of_shifts) && (out > 0); i++,out--)
-  {
-    // Can we subtract?
+  for(int i=0; (i<6) && (out > 0); i++,out--)
+    {
+      // Can we subtract?
 #if DEBUG_FP
-	printf("\n**Sub possible?**");
-	printf("\ndigits_r       = %016X", digits_r);
-	printf("\nadded_digits   = %016X", added_digits);
-	printf("\ntested_digits  = %016X", tested_digits);
-	printf("\nshifted_digits = %016X", shifted_digits);
+      printf("\n**Sub possible?**");
+      printf("\ndigits_r       = %016X", digits_r);
+      printf("\nadded_digits   = %016X", added_digits);
+      printf("\ntested_digits  = %016X", tested_digits);
+      printf("\nshifted_digits = %016X", shifted_digits);
 #endif
-    
-    while( REMOVED_SW_SIGN(tested_digits) >= REMOVED_SW_SIGN(shifted_digits) )
-      {
+      
+      while( (REMOVED_SW_SIGN(tested_digits) >= REMOVED_SW_SIGN(shifted_digits)) && (REMOVED_SW_SIGN(shifted_digits) != 0) )
+	{
 #if DEBUG_FP
-	printf("\n**Can subtract**");
+	  printf("\n**Can subtract**");
 #endif
-
-	// Add one to digit position
-	digits_r = fp_add(digits_r, added_digits);
-
-        tested_digits = fp_subtract(tested_digits, shifted_digits);
+	  
+	  // Add one to digit position
+	  digits_r = fp_add(digits_r, added_digits);
+	  
+	  tested_digits = fp_subtract(tested_digits, shifted_digits);
 #if DEBUG_FP
-	printf("\n**In Loop**");
-	printf("\ndigits_r       = %016X", digits_r);
-	printf("\nadded_digits   = %016X", added_digits);
-	printf("\ntested_digits  = %016X", tested_digits);
-	printf("\nshifted_digits = %016X", shifted_digits);
+	  printf("\n**In Loop**");
+	  printf("\ndigits_r       = %016X", digits_r);
+	  printf("\nadded_digits   = %016X", added_digits);
+	  printf("\ntested_digits  = %016X", tested_digits);
+	  printf("\nshifted_digits = %016X", shifted_digits);
 #endif
-
-      }
-
-    // Move to next position
-    // Remove sign
-    shifted_digits = REMOVED_SW_SIGN(shifted_digits);
-    added_digits  = REMOVED_SW_SIGN(added_digits);
-    
-    // Shift
-    added_digits   >>= 4;
-    shifted_digits >>= 4;
-    shifted_digits = STORE_SET_SIGN(shifted_digits, WORD_SIGN_PLUS);
-    added_digits   = STORE_SET_SIGN(added_digits,  WORD_SIGN_PLUS);
-  }
-
-
+	}
+      
+      // Move to next position
+      // Remove sign
+      shifted_digits = REMOVED_SW_SIGN(shifted_digits);
+      added_digits  = REMOVED_SW_SIGN(added_digits);
+      
+      // Shift
+      added_digits   >>= 4;
+      shifted_digits >>= 4;
+      shifted_digits = STORE_SET_SIGN(shifted_digits, WORD_SIGN_PLUS);
+      added_digits   = STORE_SET_SIGN(added_digits,  WORD_SIGN_PLUS);
+    }
   
 #if DEBUG_FP
   printf("\n**out of loops**");
@@ -1866,7 +1864,7 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
 
   result = digits_r;
 
-  exp_r = exp_a + exp_b;
+  exp_r = exp_a - exp_b + 5 - number_of_shifts;
 
   if( exp_r > 6 )
     {
@@ -1874,7 +1872,7 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
     }
   
   // Put exponent back as same number of decimal places as arg b
-  result = STORE_SET_EXPONENT(result, exp_b);
+  result = STORE_SET_EXPONENT(result, exp_r);
 
   // Put sign back
   if( sign_a == sign_b )
@@ -1891,6 +1889,7 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
 #if DEBUG_FP
   printf("\na:%s", display_store_word(a));
   printf("\nb:%s", display_store_word(b));
+  printf("\nNum of shifts:%d", number_of_shifts);
   printf("\nresult:%s", display_store_word(result));
   
 #endif
@@ -5295,17 +5294,31 @@ TOKEN test_seq_14[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
 TEST_INFO test_res_14[] =
   {
    {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xA1000050},
+   {TC_MUST_BE,     0xA0000005},
    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x20},
-   {TC_MUST_BE,     0xB0000010},
+   {TC_STORE_N,     0x10},
+   {TC_MUST_BE,     0xB3010000},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,     0x13},
+   {TC_MUST_BE,     0xA3010000},
+   {TC_END_SECTION, 0},
+   
+   {TC_STORE_N,     0x16},
+   {TC_MUST_BE,     0xA4031428},
 
    {TC_END,     0},
   };
@@ -5315,8 +5328,8 @@ TEST_LOAD_STORE test_14_store =
    {
     0x73212223,    // 00
     0x73101112,    // 01
-    0x00000000,    // 02
-    0x00000000,    // 03
+    0x73131415,    // 02
+    0x73161718,    // 03
     0x00000000,    // 04
     0x00000000,    // 05
     0x00000000,    // 06
@@ -5327,11 +5340,11 @@ TEST_LOAD_STORE test_14_store =
     0xA2010000,    // 11
     0xB0000010,    // 12
     0x00000000,    // 13
-    0x00000000,    // 14
-    0x00000000,    // 15
+    0xA2010000,    // 14
+    0xA1000100,    // 15
     0x00000000,    // 16
-    0x00000000,    // 17
-    0x00000000,    // 18
+    0xA4220000,    // 17
+    0xA0000007,    // 18
     0x00000000,    // 19
     0x00000000,    // 20
     0x00000000,    // 21
