@@ -17,7 +17,7 @@ This has a 0.96" OLED display that shows the same information as the original ma
 
 ![IMG_4439](https://github.com/blackjetrock/experimental-computer-for-schools/assets/31587992/ef18ebf3-a95e-41ee-9716-92998c548807)
 
- There is an SD card for storage and a keyboard made from tactile switches, in the same layout as the original machines. The operation is very similar to the original, some differenes have been made to key operations to enable use of the SD card. the original machines used audio cassettes for data storage.
+ There is an SD card for storage and a keyboard made from tactile switches, in the same layout as the original machines. The operation is very similar to the original, some differences have been made to key operations to enable use of the SD card. the original machines used audio cassettes for data storage.
  
 ![IMG_4441](https://github.com/blackjetrock/experimental-computer-for-schools/assets/31587992/c710a7aa-bbc5-48d7-a87f-0b369c42f62d)
  The Pico can be a PicoW, in which case a WiFi access point is generated.
