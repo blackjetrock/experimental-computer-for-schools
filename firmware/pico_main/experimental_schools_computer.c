@@ -719,7 +719,7 @@ void kbd_read(ESC_STATE *s)
 		      
 		    default:
 #if DEBUG_TEST_SEQ
-		      printf("\n Queing token %d", t);
+		      printf("\n Queuing token %d", t);
 #endif
 		      queue_token(t);
 		      test_step++;
@@ -1507,8 +1507,16 @@ SHIFT_INST(left,<<);
 SHIFT_INST(right,>>);
 
 ////////////////////////////////////////////////////////////////////////////////
-
+//
 // Floating point operations
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+// These operations are written in a way that means that they should be
+// re-writable in the instruction set of the ESC, so an be implemented
+// as extracodes as the original did.
+//
+//------------------------------------------------------------------------------
 
 SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
 {
@@ -1564,6 +1572,125 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
   // Put exponent back
   result = STORE_SET_EXPONENT(result,exp_r);
 
+#if DEBUG_FP
+  printf("\na:%s", display_store_word(a));
+  printf("\nb:%s", display_store_word(b));
+  printf("\nresult:%s", display_store_word(result));
+  
+#endif
+  
+  // Find smaller number and shift it so the exponents are the same
+  return(result);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// FP Multiply
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
+{
+  int exp_a, exp_b, exp_r;
+  int exp_diff;
+  int digits_a, digits_b, digits_r;
+  int sign_a, sign_b, sign_r;
+  SINGLE_WORD result;
+  SINGLE_WORD shifted_arg_digits;
+  SINGLE_WORD tested_arg_digits;
+  
+  digits_a  =  STORE_GET_DIGITS(a);
+  digits_b  =  STORE_GET_DIGITS(b);
+  sign_a =  STORE_GET_SIGN(a);
+  sign_b =  STORE_GET_SIGN(b);
+  exp_a = STORE_GET_EXPONENT(a);
+  exp_b = STORE_GET_EXPONENT(b);
+
+  digits_r = 0;
+  digits_r = STORE_SET_SIGN(digits_r, WORD_SIGN_PLUS);
+  
+  // We add the smaller argument each time
+  if( exp_a > exp_b )
+    {
+      shifted_arg_digits = digits_a;
+      tested_arg_digits = digits_b;
+    }
+  else
+    {
+      shifted_arg_digits = digits_b;
+      tested_arg_digits = digits_a;
+    }
+
+  // Work without sign or exponent
+  shifted_arg_digits = STORE_SET_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
+  tested_arg_digits  = STORE_SET_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
+  
+#if DEBUG_FP
+  printf("\n%s: ", __FUNCTION__);
+  printf("\na:%016X  b:%016X", a, b); 
+#endif
+
+  // We add one arg <digit> number of times then shift until all 6 digits are
+  // processed.
+  // Exponent then sorted out (added)
+  // Sign then sorted out (xor'd)
+  // Any overflow with addition => error
+
+  for(int i=0; i<6; i++)
+  {
+    // test
+    if( (tested_arg_digits & 0xF) != 0 )
+      {
+	for(int j=0; j<(tested_arg_digits & 0xF); j++)
+	  {
+	    digits_r = fp_add(digits_r, shifted_arg_digits);
+	  }
+
+	// Remove sign
+	shifted_arg_digits = REMOVED_SW_SIGN(shifted_arg_digits);
+	tested_arg_digits  = REMOVED_SW_SIGN(tested_arg_digits);
+	
+	// Shift
+	tested_arg_digits >>= 4;
+	shifted_arg_digits <<=4;
+	shifted_arg_digits = STORE_SET_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
+	tested_arg_digits  = STORE_SET_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
+
+      }
+  }
+
+  
+#if DEBUG_FP
+  printf("\nexp_a :%016X  exp_b :%016X", exp_a, exp_b);
+  printf("\nsign_a:%016X  sign_b:%016X", sign_a, sign_b);
+  printf("\ndigits_a:%016X  digits_b:%016X digits_r:%016X", digits_a, digits_b, digits_r); 
+#endif
+
+  result = digits_r;
+
+  exp_r = exp_a + exp_b;
+
+  if( exp_r > 6 )
+    {
+      // Overflow
+    }
+  
+  // Put exponent back
+  result = STORE_SET_EXPONENT(result, exp_r);
+
+  // Put sign back
+  if( sign_a == sign_b )
+    {
+      sign_r = WORD_SIGN_PLUS;
+    }
+  else
+    {
+      sign_r = WORD_SIGN_MINUS;
+    }
+
+  result = STORE_SET_SIGN(result, sign_r);
+  
 #if DEBUG_FP
   printf("\na:%s", display_store_word(a));
   printf("\nb:%s", display_store_word(b));
@@ -1744,6 +1871,27 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	  //(Aa1) <- (Aa2) * (Aa3)
 	case 2:
+#if DEBUG_FP
+	  printf("\nFP Subtraction");
+	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
+#endif
+	  a2v = load_from_store(s, s->Aa2);
+	  a3v = load_from_store(s, s->Aa3);
+
+#if DEBUG_FP
+	  printf("\nA3v=%X", a3v);
+#endif
+
+	  a1v = fp_multiply(a2v, a3v);
+	  write_sw_to_store(s, s->Aa1, a1v);
+
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 6, "");
+
+	  next_iar(s);
+
 	  break;
 	  
 	  //(Aa1) <- (Aa2) / (Aa3)
@@ -4808,6 +4956,93 @@ TEST_LOAD_STORE test_12_store =
     0x44200000,    // 30
     -1},
   };
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 13
+//
+// FP multiply
+// 
+// 
+
+INIT_INFO test_init_13[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0x1)},
+   {IC_SET_REG_N,    4},
+   {IC_SET_REG_V,    SW_MINUS(0x02)},
+   {IC_SET_REG_N,    5},
+   {IC_SET_REG_V,    SW_PLUS(0x20)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_13[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_13[] =
+  {
+   {TC_STORE_N,     0x21},
+   {TC_MUST_BE,     0xA1000045},
+   {TC_END_SECTION, 0},
+   
+   {TC_STORE_N,     0x20},
+   {TC_MUST_BE,     0xB2001875},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_13_store =
+  {
+   {
+    0x72212223,    // 00
+    0x72202324,    // 01
+    0x00000000,    // 02
+    0x00000000,    // 03
+    0x00000000,    // 04
+    0x00000000,    // 05
+    0x00000000,    // 06
+    0x00000000,    // 07
+    0x00000000,    // 08
+    0x00000000,    // 09
+    0x00000000,    // 10
+    0x00000000,    // 11
+    0x00000000,    // 12
+    0x00000000,    // 13
+    0x00000000,    // 14
+    0x00000000,    // 15
+    0x00000000,    // 16
+    0x00000000,    // 17
+    0x00000000,    // 18
+    0x00000000,    // 19
+    0x00000000,    // 20
+    0x00000000,    // 21
+    0xA0000003,    // 22
+    0xA1000015,    // 23
+    0xB1000125,    // 24
+    0x00000000,    // 25
+    0x00000000,    // 26
+    0x00000000,    // 27
+    0x00000000,    // 28
+    0x00000000,    // 29
+    0x44200000,    // 30
+    -1},
+  };
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4827,6 +5062,7 @@ ESC_TEST_INFO tests[] =
    {"CL=1,0 Branches",         test_init_10, test_seq_10, test_res_10, 0, &test_10_store, ""},
    {"Fp Addition",             test_init_11, test_seq_11, test_res_11, 0, &test_11_store, ""},
    {"Fp Subtraction",          test_init_12, test_seq_12, test_res_12, 0, &test_12_store, ""},
+   {"Fp Multiply",             test_init_13, test_seq_13, test_res_13, 0, &test_13_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
