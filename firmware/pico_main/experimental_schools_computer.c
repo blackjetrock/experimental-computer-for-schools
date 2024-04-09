@@ -1687,7 +1687,7 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
 
   if( exp_r > 6 )
     {
-      // Overflow
+      // There is a problem, we will overflow if we multiply
     }
   
   // Put exponent back
@@ -1709,7 +1709,8 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
   printf("\na:%s", display_store_word(a));
   printf("\nb:%s", display_store_word(b));
   printf("\nresult:%s", display_store_word(result));
-  
+  printf("\n%s END", __FUNCTION__);
+ 
 #endif
   
   // Find smaller number and shift it so the exponents are the same
@@ -5258,6 +5259,7 @@ TEST_LOAD_STORE test_13_store =
     0x44200000,    // 30
     -1},
   };
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Test 14
@@ -5300,6 +5302,9 @@ TOKEN test_seq_14[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
@@ -5316,6 +5321,10 @@ TEST_INFO test_res_14[] =
    {TC_STORE_N,     0x13},
    {TC_MUST_BE,     0xA3010000},
    {TC_END_SECTION, 0},
+
+   {TC_STORE_N,     0x16},
+   {TC_MUST_BE,     0xA4031428},
+   {TC_END_SECTION, 0},
    
    {TC_STORE_N,     0x16},
    {TC_MUST_BE,     0xA4031428},
@@ -5330,7 +5339,7 @@ TEST_LOAD_STORE test_14_store =
     0x73101112,    // 01
     0x73131415,    // 02
     0x73161718,    // 03
-    0x00000000,    // 04
+    0x93282930,    // 04
     0x00000000,    // 05
     0x00000000,    // 06
     0x00000000,    // 07
@@ -5354,9 +5363,100 @@ TEST_LOAD_STORE test_14_store =
     0xB1000050,    // 25
     0x00000000,    // 26
     0x00000000,    // 27
-    0x00000000,    // 28
-    0x00000000,    // 29
-    0x44200000,    // 30
+    0xA0000010,    // 28
+    0xA0000017,    // 29
+    0xA0000018,    // 30
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test SAV
+//
+// Surface area and volume of a sphere
+// 
+// 
+
+INIT_INFO test_init_sv[] =
+  {
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_sv[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_1,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_sv[] =
+  {
+   {TC_STORE_N,     0x21},
+   {TC_MUST_BE,     0xA0000005},
+   {TC_END_SECTION, 0},
+   
+   {TC_STORE_N,     0x10},
+   {TC_MUST_BE,     0xB3010000},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,     0x13},
+   {TC_MUST_BE,     0xA3010000},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,     0x16},
+   {TC_MUST_BE,     0xA4031428},
+   {TC_END_SECTION, 0},
+   
+   {TC_STORE_N,     0x16},
+   {TC_MUST_BE,     0xA4031428},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_sv_store =
+  {
+   {
+    0x00000000,    // 00
+    0x00000000,    // 01
+    0xA1000025,    // 02
+    0x00000000,    // 03
+    0x00000000,    // 04
+    0xA2000314,    // 05
+    0xA0000004,    // 06
+    0xA0000003,    // 07
+    0x00000000,    // 08
+    0x00000000,    // 09
+    0x00000000,    // 10
+    0x72030202,    // 11
+    0x72030305,    // 12
+    0x72030306,    // 13
+    0x72040302,    // 14
+    0x73040407,    // 15
+    0x00000000,    // 16
     -1},
   };
 
@@ -5380,6 +5480,7 @@ ESC_TEST_INFO tests[] =
    {"Fp Subtraction",          test_init_12, test_seq_12, test_res_12, 0, &test_12_store, ""},
    {"Fp Multiply",             test_init_13, test_seq_13, test_res_13, 0, &test_13_store, ""},
    {"Fp Divide",               test_init_14, test_seq_14, test_res_14, 0, &test_14_store, ""},
+   {"Surface & volume",        test_init_sv, test_seq_sv, test_res_sv, 0, &test_sv_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
