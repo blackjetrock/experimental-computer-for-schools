@@ -977,14 +977,14 @@ REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
 REGISTER_DOUBLE_WORD double_sum_normalise(REGISTER_DOUBLE_WORD v)
 {
 #if DEBUG_BCD_CORRECTION
-  printf("\n%s: Value:%08X", __FUNCTION__, v);
+  printf("\n%s: Value:%016llX", __FUNCTION__, v);
 #endif
   
   // Add 6 to each non-bcd digit
   for(int i=0; i<sizeof(REGISTER_DOUBLE_WORD)*8; i+=4)
     {
       // Get digit value
-      int digit = ((v & (0xF << i)) >> i);
+      REGISTER_DOUBLE_WORD digit = ((v & (0xFL << i)) >> i);
 
 #if DEBUG_BCD_CORRECTION
       printf("\nDigit test:%d", digit);
@@ -998,14 +998,14 @@ REGISTER_DOUBLE_WORD double_sum_normalise(REGISTER_DOUBLE_WORD v)
 	case 13:
 	case 14:
 	case 15:
-	  v += (0x6<<i);
-	  printf("\n  Added 6:%08X", v);
+	  v += (0x6L<<i);
+	  printf("\n  Added 6:%016llX", v);
 	  break;
 	}
     }
 
 #if DEBUG_BCD_CORRECTION
-  printf("\nValue:%08X", v);
+  printf("\nValue:%016llX", v);
 #endif
 
   return(v);
@@ -1213,13 +1213,13 @@ REGISTER_DOUBLE_WORD bcd_addition_double(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE
   for(int i=0; i<sizeof(REGISTER_DOUBLE_WORD)*8; i+=4)
     {
       // Get digit value
-      int a_digit = ((a & (0xF << i)) >> i);
-      int b_digit = ((b & (0xF << i)) >> i);
-      int c_digit = a_digit + b_digit + carry;
+      REGISTER_DOUBLE_WORD a_digit = ((a & (0xFL << i)) >> i);
+      REGISTER_DOUBLE_WORD b_digit = ((b & (0xFL << i)) >> i);
+      REGISTER_DOUBLE_WORD c_digit = a_digit + b_digit + carry;
       carry = 0;
       
 #if DEBUG_BCD_CORRECTION
-      printf("\n%s: Add: a:%d + b:%d = %d", __FUNCTION__, a_digit, b_digit, c_digit);
+      printf("\n%s: Add: a:%lld + b:%lld = %lld", __FUNCTION__, a_digit, b_digit, c_digit);
 #endif
       // Add 6 if not bcd, we may need to propagate a carry (9+9 = 18, so 6 is added and 24 results
       // which is 0x18)
@@ -1252,10 +1252,10 @@ REGISTER_DOUBLE_WORD bcd_addition_double(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE
     }
 
   // Mask out the top two digits as there is probably an overflow from a nines-complement addition
-  c &= 0x00FFFFFF;
+  c &= 0x0000FFFFFFFFFFFFL;
   
 #if DEBUG_BCD_CORRECTION
-  printf("\n%s: Result: %08X", __FUNCTION__, c);
+  printf("\n%s: Result: %016llX", __FUNCTION__, c);
 #endif
   
   return(c);
@@ -1854,7 +1854,7 @@ SHIFT_INST(right,>>);
 ////////////////////////////////////////////////////////////////////////////////
 //
 // These operations are written in a way that means that they should be
-// re-writable in the instruction set of the ESC, so an be implemented
+// re-writable in the instruction set of the ESC, so can be implemented
 // as extracodes as the original did.
 //
 //------------------------------------------------------------------------------
@@ -1944,6 +1944,9 @@ SINGLE_WORD fp_subtract(SINGLE_WORD a, SINGLE_WORD b)
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#if 0
+
+// Single word multiply
 
 SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
 {
@@ -2057,6 +2060,127 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
   // Find smaller number and shift it so the exponents are the same
   return(result);
 }
+
+#else
+
+// Uses double word registers internally
+
+SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
+{
+  int exp_a, exp_b, exp_r;
+  int exp_diff;
+  int digits_a, digits_b;
+  DOUBLE_WORD digits_r;
+  int sign_a, sign_b, sign_r;
+  SINGLE_WORD result;
+  DOUBLE_WORD shifted_arg_digits;
+  SINGLE_WORD tested_arg_digits;
+  
+  digits_a  =  STORE_GET_DIGITS(a);
+  digits_b  =  STORE_GET_DIGITS(b);
+  sign_a =  STORE_GET_SIGN(a);
+  sign_b =  STORE_GET_SIGN(b);
+  exp_a = STORE_GET_EXPONENT(a);
+  exp_b = STORE_GET_EXPONENT(b);
+
+  digits_r = 0;
+  digits_r = SET_DW_SIGN(digits_r, WORD_SIGN_PLUS);
+  
+  // We add the smaller argument each time
+  if( exp_a > exp_b )
+    {
+      shifted_arg_digits = digits_a;
+      tested_arg_digits = digits_b;
+    }
+  else
+    {
+      shifted_arg_digits = digits_b;
+      tested_arg_digits = digits_a;
+    }
+
+  // Work without sign or exponent
+  shifted_arg_digits = SET_DW_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
+  tested_arg_digits  = SET_SW_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
+  
+#if DEBUG_FP
+  printf("\n%s: ", __FUNCTION__);
+  printf("\na:%016X  b:%016X", a, b); 
+#endif
+
+  // We add one arg <digit> number of times then shift until all 6 digits are
+  // processed.
+  // Exponent then sorted out (added)
+  // Sign then sorted out (xor'd)
+  // Any overflow with addition => error
+
+  for(int i=0; i<6; i++)
+  {
+    // test
+    if( (tested_arg_digits & 0xF) != 0 )
+      {
+	for(int j=0; j<(tested_arg_digits & 0xF); j++)
+	  {
+	    digits_r = bcd_dw_addition(digits_r, shifted_arg_digits);
+	  }
+
+	// Remove sign
+	shifted_arg_digits = REMOVED_DW_SIGN(shifted_arg_digits);
+	tested_arg_digits  = REMOVED_SW_SIGN(tested_arg_digits);
+	
+	// Shift
+	tested_arg_digits >>= 4;
+	shifted_arg_digits <<=4;
+	shifted_arg_digits = SET_DW_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
+	tested_arg_digits  = SET_SW_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
+
+      }
+  }
+
+  
+#if DEBUG_FP
+  printf("\nexp_a :%016X  exp_b :%016X", exp_a, exp_b);
+  printf("\nsign_a:%016X  sign_b:%016X", sign_a, sign_b);
+  printf("\ndigits_a:%016X  digits_b:%016X digits_r:%016X", digits_a, digits_b, digits_r); 
+#endif
+
+  // Keep result in a single word
+  result = digits_r;
+
+  exp_r = exp_a + exp_b;
+
+  if( exp_r > 6 )
+    {
+      // There is a problem, we will overflow if we multiply
+    }
+  
+  // Put exponent back
+  result = STORE_SET_EXPONENT(result, exp_r);
+
+  // Put sign back
+  if( sign_a == sign_b )
+    {
+      sign_r = WORD_SIGN_PLUS;
+    }
+  else
+    {
+      sign_r = WORD_SIGN_MINUS;
+    }
+
+  result = STORE_SET_SIGN(result, sign_r);
+  
+#if DEBUG_FP
+  printf("\na:%s", display_store_word(a));
+  printf("\nb:%s", display_store_word(b));
+  printf("\nresult:%s", display_store_word(result));
+  printf("\n%s END", __FUNCTION__);
+ 
+#endif
+  
+  // Find smaller number and shift it so the exponents are the same
+  return(result);
+}
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -5745,6 +5869,10 @@ TOKEN test_seq_13[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
@@ -5757,6 +5885,9 @@ TEST_INFO test_res_13[] =
    {TC_STORE_N,     0x20},
    {TC_MUST_BE,     0xB2001875},
 
+   {TC_STORE_N,     0x10},
+   {TC_MUST_BE,     0xB2001875},
+
    {TC_END,     0},
   };
 
@@ -5765,7 +5896,7 @@ TEST_LOAD_STORE test_13_store =
    {
     0x72212223,    // 00
     0x72202324,    // 01
-    0x00000000,    // 02
+    0x72101112,    // 02
     0x00000000,    // 03
     0x00000000,    // 04
     0x00000000,    // 05
@@ -5774,8 +5905,8 @@ TEST_LOAD_STORE test_13_store =
     0x00000000,    // 08
     0x00000000,    // 09
     0x00000000,    // 10
-    0x00000000,    // 11
-    0x00000000,    // 12
+    0xA5314159,    // 11
+    0xA5314159,    // 12
     0x00000000,    // 13
     0x00000000,    // 14
     0x00000000,    // 15
