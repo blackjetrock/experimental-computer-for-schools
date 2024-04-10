@@ -268,6 +268,7 @@ char *display_register_and_contents(ESC_STATE *s, int regno);
 char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address);
 char *display_store_word(SINGLE_WORD w);
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
+void register_assign_register(ESC_STATE *s, int dest, int src);
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -972,14 +973,57 @@ REGISTER_SINGLE_WORD single_sum_normalise(REGISTER_SINGLE_WORD v)
   return(v);
 }
 
+
+REGISTER_DOUBLE_WORD double_sum_normalise(REGISTER_DOUBLE_WORD v)
+{
+#if DEBUG_BCD_CORRECTION
+  printf("\n%s: Value:%08X", __FUNCTION__, v);
+#endif
+  
+  // Add 6 to each non-bcd digit
+  for(int i=0; i<sizeof(REGISTER_DOUBLE_WORD)*8; i+=4)
+    {
+      // Get digit value
+      int digit = ((v & (0xF << i)) >> i);
+
+#if DEBUG_BCD_CORRECTION
+      printf("\nDigit test:%d", digit);
+#endif
+      // Add 6 if not bcd
+      switch(digit)
+	{
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+	  v += (0x6<<i);
+	  printf("\n  Added 6:%08X", v);
+	  break;
+	}
+    }
+
+#if DEBUG_BCD_CORRECTION
+  printf("\nValue:%08X", v);
+#endif
+
+  return(v);
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Nines complement
 //
 
-REGISTER_SINGLE_WORD bcd_nines_complement(REGISTER_SINGLE_WORD n)
+REGISTER_SINGLE_WORD bcd_sw_nines_complement(REGISTER_SINGLE_WORD n)
 {
   return(0x00999999 - n);
+}
+
+REGISTER_DOUBLE_WORD bcd_dw_nines_complement(REGISTER_DOUBLE_WORD n)
+{
+  return(0x0000999999999999L - n);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1090,8 +1134,10 @@ REGISTER_SINGLE_WORD invert_sw_sign(REGISTER_SINGLE_WORD n)
 // 
 //
 ////////////////////////////////////////////////////////////////////////////////
-#if 1
-REGISTER_SINGLE_WORD bcd_addition_32(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WORD b)
+
+// Plain BCD addition
+
+REGISTER_SINGLE_WORD bcd_addition_single(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WORD b)
 {
   REGISTER_SINGLE_WORD c = 0;
   
@@ -1152,7 +1198,69 @@ REGISTER_SINGLE_WORD bcd_addition_32(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   return(c);
   
 }
+
+
+REGISTER_DOUBLE_WORD bcd_addition_double(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WORD b)
+{
+  REGISTER_DOUBLE_WORD c = 0;
+  
+  // Add each digit, testing for digit >=10 and also propagating carry to next digit
+  //
+  // Add 6 to each non-bcd digit
+
+  int carry = 0;
+  
+  for(int i=0; i<sizeof(REGISTER_DOUBLE_WORD)*8; i+=4)
+    {
+      // Get digit value
+      int a_digit = ((a & (0xF << i)) >> i);
+      int b_digit = ((b & (0xF << i)) >> i);
+      int c_digit = a_digit + b_digit + carry;
+      carry = 0;
+      
+#if DEBUG_BCD_CORRECTION
+      printf("\n%s: Add: a:%d + b:%d = %d", __FUNCTION__, a_digit, b_digit, c_digit);
 #endif
+      // Add 6 if not bcd, we may need to propagate a carry (9+9 = 18, so 6 is added and 24 results
+      // which is 0x18)
+      
+      switch(c_digit)
+	{
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+	case 14:
+	case 15:
+	case 16:
+	case 17:
+	case 18:
+	case 19:
+	  // Add 6, then propagate a carry
+	  c_digit = (c_digit + 6) % 16;
+	  carry = 1;
+	  break;
+	}
+
+      // Build c, a digit at a time
+      c += (c_digit << i);
+
+#if DEBUG_BCD_CORRECTION
+      printf("\n%s: Result so far: %08X", __FUNCTION__, c);
+#endif
+
+    }
+
+  // Mask out the top two digits as there is probably an overflow from a nines-complement addition
+  c &= 0x00FFFFFF;
+  
+#if DEBUG_BCD_CORRECTION
+  printf("\n%s: Result: %08X", __FUNCTION__, c);
+#endif
+  
+  return(c);
+  
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // BCD single word addition
@@ -1210,7 +1318,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
       printf("\nSigns identical");
 #endif
 
-      c = bcd_addition_32(a, b);
+      c = bcd_addition_single(a, b);
 
 #if DEBUG_SW_BCD_SUM
       printf("\nc=%08X", c);
@@ -1244,12 +1352,12 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 
   if( a_sign == WORD_SIGN_MINUS )
     {
-      a = bcd_nines_complement(a);
+      a = bcd_sw_nines_complement(a);
     }
 
   if( b_sign == WORD_SIGN_MINUS )
     {
-      b = bcd_nines_complement(b);
+      b = bcd_sw_nines_complement(b);
     }
 
 #if DEBUG_SW_BCD_SUM
@@ -1260,7 +1368,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   printf("\nSigns different");
 #endif
 
-  c = bcd_addition_32(a, b);
+  c = bcd_addition_single(a, b);
   
   c = single_sum_normalise(c);
       
@@ -1283,7 +1391,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   c = CLEAR_SW_CARRY(c);
 
   // Add one
-  c = bcd_addition_32(c, 1);
+  c = bcd_addition_single(c, 1);
   
   c = single_sum_normalise(c);
   
@@ -1291,8 +1399,8 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   // This format matches the floating point format
   if( res_sign == WORD_SIGN_MINUS )
     {
-      c = bcd_nines_complement(c);
-      c = bcd_addition_32(c, 1);
+      c = bcd_sw_nines_complement(c);
+      c = bcd_addition_single(c, 1);
       c = single_sum_normalise(c);
     }
   
@@ -1300,7 +1408,161 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
   c = SET_SW_SIGN(c, res_sign);
     
 #if DEBUG_SW_BCD_SUM
-  printf("\nc=%08X (9c:%08X)", c, bcd_nines_complement(c));
+  printf("\nc=%08X (9c:%08X)", c, bcd_sw_nines_complement(c));
+#endif
+  
+  return(c);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// BCD double word integer addition
+//
+// Signed
+//
+// Both positive: Add, check for overflow
+// Both negative: Add, check for overflow
+// One negative, one positive: Nines complement negative, add, drop carry, add one, check for overflow (inverted)
+
+REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WORD b)
+{
+  REGISTER_DOUBLE_WORD c;
+  int a_sign;
+  int b_sign;
+
+#if DEBUG_DW_BCD_SUM
+  printf("\n--------------------------------");
+  printf("\n%s:a=%016llX  b=%016llX", __FUNCTION__, a, b);
+#endif
+  
+  // Remove and save the signs
+
+  a_sign = DW_SIGN(a);
+  b_sign = DW_SIGN(b);
+
+  
+#if DEBUG_DW_BCD_SUM
+  printf("\nasgn=%d  bsgn=%d", a_sign, b_sign);
+#endif
+
+  a = REMOVED_DW_SIGN(a);
+  b = REMOVED_DW_SIGN(b);
+
+  // If signs are different then we need to work out what the sign of the result is
+  int res_sign;
+  
+  if( a > b )
+    {
+      res_sign = a_sign;
+    }
+  else
+    {
+      res_sign = b_sign;
+    }
+
+#if DEBUG_DW_BCD_SUM
+  printf("\na(rs)=%016llX  b(rs)=%016llX", a, b);
+#endif
+
+  // If both numbers are positive or both are negative the just add the digits
+  if( ((a_sign == WORD_SIGN_MINUS) && (b_sign == WORD_SIGN_MINUS)) ||
+      ((a_sign == WORD_SIGN_PLUS) && (b_sign == WORD_SIGN_PLUS)) )
+    {
+#if DEBUG_DW_BCD_SUM
+      printf("\nSigns identical");
+#endif
+
+      c = bcd_addition_double(a, b);
+
+#if DEBUG_DW_BCD_SUM
+      printf("\nc=%016llX", c);
+#endif
+
+      c = double_sum_normalise(c);
+
+#if DEBUG_DW_BCD_SUM
+      printf("\nc=%016llX", c);
+#endif
+      
+      if( OVERFLOW_DW(c) )
+	{
+#if DEBUG_DW_BCD_SUM
+	  printf("\nOverflow occurred");
+
+	  error_msg( "Overflow (%08X)", c);
+#endif
+	}
+
+      // Signs are unchanged
+      c = SET_DW_SIGN(c, a_sign);
+      return(c);
+    }
+
+  // If we get here then the signs of the numbers are different
+  // If number negative then use tens complemet
+#if DEBUG_DW_BCD_SUM
+  printf("\nSigns different");
+#endif
+
+  if( a_sign == WORD_SIGN_MINUS )
+    {
+      a = bcd_sw_nines_complement(a);
+    }
+
+  if( b_sign == WORD_SIGN_MINUS )
+    {
+      b = bcd_dw_nines_complement(b);
+    }
+
+#if DEBUG_DW_BCD_SUM
+  printf("\n%s:a=%016llX  b=%016llX", __FUNCTION__, a, b);
+#endif
+  
+#if DEBUG_DW_BCD_SUM
+  printf("\nSigns different");
+#endif
+
+  c = bcd_addition_double(a, b);
+  
+  c = double_sum_normalise(c);
+      
+#if DEBUG_DW_BCD_SUM
+  printf("\nc=%016llX", c);
+#endif
+
+
+  // Overflow condition is reversed
+  if( !OVERFLOW_DW(c) )
+    {
+#if DEBUG_DW_BCD_SUM
+      printf("\nOverflow occurred");
+#endif
+
+      error_msg("Overflow (%08X)", c);
+    }
+
+  // Drop the carry
+  c = CLEAR_DW_CARRY(c);
+
+  // Add one
+  c = bcd_addition_double(c, 1);
+  
+  c = double_sum_normalise(c);
+  
+  // If result is negative then nines complement it and add one as we use sign plus digits form for numbers
+  // This format matches the floating point format
+  if( res_sign == WORD_SIGN_MINUS )
+    {
+      c = bcd_sw_nines_complement(c);
+      c = bcd_addition_double(c, 1);
+      c = double_sum_normalise(c);
+    }
+  
+  // The sign of the result will be that of the largest argument absoulte value
+  c = SET_DW_SIGN(c, res_sign);
+    
+#if DEBUG_DW_BCD_SUM
+  printf("\nc=%016llX (9c:%016llX)", c, bcd_sw_nines_complement(c));
 #endif
   
   return(c);
@@ -1343,18 +1605,74 @@ REGISTER_DOUBLE_WORD get_register(ESC_STATE *s, int reg)
   return((REGISTER_DOUBLE_WORD)s->R[reg]);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Various register assignments
+//
+
+void register_assign_register(ESC_STATE *s, int dest, int src)
+{
+#if DEBUG_REG_ASSIGN
+  printf("\n%s:dest:%d src:%d", __FUNCTION__, dest, src);
+#endif
+  
+  if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src) )
+    {
+#if DEBUG_REG_ASSIGN
+      printf("\nSW REG, SW REG");
+#endif
+      SW_REG_CONTENTS(dest) = SW_REG_CONTENTS(src);
+    }
+  
+  if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src) )
+    {
+#if DEBUG_REG_ASSIGN
+      printf("\nDOUBLE WORD, DOUBLE WORD");
+#endif
+      DW_REG_CONTENTS(dest) = DW_REG_CONTENTS(src);
+
+#if DEBUG_REG_ASSIGN
+      printf("\n%s:dest:%016llX", __FUNCTION__, s->R[dest]);
+#endif
+    }
+
+  if( IS_SW_REGISTER(dest) && IS_DW_REGISTER(src) )
+    {
+#if DEBUG_REG_ASSIGN
+      printf("\nSINGLE WORD <= DOUBLE WORD");
+#endif
+      SW_REG_CONTENTS(dest) = DW_TO_SW(DW_REG_CONTENTS(src));
+
+#if DEBUG_REG_ASSIGN
+      printf("\n%s:dest:%016llX", __FUNCTION__, s->R[dest]);
+#endif
+    }
+
+  if( IS_DW_REGISTER(dest) && IS_SW_REGISTER(src) )
+    {
+#if DEBUG_REG_ASSIGN
+      printf("\nSINGLE WORD <= DOUBLE WORD");
+#endif
+      DW_REG_CONTENTS(dest) = SW_TO_DW(SW_REG_CONTENTS(src));
+
+#if DEBUG_REG_ASSIGN
+      printf("\n%s:dest:%016llX", __FUNCTION__, s->R[dest]);
+#endif
+    }
+}
+
 
 void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
 {
   if( IS_SW_REGISTER(dest) )
     {
-      s->R[dest] = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
+      SW_REG_CONTENTS(dest) = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
       
     }
   
   if( IS_DW_REGISTER(dest) )
     {
-      s->R[dest] = (REGISTER_DOUBLE_WORD) literal;
+      DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) literal;
     }
 }
 
@@ -1362,19 +1680,39 @@ void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
 
 void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int literal)
 {
+#if DEBUG_REG_ASSIGN
+  printf("\n%s:dest:%d src:%d lit:%d", __FUNCTION__, dest, src, literal);
+#endif
+  
   if( IS_SW_REGISTER(dest) )
     {
+#if DEBUG_REG_ASSIGN
+      printf("\nSINGLE WORD REG");
+#endif
+
       REGISTER_SINGLE_WORD t;
 
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
-      
-      s->R[dest] = bcd_sw_addition(s->R[src], t);
-      //      s->R[dest] = single_sum_normalise(s->R[dest]);
+
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(SW_REG_CONTENTS(src), t);
     }
   
   if( IS_DW_REGISTER(dest) )
     {
-      s->R[dest] = s->R[src] + (REGISTER_DOUBLE_WORD) literal;
+      REGISTER_DOUBLE_WORD t;
+
+#if DEBUG_REG_ASSIGN
+      printf("\nDOUBLE WORD REG");
+#endif
+
+      t = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_PLUS);
+      
+      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src), t);
+
+#if DEBUG_REG_ASSIGN
+      printf("\n%s:dest:%016llX (lit):%016llX", __FUNCTION__, s->R[dest], t);
+#endif
+
     }
 }
 
@@ -1384,16 +1722,20 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
     {
       REGISTER_SINGLE_WORD t;
 
-      t       = SET_SW_SIGN((REGISTER_SINGLE_WORD) s->R[src], WORD_SIGN_MINUS);
+      t       = SET_SW_SIGN((REGISTER_SINGLE_WORD) SW_REG_CONTENTS(src), WORD_SIGN_MINUS);
       literal = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal,   WORD_SIGN_PLUS);
 
-      s->R[dest] = bcd_sw_addition((REGISTER_SINGLE_WORD) literal, t);
-      //      s->R[dest] = single_sum_normalise(s->R[dest]);
+      SW_REG_CONTENTS(dest) = bcd_sw_addition((REGISTER_SINGLE_WORD) literal, t);
     }
   
   if( IS_DW_REGISTER(dest) )
     {
-      s->R[dest] = (REGISTER_DOUBLE_WORD) literal - s->R[src];
+      REGISTER_DOUBLE_WORD t;
+
+      t       = SET_DW_SIGN((REGISTER_DOUBLE_WORD) DW_REG_CONTENTS(src), WORD_SIGN_MINUS);
+      literal = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal,   WORD_SIGN_PLUS);
+
+      DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) literal, t);
     }
 }
 
@@ -1405,13 +1747,16 @@ void register_assign_sub_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_MINUS);
 
-      s->R[dest] = bcd_sw_addition((REGISTER_SINGLE_WORD) t, s->R[src]);
-      //      s->R[dest] = single_sum_normalise(s->R[dest]);
+      SW_REG_CONTENTS(dest) = bcd_sw_addition((REGISTER_SINGLE_WORD) t, SW_REG_CONTENTS(src));
     }
   
   if( IS_DW_REGISTER(dest) )
     {
-      s->R[dest] = (REGISTER_DOUBLE_WORD) literal - s->R[src];
+      REGISTER_DOUBLE_WORD t;
+
+      t = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_MINUS);
+
+      DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) t, DW_REG_CONTENTS(src));
     }
 }
 
@@ -1419,15 +1764,13 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
 {
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
-      s->R[dest] = bcd_sw_addition(s->R[src1], s->R[src2]);
-      
-      //s->R[dest] = single_sum_normalise(s->R[dest]);
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(SW_REG_CONTENTS(src1), SW_REG_CONTENTS(src2));
       return;
     }
 
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
-      s->R[dest] = s->R[src1] + s->R[src2];
+      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), DW_REG_CONTENTS(src2));
       return;
     }
 
@@ -1439,15 +1782,13 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
 {
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
-      s->R[dest] = bcd_sw_addition(s->R[src1], SET_SW_SIGN((REGISTER_SINGLE_WORD) s->R[src2], WORD_SIGN_MINUS));
-      
-      //s->R[dest] = single_sum_normalise(s->R[dest]);
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(SW_REG_CONTENTS(src1), SET_SW_SIGN((REGISTER_SINGLE_WORD) SW_REG_CONTENTS(src2), WORD_SIGN_MINUS));
       return;
     }
 
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
-      s->R[dest] = s->R[src1] + s->R[src2];
+      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), SET_DW_SIGN((REGISTER_DOUBLE_WORD) DW_REG_CONTENTS(src2), WORD_SIGN_MINUS));
       return;
     }
 
@@ -1933,7 +2274,7 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
 	}
       
       // 8 digit instruction so move to next address
-      s->iar.address = single_sum_normalise(bcd_addition_32(s->iar.address,1));
+      s->iar.address = single_sum_normalise(bcd_addition_single(s->iar.address,1));
 
       // IAR only two digits
       s->iar.address &= 0xFF;
@@ -1949,7 +2290,7 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
     case 6:
       if( s->iar.a_flag )
 	{
-	  s->iar.address = single_sum_normalise(bcd_addition_32(s->iar.address,1));
+	  s->iar.address = single_sum_normalise(bcd_addition_single(s->iar.address,1));
 
 	  // IAR only two digits
 	  s->iar.address &= 0xFF;
@@ -1979,7 +2320,7 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
 void stage_c_decode(ESC_STATE *s, int display)
 {
   SINGLE_WORD a1v, a2v, a3v;
-  
+  SINGLE_WORD tst;  
   // Decode the instruction
   // First the digits 1-4
 
@@ -2114,7 +2455,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	  break;
 
-	  // Branch to (Aa1) if (Aa2) = (Aa3)
+	  // Branch to Aa1 if (Aa2) = (Aa3)
 	case 4:
 #if DEBUG_FP
 	  printf("\nBranch to Aa1 if (Aa2) = (Aa3)");
@@ -2134,7 +2475,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Subtract the values and look for zero as that will account for different forms of the same value,
 	  // e.g:   A1000050 and A2000500
 	  // which are both 5 (5.0 and 5.00)
-	  SINGLE_WORD tst = fp_subtract(a2v, a3v);
+	  tst = fp_subtract(a2v, a3v);
 
 #if DEBUG_FP
 	  printf("\ntst=%08X", tst);
@@ -2166,12 +2507,109 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	  break;
 
-	  // Branch to (Aa1) if (Aa2) > (Aa3)
+	  // Branch to Aa1 if (Aa2) > (Aa3)
 	case 5:
+#if DEBUG_FP
+	  printf("\nBranch to Aa1 if (Aa2) > (Aa3)");
+	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
+#endif
+	  a1v = load_from_store(s, s->Aa1);
+	  a2v = load_from_store(s, s->Aa2);
+	  a3v = load_from_store(s, s->Aa3);
+
+#if DEBUG_FP
+	  printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
+#endif
+
+	  // move to next IAR, in case the branch isn't taken.
+	  next_iar(s);
+
+	  // Subtract the values and look for a positive value and not zero
+	  // e.g:   A1000050 and A2000500
+	  // which are both 5 (5.0 and 5.00)
+	  tst = fp_subtract(a2v, a3v);
+
+#if DEBUG_FP
+	  printf("\ntst=%08X", tst);
+#endif
+	  
+	  if( ((tst & 0x00FFFFFF) != 0) && ((tst & 0xF0000000) == 0xA0000000) )
+	    {
+#if DEBUG_FP
+	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
+	      printf("\n**Branch taken**");
+#endif
+	      
+	      s->iar.address = a1v;
+	      s->iar.a_flag = 0;
+	    }
+	  else
+	    {
+#if DEBUG_FP
+	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
+	      printf("\n**Branch NOT taken**");
+#endif
+	    }
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 6, "");
+
 	  break;
 
-	  // Branch to |(Aa1)| if |(Aa2)| < |(Aa3)|
+	  // Branch to Aa1 if |(Aa2)| < |(Aa3)|
 	case 6:
+#if DEBUG_FP
+	  printf("\nBranch to Aa1 if (Aa2) > (Aa3)");
+	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
+#endif
+	  a1v = load_from_store(s, s->Aa1);
+	  a2v = load_from_store(s, s->Aa2);
+	  a3v = load_from_store(s, s->Aa3);
+
+#if DEBUG_FP
+	  printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
+#endif
+
+	  // move to next IAR, in case the branch isn't taken.
+	  next_iar(s);
+
+	  // Subtract the values and look for a positive value and not zero
+	  // e.g:   A1000050 and A2000500
+	  // which are both 5 (5.0 and 5.00)
+
+	  // Force both values to be positive (modulus)
+	  a2v = SET_SW_SIGN(a2v, WORD_SIGN_PLUS);
+	  a3v = SET_SW_SIGN(a3v, WORD_SIGN_PLUS);
+	  
+	  SINGLE_WORD tst = fp_subtract(a2v, a3v);
+
+#if DEBUG_FP
+	  printf("\ntst=%08X", tst);
+#endif
+	  
+	  if( ((tst & 0x00FFFFFF) != 0) && ((tst & 0xF0000000) == 0xA0000000) )
+	    {
+#if DEBUG_FP
+	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
+	      printf("\n**Branch taken**");
+#endif
+	      
+	      s->iar.address = a1v;
+	      s->iar.a_flag = 0;
+	    }
+	  else
+	    {
+#if DEBUG_FP
+	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
+	      printf("\n**Branch NOT taken**");
+#endif
+	    }
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 6, "");
+
 	  break;
 
 	  // Branch to (Aa1) if (Aa3) <> 0 and store link address in Aa2
@@ -2560,7 +2998,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  
 	case 3:
 	  // Register assign (Rc) <-(Rd)
-	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rd, 0);
+	  register_assign_register(s, s->reginst_rc, s->reginst_rd);
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
@@ -3857,14 +4295,65 @@ SW_BCD_TEST sw_bcd_test[] =
 
 #define NUM_SW_BCD_TEST (sizeof(sw_bcd_test)/sizeof(SW_BCD_TEST))
 
+void test_dw_add(uint64_t a, uint64_t b, uint64_t r)
+{
+  uint64_t c;
+  
+  c = bcd_dw_addition(a, b);
+  
+  printf("\n%016llX + %016llX = %016llX : %s (r=%016llX)", a, b, c, (c ==r)?"PASS":"FAIL", r);
+}
+
+typedef struct _DW_BCD_TEST
+{
+  uint64_t a;
+  uint64_t b;
+  uint64_t r;
+} DW_BCD_TEST;
+
+DW_BCD_TEST dw_bcd_test[] =
+  {
+   {0xA000000000000010L, 0xA000000000000020L, 0xA000000000000030L},
+   {0xA000000000000020L, 0xA000000000000010L, 0xA000000000000030L},
+   {0xA000000000000007L, 0xA000000000000005L, 0xA000000000000012L},
+   {0xB000000000000020L, 0xB000000000000010L, 0xB000000000000030L},
+   {0xA000000000123456L, 0xA000000000654321L, 0xA000000000777777L},
+   {0xB000000000123456L, 0xB000000000654321L, 0xB000000000777777L},
+   {0xB000000000077777L, 0xB000000000777777L, 0xB000000000855554L},
+   {0xA000000000002345L, 0xB000000000000045L, 0xA000000000002300L},
+   {0xA000000000000045L, 0xB000000000002345L, 0xB000000000002300L},
+
+   {0xA000000000999900L, 0xA000000000000099L, 0xA000000000999999L},
+   {0xA000000000999900L, 0xA000000000000100L, 0xA000000000000000L},
+
+   {0xB000000000999900L, 0xB000000000000099L, 0xB000000000999999L},
+   {0xB000000000999900L, 0xB000000000000100L, 0xB000000000000000L},
+
+
+
+   
+  };
+
+#define NUM_DW_BCD_TEST (sizeof(sw_bcd_test)/sizeof(SW_BCD_TEST))
+
 void cli_test_bcd(void)
 {
   int a, b, c;
+
+  printf("\n\nSingle word tests\n");
   
   // Perform some arithmetic
   for(int i=0; i<NUM_SW_BCD_TEST; i++)
     {
       test_sw_add(sw_bcd_test[i].a, sw_bcd_test[i].b, sw_bcd_test[i].r);
+    }
+
+  printf("\n\nDouble word tests\n");
+    
+  // Perform some arithmetic
+  for(int i=0; i<NUM_DW_BCD_TEST; i++)
+    {
+      test_dw_add(dw_bcd_test[i].a, dw_bcd_test[i].b, dw_bcd_test[i].r);
     }
   
   printf("\n");
@@ -5597,6 +6086,105 @@ TEST_LOAD_STORE test_16_store =
     -1},
   };
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 17
+//
+// Instructions 1[0-3]
+// 
+// 
+
+INIT_INFO test_init_17[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x112233)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
+   {IC_SET_REG_N,    9},
+   {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_17[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+   TOK_KEY_1,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_17[] =
+  {
+   
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xA000000000314160},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xA000000000314162L},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xA000000000314171L},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xA600012345314159L},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   9},
+   {TC_MUST_BE, 0xA000000000112233L},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0314159},
+   {TC_END_SECTION, 0},
+   
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_17_store =
+  {
+   {
+    SW_PLUS(0x05310732),
+    0x12345678,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x00810082,
+    0x00891389,
+    0x13901318,
+    -1},
+  };
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -5619,6 +6207,7 @@ ESC_TEST_INFO tests[] =
    {"Fp Divide",               test_init_14, test_seq_14, test_res_14, 0, &test_14_store, ""},
    {"Surface & volume",        test_init_sv, test_seq_sv, test_res_sv, 0, &test_sv_store, ""},
    {"Fp Branches",             test_init_16, test_seq_16, test_res_16, 0, &test_16_store, ""},
+   {"Inst [0-1][0-3] DW",      test_init_17, test_seq_17, test_res_17, 0, &test_17_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };

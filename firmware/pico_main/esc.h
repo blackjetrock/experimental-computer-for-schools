@@ -64,20 +64,20 @@ typedef uint32_t ADDRESS;
 #define STORE_SET_RH4_DIGITS(XX,EE) ((XX & 0xFFFF0000) | ((EE & 0x0000FFFF) <<0 ))
 
 // Get the double word sign
-#define DW_SIGN(XX)            ((XX & 0xF000000000000000)>>60)
-
-
+#define DW_SIGN(XX)            ((XX & 0xF000000000000000L)>>60)
+#define DW_DIGITS(XX)          ((XX & 0x0000FFFFFFFFFFFFL)>> 0)
 
 // Remove signs from values
 #define REMOVED_SW_SIGN(XX)    (XX & 0x0FFFFFFF)
-#define REMOVED_DW_SIGN(XX)    (XX & 0x0FFFFFFFFFFFFFFF)
+#define REMOVED_DW_SIGN(XX)    (XX & 0x0FFFFFFFFFFFFFFFL)
 #define REMOVED_SW_UNUSED(XX)  (XX & 0xF0FFFFFF)
-#define REMOVED_DW_UNUSED(XX)  (XX & 0xF000FFFFFFFFFFFF)
+#define REMOVED_DW_UNUSED(XX)  (XX & 0xF000FFFFFFFFFFFFL)
 
 #define OVERFLOW_SW(XX)        ((XX & 0x0F000000) != 0 )
-#define OVERFLOW_DW(XX)        ((XX & 0x000F000000000000) != 0 )
+#define OVERFLOW_DW(XX)        ((XX & 0x000F000000000000L) != 0 )
 
 #define CLEAR_SW_CARRY(XX)     (XX & 0xF0FFFFFF)
+#define CLEAR_DW_CARRY(XX)     (XX & 0xF000FFFFFFFFFFFFL)
 #define SET_SW_SIGN(XX, SGN)   (REMOVED_SW_SIGN(XX) | (SGN << 28))
 #define SET_DW_SIGN(XX, SGN)   (REMOVED_DW_SIGN(XX) | ((DOUBLE_WORD)SGN <<60))
 #define SW_PLUS(XX)            SET_SW_SIGN(XX, WORD_SIGN_PLUS)
@@ -85,6 +85,10 @@ typedef uint32_t ADDRESS;
 #define DW_PLUS(XX)            SET_DW_SIGN(XX, WORD_SIGN_PLUS)
 #define DW_MINUS(XX)           SET_DW_SIGN(XX, WORD_SIGN_MINUS)
 
+// Convert SW to DW
+#define SW_TO_DW(XX)         ((SW_DIGITS(XX)             ) |  SET_DW_SIGN(SW_DIGITS(XX),SW_SIGN(XX)))
+#define DW_TO_SW(XX)         ((DW_DIGITS(XX) & 0x00FFFFFF) | (SET_SW_SIGN(DW_DIGITS(XX),DW_SIGN(XX)) & 0xF0FFFFFF))
+  
 // Instruction fields
 #define INST_A_FIELD(INST)   ((INST & 0xF0000000)>>28)
 #define INST_B_FIELD(INST)   ((INST & 0x0F000000)>>24)
