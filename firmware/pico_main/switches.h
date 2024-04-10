@@ -11,6 +11,7 @@
 #define DEBUG_SW_BCD_SUM       1
 #define DEBUG_DW_BCD_SUM       1
 #define DEBUG_REG_ASSIGN       1
+#define DEBUG_FP               1
 
 #define DEBUG_TEST             1    // Test instruction
 #define DEBUG_TEST_SEQ         1    // Test sequences
@@ -20,7 +21,7 @@
 #define DEBUG_ADDR_MODES       1
 #define DEBUG_INST_21          1
 #define DEBUG_INST_22          1
-#define DEBUG_FP               1
+
 
 #define OLED_ON                1
 #define SD_ON                  1

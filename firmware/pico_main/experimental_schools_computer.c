@@ -1441,7 +1441,6 @@ REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WOR
 #endif
   
   // Remove and save the signs
-
   a_sign = DW_SIGN(a);
   b_sign = DW_SIGN(b);
 
@@ -2161,6 +2160,10 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
 
   for(int i=0; i<6; i++)
   {
+#if DEBUG_FP
+    printf("\nTested:%08X  shifted:%016llX", tested_arg_digits, shifted_arg_digits); 
+#endif
+
     // test
     if( (tested_arg_digits & 0xF) != 0 )
       {
@@ -2168,18 +2171,17 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
 	  {
 	    digits_r = bcd_dw_addition(digits_r, shifted_arg_digits);
 	  }
-
-	// Remove sign
-	shifted_arg_digits = REMOVED_DW_SIGN(shifted_arg_digits);
-	tested_arg_digits  = REMOVED_SW_SIGN(tested_arg_digits);
-	
-	// Shift
-	tested_arg_digits >>= 4;
-	shifted_arg_digits <<=4;
-	shifted_arg_digits = SET_DW_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
-	tested_arg_digits  = SET_SW_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
-
       }
+    
+    // Remove sign
+    shifted_arg_digits = REMOVED_DW_SIGN(shifted_arg_digits);
+    tested_arg_digits  = REMOVED_SW_SIGN(tested_arg_digits);
+    
+    // Shift
+    tested_arg_digits >>= 4;
+    shifted_arg_digits <<=4;
+    shifted_arg_digits = SET_DW_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
+    tested_arg_digits  = SET_SW_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
   }
 
   
@@ -2197,9 +2199,10 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
 
 #if DEBUG_FP
   printf("\nShifting to find MSD...");
+  printf("\ndigits_r:%016llX exp_r:%d", digits_r, exp_r);
 #endif
   
-  while( ((digits_r & (DOUBLE_WORD)0x0000F00000000000L)==0) && (digits_r &0x0000FFFFFFFFFFFFL) )
+  while( ((digits_r & (DOUBLE_WORD)0x0000F00000000000L)==0) && ((digits_r & (DOUBLE_WORD)0x0000FFFFFFFFFFFFL) !=0) )
     {
       digits_r = shift_dw_left(digits_r);
 
@@ -2209,9 +2212,18 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
 #if DEBUG_FP
       printf("\ndigits_r:%016llX exp_r:%d", digits_r, exp_r);
 #endif
-
     }
-  
+
+#if DEBUG_FP
+  printf("\nShifting done");
+  printf("\ndigits_r:%016llX exp_r:%d", digits_r, exp_r);
+#endif
+
+#if DEBUG_FP
+  printf("\nShifting down by 6 places");
+  printf("\ndigits_r:%016llX exp_r:%d", digits_r, exp_r);
+#endif
+
   // Shift down by 6 places so the MSD is in the MS position for a single word
   for(int i = 0; i< 6; i++)
     {
@@ -2221,6 +2233,10 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
       exp_r--;
     }
 
+#if DEBUG_FP
+  printf("\ndigits_r:%016llX exp_r:%d", digits_r, exp_r);
+#endif
+  
   // Keep result in a single word
   result = digits_r;
   
@@ -6184,7 +6200,7 @@ TEST_LOAD_STORE test_sv_store =
     0xA1000025,    // 02
     0x00000000,    // 03
     0x00000000,    // 04
-    0xA2000314,    // 05
+    0xA5314159,    // 05
     0xA0000004,    // 06
     0xA0000003,    // 07
     0x00000000,    // 08
@@ -6387,6 +6403,73 @@ TEST_LOAD_STORE test_17_store =
     -1},
   };
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 18
+//
+// Quick FP test
+// 
+// 
+
+INIT_INFO test_init_18[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x112233)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
+   {IC_SET_REG_N,    9},
+   {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_18[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_18[] =
+  {
+   
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xA000000000314160},
+   {TC_END_SECTION, 0},
+   
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_18_store =
+  {
+   {
+    0x72101112,    //00
+    0x00000000,    //01
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,     //10
+    0xA4062500,     //11
+    0xA5314159,     //12
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    -1},
+  };
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -6410,6 +6493,7 @@ ESC_TEST_INFO tests[] =
    {"Surface & volume",        test_init_sv, test_seq_sv, test_res_sv, 0, &test_sv_store, ""},
    {"Fp Branches",             test_init_16, test_seq_16, test_res_16, 0, &test_16_store, ""},
    {"Inst [0-1][0-3] DW",      test_init_17, test_seq_17, test_res_17, 0, &test_17_store, ""},
+   {"FP test",                 test_init_18, test_seq_18, test_res_18, 0, &test_18_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
