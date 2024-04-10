@@ -1209,17 +1209,22 @@ REGISTER_DOUBLE_WORD bcd_addition_double(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE
   // Add 6 to each non-bcd digit
 
   int carry = 0;
+  REGISTER_DOUBLE_WORD mask;
   
   for(int i=0; i<sizeof(REGISTER_DOUBLE_WORD)*8; i+=4)
     {
+      mask = (REGISTER_DOUBLE_WORD)0xFL << i;
+      
       // Get digit value
-      REGISTER_DOUBLE_WORD a_digit = ((a & (0xFL << i)) >> i);
-      REGISTER_DOUBLE_WORD b_digit = ((b & (0xFL << i)) >> i);
+      REGISTER_DOUBLE_WORD a_digit = ((a & mask) >> i);
+      REGISTER_DOUBLE_WORD b_digit = ((b & mask) >> i);
       REGISTER_DOUBLE_WORD c_digit = a_digit + b_digit + carry;
       carry = 0;
       
 #if DEBUG_BCD_CORRECTION
-      printf("\n%s: Add: a:%lld + b:%lld = %lld", __FUNCTION__, a_digit, b_digit, c_digit);
+
+      printf("\n%s: Add: a:%016llX + b:%016llX = %lld", __FUNCTION__, a_digit, b_digit, c_digit);
+      printf("\na:%016llX a(2):%016llX a(3):%016llX", a, a & (0xFL <<i), mask);
 #endif
       // Add 6 if not bcd, we may need to propagate a carry (9+9 = 18, so 6 is added and 24 results
       // which is 0x18)
@@ -1237,7 +1242,7 @@ REGISTER_DOUBLE_WORD bcd_addition_double(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE
 	case 18:
 	case 19:
 	  // Add 6, then propagate a carry
-	  c_digit = (c_digit + 6) % 16;
+	  c_digit = (c_digit + 6L) % 16L;
 	  carry = 1;
 	  break;
 	}
@@ -1847,6 +1852,47 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
 SHIFT_INST(left,<<);
 SHIFT_INST(right,>>);
 
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Shift a DW right
+//
+// Sign is preserved
+//
+
+DOUBLE_WORD shift_dw_right(DOUBLE_WORD x)
+{
+  int sign = DW_SIGN(x);
+  
+  // Remove sign
+  x = REMOVED_DW_SIGN(x);
+  
+  // Shift
+  x >>= 4;
+
+  // Put sign back
+  x  = SET_DW_SIGN(x,  sign);
+
+  return(x);
+}
+
+DOUBLE_WORD shift_dw_left(DOUBLE_WORD x)
+{
+  int sign = DW_SIGN(x);
+  
+  // Remove sign
+  x = REMOVED_DW_SIGN(x);
+  
+  // Shift
+  x <<= 4;
+
+  // Put sign back
+  x  = SET_DW_SIGN(x,  sign);
+
+  return(x);
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Floating point operations
@@ -2143,15 +2189,40 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
   printf("\ndigits_a:%016X  digits_b:%016X digits_r:%016X", digits_a, digits_b, digits_r); 
 #endif
 
-  // Keep result in a single word
-  result = digits_r;
+  // We now need to shift the result so it will fit in a single word.
+  // Shift so most significant digit is in the left most position, that will
+  // give us the greatest resolution.
 
   exp_r = exp_a + exp_b;
 
-  if( exp_r > 6 )
+#if DEBUG_FP
+  printf("\nShifting to find MSD...");
+#endif
+  
+  while( ((digits_r & (DOUBLE_WORD)0x0000F00000000000L)==0) && (digits_r &0x0000FFFFFFFFFFFFL) )
     {
-      // There is a problem, we will overflow if we multiply
+      digits_r = shift_dw_left(digits_r);
+
+      // Keep track of the number of decimal places
+
+      exp_r++;
+#if DEBUG_FP
+      printf("\ndigits_r:%016llX exp_r:%d", digits_r, exp_r);
+#endif
+
     }
+  
+  // Shift down by 6 places so the MSD is in the MS position for a single word
+  for(int i = 0; i< 6; i++)
+    {
+      digits_r = shift_dw_right(digits_r);
+
+      // Keep track of the number of decimal places
+      exp_r--;
+    }
+
+  // Keep result in a single word
+  result = digits_r;
   
   // Put exponent back
   result = STORE_SET_EXPONENT(result, exp_r);
