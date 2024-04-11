@@ -3836,15 +3836,15 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
   SINGLE_WORD digits, old_digits;
   int sign;
   int exp;
+  
+  digits = STORE_GET_DIGITS(kbr);
+  exp    = STORE_GET_EXPONENT(kbr);
+  sign   = STORE_GET_SIGN(kbr);
 
   // If there is a sign then update as a floating point number otherwise as an integer
   if( (sign == WORD_SIGN_PLUS) || (sign == WORD_SIGN_MINUS) )
     {
       // Update the digits, leaving the exponent and the sign unchanged
-      digits = STORE_GET_DIGITS(kbr);
-      exp    = STORE_GET_EXPONENT(kbr);
-      sign   = STORE_GET_SIGN(kbr);
-      
       old_digits = digits;
       digits *= 16;
       digits += num;
