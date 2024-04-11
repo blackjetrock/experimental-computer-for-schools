@@ -119,6 +119,8 @@ typedef enum _TEST_CODE
    TC_REG_KI,
    TC_STORE_N,
    TC_MUST_BE,
+   TC_MUST_BE_STOPPED,
+   TC_MUST_BE_NOT_STOPPED,
    TC_END_SECTION,    // End of sub section results. Check up to here (or a TC_END) by TOK_TEST_CHECK_RES token
    TC_END,
   } TEST_CODE;
@@ -132,6 +134,8 @@ char *tc_names[] =
    "TC_REG_KI",
    "TC_STORE_N",
    "TC_MUST_BE",
+   "TC_MUST_BE_STOPPED",
+   "TC_MUST_BE_NOT_STOPPED",
    "TC_END_SECTION",
    "TC_END",
   };
@@ -565,9 +569,41 @@ void kbd_read(ESC_STATE *s)
 			      printf("\n  TC_REG_xxx:%d rn=%d", t, rn);
 #endif
 			      break;
-			  
+
+			    case TC_MUST_BE_STOPPED:
+#if DEBUG_TEST_SEQ
+				  printf("\nTesting for stopped. Stop = %d Run=%d", s->stop, s->run);
+#endif
+			      if( s->stop )
+				{
+				  // Stop is set, all ok
+				}
+			      else
+				{
+				  test_fail_info("Stop = 0");
+				  tests[test_number].passed = 0;
+				}
+			      break;
+
+			    case TC_MUST_BE_NOT_STOPPED:
+#if DEBUG_TEST_SEQ
+				  printf("\nTesting for not stopped. Stop = %d Run=%d", s->stop, s->run);
+#endif
+			      if( !s->stop )
+				{
+				  // Stop is not set, all ok
+				}
+			      else
+				{
+				  test_fail_info("Stop = 1");
+				  tests[test_number].passed = 0;
+				}
+			      break;
+			      
 			    case TC_MUST_BE:
+#if DEBUG_TEST_SEQ
 			      printf("\nTest type: %s", tc_reg_name(test_type));
+#endif
 			      switch(test_type)
 				{
 				  // Test against the store
@@ -3268,10 +3304,11 @@ void stage_b_decode(ESC_STATE *s, int display)
 	case 9:
 	  // Stop and display (Rc) and (Rd)
 	  s->stop = 1;
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
+	  s->update_display = 1;
+	  display_on_line(s, DISPLAY_UPDATE, 3, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, DISPLAY_UPDATE, 4, "%s", display_register_and_contents(s, s->reginst_rd));
+	  display_on_line(s, DISPLAY_UPDATE, 5, "");
+	  display_on_line(s, DISPLAY_UPDATE, 6, "");
 	  break;
 	}
 
@@ -3665,13 +3702,13 @@ void run_stage_a(ESC_STATE *s, int display)
   // Decode instruction
   stage_a_decode(s, display);
 
-  s->update_display = display;
+  //s->update_display = display;
 }
 
 //
 // Stage B
 //
-// The addresses have been alculated, now the instruction is executed
+// The addresses have been calculated, now the instruction is executed
 //
 
 void run_stage_b(ESC_STATE *s, int display)
@@ -3679,19 +3716,17 @@ void run_stage_b(ESC_STATE *s, int display)
   // Set instruction stage
   s->stage = 'B';
 
+  //s->update_display = display;
   stage_b_decode(s, display);
-  
-  s->update_display = display;
 }
 
 void run_stage_c(ESC_STATE *s, int display)
 {
   // Set instruction stage
   s->stage = 'C';
-
-  stage_c_decode(s, display);
+  //s->update_display = display;
   
-  s->update_display = display;
+  stage_c_decode(s, display);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3916,7 +3951,8 @@ void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
   ESC_STATE *s;
 
   s = (ESC_STATE *)es;
-
+  //s->update_display = display_flag;
+  
   switch(s->stage)
     {
     case ' ':
@@ -3939,8 +3975,6 @@ void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
       run_stage_a(s, display_flag);
       break;
     }
-  
-  s->update_display = display_flag;
 }
 
 
@@ -3961,7 +3995,8 @@ void state_esc_b_core(FSM_DATA *es, TOKEN tok, int display_flag)
   ESC_STATE *s;
 
   s = (ESC_STATE *)es;
-
+  //s->update_display = display_flag;
+  
   switch(s->stage)
     {
     case ' ':
@@ -3984,8 +4019,6 @@ void state_esc_b_core(FSM_DATA *es, TOKEN tok, int display_flag)
     case 'C':
       break;
     }
-
-  s->update_display = display_flag;
 }
 
 void state_esc_b_disp(FSM_DATA *es, TOKEN tok)
@@ -4006,6 +4039,8 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
 
   s = (ESC_STATE *)es;
 
+  //  s->update_display = display_flag;
+  
   switch(s->stage)
     {
     case ' ':
@@ -4034,8 +4069,6 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
       run_stage_c(s, display_flag);
       break;
     }
-
-  s->update_display = display_flag;
 }
 
 void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
@@ -6472,6 +6505,120 @@ TEST_LOAD_STORE test_18_store =
     -1},
   };
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 19
+//
+// Quick FP test
+// 
+// 
+
+INIT_INFO test_init_19[] =
+  {
+   {IC_SET_REG_N,    0},
+   {IC_SET_REG_V,    SW_PLUS(0x112233)},
+   {IC_SET_REG_N,    1},
+   {IC_SET_REG_V,    SW_PLUS(0x0)},
+   {IC_SET_REG_N,    8},
+   {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
+   {IC_SET_REG_N,    9},
+   {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_19[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,             // 0000
+   
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,             // 0000
+   
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_19[] =
+  {
+   
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xA0000004},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0000005},
+   {TC_END_SECTION, 0},
+
+   {TC_MUST_BE_STOPPED, 0},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xA0000007},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0000008},
+   {TC_END_SECTION, 0},
+
+   {TC_MUST_BE_STOPPED, 0},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xA0000001},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0000002},
+   {TC_MUST_BE_NOT_STOPPED, 0},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_19_store =
+  {
+   {
+    0x03040315,    //00
+    0x19010000,    //01
+    0x03070318,
+    0x19010000,
+    0x03010312,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,     //10
+    0xA4062500,     //11
+    0xA5314159,     //12
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    -1},
+  };
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -6496,6 +6643,7 @@ ESC_TEST_INFO tests[] =
    {"Fp Branches",             test_init_16, test_seq_16, test_res_16, 0, &test_16_store, ""},
    {"Inst [0-1][0-3] DW",      test_init_17, test_seq_17, test_res_17, 0, &test_17_store, ""},
    {"FP test",                 test_init_18, test_seq_18, test_res_18, 0, &test_18_store, ""},
+   {"Stop (19)",               test_init_19, test_seq_19, test_res_19, 0, &test_19_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
@@ -7535,6 +7683,11 @@ char display_line[NUM_LINES][MAX_LINE+3];
 void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...)
 {
   va_list args;
+
+#if DEBUG_DISPLAY
+  printf("\n*** %s ***", __FUNCTION__);
+#endif
+
   va_start(args, fmt);
 
   vsnprintf(&(display_line[line_no-1][0]), MAX_LINE, fmt, args);
@@ -7547,6 +7700,10 @@ void update_computer_display(ESC_STATE *es)
 {
   char tmp[MAX_LINE*NUM_LINES+1];
   int oledy = 0;
+
+#if DEBUG_DISPLAY
+  printf("\n*** %s ***", __FUNCTION__);
+#endif
   
   printf("\n");
   
@@ -7674,6 +7831,12 @@ void update_display(void)
   
   if( s->update_display )
     {
+
+#if DEBUG_DISPLAY
+      printf("\n*** %s ***", __FUNCTION__);
+      printf("\n** update_display is true **");
+#endif
+
       s->update_display = 0;
       
       if( s->reload_display )
