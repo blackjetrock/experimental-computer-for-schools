@@ -471,7 +471,7 @@ void kbd_queue_key(int k)
 }
 
 int test_loop_count = 0;
-#define TEST_EVERY_N_LOOPS  5
+#define TEST_EVERY_N_LOOPS  10
 
 int test_res_i = 0;
 
@@ -6144,6 +6144,8 @@ TOKEN test_seq_sv[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
+   // Skip the double zero instructions
+   TOK_KEY_C,
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
