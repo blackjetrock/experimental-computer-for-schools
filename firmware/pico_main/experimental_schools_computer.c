@@ -67,7 +67,10 @@ void error_msg(char *fmt, ...)
   vsnprintf(line, MAX_ERROR_BUFFER, fmt, args);
   va_end(args);
 
+#if ERRORS_ON
   printf("\n*** %s ***\n", line);
+#endif
+  
 }
 
 void warning_msg(char *fmt, ...)
@@ -2884,6 +2887,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Stop and when restarted transfer keyboard register contents into Aa
 	  s->stop = 1;
 	  s->on_restart_load_aa1 = 1;
+	  s->inst_update_display = 1;
 	  
 	  // Display
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
@@ -2897,8 +2901,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
  	  // Stop and display (Aa1), (Aa2) and (Aa3).
 	case 9:
-	  // Stop and when restarted transfer keyboard register contents into Aa
 	  s->stop = 1;
+	  s->inst_update_display = 1;
 	  
 	  // Display
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -3342,7 +3346,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	case 9:
 	  // Stop and display (Rc) and (Rd)
 	  s->stop = 1;
-	  s->update_display = 1;
+	  s->inst_update_display = 1;
 	  display_on_line(s, DISPLAY_UPDATE, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, DISPLAY_UPDATE, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, DISPLAY_UPDATE, 5, "");
@@ -8022,7 +8026,7 @@ void update_display(void)
 {
   ESC_STATE *s= &esc_state;
   
-  if( s->update_display )
+  if( s->update_display || s->inst_update_display )
     {
 
 #if DEBUG_DISPLAY
@@ -8031,6 +8035,7 @@ void update_display(void)
 #endif
 
       s->update_display = 0;
+      s->inst_update_display = 0;
       
       if( s->reload_display )
 	{

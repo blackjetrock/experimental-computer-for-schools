@@ -40,7 +40,7 @@
 #define DEBUG_DW_BCD_SUM       0
 #define DEBUG_REG_ASSIGN       0
 #define DEBUG_FP               0
-#define DEBUG_FP_SUMMARY       1
+#define DEBUG_FP_SUMMARY       0
 
 #define DEBUG_TEST             0    // Test instruction
 #define DEBUG_TEST_SEQ         0    // Test sequences
@@ -53,11 +53,14 @@
 
 #define DEBUG_DISPLAY          0
 
-#define DEBUG_RESTART          1
-#define DEBUG_EXECUTE          1
+#define DEBUG_RESTART          0
+#define DEBUG_EXECUTE          0
 #endif
 
 
 #define OLED_ON                1
 #define SD_ON                  1
+#define ERRORS_ON              0
+#define WARNINGS_ON            0
+
 
