@@ -181,6 +181,7 @@ typedef struct _ESC_STATE
   //------------------------------------------------------------------------------
   // Restart
   int on_restart_load_aa;
+  int on_restart_load_aa1;
   
   //--------------------------------------------------------------------
   // We can push a token into the FSM

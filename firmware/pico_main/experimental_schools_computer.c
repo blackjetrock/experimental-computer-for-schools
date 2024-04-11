@@ -2749,9 +2749,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
 	  display_on_line(s, display, 6, "");
-
-
-	  
 	  break;
 
 	  // Branch to Aa1 if (Aa2) > (Aa3)
@@ -2866,10 +2863,33 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Input and display. When restarted KB register is copied to Aa1
 	  // While stopped (Aa1), (Aa2) and (Aa3) are displayed.
 	case 8:
+	  // Stop and when restarted transfer keyboard register contents into Aa
+	  s->stop = 1;
+	  s->on_restart_load_aa1 = 1;
+	  
+	  // Display
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 5, "");
+	  display_on_line(s, display, 6, "");
+
+	  next_iar(s);
+	  
 	  break;
 	  
  	  // Stop and display (Aa1), (Aa2) and (Aa3).
 	case 9:
+	  // Stop and when restarted transfer keyboard register contents into Aa
+	  s->stop = 1;
+	  
+	  // Display
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 6, "");
+
+	  next_iar(s);
+		  
 	  break;
 
 	}
@@ -4140,11 +4160,27 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
   // If just started running check for input loads
   if( s->run && (!s->last_run) )
     {
+#if DEBUG_RESTART
+      printf("\n%s:", __FUNCTION__);
+#endif
       if( s->on_restart_load_aa )
 	{
+#if DEBUG_RESTART
+	  printf("\nLoading aa (%02X) with %s", s->inst_aa, display_store_word(s->keyboard_register));
+#endif
 	  // Load aa with KB register
 	  write_sw_to_store(s, s->inst_aa, s->keyboard_register);
 	  s->on_restart_load_aa = 0;
+	}
+
+      if( s->on_restart_load_aa1 )
+	{
+#if DEBUG_RESTART
+	  printf("\nLoading Aa1 (%02X) with %s", s->Aa1, display_store_word(s->keyboard_register));
+#endif
+	  // Load Aa1 with KB register
+	  write_sw_to_store(s, s->Aa1, s->keyboard_register);
+	  s->on_restart_load_aa1 = 0;
 	}
     }
 
@@ -6247,6 +6283,7 @@ TOKEN test_seq_sv[] =
    TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
+   TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
    TOK_NONE,
@@ -6289,7 +6326,7 @@ TEST_LOAD_STORE test_sv_store =
     0xA0000003,    // 07
     0x00000000,    // 08
     0x00000000,    // 09
-    0x00000000,    // 10
+    0x78020507,    // 10
     0x72030202,    // 11
     0x72030305,    // 12
     0x72030306,    // 13
