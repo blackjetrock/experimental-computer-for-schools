@@ -3842,15 +3842,17 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
   sign   = STORE_GET_SIGN(kbr);
 
   // If there is a sign then update as a floating point number otherwise as an integer
-  if( (sign == WORD_SIGN_PLUS) || (sign == WORD_SIGN_MINUS) )
+  if( (sign == WORD_SIGN_PLUS) || (sign == WORD_SIGN_MINUS) || (s->dot_entered) )
     {
       // Update the digits, leaving the exponent and the sign unchanged
       old_digits = digits;
       digits *= 16;
       digits += num;
+
+      printf("\ndigits=%08X", digits);
       
       // If we have a non zero exponent then we increment it as we have added a fractional digit
-      if( exp > 0 )
+      if( (exp > 0) || (s->dot_entered) )
 	{
 	  exp++;
 	  if( exp == 7)
@@ -3861,9 +3863,9 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
 	}
       
       // Rebuild the register contents
-      STORE_SET_SIGN    (kbr,sign);
-      STORE_SET_EXPONENT(kbr,exp);
-      STORE_SET_DIGITS  (kbr,digits);
+      kbr = STORE_SET_SIGN    (kbr,sign);
+      kbr = STORE_SET_EXPONENT(kbr,exp);
+      kbr = STORE_SET_DIGITS  (kbr,digits);
     }
   else
     {
@@ -3876,7 +3878,7 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
   
   s->update_display = 1;
 }
-
+\
 //------------------------------------------------------------------------------
 //
 // Dot pressed, so set the exponent digit and also the sign as positive
@@ -3888,14 +3890,17 @@ void state_esc_dot(FSM_DATA *s, TOKEN tok)
 
   es = (ESC_STATE *)s;
 
-  // Set exponent digit
+  // Set dot entered flag
+  es->dot_entered = 1;
+
+  // Set exponent
+  es->keyboard_register = STORE_SET_EXPONENT(es->keyboard_register, 0);
 
   // Sign set to plus
   // Minus key will over-ride at the end of entry
-  es->keyboard_register = SET_SW_SIGN(es->keyboard_register, WORD_SIGN_PLUS);
+  es->keyboard_register = STORE_SET_SIGN(es->keyboard_register, WORD_SIGN_PLUS);
     
   es->update_display = 1;
-
 }
 
 // Force sign negative
@@ -3925,12 +3930,21 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
 
   es->stage = ' ';
   es->keyboard_register = 0x00;
+  es->dot_entered = 0;
   
   es->ki_reset_flag = 0;
   es->address_register0 = EMPTY_ADDRESS;
   es->address_register1 = EMPTY_ADDRESS;
   es->address_register2 = EMPTY_ADDRESS;
 
+  display_on_line(es, 1, DISPLAY_UPDATE, "");
+  display_on_line(es, 2, DISPLAY_UPDATE, "");
+
+  display_on_line(es, 3, DISPLAY_UPDATE, "");
+  display_on_line(es, 4, DISPLAY_UPDATE, "");
+  display_on_line(es, 5, DISPLAY_UPDATE, "");
+  display_on_line(es, 6, DISPLAY_UPDATE, "");
+  
   es->reginst_rc = NO_VALUE;
   es->reginst_rd = NO_VALUE;
   es->reginst_literal = NO_VALUE;
@@ -3949,6 +3963,7 @@ void state_esc_ki_reset(FSM_DATA *s, TOKEN tok)
 
   es->stage = ' ';
   es->keyboard_register = 0x00;
+  es->dot_entered = 0;
   
   es->ki_reset_flag = 1;
   es->address_register0 = EMPTY_ADDRESS;
@@ -7592,7 +7607,11 @@ char *display_instruction(SINGLE_WORD inst)
   return(result);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
 // Store can hold floating point or instruction
+//
+////////////////////////////////////////////////////////////////////////////////
 
 char *display_store_word(SINGLE_WORD w)
 {
@@ -7640,6 +7659,78 @@ char *display_store_word(SINGLE_WORD w)
       // Floating point
       sprintf(result, "%c%08X", sign_char, w);
 
+      sprintf(result2, "%c", sign_char);
+      
+      // Insert decimal point
+      strncat(result2, result+3, 6-digit_b);
+      strcat( result2, ".");
+      strncat(result2, result+3+6-digit_b, digit_b);
+      strcat( result2, "");
+      strcpy( result, result2);
+      break;
+    }
+
+  return(result);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// KB register is a double word register but can hold either:
+//
+// Single word floating point
+// Single word integer
+// Double word integer
+//
+// If there's a sign, then floating point, otherwise double word integer
+// 
+////////////////////////////////////////////////////////////////////////////////
+
+char *display_kb_reg(DOUBLE_WORD w)
+{
+  static char result[MAX_LINE];
+  static char result2[MAX_LINE];
+
+  result2[0] ='\0';
+  result2[1] ='\0';
+
+  // Check single word sign digit
+  int digit_a = INST_A_FIELD(w);
+  int digit_b = INST_B_FIELD(w);
+  char sign_char = ' ';
+  
+  switch(digit_a)
+    {
+    case WORD_SIGN_PLUS:
+      sign_char = '+';
+      break;
+      
+    case WORD_SIGN_MINUS:
+      sign_char = '-';
+      break;
+      
+    default:
+      break;
+    }
+  
+  switch(digit_a)
+    {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+      // Instruction
+      sprintf(result, "%08X", w);
+      break;
+
+    default:
+      // Floating point
+      sprintf(result, "%c%08X", sign_char, w);
       sprintf(result2, "%c", sign_char);
       
       // Insert decimal point
@@ -7741,7 +7832,7 @@ void update_computer_display(ESC_STATE *es)
   
   printf("\n");
   
-  printf("\nKeyboard register: %s   IAR:%8s", display_register_double_word(es->keyboard_register), display_iar(es->iar));
+  printf("\nKeyboard register: %08X   IAR:%8s", es->keyboard_register, display_iar(es->iar));
   printf("\n");
   
   //
@@ -7756,7 +7847,7 @@ void update_computer_display(ESC_STATE *es)
   
   sprintf(tmp, "\n1: %02s   %8s",
 	  display_iar(es->iar),
-	  display_register_single_word(es->keyboard_register));
+	  display_store_word(es->keyboard_register));
   strcat(dsp, tmp);
   
 #if OLED_ON

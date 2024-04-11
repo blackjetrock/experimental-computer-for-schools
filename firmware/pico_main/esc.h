@@ -137,7 +137,9 @@ typedef struct _ESC_STATE
   REGISTER_SINGLE_WORD  R[NUM_WORD_REGISTERS];
   REGISTER_DOUBLE_WORD RD[NUM_DBL_WORD_REGISTERS];
   
-  DOUBLE_WORD    keyboard_register;
+  SINGLE_WORD    keyboard_register;
+  int            dot_entered;
+  
   ADDRESS address_register0;
   ADDRESS address_register1;
   ADDRESS address_register2;
