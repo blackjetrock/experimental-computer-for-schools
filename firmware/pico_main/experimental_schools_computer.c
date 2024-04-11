@@ -3475,6 +3475,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	case 8:
 	  // Stop and when restarted transfer keyboard register contents into Aa
 	  s->stop = 1;
+	  s->on_restart_load_aa = 1;
 	  
 	  // Input
 	  display_on_line(s, display, 3, "%02d", s->inst_aa);
@@ -3824,39 +3825,46 @@ void state_esc_load_iar(FSM_DATA *s, TOKEN tok)
 
 // Preserve sign
 
-void state_esc_numeric(FSM_DATA *s, TOKEN tok)
+void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
 {
   int num = tok - TOK_KEY_0;
-  ESC_STATE *es;
-
-  es = (ESC_STATE *)s;
   
-  es->keyboard_register *= 16;
-  es->keyboard_register += num;
-
-#if 0
-  // Removed as instructions do not have the sign set
-  // The dot and minus keys will set the sign for numbers
+  ESC_STATE *s;
+  s = (ESC_STATE *)fd;
   
-  // Sign has to be plus or minus
-  // If sign not valid then make it plus
-
-  switch(SW_SIGN(es->keyboard_register))
+  SINGLE_WORD kbr = s->keyboard_register;
+  SINGLE_WORD digits, old_digits;
+  int sign;
+  int exp;
+  
+  // Update the digits, leaving the exponent and the sign unchanged
+  digits = STORE_GET_DIGITS(kbr);
+  exp    = STORE_GET_EXPONENT(kbr);
+  sign   = STORE_GET_SIGN(kbr);
+  
+  old_digits = digits;
+  digits *= 16;
+  digits += num;
+  
+  // If we have a non zero exponent then we increment it as we have added a fractional digit
+  if( exp > 0 )
     {
-    case WORD_SIGN_MINUS:
-    case WORD_SIGN_PLUS:
-      // All ok
-      break;
-      
-    default:
-      // Force to Plus
-      es->keyboard_register = SET_SW_SIGN(es->keyboard_register, WORD_SIGN_PLUS);
-      break;
-      
+      exp++;
+      if( exp == 7)
+	{
+	  digits = old_digits;
+	  exp = 6;
+	}
     }
-#endif
   
-  es->update_display = 1;
+  // Rebuild the register contents
+  STORE_SET_SIGN    (kbr,sign);
+  STORE_SET_EXPONENT(kbr,exp);
+  STORE_SET_DIGITS  (kbr,digits);
+  
+  s->keyboard_register = kbr;
+  
+  s->update_display = 1;
 }
 
 //------------------------------------------------------------------------------
@@ -3871,6 +3879,7 @@ void state_esc_dot(FSM_DATA *s, TOKEN tok)
   es = (ESC_STATE *)s;
 
   // Set exponent digit
+
   // Sign set to plus
   // Minus key will over-ride at the end of entry
   es->keyboard_register = SET_SW_SIGN(es->keyboard_register, WORD_SIGN_PLUS);
@@ -4103,6 +4112,19 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 {
   ESC_STATE *s = (ESC_STATE *)es;
 
+  // If just started running check for input loads
+  if( s->run && (!s->last_run) )
+    {
+      if( s->on_restart_load_aa )
+	{
+	  // Load aa with KB register
+	  write_sw_to_store(s, s->inst_aa, s->keyboard_register);
+	  s->on_restart_load_aa = 0;
+	}
+    }
+
+  s->last_run = s->run;
+  
   // If not running then exit, nothing to do
   if( s->run )
     {
@@ -4120,6 +4142,8 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
       // Run to end of stage C repeatedly
       state_esc_c_no_disp(s, tok);
     }
+
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////

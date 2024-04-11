@@ -170,9 +170,15 @@ typedef struct _ESC_STATE
   
   ADDRESS Ap1, Ap2, Ap3, Aa1, Aa2, Aa3;
 
-  // execution
+  //------------------------------------------------------------------------------
+  // Execution
   int run;
+  int last_run;    // Used to detect program restart
   int stop;
+
+  //------------------------------------------------------------------------------
+  // Restart
+  int on_restart_load_aa;
   
   //--------------------------------------------------------------------
   // We can push a token into the FSM
