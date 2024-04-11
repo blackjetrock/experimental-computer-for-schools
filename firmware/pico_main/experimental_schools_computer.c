@@ -3836,32 +3836,42 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
   SINGLE_WORD digits, old_digits;
   int sign;
   int exp;
-  
-  // Update the digits, leaving the exponent and the sign unchanged
-  digits = STORE_GET_DIGITS(kbr);
-  exp    = STORE_GET_EXPONENT(kbr);
-  sign   = STORE_GET_SIGN(kbr);
-  
-  old_digits = digits;
-  digits *= 16;
-  digits += num;
-  
-  // If we have a non zero exponent then we increment it as we have added a fractional digit
-  if( exp > 0 )
+
+  // If there is a sign then update as a floating point number otherwise as an integer
+  if( (sign == WORD_SIGN_PLUS) || (sign == WORD_SIGN_MINUS) )
     {
-      exp++;
-      if( exp == 7)
+      // Update the digits, leaving the exponent and the sign unchanged
+      digits = STORE_GET_DIGITS(kbr);
+      exp    = STORE_GET_EXPONENT(kbr);
+      sign   = STORE_GET_SIGN(kbr);
+      
+      old_digits = digits;
+      digits *= 16;
+      digits += num;
+      
+      // If we have a non zero exponent then we increment it as we have added a fractional digit
+      if( exp > 0 )
 	{
-	  digits = old_digits;
-	  exp = 6;
+	  exp++;
+	  if( exp == 7)
+	    {
+	      digits = old_digits;
+	      exp = 6;
+	    }
 	}
+      
+      // Rebuild the register contents
+      STORE_SET_SIGN    (kbr,sign);
+      STORE_SET_EXPONENT(kbr,exp);
+      STORE_SET_DIGITS  (kbr,digits);
     }
-  
-  // Rebuild the register contents
-  STORE_SET_SIGN    (kbr,sign);
-  STORE_SET_EXPONENT(kbr,exp);
-  STORE_SET_DIGITS  (kbr,digits);
-  
+  else
+    {
+      // Instruction (integer)
+      kbr *= 16;
+      kbr += num;
+    }
+      
   s->keyboard_register = kbr;
   
   s->update_display = 1;
