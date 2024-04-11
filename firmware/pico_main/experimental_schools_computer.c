@@ -2000,7 +2000,13 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
   printf("\nresult:%s", display_store_word(result));
   
 #endif
-  
+
+#if DEBUG_FP_SUMMARY
+  printf("\n%s: %s + ", __FUNCTION__, display_store_word(a));
+  printf("%s = ", display_store_word(b));
+  printf("%s", display_store_word(result));
+#endif
+
   // Find smaller number and shift it so the exponents are the same
   return(result);
 }
@@ -2298,7 +2304,13 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
   printf("\n%s END", __FUNCTION__);
  
 #endif
-  
+
+#if DEBUG_FP_SUMMARY
+  printf("\n%s: %s * ", __FUNCTION__, display_store_word(a));
+  printf("%s = ", display_store_word(b));
+  printf("%s", display_store_word(result));
+#endif
+
   // Find smaller number and shift it so the exponents are the same
   return(result);
 }
@@ -2482,7 +2494,13 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
   printf("\nresult:%s", display_store_word(result));
   
 #endif
-  
+
+#if DEBUG_FP_SUMMARY
+  printf("\n%s: %s / ", __FUNCTION__, display_store_word(a));
+  printf("%s = "      , display_store_word(b));
+  printf("%s"         , display_store_word(result));
+#endif
+
   // Find smaller number and shift it so the exponents are the same
   return(result);
 }
@@ -4151,7 +4169,11 @@ void state_esc_stop(FSM_DATA *es, TOKEN tok)
   s->stop = 1;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
 // Run at full speed
+//
+////////////////////////////////////////////////////////////////////////////////
 
 void state_esc_execute(FSM_DATA *es, TOKEN tok)
 {
@@ -4189,9 +4211,16 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
   // If not running then exit, nothing to do
   if( s->run )
     {
+#if DEBUG_EXECUTE
+	  printf("\nEXEC:RUN");
+#endif
+
       // Check for stop
       if( s->stop )
 	{
+#if DEBUG_EXECUTE
+	  printf("\nEXEC:STOP");
+#endif
 	  // Turn off the execution
 	  // As we run to stage C for each instruction this stops at the end
 	  // of stage C for the current instruction.
@@ -6332,9 +6361,10 @@ TEST_LOAD_STORE test_sv_store =
     0x72030306,    // 13
     0x72040302,    // 14
     0x73040407,    // 15
-    0x00000000,    // 16
+    0x79020304,    // 16
     -1},
   };
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Test 16
@@ -6342,6 +6372,7 @@ TEST_LOAD_STORE test_sv_store =
 // Floating point branch
 // 
 // 
+////////////////////////////////////////////////////////////////////////////////
 
 INIT_INFO test_init_16[] =
   {

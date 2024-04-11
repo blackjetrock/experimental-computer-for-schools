@@ -24,7 +24,11 @@
 #define DEBUG_ADDR_MODES       1
 #define DEBUG_INST_21          1
 #define DEBUG_INST_22          1
+
 #define DEBUG_RESTART          1
+#define DEBUG_EXECUTE          1
+#define DEBUG_FP_SUMMARY       1
+
 #define DEBUG_DISPLAY          1
 #else
 
@@ -36,6 +40,7 @@
 #define DEBUG_DW_BCD_SUM       0
 #define DEBUG_REG_ASSIGN       0
 #define DEBUG_FP               0
+#define DEBUG_FP_SUMMARY       1
 
 #define DEBUG_TEST             0    // Test instruction
 #define DEBUG_TEST_SEQ         0    // Test sequences
@@ -49,6 +54,7 @@
 #define DEBUG_DISPLAY          0
 
 #define DEBUG_RESTART          1
+#define DEBUG_EXECUTE          1
 #endif
 
 
