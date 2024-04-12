@@ -1961,8 +1961,8 @@ SINGLE_WORD sw_msd_to_left(SINGLE_WORD x)
 
   // Rebuild the result
   y = STORE_SET_EXPONENT(y, exp);
-  y = STORE_SET_SIGN(y,  sign);
-  y = STORE_SET_DIGITS(y,  digits);
+  y = STORE_SET_SIGN(y,     sign);
+  y = STORE_SET_DIGITS(y,   digits);
 
 #if DEBUG_MSD_SHIFT
   printf("\n%s: ", __FUNCTION__);
@@ -1984,7 +1984,7 @@ SINGLE_WORD sw_msd_to_left(SINGLE_WORD x)
 //
 //------------------------------------------------------------------------------
 
-SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
+SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b, int normalise)
 {
   int exp_a, exp_b, exp_r;
   int exp_diff;
@@ -1992,6 +1992,16 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
   int sign_a, sign_b, sign_r;
   int digits_r;
   SINGLE_WORD result;
+
+  if( normalise)
+    {
+      // Before we do any calculations, nove the MS digit to the left most position so we get
+      // full resolution for the result and to make the test of exponents meaningful.
+      // This is done to both a and b
+      
+      a = sw_msd_to_left(a);
+      b = sw_msd_to_left(b);
+    }
   
   digits_a  =  STORE_GET_DIGITS(a);
   digits_b  =  STORE_GET_DIGITS(b);
@@ -2062,11 +2072,11 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b)
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-SINGLE_WORD fp_subtract(SINGLE_WORD a, SINGLE_WORD b)
+SINGLE_WORD fp_subtract(SINGLE_WORD a, SINGLE_WORD b, int normalise)
 {
   b = invert_sw_sign(b);
 
-  return(fp_add(a, b));
+  return(fp_add(a, b, normalise));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2133,7 +2143,7 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
       {
 	for(int j=0; j<(tested_arg_digits & 0xF); j++)
 	  {
-	    digits_r = fp_add(digits_r, shifted_arg_digits);
+	    digits_r = fp_add(digits_r, shifted_arg_digits, 0);
 	  }
 
 	// Remove sign
@@ -2461,7 +2471,7 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
 #endif
   
   int out = 100;
-  added_digits = 0x00100000;
+  added_digits = 0xA0100000;
   
   for(int i=0; (i<6) && (out > 0); i++,out--)
     {
@@ -2481,9 +2491,9 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
 #endif
 	  
 	  // Add one to digit position
-	  digits_r = fp_add(digits_r, added_digits);
+	  digits_r = fp_add(digits_r, added_digits, 0);
 	  
-	  tested_digits = fp_subtract(tested_digits, shifted_digits);
+	  tested_digits = fp_subtract(tested_digits, shifted_digits, 0);
 #if DEBUG_FP
 	  printf("\n**In Loop**");
 	  printf("\ndigits_r       = %016X", digits_r);
@@ -2690,7 +2700,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a2v = load_from_store(s, s->Aa2);
 	  a3v = load_from_store(s, s->Aa3);
 
-	  a1v = fp_add(a2v, a3v);
+	  a1v = fp_add(a2v, a3v, 1);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -2715,7 +2725,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  printf("\nA3v=%X", a3v);
 #endif
 
-	  a1v = fp_subtract(a2v, a3v);
+	  a1v = fp_subtract(a2v, a3v, 1);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -2797,7 +2807,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Subtract the values and look for zero as that will account for different forms of the same value,
 	  // e.g:   A1000050 and A2000500
 	  // which are both 5 (5.0 and 5.00)
-	  tst = fp_subtract(a2v, a3v);
+	  tst = fp_subtract(a2v, a3v, 1);
 
 #if DEBUG_FP
 	  printf("\ntst=%08X", tst);
@@ -2846,7 +2856,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Subtract the values and look for a positive value and not zero
 	  // e.g:   A1000050 and A2000500
 	  // which are both 5 (5.0 and 5.00)
-	  tst = fp_subtract(a2v, a3v);
+	  tst = fp_subtract(a2v, a3v, 1);
 
 #if DEBUG_FP
 	  printf("\ntst=%08X", tst);
@@ -2901,7 +2911,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a2v = SET_SW_SIGN(a2v, WORD_SIGN_PLUS);
 	  a3v = SET_SW_SIGN(a3v, WORD_SIGN_PLUS);
 	  
-	  SINGLE_WORD tst = fp_subtract(a2v, a3v);
+	  SINGLE_WORD tst = fp_subtract(a2v, a3v, 1);
 
 #if DEBUG_FP
 	  printf("\ntst=%08X", tst);
@@ -6932,43 +6942,11 @@ TOKEN test_seq_21[] =
   {
    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_8,
+   TOK_KEY_9,
    TOK_KEY_LOAD_IAR,
 
    TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
+
    TOK_NONE,
   };
 
