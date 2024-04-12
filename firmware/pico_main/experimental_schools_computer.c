@@ -2379,6 +2379,13 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
   if( (shifted_digits & 0x00FFFFFF)  == 0 )
     {
       // Divide by zero
+#if DEBUG_FP_SUMMARY
+      printf("\n%s: %s / ", __FUNCTION__, display_store_word(a));
+      printf("%s = "      , display_store_word(b));
+      printf("%s"         , display_store_word(result));
+      
+      printf("\nDivide by zero");
+#endif
       // Error
       return(0xA0999999);
     }
@@ -6591,12 +6598,19 @@ TOKEN test_seq_18[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
 TEST_INFO test_res_18[] =
   {
    
+   {TC_REG_N,   8},
+   {TC_MUST_BE, 0xA000000000314160},
+   {TC_END_SECTION, 0},
+
    {TC_REG_N,   8},
    {TC_MUST_BE, 0xA000000000314160},
    {TC_END_SECTION, 0},
@@ -6607,8 +6621,8 @@ TEST_INFO test_res_18[] =
 TEST_LOAD_STORE test_18_store =
   {
    {
-    0x72101112,    //00
-    0x00000000,    //01
+    0x73101112,    //00
+    0x73131415,    //01
     0x00000000,
     0x00000000,
     0x00000000,
@@ -6618,11 +6632,11 @@ TEST_LOAD_STORE test_18_store =
     0x00000000,
     0x00000000,
     0x00000000,     //10
-    0xA4062500,     //11
-    0xA5314159,     //12
+    0xA5100000,     //11
+    0xA5700000,     //12
     0x00000000,
-    0x00000000,
-    0x00000000,
+    0xA0000001,
+    0xA0000007,
     -1},
   };
 
@@ -6630,7 +6644,7 @@ TEST_LOAD_STORE test_18_store =
 //
 // Test 19
 //
-// Quick FP test
+// Stop (19)
 // 
 // 
 
@@ -6734,9 +6748,242 @@ TEST_LOAD_STORE test_19_store =
     0x00000000,     //10
     0xA4062500,     //11
     0xA5314159,     //12
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    0x00000000,     //13
+    0xA0000001,
+    0xA0000007,
+    -1},
+  };
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 20
+//
+// Solution of two linear simultaneous equations
+// 
+// 
+
+INIT_INFO test_init_20[] =
+  {
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_20[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_20[] =
+  {
+   
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xA0000004},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0000005},
+   {TC_END_SECTION, 0},
+
+   {TC_MUST_BE_STOPPED, 0},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xA0000007},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0000008},
+   {TC_END_SECTION, 0},
+
+   {TC_MUST_BE_STOPPED, 0},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xA0000001},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0000002},
+   {TC_MUST_BE_NOT_STOPPED, 0},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_20_store =
+  {
+   {
+    0x00000000,    // 00 spare
+    0x00000000,    // 01 spare
+    0x00000000,    // 02 spare
+    0x00000000,    // 03 a
+    0x00000000,    // 04 b
+    0x00000000,    // 05 p
+    0x00000000,    // 06 c
+    0x00000000,    // 07 d
+    0x00000000,    // 08 q
+    0x00000000,    // 09 r
+    0x00000000,    // 10 s
+    0x00000000,    // 11 u
+    0x00000000,    // 12 v
+    0x00000000,    // 13 spare
+    0x00000000,    // 14 spare
+    0x78030303,    // 15
+    0x78040303,    // 16
+    0x78050403,    // 17
+    0x78060504,    // 18
+    0x78070605,    // 19
+    0x78080706,    // 20
+    0x72090705,    // 21
+    0x72100408,    // 22
+    0x71090910,    // 23
+    0x72100307,    // 24
+    0x72110406,    // 25
+    0x71101011,    // 26
+    0x73090910,    // 27
+    0x72110308,    // 28
+    0x72120605,    // 29
+    0x71111112,    // 30
+    0x73101110,    // 31
+    0x79091010,    // 32
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 21
+//
+// Square root
+// 
+// 
+
+INIT_INFO test_init_21[] =
+  {
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_21[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_8,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_21[] =
+  {
+   
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xA0000004},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0000005},
+   {TC_END_SECTION, 0},
+
+   {TC_MUST_BE_STOPPED, 0},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xA0000007},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0000008},
+   {TC_END_SECTION, 0},
+
+   {TC_MUST_BE_STOPPED, 0},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0},
+   {TC_MUST_BE, 0xA0000001},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   1},
+   {TC_MUST_BE, 0xA0000002},
+   {TC_MUST_BE_NOT_STOPPED, 0},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_21_store =
+  {
+   {
+    0x00000000,    // 00 spare
+    0x00000000,    // 01 spare
+    0xA0000002,    // 02 v
+    0x00000000,    // 03 q
+    0x00000000,    // 04 p
+    0xA0000002,    // 05 2
+    0xA0000000,    // 06 0
+    0x00000000,    // 07 spare
+    0x78020506,    // 08 
+    0x73030205,    // 09 
+    0x70040306,    // 10 
+    0x73030204,    // 11 
+    0x70030304,    // 12 
+    0x73030305,    // 13 
+    0x74160304,    // 14 
+    0x74100505,    // 15
+    0x79020304,    // 16
+    0x00000000,    // 31
+    0x00000000,    // 32
     -1},
   };
 
@@ -6765,6 +7012,8 @@ ESC_TEST_INFO tests[] =
    {"Inst [0-1][0-3] DW",      test_init_17, test_seq_17, test_res_17, 0, &test_17_store, ""},
    {"FP test",                 test_init_18, test_seq_18, test_res_18, 0, &test_18_store, ""},
    {"Stop (19)",               test_init_19, test_seq_19, test_res_19, 0, &test_19_store, ""},
+   {"Simultaneous Eq",         test_init_20, test_seq_20, test_res_20, 0, &test_20_store, ""},
+   {"Square root",             test_init_21, test_seq_21, test_res_21, 0, &test_21_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
