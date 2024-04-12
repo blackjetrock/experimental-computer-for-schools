@@ -59,7 +59,7 @@
 
 void error_msg(char *fmt, ...)
 {
-  char line[MAX_ERROR_BUFFER];
+  char line[MAX_ERROR_BUFFER+1];
   
   va_list args;
   va_start(args, fmt);
@@ -75,7 +75,7 @@ void error_msg(char *fmt, ...)
 
 void warning_msg(char *fmt, ...)
 {
-  char line[MAX_ERROR_BUFFER];
+  char line[MAX_ERROR_BUFFER+1];
   
   va_list args;
   va_start(args, fmt);
@@ -145,7 +145,7 @@ char *tc_names[] =
 
 #define MAX_TC_REG_BUF 20
 
-char tc_reg_buffer[MAX_TC_REG_BUF];
+char tc_reg_buffer[MAX_TC_REG_BUF+1];
 
 char *tc_reg_name(TEST_CODE tc)
 {
@@ -203,7 +203,7 @@ void clear_test_fail_buffer(void)
 // Add more information to the test fail buffer
 void test_fail_info(char *fmt, ...)
 {
-  char line[MAX_TEST_FAIL_BUFFER];
+  char line[MAX_TEST_FAIL_BUFFER+1];
   
   va_list args;
   va_start(args, fmt);
@@ -896,7 +896,9 @@ void kbd_scan(ESC_STATE *s)
 ESC_STATE esc_state;
 
 // Display
-char dsp[(MAX_LINE+5)*(NUM_LINES+2)+1];
+#define MAX_DSP   ((MAX_LINE+1)*NUM_LINES)
+
+char dsp[1000];
 
 char *get_display(void)
 {
@@ -1618,11 +1620,23 @@ REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WOR
 
 int bcd_to_binary(SINGLE_WORD bcd)
 {
-  char line[20];
+  char line[50];
   int binary;
   
   sprintf(line, "%X", bcd);
   sscanf(line, "%d", &binary);
+
+  // Limit to 200 as a store address
+  if( binary < 0 )
+    {
+      binary = 0;
+    }
+
+  if( binary >199 )
+    {
+      binary = 199;
+    }
+  
   return(binary);
 }
 
@@ -1993,6 +2007,17 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b, int normalise)
   int digits_r;
   SINGLE_WORD result;
 
+  // trivial case
+  if( STORE_GET_DIGITS(a) == 0 )
+    {
+      return(b);
+    }
+
+  if( STORE_GET_DIGITS(b) == 0 )
+    {
+      return(a);
+    }
+  
   if( normalise)
     {
       // Before we do any calculations, nove the MS digit to the left most position so we get
@@ -2703,10 +2728,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a1v = fp_add(a2v, a3v, 1);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 6, "");
+	  display_on_line(s, display, 3, "%3X  %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X  %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X  %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
 
 	  next_iar(s);
 	  break;
@@ -2731,7 +2755,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 6, "");
 
 	  next_iar(s);
 
@@ -2756,7 +2779,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 6, "");
 
 	  next_iar(s);
 
@@ -2781,7 +2803,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 6, "");
 
 	  next_iar(s);
 
@@ -2793,7 +2814,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  printf("\nBranch to Aa1 if (Aa2) = (Aa3)");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
 #endif
-	  a1v = load_from_store(s, s->Aa1);
+	  //	  a1v = load_from_store(s, s->Aa1);
+	  a1v = s->Ap1;
 	  a2v = load_from_store(s, s->Aa2);
 	  a3v = load_from_store(s, s->Aa3);
 
@@ -2830,10 +2852,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      printf("\n**Branch NOT taken**");
 #endif
 	    }
+
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 6, "");
+	  printf("\nexit\n");
+	  
 	  break;
 
 	  // Branch to Aa1 if (Aa2) > (Aa3)
@@ -2842,7 +2866,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  printf("\nBranch to Aa1 if (Aa2) > (Aa3)");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
 #endif
-	  a1v = load_from_store(s, s->Aa1);
+	  //	  a1v = load_from_store(s, s->Aa1);
+	  a1v = s->Ap1;
 	  a2v = load_from_store(s, s->Aa2);
 	  a3v = load_from_store(s, s->Aa3);
 
@@ -2882,7 +2907,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 6, "");
 
 	  break;
 
@@ -2892,7 +2916,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  printf("\nBranch to Aa1 if (Aa2) > (Aa3)");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
 #endif
-	  a1v = load_from_store(s, s->Aa1);
+	  //	  a1v = load_from_store(s, s->Aa1);
+	  a1v = s->Ap1;
 	  a2v = load_from_store(s, s->Aa2);
 	  a3v = load_from_store(s, s->Aa3);
 
@@ -2937,7 +2962,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 6, "");
 
 	  break;
 
@@ -2957,7 +2981,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 
 	  next_iar(s);
 	  
@@ -2972,7 +2995,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 6, "");
 
 	  next_iar(s);
 		  
@@ -3008,11 +3030,9 @@ void stage_b_decode_core(ESC_STATE *s, int shift, int display)
       s->Aa2 = s->Ap2;
       s->Aa3 = s->Ap3;
 
-      display_on_line(s, display, 3, "%3X         %3X", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3X         %3X", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3X         %3X", s->Ap3, s->Aa3);
-      display_on_line(s, display, 6, "");
-
+      display_on_line(s, display, 3, "%3X %3X", s->Ap1, s->Aa1);
+      display_on_line(s, display, 4, "%3X %3X", s->Ap2, s->Aa2);
+      display_on_line(s, display, 5, "%3X %3X", s->Ap3, s->Aa3);
       break;
       
     case 8:
@@ -3021,10 +3041,9 @@ void stage_b_decode_core(ESC_STATE *s, int shift, int display)
       s->Aa2 = s->Ap2 + s->R4; 
       s->Aa3 = s->Ap3 + s->R5; 
 
-      display_on_line(s, display, 3, "%3d         %3d", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3d         %3d", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3d         %3d", s->Ap3, s->Aa3);
-      display_on_line(s, display, 6, "");
+      display_on_line(s, display, 3, "%3X %3X", s->Ap1, s->Aa1);
+      display_on_line(s, display, 4, "%3X %3X", s->Ap2, s->Aa2);
+      display_on_line(s, display, 5, "%3X %3X", s->Ap3, s->Aa3);
       break;
       
     case 9:
@@ -3033,10 +3052,9 @@ void stage_b_decode_core(ESC_STATE *s, int shift, int display)
       s->Aa2 = load_from_store(s, s->Ap2);
       s->Aa3 = load_from_store(s, s->Ap3);
 
-      display_on_line(s, display, 3, "%3X         %3X", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3X         %3X", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3X         %3X", s->Ap3, s->Aa3);
-      display_on_line(s, display, 6, "");
+      display_on_line(s, display, 3, "%3X %3X", s->Ap1, s->Aa1);
+      display_on_line(s, display, 4, "%3X %3X", s->Ap2, s->Aa2);
+      display_on_line(s, display, 5, "%3X %3X", s->Ap3, s->Aa3);
       break;
     }
 }
@@ -3073,7 +3091,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "");
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 
 	case 1:
@@ -3083,7 +3100,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "");
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 
 	case 2:
@@ -3093,7 +3109,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "");
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 	  
 	case 3:
@@ -3103,7 +3118,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "");
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 
 	case 4:
@@ -3283,8 +3297,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "");
-	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "CL            %d", s->control_latch);
+	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
 	  
 	  break;
 	  
@@ -3295,8 +3308,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
-
 	  break;
 	  
 	  // Shift (Rc) right d places
@@ -3306,7 +3317,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 
 	case 8:
@@ -3328,7 +3338,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 
 	case 1:
@@ -3337,7 +3346,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 	  
 	case 2:
@@ -3346,7 +3354,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 	  
 	case 3:
@@ -3355,7 +3362,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 
 	  // Copy right hand 6 digits of Rd into Rc. Works with single and double length registers
@@ -3376,7 +3382,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 
 	case 5:
@@ -3390,7 +3395,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 	  
 	  // Shift (Rc) right (Rd) places
@@ -3400,7 +3404,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 
 	case 8:
@@ -3414,7 +3417,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, DISPLAY_UPDATE, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, DISPLAY_UPDATE, 4, "%s", display_register_and_contents(s, s->reginst_rd));
 	  display_on_line(s, DISPLAY_UPDATE, 5, "");
-	  display_on_line(s, DISPLAY_UPDATE, 6, "");
 	  break;
 	}
 
@@ -3457,8 +3459,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 6, "");
-	  
 	  break;
 	  
 	case 1:
@@ -3481,8 +3481,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 6, "");
-
 	  break;
 	  
 	case 2:
@@ -3501,8 +3499,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 6, "");
-	  
 	  break;
 	  
 	case 3:
@@ -3540,8 +3536,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 	  display_on_line(s, display, 3, "%02d", s->inst_aa);
 	  display_on_line(s, display, 4, "");
-	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "CL            %d", s->control_latch);
+	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
 	  break;
 	  
 	case 6:
@@ -3564,8 +3559,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 	  display_on_line(s, display, 3, "%02d", s->inst_aa);
 	  display_on_line(s, display, 4, "");
-	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "CL            %d", s->control_latch);
+	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
 	  break;
 	  
 	case 7:
@@ -3575,7 +3569,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "");
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 	  
 	case 8:
@@ -3587,7 +3580,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%02d", s->inst_aa);
 	  display_on_line(s, display, 4, "");
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 	  
 	case 9:
@@ -3595,7 +3587,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "");
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 
 	  // Stop and display (Aa)
 	  s->stop = 1;
@@ -3612,8 +3603,6 @@ void stage_b_decode(ESC_STATE *s, int display)
       display_on_line(s, display, 3, "%3X", s->Aa1);
       display_on_line(s, display, 4, "%3X", s->Aa2);
       display_on_line(s, display, 5, "%3X", s->Aa3);
-      display_on_line(s, display, 6, "");
-
       break;
       
     case 8:
@@ -3624,11 +3613,9 @@ void stage_b_decode(ESC_STATE *s, int display)
       s->Aa2 = load_from_store(s, s->Ap2);
       s->Aa3 = load_from_store(s, s->Ap3);
 
-      display_on_line(s, display, 3, "%3d        %3d", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3d        %3d", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3d        %3d", s->Ap3, s->Aa3);
-      display_on_line(s, display, 6, "");
-
+      display_on_line(s, display, 3, "%3X %3X", s->Ap1, s->Aa1);
+      display_on_line(s, display, 4, "%3X %3X", s->Ap2, s->Aa2);
+      display_on_line(s, display, 5, "%3X %3X", s->Ap3, s->Aa3);
       break;
     }
 }
@@ -3682,7 +3669,6 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
 	  display_on_line(s, display, 4, "");
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 	  
 	case 4:
@@ -3697,7 +3683,6 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
 	  display_on_line(s, display, 4, "");
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
 	  break;
 
 	case 6:
@@ -3709,8 +3694,6 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
 	  display_on_line(s, display, 4, "R%d", s->reginst_rd);
 	  display_on_line(s, display, 5, "");
-	  display_on_line(s, display, 6, "");
-
 	  break;
 	}
       break;
@@ -3723,7 +3706,6 @@ void stage_a_decode(ESC_STATE *s, int display)
       display_on_line(s, display, 3, "R%d", s->reginst_rc);
       display_on_line(s, display, 4, "R%d", s->reginst_rd);
       display_on_line(s, display, 5, "");
-      display_on_line(s, display, 6, "");
       break;
 
     case 2:
@@ -3732,7 +3714,6 @@ void stage_a_decode(ESC_STATE *s, int display)
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "");
       display_on_line(s, display, 5, "");
-      display_on_line(s, display, 6, "");
       break;
 
       // relative addressing
@@ -3741,7 +3722,6 @@ void stage_a_decode(ESC_STATE *s, int display)
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "");
       display_on_line(s, display, 5, "");
-      display_on_line(s, display, 6, "");
       break;
 
     case 4:
@@ -3749,7 +3729,6 @@ void stage_a_decode(ESC_STATE *s, int display)
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "");
       display_on_line(s, display, 5, "");
-      display_on_line(s, display, 6, "");
       break;
       
     case 5:
@@ -3757,7 +3736,6 @@ void stage_a_decode(ESC_STATE *s, int display)
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "");
       display_on_line(s, display, 5, "");
-      display_on_line(s, display, 6, "");
       break;
       
     case 6:
@@ -3770,7 +3748,6 @@ void stage_a_decode(ESC_STATE *s, int display)
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "");
       display_on_line(s, display, 5, "");
-      display_on_line(s, display, 6, "");
       break;
       
     case 7:
@@ -3783,7 +3760,6 @@ void stage_a_decode(ESC_STATE *s, int display)
       display_on_line(s, display, 3, "%3X", s->Ap1);
       display_on_line(s, display, 4, "%3X", s->Ap2);
       display_on_line(s, display, 5, "%3X", s->Ap3);
-      display_on_line(s, display, 6, "");
       break;
     }
 }
@@ -4049,7 +4025,6 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   display_on_line(es, 3, DISPLAY_UPDATE, "");
   display_on_line(es, 4, DISPLAY_UPDATE, "");
   display_on_line(es, 5, DISPLAY_UPDATE, "");
-  display_on_line(es, 6, DISPLAY_UPDATE, "");
   
   es->reginst_rc = NO_VALUE;
   es->reginst_rd = NO_VALUE;
@@ -8154,12 +8129,38 @@ char display_line[NUM_LINES][MAX_LINE+3];
 void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...)
 {
   va_list args;
+  va_start(args, fmt);
+  
+#if DEBUG_DISPLAY_ON_LINE
+  if( line_no >= NUM_LINES )
+    {
+      printf("\nLine no invalid (%d", line_no);
+      printf("\nStopping\n");
+      while(1)
+	{
+	}
+    }
 
+  char line[400];
+  
+  vsnprintf(line, 400, fmt, args);
+  if( strlen(line) > MAX_LINE )
+    {
+      printf("\nfmt='%s'", fmt);
+      printf("\nLine too long (%s)", line);
+      printf("\nStopping\n");
+      while(1)
+	{
+	}
+    }
+  
+#endif
+  
 #if DEBUG_DISPLAY
   printf("\n*** %s ***", __FUNCTION__);
 #endif
 
-  va_start(args, fmt);
+
 
   vsnprintf(&(display_line[line_no-1][0]), MAX_LINE, fmt, args);
   va_end(args);
@@ -8169,7 +8170,7 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...)
 
 void update_computer_display(ESC_STATE *es)
 {
-  char tmp[MAX_LINE*NUM_LINES+1];
+  char tmp[1000];
   int oledy = 0;
 
 #if DEBUG_DISPLAY
