@@ -759,7 +759,7 @@ void kbd_read(ESC_STATE *s)
 		      
 		    default:
 #if DEBUG_TEST_SEQ
-		      printf("\n Queuing token %d", t);
+		      printf("\n Queuing token %d\n", t);
 #endif
 		      queue_token(t);
 		      test_step++;
@@ -1930,6 +1930,47 @@ DOUBLE_WORD shift_dw_left(DOUBLE_WORD x)
   return(x);
 }
 
+// Most significat digit shifted to left most position
+
+SINGLE_WORD sw_msd_to_left(SINGLE_WORD x)
+{
+  SINGLE_WORD y;
+  
+  int sign;
+  int exp;
+  int digits;
+
+  // Split the number
+  sign   = STORE_GET_SIGN(x);
+  exp    = STORE_GET_EXPONENT(x);
+  digits = STORE_GET_DIGITS(x);
+
+  // If zero then we can't do this
+  if( digits == 0 )
+    {
+      return(x);
+    }
+
+  // Shift the digits while there's room, while updating the
+  // exponent
+  while( (digits & 0x00F00000) == 0 )
+    {
+      digits <<=4;
+      exp++;
+    }
+
+  // Rebuild the result
+  y = STORE_SET_EXPONENT(y, exp);
+  y = STORE_SET_SIGN(y,  sign);
+  y = STORE_SET_DIGITS(y,  digits);
+
+#if DEBUG_MSD_SHIFT
+  printf("\n%s: ", __FUNCTION__);
+  printf("\nx:%08X  y:%08X", x, y); 
+#endif
+
+  return(y);
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -2338,6 +2379,12 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
   SINGLE_WORD shifted_digits;   // arg a shifted
   SINGLE_WORD tested_digits;    // arg b test against and subtracted from
   SINGLE_WORD added_digits;         // number added to result
+
+  // Before we do any calculations, nove the MS digit to the left most position so we get
+  // full resolution for the result. This is done to both a and b
+
+  a = sw_msd_to_left(a);
+  b = sw_msd_to_left(b);
   
   digits_a  =  STORE_GET_DIGITS(a);
   digits_b  =  STORE_GET_DIGITS(b);

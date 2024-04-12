@@ -5,31 +5,34 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // All debug switches off or set up
-#if 0
+#if 1
 
 #define DEBUG_CALC_STATE       1
 #define DEBUG_A_DECODE         1
-#define DEBUG_LOOP             0
-#define DEBUG_BCD_CORRECTION   0
-#define DEBUG_SW_BCD_SUM       0
-#define DEBUG_DW_BCD_SUM       0
-#define DEBUG_REG_ASSIGN       0
-#define DEBUG_FP               0
+#define DEBUG_LOOP             1
+#define DEBUG_BCD_CORRECTION   1
+#define DEBUG_SW_BCD_SUM       1
+#define DEBUG_DW_BCD_SUM       1
+#define DEBUG_REG_ASSIGN       1
+#define DEBUG_FP               1
+#define DEBUG_FP_SUMMARY       1
+#define DEBUG_MSD_SHIFT        1
 
 #define DEBUG_TEST             1    // Test instruction
 #define DEBUG_TEST_SEQ         1    // Test sequences
 
-#define DEBUG_SERIAL           0
-#define DEBUG_KEY_SCAN         0
+#define DEBUG_SERIAL           1
+#define DEBUG_KEY_SCAN         1
 #define DEBUG_ADDR_MODES       1
 #define DEBUG_INST_21          1
 #define DEBUG_INST_22          1
 
 #define DEBUG_RESTART          1
 #define DEBUG_EXECUTE          1
-#define DEBUG_FP_SUMMARY       1
 
 #define DEBUG_DISPLAY          1
+
+//------------------------------------------------------------------------------
 #else
 
 #define DEBUG_CALC_STATE       0
@@ -41,6 +44,7 @@
 #define DEBUG_REG_ASSIGN       0
 #define DEBUG_FP               0
 #define DEBUG_FP_SUMMARY       1
+#define DEBUG_MSD_SHIFT        1
 
 #define DEBUG_TEST             0    // Test instruction
 #define DEBUG_TEST_SEQ         0    // Test sequences
