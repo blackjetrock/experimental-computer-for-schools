@@ -50,43 +50,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#define TEXT_PARAMETER_LEN 40
-
-////////////////////////////////////////////////////////////////////////////////
-//
-//
-#define MAX_ERROR_BUFFER 200
-
-void error_msg(char *fmt, ...)
-{
-  char line[MAX_ERROR_BUFFER+1];
-  
-  va_list args;
-  va_start(args, fmt);
-
-  vsnprintf(line, MAX_ERROR_BUFFER, fmt, args);
-  va_end(args);
-
-#if ERRORS_ON
-  printf("\n*** %s ***\n", line);
-#endif
-  
-}
-
-void warning_msg(char *fmt, ...)
-{
-  char line[MAX_ERROR_BUFFER+1];
-  
-  va_list args;
-  va_start(args, fmt);
-
-  vsnprintf(line, MAX_ERROR_BUFFER, fmt, args);
-  va_end(args);
-
-  printf("\n*** WARNING: %s ***\n", line);
-}
-
-
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Tests
@@ -145,21 +108,6 @@ char *tc_names[] =
 
 #define MAX_TC_REG_BUF 20
 
-char tc_reg_buffer[MAX_TC_REG_BUF+1];
-
-char *tc_reg_name(TEST_CODE tc)
-{
-  if( tc < TC_REG_N )
-    {
-      snprintf(tc_reg_buffer, MAX_TC_REG_BUF, "%d", tc);
-      return(tc_reg_buffer);
-    }
-  
-  return(tc_names[tc-TC_REG_N]);
-}
-
-// Load the store before running the test. Words are terminated by a -1
-
 #define TEST_LOAD_STORE_LEN 100
 
 typedef struct _TEST_LOAD_STORE
@@ -186,12 +134,99 @@ typedef struct _ESC_TEST_INFO
 
 #define NUM_TESTS (sizeof(tests)/sizeof(ESC_TEST_INFO))
 
+////////////////////////////////////////////////////////////////////////////////
+
+#define TEXT_PARAMETER_LEN 40
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+#define MAX_ERROR_BUFFER 200
+
+void error_msg(char *fmt, ...)
+{
+  char line[MAX_ERROR_BUFFER+1];
+  
+  va_list args;
+  va_start(args, fmt);
+
+  vsnprintf(line, MAX_ERROR_BUFFER, fmt, args);
+  va_end(args);
+
+#if ERRORS_ON
+  printf("\n*** %s ***\n", line);
+#endif
+  
+}
+
+void warning_msg(char *fmt, ...)
+{
+  char line[MAX_ERROR_BUFFER+1];
+  
+  va_list args;
+  va_start(args, fmt);
+
+  vsnprintf(line, MAX_ERROR_BUFFER, fmt, args);
+  va_end(args);
+
+  printf("\n*** WARNING: %s ***\n", line);
+}
+
+
+
+char tc_reg_buffer[MAX_TC_REG_BUF+1];
+
+////////////////////////////////////////////////////////////////////////////////
+
+void serial_help(void);
+void prompt(void);
+
+int write_state_to_file(ESC_STATE *es, char *fn);
+int read_file_into_state(char *fn, ESC_STATE *es);
+int cat_file(char *fn);
+
+int wfn_iar_address(ESC_STATE *es, void *fi, char *line);
+int wfn_iar_a_flag(ESC_STATE *es, void *fi, char *line);
+int wfn_kb_register(ESC_STATE *es, void *fi, char *line);
+int wfn_address_register(ESC_STATE *es, void *fi, char *line);
+int wfn_link_register(ESC_STATE *es, void *fi, char *line);
+int wfn_instruction_register(ESC_STATE *es, void *fi, char *line);
+int wfn_store_data(ESC_STATE *es, void *fi, char *line);
+int wfn_store(ESC_STATE *es, void *fi, char *line);
+
+void update_computer_display(ESC_STATE *es);
+void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n);
+REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n);
+REGISTER_DOUBLE_WORD read_any_size_register_absolute(ESC_STATE *s, int n);
+
+ESC_TEST_INFO tests[];
+void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...);
+char *display_register_and_contents(ESC_STATE *s, int regno);
+char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address);
+char *display_store_word(SINGLE_WORD w);
+SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
+void register_assign_register(ESC_STATE *s, int dest, int src);
+
+////////////////////////////////////////////////////////////////////////////////
+
+char *tc_reg_name(TEST_CODE tc)
+{
+  if( tc < TC_REG_N )
+    {
+      snprintf(tc_reg_buffer, MAX_TC_REG_BUF, "%d", tc);
+      return(tc_reg_buffer);
+    }
+  
+  return(tc_names[tc-TC_REG_N]);
+}
+
+// Load the store before running the test. Words are terminated by a -1
+
+
 //------------------------------------------------------------------------------
 //
 // Test failure information
 //
-
-
 
 char test_fail_buffer[MAX_TEST_FAIL_BUFFER];
 
@@ -199,6 +234,7 @@ void clear_test_fail_buffer(void)
 {
   test_fail_buffer[0] = '\0';
 }
+
 
 // Add more information to the test fail buffer
 void test_fail_info(char *fmt, ...)
@@ -233,6 +269,19 @@ void test_fail_info(char *fmt, ...)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+
+void load_store_from_test(ESC_STATE *s, int test_number)
+{
+  // Load the store
+  
+  for(int i=0; (i<TEST_LOAD_STORE_LEN) && (tests[test_number].store_data->data[i] != -1); i++)
+    {
+      s->store[i] = tests[test_number].store_data->data[i];
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
 
 int keypress = 0;
 int parameter = 0;
@@ -246,36 +295,6 @@ int test_running         = 0;
 int test_done_init       = 0;
 int test_step            = 0;
 
-////////////////////////////////////////////////////////////////////////////////
-
-void serial_help(void);
-void prompt(void);
-
-int write_state_to_file(ESC_STATE *es, char *fn);
-int read_file_into_state(char *fn, ESC_STATE *es);
-int cat_file(char *fn);
-
-int wfn_iar_address(ESC_STATE *es, void *fi, char *line);
-int wfn_iar_a_flag(ESC_STATE *es, void *fi, char *line);
-int wfn_kb_register(ESC_STATE *es, void *fi, char *line);
-int wfn_address_register(ESC_STATE *es, void *fi, char *line);
-int wfn_link_register(ESC_STATE *es, void *fi, char *line);
-int wfn_instruction_register(ESC_STATE *es, void *fi, char *line);
-int wfn_store_data(ESC_STATE *es, void *fi, char *line);
-int wfn_store(ESC_STATE *es, void *fi, char *line);
-
-void update_computer_display(ESC_STATE *es);
-void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n);
-REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n);
-REGISTER_DOUBLE_WORD read_any_size_register_absolute(ESC_STATE *s, int n);
-
-ESC_TEST_INFO tests[];
-void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...);
-char *display_register_and_contents(ESC_STATE *s, int regno);
-char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address);
-char *display_store_word(SINGLE_WORD w);
-SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
-void register_assign_register(ESC_STATE *s, int dest, int src);
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -775,11 +794,7 @@ void kbd_read(ESC_STATE *s)
 
 		  printf("\nInitialising test: %s", tests[test_number].desc);
 
-		  // Load the store
-		  for(int i=0; (i<TEST_LOAD_STORE_LEN) && (tests[test_number].store_data->data[i] != -1); i++)
-		    {
-		      s->store[i] = tests[test_number].store_data->data[i];
-		    }
+		  load_store_from_test(s, test_number);
 		  
 		  while(!done)
 		    {
@@ -1959,6 +1974,12 @@ SINGLE_WORD sw_msd_to_left(SINGLE_WORD x)
   exp    = STORE_GET_EXPONENT(x);
   digits = STORE_GET_DIGITS(x);
 
+  // If exponent is 6 then we can't shift
+  if( exp == 6 )
+    {
+      return(x);
+    }
+  
   // If zero then we can't do this
   if( digits == 0 )
     {
@@ -1967,7 +1988,7 @@ SINGLE_WORD sw_msd_to_left(SINGLE_WORD x)
 
   // Shift the digits while there's room, while updating the
   // exponent
-  while( (digits & 0x00F00000) == 0 )
+  while( ((digits & 0x00F00000) == 0) && (exp <=4) )
     {
       digits <<=4;
       exp++;
@@ -1979,6 +2000,40 @@ SINGLE_WORD sw_msd_to_left(SINGLE_WORD x)
   y = STORE_SET_DIGITS(y,   digits);
 
 #if DEBUG_MSD_SHIFT
+  printf("\n%s: ", __FUNCTION__);
+  printf("\nx:%08X  y:%08X", x, y); 
+#endif
+
+  return(y);
+}
+
+SINGLE_WORD sw_shift_right(SINGLE_WORD x, int n)
+{
+  SINGLE_WORD y;
+  
+  int sign;
+  int exp;
+  int digits;
+
+  // Split the number
+  sign   = STORE_GET_SIGN(x);
+  exp    = STORE_GET_EXPONENT(x);
+  digits = STORE_GET_DIGITS(x);
+
+  // Shift the digits
+
+  for(int i=0; i<n; i++)
+    {
+      digits >>=4;
+      exp--;
+    }
+
+  // Rebuild the result
+  y = STORE_SET_EXPONENT(y, exp);
+  y = STORE_SET_SIGN(y,     sign);
+  y = STORE_SET_DIGITS(y,   digits);
+
+#if DEBUG_SW_SHIFT
   printf("\n%s: ", __FUNCTION__);
   printf("\nx:%08X  y:%08X", x, y); 
 #endif
@@ -2018,16 +2073,20 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b, int normalise)
       return(a);
     }
   
+#if 1  
   if( normalise)
     {
-      // Before we do any calculations, nove the MS digit to the left most position so we get
-      // full resolution for the result and to make the test of exponents meaningful.
+      // Before we do any calculations, nove the MS digit to one digit right of the left most position so we get
+      // full resolution for the result and to make the test of exponents meaningful. We leave one digit to the 
       // This is done to both a and b
       
       a = sw_msd_to_left(a);
       b = sw_msd_to_left(b);
+      a = sw_shift_right(a, 1);
+      b = sw_shift_right(b, 1);
     }
-  
+#endif
+
   digits_a  =  STORE_GET_DIGITS(a);
   digits_b  =  STORE_GET_DIGITS(b);
   sign_a =  STORE_GET_SIGN(a);
@@ -2109,125 +2168,6 @@ SINGLE_WORD fp_subtract(SINGLE_WORD a, SINGLE_WORD b, int normalise)
 // FP Multiply
 //
 ////////////////////////////////////////////////////////////////////////////////
-
-#if 0
-
-// Single word multiply
-
-SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
-{
-  int exp_a, exp_b, exp_r;
-  int exp_diff;
-  int digits_a, digits_b, digits_r;
-  int sign_a, sign_b, sign_r;
-  SINGLE_WORD result;
-  SINGLE_WORD shifted_arg_digits;
-  SINGLE_WORD tested_arg_digits;
-  
-  digits_a  =  STORE_GET_DIGITS(a);
-  digits_b  =  STORE_GET_DIGITS(b);
-  sign_a =  STORE_GET_SIGN(a);
-  sign_b =  STORE_GET_SIGN(b);
-  exp_a = STORE_GET_EXPONENT(a);
-  exp_b = STORE_GET_EXPONENT(b);
-
-  digits_r = 0;
-  digits_r = STORE_SET_SIGN(digits_r, WORD_SIGN_PLUS);
-  
-  // We add the smaller argument each time
-  if( exp_a > exp_b )
-    {
-      shifted_arg_digits = digits_a;
-      tested_arg_digits = digits_b;
-    }
-  else
-    {
-      shifted_arg_digits = digits_b;
-      tested_arg_digits = digits_a;
-    }
-
-  // Work without sign or exponent
-  shifted_arg_digits = STORE_SET_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
-  tested_arg_digits  = STORE_SET_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
-  
-#if DEBUG_FP
-  printf("\n%s: ", __FUNCTION__);
-  printf("\na:%016X  b:%016X", a, b); 
-#endif
-
-  // We add one arg <digit> number of times then shift until all 6 digits are
-  // processed.
-  // Exponent then sorted out (added)
-  // Sign then sorted out (xor'd)
-  // Any overflow with addition => error
-
-  for(int i=0; i<6; i++)
-  {
-    // test
-    if( (tested_arg_digits & 0xF) != 0 )
-      {
-	for(int j=0; j<(tested_arg_digits & 0xF); j++)
-	  {
-	    digits_r = fp_add(digits_r, shifted_arg_digits, 0);
-	  }
-
-	// Remove sign
-	shifted_arg_digits = REMOVED_SW_SIGN(shifted_arg_digits);
-	tested_arg_digits  = REMOVED_SW_SIGN(tested_arg_digits);
-	
-	// Shift
-	tested_arg_digits >>= 4;
-	shifted_arg_digits <<=4;
-	shifted_arg_digits = STORE_SET_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
-	tested_arg_digits  = STORE_SET_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
-
-      }
-  }
-
-  
-#if DEBUG_FP
-  printf("\nexp_a :%016X  exp_b :%016X", exp_a, exp_b);
-  printf("\nsign_a:%016X  sign_b:%016X", sign_a, sign_b);
-  printf("\ndigits_a:%016X  digits_b:%016X digits_r:%016X", digits_a, digits_b, digits_r); 
-#endif
-
-  result = digits_r;
-
-  exp_r = exp_a + exp_b;
-
-  if( exp_r > 6 )
-    {
-      // There is a problem, we will overflow if we multiply
-    }
-  
-  // Put exponent back
-  result = STORE_SET_EXPONENT(result, exp_r);
-
-  // Put sign back
-  if( sign_a == sign_b )
-    {
-      sign_r = WORD_SIGN_PLUS;
-    }
-  else
-    {
-      sign_r = WORD_SIGN_MINUS;
-    }
-
-  result = STORE_SET_SIGN(result, sign_r);
-  
-#if DEBUG_FP
-  printf("\na:%s", display_store_word(a));
-  printf("\nb:%s", display_store_word(b));
-  printf("\nresult:%s", display_store_word(result));
-  printf("\n%s END", __FUNCTION__);
- 
-#endif
-  
-  // Find smaller number and shift it so the exponents are the same
-  return(result);
-}
-
-#else
 
 // Uses double word registers internally
 
@@ -2341,12 +2281,12 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
 #endif
 
 #if DEBUG_FP
-  printf("\nShifting down by 6 places");
+  printf("\nShifting down to fit in 6 places");
   printf("\ndigits_r:%016llX exp_r:%d", digits_r, exp_r);
 #endif
 
-  // Shift down by 6 places so the MSD is in the MS position for a single word
-  for(int i = 0; i< 6; i++)
+  // Shift down  so the MSD is in the MS position for a single word
+  while(exp_r > 5)
     {
       digits_r = shift_dw_right(digits_r);
 
@@ -2393,8 +2333,6 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
   // Find smaller number and shift it so the exponents are the same
   return(result);
 }
-
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -6633,6 +6571,9 @@ TOKEN test_seq_18[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
@@ -6646,6 +6587,10 @@ TEST_INFO test_res_18[] =
    {TC_REG_N,   8},
    {TC_MUST_BE, 0xA000000000314160},
    {TC_END_SECTION, 0},
+
+   {TC_REG_N,   7},
+   {TC_MUST_BE, 0xA000000000314160},
+   {TC_END_SECTION, 0},
    
    {TC_END,     0},
   };
@@ -6655,14 +6600,14 @@ TEST_LOAD_STORE test_18_store =
    {
     0x73101112,    //00
     0x73131415,    //01
+    0x73070809,
     0x00000000,
     0x00000000,
     0x00000000,
     0x00000000,
     0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    0xA6001410,
+    0xB5400000,
     0x00000000,     //10
     0xA5100000,     //11
     0xA5700000,     //12
@@ -6986,6 +6931,68 @@ TEST_LOAD_STORE test_21_store =
     0x00000000,    // 32
     -1},
   };
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 22
+//
+// Sin(x)
+// 
+// 
+
+INIT_INFO test_init_22[] =
+  {
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_22[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_1,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_22[] =
+  {
+   
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_22_store =
+  {
+   {
+    0x00000000,    // 00 spare
+    0x00000000,    // 01 spare
+    0xA0000001,    // 02 x
+    0x00000000,    // 03 s
+    0x00000000,    // 04 a
+    0xA0000002,    // 05 b
+    0xA0000000,    // 06 t
+    0x00000000,    // 07 0
+    0xA0000001,    // 08 1
+    0x00000000,    // 09 spare 
+    0x78020708,    // 10 
+    0x70030707,    // 11 
+    0x70040807,    // 12 
+    0x72050202,    // 13 
+    0x71050705,    // 14 
+    0x70060207,    // 15
+    0x74220808,    // 16
+    0x72060605,    // 17
+    0x70040408,    // 18
+    0x73060604,    // 19
+    0x70040408,    // 20
+    0x73060604,    // 21
+    0x70030306,    // 22
+    0x76170607,    // 23
+    0x79020307,    // 24
+    -1},
+  };
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7014,6 +7021,7 @@ ESC_TEST_INFO tests[] =
    {"Stop (19)",               test_init_19, test_seq_19, test_res_19, 0, &test_19_store, ""},
    {"Simultaneous Eq",         test_init_20, test_seq_20, test_res_20, 0, &test_20_store, ""},
    {"Square root",             test_init_21, test_seq_21, test_res_21, 0, &test_21_store, ""},
+   {"sin(x)",                  test_init_22, test_seq_22, test_res_22, 0, &test_22_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
@@ -7027,7 +7035,15 @@ ESC_TEST_INFO tests[] =
 //
 // The store and registers can be loaded before the test starts.
 // The store and registers can be tested after the test has ended.
+// The store and registers can be tested at any point in the test run.
 //
+
+void cli_load_test_code_into_store(void)
+{
+  ESC_STATE *s = &esc_state;
+    
+  load_store_from_test(s, parameter);
+}
 
 void cli_run_single_test(void)
 {
@@ -7075,7 +7091,6 @@ void cli_run_tests(void)
 
 void cli_test_results(void)
 {
-
   printf("\nTest results\n");
 
   for(int i=0; i<NUM_TESTS; i++)
@@ -7728,6 +7743,11 @@ SERIAL_COMMAND serial_cmds[] =
     '=',
     "Run all tests",
     cli_run_tests,
+   },
+   {
+    '[',
+    "Load test code into store",
+    cli_load_test_code_into_store,
    },
    {
     '@',

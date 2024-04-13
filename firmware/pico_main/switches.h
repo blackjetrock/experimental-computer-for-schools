@@ -17,6 +17,7 @@
 #define DEBUG_FP               1
 #define DEBUG_FP_SUMMARY       1
 #define DEBUG_MSD_SHIFT        1
+#define DEBUG_SW_SHIFT         1
 
 #define DEBUG_TEST             1    // Test instruction
 #define DEBUG_TEST_SEQ         1    // Test sequences
@@ -43,9 +44,10 @@
 #define DEBUG_SW_BCD_SUM       0
 #define DEBUG_DW_BCD_SUM       0
 #define DEBUG_REG_ASSIGN       0
-#define DEBUG_FP               0
+#define DEBUG_FP               1
 #define DEBUG_FP_SUMMARY       1
-#define DEBUG_MSD_SHIFT        0
+#define DEBUG_MSD_SHIFT        1
+#define DEBUG_SW_SHIFT         1
 
 #define DEBUG_TEST             0    // Test instruction
 #define DEBUG_TEST_SEQ         0    // Test sequences
