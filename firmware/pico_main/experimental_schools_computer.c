@@ -6917,7 +6917,7 @@ TOKEN test_seq_21[] =
   {
    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_9,
+   TOK_KEY_8,
    TOK_KEY_LOAD_IAR,
 
    TOK_KEY_C,
