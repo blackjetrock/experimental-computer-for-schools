@@ -633,16 +633,16 @@ void kbd_read(ESC_STATE *s)
 				  if( load_from_store(s, rn) == tests[test_number].result_codes[test_res_i].n )
 				    {
 #if DEBUG_TEST_SEQ
-				      printf("\nStore[%02X] (%08X) == %08llX", rn, load_from_store(s, rn), tests[test_number].result_codes[test_res_i].n);
+				      printf("\nStore[%02X] (%08X) == %016llX", rn, load_from_store(s, rn), tests[test_number].result_codes[test_res_i].n);
 #endif
 				    }
 				  else
 				    {
 #if DEBUG_TEST_SEQ
 				      // Not OK
-				      printf("\nStore[%02X] (%08X) <> %08X", rn, load_from_store(s, rn), tests[test_number].result_codes[test_res_i].n);
+				      printf("\nStore[%02X] (%08X) <> %016llX", rn, load_from_store(s, rn), tests[test_number].result_codes[test_res_i].n);
 #endif
-				      test_fail_info("Store[%02X] (%016llx) <> %016llx", rn, load_from_store(s, rn), tests[test_number].result_codes[test_res_i].n);
+				      test_fail_info("Store[%02X] (%08X) <> %016llX", rn, load_from_store(s, rn), tests[test_number].result_codes[test_res_i].n);
 				      tests[test_number].passed = 0;
 				    }
 				  break;
@@ -1637,9 +1637,17 @@ int bcd_to_binary(SINGLE_WORD bcd)
 {
   char line[50];
   int binary;
+
+#if DEBUG_BCD_TO_BINARY
+  printf("\n%s: BCD:%X", __FUNCTION__, bcd);
+#endif
   
   sprintf(line, "%X", bcd);
   sscanf(line, "%d", &binary);
+
+#if DEBUG_BCD_TO_BINARY
+  printf(" Bin1:%d", binary);
+#endif
 
   // Limit to 200 as a store address
   if( binary < 0 )
@@ -1651,6 +1659,11 @@ int bcd_to_binary(SINGLE_WORD bcd)
     {
       binary = 199;
     }
+
+#if DEBUG_BCD_TO_BINARY
+  printf(" Bin2:%d", binary);
+#endif
+  
   
   return(binary);
 }
@@ -2286,7 +2299,9 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
 #endif
 
   // Shift down  so the MSD is in the MS position for a single word
-  while(exp_r > 5)
+  // The position of the MSD was fixed above, so this is a shift of
+  // a fixed number of digits.
+  for(int p=0; p<6; p++)
     {
       digits_r = shift_dw_right(digits_r);
 
@@ -5913,11 +5928,11 @@ TOKEN test_seq_11[] =
 TEST_INFO test_res_11[] =
   {
    {TC_STORE_N,   0x21},
-   {TC_MUST_BE, 0xA1001132},
+   {TC_MUST_BE, 0xA2011320},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,   0x20},
-   {TC_MUST_BE, 0xA1000882},
+   {TC_MUST_BE, 0xA2008820},
    {TC_END_SECTION, 0},
 
    {TC_END,     0},
@@ -5926,8 +5941,8 @@ TEST_INFO test_res_11[] =
 TEST_LOAD_STORE test_11_store =
   {
    {
-    0x70212223,    // 00
-    0x70202324,    // 01
+    0x70212223,    // 00  (21) = (22) + (23)
+    0x70202324,    // 01  (20) = (23) + (24)
     0x00000000,    // 02
     0x00000000,    // 03
     0x00000000,    // 04
@@ -6002,11 +6017,11 @@ TOKEN test_seq_12[] =
 TEST_INFO test_res_12[] =
   {
    {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xB1000882},
+   {TC_MUST_BE,     0xB2008820},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x20},
-   {TC_MUST_BE,     0xA1001132},
+   {TC_MUST_BE,     0xA2011320},
    {TC_END_SECTION, 0},
 
    {TC_END,     0},
@@ -6094,24 +6109,26 @@ TOKEN test_seq_13[] =
 TEST_INFO test_res_13[] =
   {
    {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xA1000045},
+   {TC_MUST_BE,     0xA5450000},
    {TC_END_SECTION, 0},
    
    {TC_STORE_N,     0x20},
-   {TC_MUST_BE,     0xB2001875},
-
+   {TC_MUST_BE,     0xB4187500},
+   {TC_END_SECTION, 0},
+   
    {TC_STORE_N,     0x10},
-   {TC_MUST_BE,     0xB2001875},
-
+   {TC_MUST_BE,     0xA5986958},
+   {TC_END_SECTION, 0},
+   
    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_13_store =
   {
    {
-    0x72212223,    // 00
-    0x72202324,    // 01
-    0x72101112,    // 02
+    0x72212223,    // 00 (21) = (22) * (23)
+    0x72202324,    // 01 (20) = (23) * (24)
+    0x72101112,    // 02 (10) = (11) * (12)
     0x00000000,    // 03
     0x00000000,    // 04
     0x00000000,    // 05
@@ -6194,7 +6211,7 @@ TOKEN test_seq_14[] =
 TEST_INFO test_res_14[] =
   {
    {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xA0000005},
+   {TC_MUST_BE,     0xA4050000},
    {TC_END_SECTION, 0},
    
    {TC_STORE_N,     0x10},
@@ -6218,11 +6235,11 @@ TEST_INFO test_res_14[] =
 TEST_LOAD_STORE test_14_store =
   {
    {
-    0x73212223,    // 00
-    0x73101112,    // 01
-    0x73131415,    // 02
-    0x73161718,    // 03
-    0x93282930,    // 04
+    0x73212223,    // 00 (21) = (22) / (23)
+    0x73101112,    // 01 (10) = (11) / (12)
+    0x73131415,    // 02 (13) = (14) / (15)
+    0x73161718,    // 03 (16) = (17) / (18)
+    0x93282930,    // 04 ((28)) = ((29)) / ((30)) or: (10) = (17) / (18)
     0x00000000,    // 05
     0x00000000,    // 06
     0x00000000,    // 07
@@ -6949,7 +6966,7 @@ TOKEN test_seq_22[] =
    TOK_KEY_NORMAL_RESET,
 
    TOK_KEY_1,
-   TOK_KEY_0,
+   TOK_KEY_1,
    TOK_KEY_LOAD_IAR,
 
    TOK_KEY_C,
@@ -6994,6 +7011,114 @@ TEST_LOAD_STORE test_22_store =
     -1},
   };
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 23
+//
+// FP tests
+// 
+// 
+
+INIT_INFO test_init_23[] =
+  {
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_23[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_23[] =
+  {
+   
+   {TC_STORE_N,   0x10},
+   {TC_MUST_BE, 0xA5014285},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,   0x13},
+   {TC_MUST_BE, 0xA5014285},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,   0x7},
+   {TC_MUST_BE, 0xB6000352},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,   0x16},
+   {TC_MUST_BE, 0xA5000001},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,   0x19},
+   {TC_MUST_BE, 0xA4020000},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,   0x22},
+   {TC_MUST_BE, 0xA4170000},
+   {TC_END_SECTION, 0},
+   
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_23_store =
+  {
+   {
+    0x73101112,    //00
+    0x73131415,    //01
+    0x73070809,
+    0x73161718,
+    0x70192021,
+    0x70222324,
+    0x00000000,
+    0x00000000,     //07
+    0xA6001410,     //08
+    0xB5400000,     //09
+    0x00000000,     //10
+    0xA5100000,     //11
+    0xA5700000,     //12
+    0x00000000,     //13
+    0xA0000001,     //14
+    0xA0000007,     //15
+    0x00000000,     //16
+    0xA4000001,     //17
+    0xA5700000,     //18
+    0x00000000,     //19
+    0xA5100000,     //20
+    0xA5100000,     //21
+    0x00000000,     //22
+    0xA5900000,     //23
+    0xA5800000,     //24
+    0x00000000,     //25
+    0xA0000001,     //26
+    0xA0000007,     //27
+    0x00000000,     //28
+    0xA0000001,     //29
+    0xA0000007,     //30
+    
+    -1},
+  };
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -7022,6 +7147,7 @@ ESC_TEST_INFO tests[] =
    {"Simultaneous Eq",         test_init_20, test_seq_20, test_res_20, 0, &test_20_store, ""},
    {"Square root",             test_init_21, test_seq_21, test_res_21, 0, &test_21_store, ""},
    {"sin(x)",                  test_init_22, test_seq_22, test_res_22, 0, &test_22_store, ""},
+   {"FP tests",                test_init_23, test_seq_23, test_res_23, 0, &test_23_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
