@@ -6328,16 +6328,16 @@ TEST_INFO test_res_sv[] =
    {TC_MUST_BE,     0xA4196349},
    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x13},
-   {TC_MUST_BE,     0xA3010000},
+   {TC_STORE_N,     0x03},
+   {TC_MUST_BE,     0xA4785396},
    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x16},
-   {TC_MUST_BE,     0xA4031428},
+   {TC_STORE_N,     0x04},
+   {TC_MUST_BE,     0xA3196349},
    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x16},
-   {TC_MUST_BE,     0xA4031428},
+   {TC_STORE_N,     0x04},
+   {TC_MUST_BE,     0xA3065449},
 
    {TC_END,     0},
   };
@@ -6347,12 +6347,12 @@ TEST_LOAD_STORE test_sv_store =
    {
     0x00000000,    // 00
     0x00000000,    // 01
-    0xA1000025,    // 02
+    0xA1000025,    // 02  Set up r
     0x00000000,    // 03
     0x00000000,    // 04
-    0xA5314159,    // 05
-    0xA0000004,    // 06
-    0xA0000003,    // 07
+    0xA5314159,    // 05  Set up Pi
+    0xA0000004,    // 06  Constant 4
+    0xA0000003,    // 07  Constant 3
     0x00000000,    // 08
     0x00000000,    // 09
     0x78020507,    // 10  Input r; display 3.14159 and 3
@@ -6391,44 +6391,18 @@ TOKEN test_seq_16[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-
    TOK_NONE,
   };
 
 TEST_INFO test_res_16[] =
   {
-   {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xA0000005},
-   {TC_END_SECTION, 0},
-   
-   {TC_STORE_N,     0x10},
-   {TC_MUST_BE,     0xB3010000},
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000010},
    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x13},
-   {TC_MUST_BE,     0xA3010000},
+   {TC_REG_IAR,   0},
+   {TC_MUST_BE, 0x00000011},
    {TC_END_SECTION, 0},
-
-   {TC_STORE_N,     0x16},
-   {TC_MUST_BE,     0xA4031428},
-   {TC_END_SECTION, 0},
-   
-   {TC_STORE_N,     0x16},
-   {TC_MUST_BE,     0xA4031428},
 
    {TC_END,     0},
   };
@@ -6436,7 +6410,7 @@ TEST_INFO test_res_16[] =
 TEST_LOAD_STORE test_16_store =
   {
    {
-    0x74101516,    // 00
+    0x74101516,    // 00 branch to Aa1 if (Aa2) = (Aa3) 
     0x00000000,    // 01
     0x00000000,    // 02
     0x00000000,    // 03
@@ -6446,7 +6420,7 @@ TEST_LOAD_STORE test_16_store =
     0x00000000,    // 07
     0x00000000,    // 08
     0x00000000,    // 09
-    0x00000000,    // 10
+    0x74051415,    // 10  Branch to 05 if (14) = (15)
     0x00000000,    // 11
     0x00000000,    // 12
     0x00000000,    // 13
@@ -6539,8 +6513,8 @@ TEST_INFO test_res_17[] =
 TEST_LOAD_STORE test_17_store =
   {
    {
-    SW_PLUS(0x05310732),
-    0x12345678,
+    SW_PLUS(0x05310732),  // 00
+    0x12345678,           // 01
     0x0,
     0x0,
     0x0,
@@ -6549,7 +6523,7 @@ TEST_LOAD_STORE test_17_store =
     0x0,
     0x0,
     0x0,
-    0x00810082,
+    0x00810082,          // 10  
     0x00891389,
     0x13901318,
     -1},
