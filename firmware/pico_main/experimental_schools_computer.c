@@ -6215,19 +6215,19 @@ TEST_INFO test_res_14[] =
    {TC_END_SECTION, 0},
    
    {TC_STORE_N,     0x10},
-   {TC_MUST_BE,     0xB3010000},
+   {TC_MUST_BE,     0xB4100000},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x13},
-   {TC_MUST_BE,     0xA3010000},
+   {TC_MUST_BE,     0xA4100000},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x16},
    {TC_MUST_BE,     0xA4031428},
    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x16},
-   {TC_MUST_BE,     0xA4031428},
+   {TC_STORE_N,     0x26},
+   {TC_MUST_BE,     0xA6318182},
 
    {TC_END,     0},
   };
@@ -6239,7 +6239,7 @@ TEST_LOAD_STORE test_14_store =
     0x73101112,    // 01 (10) = (11) / (12)
     0x73131415,    // 02 (13) = (14) / (15)
     0x73161718,    // 03 (16) = (17) / (18)
-    0x93282930,    // 04 ((28)) = ((29)) / ((30)) or: (10) = (17) / (18)
+    0x93282930,    // 04 ((28)) = ((29)) / ((30)) or: (26) = (18) / (17)
     0x00000000,    // 05
     0x00000000,    // 06
     0x00000000,    // 07
@@ -6261,11 +6261,11 @@ TEST_LOAD_STORE test_14_store =
     0xA1000030,    // 23
     0xB0000125,    // 24
     0xB1000050,    // 25
-    0x00000000,    // 26
+    0xA0000022,    // 26
     0x00000000,    // 27
-    0xA0000010,    // 28
-    0xA0000017,    // 29
-    0xA0000018,    // 30
+    0xA0000026,    // 28
+    0xA0000018,    // 29
+    0xA0000017,    // 30
     -1},
   };
 
@@ -6289,8 +6289,10 @@ TOKEN test_seq_sv[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
-   // Skip the double zero instructions
+   // Skip the entry instruction, nothing changes
    TOK_KEY_C,
+
+   // Calculate r * r
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -6318,12 +6320,12 @@ TOKEN test_seq_sv[] =
 
 TEST_INFO test_res_sv[] =
   {
-   {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xA0000005},
+   {TC_STORE_N,     0x03},
+   {TC_MUST_BE,     0xA5625000},
    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x10},
-   {TC_MUST_BE,     0xB3010000},
+   {TC_STORE_N,     0x03},
+   {TC_MUST_BE,     0xA4196349},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x13},
@@ -6353,13 +6355,13 @@ TEST_LOAD_STORE test_sv_store =
     0xA0000003,    // 07
     0x00000000,    // 08
     0x00000000,    // 09
-    0x78020507,    // 10
-    0x72030202,    // 11
-    0x72030305,    // 12
-    0x72030306,    // 13
-    0x72040302,    // 14
-    0x73040407,    // 15
-    0x79020304,    // 16
+    0x78020507,    // 10  Input r; display 3.14159 and 3
+    0x72030202,    // 11  a <- r * r
+    0x72030305,    // 12  a <- a * 3.14159
+    0x72030306,    // 13  a <- a * 4
+    0x72040302,    // 14  b <- a * r
+    0x73040407,    // 15  b = b / 3
+    0x79020304,    // 16  Display r, a and b
     -1},
   };
 
