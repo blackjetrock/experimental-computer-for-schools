@@ -6767,9 +6767,12 @@ TOKEN test_seq_20[] =
   {
    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_0,
+   TOK_KEY_1,
+   TOK_KEY_5,
    TOK_KEY_LOAD_IAR,
 
+   TOK_KEY_C,
+   TOK_KEY_C,
    TOK_KEY_C,
    TOK_KEY_C,
    TOK_KEY_C,
@@ -6791,36 +6794,12 @@ TOKEN test_seq_20[] =
 
 TEST_INFO test_res_20[] =
   {
-   
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0000004},
-   {TC_END_SECTION, 0},
+   {TC_STORE_N,   0x09},
+   {TC_MUST_BE, 0xA6326474},
 
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0000005},
-   {TC_END_SECTION, 0},
+   {TC_STORE_N,   0x10},
+   {TC_MUST_BE, 0xB6036209},
 
-   {TC_MUST_BE_STOPPED, 0},
-   {TC_END_SECTION, 0},
-
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0000007},
-   {TC_END_SECTION, 0},
-
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0000008},
-   {TC_END_SECTION, 0},
-
-   {TC_MUST_BE_STOPPED, 0},
-   {TC_END_SECTION, 0},
-
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0000001},
-   {TC_END_SECTION, 0},
-
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0000002},
-   {TC_MUST_BE_NOT_STOPPED, 0},
    {TC_END_SECTION, 0},
 
    {TC_END,     0},
@@ -6828,6 +6807,9 @@ TEST_INFO test_res_20[] =
 
 // ad-bc = 125.4392
 // dp-bq = 40.952168
+// aq-cp = -4.542101
+// x = 0.32647025
+// y = -0.03620958
 
 TEST_LOAD_STORE test_20_store =
   {
