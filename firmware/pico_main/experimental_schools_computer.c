@@ -2368,12 +2368,17 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
   SINGLE_WORD tested_digits;    // arg b test against and subtracted from
   SINGLE_WORD added_digits;         // number added to result
 
-  // Before we do any calculations, nove the MS digit to the left most position so we get
+  // Before we do any calculations, move the MS digit to the left most position so we get
   // full resolution for the result. This is done to both a and b
+
+#if DEBUG_FP
+  printf("\n%s", __FUNCTION__);
+  printf("\na:%016X b:%016X", a, b);
+#endif
 
   a = sw_msd_to_left(a);
   b = sw_msd_to_left(b);
-  
+
   digits_a  =  STORE_GET_DIGITS(a);
   digits_b  =  STORE_GET_DIGITS(b);
   sign_a =  STORE_GET_SIGN(a);
@@ -2381,6 +2386,12 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
   exp_a = STORE_GET_EXPONENT(a);
   exp_b = STORE_GET_EXPONENT(b);
 
+#if DEBUG_FP
+  printf("\nAfter MSD shift");
+  printf("\na:%016X b:%016X", a, b);
+  printf("\ndigits_r       = %016X", digits_r);
+#endif
+  
   // The number added is a 1, but is in various digit positions
   // Sign added just before addition
   added_digits = 1;
@@ -2510,11 +2521,17 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
 
   result = digits_r;
 
-  exp_r = exp_a - exp_b + 5 - number_of_shifts;
+   exp_r = exp_a - exp_b + 5 - number_of_shifts;
+  
+#if DEBUG_FP
+  printf("\nexp_r :%016X", exp_r);
+#endif
 
-  if( exp_r > 6 )
+  while( exp_r > 6 )
     {
-      // Overflow
+      // Shift result right so it fits
+      result = sw_shift_right(result, 1);
+      exp_r--;
     }
   
   // Put exponent back as same number of decimal places as arg b
@@ -6205,6 +6222,9 @@ TOKEN test_seq_14[] =
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
+   TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
@@ -6228,7 +6248,12 @@ TEST_INFO test_res_14[] =
    
    {TC_STORE_N,     0x26},
    {TC_MUST_BE,     0xA6318182},
+   {TC_END_SECTION, 0},
 
+   {TC_STORE_N,     0x31},
+   {TC_MUST_BE,     0xA6032000},
+   {TC_END_SECTION, 0},
+   
    {TC_END,     0},
   };
 
@@ -6240,7 +6265,7 @@ TEST_LOAD_STORE test_14_store =
     0x73131415,    // 02 (13) = (14) / (15)
     0x73161718,    // 03 (16) = (17) / (18)
     0x93282930,    // 04 ((28)) = ((29)) / ((30)) or: (26) = (18) / (17)
-    0x00000000,    // 05
+    0x73313233,    // 05 (31) = (32)/ (33)
     0x00000000,    // 06
     0x00000000,    // 07
     0x00000000,    // 08
@@ -6254,9 +6279,9 @@ TEST_LOAD_STORE test_14_store =
     0x00000000,    // 16
     0xA4220000,    // 17
     0xA0000007,    // 18
-    0x00000000,    // 19
-    0x00000000,    // 20
-    0x00000000,    // 21
+    0x00000000,    // 19 
+    0xA0000004,    // 20
+    0xA0000125,    // 21
     0xA0000015,    // 22
     0xA1000030,    // 23
     0xB0000125,    // 24
@@ -6266,6 +6291,9 @@ TEST_LOAD_STORE test_14_store =
     0xA0000026,    // 28
     0xA0000018,    // 29
     0xA0000017,    // 30
+    0x00000000,    // 31
+    0xA0000004,    // 32
+    0xA0000125,    // 33
     -1},
   };
 
@@ -6704,11 +6732,11 @@ TEST_INFO test_res_19[] =
 TEST_LOAD_STORE test_19_store =
   {
    {
-    0x03040315,    //00
-    0x19010000,    //01
-    0x03070318,
-    0x19010000,
-    0x03010312,
+    0x03040315,    //00  R0 <-4, R1 <- 5
+    0x19010000,    //01  Stop and display R0 and R1, NOP
+    0x03070318,    //02  R0<- 7, R1 <- 8
+    0x19010000,    //03  Stop and display R0 and R1, NOP
+    0x03010312,    //04  R0 <- 1, R1 <- 2
     0x00000000,
     0x00000000,
     0x00000000,
@@ -6798,19 +6826,22 @@ TEST_INFO test_res_20[] =
    {TC_END,     0},
   };
 
+// ad-bc = 125.4392
+// dp-bq = 40.952168
+
 TEST_LOAD_STORE test_20_store =
   {
    {
     0x00000000,    // 00 spare
     0x00000000,    // 01 spare
     0x00000000,    // 02 spare
-    0x00000000,    // 03 a
-    0x00000000,    // 04 b
-    0x00000000,    // 05 p
-    0x00000000,    // 06 c
-    0x00000000,    // 07 d
-    0x00000000,    // 08 q
-    0x00000000,    // 09 r
+    0xA0000010,    // 03 a     10
+    0xA1000034,    // 04 b     3.4
+    0xA5314159,    // 05 p     3.14159
+    0xA3007812,    // 06 c     7.812
+    0xA1000152,    // 07 d     15.2
+    0xA0000002,    // 08 q     2
+    0x00000000,    // 09 r     
     0x00000000,    // 10 s
     0x00000000,    // 11 u
     0x00000000,    // 12 v
