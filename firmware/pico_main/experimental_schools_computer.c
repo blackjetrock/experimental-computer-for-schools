@@ -6871,42 +6871,39 @@ TOKEN test_seq_21[] =
    TOK_KEY_LOAD_IAR,
 
    TOK_KEY_C,
-
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   TOK_KEY_C,
+   
    TOK_NONE,
   };
 
 TEST_INFO test_res_21[] =
   {
-   
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0000004},
-   {TC_END_SECTION, 0},
-
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0000005},
-   {TC_END_SECTION, 0},
-
-   {TC_MUST_BE_STOPPED, 0},
-   {TC_END_SECTION, 0},
-
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0000007},
-   {TC_END_SECTION, 0},
-
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0000008},
-   {TC_END_SECTION, 0},
-
-   {TC_MUST_BE_STOPPED, 0},
-   {TC_END_SECTION, 0},
-
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0000001},
-   {TC_END_SECTION, 0},
-
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0000002},
-   {TC_MUST_BE_NOT_STOPPED, 0},
+   {TC_STORE_N,   0x3},
+   {TC_MUST_BE, 0xA5141420},
    {TC_END_SECTION, 0},
 
    {TC_END,     0},
