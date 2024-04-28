@@ -58,6 +58,9 @@ enum {
 
       // Check results at this point
       TOK_TEST_CHECK_RES,
+
+      // Wait while testing until a stop is seen
+      TOK_TEST_WAIT_FOR_STOP,
 };
 
 //------------------------------------------------------------------------------

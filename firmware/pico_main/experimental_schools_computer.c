@@ -288,13 +288,13 @@ int parameter = 0;
 int auto_increment_parameter = 0;
 int auto_increment_address   = 0;
 char text_parameter[TEXT_PARAMETER_LEN+1] = "";
-int address              = 0;
-int test_number          = 0;
-int test_run_single_test = 0;
-int test_running         = 0;
-int test_done_init       = 0;
-int test_step            = 0;
-
+int address               = 0;
+int test_number           = 0;
+int test_run_single_test  = 0;
+int test_running          = 0;
+int test_waiting_for_stop = 0;
+int test_done_init        = 0;
+int test_step             = 0;
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -525,9 +525,11 @@ void kbd_read(ESC_STATE *s)
     {
       // No key pressed, check for a running test after N idle loops
       // We allow the FSMs to run for a while between keystrokes
-
-      if( (++test_loop_count) <= TEST_EVERY_N_LOOPS )
+      // If we are waiting for a stop condition then don't proess the test until we see a stop
+      
+      if( test_waiting_for_stop || ((++test_loop_count) <= TEST_EVERY_N_LOOPS) )
 	{
+	  
 	  // Wait another loop before running test
 	}
       else
@@ -551,14 +553,18 @@ void kbd_read(ESC_STATE *s)
 #endif
 		  switch(t)
 		    {
+		    case TOK_TEST_WAIT_FOR_STOP:
+		      test_waiting_for_stop = 1;
+		      break;
+		      
 		    case TOK_NONE:
 		    case TOK_TEST_CHECK_RES:
 		      
 		      // Test sequence finished
 		      // Test results
-
 		  
 		      printf("\nChecking results for test: %s", tests[test_number].desc);
+
 		      // Which type of test do we do?
 		      test_type = TC_END;
 			  
@@ -1331,7 +1337,7 @@ REGISTER_DOUBLE_WORD bcd_addition_double(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE
 // Both negative: Add, check for overflow
 // One negative, one positive: Nines complement negative, add, drop carry, add one, check for overflow (inverted)
 
-REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WORD b)
+REGISTER_SINGLE_WORD bcd_sw_addition(ESC_STATE *s, REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WORD b)
 {
   REGISTER_SINGLE_WORD c;
   int a_sign;
@@ -1397,6 +1403,8 @@ REGISTER_SINGLE_WORD bcd_sw_addition(REGISTER_SINGLE_WORD a, REGISTER_SINGLE_WOR
 	  printf("\nOverflow occurred");
 
 	  error_msg( "Overflow (%08X)", c);
+	  s->error = 1;
+	  s->stop= 1;
 #endif
 	}
 
@@ -1779,7 +1787,7 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
 
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(SW_REG_CONTENTS(src), t);
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src), t);
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -1810,7 +1818,7 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
       t       = SET_SW_SIGN((REGISTER_SINGLE_WORD) SW_REG_CONTENTS(src), WORD_SIGN_MINUS);
       literal = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal,   WORD_SIGN_PLUS);
 
-      SW_REG_CONTENTS(dest) = bcd_sw_addition((REGISTER_SINGLE_WORD) literal, t);
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, (REGISTER_SINGLE_WORD) literal, t);
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -1832,7 +1840,7 @@ void register_assign_sub_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_MINUS);
 
-      SW_REG_CONTENTS(dest) = bcd_sw_addition((REGISTER_SINGLE_WORD) t, SW_REG_CONTENTS(src));
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, (REGISTER_SINGLE_WORD) t, SW_REG_CONTENTS(src));
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -1849,7 +1857,7 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
 {
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(SW_REG_CONTENTS(src1), SW_REG_CONTENTS(src2));
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), SW_REG_CONTENTS(src2));
       return;
     }
 
@@ -1867,7 +1875,7 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
 {
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(SW_REG_CONTENTS(src1), SET_SW_SIGN((REGISTER_SINGLE_WORD) SW_REG_CONTENTS(src2), WORD_SIGN_MINUS));
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), SET_SW_SIGN((REGISTER_SINGLE_WORD) SW_REG_CONTENTS(src2), WORD_SIGN_MINUS));
       return;
     }
 
@@ -2066,7 +2074,7 @@ SINGLE_WORD sw_shift_right(SINGLE_WORD x, int n)
 //
 //------------------------------------------------------------------------------
 
-SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b, int normalise)
+SINGLE_WORD fp_add(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b, int normalise)
 {
   int exp_a, exp_b, exp_r;
   int exp_diff;
@@ -2140,7 +2148,7 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b, int normalise)
 #endif
 
   // Add digits
-  result = bcd_sw_addition(SET_SW_SIGN(digits_a, sign_a), SET_SW_SIGN(digits_b,sign_b));
+  result = bcd_sw_addition(s, SET_SW_SIGN(digits_a, sign_a), SET_SW_SIGN(digits_b,sign_b));
 
   // Put exponent back
   result = STORE_SET_EXPONENT(result,exp_r);
@@ -2169,11 +2177,11 @@ SINGLE_WORD fp_add(SINGLE_WORD a, SINGLE_WORD b, int normalise)
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-SINGLE_WORD fp_subtract(SINGLE_WORD a, SINGLE_WORD b, int normalise)
+SINGLE_WORD fp_subtract(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b, int normalise)
 {
   b = invert_sw_sign(b);
 
-  return(fp_add(a, b, normalise));
+  return(fp_add(s, a, b, normalise));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2184,7 +2192,7 @@ SINGLE_WORD fp_subtract(SINGLE_WORD a, SINGLE_WORD b, int normalise)
 
 // Uses double word registers internally
 
-SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
+SINGLE_WORD fp_multiply(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 {
   int exp_a, exp_b, exp_r;
   int exp_diff;
@@ -2357,7 +2365,7 @@ SINGLE_WORD fp_multiply(SINGLE_WORD a, SINGLE_WORD b)
 
 // result = a / b
 
-SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
+SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 {
   int exp_a, exp_b, exp_r;
   int exp_diff;
@@ -2480,9 +2488,9 @@ SINGLE_WORD fp_divide(SINGLE_WORD a, SINGLE_WORD b)
 #endif
 	  
 	  // Add one to digit position
-	  digits_r = fp_add(digits_r, added_digits, 0);
+	  digits_r = fp_add(s, digits_r, added_digits, 0);
 	  
-	  tested_digits = fp_subtract(tested_digits, shifted_digits, 0);
+	  tested_digits = fp_subtract(s, tested_digits, shifted_digits, 0);
 #if DEBUG_FP
 	  printf("\n**In Loop**");
 	  printf("\ndigits_r       = %016X", digits_r);
@@ -2695,7 +2703,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a2v = load_from_store(s, s->Aa2);
 	  a3v = load_from_store(s, s->Aa3);
 
-	  a1v = fp_add(a2v, a3v, 1);
+	  a1v = fp_add(s, a2v, a3v, 1);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  display_on_line(s, display, 3, "%3X  %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -2719,7 +2727,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  printf("\nA3v=%X", a3v);
 #endif
 
-	  a1v = fp_subtract(a2v, a3v, 1);
+	  a1v = fp_subtract(s, a2v, a3v, 1);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -2743,7 +2751,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  printf("\nA3v=%X", a3v);
 #endif
 
-	  a1v = fp_multiply(a2v, a3v);
+	  a1v = fp_multiply(s, a2v, a3v);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -2767,7 +2775,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  printf("\nA3v=%X", a3v);
 #endif
 
-	  a1v = fp_divide(a2v, a3v);
+	  a1v = fp_divide(s, a2v, a3v);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -2799,7 +2807,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Subtract the values and look for zero as that will account for different forms of the same value,
 	  // e.g:   A1000050 and A2000500
 	  // which are both 5 (5.0 and 5.00)
-	  tst = fp_subtract(a2v, a3v, 1);
+	  tst = fp_subtract(s, a2v, a3v, 1);
 
 #if DEBUG_FP
 	  printf("\ntst=%08X", tst);
@@ -2851,7 +2859,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Subtract the values and look for a positive value and not zero
 	  // e.g:   A1000050 and A2000500
 	  // which are both 5 (5.0 and 5.00)
-	  tst = fp_subtract(a2v, a3v, 1);
+	  tst = fp_subtract(s, a2v, a3v, 1);
 
 #if DEBUG_FP
 	  printf("\ntst=%08X", tst);
@@ -2874,6 +2882,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      printf("\n**Branch NOT taken**");
 #endif
 	    }
+	  
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
@@ -2906,7 +2915,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a2v = SET_SW_SIGN(a2v, WORD_SIGN_PLUS);
 	  a3v = SET_SW_SIGN(a3v, WORD_SIGN_PLUS);
 	  
-	  SINGLE_WORD tst = fp_subtract(a2v, a3v, 1);
+	  SINGLE_WORD tst = fp_subtract(s, a2v, a3v, 1);
 
 #if DEBUG_FP
 	  printf("\ntst=%08X", tst);
@@ -3688,21 +3697,21 @@ void stage_a_decode(ESC_STATE *s, int display)
 
       // relative addressing
     case 3:
-      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
+      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "");
       display_on_line(s, display, 5, "");
       break;
 
     case 4:
-      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
+      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "");
       display_on_line(s, display, 5, "");
       break;
       
     case 5:
-      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
+      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "");
       display_on_line(s, display, 5, "");
@@ -3837,7 +3846,7 @@ void state_esc_incr_addr(FSM_DATA *s, TOKEN tok)
   one = 1;
   one = SET_SW_SIGN(one, WORD_SIGN_PLUS);
 
-  es->address_register2 = BOUND_ADDRESS(bcd_sw_addition(es->address_register2, one));
+  es->address_register2 = BOUND_ADDRESS(bcd_sw_addition(es, es->address_register2, one));
 
   es->update_display = 1;
 }
@@ -3852,7 +3861,7 @@ void state_esc_decr_addr(FSM_DATA *s, TOKEN tok)
   minus_1 = 1;
   minus_1 = SET_SW_SIGN(minus_1, WORD_SIGN_MINUS);
 
-  es->address_register2 = (BOUND_ADDRESS(bcd_sw_addition(es->address_register2, minus_1)));
+  es->address_register2 = (BOUND_ADDRESS(bcd_sw_addition(es, es->address_register2, minus_1)));
 
   es->update_display = 1;
 }
@@ -3989,12 +3998,12 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   es->address_register1 = EMPTY_ADDRESS;
   es->address_register2 = EMPTY_ADDRESS;
 
-  display_on_line(es, 1, DISPLAY_UPDATE, "");
-  display_on_line(es, 2, DISPLAY_UPDATE, "");
+  display_on_line(es, 1, DISPLAY_UPDATE, "               ");
+  display_on_line(es, 2, DISPLAY_UPDATE, "               ");
 
-  display_on_line(es, 3, DISPLAY_UPDATE, "");
-  display_on_line(es, 4, DISPLAY_UPDATE, "");
-  display_on_line(es, 5, DISPLAY_UPDATE, "");
+  display_on_line(es, 3, DISPLAY_UPDATE, "               ");
+  display_on_line(es, 4, DISPLAY_UPDATE, "               ");
+  display_on_line(es, 5, DISPLAY_UPDATE, "               ");
   
   es->reginst_rc = NO_VALUE;
   es->reginst_rd = NO_VALUE;
@@ -4235,6 +4244,19 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 	  printf("\nEXEC:STOP");
 #endif
 	  // Turn off the execution
+
+	  // Has the program stopped? A test may be waiting for this
+	  if( test_waiting_for_stop )
+	    {
+#if DEBUG_TEST_SEQ
+	      printf("\n**Test continuing due to program STOP");
+#endif
+	      test_waiting_for_stop = 0;
+
+	      // Reset counter so test will continue on next time slot.
+	      test_loop_count = 0;
+	    }
+
 	  // As we run to stage C for each instruction this stops at the end
 	  // of stage C for the current instruction.
 	  s->run = 0;
@@ -4512,6 +4534,13 @@ void cli_dump(void)
   printf("\nReg Inst Lit  : %d", s->reginst_literal);
   printf("\nInst Aa       : %02X   ap : %02X ", s->inst_aa, s->inst_ap);
   printf("\n");
+
+  printf("\nTest");
+  printf("\n====");
+  printf("\nTest running          : %d", test_running);
+  printf("\nTest loop count       : %d", test_loop_count);
+  printf("\nTest waiting for stop : %d", test_waiting_for_stop);
+  
 }
 
 // Dump Store
@@ -4631,7 +4660,7 @@ void test_sw_add(int a, int b, int r)
 {
   int c;
   
-  c = bcd_sw_addition(a, b);
+  c = bcd_sw_addition(&esc_state, a, b);
   
   printf("\n%08X + %08X = %08X : %s (r=%08X)", a, b, c, (c ==r)?"PASS":"FAIL", r);
 }
@@ -6933,6 +6962,7 @@ TEST_LOAD_STORE test_21_store =
     0x00000000,    // 32
     -1},
   };
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Test 22
@@ -6954,13 +6984,17 @@ TOKEN test_seq_22[] =
    TOK_KEY_1,
    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
+   TOK_KEY_RUN,
+   TOK_TEST_WAIT_FOR_STOP,
 
    TOK_NONE,
   };
 
 TEST_INFO test_res_22[] =
   {
+   {TC_STORE_N,   0x3},
+   {TC_MUST_BE, 0xA4008416},
+   {TC_END_SECTION, 0},
    
    {TC_END,     0},
   };
@@ -8323,7 +8357,7 @@ void update_computer_display(ESC_STATE *es)
   // Line 1
   //------------------------------------------------------------------------------
   
-  sprintf(tmp, "\n1: %02s   %8s",
+  sprintf(tmp, "%02s   %8s",
 	  display_iar(es->iar),
 	  display_store_word(es->keyboard_register));
   strcat(dsp, tmp);
@@ -8332,7 +8366,7 @@ void update_computer_display(ESC_STATE *es)
   oled_clear_display(&oled0);
   sprintf(tmp, "%02s   %8s",
 	  display_iar(es->iar),
-	  display_register_single_word(es->keyboard_register));
+	  display_store_word(es->keyboard_register));
   
   oled_set_xy(&oled0, 0, oledy);
   oledy+=8;
@@ -8345,7 +8379,7 @@ void update_computer_display(ESC_STATE *es)
   
   if( es->ki_reset_flag )
     {
-      sprintf(tmp, "\n2: %c",es->ki_reset_flag?'K':' ');
+      sprintf(tmp, "\n2: %c",es->ki_reset_flag?'K':(es->error?'*':' '));
     }
   else
     {

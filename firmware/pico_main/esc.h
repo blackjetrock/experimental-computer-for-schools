@@ -177,7 +177,8 @@ typedef struct _ESC_STATE
   int run;
   int last_run;    // Used to detect program restart
   int stop;
-
+  int error;       // true if in error state
+  
   //------------------------------------------------------------------------------
   // Restart
   int on_restart_load_aa;
