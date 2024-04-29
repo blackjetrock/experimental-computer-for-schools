@@ -554,11 +554,18 @@ void kbd_read(ESC_STATE *s)
 		  switch(t)
 		    {
 		    case TOK_TEST_WAIT_FOR_STOP:
+
+		      // Wait and run in one operation so the program doesn't run and end before we are waiting for it
+		      // to stop
+		      
+		      test_waiting_for_stop = 1;
+		      s->run = 1;
+
+		      // Skip past this code
+		      test_step++;
 #if DEBUG_TEST_SEQ
 		      printf("\n  TOK_TEST_WAIT_FOR_STOP  test_waiting_for_stop:%d", test_waiting_for_stop);
 #endif
-		      
-		      test_waiting_for_stop = 1;
 		      break;
 		      
 		    case TOK_NONE:
@@ -723,7 +730,8 @@ void kbd_read(ESC_STATE *s)
 #endif
 			      done = 1;
 			      test_running = 0;
-
+			      test_waiting_for_stop = 0;
+			      
 			      // Reset result pointer ready for next test
 			      test_res_i = 0;
 			      break;
@@ -4290,7 +4298,7 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 	  if( test_waiting_for_stop )
 	    {
 #if DEBUG_TEST_SEQ
-	      printf("\n**Test continuing due to program STOP");
+	      printf("\n**Test continuing due to program STOP and test was waiting for this");
 #endif
 	      test_waiting_for_stop = 0;
 
@@ -7005,7 +7013,7 @@ TOKEN test_seq_22[] =
    TOK_KEY_1,
    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_RUN,
+   //TOK_KEY_RUN,
    TOK_TEST_WAIT_FOR_STOP,
 
    TOK_NONE,
