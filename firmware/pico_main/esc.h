@@ -139,6 +139,8 @@ typedef struct _ESC_STATE
   
   SINGLE_WORD    keyboard_register;
   int            dot_entered;
+
+  ADDRESS address_register;
   
   ADDRESS address_register0;
   ADDRESS address_register1;

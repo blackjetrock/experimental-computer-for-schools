@@ -3832,60 +3832,66 @@ void null_every_fn(FSM_DATA *s, TOKEN tok)
 // Load ADDR from KBD
 // Address needs to be limited to valid range
 
-void state_esc_load_addr(FSM_DATA *s, TOKEN tok)
+void state_esc_load_addr(FSM_DATA *fs, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
 
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)fs;
 
-  es->address_register2 = BOUND_ADDRESS(es->keyboard_register);
+  s->address_register = BOUND_ADDRESS(s->keyboard_register);
 
   // Clear the keyboard register
-  es->keyboard_register = EMPTY_REGISTER;
-  
-  es->update_display = 1;
+  //  s->keyboard_register = EMPTY_REGISTER;
+
+  display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
+
+  s->update_display = 1;
 }
 
 // Load store from KBD
-void state_esc_load_store(FSM_DATA *s, TOKEN tok)
+void state_esc_load_store(FSM_DATA *fs, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
 
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)fs;
 
-  write_sw_to_store(es, es->address_register2, es->keyboard_register);
+  write_sw_to_store(s, s->address_register, s->keyboard_register);
 
-  es->update_display = 1;
+  s->update_display = 1;
 }
 
-void state_esc_incr_addr(FSM_DATA *s, TOKEN tok)
+void state_esc_incr_addr(FSM_DATA *fs, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
   REGISTER_SINGLE_WORD one;
   
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)fs;
 
   one = 1;
   one = SET_SW_SIGN(one, WORD_SIGN_PLUS);
 
-  es->address_register2 = BOUND_ADDRESS(bcd_sw_addition(es, es->address_register2, one));
+  s->address_register = BOUND_ADDRESS(bcd_sw_addition(s, s->address_register, one));
 
-  es->update_display = 1;
+  display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
+  
+  s->update_display = 1;
 }
 
-void state_esc_decr_addr(FSM_DATA *s, TOKEN tok)
+void state_esc_decr_addr(FSM_DATA *fs, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
   REGISTER_SINGLE_WORD minus_1;
   
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)fs;
 
   minus_1 = 1;
   minus_1 = SET_SW_SIGN(minus_1, WORD_SIGN_MINUS);
 
-  es->address_register2 = (BOUND_ADDRESS(bcd_sw_addition(es, es->address_register2, minus_1)));
+  s->address_register = (BOUND_ADDRESS(bcd_sw_addition(s, s->address_register, minus_1)));
 
-  es->update_display = 1;
+  display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
+  
+  s->update_display = 1;
 }
 
 // Load IAR from KBD
@@ -4052,6 +4058,7 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   display_on_line(es, DISPLAY_UPDATE, 3, "               ");
   display_on_line(es, DISPLAY_UPDATE, 4, "               ");
   display_on_line(es, DISPLAY_UPDATE, 5, "               ");
+  display_on_line(es, DISPLAY_UPDATE, 6, "               ");
   
   es->reginst_rc = NO_VALUE;
   es->reginst_rd = NO_VALUE;
@@ -4061,29 +4068,36 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
   es->update_display = 1;
 }
 
-void state_esc_ki_reset(FSM_DATA *s, TOKEN tok)
+void state_esc_ki_reset(FSM_DATA *fs, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
 
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)fs;
 
   // Everything cleared except IAR
 
-  es->stage = ' ';
-  es->keyboard_register = 0x00;
-  es->dot_entered = 0;
+  s->stage = ' ';
+  s->keyboard_register = 0x00;
+  s->dot_entered = 0;
   
-  es->ki_reset_flag = 1;
-  es->address_register0 = EMPTY_ADDRESS;
-  es->address_register1 = EMPTY_ADDRESS;
-  es->address_register2 = EMPTY_ADDRESS;
+  s->ki_reset_flag = 1;
+  s->address_register0 = EMPTY_ADDRESS;
+  s->address_register1 = EMPTY_ADDRESS;
+  s->address_register2 = EMPTY_ADDRESS;
 
-  es->reginst_rc = NO_VALUE;
-  es->reginst_rd = NO_VALUE;
-  es->reginst_literal = NO_VALUE;
-  
+  s->reginst_rc = NO_VALUE;
+  s->reginst_rd = NO_VALUE;
+  s->reginst_literal = NO_VALUE;
+
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s             ", display_iar(s->iar));
+  display_on_line(s, DISPLAY_UPDATE, 2, "K              ");
+  display_on_line(s, DISPLAY_UPDATE, 3, "               ");
+  display_on_line(s, DISPLAY_UPDATE, 4, "               ");
+  display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+  display_on_line(s, DISPLAY_UPDATE, 6, "               ");
+
   // Re-display
-  es->update_display = 1;
+  s->update_display = 1;
 }
 
 //
@@ -8131,7 +8145,8 @@ char *display_address(REGISTER_SINGLE_WORD x)
       return("  ");
     }
 
-  sprintf(result, "%02X", x);
+  // Drop sign
+  sprintf(result, "%02X", x & 0xFF);
   return(result);
 }
 
@@ -8348,7 +8363,7 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...)
   va_start(args, fmt);
   
 #if DEBUG_DISPLAY_ON_LINE
-  if( line_no >= NUM_LINES )
+  if( line_no > NUM_LINES )
     {
       printf("\nLine no invalid (%d", line_no);
       printf("\nStopping\n");
@@ -8366,7 +8381,7 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...)
       printf("\nfmt='%s'", fmt);
       printf("\nLine too long (%s)", line);
       printf("\nStopping\n");
-      while(1)
+      while(0)
 	{
 	}
     }
