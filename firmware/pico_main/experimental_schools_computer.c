@@ -525,11 +525,10 @@ void kbd_read(ESC_STATE *s)
     {
       // No key pressed, check for a running test after N idle loops
       // We allow the FSMs to run for a while between keystrokes
-      // If we are waiting for a stop condition then don't proess the test until we see a stop
+      // If we are waiting for a stop condition then don't process the test until we see a stop
       
       if( test_waiting_for_stop || ((++test_loop_count) <= TEST_EVERY_N_LOOPS) )
 	{
-	  
 	  // Wait another loop before running test
 	}
       else
@@ -554,6 +553,10 @@ void kbd_read(ESC_STATE *s)
 		  switch(t)
 		    {
 		    case TOK_TEST_WAIT_FOR_STOP:
+#if DEBUG_TEST_SEQ
+		      printf("\n  TOK_TEST_WAIT_FOR_STOP  test_waiting_for_stop:%d", test_waiting_for_stop);
+#endif
+		      
 		      test_waiting_for_stop = 1;
 		      break;
 		      
@@ -562,7 +565,11 @@ void kbd_read(ESC_STATE *s)
 		      
 		      // Test sequence finished
 		      // Test results
-		  
+
+		      // This test is not waiting for a stop any more
+		      test_waiting_for_stop = 0;
+		      printf("\n  Checking results  test_waiting_for_stop:%d", test_waiting_for_stop);
+				      
 		      printf("\nChecking results for test: %s", tests[test_number].desc);
 
 		      // Which type of test do we do?
@@ -2834,8 +2841,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  printf("\nexit\n");
-	  
 	  break;
 
 	  // Branch to Aa1 if (Aa2) > (Aa3)
@@ -3749,18 +3754,23 @@ void stage_a_decode(ESC_STATE *s, int display)
 // Basic instructions are stored two to a word
 // The two instructions are processed, in turn, digit position 1-4
 // then digit position 5-8
+// Three-address instructions are stored one to a word
+//
+// Instruction to be processed is in instruction register
+// If this is a KI reset then the IAr should not be updated
+//
 
 void run_stage_a(ESC_STATE *s, int display)
 {
   // Set instruction stage
   s->stage = 'A';
-  
-  // load aux iar
-  s->aux_iar = s->iar;
-  
-  // Load instruction into instruction register
-  s->instruction_register = load_from_store(s, s->aux_iar.address);
 
+  if( !(s->ki_reset_flag) )
+    {
+      // load aux iar
+      s->aux_iar = s->iar;
+    }
+    
   // Decode instruction
   stage_a_decode(s, display);
 
@@ -3991,9 +4001,11 @@ void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
 
   es->stage = ' ';
   es->keyboard_register = 0x00;
-  es->dot_entered = 0;
+  es->dot_entered       = 0;
   
-  es->ki_reset_flag = 0;
+  es->ki_reset_flag     = 0;
+  es->error             = 0;
+
   es->address_register0 = EMPTY_ADDRESS;
   es->address_register1 = EMPTY_ADDRESS;
   es->address_register2 = EMPTY_ADDRESS;
@@ -4038,6 +4050,25 @@ void state_esc_ki_reset(FSM_DATA *s, TOKEN tok)
   es->update_display = 1;
 }
 
+//
+// Set up the instruction register ready to execute the instrution in it
+// KI reset handles things differently as the instructionm comes from there,
+// not where the IAR is pointing
+//
+
+void prepare_instruction(ESC_STATE *s)
+{
+  if( s->ki_reset_flag )
+    {
+      s->instruction_register = s->keyboard_register;
+    }
+  else
+    {
+      // Load instruction into instruction register
+      s->instruction_register = load_from_store(s, s->aux_iar.address);
+    }
+}
+
 //------------------------------------------------------------------------------
 
 void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
@@ -4050,10 +4081,7 @@ void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
   switch(s->stage)
     {
     case ' ':
-      if( s->ki_reset_flag )
-	{
-	  s->instruction_register = s->keyboard_register;
-	}
+      prepare_instruction(s);
       
       run_stage_a(s, display_flag);
       break;
@@ -4066,6 +4094,7 @@ void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
 
       // If in stage C then next instruction is ready to go
     case 'C':
+      prepare_instruction(s);
       run_stage_a(s, display_flag);
       break;
     }
@@ -4094,11 +4123,7 @@ void state_esc_b_core(FSM_DATA *es, TOKEN tok, int display_flag)
   switch(s->stage)
     {
     case ' ':
-      if( s->ki_reset_flag )
-	{
-	  s->instruction_register = s->keyboard_register;
-	}
-      
+      prepare_instruction(s);
       run_stage_a(s, display_flag);
       run_stage_b(s, display_flag);
       break;
@@ -4138,10 +4163,7 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
   switch(s->stage)
     {
     case ' ':
-      if( s->ki_reset_flag )
-	{
-	  s->instruction_register = s->keyboard_register;
-	}
+      prepare_instruction(s);
       
       run_stage_a(s, display_flag);
       run_stage_b(s, display_flag);
@@ -4158,6 +4180,8 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
       break;
 
     case 'C':
+      prepare_instruction(s);
+      
       run_stage_a(s, display_flag);
       run_stage_b(s, display_flag);
       run_stage_c(s, display_flag);
@@ -4529,10 +4553,12 @@ void cli_dump(void)
   printf("\nInternal");
   printf("\n========");
 
-  printf("\nReg Inst Rc   : %d", s->reginst_rc);
-  printf("\nReg Inst Rd   : %d", s->reginst_rd);
-  printf("\nReg Inst Lit  : %d", s->reginst_literal);
+  printf("\nReg Inst Rc   : %d",                s->reginst_rc);
+  printf("\nReg Inst Rd   : %d",                s->reginst_rd);
+  printf("\nReg Inst Lit  : %d",                s->reginst_literal);
   printf("\nInst Aa       : %02X   ap : %02X ", s->inst_aa, s->inst_ap);
+  printf("\nKI Reset      : %d",                s->ki_reset_flag);
+  printf("\nError         : %d",                s->error);
   printf("\n");
 
   printf("\nTest");
@@ -6933,8 +6959,6 @@ TEST_INFO test_res_21[] =
   {
    {TC_STORE_N,   0x3},
    {TC_MUST_BE, 0xA5141420},
-   {TC_END_SECTION, 0},
-
    {TC_END,     0},
   };
 
@@ -8351,13 +8375,13 @@ void update_computer_display(ESC_STATE *es)
   // Print a representation of the TV display
   //
   
-  strcpy(dsp, "   012345678901234");
+  strcpy(dsp, "   012345678901234\n");
   
   //------------------------------------------------------------------------------  
   // Line 1
   //------------------------------------------------------------------------------
   
-  sprintf(tmp, "%02s   %8s",
+  sprintf(tmp, "1: %02s   %8s",
 	  display_iar(es->iar),
 	  display_store_word(es->keyboard_register));
   strcat(dsp, tmp);
@@ -8379,7 +8403,7 @@ void update_computer_display(ESC_STATE *es)
   
   if( es->ki_reset_flag )
     {
-      sprintf(tmp, "\n2: %c",es->ki_reset_flag?'K':(es->error?'*':' '));
+      sprintf(tmp, "\n2: %c",es->ki_reset_flag?'K':' ');
     }
   else
     {
@@ -8420,8 +8444,8 @@ void update_computer_display(ESC_STATE *es)
       oledy += 8;
       oled_display_string(&oled0, &(display_line[i-1][0]));
 
-      strcat(dsp, "\n");
-      strcat(dsp, &(display_line[i-1][0]));
+      sprintf(tmp, "\n%d: %s", i, &(display_line[i-1][0]));
+      strcat(dsp, tmp);
 #endif
     }
   
