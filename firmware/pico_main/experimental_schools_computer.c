@@ -88,6 +88,7 @@ typedef enum _TEST_CODE
    TC_MUST_BE_STOPPED,
    TC_MUST_BE_NOT_STOPPED,
    TC_END_SECTION,    // End of sub section results. Check up to here (or a TC_END) by TOK_TEST_CHECK_RES token
+                      // Do not put a spurious TC_SECTION_END before a TC_END
    TC_END,
   } TEST_CODE;
 
@@ -807,6 +808,8 @@ void kbd_read(ESC_STATE *s)
 
 		  printf("\nInitialising test: %s", tests[test_number].desc);
 
+		  test_res_i = 0;
+		  
 		  load_store_from_test(s, test_number);
 		  
 		  while(!done)
@@ -2662,7 +2665,8 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 void stage_c_decode(ESC_STATE *s, int display)
 {
   SINGLE_WORD a1v, a2v, a3v;
-  SINGLE_WORD tst;  
+  SINGLE_WORD tst;
+  
   // Decode the instruction
   // First the digits 1-4
 
@@ -4058,6 +4062,10 @@ void state_esc_ki_reset(FSM_DATA *s, TOKEN tok)
 
 void prepare_instruction(ESC_STATE *s)
 {
+#if DEBUG_PREPARE
+  printf("\n%s:ki_reset:%d", __FUNCTION__, s->ki_reset_flag);
+#endif
+  
   if( s->ki_reset_flag )
     {
       s->instruction_register = s->keyboard_register;
@@ -4065,8 +4073,17 @@ void prepare_instruction(ESC_STATE *s)
   else
     {
       // Load instruction into instruction register
-      s->instruction_register = load_from_store(s, s->aux_iar.address);
+      s->instruction_register = load_from_store(s, s->iar.address);
+#if DEBUG_PREPARE
+  printf("\n%s:iar:%08X", __FUNCTION__, s->iar.address);
+#endif
+
     }
+
+#if DEBUG_PREPARE
+  printf("\n%s:instruction register:%08X", __FUNCTION__, s->instruction_register);
+#endif
+
 }
 
 //------------------------------------------------------------------------------
@@ -4181,8 +4198,8 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
 
     case 'C':
       prepare_instruction(s);
-      
       run_stage_a(s, display_flag);
+
       run_stage_b(s, display_flag);
       run_stage_c(s, display_flag);
       break;
@@ -5069,8 +5086,6 @@ TEST_INFO test_res_1[] =
    //Subtract R1 from R0
    {TC_REG_N,   0},
    {TC_MUST_BE, 0xb0123455},
-   {TC_END_SECTION, 0},   
-
    
    {TC_END,     0},
 
@@ -5219,7 +5234,6 @@ TEST_INFO test_res_3[] =
 
    {TC_REG_ADDR,    0},
    {TC_MUST_BE,     0xA0000000},
-   {TC_END_SECTION, 0},   
 
    {TC_END,         0},
 
@@ -5286,7 +5300,6 @@ TEST_INFO test_res_4[] =
 
    {TC_REG_N,   3},
    {TC_MUST_BE, 0xb0445566},
-   {TC_END_SECTION, 0},   
 
    {TC_END,     0},
 
@@ -5435,7 +5448,6 @@ TEST_INFO test_res_5[] =
 
    {TC_CL,          0},
    {TC_MUST_BE,     0},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -5544,7 +5556,6 @@ TEST_INFO test_res_6[] =
 
    {TC_REG_N,   9},
    {TC_MUST_BE, 0xa000456789012000},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -5650,7 +5661,6 @@ TEST_INFO test_res_7[] =
 
    {TC_REG_N,   9},
    {TC_MUST_BE, 0xa000000123456789},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -5727,7 +5737,6 @@ TEST_INFO test_res_8[] =
    
    {TC_STORE_N,   0x4},
    {TC_MUST_BE, 0x12345678},
-   {TC_END_SECTION, 0},
    
    {TC_END,     0},
   };
@@ -5817,7 +5826,6 @@ TEST_INFO test_res_9[] =
 
    {TC_REG_IAR,   0},
    {TC_MUST_BE, 0x00000024},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -5917,7 +5925,6 @@ TEST_INFO test_res_10[] =
 
    {TC_REG_IAR,   0},
    {TC_MUST_BE, 0x00000015},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -6005,7 +6012,6 @@ TEST_INFO test_res_11[] =
 
    {TC_STORE_N,   0x20},
    {TC_MUST_BE, 0xA2008820},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -6094,7 +6100,6 @@ TEST_INFO test_res_12[] =
 
    {TC_STORE_N,     0x20},
    {TC_MUST_BE,     0xA2011320},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -6190,7 +6195,6 @@ TEST_INFO test_res_13[] =
    
    {TC_STORE_N,     0x10},
    {TC_MUST_BE,     0xA5986958},
-   {TC_END_SECTION, 0},
    
    {TC_END,     0},
   };
@@ -6307,7 +6311,6 @@ TEST_INFO test_res_14[] =
 
    {TC_STORE_N,     0x31},
    {TC_MUST_BE,     0xA6032000},
-   {TC_END_SECTION, 0},
    
    {TC_END,     0},
   };
@@ -6485,7 +6488,6 @@ TEST_INFO test_res_16[] =
 
    {TC_REG_IAR,   0},
    {TC_MUST_BE, 0x00000011},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -6588,7 +6590,6 @@ TEST_INFO test_res_17[] =
 
    {TC_REG_N,   1},
    {TC_MUST_BE, 0xA0314159},
-   {TC_END_SECTION, 0},
    
    {TC_END,     0},
   };
@@ -6665,7 +6666,6 @@ TEST_INFO test_res_18[] =
 
    {TC_STORE_N,     0x07},
    {TC_MUST_BE,     0xB6000352},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -6779,7 +6779,6 @@ TEST_INFO test_res_19[] =
    {TC_REG_N,   1},
    {TC_MUST_BE, 0xA0000002},
    {TC_MUST_BE_NOT_STOPPED, 0},
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -6854,8 +6853,6 @@ TEST_INFO test_res_20[] =
 
    {TC_STORE_N,   0x10},
    {TC_MUST_BE, 0xB6036209},
-
-   {TC_END_SECTION, 0},
 
    {TC_END,     0},
   };
@@ -7018,7 +7015,6 @@ TEST_INFO test_res_22[] =
   {
    {TC_STORE_N,   0x3},
    {TC_MUST_BE, 0xA4008416},
-   {TC_END_SECTION, 0},
    
    {TC_END,     0},
   };
@@ -7120,8 +7116,7 @@ TEST_INFO test_res_23[] =
 
    {TC_STORE_N,   0x22},
    {TC_MUST_BE, 0xA4170000},
-   {TC_END_SECTION, 0},
-   
+
    {TC_END,     0},
   };
 

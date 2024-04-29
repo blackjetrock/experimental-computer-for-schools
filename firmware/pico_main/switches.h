@@ -31,7 +31,7 @@
 
 #define DEBUG_RESTART          0
 #define DEBUG_EXECUTE          0
-
+#define DEBUG_PREPARE          1
 #define DEBUG_DISPLAY          0
 #define DEBUG_DISPLAY_ON_LINE  0
 
@@ -64,6 +64,7 @@
 
 #define DEBUG_RESTART          1
 #define DEBUG_EXECUTE          1
+#define DEBUG_PREPARE          1
 
 #define DEBUG_DISPLAY          1
 #define DEBUG_DISPLAY_ON_LINE  1
@@ -101,7 +102,7 @@
 
 #define DEBUG_RESTART          0
 #define DEBUG_EXECUTE          0
-
+#define DEBUG_PREPARE          1
 #endif
 
 
