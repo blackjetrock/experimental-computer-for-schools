@@ -2,8 +2,7 @@
 
 The schools computer dates from around 1969 and was an experimental machine that was never sold. It was designed to be used in schools to teach the basics of computer design and programming. The hardware was based on the same components that the IBM system 360 used. The computer was programmed in machine code, and unlike modern machines the machine code is BCD based, not binary. There are 'extracodes' in the system that are analogous to subroutines, these provided floating point arithmetic at the machine code level. The extracodes could be replaced with user code if desired, and provide a completely different set of functions.
 
-This is a simulation of the machine. It can run code written for the original machine, well it
-could if any programs for the machine still exist.
+This is a simulation of the machine. It can run code written for the original machine.
 
 <h1>USB</h1>
 Interaction with the simulator is over USB. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi.
@@ -18,7 +17,7 @@ This has a 0.96" OLED display that shows the same information as the original ma
 
 ![IMG_4439](https://github.com/blackjetrock/experimental-computer-for-schools/assets/31587992/ef18ebf3-a95e-41ee-9716-92998c548807)
 
- There is an SD card for storage and a keyboard made from tactile switches, in the same layout as the original machines. The operation is very similar to the original, some differenes have been made to key operations to enable use of the SD card. the original machines used audio cassettes for data storage.
+ There is an SD card for storage and a keyboard made from tactile switches, in the same layout as the original machines. The operation is very similar to the original, some differences have been made to key operations to enable use of the SD card. the original machines used audio cassettes for data storage.
  
 ![IMG_4441](https://github.com/blackjetrock/experimental-computer-for-schools/assets/31587992/c710a7aa-bbc5-48d7-a87f-0b369c42f62d)
  The Pico can be a PicoW, in which case a WiFi access point is generated.
@@ -49,4 +48,21 @@ in the
 
 directory and then make as usual.
 
+<h1>Assembler</h1>
+I have created an assembler that assembles instructions expressed in the verbose comments seen in the documents available for this computer. 
+
+<h1>Documents</h1>
+
+<h2>A First Course on the Schools's Computer</h2>
+This is a document that provided a course on programming the computer, there is only one known paper copy of this document, but it has been
+copied and put together into a PDF document. It has several programs written for the machine, which are the only ones I know of from the time
+when the machine was trialled. These programs almost exclusively use the extracodes for the programs, not the half-word basic instructions. Those instructions must have been used to implement
+the extracodes themselves in the store from address 100 to 199. 
+
+<h2>Experimental Computer for Schools</h2>
+Describes the hardware and code design of the machine. This is a technical description of the machine, and contains no program listings at all.
+
+<h2>Flowcharts</h2>
+This is a four page document that has flowcharts and programs for log<sub>b</sub>N and b<sup>L</sup>.
+The programs use an extracode that isn't in the standard set, which is a square root instruction. The instruction also has a jump and the jump part is used in the programs without use of the square root operation. Together with the first course on the school's computer these are the only known programs for the computer.
 

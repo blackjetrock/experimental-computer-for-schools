@@ -1,58 +1,76 @@
                       				; Comment
                       org45
-                      	R5  <-   X              ; Comment
-0045      0352                        	R5  <-   X              ; Comment
-0045A     0361                        	R6 <-     INC
-0046      0000                  loop: 	R5 <-      R5 + R6
-0046A     2446                        	branch to  loop
-0047      2546                        	branch to  loop if cl 1	
-0047A     2646                                branch to  loop	if cl 0
-0048                                  	display X
-0048A     1956                        	display R5 and R6
-0049      1967                        	stop and display R6 and R7
-0049A     1968                        	display (R6) and (R8)
-0050      1923                        	stop and display (R2) and (R3)
-0050A     2042                        	(R0, R1) <- 42
-0051      3042                        	(R0, R1) <- 42+(R3)
-0051A     4042                        	(R0, R1) <- 42+(R4)
-0052      5042                        	(R0, R1) <- 42+(R5)
-0052A     6042                        	(R0, R1) <- (42)	
-0053      2078                        	(R0, R1) <- VAR_Y
-0053A     3078                        	(R0, R1) <- VAR_Y+(R3)
-0054      4078                        	(R0, R1) <- VAR_Y+(R4)
-0054A     5078                        	(R0, R1) <- VAR_Y+(R5)
-0055      6078                        	(R0, R1) <- (VAR_Y)	
-0055A     2142                        	42 <- (R0, R1)
-0056      3142                        	42+(R3) <- (R0, R1)
-0056A     4142                        	42+(R4) <- (R0, R1)
-0057      5142                        	42+(R5) <- (R0, R1)
-0057A     6142                        	(42)	 <- (R0, R1)
-0058      2178                        	VAR_Y <- (R0, R1)
-0058A     3178                        	VAR_Y+(R3) <- (R0, R1)
-0059      4178                        	VAR_Y+(R4) <- (R0, R1)
-0059A     5178                        	VAR_Y+(R5) <- (R0, R1)
-0060      6178                        	(VAR_Y)	 <- (R0, R1)
-0060A     1490                        	copy sign and rh six digits of R0 into R9
-0061      1462                        	copy sign and rh six digits of R2 into R6
-0061A     1445                        	copy sign and rh six digits of R5 into R4
-0062      1427                        	copy sign and rh six digits of R7 into R2
-0062A     1409                        	copy sign and rh six digits of R9 into R0
-0063  70232425                                 23  <-  24  +  25
-0064  70232425                                 23+(R3)  <-  24+(R3)  + 25+(R3)
-0065  70232404                                 23  <-  24  + (R4)
-0066  70232405                                 23  <-  24  + (R5)
-0067  70232403                                 23  <-  24  + (R3)
-0068  70232425                                (23) <- (24) + (25)
+0045      0340                                R4 <- 0
+                      	R5  <-  1              ; Comment
+0045A     0351                        	R5  <-  1              ; Comment
+0046      0362                        	R6 <-   2
+0046A     0363                        	R6 <-   3
+0047      0364                        	R6 <-   4
+0047A     0365                        	R6 <-   5
+0048      0366                        	R6 <-   6
+0048A     0367                        	R6 <-   7
+0049      0368                        	R6 <-   8
+0049A     0369                        	R6 <-   9
+0050      0361                        	R6 <-     INC
+0050A     1056                  loop: 	R5 <-      R5 + R6
+0051      2450                        	branch to  loop
+0051A     2550                        	branch to  loop if cl 1	
+0052      2650                                branch to  loop	if cl 0
+0052A     1956                        	display R5 and R6
+0053      1967                        	stop and display R6 and R7
+0053A     1968                        	display (R6) and (R8)
+0054      1923                        	stop and display (R2) and (R3)
+0054A     2042                        	(R0, R1) <- 42
+0055      3042                        	(R0, R1) <- 42+(R3)
+0055A     4042                        	(R0, R1) <- 42+(R4)
+0056      5042                        	(R0, R1) <- 42+(R5)
+0056A     6042                        	(R0, R1) <- (42)	
+0057      2078                        	(R0, R1) <- VAR_Y
+0057A     3078                        	(R0, R1) <- VAR_Y+(R3)
+0058      4078                        	(R0, R1) <- VAR_Y+(R4)
+0058A     5078                        	(R0, R1) <- VAR_Y+(R5)
+0059      6078                        	(R0, R1) <- (VAR_Y)	
+0059A     2142                        	42 <- (R0, R1)
+0060      3142                        	42+(R3) <- (R0, R1)
+0060A     4142                        	42+(R4) <- (R0, R1)
+0061      5142                        	42+(R5) <- (R0, R1)
+0061A     6142                        	(42)	 <- (R0, R1)
+0062      2178                        	VAR_Y <- (R0, R1)
+0062A     3178                        	VAR_Y+(R3) <- (R0, R1)
+0063      4178                        	VAR_Y+(R4) <- (R0, R1)
+0063A     5178                        	VAR_Y+(R5) <- (R0, R1)
+0064      6178                        	(VAR_Y)	 <- (R0, R1)
+0064A     1490                        	copy sign and rh six digits of R0 into R9
+0065      1462                        	copy sign and rh six digits of R2 into R6
+0065A     1445                        	copy sign and rh six digits of R5 into R4
+0066      1427                        	copy sign and rh six digits of R7 into R2
+0066A     1409                        	copy sign and rh six digits of R9 into R0
+0067  70232425                                 23  <-  24  +  25
+0068  80232425                                 23+(R3)  <-  24+(R3)  + 25+(R3)
+0069  90232425                                (23) <- (24) + (25)
+0070  79777879                                display VAR_X, VAR_Y, VAR_Z
+0071  89777879                        	display VAR_X+(R3), VAR_Y+(R4), VAR_Z+(R5)
+0072  99777879                        	display (VAR_X), (VAR_Y), (VAR_Z)
+0073  71232425                                23  <-  24  -  25	
+0074  74507778                                branch to loop if VAR_X = VAR_Y
+0075  75507778                        	branch to loop if VAR_X > VAR_Y
+0076  76507778                        	branch to loop if |VAR_X| > |VAR_Y|
+0077  84507778                                branch to loop+(R3) if VAR_X+(R4) = VAR_Y+(R5)
+0078  85507778                        	branch to loop+(R3) if VAR_X+(R4) > VAR_Y+(R5)
+0079  86507778                        	branch to loop+(R3) if |VAR_X+(R4)| > |VAR_Y+(R5)|
 
 Equates
 -------
 
-                   X EQU 0002
+               VAR_X EQU 0077
                VAR_Y EQU 0078
+               VAR_Z EQU 0079
                  INC EQU 0001
 
 Labels
 ------
 
                start: 0045 
-                loop: 0046 
+                loop: 0050A
+
+0 errors

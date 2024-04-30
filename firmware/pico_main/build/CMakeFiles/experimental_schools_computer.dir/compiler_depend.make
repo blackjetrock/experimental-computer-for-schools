@@ -24,8 +24,8 @@ CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.obj
   /usr/include/newlib/sys/_types.h \
   /usr/include/newlib/machine/_types.h \
   /usr/include/newlib/sys/lock.h \
-  /usr/include/newlib/stdio.h \
   /usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h \
+  /usr/include/newlib/stdio.h \
   /usr/include/newlib/sys/types.h \
   /usr/include/newlib/sys/_stdint.h \
   /usr/include/newlib/machine/endian.h \
