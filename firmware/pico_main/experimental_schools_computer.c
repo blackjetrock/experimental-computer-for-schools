@@ -3858,6 +3858,10 @@ void state_esc_load_store(FSM_DATA *fs, TOKEN tok)
 
   write_sw_to_store(s, s->address_register, s->keyboard_register);
 
+  // Clear keyboard register
+  s->keyboard_register = 0;
+  
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
   display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
   
   s->update_display = 1;
