@@ -3840,8 +3840,7 @@ void state_esc_load_addr(FSM_DATA *fs, TOKEN tok)
 
   s->address_register = BOUND_ADDRESS(s->keyboard_register);
 
-  // Clear the keyboard register
-  s->keyboard_register = 0;
+  clear_keyboard_register(s);
   
   display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
   display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
@@ -3858,9 +3857,8 @@ void state_esc_load_store(FSM_DATA *fs, TOKEN tok)
 
   write_sw_to_store(s, s->address_register, s->keyboard_register);
 
-  // Clear keyboard register
-  s->keyboard_register = 0;
-  
+  clear_keyboard_register(s);
+    
   display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
   display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
   
@@ -3912,10 +3910,25 @@ void state_esc_load_iar(FSM_DATA *fs, TOKEN tok)
   s->iar.address = (ADDRESS)s->keyboard_register;
   s->iar.a_flag = 0;
 
+  clear_keyboard_register(s);
+  
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
   sprintf(line, "%02s           ", display_iar(s->iar), display_store_word(s->keyboard_register));
   display_on_line(s, 1, DISPLAY_UPDATE, line);
 
   s->update_display = 1;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Clear keyboard register and associated flags
+//
+////////////////////////////////////////////////////////////////////////////////
+
+void clear_keyboard_register(ESC_STATE *s)
+{
+  s->keyboard_register = 0;
+  s->dot_entered = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4031,39 +4044,38 @@ void state_esc_minus(FSM_DATA *fs, TOKEN tok)
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void state_esc_normal_reset(FSM_DATA *s, TOKEN tok)
+void state_esc_normal_reset(FSM_DATA *fs, TOKEN tok)
 {
-  ESC_STATE *es;
+  ESC_STATE *s;
   char line[20];
   
-  es = (ESC_STATE *)s;
+  s = (ESC_STATE *)fs;
 
   // Everything cleared except IAR
 
-  es->stage = ' ';
-  es->keyboard_register = 0x00;
-  es->dot_entered       = 0;
+  s->stage = ' ';
+  clear_keyboard_register(s);
   
-  es->ki_reset_flag     = 0;
-  es->error             = 0;
+  s->ki_reset_flag     = 0;
+  s->error             = 0;
 
-  es->address_register0 = EMPTY_ADDRESS;
-  es->address_register1 = EMPTY_ADDRESS;
-  es->address_register2 = EMPTY_ADDRESS;
+  s->address_register0 = EMPTY_ADDRESS;
+  s->address_register1 = EMPTY_ADDRESS;
+  s->address_register2 = EMPTY_ADDRESS;
 
-  display_on_line(es, DISPLAY_UPDATE, 1, "%02s             ", display_iar(es->iar));
-  display_on_line(es, DISPLAY_UPDATE, 2, "               ");
-  display_on_line(es, DISPLAY_UPDATE, 3, "               ");
-  display_on_line(es, DISPLAY_UPDATE, 4, "               ");
-  display_on_line(es, DISPLAY_UPDATE, 5, "               ");
-  display_on_line(es, DISPLAY_UPDATE, 6, "               ");
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s             ", display_iar(s->iar));
+  display_on_line(s, DISPLAY_UPDATE, 2, "               ");
+  display_on_line(s, DISPLAY_UPDATE, 3, "               ");
+  display_on_line(s, DISPLAY_UPDATE, 4, "               ");
+  display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+  display_on_line(s, DISPLAY_UPDATE, 6, "               ");
   
-  es->reginst_rc = NO_VALUE;
-  es->reginst_rd = NO_VALUE;
-  es->reginst_literal = NO_VALUE;
+  s->reginst_rc = NO_VALUE;
+  s->reginst_rd = NO_VALUE;
+  s->reginst_literal = NO_VALUE;
   
   // Re-display
-  es->update_display = 1;
+  s->update_display = 1;
 }
 
 void state_esc_ki_reset(FSM_DATA *fs, TOKEN tok)
