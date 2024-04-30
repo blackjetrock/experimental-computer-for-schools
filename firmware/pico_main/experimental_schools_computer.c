@@ -2697,7 +2697,7 @@ void display_line_2(ESC_STATE *s)
       break;
 
     default:
-      if( s->iar.a_flag )
+      if( s->iar.a_flag || (s->ki_reset_flag))
 	{
 	  inst_str[0] = ' ';
 	  inst_str[1] = ' ';
@@ -2721,8 +2721,15 @@ void display_line_2(ESC_STATE *s)
 	}
       break;
     }
-  
-  display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c", display_iar(s->iar), inst_str, s->stage);
+
+  if( s->ki_reset_flag )
+    {
+      display_on_line(s, DISPLAY_UPDATE, 2, "K  %s %c", inst_str, s->stage);
+    }
+  else
+    {
+      display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c", display_iar(s->iar), inst_str, s->stage);
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3658,7 +3665,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 void stage_a_decode(ESC_STATE *s, int display)
 {
-  if( s->iar.a_flag )
+  if( s->iar.a_flag || s->ki_reset_flag )
     {
       s->inst_digit_a = INST_E_FIELD(s->instruction_register);
       s->inst_digit_b = INST_F_FIELD(s->instruction_register);
@@ -3862,7 +3869,7 @@ void stage_a_decode(ESC_STATE *s, int display)
 // Three-address instructions are stored one to a word
 //
 // Instruction to be processed is in instruction register
-// If this is a KI reset then the IAr should not be updated
+// If this is a KI reset then the IAR should not be updated
 //
 // Display is updated on a per-instruction basis as the display format
 // is different for each instruction
@@ -4242,11 +4249,12 @@ void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
 
   s = (ESC_STATE *)es;
   //s->update_display = display_flag;
-  
+  prepare_instruction(s);
+      
   switch(s->stage)
     {
     case ' ':
-      prepare_instruction(s);
+
       
       run_stage_a(s, display_flag);
       break;
