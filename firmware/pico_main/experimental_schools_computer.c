@@ -3841,8 +3841,9 @@ void state_esc_load_addr(FSM_DATA *fs, TOKEN tok)
   s->address_register = BOUND_ADDRESS(s->keyboard_register);
 
   // Clear the keyboard register
-  //  s->keyboard_register = EMPTY_REGISTER;
-
+  s->keyboard_register = 0;
+  
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
   display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
 
   s->update_display = 1;
@@ -3857,6 +3858,8 @@ void state_esc_load_store(FSM_DATA *fs, TOKEN tok)
 
   write_sw_to_store(s, s->address_register, s->keyboard_register);
 
+  display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
+  
   s->update_display = 1;
 }
 
@@ -3930,7 +3933,6 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
   SINGLE_WORD digits, old_digits;
   int sign;
   int exp;
-  char line[20];
 
   digits = STORE_GET_DIGITS(kbr);
   exp    = STORE_GET_EXPONENT(kbr);
@@ -3971,15 +3973,7 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
       
   s->keyboard_register = kbr;
   
-  sprintf(line, "%02s   %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
-  display_on_line(s, 1, DISPLAY_UPDATE, line);
-#if 0
-  display_on_line(s, 2, DISPLAY_UPDATE, "               ");
-
-  display_on_line(s, 3, DISPLAY_UPDATE, "               ");
-  display_on_line(s, 4, DISPLAY_UPDATE, "               ");
-  display_on_line(s, 5, DISPLAY_UPDATE, "               ");
-#endif
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s   %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
   
   s->update_display = 1;
 }
