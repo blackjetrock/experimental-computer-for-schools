@@ -2665,6 +2665,68 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// Displays standard line 2 with IAR and instruction
+//
+// Instruction display matches Fig 10 in IEE document.
+//
+// Three address instructions displayed fully.
+// Instructions at XX displaye don left of field
+// Instructions at XXA displaye don right
+//
+////////////////////////////////////////////////////////////////////////////////
+
+void display_line_2(ESC_STATE *s)
+{
+  char inst_str[9] = "";
+  
+  // We display IAR and the decoded digits of the instruction from the stage A decode
+
+  switch(s->inst_digit_a)
+    {
+    case 7:
+    case 8:
+    case 9:
+      inst_str[0] = INST_A_FIELD(s->instruction_register)+'0';
+      inst_str[1] = INST_B_FIELD(s->instruction_register)+'0';
+      inst_str[2] = INST_C_FIELD(s->instruction_register)+'0';
+      inst_str[3] = INST_D_FIELD(s->instruction_register)+'0';
+      inst_str[4] = INST_E_FIELD(s->instruction_register)+'0';
+      inst_str[5] = INST_F_FIELD(s->instruction_register)+'0';
+      inst_str[6] = INST_G_FIELD(s->instruction_register)+'0';
+      inst_str[7] = INST_H_FIELD(s->instruction_register)+'0';
+      break;
+
+    default:
+      if( s->iar.a_flag )
+	{
+	  inst_str[0] = ' ';
+	  inst_str[1] = ' ';
+	  inst_str[2] = ' ';
+	  inst_str[3] = ' ';
+	  inst_str[4] = INST_A_FIELD(s->instruction_register)+'0';
+	  inst_str[5] = INST_B_FIELD(s->instruction_register)+'0';
+	  inst_str[6] = INST_C_FIELD(s->instruction_register)+'0';
+	  inst_str[7] = INST_D_FIELD(s->instruction_register)+'0';
+	}
+      else
+	{
+	  inst_str[0] = INST_A_FIELD(s->instruction_register)+'0';
+	  inst_str[1] = INST_B_FIELD(s->instruction_register)+'0';
+	  inst_str[2] = INST_C_FIELD(s->instruction_register)+'0';
+	  inst_str[3] = INST_D_FIELD(s->instruction_register)+'0';
+	  inst_str[4] = ' ';
+	  inst_str[5] = ' ';
+	  inst_str[6] = ' ';
+	  inst_str[7] = ' ';
+	}
+      break;
+    }
+  
+  display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c", display_iar(s->iar), inst_str, s->stage);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // Instruction decode
 //
 // Completes instructions that require a third stage
@@ -3020,37 +3082,12 @@ void stage_b_decode_core(ESC_STATE *s, int shift, int display)
       break;
       
     case 7:
-      // Absolute
-      
-      s->Aa1 = s->Ap1;
-      s->Aa2 = s->Ap2;
-      s->Aa3 = s->Ap3;
-
-      display_on_line(s, display, 3, "%3X %3X", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3X %3X", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3X %3X", s->Ap3, s->Aa3);
-      break;
-      
     case 8:
-      // Relative
-      s->Aa1 = s->Ap1 + s->R3; 
-      s->Aa2 = s->Ap2 + s->R4; 
-      s->Aa3 = s->Ap3 + s->R5; 
-
-      display_on_line(s, display, 3, "%3X %3X", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3X %3X", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3X %3X", s->Ap3, s->Aa3);
-      break;
-      
     case 9:
-      // Indirect
-      s->Aa1 = load_from_store(s, s->Ap1);
-      s->Aa2 = load_from_store(s, s->Ap2);
-      s->Aa3 = load_from_store(s, s->Ap3);
-
-      display_on_line(s, display, 3, "%3X %3X", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3X %3X", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3X %3X", s->Ap3, s->Aa3);
+      display_on_line(s, display, 3, "%3X %s",  s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+      display_on_line(s, display, 4, "%3X %s",  s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+      display_on_line(s, display, 5, "%3X %s",  s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+      display_on_line(s, display, 6, "               ");
       break;
     }
 }
@@ -3662,9 +3699,12 @@ void stage_a_decode(ESC_STATE *s, int display)
 	case 3:
 	  s->reginst_rc = s->inst_digit_c;
 	  s->reginst_literal = s->inst_digit_d;
+
+	  display_line_2(s);
 	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 	  
 	case 4:
@@ -3676,9 +3716,11 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  // Performed in stage B
 	  s->reginst_rc = s->inst_digit_c;
 
+	  display_line_2(s);
 	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 
 	case 6:
@@ -3687,9 +3729,11 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  s->reginst_rd = s->inst_digit_d;
 	  s->reginst_literal = s->inst_digit_d;	  
 
+	  display_line_2(s);
 	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
 	  display_on_line(s, display, 4, "R%d", s->reginst_rd);
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 	}
       break;
@@ -3699,39 +3743,53 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->reginst_rc = s->inst_digit_c;
       s->reginst_rd = s->inst_digit_d;
 
+      display_line_2(s);
       display_on_line(s, display, 3, "R%d", s->reginst_rc);
       display_on_line(s, display, 4, "R%d", s->reginst_rd);
       display_on_line(s, display, 5, "               ");
+      display_on_line(s, display, 6, "               ");
       break;
 
     case 2:
       // Absolute addressing
       s->inst_aa = s->inst_ap;
+      
+      display_line_2(s);
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
+      display_on_line(s, display, 6, "               ");
       break;
 
       // relative addressing
     case 3:
       s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
+
+      display_line_2(s);
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
+      display_on_line(s, display, 6, "               ");
       break;
 
     case 4:
       s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
+
+      display_line_2(s);
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
+      display_on_line(s, display, 6, "               ");
       break;
       
     case 5:
       s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
+
+      display_line_2(s);
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
+      display_on_line(s, display, 6, "               ");
       break;
       
     case 6:
@@ -3741,21 +3799,56 @@ void stage_a_decode(ESC_STATE *s, int display)
 #if DEBUG_ADDR_MODES
       printf("\naa:%08X", s->inst_aa);
 #endif
+      display_line_2(s);
       display_on_line(s, display, 3, "%02d", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
+      display_on_line(s, display, 6, "               ");
       break;
-      
-    case 7:
-    case 8:
-    case 9:
+
       // 3 address instructions
+
+    case 7:
+      // Absolute
       s->Ap1 = INST_3_ADDR_1(s->instruction_register);
       s->Ap2 = INST_3_ADDR_2(s->instruction_register);
       s->Ap3 = INST_3_ADDR_3(s->instruction_register);
-      display_on_line(s, display, 3, "%3X", s->Ap1);
-      display_on_line(s, display, 4, "%3X", s->Ap2);
-      display_on_line(s, display, 5, "%3X", s->Ap3);
+
+      s->Aa1 = s->Ap1;
+      s->Aa2 = s->Ap2;
+      s->Aa3 = s->Ap3;
+
+      display_line_2(s);
+      display_on_line(s, display, 3, "%2X           %2X", s->Ap1, s->Aa1);
+      display_on_line(s, display, 4, "%2X           %2X", s->Ap2, s->Aa2);
+      display_on_line(s, display, 5, "%2X           %2X", s->Ap3, s->Aa3);
+      display_on_line(s, display, 6, "               ");
+      break;
+      
+    case 8:
+      // Relative
+      s->Aa1 = s->Ap1 + s->R3; 
+      s->Aa2 = s->Ap2 + s->R4; 
+      s->Aa3 = s->Ap3 + s->R5; 
+
+      display_line_2(s);
+      display_on_line(s, display, 3, "%2X           %2X", s->Ap1, s->Aa1);
+      display_on_line(s, display, 4, "%2X           %2X", s->Ap2, s->Aa2);
+      display_on_line(s, display, 5, "%2X           %2X", s->Ap3, s->Aa3);
+      display_on_line(s, display, 6, "               ");
+
+    case 9:
+      // Indirect
+      s->Aa1 = load_from_store(s, s->Ap1);
+      s->Aa2 = load_from_store(s, s->Ap2);
+      s->Aa3 = load_from_store(s, s->Ap3);
+
+      display_line_2(s);
+      display_on_line(s, display, 3, "%2X           %2X", s->Ap1, s->Aa1);
+      display_on_line(s, display, 4, "%2X           %2X", s->Ap2, s->Aa2);
+      display_on_line(s, display, 5, "%2X           %2X", s->Ap3, s->Aa3);
+      display_on_line(s, display, 6, "               ");
+
       break;
     }
 }
@@ -3771,6 +3864,8 @@ void stage_a_decode(ESC_STATE *s, int display)
 // Instruction to be processed is in instruction register
 // If this is a KI reset then the IAr should not be updated
 //
+// Display is updated on a per-instruction basis as the display format
+// is different for each instruction
 
 void run_stage_a(ESC_STATE *s, int display)
 {
@@ -3903,7 +3998,6 @@ void state_esc_decr_addr(FSM_DATA *fs, TOKEN tok)
 void state_esc_load_iar(FSM_DATA *fs, TOKEN tok)
 {
   ESC_STATE *s;
-  char line[20];
 
   s = (ESC_STATE *)fs;
 
@@ -3913,8 +4007,6 @@ void state_esc_load_iar(FSM_DATA *fs, TOKEN tok)
   clear_keyboard_register(s);
   
   display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
-  sprintf(line, "%02s           ", display_iar(s->iar), display_store_word(s->keyboard_register));
-  display_on_line(s, 1, DISPLAY_UPDATE, line);
 
   s->update_display = 1;
 }
