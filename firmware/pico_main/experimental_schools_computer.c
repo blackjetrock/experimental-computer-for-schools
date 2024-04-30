@@ -3665,7 +3665,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 void stage_a_decode(ESC_STATE *s, int display)
 {
-  if( s->iar.a_flag || s->ki_reset_flag )
+  if( s->iar.a_flag )
     {
       s->inst_digit_a = INST_E_FIELD(s->instruction_register);
       s->inst_digit_b = INST_F_FIELD(s->instruction_register);
