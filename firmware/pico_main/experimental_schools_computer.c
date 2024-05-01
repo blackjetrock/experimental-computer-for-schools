@@ -3377,9 +3377,10 @@ void stage_b_decode(ESC_STATE *s, int display)
 	    }
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "CL            %d", s->control_latch);
 	  
 	  break;
 	  
@@ -3783,8 +3784,8 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  s->reginst_rc = s->inst_digit_c;
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
-	  display_on_line(s, display, 4, "               ");
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "R%d", s->reginst_rc);
 	  display_on_line(s, display, 5, "               ");
 	  display_on_line(s, display, 6, "               ");
 	  break;
@@ -7491,6 +7492,9 @@ TEST_LOAD_STORE test_24_store =
 
 INIT_INFO test_init_25[] =
   {
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+
    {IC_END,          0},
   };
 
@@ -7518,8 +7522,24 @@ TOKEN test_seq_25[] =
    TOK_KEY_7,
    TOK_KEY_LOAD_IAR,
 
+   TOK_KEY_A,
+   TOK_KEY_B,
    TOK_KEY_C,
 
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_1,
+   TOK_KEY_8,
+
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_A,
+   TOK_KEY_B,
+   TOK_KEY_C,
+
+   TOK_TEST_CHECK_RES,
+
+   
    TOK_NONE,
   };
 
@@ -7536,6 +7556,8 @@ TEST_INFO test_res_25[] =
    {TC_REG_N,   0x01},
    {TC_MUST_BE, 0xB0821346},
 
+   {TC_END_SECTION, 0},
+   
    {TC_END,     0},
   };
 
