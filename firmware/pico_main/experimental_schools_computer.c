@@ -2732,7 +2732,7 @@ void display_line_2(ESC_STATE *s)
       break;
 
     default:
-      if( s->iar.a_flag || (s->ki_reset_flag))
+      if( s->aux_iar.a_flag || (s->ki_reset_flag))
 	{
 	  inst_str[0] = ' ';
 	  inst_str[1] = ' ';
@@ -2799,14 +2799,39 @@ void stage_c_decode(ESC_STATE *s, int display)
       switch(s->inst_digit_b)
 	{
 	case 0:
+	  next_iar(s);
+	  
+	  display_line_2(s);
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
+	  break;
+	  
 	case 1:
+	  next_iar(s);
+	  display_line_2(s);
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
+	  break;
+	  
 	case 2:
 	  next_iar(s);
+	  display_line_2(s);
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
 	  break;
 	  
 	case 4:
 	  // Unconditional branch
 	  // IAR already set up.
+
+	  display_line_2(s);
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  break;
 	}
       
@@ -3504,6 +3529,11 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // R1. If Aa contains an instruction (recognisable by a decimal
 	  // digit in position 1), copy the left-hand four digits into Ro and
 	  // the right-hand four digits into Ri
+
+	  // Fixed registers
+	  s->reginst_rc = 0;
+	  s->reginst_rd = 1;
+	  
 	  store_value = load_from_store(s, s->inst_aa);
 	  
 	  if( (STORE_GET_SIGN(store_value)==WORD_SIGN_PLUS) || (STORE_GET_SIGN(store_value)==WORD_SIGN_MINUS) )
@@ -3524,9 +3554,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	    }
 	  
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rd));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
 	  break;
 	  
 	case 1:
@@ -3536,6 +3564,11 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // significant digit positions. If the number is outside the range
 	  // that can be held in a storage location, set the ERROR indicator
 	  // and stop
+
+	  // Fixed registers
+	  s->reginst_rc = 0;
+	  s->reginst_rd = 1;
+
 	  store_value = 0;
 	  store_value = STORE_SET_EXPONENT(store_value, s->R[0]);
 	  store_value = STORE_SET_SIGN(    store_value, SW_SIGN(s->R[1]));
@@ -3556,6 +3589,10 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Store (R0) and (R1) in location Aa in instruction format; i.e.
 	  // copy (R0) into the left-hand four digit positions and (R1) into
 	  // the right-hand four digit positions
+	  	  // Fixed registers
+	  s->reginst_rc = 0;
+	  s->reginst_rd = 1;
+
 	  store_value = 0;
 	  store_value = STORE_SET_LH4_DIGITS(store_value, s->R[0]);
 	  store_value = STORE_SET_RH4_DIGITS(store_value, s->R[1]);
@@ -3782,10 +3819,12 @@ void stage_a_decode(ESC_STATE *s, int display)
     case 2:
       // Absolute addressing
       s->inst_aa = s->inst_ap;
+      s->reginst_rc = s->inst_digit_c;
+      s->reginst_rd = s->inst_digit_d;
       
       display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
-      display_on_line(s, display, 4, "               ");
+      display_on_line(s, display, 3, "               ");
+      display_on_line(s, display, 4, "%02X", s->inst_aa);
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
       break;
@@ -3793,9 +3832,11 @@ void stage_a_decode(ESC_STATE *s, int display)
       // relative addressing
     case 3:
       s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
+      s->reginst_rc = s->inst_digit_c;
+      s->reginst_rd = s->inst_digit_d;
 
       display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
+      display_on_line(s, display, 3, "%02X", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
@@ -3805,8 +3846,8 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
 
       display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
-      display_on_line(s, display, 4, "               ");
+      display_on_line(s, display, 3, "               ");
+      display_on_line(s, display, 4, "%02X", s->inst_aa);
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
       break;
@@ -3815,7 +3856,7 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
 
       display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
+      display_on_line(s, display, 3, "%02X", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
@@ -3829,7 +3870,7 @@ void stage_a_decode(ESC_STATE *s, int display)
       printf("\naa:%08X", s->inst_aa);
 #endif
       display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
+      display_on_line(s, display, 3, "%02X", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
@@ -7441,6 +7482,102 @@ TEST_LOAD_STORE test_24_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 25
+//
+// Set up data for Fig 11 IEC document example
+// Run instruction
+// 
+
+INIT_INFO test_init_25[] =
+  {
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_25[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_6,
+   TOK_KEY_8,
+   TOK_KEY_LOAD_ADDR,
+
+   TOK_KEY_8,
+   TOK_KEY_2,
+   TOK_KEY_1,
+   TOK_KEY_DOT,
+   TOK_KEY_3,
+   TOK_KEY_4,
+   TOK_KEY_6,
+   TOK_KEY_MINUS,
+   
+   TOK_KEY_LOAD_STORE,
+   TOK_TEST_CHECK_RES,
+   
+   TOK_KEY_1,
+   TOK_KEY_7,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_C,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_25[] =
+  {
+   
+   {TC_STORE_N,   0x68},
+   {TC_MUST_BE, 0xB3821346},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0x00},
+   {TC_MUST_BE, 0xA0000003},
+
+   {TC_REG_N,   0x01},
+   {TC_MUST_BE, 0xB0821346},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_25_store =
+  {
+   {
+    0x00000000,    //00
+    0x00000000,    //01
+    0x00000000,
+    0x00000000,    //03
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,     //07
+    0x00000000,     //08
+    0x00000000,     //09
+    0x00000000,     //10
+    0x00000000,     //11
+    0x00000000,     //12
+    0x00000000,     //13
+    0x00000000,     //14
+    0x00000000,     //15
+    0x00000000,     //16
+    0x20680000,     //17
+    0x05321089,     //18
+    0x38640000,     //19
+    0x00000000,     //20
+    0x00000000,     //21
+    0x00000000,     //22
+    0x00000000,     //23
+    0x00000000,     //24
+    0x00000000,     //25
+    0x00000000,     //26
+    0x00000000,     //27
+    0x00000000,     //28
+    0x00000000,     //29
+    0x00000000,     //30
+    
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
@@ -7469,6 +7606,7 @@ ESC_TEST_INFO tests[] =
    {"sin(x)",                  test_init_22, test_seq_22, test_res_22, 0, &test_22_store, ""},
    {"FP tests",                test_init_23, test_seq_23, test_res_23, 0, &test_23_store, ""},
    {"Fig 10",                  test_init_24, test_seq_24, test_res_24, 0, &test_24_store, ""},
+   {"Fig 11",                  test_init_25, test_seq_25, test_res_25, 0, &test_25_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
@@ -8896,7 +9034,7 @@ int main(void)
     }
   unmount_sd();
   
-  sleep_ms(3000);
+  sleep_ms(1000);
 #endif
 
 #if OLED_ON
