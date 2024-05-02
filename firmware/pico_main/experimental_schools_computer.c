@@ -205,6 +205,15 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...);
 char *display_register_and_contents(ESC_STATE *s, int regno);
 char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address);
 char *display_store_word(SINGLE_WORD w);
+int display_two_any_size_register_on_line(ESC_STATE *s, int display, int lineno, int regno1, int regno2, int contents);
+
+#define NO_CONTENTS 0
+#define CONTENTS    1
+
+int display_any_size_register_on_line(ESC_STATE *s, int display, int line_no, int regno, int contents);
+
+void clear_lines_3_to_6(ESC_STATE *s, int display);
+
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
 void register_assign_register(ESC_STATE *s, int dest, int src);
 
@@ -2789,6 +2798,7 @@ void stage_c_decode(ESC_STATE *s, int display)
     case 1:
       // Instruction complete, move IAR on
       next_iar(s);
+      display_line_2(s);
       break;
 
     case 2:
@@ -2856,11 +2866,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  next_iar(s);
-	  
+
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%3X  %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X  %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X  %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+
 	  break;
 
 	  //(Aa1) <- (Aa2) - (Aa3)
@@ -2881,11 +2892,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  next_iar(s);
-	  
+
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+
 	  break;
 	  
 	  //(Aa1) <- (Aa2) * (Aa3)
@@ -2905,11 +2917,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  next_iar(s);
-		  
+
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+
 	  break;
 	  
 	  //(Aa1) <- (Aa2) / (Aa3)
@@ -2929,11 +2942,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  next_iar(s);
-		  
+
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+
 	  break;
 
 	  // Branch to Aa1 if (Aa2) = (Aa3)
@@ -3169,6 +3183,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 
 	case 1:
@@ -3179,6 +3194,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 
 	case 2:
@@ -3189,6 +3205,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 	  
 	case 3:
@@ -3199,6 +3216,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 
 	case 4:
@@ -3377,9 +3395,8 @@ void stage_b_decode(ESC_STATE *s, int display)
 	    }
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "               ");
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 5, "               ");
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc,  CONTENTS);
 	  display_on_line(s, display, 6, "CL            %d", s->control_latch);
 	  
 	  break;
@@ -3389,9 +3406,8 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  register_left_shift(s, s->reginst_rc, s->reginst_literal);
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  clear_lines_3_to_6(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	  // Shift (Rc) right d places
@@ -3399,9 +3415,8 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  register_right_shift(s, s->reginst_rc, s->reginst_literal);
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  clear_lines_3_to_6(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 8:
@@ -3421,36 +3436,28 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Add registers
 	  register_assign_sum_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 1:
 	  // Subtract registers (Rc)-(Rd)
 	  register_assign_sub_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	case 2:
 	  // Subtract registers (Rd)-(Rc)
 	  register_assign_sub_register_register(s, s->reginst_rc, s->reginst_rd, s->reginst_rc);
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	case 3:
 	  // Register assign (Rc) <-(Rd)
 	  register_assign_register(s, s->reginst_rc, s->reginst_rd);
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	  // Copy right hand 6 digits of Rd into Rc. Works with single and double length registers
@@ -3469,9 +3476,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  printf("\nR[]=%08X", s->R[s->reginst_rc]);
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 5:
@@ -3483,9 +3488,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  register_left_shift(s, s->reginst_rc, read_any_size_register_absolute(s, s->reginst_rd));
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	  // Shift (Rc) right (Rd) places
@@ -3493,9 +3496,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  register_right_shift(s, s->reginst_rc, read_any_size_register_absolute(s, s->reginst_rd));
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 8:
@@ -3507,9 +3508,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  s->stop = 1;
 	  s->inst_update_display = 1;
 	  display_line_2(s);
-	  display_on_line(s, DISPLAY_UPDATE, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, DISPLAY_UPDATE, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	}
 
@@ -3768,10 +3767,9 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  s->reginst_literal = s->inst_digit_d;
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc, NO_CONTENTS);
+	  
 	  break;
 	  
 	case 4:
@@ -3784,10 +3782,8 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  s->reginst_rc = s->inst_digit_c;
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "               ");
-	  display_on_line(s, display, 4, "R%d", s->reginst_rc);
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc, NO_CONTENTS);
 	  break;
 
 	case 6:
@@ -3797,10 +3793,8 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  s->reginst_literal = s->inst_digit_d;	  
 
 	  display_line_2(s);
-	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
-	  display_on_line(s, display, 4, "R%d", s->reginst_rd);
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc, NO_CONTENTS);
 	  break;
 	}
       break;
@@ -3811,10 +3805,9 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->reginst_rd = s->inst_digit_d;
 
       display_line_2(s);
-      display_on_line(s, display, 3, "R%d", s->reginst_rc);
-      display_on_line(s, display, 4, "R%d", s->reginst_rd);
-      display_on_line(s, display, 5, "               ");
-      display_on_line(s, display, 6, "               ");
+      clear_lines_3_to_6(s, display);
+      clear_lines_3_to_6(s, display);
+      display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, NO_CONTENTS);
       break;
 
     case 2:
@@ -3890,9 +3883,9 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->Aa3 = convert_store_to_address(s->Ap3);
 
       display_line_2(s);
-      display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Aa1));
-      display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Aa2));
-      display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
+      display_on_line(s, display, 3, "%2X", s->Ap1);
+      display_on_line(s, display, 4, "%2X", s->Ap2);
+      display_on_line(s, display, 5, "%2X", s->Ap3);
       display_on_line(s, display, 6, "               ");
       break;
       
@@ -5322,7 +5315,7 @@ TEST_LOAD_STORE test_1_store =
   {
    {
     0x13100011,      // Copy R0 to R1, Add 1 to R1
-    0x01120228,      // Subtract 1 from R1, subtract R2 from 8
+    0x01120228,      // Subtract 2 from R1, subtract R2 from 8
     0x03120119,      // Load R1 with 2, subtract 9 from R1
     0x13121012,      // Assign R1, R2,  Add R1 and R2
     0x03251112,      // load R1 with 5, subtract R2 from R1
@@ -8499,6 +8492,11 @@ char *display_register_double_word(REGISTER_DOUBLE_WORD x)
   return(result);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Display the register name and contents
+// There are two functions, as R8 and R9 have to be displayed
+// across two lines.
 
 char *display_register_and_contents(ESC_STATE *s, int regno)
 {
@@ -8742,6 +8740,8 @@ char *display_presumptive_address_2(ESC_STATE *s)
 // data is deleted, then the information is displayed and left until the next push of data.
 //
 
+
+
 //------------------------------------------------------------------------------
 //
 // Display information on one of the four lower lines
@@ -8792,6 +8792,61 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...)
 
   s->update_display = display;
 }
+
+
+int display_any_size_register_on_line(ESC_STATE *s, int display, int lineno, int regno, int contents)
+{
+  if( IS_SW_REGISTER(regno) )
+    {
+      if( contents )
+	{
+      	  display_on_line(s, display, lineno, "%s", display_register_and_contents(s, regno));
+	}
+      else
+	{
+	  display_on_line(s, display, lineno, "R%d", regno);
+	}
+
+      return(lineno+1);
+    }
+  
+  if( IS_DW_REGISTER(regno) )
+    {
+      if( contents )
+	{
+	  display_on_line(s, display, lineno,   "R%d", regno);
+	  display_on_line(s, display, lineno+1, "%s", display_register_double_word(regno));
+	}
+      else
+	{
+	  display_on_line(s, display, lineno,   "R%d", regno);
+	  display_on_line(s, display, lineno+1, "               ");
+	}
+      return(lineno+2);
+    }
+  
+  return(lineno);
+}
+
+int display_two_any_size_register_on_line(ESC_STATE *s, int display, int lineno, int regno1, int regno2, int contents)
+{
+  int lineno2 = display_any_size_register_on_line(s, display, lineno,  regno1, contents);
+      lineno2 = display_any_size_register_on_line(s, display, lineno2, regno2, contents);
+
+  return(lineno2);
+}
+
+void clear_lines_3_to_6(ESC_STATE *s, int display)
+{
+  display_on_line(s, display, 3, "               ");
+  display_on_line(s, display, 4, "               ");
+  display_on_line(s, display, 5, "               ");
+  display_on_line(s, display, 6, "               ");
+}
+
+
+					    
+////////////////////////////////////////////////////////////////////////////////
 
 void update_computer_display(ESC_STATE *es)
 {
