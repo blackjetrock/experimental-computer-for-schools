@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 9)
+    (drawings 7)
     (tracks 696)
     (zones 0)
     (modules 69)
@@ -548,7 +548,7 @@
     (tags "test point SMD pad")
     (path /664140D2)
     (attr virtual)
-    (fp_text reference TP14 (at 0 -2.898) (layer F.SilkS) hide
+    (fp_text reference TP14 (at 0 -2.898) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value TestPoint (at 0 3.1) (layer F.Fab)
@@ -590,7 +590,7 @@
     (tags "test point SMD pad")
     (path /6640CB1C)
     (attr virtual)
-    (fp_text reference TP12 (at 0 -2.898) (layer F.SilkS) hide
+    (fp_text reference TP12 (at 0 -2.898) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value TestPoint (at 0 3.1) (layer F.Fab)
@@ -2395,12 +2395,6 @@
     )
   )
 
-  (gr_text "INCR\nADDR" (at 58.8212 92.7744) (layer F.SilkS)
-    (effects (font (size 1.5 1.5) (thickness 0.2)))
-  )
-  (gr_text "LOAD\nSTORE" (at 66.3904 77.3312) (layer F.SilkS)
-    (effects (font (size 1.5 1.5) (thickness 0.2)))
-  )
   (gr_text "LOAD\nADDR" (at 73.9088 62.8024) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.2)))
   )
