@@ -3166,6 +3166,11 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // We have reached stage C so continue if running, if not running we will pause anyway
 	  // when A,B or C is reached.
 	  s->stop = 0;
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+
 	  break;
 	  
  	  // Stop and display (Aa1), (Aa2) and (Aa3).
