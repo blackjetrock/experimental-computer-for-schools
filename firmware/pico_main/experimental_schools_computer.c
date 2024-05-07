@@ -33,7 +33,7 @@
 #include "hardware/flash.h"
 #include "hardware/structs/bus_ctrl.h"
 
-#define DEBUG_STOP while(1) {}
+#define DEBUG_STOP_LOOP while(1) {}
 
 // Some logic to analyse:
 #include "hardware/structs/pwm.h"
@@ -2801,14 +2801,21 @@ void display_line_2(ESC_STATE *s, int display)
       break;
     }
 
+#if DEBUG_STOP
+  char stopch;
+  stopch = (s->stop)?'S':' ';
+#else
+  char stopch = ' ';
+#endif
+  
   if( s->ki_reset_flag )
     {
-      display_on_line(s, DISPLAY_UPDATE, 2, "K  %s %c", inst_str, s->stage);
+      display_on_line(s, DISPLAY_UPDATE, 2, "K  %s %c %c", inst_str, s->stage, stopch);
     }
   else
     {
       display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->iar));
-      display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c", display_iar(s->aux_iar), inst_str, s->stage);
+      display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s->aux_iar), inst_str, s->stage, stopch);
     }
 }
 
@@ -3151,20 +3158,14 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	  // Input and display. When restarted KB register is copied to Aa1
 	  // While stopped (Aa1), (Aa2) and (Aa3) are displayed.
-
 	case 8:
-	  // Stop and when restarted transfer keyboard register contents into Aa
-	  s->stop = 1;
-	  s->on_restart_load_aa1 = 1;
-	  s->inst_update_display = 1;
 
-	  next_iar(s);
-	  
-	  // Display
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 5, "               ");
+	  // Copy keyboard register to aa1
+	  write_sw_to_store(s, s->Aa1, s->keyboard_register);
+
+	  // We have reached stage C so continue if running, if not running we will pause anyway
+	  // when A,B or C is reached.
+	  s->stop = 0;
 	  break;
 	  
  	  // Stop and display (Aa1), (Aa2) and (Aa3).
@@ -3746,10 +3747,43 @@ void stage_b_decode(ESC_STATE *s, int display)
     case 7:
     case 8:
     case 9:
-      display_line_2(s, display);
-      display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-      display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-      display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+      switch(s->inst_digit_b)
+	{
+	case 8:
+	  // Stop and when restarted transfer (in stage C) keyboard register contents into Aa
+	  s->stop = 1;
+	  s->on_restart_load_aa1 = 0;
+	  s->inst_update_display = 1;
+	  
+	  next_iar(s);
+	  
+	  // Display
+	  // We have to force the display on here as we could be running and we want to see the prompt
+	  
+	  display_line_2(s, DISPLAY_UPDATE);
+	  display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+	  break;
+
+	  
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 9:
+
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+	  break;
+	}
+      
       break;
     }
 }
@@ -4464,6 +4498,41 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
     }
 }
 
+void state_esc_next_core(FSM_DATA *es, TOKEN tok, int display_flag)
+{
+  ESC_STATE *s;
+
+  s = (ESC_STATE *)es;
+
+  switch(s->stage)
+    {
+    case ' ':
+      prepare_instruction(s);
+      
+      run_stage_a(s, display_flag);
+      //      run_stage_b(s, display_flag);
+      //run_stage_c(s, display_flag);
+      break;
+
+    case 'A':
+      run_stage_b(s, display_flag);
+      //run_stage_c(s, display_flag);
+      break;
+
+    case 'B':
+      run_stage_c(s, display_flag);
+      break;
+
+    case 'C':
+      prepare_instruction(s);
+      run_stage_a(s, display_flag);
+
+      //run_stage_b(s, display_flag);
+      //run_stage_c(s, display_flag);
+      break;
+    }
+}
+
 void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
 {
   state_esc_c_core(es, tok, DISPLAY_UPDATE);
@@ -4472,6 +4541,16 @@ void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
 void state_esc_c_no_disp(FSM_DATA *es, TOKEN tok)
 {
   state_esc_c_core(es, tok, DISPLAY_NO_UPDATE);
+}
+
+void state_esc_next_disp(FSM_DATA *es, TOKEN tok)
+{
+  state_esc_next_core(es, tok, DISPLAY_UPDATE);
+}
+
+void state_esc_next_no_disp(FSM_DATA *es, TOKEN tok)
+{
+  state_esc_next_core(es, tok, DISPLAY_NO_UPDATE);
 }
 
 //------------------------------------------------------------------------------
@@ -4533,7 +4612,7 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
   if( s->run )
     {
 #if DEBUG_EXECUTE
-	  printf("\nEXEC:RUN");
+      printf("  EXEC:RUN(%s%c)", display_iar(s->iar), s->stage);
 #endif
 
       // Check for stop
@@ -4562,9 +4641,16 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 	  s->stop = 0;
 	  return;
 	}
-      
+
+#if 0
       // Run to end of stage C repeatedly
       state_esc_c_no_disp(s, tok);
+#endif
+
+      // Run next stage in sequence
+#if 1
+      state_esc_next_no_disp(s, tok);
+#endif
     }
 
 
@@ -4828,7 +4914,7 @@ void cli_dump(void)
   printf("\nInternal");
   printf("\n========");
 
-  printf("\nStage         : %c",                s->stage);
+  printf("\nStage         : '%c'",                s->stage);
   printf("\nReg Inst Rc   : %d",                s->reginst_rc);
   printf("\nReg Inst Rd   : %d",                s->reginst_rd);
   printf("\nReg Inst Lit  : %d",                s->reginst_literal);
@@ -6631,11 +6717,11 @@ TOKEN test_seq_15[] =
   {
    TOK_KEY_NORMAL_RESET,
    TOK_KEY_1,
-   TOK_KEY_0,
+   TOK_KEY_1,
    TOK_KEY_LOAD_IAR,
 
    // Skip the entry instruction, nothing changes
-   TOK_KEY_C,
+   //   TOK_KEY_C,
 
    // Calculate r * r
    TOK_KEY_C,
@@ -7632,6 +7718,89 @@ TEST_LOAD_STORE test_25_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 26
+//
+// Set up the store so this program can be run as a sequence.
+// Designed to test the input and display/stop instructions.
+// 
+
+INIT_INFO test_init_26[] =
+  {
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_26[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_1,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_26[] =
+  {
+   
+   {TC_STORE_N,   0x68},
+   {TC_MUST_BE, 0xB3821346},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0x00},
+   {TC_MUST_BE, 0xA0000003},
+
+   {TC_REG_N,   0x01},
+   {TC_MUST_BE, 0xB0821346},
+
+   {TC_END_SECTION, 0},
+   
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_26_store =
+  {
+   {
+    0x00000000,    //00
+    0x00000000,    //01
+    0x00000000,
+    0x00000000,    //03
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,     //07
+    0x00000000,     //08
+    0x00000000,     //09
+    0x78010203,     //10
+    0x70010101,     //11
+    0x79010910,     //12
+    0x00000000,     //13
+    0x00000000,     //14
+    0x00000000,     //15
+    0x00000000,     //16
+    0x00000000,     //17
+    0x00000000,     //18
+    0x00000000,     //19
+    0x00000000,     //20
+    0x00000000,     //21
+    0x00000000,     //22
+    0x00000000,     //23
+    0x00000000,     //24
+    0x00000000,     //25
+    0x00000000,     //26
+    0x00000000,     //27
+    0x00000000,     //28
+    0x00000000,     //29
+    0x00000000,     //30
+    
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
@@ -7661,6 +7830,7 @@ ESC_TEST_INFO tests[] =
    {"FP tests",                test_init_23, test_seq_23, test_res_23, 0, &test_23_store, ""},
    {"Fig 10",                  test_init_24, test_seq_24, test_res_24, 0, &test_24_store, ""},
    {"Fig 11",                  test_init_25, test_seq_25, test_res_25, 0, &test_25_store, ""},
+   {"Load Prog",               test_init_26, test_seq_26, test_res_26, 0, &test_26_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
