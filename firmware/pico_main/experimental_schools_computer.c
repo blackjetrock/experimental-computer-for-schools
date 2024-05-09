@@ -7806,6 +7806,91 @@ TEST_LOAD_STORE test_26_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 27
+//
+// Log N program from the flowchart document
+//
+// Set up the store so this program can be run as a sequence.
+//
+// 
+
+INIT_INFO test_init_27[] =
+  {
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_27[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_1,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_27[] =
+  {
+   
+   {TC_STORE_N,   0x68},
+   {TC_MUST_BE, 0xB3821346},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0x00},
+   {TC_MUST_BE, 0xA0000003},
+
+   {TC_REG_N,   0x01},
+   {TC_MUST_BE, 0xB0821346},
+
+   {TC_END_SECTION, 0},
+   
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_27_store =
+  {
+   {
+    0x00000000,    //00
+    0x00000000,    //01
+    0x00000000,
+    0x00000000,    //03
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,     //07
+    0x00000000,     //08
+    0x00000000,     //09
+    0x78010203,     //10
+    0x70010101,     //11
+    0x79010910,     //12
+    0x00000000,     //13
+    0x00000000,     //14
+    0x00000000,     //15
+    0x00000000,     //16
+    0x00000000,     //17
+    0x00000000,     //18
+    0x00000000,     //19
+    0x00000000,     //20
+    0x00000000,     //21
+    0x00000000,     //22
+    0x00000000,     //23
+    0x00000000,     //24
+    0x00000000,     //25
+    0x00000000,     //26
+    0x00000000,     //27
+    0x00000000,     //28
+    0x00000000,     //29
+    0x00000000,     //30
+    
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
@@ -7836,6 +7921,7 @@ ESC_TEST_INFO tests[] =
    {"Fig 10",                  test_init_24, test_seq_24, test_res_24, 0, &test_24_store, ""},
    {"Fig 11",                  test_init_25, test_seq_25, test_res_25, 0, &test_25_store, ""},
    {"Load Prog",               test_init_26, test_seq_26, test_res_26, 0, &test_26_store, ""},
+   {"Load Log N",              test_init_27, test_seq_27, test_res_27, 0, &test_27_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
