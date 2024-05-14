@@ -33,7 +33,7 @@
 #include "hardware/flash.h"
 #include "hardware/structs/bus_ctrl.h"
 
-#define DEBUG_STOP while(1) {}
+#define DEBUG_STOP_LOOP while(1) {}
 
 // Some logic to analyse:
 #include "hardware/structs/pwm.h"
@@ -205,6 +205,15 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...);
 char *display_register_and_contents(ESC_STATE *s, int regno);
 char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address);
 char *display_store_word(SINGLE_WORD w);
+int display_two_any_size_register_on_line(ESC_STATE *s, int display, int lineno, int regno1, int regno2, int contents);
+
+#define NO_CONTENTS 0
+#define CONTENTS    1
+
+int display_any_size_register_on_line(ESC_STATE *s, int display, int line_no, int regno, int contents);
+
+void clear_lines_3_to_6(ESC_STATE *s, int display);
+
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
 void register_assign_register(ESC_STATE *s, int dest, int src);
 
@@ -814,8 +823,10 @@ void kbd_read(ESC_STATE *s)
 		  int rn = 0;
 		  int done = 0;
 
+		  printf("\n================================================");
 		  printf("\nInitialising test: %s", tests[test_number].desc);
-
+		  printf("\n================================================");
+		  
 		  test_res_i = 0;
 		  
 		  load_store_from_test(s, test_number);
@@ -966,7 +977,7 @@ REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
 
   if( n == TC_REG_ADDR )
     {
-      return((REGISTER_DOUBLE_WORD)s->address_register2);
+      return((REGISTER_DOUBLE_WORD)s->address_register);
     }
 
   if( n == TC_CL )
@@ -1371,6 +1382,27 @@ REGISTER_SINGLE_WORD bcd_sw_addition(ESC_STATE *s, REGISTER_SINGLE_WORD a, REGIS
   a_sign = SW_SIGN(a);
   b_sign = SW_SIGN(b);
 
+  switch(a_sign)
+    {
+    case WORD_SIGN_MINUS:
+    case WORD_SIGN_PLUS:
+      break;
+      
+    default:
+      a_sign = WORD_SIGN_PLUS;
+      break;
+    }
+
+  switch(b_sign)
+    {
+    case WORD_SIGN_MINUS:
+    case WORD_SIGN_PLUS:
+      break;
+      
+    default:
+      b_sign = WORD_SIGN_PLUS;
+      break;
+    }
   
 #if DEBUG_SW_BCD_SUM
   printf("\nasgn=%d  bsgn=%d", a_sign, b_sign);
@@ -1652,6 +1684,18 @@ REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WOR
 #endif
   
   return(c);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Convert store value to an address.
+// Addresses have no sign or exponent
+//
+////////////////////////////////////////////////////////////////////////////////
+
+ADDRESS convert_store_to_address(SINGLE_WORD store_value)
+{
+  return(REMOVED_SW_SIGN(BOUND_ADDRESS(store_value)));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2101,14 +2145,32 @@ SINGLE_WORD fp_add(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b, int normalise)
   int digits_r;
   SINGLE_WORD result;
 
+#if DEBUG_FP
+  printf("\n%s: ", __FUNCTION__);
+  printf("\na:%016X  b:%016X", a, b); 
+#endif
+
   // trivial case
   if( STORE_GET_DIGITS(a) == 0 )
     {
+
+#if DEBUG_FP_SUMMARY
+  printf("\n%s: %s + ", __FUNCTION__, display_store_word(a));
+  printf("%s = ", display_store_word(b));
+  printf("%s", display_store_word(b));
+#endif
+
       return(b);
     }
 
   if( STORE_GET_DIGITS(b) == 0 )
     {
+#if DEBUG_FP_SUMMARY
+  printf("\n%s: %s + ", __FUNCTION__, display_store_word(a));
+  printf("%s = ", display_store_word(b));
+  printf("%s", display_store_word(a));
+#endif
+
       return(a);
     }
   
@@ -2134,10 +2196,6 @@ SINGLE_WORD fp_add(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b, int normalise)
   exp_a = STORE_GET_EXPONENT(a);
   exp_b = STORE_GET_EXPONENT(b);
 
-#if DEBUG_FP
-  printf("\n%s: ", __FUNCTION__);
-  printf("\na:%016X  b:%016X", a, b); 
-#endif
   
   if( exp_a > exp_b )
     {
@@ -2197,6 +2255,11 @@ SINGLE_WORD fp_add(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b, int normalise)
 
 SINGLE_WORD fp_subtract(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b, int normalise)
 {
+#if DEBUG_FP
+  printf("\n%s: ", __FUNCTION__);
+  printf("\na:%016X  b:%016X", a, b); 
+#endif
+
   b = invert_sw_sign(b);
 
   return(fp_add(s, a, b, normalise));
@@ -2476,7 +2539,9 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
   // Exponent then sorted out (added)
   // Sign then sorted out (xor'd)
   // Any overflow with addition => error
-  
+
+  shifted_digits = STORE_SET_SIGN(shifted_digits, WORD_SIGN_PLUS);
+	
 #if DEBUG_FP
   printf("\n**After initial shift left**");
   printf("\ndigits_r       = %016X", digits_r);
@@ -2601,6 +2666,8 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 // 4 digit instructions
 //
 // Logic:
+//   If in KI reset then IAR does not advance
+//
 //   Digit a determines type of instruction
 //    If a = 7,8, or 9 then IAR incremented and half flag cleared (it shouldn't be set)
 //    Otherwise
@@ -2615,6 +2682,11 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
   void next_iar(ESC_STATE *s)
 {
   int digit_a = INST_A_FIELD(s->instruction_register);
+
+  if( s->ki_reset_flag )
+    {
+      return;
+    }
   
   switch(digit_a)
     {
@@ -2675,9 +2747,16 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-void display_line_2(ESC_STATE *s)
+void display_line_2(ESC_STATE *s, int display)
 {
-  char inst_str[9] = "";
+  char inst_str[9];
+
+  inst_str[8] = '\0';
+  
+  if( !display )
+    {
+      return;
+    }
   
   // We display IAR and the decoded digits of the instruction from the stage A decode
 
@@ -2697,16 +2776,16 @@ void display_line_2(ESC_STATE *s)
       break;
 
     default:
-      if( s->iar.a_flag || (s->ki_reset_flag))
+      if( s->aux_iar.a_flag )
 	{
 	  inst_str[0] = ' ';
 	  inst_str[1] = ' ';
 	  inst_str[2] = ' ';
 	  inst_str[3] = ' ';
-	  inst_str[4] = INST_A_FIELD(s->instruction_register)+'0';
-	  inst_str[5] = INST_B_FIELD(s->instruction_register)+'0';
-	  inst_str[6] = INST_C_FIELD(s->instruction_register)+'0';
-	  inst_str[7] = INST_D_FIELD(s->instruction_register)+'0';
+	  inst_str[4] = INST_E_FIELD(s->instruction_register)+'0';
+	  inst_str[5] = INST_F_FIELD(s->instruction_register)+'0';
+	  inst_str[6] = INST_G_FIELD(s->instruction_register)+'0';
+	  inst_str[7] = INST_H_FIELD(s->instruction_register)+'0';
 	}
       else
 	{
@@ -2722,13 +2801,21 @@ void display_line_2(ESC_STATE *s)
       break;
     }
 
+#if DEBUG_STOP
+  char stopch;
+  stopch = (s->stop)?'S':' ';
+#else
+  char stopch = ' ';
+#endif
+  
   if( s->ki_reset_flag )
     {
-      display_on_line(s, DISPLAY_UPDATE, 2, "K  %s %c", inst_str, s->stage);
+      display_on_line(s, DISPLAY_UPDATE, 2, "K  %s %c %c", inst_str, s->stage, stopch);
     }
   else
     {
-      display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c", display_iar(s->iar), inst_str, s->stage);
+      display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->iar));
+      display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s->aux_iar), inst_str, s->stage, stopch);
     }
 }
 
@@ -2753,6 +2840,7 @@ void stage_c_decode(ESC_STATE *s, int display)
     case 1:
       // Instruction complete, move IAR on
       next_iar(s);
+      display_line_2(s, display);
       break;
 
     case 2:
@@ -2763,14 +2851,39 @@ void stage_c_decode(ESC_STATE *s, int display)
       switch(s->inst_digit_b)
 	{
 	case 0:
+	  next_iar(s);
+	  
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
+	  break;
+	  
 	case 1:
+	  next_iar(s);
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
+	  break;
+	  
 	case 2:
 	  next_iar(s);
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
 	  break;
 	  
 	case 4:
 	  // Unconditional branch
 	  // IAR already set up.
+
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  break;
 	}
       
@@ -2794,11 +2907,13 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a1v = fp_add(s, a2v, a3v, 1);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
-	  display_on_line(s, display, 3, "%3X  %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X  %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X  %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-
 	  next_iar(s);
+
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+
 	  break;
 
 	  //(Aa1) <- (Aa2) - (Aa3)
@@ -2818,11 +2933,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a1v = fp_subtract(s, a2v, a3v, 1);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-
 	  next_iar(s);
+
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
 
 	  break;
 	  
@@ -2842,11 +2958,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a1v = fp_multiply(s, a2v, a3v);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-
 	  next_iar(s);
+
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
 
 	  break;
 	  
@@ -2866,11 +2983,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a1v = fp_divide(s, a2v, a3v);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-
 	  next_iar(s);
+
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
 
 	  break;
 
@@ -2919,6 +3037,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 #endif
 	    }
 
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
@@ -2969,6 +3088,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 #endif
 	    }
 	  
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
@@ -3024,6 +3144,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      printf("\n**Branch NOT taken**");
 #endif
 	    }
+
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
@@ -3037,64 +3159,35 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Input and display. When restarted KB register is copied to Aa1
 	  // While stopped (Aa1), (Aa2) and (Aa3) are displayed.
 	case 8:
-	  // Stop and when restarted transfer keyboard register contents into Aa
-	  s->stop = 1;
-	  s->on_restart_load_aa1 = 1;
-	  s->inst_update_display = 1;
-	  
-	  // Display
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, display, 5, "               ");
 
-	  next_iar(s);
-	  
+	  // Copy keyboard register to aa1
+	  write_sw_to_store(s, s->Aa1, s->keyboard_register);
+
+	  // We have reached stage C so continue if running, if not running we will pause anyway
+	  // when A,B or C is reached.
+	  s->stop = 0;
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+
 	  break;
 	  
  	  // Stop and display (Aa1), (Aa2) and (Aa3).
 	case 9:
 	  s->stop = 1;
 	  s->inst_update_display = 1;
+
+	  next_iar(s);
 	  
 	  // Display
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
 	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
 	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-
-	  next_iar(s);
-		  
 	  break;
 
 	}
-      break;
-    }
-}
-
-void stage_b_decode_core(ESC_STATE *s, int shift, int display)
-{
-  // Decode the instruction
-  // First the digits 1-4
-
-  switch(s->inst_digit_a)
-    {
-    case 0:
-    case 1:
-      break;
-
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-      break;
-      
-    case 7:
-    case 8:
-    case 9:
-      display_on_line(s, display, 3, "%3X %s",  s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
-      display_on_line(s, display, 4, "%3X %s",  s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
-      display_on_line(s, display, 5, "%3X %s",  s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
-      display_on_line(s, display, 6, "               ");
       break;
     }
 }
@@ -3109,7 +3202,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 {
   // Decode the instruction
   // First the digits 1-4
-  //  stage_b_decode_core(s, 0, display);
 
   int extreme_left_digit = 0;
   int extreme_right_digit = 0;
@@ -3128,36 +3220,44 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // (Rc) <= (Rc) + d
 	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rc, s->reginst_literal);
 
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 
 	case 1:
 	  // (Rc) <= (Rc) - d
 	  register_assign_sub_register_literal(s, s->reginst_rc, s->reginst_rc, s->reginst_literal);
 
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 
 	case 2:
 	  // (Rc) <= d - (Rc)
 	  register_assign_sub_literal_register(s, s->reginst_rc, s->reginst_literal, s->reginst_rc);
 
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 	  
 	case 3:
 	  // (Rc) <= d
 	  register_assign_register_literal(s, s->reginst_rc, s->reginst_literal);
 
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 6, "               ");
 	  break;
 
 	case 4:
@@ -3335,9 +3435,10 @@ void stage_b_decode(ESC_STATE *s, int display)
 	      
 	    }
 
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
+	  display_line_2(s, display);
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc,  CONTENTS);
+	  display_on_line(s, display, 6, "CL            %d", s->control_latch);
 	  
 	  break;
 	  
@@ -3345,18 +3446,18 @@ void stage_b_decode(ESC_STATE *s, int display)
 	case 6:
 	  register_left_shift(s, s->reginst_rc, s->reginst_literal);
 
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_line_2(s, display);
+	  clear_lines_3_to_6(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	  // Shift (Rc) right d places
 	case 7:
 	  register_right_shift(s, s->reginst_rc, s->reginst_literal);
 
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_line_2(s, display);
+	  clear_lines_3_to_6(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 8:
@@ -3375,33 +3476,29 @@ void stage_b_decode(ESC_STATE *s, int display)
 	case 0:
 	  // Add registers
 	  register_assign_sum_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_line_2(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 1:
 	  // Subtract registers (Rc)-(Rd)
 	  register_assign_sub_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_line_2(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	case 2:
 	  // Subtract registers (Rd)-(Rc)
 	  register_assign_sub_register_register(s, s->reginst_rc, s->reginst_rd, s->reginst_rc);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_line_2(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	case 3:
 	  // Register assign (Rc) <-(Rd)
 	  register_assign_register(s, s->reginst_rc, s->reginst_rd);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_line_2(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	  // Copy right hand 6 digits of Rd into Rc. Works with single and double length registers
@@ -3419,9 +3516,8 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  set_any_size_rh6(s, s->reginst_rc, rh6);
 	  printf("\nR[]=%08X", s->R[s->reginst_rc]);
 
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_line_2(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 5:
@@ -3432,18 +3528,16 @@ void stage_b_decode(ESC_STATE *s, int display)
 	case 6:
 	  register_left_shift(s, s->reginst_rc, read_any_size_register_absolute(s, s->reginst_rd));
 
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_line_2(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	  // Shift (Rc) right (Rd) places
 	case 7:
 	  register_right_shift(s, s->reginst_rc, read_any_size_register_absolute(s, s->reginst_rd));
 
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, display, 5, "               ");
+	  display_line_2(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 8:
@@ -3454,9 +3548,8 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Stop and display (Rc) and (Rd)
 	  s->stop = 1;
 	  s->inst_update_display = 1;
-	  display_on_line(s, DISPLAY_UPDATE, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, DISPLAY_UPDATE, 4, "%s", display_register_and_contents(s, s->reginst_rd));
-	  display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+	  display_line_2(s, display);
+	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	}
 
@@ -3477,6 +3570,11 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // R1. If Aa contains an instruction (recognisable by a decimal
 	  // digit in position 1), copy the left-hand four digits into Ro and
 	  // the right-hand four digits into Ri
+
+	  // Fixed registers
+	  s->reginst_rc = 0;
+	  s->reginst_rd = 1;
+	  
 	  store_value = load_from_store(s, s->inst_aa);
 	  
 	  if( (STORE_GET_SIGN(store_value)==WORD_SIGN_PLUS) || (STORE_GET_SIGN(store_value)==WORD_SIGN_MINUS) )
@@ -3496,9 +3594,8 @@ void stage_b_decode(ESC_STATE *s, int display)
 	      s->R[1] = SET_SW_SIGN(s->R[1], WORD_SIGN_PLUS);
 	    }
 	  
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rd));
+	  display_line_2(s, display);
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
 	  break;
 	  
 	case 1:
@@ -3508,6 +3605,11 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // significant digit positions. If the number is outside the range
 	  // that can be held in a storage location, set the ERROR indicator
 	  // and stop
+
+	  // Fixed registers
+	  s->reginst_rc = 0;
+	  s->reginst_rd = 1;
+
 	  store_value = 0;
 	  store_value = STORE_SET_EXPONENT(store_value, s->R[0]);
 	  store_value = STORE_SET_SIGN(    store_value, SW_SIGN(s->R[1]));
@@ -3518,6 +3620,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  printf("\nINST 21");
 	  printf("\nWriting %08X to store location %02X", store_value, s->inst_aa);
 #endif
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rd));
@@ -3527,6 +3630,10 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Store (R0) and (R1) in location Aa in instruction format; i.e.
 	  // copy (R0) into the left-hand four digit positions and (R1) into
 	  // the right-hand four digit positions
+	  	  // Fixed registers
+	  s->reginst_rc = 0;
+	  s->reginst_rd = 1;
+
 	  store_value = 0;
 	  store_value = STORE_SET_LH4_DIGITS(store_value, s->R[0]);
 	  store_value = STORE_SET_RH4_DIGITS(store_value, s->R[1]);
@@ -3536,6 +3643,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  printf("\nINST 22");
 	  printf("\nWriting %08X to store location %02X", store_value, s->inst_aa);
 #endif
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
 	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rd));
@@ -3574,6 +3682,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	      next_iar(s);
 	    }
 
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%02d", s->inst_aa);
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
@@ -3597,6 +3706,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	      next_iar(s);
 	    }
 
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%02d", s->inst_aa);
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
@@ -3606,6 +3716,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Store contents of link address in Aa
 	  write_sw_to_store(s, s->inst_aa, s->link_register);
 
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
@@ -3617,6 +3728,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  s->on_restart_load_aa = 1;
 	  
 	  // Input
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%02d", s->inst_aa);
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
@@ -3624,6 +3736,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  
 	case 9:
 	  // Display
+	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
@@ -3637,25 +3750,45 @@ void stage_b_decode(ESC_STATE *s, int display)
 
       // Three address instructions
     case 7:
-      s->Aa1 = s->Ap1;
-      s->Aa2 = s->Ap2;
-      s->Aa3 = s->Ap3;
-      display_on_line(s, display, 3, "%3X", s->Aa1);
-      display_on_line(s, display, 4, "%3X", s->Aa2);
-      display_on_line(s, display, 5, "%3X", s->Aa3);
-      break;
-      
     case 8:
     case 9:
-      // Indirect
-      // Not indirect only, though
-      s->Aa1 = load_from_store(s, s->Ap1);
-      s->Aa2 = load_from_store(s, s->Ap2);
-      s->Aa3 = load_from_store(s, s->Ap3);
+      switch(s->inst_digit_b)
+	{
+	case 8:
+	  // Stop and when restarted transfer (in stage C) keyboard register contents into Aa
+	  s->stop = 1;
+	  s->on_restart_load_aa1 = 0;
+	  s->inst_update_display = 1;
+	  
+	  next_iar(s);
+	  
+	  // Display
+	  // We have to force the display on here as we could be running and we want to see the prompt
+	  
+	  display_line_2(s, DISPLAY_UPDATE);
+	  display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+	  display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+	  break;
 
-      display_on_line(s, display, 3, "%3X %3X", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%3X %3X", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%3X %3X", s->Ap3, s->Aa3);
+	  
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 9:
+
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+	  break;
+	}
+      
       break;
     }
 }
@@ -3707,11 +3840,10 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  s->reginst_rc = s->inst_digit_c;
 	  s->reginst_literal = s->inst_digit_d;
 
-	  display_line_2(s);
-	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
+	  display_line_2(s, display);
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc, NO_CONTENTS);
+	  
 	  break;
 	  
 	case 4:
@@ -3723,11 +3855,9 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  // Performed in stage B
 	  s->reginst_rc = s->inst_digit_c;
 
-	  display_line_2(s);
-	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
+	  display_line_2(s, display);
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc, NO_CONTENTS);
 	  break;
 
 	case 6:
@@ -3736,11 +3866,9 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  s->reginst_rd = s->inst_digit_d;
 	  s->reginst_literal = s->inst_digit_d;	  
 
-	  display_line_2(s);
-	  display_on_line(s, display, 3, "R%d", s->reginst_rc);
-	  display_on_line(s, display, 4, "R%d", s->reginst_rd);
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
+	  display_line_2(s, display);
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc, NO_CONTENTS);
 	  break;
 	}
       break;
@@ -3750,20 +3878,21 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->reginst_rc = s->inst_digit_c;
       s->reginst_rd = s->inst_digit_d;
 
-      display_line_2(s);
-      display_on_line(s, display, 3, "R%d", s->reginst_rc);
-      display_on_line(s, display, 4, "R%d", s->reginst_rd);
-      display_on_line(s, display, 5, "               ");
-      display_on_line(s, display, 6, "               ");
+      display_line_2(s, display);
+      clear_lines_3_to_6(s, display);
+      clear_lines_3_to_6(s, display);
+      display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, NO_CONTENTS);
       break;
 
     case 2:
       // Absolute addressing
       s->inst_aa = s->inst_ap;
+      s->reginst_rc = s->inst_digit_c;
+      s->reginst_rd = s->inst_digit_d;
       
-      display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
-      display_on_line(s, display, 4, "               ");
+      display_line_2(s, display);
+      display_on_line(s, display, 3, "               ");
+      display_on_line(s, display, 4, "%02X", s->inst_aa);
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
       break;
@@ -3771,9 +3900,11 @@ void stage_a_decode(ESC_STATE *s, int display)
       // relative addressing
     case 3:
       s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
+      s->reginst_rc = s->inst_digit_c;
+      s->reginst_rd = s->inst_digit_d;
 
-      display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
+      display_line_2(s, display);
+      display_on_line(s, display, 3, "%02X", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
@@ -3782,9 +3913,9 @@ void stage_a_decode(ESC_STATE *s, int display)
     case 4:
       s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
 
-      display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
-      display_on_line(s, display, 4, "               ");
+      display_line_2(s, display);
+      display_on_line(s, display, 3, "               ");
+      display_on_line(s, display, 4, "%02X", s->inst_aa);
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
       break;
@@ -3792,8 +3923,8 @@ void stage_a_decode(ESC_STATE *s, int display)
     case 5:
       s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
 
-      display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
+      display_line_2(s, display);
+      display_on_line(s, display, 3, "%02X", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
@@ -3806,8 +3937,8 @@ void stage_a_decode(ESC_STATE *s, int display)
 #if DEBUG_ADDR_MODES
       printf("\naa:%08X", s->inst_aa);
 #endif
-      display_line_2(s);
-      display_on_line(s, display, 3, "%02d", s->inst_aa);
+      display_line_2(s, display);
+      display_on_line(s, display, 3, "%02X", s->inst_aa);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
@@ -3821,39 +3952,47 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->Ap2 = INST_3_ADDR_2(s->instruction_register);
       s->Ap3 = INST_3_ADDR_3(s->instruction_register);
 
-      s->Aa1 = s->Ap1;
-      s->Aa2 = s->Ap2;
-      s->Aa3 = s->Ap3;
+      s->Aa1 = convert_store_to_address(s->Ap1);
+      s->Aa2 = convert_store_to_address(s->Ap2);
+      s->Aa3 = convert_store_to_address(s->Ap3);
 
-      display_line_2(s);
-      display_on_line(s, display, 3, "%2X           %2X", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%2X           %2X", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%2X           %2X", s->Ap3, s->Aa3);
+      display_line_2(s, display);
+      display_on_line(s, display, 3, "%2X", s->Ap1);
+      display_on_line(s, display, 4, "%2X", s->Ap2);
+      display_on_line(s, display, 5, "%2X", s->Ap3);
       display_on_line(s, display, 6, "               ");
       break;
       
     case 8:
       // Relative
-      s->Aa1 = s->Ap1 + s->R3; 
-      s->Aa2 = s->Ap2 + s->R4; 
-      s->Aa3 = s->Ap3 + s->R5; 
+      s->Ap1 = INST_3_ADDR_1(s->instruction_register);
+      s->Ap2 = INST_3_ADDR_2(s->instruction_register);
+      s->Ap3 = INST_3_ADDR_3(s->instruction_register);
 
-      display_line_2(s);
-      display_on_line(s, display, 3, "%2X           %2X", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%2X           %2X", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%2X           %2X", s->Ap3, s->Aa3);
+      s->Aa1 = convert_store_to_address(s->Ap1 + s->R3); 
+      s->Aa2 = convert_store_to_address(s->Ap2 + s->R4); 
+      s->Aa3 = convert_store_to_address(s->Ap3 + s->R5); 
+
+      display_line_2(s, display);
+      display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Aa1));
+      display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Aa2));
+      display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
       display_on_line(s, display, 6, "               ");
 
     case 9:
       // Indirect
-      s->Aa1 = load_from_store(s, s->Ap1);
-      s->Aa2 = load_from_store(s, s->Ap2);
-      s->Aa3 = load_from_store(s, s->Ap3);
+      s->Ap1 = INST_3_ADDR_1(s->instruction_register);
+      s->Ap2 = INST_3_ADDR_2(s->instruction_register);
+      s->Ap3 = INST_3_ADDR_3(s->instruction_register);
 
-      display_line_2(s);
-      display_on_line(s, display, 3, "%2X           %2X", s->Ap1, s->Aa1);
-      display_on_line(s, display, 4, "%2X           %2X", s->Ap2, s->Aa2);
-      display_on_line(s, display, 5, "%2X           %2X", s->Ap3, s->Aa3);
+      s->Aa1 = convert_store_to_address(load_from_store(s, s->Ap1));
+      s->Aa2 = convert_store_to_address(load_from_store(s, s->Ap2));
+      s->Aa3 = convert_store_to_address(load_from_store(s, s->Ap3));
+
+      display_line_2(s, display);
+      display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Aa1));
+      display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Aa2));
+      display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
       display_on_line(s, display, 6, "               ");
 
       break;
@@ -4198,6 +4337,10 @@ void state_esc_ki_reset(FSM_DATA *fs, TOKEN tok)
   s->reginst_rd = NO_VALUE;
   s->reginst_literal = NO_VALUE;
 
+  // Keyboard reset executes upper instruction first
+  s->aux_iar.a_flag = 0;
+  s->iar.a_flag = 0;
+  
   display_on_line(s, DISPLAY_UPDATE, 1, "%02s             ", display_iar(s->iar));
   display_on_line(s, DISPLAY_UPDATE, 2, "K              ");
   display_on_line(s, DISPLAY_UPDATE, 3, "               ");
@@ -4248,14 +4391,12 @@ void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
   ESC_STATE *s;
 
   s = (ESC_STATE *)es;
-  //s->update_display = display_flag;
+
   prepare_instruction(s);
       
   switch(s->stage)
     {
     case ' ':
-
-      
       run_stage_a(s, display_flag);
       break;
 
@@ -4362,6 +4503,41 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
     }
 }
 
+void state_esc_next_core(FSM_DATA *es, TOKEN tok, int display_flag)
+{
+  ESC_STATE *s;
+
+  s = (ESC_STATE *)es;
+
+  switch(s->stage)
+    {
+    case ' ':
+      prepare_instruction(s);
+      
+      run_stage_a(s, display_flag);
+      //      run_stage_b(s, display_flag);
+      //run_stage_c(s, display_flag);
+      break;
+
+    case 'A':
+      run_stage_b(s, display_flag);
+      //run_stage_c(s, display_flag);
+      break;
+
+    case 'B':
+      run_stage_c(s, display_flag);
+      break;
+
+    case 'C':
+      prepare_instruction(s);
+      run_stage_a(s, display_flag);
+
+      //run_stage_b(s, display_flag);
+      //run_stage_c(s, display_flag);
+      break;
+    }
+}
+
 void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
 {
   state_esc_c_core(es, tok, DISPLAY_UPDATE);
@@ -4370,6 +4546,16 @@ void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
 void state_esc_c_no_disp(FSM_DATA *es, TOKEN tok)
 {
   state_esc_c_core(es, tok, DISPLAY_NO_UPDATE);
+}
+
+void state_esc_next_disp(FSM_DATA *es, TOKEN tok)
+{
+  state_esc_next_core(es, tok, DISPLAY_UPDATE);
+}
+
+void state_esc_next_no_disp(FSM_DATA *es, TOKEN tok)
+{
+  state_esc_next_core(es, tok, DISPLAY_NO_UPDATE);
 }
 
 //------------------------------------------------------------------------------
@@ -4431,7 +4617,7 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
   if( s->run )
     {
 #if DEBUG_EXECUTE
-	  printf("\nEXEC:RUN");
+      printf("  EXEC:RUN(%s%c)", display_iar(s->iar), s->stage);
 #endif
 
       // Check for stop
@@ -4460,9 +4646,16 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 	  s->stop = 0;
 	  return;
 	}
-      
+
+#if 0
       // Run to end of stage C repeatedly
       state_esc_c_no_disp(s, tok);
+#endif
+
+      // Run next stage in sequence
+#if 1
+      state_esc_next_no_disp(s, tok);
+#endif
     }
 
 
@@ -4726,6 +4919,7 @@ void cli_dump(void)
   printf("\nInternal");
   printf("\n========");
 
+  printf("\nStage         : '%c'",                s->stage);
   printf("\nReg Inst Rc   : %d",                s->reginst_rc);
   printf("\nReg Inst Rd   : %d",                s->reginst_rd);
   printf("\nReg Inst Lit  : %d",                s->reginst_literal);
@@ -5251,7 +5445,7 @@ TEST_LOAD_STORE test_1_store =
   {
    {
     0x13100011,      // Copy R0 to R1, Add 1 to R1
-    0x01120228,      // Subtract 1 from R1, subtract R2 from 8
+    0x01120228,      // Subtract 2 from R1, subtract R2 from 8
     0x03120119,      // Load R1 with 2, subtract 9 from R1
     0x13121012,      // Assign R1, R2,  Add R1 and R2
     0x03251112,      // load R1 with 5, subtract R2 from R1
@@ -6519,20 +6713,20 @@ TEST_LOAD_STORE test_14_store =
 // 
 // 
 
-INIT_INFO test_init_sv[] =
+INIT_INFO test_init_15[] =
   {
    {IC_END,          0},
   };
 
-TOKEN test_seq_sv[] =
+TOKEN test_seq_15[] =
   {
    TOK_KEY_NORMAL_RESET,
    TOK_KEY_1,
-   TOK_KEY_0,
+   TOK_KEY_1,
    TOK_KEY_LOAD_IAR,
 
    // Skip the entry instruction, nothing changes
-   TOK_KEY_C,
+   //   TOK_KEY_C,
 
    // Calculate r * r
    TOK_KEY_C,
@@ -6560,7 +6754,7 @@ TOKEN test_seq_sv[] =
    TOK_NONE,
   };
 
-TEST_INFO test_res_sv[] =
+TEST_INFO test_res_15[] =
   {
    {TC_STORE_N,     0x03},
    {TC_MUST_BE,     0xA5625000},
@@ -6584,7 +6778,7 @@ TEST_INFO test_res_sv[] =
    {TC_END,     0},
   };
 
-TEST_LOAD_STORE test_sv_store =
+TEST_LOAD_STORE test_15_store =
   {
    {
     0x00000000,    // 00
@@ -7315,6 +7509,422 @@ TEST_LOAD_STORE test_23_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 24
+//
+// Set up data for Fig 10 IEC document example
+// Run instruction
+// 
+
+INIT_INFO test_init_24[] =
+  {
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_24[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_9,
+   TOK_KEY_5,
+   TOK_KEY_LOAD_ADDR,
+
+   TOK_KEY_DOT,
+   TOK_KEY_0,
+   TOK_KEY_2,
+   TOK_KEY_6,
+   TOK_KEY_4,
+   TOK_KEY_1,
+   TOK_KEY_5,
+   TOK_KEY_MINUS,
+   
+   TOK_KEY_LOAD_STORE,
+   TOK_TEST_CHECK_RES,
+   
+   TOK_KEY_2,
+   TOK_KEY_5,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_A,
+
+   TOK_KEY_B,
+
+   TOK_KEY_C,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_24[] =
+  {
+   
+   {TC_STORE_N,   0x95},
+   {TC_MUST_BE, 0xB6026415},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,   0x03},
+   {TC_MUST_BE, 0xB3355201},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_24_store =
+  {
+   {
+    0x00000000,    //00
+    0x00000000,    //01
+    0x00000000,
+    0x00000000,    //03
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,     //07
+    0x00000000,     //08
+    0x00000000,     //09
+    0x00000000,     //10
+    0xA5938261,     //11
+    0x00000000,     //12
+    0x00000000,     //13
+    0x00000000,     //14
+    0x00000000,     //15
+    0x00000000,     //16
+    0x00000000,     //17
+    0x00000000,     //18
+    0x00000000,     //19
+    0xA0000003,     //20
+    0x00000000,     //21
+    0xA0000095,     //22
+    0x00000000,     //23
+    0xA0000011,     //24
+    0x93202422,     //25
+    0x00000000,     //26
+    0x00000000,     //27
+    0x00000000,     //28
+    0x00000000,     //29
+    0x00000000,     //30
+    
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 25
+//
+// Set up data for Fig 11 IEC document example
+// Run instruction
+// 
+
+INIT_INFO test_init_25[] =
+  {
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_25[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_6,
+   TOK_KEY_8,
+   TOK_KEY_LOAD_ADDR,
+
+   TOK_KEY_8,
+   TOK_KEY_2,
+   TOK_KEY_1,
+   TOK_KEY_DOT,
+   TOK_KEY_3,
+   TOK_KEY_4,
+   TOK_KEY_6,
+   TOK_KEY_MINUS,
+   
+   TOK_KEY_LOAD_STORE,
+   TOK_TEST_CHECK_RES,
+   
+   TOK_KEY_1,
+   TOK_KEY_7,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_A,
+   TOK_KEY_B,
+   TOK_KEY_C,
+
+   TOK_TEST_CHECK_RES,
+
+   TOK_KEY_1,
+   TOK_KEY_8,
+
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_A,
+   TOK_KEY_B,
+   TOK_KEY_C,
+
+   TOK_TEST_CHECK_RES,
+
+   
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_25[] =
+  {
+   
+   {TC_STORE_N,   0x68},
+   {TC_MUST_BE, 0xB3821346},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0x00},
+   {TC_MUST_BE, 0xA0000003},
+
+   {TC_REG_N,   0x01},
+   {TC_MUST_BE, 0xB0821346},
+
+   {TC_END_SECTION, 0},
+   
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_25_store =
+  {
+   {
+    0x00000000,    //00
+    0x00000000,    //01
+    0x00000000,
+    0x00000000,    //03
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,     //07
+    0x00000000,     //08
+    0x00000000,     //09
+    0x00000000,     //10
+    0x00000000,     //11
+    0x00000000,     //12
+    0x00000000,     //13
+    0x00000000,     //14
+    0x00000000,     //15
+    0x00000000,     //16
+    0x20680000,     //17
+    0x05321089,     //18
+    0x38640000,     //19
+    0x00000000,     //20
+    0x00000000,     //21
+    0x00000000,     //22
+    0x00000000,     //23
+    0x00000000,     //24
+    0x00000000,     //25
+    0x00000000,     //26
+    0x00000000,     //27
+    0x00000000,     //28
+    0x00000000,     //29
+    0x00000000,     //30
+    
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 26
+//
+// Set up the store so this program can be run as a sequence.
+// Designed to test the input and display/stop instructions.
+// 
+
+INIT_INFO test_init_26[] =
+  {
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_26[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_1,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_26[] =
+  {
+   
+   {TC_STORE_N,   0x68},
+   {TC_MUST_BE, 0xB3821346},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0x00},
+   {TC_MUST_BE, 0xA0000003},
+
+   {TC_REG_N,   0x01},
+   {TC_MUST_BE, 0xB0821346},
+
+   {TC_END_SECTION, 0},
+   
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_26_store =
+  {
+   {
+    0x00000000,    //00
+    0x00000000,    //01
+    0x00000000,
+    0x00000000,    //03
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,     //07
+    0x00000000,     //08
+    0x00000000,     //09
+    0x78010203,     //10
+    0x70010101,     //11
+    0x79010910,     //12
+    0x00000000,     //13
+    0x00000000,     //14
+    0x00000000,     //15
+    0x00000000,     //16
+    0x00000000,     //17
+    0x00000000,     //18
+    0x00000000,     //19
+    0x00000000,     //20
+    0x00000000,     //21
+    0x00000000,     //22
+    0x00000000,     //23
+    0x00000000,     //24
+    0x00000000,     //25
+    0x00000000,     //26
+    0x00000000,     //27
+    0x00000000,     //28
+    0x00000000,     //29
+    0x00000000,     //30
+    
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Test 27
+//
+// Log N program from the flowchart document
+// This can't be run as it uses the 74xxxxxx square root jump instruction
+//
+// Set up the store so this program can be run as a sequence.
+//
+// 
+
+INIT_INFO test_init_27[] =
+  {
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_27[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_1,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_27[] =
+  {
+   
+   {TC_STORE_N,   0x68},
+   {TC_MUST_BE, 0xB3821346},
+   {TC_END_SECTION, 0},
+
+   {TC_REG_N,   0x00},
+   {TC_MUST_BE, 0xA0000003},
+
+   {TC_REG_N,   0x01},
+   {TC_MUST_BE, 0xB0821346},
+
+   {TC_END_SECTION, 0},
+   
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_27_store =
+  {
+   {
+    //----------------------------------------
+    // Program for L <- Logb N
+    //
+    0x00000000,     //00          L
+    0x00000000,     //01          J
+    0x00000000,     //02          N
+    0x00000000,     //03          b
+    0x00000000,     //04          x, P
+    0x00000000,     //05          2 E6  |
+    0x00000000,     //06          2     | Constants (load with program)
+    0x00000000,     //07          Q     |
+    0x03000310,     //08  START   R0 <- 0    R1<-0
+    0x21000311,     //09          L <- 0     E1<-1
+    0x21010000,     //10          J <- 1
+    0x28022803,     //11          Input N     Input b
+    0x20022104,     //12          x <- N
+    0x71290403,     //13  A       \ * Branch to B if b>x
+    0x74292918,     //14          /   (i.e. if x-b<0)
+    0x73040403,     //15          x <- x / b
+    0x20000011,     //16          L <- L + 1
+    0x21002413,     //17                      Branh to A
+    0x73010106,     //18  B       J <- J / 2
+    0x71290105,     //19          \  * Branch to C if
+    0x74292927,     //20          /  J - (2 E -6) < 0
+    0x72040404,     //21          x <- x * x
+    0x71290403,     //22          \  * Branch to B if
+    0x74292918,     //23          /    x - b < 0
+    0x73040403,     //24          x <- x / b
+    0x70000001,     //25          L <- L + J
+    0x24180000,     //26          Branch to B
+    0x79020300,     //27  C       Display N, b, L
+    0x28080000,     //28          Branch to start
+    0x00000000,     //29           Working
+
+    // * Branches employ the square root subroutine
+    //
+    //----------------------------------------
+    //
+    // Program for N <- b ^ L
+    //
+    0xA0000001,     //30          1    Constant (load with program)
+    0x73023030,     //31  START   N <- 1
+    0x28032800,     //32          Input b    Input L
+    0x20032101,     //33          J <- b
+    0x20001710,     //34          (R0R1) <- L
+    0x03002104,     //35          R0<-0   P<-[L]
+    0x71070004,     //36          Q <- L-P
+    0x20040510,     //37  A       | * Branch to B if P = 0
+    0x25420000,     //38          |
+    0x01112104,     //39          P <- P - 1
+    
+    0x72020203,     //40          N <- N * b
+    0x24370000,     //41          Branch to A
+    0x74010130,     //42  B       J <- sqrt(J)
+    0x20010111,     //43          |  * Branch to C if J = 1
+    0x05102551,     //44          | 
+    0x70070707,     //45          Q <- Q + Q
+    0x71290730,     //46          | Branch to B if Q - 1 < 0
+    0x74292942,     //47          |
+    0x71070730,     //48          Q <- Q - 1
+    0x72020201,     //49          N <- N * J
+    0x24420000,     //50          Branch to B
+    0x79030002,     //51  C       Display b, L, N
+    0x24310000,     //52          Branch to start
+
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
@@ -7333,7 +7943,7 @@ ESC_TEST_INFO tests[] =
    {"Fp Subtraction",          test_init_12, test_seq_12, test_res_12, 0, &test_12_store, ""},
    {"Fp Multiply",             test_init_13, test_seq_13, test_res_13, 0, &test_13_store, ""},
    {"Fp Divide",               test_init_14, test_seq_14, test_res_14, 0, &test_14_store, ""},
-   {"Surface & volume",        test_init_sv, test_seq_sv, test_res_sv, 0, &test_sv_store, ""},
+   {"Surface & volume",        test_init_15, test_seq_15, test_res_15, 0, &test_15_store, ""},
    {"Fp Branches",             test_init_16, test_seq_16, test_res_16, 0, &test_16_store, ""},
    {"Inst [0-1][0-3] DW",      test_init_17, test_seq_17, test_res_17, 0, &test_17_store, ""},
    {"FP test",                 test_init_18, test_seq_18, test_res_18, 0, &test_18_store, ""},
@@ -7342,6 +7952,10 @@ ESC_TEST_INFO tests[] =
    {"Square root",             test_init_21, test_seq_21, test_res_21, 0, &test_21_store, ""},
    {"sin(x)",                  test_init_22, test_seq_22, test_res_22, 0, &test_22_store, ""},
    {"FP tests",                test_init_23, test_seq_23, test_res_23, 0, &test_23_store, ""},
+   {"Fig 10",                  test_init_24, test_seq_24, test_res_24, 0, &test_24_store, ""},
+   {"Fig 11",                  test_init_25, test_seq_25, test_res_25, 0, &test_25_store, ""},
+   {"Load Prog",               test_init_26, test_seq_26, test_res_26, 0, &test_26_store, ""},
+   {"Load Log N",              test_init_27, test_seq_27, test_res_27, 0, &test_27_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
@@ -8212,6 +8826,11 @@ char *display_register_double_word(REGISTER_DOUBLE_WORD x)
   return(result);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Display the register name and contents
+// There are two functions, as R8 and R9 have to be displayed
+// across two lines.
 
 char *display_register_and_contents(ESC_STATE *s, int regno)
 {
@@ -8239,7 +8858,7 @@ char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address)
 
   result[0] = '\0';
   
-  sprintf(result, "%3d %08X", address, s->store[address]);
+  sprintf(result, "%2X %s", address, display_store_word(load_from_store(s, address)));
 
   return(result);
 }
@@ -8455,14 +9074,16 @@ char *display_presumptive_address_2(ESC_STATE *s)
 // data is deleted, then the information is displayed and left until the next push of data.
 //
 
+
+
 //------------------------------------------------------------------------------
 //
 // Display information on one of the four lower lines
 //
 // Lines are numbered starting at 1.
 //
-// The text for the lower four lines ( and the upper but they aren't used)
-// A flag is proivided to indicate whether the display should be updated (on OLED etc)
+// The text for the lower four lines (and the upper but they aren't used)
+// A flag is provided to indicate whether the display should be updated (on OLED etc)
 //
 
 char display_line[NUM_LINES][MAX_LINE+3];
@@ -8501,10 +9122,74 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...)
 #endif
 
   vsnprintf(&(display_line[line_no-1][0]), MAX_LINE, fmt, args);
+
+  // Pad the line with spaces to delete any previous contents
+  int padlen = 15-strlen(&(display_line[line_no-1][0]));
+  
+  for(int p=0; p<padlen ; p++)
+    {
+      strcat(&(display_line[line_no-1][0]), " ");
+    }
+  
   va_end(args);
 
   s->update_display = display;
 }
+
+
+int display_any_size_register_on_line(ESC_STATE *s, int display, int lineno, int regno, int contents)
+{
+  if( IS_SW_REGISTER(regno) )
+    {
+      if( contents )
+	{
+      	  display_on_line(s, display, lineno, "%s", display_register_and_contents(s, regno));
+	}
+      else
+	{
+	  display_on_line(s, display, lineno, "R%d", regno);
+	}
+
+      return(lineno+1);
+    }
+  
+  if( IS_DW_REGISTER(regno) )
+    {
+      if( contents )
+	{
+	  display_on_line(s, display, lineno,   "R%d", regno);
+	  display_on_line(s, display, lineno+1, "%s", display_register_double_word(regno));
+	}
+      else
+	{
+	  display_on_line(s, display, lineno,   "R%d", regno);
+	  display_on_line(s, display, lineno+1, "               ");
+	}
+      return(lineno+2);
+    }
+  
+  return(lineno);
+}
+
+int display_two_any_size_register_on_line(ESC_STATE *s, int display, int lineno, int regno1, int regno2, int contents)
+{
+  int lineno2 = display_any_size_register_on_line(s, display, lineno,  regno1, contents);
+      lineno2 = display_any_size_register_on_line(s, display, lineno2, regno2, contents);
+
+  return(lineno2);
+}
+
+void clear_lines_3_to_6(ESC_STATE *s, int display)
+{
+  display_on_line(s, display, 3, "               ");
+  display_on_line(s, display, 4, "               ");
+  display_on_line(s, display, 5, "               ");
+  display_on_line(s, display, 6, "               ");
+}
+
+
+					    
+////////////////////////////////////////////////////////////////////////////////
 
 void update_computer_display(ESC_STATE *es)
 {
@@ -8769,7 +9454,7 @@ int main(void)
     }
   unmount_sd();
   
-  sleep_ms(3000);
+  sleep_ms(1000);
 #endif
 
 #if OLED_ON

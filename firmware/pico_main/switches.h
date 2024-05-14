@@ -11,7 +11,7 @@
 #define DEBUG_A_DECODE         0
 #define DEBUG_LOOP             0
 #define DEBUG_BCD_CORRECTION   0
-#define DEBUG_SW_BCD_SUM       0
+#define DEBUG_SW_BCD_SUM       1
 #define DEBUG_DW_BCD_SUM       0
 #define DEBUG_REG_ASSIGN       0
 #define DEBUG_FP               0
@@ -29,7 +29,8 @@
 #define DEBUG_INST_21          0
 #define DEBUG_INST_22          0
 
-#define DEBUG_RESTART          0
+#define DEBUG_STOP             1
+#define DEBUG_RESTART          1
 #define DEBUG_EXECUTE          1
 #define DEBUG_PREPARE          1
 #define DEBUG_DISPLAY          0
