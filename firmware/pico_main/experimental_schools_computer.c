@@ -217,6 +217,8 @@ void clear_lines_3_to_6(ESC_STATE *s, int display);
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
 void register_assign_register(ESC_STATE *s, int dest, int src);
 
+volatile uint32_t touch_key_raw = 0;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 char *tc_reg_name(TEST_CODE tc)
@@ -8468,6 +8470,16 @@ int write_state_to_file(ESC_STATE *es, char *fn)
 
 
 ////////////////////////////////////////////////////////////////////////////////
+
+void cli_dump_touch_key_data(void)
+{
+
+  printf("\nTouch Keyboard\n");
+  printf("\nRaw:%08X", touch_key_raw);
+  
+}
+
+////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 // Serial loop command structure
@@ -8687,6 +8699,11 @@ SERIAL_COMMAND serial_cmds[] =
     '@',
     "Test results",
     cli_test_results,
+   },
+   {
+    '<',
+    "Dump touch key ata",
+    cli_dump_touch_key_data,
    },
    
   };
@@ -9374,6 +9391,99 @@ I2C_SLAVE_DESC oled0 =
 
 #endif
 
+////////////////////////////////////////////////////////////////////////////////
+//
+//    Core 1 
+//
+//
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//
+// Read a 32 bit value from four 165 latches
+//
+////////////////////////////////////////////////////////////////////////////////
+
+const int PIN_TOUCH_LOAD   = 27;
+const int PIN_TOUCH_CLK    = 26;
+const int PIN_TOUCH_SERDAT = 28;
+
+
+uint32_t read_165(void)
+{
+  uint32_t value = 0;
+  
+  // Latch the data
+  gpio_put(PIN_TOUCH_LOAD, 0);
+  gpio_put(PIN_TOUCH_LOAD, 0);
+  sleep_us(100);
+  
+  gpio_put(PIN_TOUCH_LOAD, 1);
+
+  // Clock the data out of the latch
+  for(int i=0; i<32; i++)
+    {
+      sleep_us(1);
+      
+      // Read data
+      value <<= 1;
+      if( gpio_get(PIN_TOUCH_SERDAT) )
+	{
+	  value |= 1;
+	}
+
+      sleep_us(1);
+      gpio_put(PIN_TOUCH_CLK, 0);
+      sleep_us(1);
+      gpio_put(PIN_TOUCH_CLK, 1);
+    }
+
+#if XP_DEBUG  
+  printxy_hex(0,3, value);
+#endif
+  return(value);
+}
+
+void sense_gpio_out(const int gpio)
+{
+  gpio_init(gpio);
+  gpio_set_dir(gpio, GPIO_OUT);
+}
+
+void sense_gpio_in(const int gpio)
+{
+  gpio_init(gpio);
+  gpio_set_dir(gpio, GPIO_IN);
+  gpio_set_pulls (gpio, 0, 0);
+}
+
+void touch_key_setup(void)
+{
+  sense_gpio_out(PIN_TOUCH_LOAD);
+  sense_gpio_out(PIN_TOUCH_CLK);
+  sense_gpio_in(PIN_TOUCH_SERDAT);
+}
+
+
+
+void touch_key_scan(void)
+{
+  uint32_t data;
+  
+  // Read the four 165s and get the current levels on all the pins.
+  touch_key_raw = read_165();
+}
+
+void core1_main(void)
+{
+  touch_key_setup();
+  
+  while(1)
+    {
+      touch_key_scan();
+    }
+}
+
+
 int main(void)
 {
   ////////////////////////////////////////////////////////////////////////////////
@@ -9470,14 +9580,18 @@ int main(void)
   oled_set_xy(&oled0, 30, 16);
   oled_display_string(&oled0, "Computer");
 #endif
-      
+
+  // Run the shift register touch key scanning on the second core
+  multicore_launch_core1(core1_main);
+
 #ifdef ESC_USE_WIFI
   printf("\n** Wifi Enabled **");
 	 
   wifi_main();
 #else
   printf("\n** Wifi NOT Enabled **");
-  
+
+
   // Main loop
   while(1)
     {
