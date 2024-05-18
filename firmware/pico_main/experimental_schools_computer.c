@@ -8471,11 +8471,95 @@ int write_state_to_file(ESC_STATE *es, char *fn)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+char *paddesc[100] = {
+		      "00",
+		      "01",
+		      "02",
+		      "03",
+		      "04",
+		      "05",
+		      "06",
+		      "07",
+		      "08",
+		      "09",
+		      "10",
+		      "11",
+		      "12",
+		      "13",
+		      "14",
+		      "15",
+		      "16",
+		      "17",
+		      "18",
+		      "19",
+		      "20",
+		      "21",
+		      "22",
+		      "23",
+		      "24",
+		      "25",
+		      "26",
+		      "27",
+		      "28",
+		      "29",
+		      "30",
+		      "31",
+		      
+};
+
 void cli_dump_touch_key_data(void)
 {
+  char binstr[100];
+  int padcnt[32];
 
+  for(int i=0; i<32; i++)
+    {
+      padcnt[i] = 0;
+    }
+  
   printf("\nTouch Keyboard\n");
-  printf("\nRaw:%08X", touch_key_raw);
+
+  while( getchar_timeout_us(1000) == PICO_ERROR_TIMEOUT)
+    {
+      uint32_t x = touch_key_raw;
+      
+      binstr[0] = '\0';
+
+      for(int i=0; i<32; i++)
+	{
+	  if( x & (1<<i) )
+	    {
+	      strcat(binstr, "1");
+	      if( padcnt[i] < 10 )
+		{
+		  padcnt[i]+=2;
+		}
+	    }
+	  else
+	    {
+	      if( padcnt[i] > 0 )
+		{
+		  padcnt[i]--;
+		}
+	      
+	      strcat(binstr, " ");
+	    }
+	}
+      
+      printf("\nRaw:%08X   %s\n", touch_key_raw, binstr);
+      for(int i=0; i<32; i++)
+	{
+	  printf(" %02d ", padcnt[i]);
+	}
+
+      for(int i=0; i<32; i++)
+	{
+	  if( padcnt[i] > 0 )
+	    {
+	      printf(" %s ", paddesc[i]);
+	    }
+	}
+    }
   
 }
 
