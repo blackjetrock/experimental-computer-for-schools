@@ -8511,17 +8511,19 @@ void cli_dump_touch_key_data(void)
 {
   char binstr[100];
   int padcnt[32];
-
+  int pressed[32];
+  
   for(int i=0; i<32; i++)
     {
       padcnt[i] = 0;
+      pressed[i] = 0;
     }
   
   printf("\nTouch Keyboard\n");
 
   while( getchar_timeout_us(1000) == PICO_ERROR_TIMEOUT)
     {
-      uint32_t x = touch_key_raw;
+      uint32_t x = touch_key_raw & 0x0FFFFFFF;
       
       binstr[0] = '\0';
 
@@ -8530,9 +8532,23 @@ void cli_dump_touch_key_data(void)
 	  if( x & (1<<i) )
 	    {
 	      strcat(binstr, "1");
-	      if( padcnt[i] < 10 )
+	      if( padcnt[i] < 20 )
 		{
-		  padcnt[i]+=2;
+		  padcnt[i]+=5;
+
+		  if( padcnt[i] >= 8 )
+		    {
+		      if( !pressed[i] )
+			{
+			  pressed[i] = 1;
+
+			  printf("\n-%d-", i);
+			}
+		      else
+			{
+
+			}
+		    }
 		}
 	    }
 	  else
@@ -8540,12 +8556,24 @@ void cli_dump_touch_key_data(void)
 	      if( padcnt[i] > 0 )
 		{
 		  padcnt[i]--;
+
+		  if( padcnt[i] == 0 )
+		    {
+		      if( pressed[i] )
+			{
+			  pressed[i] = 0;
+			}
+		    }
+		  else
+		    {
+		    }
 		}
 	      
 	      strcat(binstr, " ");
 	    }
 	}
-      
+
+#if 0      
       printf("\nRaw:%08X   %s\n", touch_key_raw, binstr);
       for(int i=0; i<32; i++)
 	{
@@ -8559,6 +8587,7 @@ void cli_dump_touch_key_data(void)
 	      printf(" %s ", paddesc[i]);
 	    }
 	}
+#endif
     }
   
 }

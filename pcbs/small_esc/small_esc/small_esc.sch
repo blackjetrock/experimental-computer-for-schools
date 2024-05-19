@@ -1397,4 +1397,6 @@ Text GLabel 2525 2600 2    50   Input ~ 0
 GPIO11
 Text GLabel 2525 2700 2    50   Input ~ 0
 GPIO12
+Text Notes 7775 825  0    39   ~ 0
+VSYS can be powered here from a 5V supply. For \nsending 5V out of the PCB, either short the diode\n and use this connector or remove the diode\nand connect the connector to VBUS
 $EndSCHEMATC

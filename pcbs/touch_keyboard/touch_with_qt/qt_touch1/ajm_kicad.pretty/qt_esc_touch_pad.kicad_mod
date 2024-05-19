@@ -1,0 +1,8 @@
+(module qt_esc_touch_pad (layer F.Cu) (tedit 664A24D2)
+  (fp_text reference REF** (at 0 0.5) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value qt_esc_touch_pad (at 0 -0.5) (layer F.Fab)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+)
