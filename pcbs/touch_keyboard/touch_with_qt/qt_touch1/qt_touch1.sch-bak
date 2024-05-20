@@ -41,7 +41,7 @@ U 1 1 6646F602
 P 5725 1975
 F 0 "C5" H 5817 2021 50  0000 L CNN
 F 1 "C_Small" H 5817 1930 50  0000 L CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 5725 1975 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 5725 1975 50  0001 C CNN
 F 3 "~" H 5725 1975 50  0001 C CNN
 	1    5725 1975
 	1    0    0    -1  
@@ -52,7 +52,7 @@ U 1 1 664702FC
 P 2750 4100
 F 0 "D1" H 2743 4317 50  0000 C CNN
 F 1 "LED" H 2743 4226 50  0000 C CNN
-F 2 "" H 2750 4100 50  0001 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2750 4100 50  0001 C CNN
 F 3 "~" H 2750 4100 50  0001 C CNN
 	1    2750 4100
 	1    0    0    -1  
@@ -85,7 +85,7 @@ U 1 1 66473758
 P 4825 1975
 F 0 "C3" H 4917 2021 50  0000 L CNN
 F 1 "C_Small" H 4917 1930 50  0000 L CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 4825 1975 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 4825 1975 50  0001 C CNN
 F 3 "~" H 4825 1975 50  0001 C CNN
 	1    4825 1975
 	1    0    0    -1  
@@ -96,7 +96,7 @@ U 1 1 6647396D
 P 5250 1975
 F 0 "C4" H 5342 2021 50  0000 L CNN
 F 1 "C_Small" H 5342 1930 50  0000 L CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 5250 1975 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 5250 1975 50  0001 C CNN
 F 3 "~" H 5250 1975 50  0001 C CNN
 	1    5250 1975
 	1    0    0    -1  
@@ -118,7 +118,7 @@ U 1 1 66474E11
 P 1175 4525
 F 0 "C1" H 1267 4571 50  0000 L CNN
 F 1 "20pF" H 1267 4480 50  0000 L CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 1175 4525 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1175 4525 50  0001 C CNN
 F 3 "~" H 1175 4525 50  0001 C CNN
 	1    1175 4525
 	1    0    0    -1  
@@ -129,7 +129,7 @@ U 1 1 6647517A
 P 1775 4775
 F 0 "C2" H 1867 4821 50  0000 L CNN
 F 1 "20pF" H 1867 4730 50  0000 L CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 1775 4775 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1775 4775 50  0001 C CNN
 F 3 "~" H 1775 4775 50  0001 C CNN
 	1    1775 4775
 	1    0    0    -1  
@@ -173,7 +173,7 @@ U 1 1 66476F5F
 P 6000 4900
 F 0 "C11" V 5950 5050 50  0000 C CNN
 F 1 "C_Small" V 5950 5275 50  0000 C CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 6000 4900 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 6000 4900 50  0001 C CNN
 F 3 "~" H 6000 4900 50  0001 C CNN
 	1    6000 4900
 	0    1    1    0   
@@ -250,7 +250,7 @@ U 1 1 66480B15
 P 6000 4700
 F 0 "C10" V 5950 4850 50  0000 C CNN
 F 1 "C_Small" V 5950 5075 50  0000 C CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 6000 4700 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 6000 4700 50  0001 C CNN
 F 3 "~" H 6000 4700 50  0001 C CNN
 	1    6000 4700
 	0    1    1    0   
@@ -265,7 +265,7 @@ U 1 1 664829D8
 P 6000 4500
 F 0 "C9" V 5950 4650 50  0000 C CNN
 F 1 "C_Small" V 5950 4875 50  0000 C CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 6000 4500 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 6000 4500 50  0001 C CNN
 F 3 "~" H 6000 4500 50  0001 C CNN
 	1    6000 4500
 	0    1    1    0   
@@ -276,7 +276,7 @@ U 1 1 664829DE
 P 6000 4300
 F 0 "C8" V 5950 4450 50  0000 C CNN
 F 1 "C_Small" V 5950 4675 50  0000 C CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 6000 4300 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 6000 4300 50  0001 C CNN
 F 3 "~" H 6000 4300 50  0001 C CNN
 	1    6000 4300
 	0    1    1    0   
@@ -291,7 +291,7 @@ U 1 1 66483946
 P 6000 4100
 F 0 "C7" V 5950 4250 50  0000 C CNN
 F 1 "C_Small" V 5950 4475 50  0000 C CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 6000 4100 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 6000 4100 50  0001 C CNN
 F 3 "~" H 6000 4100 50  0001 C CNN
 	1    6000 4100
 	0    1    1    0   
@@ -302,7 +302,7 @@ U 1 1 6648394C
 P 6000 3900
 F 0 "C6" V 5950 4050 50  0000 C CNN
 F 1 "C_Small" V 5950 4275 50  0000 C CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 6000 3900 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 6000 3900 50  0001 C CNN
 F 3 "~" H 6000 3900 50  0001 C CNN
 	1    6000 3900
 	0    1    1    0   
@@ -631,16 +631,14 @@ Wire Wire Line
 $Comp
 L power:+5V #PWR0105
 U 1 1 664C8917
-P 2275 1125
-F 0 "#PWR0105" H 2275 975 50  0001 C CNN
-F 1 "+5V" H 2290 1298 50  0000 C CNN
-F 2 "" H 2275 1125 50  0001 C CNN
-F 3 "" H 2275 1125 50  0001 C CNN
-	1    2275 1125
+P 2275 700
+F 0 "#PWR0105" H 2275 550 50  0001 C CNN
+F 1 "+5V" H 2290 873 50  0000 C CNN
+F 2 "" H 2275 700 50  0001 C CNN
+F 3 "" H 2275 700 50  0001 C CNN
+	1    2275 700 
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3875 1300 3875 1525
 Connection ~ 3875 1525
 Wire Wire Line
 	3375 4100 2900 4100
@@ -733,7 +731,7 @@ F 3 "" H 2400 3175 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2275 1350 2275 1125
+	2275 1350 2275 900 
 Wire Wire Line
 	1175 1350 2275 1350
 $Comp
@@ -742,7 +740,7 @@ U 1 1 66540103
 P 975 1850
 F 0 "J1" H 867 2535 50  0000 C CNN
 F 1 "Conn_01x12_Female" H 867 2444 50  0000 C CNN
-F 2 "" H 975 1850 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x12_P2.54mm_Vertical_SMD_Pin1Left" H 975 1850 50  0001 C CNN
 F 3 "~" H 975 1850 50  0001 C CNN
 	1    975  1850
 	-1   0    0    -1  
@@ -843,4 +841,95 @@ Wire Wire Line
 	8000 4600 6925 4600
 Wire Wire Line
 	6925 4800 8000 4800
+$Comp
+L Device:D D?
+U 1 1 664B96E2
+P 2650 900
+F 0 "D?" H 2650 683 50  0000 C CNN
+F 1 "D" H 2650 774 50  0000 C CNN
+F 2 "" H 2650 900 50  0001 C CNN
+F 3 "~" H 2650 900 50  0001 C CNN
+	1    2650 900 
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2500 900  2275 900 
+Connection ~ 2275 900 
+Wire Wire Line
+	2275 900  2275 700 
+Wire Wire Line
+	3875 900  3875 1525
+$Comp
+L Device:C_Small C?
+U 1 1 664D2675
+P 4175 1075
+F 0 "C?" H 4267 1121 50  0000 L CNN
+F 1 "C_Small" H 4267 1030 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 4175 1075 50  0001 C CNN
+F 3 "~" H 4175 1075 50  0001 C CNN
+	1    4175 1075
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C?
+U 1 1 664D8C28
+P 4675 1075
+F 0 "C?" H 4767 1121 50  0000 L CNN
+F 1 "C_Small" H 4767 1030 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 4675 1075 50  0001 C CNN
+F 3 "~" H 4675 1075 50  0001 C CNN
+	1    4675 1075
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4175 975  4175 900 
+Wire Wire Line
+	4175 900  3875 900 
+Wire Wire Line
+	4175 900  4675 900 
+Wire Wire Line
+	4675 900  4675 975 
+Connection ~ 4175 900 
+$Comp
+L power:GND #PWR?
+U 1 1 664EBBC5
+P 4675 1225
+F 0 "#PWR?" H 4675 975 50  0001 C CNN
+F 1 "GND" H 4680 1052 50  0000 C CNN
+F 2 "" H 4675 1225 50  0001 C CNN
+F 3 "" H 4675 1225 50  0001 C CNN
+	1    4675 1225
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 664F1FDF
+P 4175 1225
+F 0 "#PWR?" H 4175 975 50  0001 C CNN
+F 1 "GND" H 4180 1052 50  0000 C CNN
+F 2 "" H 4175 1225 50  0001 C CNN
+F 3 "" H 4175 1225 50  0001 C CNN
+	1    4175 1225
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4175 1225 4175 1175
+Wire Wire Line
+	4675 1225 4675 1175
+$Comp
+L Device:R_Small R?
+U 1 1 6650BD73
+P 3275 900
+F 0 "R?" V 3079 900 50  0000 C CNN
+F 1 "R_Small" V 3170 900 50  0000 C CNN
+F 2 "" H 3275 900 50  0001 C CNN
+F 3 "~" H 3275 900 50  0001 C CNN
+	1    3275 900 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2800 900  3175 900 
+Wire Wire Line
+	3375 900  3875 900 
+Connection ~ 3875 900 
 $EndSCHEMATC
