@@ -5,7 +5,18 @@ The schools computer dates from around 1969 and was an experimental machine that
 This is a simulation of the machine. It can run code written for the original machine.
 
 <h1>USB</h1>
-Interaction with the simulator is over USB. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi.
+Interaction with the simulator is over USB. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi as well.
+A command line interface (CLI) is available on the USB connection, this requires a terminal emulator program such as minicom. Using the interface you can:
+
+* Drive keys as if they came from the keyboard
+* See a representation of the display.
+* Run tests that check the simulation is running as required.
+* Load programs from the document 'A First Course on the School's Computer'
+* Run programs
+* Examine the store
+* Examine the machine state
+* Load and store machine state from and to the SD card
+  
 
 <h1>PCB</h1>
 
