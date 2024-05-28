@@ -1,0 +1,671 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 3
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 1 1 6663EFA7
+P 1625 950
+AR Path="/6663EFA7" Ref="U?"  Part="1" 
+AR Path="/666381E1/6663EFA7" Ref="U3"  Part="1" 
+F 0 "U3" H 1850 1225 50  0000 C CNN
+F 1 "ajm_cd40109" H 2000 1150 50  0000 C CNN
+F 2 "" H 1425 1250 50  0001 C CNN
+F 3 "" H 1425 1250 50  0001 C CNN
+	1    1625 950 
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 2 1 6663EFAD
+P 1625 1625
+AR Path="/6663EFAD" Ref="U?"  Part="1" 
+AR Path="/666381E1/6663EFAD" Ref="U3"  Part="2" 
+F 0 "U3" H 1825 1875 50  0000 C CNN
+F 1 "ajm_cd40109" H 1975 1775 50  0000 C CNN
+F 2 "" H 1425 1925 50  0001 C CNN
+F 3 "" H 1425 1925 50  0001 C CNN
+	2    1625 1625
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 3 1 6663EFB3
+P 1625 2275
+AR Path="/6663EFB3" Ref="U?"  Part="1" 
+AR Path="/666381E1/6663EFB3" Ref="U3"  Part="3" 
+F 0 "U3" H 1875 2550 50  0000 C CNN
+F 1 "ajm_cd40109" H 1975 2475 50  0000 C CNN
+F 2 "" H 1425 2575 50  0001 C CNN
+F 3 "" H 1425 2575 50  0001 C CNN
+	3    1625 2275
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 4 1 6663EFBF
+P 1650 2950
+AR Path="/6663EFBF" Ref="U?"  Part="1" 
+AR Path="/666381E1/6663EFBF" Ref="U3"  Part="4" 
+F 0 "U3" H 1950 3225 50  0000 C CNN
+F 1 "ajm_cd40109" H 2050 3125 50  0000 C CNN
+F 2 "" H 1450 3250 50  0001 C CNN
+F 3 "" H 1450 3250 50  0001 C CNN
+	4    1650 2950
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 5 1 6663EFC5
+P 1675 3950
+AR Path="/6663EFC5" Ref="U?"  Part="1" 
+AR Path="/666381E1/6663EFC5" Ref="U3"  Part="5" 
+F 0 "U3" H 1447 3971 50  0000 R CNN
+F 1 "ajm_cd40109" H 1447 3880 50  0000 R CNN
+F 2 "" H 1475 4250 50  0001 C CNN
+F 3 "" H 1475 4250 50  0001 C CNN
+	5    1675 3950
+	-1   0    0    -1  
+$EndComp
+Text GLabel 4650 975  0    50   Input ~ 0
+RD_N_5V
+Text GLabel 4650 2300 0    50   Input ~ 0
+A0_5V
+Text GLabel 1325 1625 0    50   Input ~ 0
+DB1_5V
+Text GLabel 1350 2950 0    50   Input ~ 0
+DB3_5V
+Text GLabel 2875 1625 0    50   Input ~ 0
+DB5_5V
+Text GLabel 2900 2950 0    50   Input ~ 0
+DB7_5V
+Text GLabel 4675 2975 0    50   Input ~ 0
+RESET_N_5V
+Text GLabel 4650 1650 0    50   Input ~ 0
+WR_N_5V
+Text GLabel 1325 950  0    50   Input ~ 0
+DB0_5V
+Text GLabel 1325 2275 0    50   Input ~ 0
+DB2_5V
+Text GLabel 2875 950  0    50   Input ~ 0
+DB4_5V
+Text GLabel 2875 2275 0    50   Input ~ 0
+DB6_5V
+Text GLabel 6600 1000 0    50   Input ~ 0
+CS_N_5V
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 1 1 666595ED
+P 3175 950
+AR Path="/666595ED" Ref="U?"  Part="1" 
+AR Path="/666381E1/666595ED" Ref="U4"  Part="1" 
+F 0 "U4" H 3400 1200 50  0000 C CNN
+F 1 "ajm_cd40109" H 3500 1125 50  0000 C CNN
+F 2 "" H 2975 1250 50  0001 C CNN
+F 3 "" H 2975 1250 50  0001 C CNN
+	1    3175 950 
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 2 1 666595F3
+P 3175 1625
+AR Path="/666595F3" Ref="U?"  Part="1" 
+AR Path="/666381E1/666595F3" Ref="U4"  Part="2" 
+F 0 "U4" H 3450 1875 50  0000 C CNN
+F 1 "ajm_cd40109" H 3600 1775 50  0000 C CNN
+F 2 "" H 2975 1925 50  0001 C CNN
+F 3 "" H 2975 1925 50  0001 C CNN
+	2    3175 1625
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 3 1 666595F9
+P 3175 2275
+AR Path="/666595F9" Ref="U?"  Part="1" 
+AR Path="/666381E1/666595F9" Ref="U4"  Part="3" 
+F 0 "U4" H 3450 2575 50  0000 C CNN
+F 1 "ajm_cd40109" H 3550 2475 50  0000 C CNN
+F 2 "" H 2975 2575 50  0001 C CNN
+F 3 "" H 2975 2575 50  0001 C CNN
+	3    3175 2275
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 4 1 666595FF
+P 3200 2950
+AR Path="/666595FF" Ref="U?"  Part="1" 
+AR Path="/666381E1/666595FF" Ref="U4"  Part="4" 
+F 0 "U4" H 3475 3225 50  0000 C CNN
+F 1 "ajm_cd40109" H 3600 3150 50  0000 C CNN
+F 2 "" H 3000 3250 50  0001 C CNN
+F 3 "" H 3000 3250 50  0001 C CNN
+	4    3200 2950
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 1 1 6665C0CB
+P 4950 975
+AR Path="/6665C0CB" Ref="U?"  Part="1" 
+AR Path="/666381E1/6665C0CB" Ref="U5"  Part="1" 
+F 0 "U5" H 5175 1275 50  0000 C CNN
+F 1 "ajm_cd40109" H 5275 1200 50  0000 C CNN
+F 2 "" H 4750 1275 50  0001 C CNN
+F 3 "" H 4750 1275 50  0001 C CNN
+	1    4950 975 
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 2 1 6665C0D1
+P 4950 1650
+AR Path="/6665C0D1" Ref="U?"  Part="1" 
+AR Path="/666381E1/6665C0D1" Ref="U5"  Part="2" 
+F 0 "U5" H 5200 1975 50  0000 C CNN
+F 1 "ajm_cd40109" H 5325 1900 50  0000 C CNN
+F 2 "" H 4750 1950 50  0001 C CNN
+F 3 "" H 4750 1950 50  0001 C CNN
+	2    4950 1650
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 3 1 6665C0D7
+P 4950 2300
+AR Path="/6665C0D7" Ref="U?"  Part="1" 
+AR Path="/666381E1/6665C0D7" Ref="U5"  Part="3" 
+F 0 "U5" H 5150 2600 50  0000 C CNN
+F 1 "ajm_cd40109" H 5300 2525 50  0000 C CNN
+F 2 "" H 4750 2600 50  0001 C CNN
+F 3 "" H 4750 2600 50  0001 C CNN
+	3    4950 2300
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 4 1 6665C0DD
+P 4975 2975
+AR Path="/6665C0DD" Ref="U?"  Part="1" 
+AR Path="/666381E1/6665C0DD" Ref="U5"  Part="4" 
+F 0 "U5" H 5175 3275 50  0000 C CNN
+F 1 "ajm_cd40109" H 5300 3200 50  0000 C CNN
+F 2 "" H 4775 3275 50  0001 C CNN
+F 3 "" H 4775 3275 50  0001 C CNN
+	4    4975 2975
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 1 1 6665EA7D
+P 6900 1000
+AR Path="/6665EA7D" Ref="U?"  Part="1" 
+AR Path="/666381E1/6665EA7D" Ref="U6"  Part="1" 
+F 0 "U6" H 7075 1300 50  0000 C CNN
+F 1 "ajm_cd40109" H 7225 1225 50  0000 C CNN
+F 2 "" H 6700 1300 50  0001 C CNN
+F 3 "" H 6700 1300 50  0001 C CNN
+	1    6900 1000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 2 1 6665EA83
+P 6900 1675
+AR Path="/6665EA83" Ref="U?"  Part="1" 
+AR Path="/666381E1/6665EA83" Ref="U6"  Part="2" 
+F 0 "U6" H 7100 1975 50  0000 C CNN
+F 1 "ajm_cd40109" H 7250 1900 50  0000 C CNN
+F 2 "" H 6700 1975 50  0001 C CNN
+F 3 "" H 6700 1975 50  0001 C CNN
+	2    6900 1675
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 3 1 6665EA89
+P 6900 2325
+AR Path="/6665EA89" Ref="U?"  Part="1" 
+AR Path="/666381E1/6665EA89" Ref="U6"  Part="3" 
+F 0 "U6" H 7100 2625 50  0000 C CNN
+F 1 "ajm_cd40109" H 7250 2550 50  0000 C CNN
+F 2 "" H 6700 2625 50  0001 C CNN
+F 3 "" H 6700 2625 50  0001 C CNN
+	3    6900 2325
+	-1   0    0    -1  
+$EndComp
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 4 1 6665EA8F
+P 6925 3000
+AR Path="/6665EA8F" Ref="U?"  Part="1" 
+AR Path="/666381E1/6665EA8F" Ref="U6"  Part="4" 
+F 0 "U6" H 7125 3300 50  0000 C CNN
+F 1 "ajm_cd40109" H 7250 3225 50  0000 C CNN
+F 2 "" H 6725 3300 50  0001 C CNN
+F 3 "" H 6725 3300 50  0001 C CNN
+	4    6925 3000
+	-1   0    0    -1  
+$EndComp
+Text GLabel 1925 950  2    50   Input ~ 0
+DB0_3V3
+Text GLabel 1925 1625 2    50   Input ~ 0
+DB1_3V3
+Text GLabel 1925 2275 2    50   Input ~ 0
+DB2_3V3
+Text GLabel 1950 2950 2    50   Input ~ 0
+DB3_3V3
+Text GLabel 3475 950  2    50   Input ~ 0
+DB4_3V3
+Text GLabel 3475 1625 2    50   Input ~ 0
+DB5_3V3
+Text GLabel 3475 2275 2    50   Input ~ 0
+DB6_3V3
+Text GLabel 3500 2950 2    50   Input ~ 0
+DB7_3V3
+Text GLabel 5250 975  2    50   Input ~ 0
+RD_N_3V3
+Text GLabel 5250 1650 2    50   Input ~ 0
+WR_N_3V3
+Text GLabel 5250 2300 2    50   Input ~ 0
+A0_3V3
+Text GLabel 5275 2975 2    50   Input ~ 0
+RESET_N_3V3
+Text GLabel 7200 1000 2    50   Input ~ 0
+CS_N_3V3
+$Comp
+L power:+5V #PWR015
+U 1 1 6666B148
+P 1775 3575
+F 0 "#PWR015" H 1775 3425 50  0001 C CNN
+F 1 "+5V" H 1790 3748 50  0000 C CNN
+F 2 "" H 1775 3575 50  0001 C CNN
+F 3 "" H 1775 3575 50  0001 C CNN
+	1    1775 3575
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR014
+U 1 1 6666B954
+P 1575 4525
+F 0 "#PWR014" H 1575 4275 50  0001 C CNN
+F 1 "GND" H 1580 4352 50  0000 C CNN
+F 2 "" H 1575 4525 50  0001 C CNN
+F 3 "" H 1575 4525 50  0001 C CNN
+	1    1575 4525
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR013
+U 1 1 6666BFF0
+P 1425 3575
+F 0 "#PWR013" H 1425 3425 50  0001 C CNN
+F 1 "+3V3" H 1440 3748 50  0000 C CNN
+F 2 "" H 1425 3575 50  0001 C CNN
+F 3 "" H 1425 3575 50  0001 C CNN
+	1    1425 3575
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1775 3575 1775 3650
+Wire Wire Line
+	1425 3575 1425 3650
+Wire Wire Line
+	1575 4525 1575 4300
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 5 1 6666F12C
+P 3325 4025
+AR Path="/6666F12C" Ref="U?"  Part="1" 
+AR Path="/666381E1/6666F12C" Ref="U4"  Part="5" 
+F 0 "U4" H 3097 4046 50  0000 R CNN
+F 1 "ajm_cd40109" H 3097 3955 50  0000 R CNN
+F 2 "" H 3125 4325 50  0001 C CNN
+F 3 "" H 3125 4325 50  0001 C CNN
+	5    3325 4025
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR018
+U 1 1 6666F132
+P 3425 3650
+F 0 "#PWR018" H 3425 3500 50  0001 C CNN
+F 1 "+5V" H 3440 3823 50  0000 C CNN
+F 2 "" H 3425 3650 50  0001 C CNN
+F 3 "" H 3425 3650 50  0001 C CNN
+	1    3425 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR017
+U 1 1 6666F138
+P 3225 4600
+F 0 "#PWR017" H 3225 4350 50  0001 C CNN
+F 1 "GND" H 3230 4427 50  0000 C CNN
+F 2 "" H 3225 4600 50  0001 C CNN
+F 3 "" H 3225 4600 50  0001 C CNN
+	1    3225 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR016
+U 1 1 6666F13E
+P 3075 3650
+F 0 "#PWR016" H 3075 3500 50  0001 C CNN
+F 1 "+3V3" H 3090 3823 50  0000 C CNN
+F 2 "" H 3075 3650 50  0001 C CNN
+F 3 "" H 3075 3650 50  0001 C CNN
+	1    3075 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3425 3650 3425 3725
+Wire Wire Line
+	3075 3650 3075 3725
+Wire Wire Line
+	3225 4600 3225 4375
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 5 1 66670116
+P 5050 4025
+AR Path="/66670116" Ref="U?"  Part="1" 
+AR Path="/666381E1/66670116" Ref="U5"  Part="5" 
+F 0 "U5" H 4822 4046 50  0000 R CNN
+F 1 "ajm_cd40109" H 4822 3955 50  0000 R CNN
+F 2 "" H 4850 4325 50  0001 C CNN
+F 3 "" H 4850 4325 50  0001 C CNN
+	5    5050 4025
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR021
+U 1 1 6667011C
+P 5150 3650
+F 0 "#PWR021" H 5150 3500 50  0001 C CNN
+F 1 "+5V" H 5165 3823 50  0000 C CNN
+F 2 "" H 5150 3650 50  0001 C CNN
+F 3 "" H 5150 3650 50  0001 C CNN
+	1    5150 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR020
+U 1 1 66670122
+P 4950 4600
+F 0 "#PWR020" H 4950 4350 50  0001 C CNN
+F 1 "GND" H 4955 4427 50  0000 C CNN
+F 2 "" H 4950 4600 50  0001 C CNN
+F 3 "" H 4950 4600 50  0001 C CNN
+	1    4950 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR019
+U 1 1 66670128
+P 4800 3650
+F 0 "#PWR019" H 4800 3500 50  0001 C CNN
+F 1 "+3V3" H 4815 3823 50  0000 C CNN
+F 2 "" H 4800 3650 50  0001 C CNN
+F 3 "" H 4800 3650 50  0001 C CNN
+	1    4800 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5150 3650 5150 3725
+Wire Wire Line
+	4800 3650 4800 3725
+Wire Wire Line
+	4950 4600 4950 4375
+$Comp
+L qt_touch1-cache:ajm_cd40109 U?
+U 5 1 66671417
+P 7000 4050
+AR Path="/66671417" Ref="U?"  Part="1" 
+AR Path="/666381E1/66671417" Ref="U6"  Part="5" 
+F 0 "U6" H 6772 4071 50  0000 R CNN
+F 1 "ajm_cd40109" H 6772 3980 50  0000 R CNN
+F 2 "" H 6800 4350 50  0001 C CNN
+F 3 "" H 6800 4350 50  0001 C CNN
+	5    7000 4050
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR024
+U 1 1 6667141D
+P 7100 3675
+F 0 "#PWR024" H 7100 3525 50  0001 C CNN
+F 1 "+5V" H 7115 3848 50  0000 C CNN
+F 2 "" H 7100 3675 50  0001 C CNN
+F 3 "" H 7100 3675 50  0001 C CNN
+	1    7100 3675
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR023
+U 1 1 66671423
+P 6900 4625
+F 0 "#PWR023" H 6900 4375 50  0001 C CNN
+F 1 "GND" H 6905 4452 50  0000 C CNN
+F 2 "" H 6900 4625 50  0001 C CNN
+F 3 "" H 6900 4625 50  0001 C CNN
+	1    6900 4625
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR022
+U 1 1 66671429
+P 6750 3675
+F 0 "#PWR022" H 6750 3525 50  0001 C CNN
+F 1 "+3V3" H 6765 3848 50  0000 C CNN
+F 2 "" H 6750 3675 50  0001 C CNN
+F 3 "" H 6750 3675 50  0001 C CNN
+	1    6750 3675
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 3675 7100 3750
+Wire Wire Line
+	6750 3675 6750 3750
+Wire Wire Line
+	6900 4625 6900 4400
+$Comp
+L power:+5V #PWR?
+U 1 1 6671749A
+P -500 1550
+F 0 "#PWR?" H -500 1400 50  0001 C CNN
+F 1 "+5V" H -485 1723 50  0000 C CNN
+F 2 "" H -500 1550 50  0001 C CNN
+F 3 "" H -500 1550 50  0001 C CNN
+	1    -500 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 66717F4C
+P 1625 1425
+F 0 "#PWR?" H 1625 1275 50  0001 C CNN
+F 1 "+5V" H 1640 1598 50  0000 C CNN
+F 2 "" H 1625 1425 50  0001 C CNN
+F 3 "" H 1625 1425 50  0001 C CNN
+	1    1625 1425
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6671845E
+P 1625 2075
+F 0 "#PWR?" H 1625 1925 50  0001 C CNN
+F 1 "+5V" H 1640 2248 50  0000 C CNN
+F 2 "" H 1625 2075 50  0001 C CNN
+F 3 "" H 1625 2075 50  0001 C CNN
+	1    1625 2075
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6671894A
+P 1650 2750
+F 0 "#PWR?" H 1650 2600 50  0001 C CNN
+F 1 "+5V" H 1665 2923 50  0000 C CNN
+F 2 "" H 1650 2750 50  0001 C CNN
+F 3 "" H 1650 2750 50  0001 C CNN
+	1    1650 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 66718BD6
+P 1625 750
+F 0 "#PWR?" H 1625 600 50  0001 C CNN
+F 1 "+5V" H 1640 923 50  0000 C CNN
+F 2 "" H 1625 750 50  0001 C CNN
+F 3 "" H 1625 750 50  0001 C CNN
+	1    1625 750 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 66718EF0
+P 3175 750
+F 0 "#PWR?" H 3175 600 50  0001 C CNN
+F 1 "+5V" H 3190 923 50  0000 C CNN
+F 2 "" H 3175 750 50  0001 C CNN
+F 3 "" H 3175 750 50  0001 C CNN
+	1    3175 750 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 66719177
+P 3175 1425
+F 0 "#PWR?" H 3175 1275 50  0001 C CNN
+F 1 "+5V" H 3190 1598 50  0000 C CNN
+F 2 "" H 3175 1425 50  0001 C CNN
+F 3 "" H 3175 1425 50  0001 C CNN
+	1    3175 1425
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 667193F9
+P 3175 2075
+F 0 "#PWR?" H 3175 1925 50  0001 C CNN
+F 1 "+5V" H 3190 2248 50  0000 C CNN
+F 2 "" H 3175 2075 50  0001 C CNN
+F 3 "" H 3175 2075 50  0001 C CNN
+	1    3175 2075
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 667196D4
+P 3200 2750
+F 0 "#PWR?" H 3200 2600 50  0001 C CNN
+F 1 "+5V" H 3215 2923 50  0000 C CNN
+F 2 "" H 3200 2750 50  0001 C CNN
+F 3 "" H 3200 2750 50  0001 C CNN
+	1    3200 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 66719AAB
+P 4950 775
+F 0 "#PWR?" H 4950 625 50  0001 C CNN
+F 1 "+5V" H 4965 948 50  0000 C CNN
+F 2 "" H 4950 775 50  0001 C CNN
+F 3 "" H 4950 775 50  0001 C CNN
+	1    4950 775 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 66719D60
+P 4950 1450
+F 0 "#PWR?" H 4950 1300 50  0001 C CNN
+F 1 "+5V" H 4965 1623 50  0000 C CNN
+F 2 "" H 4950 1450 50  0001 C CNN
+F 3 "" H 4950 1450 50  0001 C CNN
+	1    4950 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6671A007
+P 4950 2100
+F 0 "#PWR?" H 4950 1950 50  0001 C CNN
+F 1 "+5V" H 4965 2273 50  0000 C CNN
+F 2 "" H 4950 2100 50  0001 C CNN
+F 3 "" H 4950 2100 50  0001 C CNN
+	1    4950 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6671A320
+P 4975 2775
+F 0 "#PWR?" H 4975 2625 50  0001 C CNN
+F 1 "+5V" H 4990 2948 50  0000 C CNN
+F 2 "" H 4975 2775 50  0001 C CNN
+F 3 "" H 4975 2775 50  0001 C CNN
+	1    4975 2775
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6671CF34
+P 6925 2800
+F 0 "#PWR?" H 6925 2650 50  0001 C CNN
+F 1 "+5V" H 6940 2973 50  0000 C CNN
+F 2 "" H 6925 2800 50  0001 C CNN
+F 3 "" H 6925 2800 50  0001 C CNN
+	1    6925 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6671D21E
+P 6900 2125
+F 0 "#PWR?" H 6900 1975 50  0001 C CNN
+F 1 "+5V" H 6915 2298 50  0000 C CNN
+F 2 "" H 6900 2125 50  0001 C CNN
+F 3 "" H 6900 2125 50  0001 C CNN
+	1    6900 2125
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6671D6B7
+P 6900 1475
+F 0 "#PWR?" H 6900 1325 50  0001 C CNN
+F 1 "+5V" H 6915 1648 50  0000 C CNN
+F 2 "" H 6900 1475 50  0001 C CNN
+F 3 "" H 6900 1475 50  0001 C CNN
+	1    6900 1475
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6671DA98
+P 6900 800
+F 0 "#PWR?" H 6900 650 50  0001 C CNN
+F 1 "+5V" H 6915 973 50  0000 C CNN
+F 2 "" H 6900 800 50  0001 C CNN
+F 3 "" H 6900 800 50  0001 C CNN
+	1    6900 800 
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
