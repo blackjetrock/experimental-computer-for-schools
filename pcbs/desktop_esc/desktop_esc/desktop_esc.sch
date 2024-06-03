@@ -542,112 +542,6 @@ Wire Wire Line
 Connection ~ 975  3650
 Wire Wire Line
 	975  3650 975  3875
-$Comp
-L power:+5V #PWR09
-U 1 1 665FBCCF
-P 1275 4200
-F 0 "#PWR09" H 1275 4050 50  0001 C CNN
-F 1 "+5V" H 1290 4373 50  0000 C CNN
-F 2 "" H 1275 4200 50  0001 C CNN
-F 3 "" H 1275 4200 50  0001 C CNN
-	1    1275 4200
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 665FF973
-P 1275 4650
-AR Path="/63690FA3/665FF973" Ref="#PWR?"  Part="1" 
-AR Path="/665FF973" Ref="#PWR010"  Part="1" 
-F 0 "#PWR010" H 1275 4400 50  0001 C CNN
-F 1 "GND" H 1280 4477 50  0000 C CNN
-F 2 "" H 1275 4650 50  0001 C CNN
-F 3 "" H 1275 4650 50  0001 C CNN
-	1    1275 4650
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C3
-U 1 1 6660378B
-P 1275 4425
-F 0 "C3" H 1367 4471 50  0000 L CNN
-F 1 "C_Small" H 1367 4380 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1275 4425 50  0001 C CNN
-F 3 "~" H 1275 4425 50  0001 C CNN
-	1    1275 4425
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1275 4200 1275 4250
-Wire Wire Line
-	1275 4525 1275 4600
-$Comp
-L Device:C_Small C4
-U 1 1 6660BC70
-P 1875 4450
-F 0 "C4" H 1967 4496 50  0000 L CNN
-F 1 "C_Small" H 1967 4405 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1875 4450 50  0001 C CNN
-F 3 "~" H 1875 4450 50  0001 C CNN
-	1    1875 4450
-	1    0    0    -1  
-$EndComp
-Connection ~ 1275 4250
-Wire Wire Line
-	1275 4250 1275 4325
-Connection ~ 1275 4600
-Wire Wire Line
-	1275 4600 1275 4650
-$Comp
-L Device:C_Small C5
-U 1 1 66614B35
-P 2450 4450
-F 0 "C5" H 2542 4496 50  0000 L CNN
-F 1 "C_Small" H 2542 4405 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 2450 4450 50  0001 C CNN
-F 3 "~" H 2450 4450 50  0001 C CNN
-	1    2450 4450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C6
-U 1 1 6661939A
-P 3025 4450
-F 0 "C6" H 3117 4496 50  0000 L CNN
-F 1 "C_Small" H 3117 4405 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 3025 4450 50  0001 C CNN
-F 3 "~" H 3025 4450 50  0001 C CNN
-	1    3025 4450
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3025 4350 3025 4250
-Wire Wire Line
-	3025 4550 3025 4600
-Wire Wire Line
-	1275 4250 1875 4250
-Wire Wire Line
-	1275 4600 1875 4600
-Wire Wire Line
-	2450 4350 2450 4250
-Connection ~ 2450 4250
-Wire Wire Line
-	2450 4250 3025 4250
-Wire Wire Line
-	2450 4550 2450 4600
-Connection ~ 2450 4600
-Wire Wire Line
-	2450 4600 3025 4600
-Wire Wire Line
-	1875 4550 1875 4600
-Connection ~ 1875 4600
-Wire Wire Line
-	1875 4600 2450 4600
-Wire Wire Line
-	1875 4350 1875 4250
-Connection ~ 1875 4250
-Wire Wire Line
-	1875 4250 2450 4250
 $Sheet
 S 2000 7150 875  475 
 U 666381E1
@@ -753,9 +647,9 @@ MISO_3V3
 Text GLabel 4975 4025 0    50   Input ~ 0
 DBG_DATA_3V3
 Text GLabel 4975 4125 0    50   Input ~ 0
-DBG_CLK_3V4
+DBG_CLK_3V3
 Text GLabel 6625 4025 2    50   Input ~ 0
-WS_3V5
+WS_3V3
 $Comp
 L Device:Jumper_NO_Small JP1
 U 1 1 666E15EF
@@ -855,4 +749,34 @@ Wire Wire Line
 	5925 4325 5925 4775
 Wire Wire Line
 	6025 4325 6025 4775
+$Comp
+L Device:Jumper_NC_Small JP10
+U 1 1 665DFBE1
+P 5450 1300
+F 0 "JP10" H 5450 1512 50  0000 C CNN
+F 1 "Jumper_NC_Small" H 5450 1421 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Bridged_RoundedPad1.0x1.5mm" H 5450 1300 50  0001 C CNN
+F 3 "~" H 5450 1300 50  0001 C CNN
+	1    5450 1300
+	1    0    0    -1  
+$EndComp
+Text GLabel 5700 1300 2    50   Input ~ 0
+VBUS
+Wire Wire Line
+	5700 1300 5550 1300
+$Comp
+L power:+5V #PWR0126
+U 1 1 665E7937
+P 4925 1125
+F 0 "#PWR0126" H 4925 975 50  0001 C CNN
+F 1 "+5V" H 4940 1298 50  0000 C CNN
+F 2 "" H 4925 1125 50  0001 C CNN
+F 3 "" H 4925 1125 50  0001 C CNN
+	1    4925 1125
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 1300 4925 1300
+Wire Wire Line
+	4925 1300 4925 1125
 $EndSCHEMATC
