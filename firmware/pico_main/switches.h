@@ -24,7 +24,7 @@
 #define DEBUG_TEST_SEQ         1    // Test sequences
 
 #define DEBUG_SERIAL           0
-#define DEBUG_KEY_SCAN         0
+#define DEBUG_KEY_SCAN         1
 #define DEBUG_ADDR_MODES       0
 #define DEBUG_INST_21          0
 #define DEBUG_INST_22          0

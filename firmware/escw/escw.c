@@ -1193,7 +1193,7 @@ int wifi_main(void)
       // is done via interrupt in the background. This sleep is just an example of some (blocking)
       // work you might be doing.
       //sleep_ms(1000);
-      kbd_scan();
+      kbd_scan(&esc_state);
       drive_fsms();
       serial_loop();
       update_display();

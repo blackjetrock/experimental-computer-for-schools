@@ -341,7 +341,7 @@ void kbd_gpio_sens(const int gpio)
 {
   gpio_init(gpio);
   gpio_set_dir(gpio, GPIO_IN);
-  gpio_set_pulls (PIN_KBD_SENS0, 0, 1);
+  gpio_set_pulls(gpio, 0, 1);
 }
 
 const int kbd_drv_gpios[] =
@@ -9694,8 +9694,6 @@ int main(void)
   oled_display_string(&oled0, "Computer");
 #endif
 
-  // Run the shift register touch key scanning on the second core
-  multicore_launch_core1(core1_main);
 
 #ifdef ESC_USE_WIFI
   printf("\n** Wifi Enabled **");
@@ -9704,8 +9702,13 @@ int main(void)
 #else
   printf("\n** Wifi NOT Enabled **");
 
+  // Run the shift register touch key scanning on the second core
+  multicore_launch_core1(core1_main);
+
 
   // Main loop
+  set_kbd_gpios();
+  
   while(1)
     {
 #if DEBUG_LOOP

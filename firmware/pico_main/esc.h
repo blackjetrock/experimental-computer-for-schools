@@ -217,6 +217,7 @@ void update_display(void);
 char *get_display(void);
 int wifi_main(void);
 void clear_keyboard_register(ESC_STATE *s);
+void kbd_scan(ESC_STATE *s);
 
 ////////////////////////////////////////////////////////////////////////////////
 
