@@ -1125,7 +1125,8 @@ void key_pressed_func(void *param) {
 
 int wifi_main(void)
 {
-  stdio_init_all();
+  // If not commented out then GPIO0 does not work. Must be conflict with UARt somewhere
+  //stdio_init_all();
   
   TCP_SERVER_T *state = calloc(1, sizeof(TCP_SERVER_T));
   if (!state)
