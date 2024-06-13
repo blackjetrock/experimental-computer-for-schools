@@ -313,6 +313,8 @@ int test_step             = 0;
 // GPIOs
 //
 
+#if ESC_TYPE_SMALL
+
 // KBD
 const int PIN_KBD_DRV0 =  0;
 const int PIN_KBD_DRV1 =  1;
@@ -326,6 +328,8 @@ const int PIN_KBD_SENS3 =   7;
 const int PIN_KBD_SENS4 =   8;
 const int PIN_KBD_SENS5 =   9;
 const int PIN_KBD_SENS6 =  10;
+
+
 
 //------------------------------------------------------------------------------
 //
@@ -937,7 +941,8 @@ void kbd_scan(ESC_STATE *s)
     }
 }
 
-  
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -9707,14 +9712,20 @@ int main(void)
 
 
   // Main loop
+#if ESC_TYPE_SMALL
   set_kbd_gpios();
+#endif
   
   while(1)
     {
 #if DEBUG_LOOP
       printf("\nLoop");
 #endif
+      
+#if ESC_TYPE_SMALL      
       kbd_scan(&esc_state);
+#endif
+      
       drive_fsms();
       serial_loop();
       update_display();

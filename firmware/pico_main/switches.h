@@ -106,6 +106,22 @@
 #define DEBUG_PREPARE          1
 #endif
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Main types of firmware
+//
+// SMALL:
+// This firmware for a small PCB that has a 0.96" OLED display, a keyboard
+// made form tactile switches and an SD catrd slot. There are some headers
+// for unused GPIOs.
+//
+// DESKTOP:
+// This is a PCB which has a Pico, a voltage regulator and circuitry to
+// drive a capacitive touch keyboard and a large LCD screen. There is no
+// keyboard or display on this PCB.
+
+#define ESC_TYPE_SMALL         1
+#define ESC_TYPE_DESKTOP       0
 
 #define OLED_ON                1
 #define SD_ON                  1
