@@ -456,9 +456,7 @@ Wire Wire Line
 Wire Wire Line
 	1300 4225 1075 4225
 Wire Wire Line
-	1075 4225 1075 5100
-Wire Wire Line
-	1100 4575 2475 4575
+	1075 4225 1075 4575
 Wire Wire Line
 	2475 4575 2475 5100
 Wire Wire Line
@@ -704,4 +702,9 @@ Wire Wire Line
 Wire Wire Line
 	7225 3350 8600 3350
 Connection ~ 7225 3350
+Wire Wire Line
+	1075 4575 2475 4575
+Connection ~ 1075 4575
+Wire Wire Line
+	1075 4575 1075 5100
 $EndSCHEMATC

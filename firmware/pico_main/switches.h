@@ -23,7 +23,7 @@
 #define DEBUG_TEST             0    // Test instruction
 #define DEBUG_TEST_SEQ         1    // Test sequences
 
-#define DEBUG_SERIAL           0
+#define DEBUG_SERIAL           1
 #define DEBUG_KEY_SCAN         1
 #define DEBUG_ADDR_MODES       0
 #define DEBUG_INST_21          0
@@ -120,8 +120,9 @@
 // drive a capacitive touch keyboard and a large LCD screen. There is no
 // keyboard or display on this PCB.
 
-#define ESC_TYPE_SMALL         1
-#define ESC_TYPE_DESKTOP       0
+#define ESC_TYPE_SMALL         0
+#define ESC_TYPE_DESKTOP       1
+#define ESC_KBD_VOLT_TOUCH     0
 
 #define OLED_ON                1
 #define SD_ON                  1

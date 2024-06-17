@@ -1,0 +1,11 @@
+QT Touch keyboard Errata
+========================
+
+1. CS_N should be CS_N_3V3
+2. TX and RX are swapped on the jumpers. Not a problem.
+3. CS_N and CS_N_3V3 are different signals
+4. SS on QT IC is not connected, so internal pull-up is used.
+5. TP8 X is not connected.
+6. A and RUN have the same X and Y onnections
+
+

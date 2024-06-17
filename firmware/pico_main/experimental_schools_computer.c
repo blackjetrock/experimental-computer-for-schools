@@ -313,6 +313,46 @@ int test_step             = 0;
 // GPIOs
 //
 
+void set_gpio_output(const int gpio)
+{
+  gpio_init(gpio);
+  gpio_set_dir(gpio, GPIO_OUT);
+}
+
+void set_gpio_input(const int gpio)
+{
+  gpio_init(gpio);
+  gpio_set_dir(gpio, GPIO_IN);
+}
+
+#if ESC_TYPE_DESKTOP
+
+// We set GPIOs and the UART
+
+const int PIN_QT_DRDY =  26;
+const int PIN_QT_WS   =  17;
+
+void set_kbd_gpios(void)
+{
+  set_gpio_input(PIN_QT_DRDY);
+
+  // Set WAKE/SYNC high
+  set_gpio_output(PIN_QT_WS);
+  gpio_put(PIN_QT_WS, 1);
+
+  // Set the GPIO pin mux to the UART - 12 is TX, 13 is RX
+  // Takes over GPIO directions
+  gpio_set_function(12, GPIO_FUNC_UART);
+  gpio_set_function(13, GPIO_FUNC_UART);
+
+  printf("\nQT Baud rate set to %d", uart_init (uart0, 9600));
+  uart_set_format (uart0, 8, 1, UART_PARITY_NONE);
+
+}
+
+
+#endif
+
 #if ESC_TYPE_SMALL
 
 // KBD
@@ -512,6 +552,8 @@ void kbd_queue_key(int k)
     }
 }
 
+#endif
+
 int test_loop_count = 0;
 #define TEST_EVERY_N_LOOPS  10
 
@@ -520,6 +562,8 @@ int test_res_i = 0;
 // read scan code
 void kbd_read(ESC_STATE *s)
 {
+  
+#if ESC_TYPE_SMALL  
   // If the drive index is zero then reset the scan code
   if( kbd_drv_i == 0 )
     {
@@ -537,6 +581,13 @@ void kbd_read(ESC_STATE *s)
       // Build scan code
       kbd_scan_code = (kbd_drv_i << 7) | kbd_sense;
     }
+#endif
+
+#if ESC_TYPE_DESKTOP
+  if( 1 )
+    {
+    }
+#endif
   else
     {
       // No key pressed, check for a running test after N idle loops
@@ -870,6 +921,7 @@ void kbd_read(ESC_STATE *s)
 	}
     }
 
+#if ESC_TYPE_SMALL  
   // On last drive, process the scan
   if(kbd_drv_i == (NUM_KBD_DRV - 1))
     {
@@ -889,7 +941,11 @@ void kbd_read(ESC_STATE *s)
       kbd_last_output_scan_code = kbd_output_scan_code;
     }
 
+#endif
+  
 }
+
+#if ESC_TYPE_SMALL
 
 void kbd_debounce(void)
 {
@@ -923,6 +979,7 @@ void kbd_debounce(void)
 	}
     }
 }
+
 
 
 void kbd_scan(ESC_STATE *s)
@@ -4856,6 +4913,178 @@ void drive_fsms(void)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// QT Touch Debug
+//
+//
+// On schematic Y3 is Y0
+//              Y2 is Y1
+//              Y1 is Y2
+//              Y0 is Y3
+//
+//  Key codes
+//  =========
+//
+//  Key        X   Y   Code
+//  -----------------------
+//
+//  KI RESET   0   4    4
+//  A          3   0   27
+//  B          2   0   19
+//  C          1   4   12
+//  0
+//  1
+//  2
+//  3
+//  4
+//  5
+//  6
+//  7
+//  8
+//  9
+//  RUN
+//  STOP       2   4
+
+void cli_qt_debug(void)
+{
+  int key;
+  int contread = 0;
+  int contflag = 0;
+  
+  int keymap[8];
+      
+  printf("\nQT Touch");
+  printf("\n");
+  printf("\nC: Cal All");
+  printf("\nL: Low Level Cal and Offset");
+  printf("\nO: Overview");
+  printf("\nr: Report All Keys");
+  printf("\n-: Get Last Command");
+  printf("\ns: Setups CRC Check");
+  printf("\nd: Dump Setups Block");
+  printf("\n*: Toggle continuous read");
+  printf("\n");
+  
+  while(1)
+    {
+      if( contflag )
+	{
+	  contread++;
+	}
+      
+      if( contread>100)
+	{
+	  contread = 0;
+	  
+	  // Send command and read 8 bytes back
+	  uart_putc(uart0, 0x07);
+#if 1	  
+	  for(int i = 0; i<8; i++)
+	    {
+	      while( !uart_is_readable(uart0) )
+		{
+		}
+	      
+	      keymap[i] = uart_getc(uart0);
+	      sleep_ms(1);
+	    }
+
+	  // Any keys pressed?
+	  int t = 0;
+	  for(int i = 0; i<6; i++)
+	    {
+	      t += keymap[i];
+	    }
+
+	  if( t > 0 )
+	    {
+	      printf("\n");
+	      
+	      // See what keys are pressed
+	      for(int i = 0; i<6; i++)
+		{
+		  for(int j=0; j<7; j++)
+		    {
+		      if( keymap[i] & (1<<j) )
+			{
+			  printf("%d  ", i*8+j);
+			}
+		    }
+		}
+	    }
+#endif	  
+	  sleep_ms(50);
+	}
+      
+      // If anything has come back from the QT, display it
+      if( uart_is_readable(uart0) )
+	{
+	  char c = uart_getc(uart0);
+
+	  printf("\nQT RX:%d 0x%02X", c, c);
+	}
+      
+      if( ((key = getchar_timeout_us(1000)) != PICO_ERROR_TIMEOUT))
+	{
+	  switch(key)
+	    {
+	    case '*':
+	      contflag = !contflag;
+	      break;
+	      
+	    case 'C':
+	      // Cal All
+	      printf("\nCal All");
+	      uart_putc(uart0, 0x03);
+	      uart_putc(uart0, 0x03);
+	      break;
+
+	    case 'L':
+	      // Low Level Cal and Offset
+	      printf("\nLow Level Cal and Offset");
+	      uart_putc(uart0, 0x02);
+	      uart_putc(uart0, 0x02);
+	      break;
+
+	    case 'O':
+	      // Send Overview
+	      printf("\nOverview");
+	      uart_putc(uart0, 0x06);
+	      break;
+
+	    case '-':
+	      // Get last command
+	      printf("\nGet Last Command");
+	      uart_putc(uart0, 0x0F);
+	      break;
+
+	    case 's':
+	      // Setups CRC Check
+	      printf("\nSetups CRC Check");
+	      uart_putc(uart0, 0x0E);
+	      break;
+
+	    case 'd':
+	      printf("\nDump Setups Block");
+	      uart_putc(uart0, 0x0D);
+	      break;
+
+	    case 'r':
+	      // report all keys
+	      printf("\nReport All Keys");
+	      uart_putc(uart0, 0x07);
+	      break;
+	      
+	    default:
+	      return;
+	      break;
+	    }
+	}
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
 
 void cli_boot_mass(void)
 {
@@ -5222,6 +5451,8 @@ void cli_stop(void)
   queue_token(TOK_KEY_STOP);
 }
 
+#if ESC_TYPE_SMALL
+
 void cli_key_key_test(void)
 {
   int key;
@@ -5255,6 +5486,8 @@ void cli_key_key_test(void)
       printf("\n%d", kbd_read_sense());
     }
 }
+
+#endif
 
 void cli_file_list(void)
 {
@@ -8778,16 +9011,21 @@ SERIAL_COMMAND serial_cmds[] =
     "C",
     cli_key_c,
    },
+#if ESC_TYPE_SMALL   
    {
     '%',
     "Key test",
     cli_key_key_test,
    },
+#endif   
+#if ESC_TYPE_SMALL   
    {
     '|',
     "KBD Dump",
     cli_kbd_dump,
    },
+#endif
+   
    {
     'F',
     "File list",
@@ -8820,10 +9058,17 @@ SERIAL_COMMAND serial_cmds[] =
    },
    {
     '<',
-    "Dump touch key ata",
+    "Dump touch key data",
     cli_dump_touch_key_data,
    },
    
+#if ESC_TYPE_DESKTOP
+   {
+    'Q',
+    "Qt Touch Debug",
+    cli_qt_debug,
+   },
+#endif   
   };
 
 
@@ -9521,6 +9766,7 @@ I2C_SLAVE_DESC oled0 =
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#if ESC_KBD_VOLT_TOUCH
 const int PIN_TOUCH_LOAD   = 27;
 const int PIN_TOUCH_CLK    = 26;
 const int PIN_TOUCH_SERDAT = 28;
@@ -9560,6 +9806,7 @@ uint32_t read_165(void)
 #endif
   return(value);
 }
+#endif
 
 void sense_gpio_out(const int gpio)
 {
@@ -9574,13 +9821,13 @@ void sense_gpio_in(const int gpio)
   gpio_set_pulls (gpio, 0, 0);
 }
 
+#if ESC_KBD_VOLT_TOUCH
 void touch_key_setup(void)
 {
   sense_gpio_out(PIN_TOUCH_LOAD);
   sense_gpio_out(PIN_TOUCH_CLK);
   sense_gpio_in(PIN_TOUCH_SERDAT);
 }
-
 
 
 void touch_key_scan(void)
@@ -9601,9 +9848,27 @@ void core1_main(void)
     }
 }
 
+#endif
+
+#if ESC_TYPE_DESKTOP
+void core1_main(void)
+{
+  while(1)
+    {
+
+    }
+}
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+////////////////////////////////////////////////////////////////////////////////
+
 
 int main(void)
 {
+
   ////////////////////////////////////////////////////////////////////////////////
   //
   // Overclock as needed
@@ -9624,8 +9889,10 @@ int main(void)
   /* Overclock */
   set_sys_clock_khz( OVERCLOCK, 1 );
 
-  stdio_init_all();
-
+  
+  //stdio_init_all();
+  stdio_usb_init();
+  
   sleep_ms(2000);
 
   printf("\n");
@@ -9634,6 +9901,24 @@ int main(void)
   printf("\n                                  ********************************************");
   printf("\n");
 
+  // Configuration
+
+#if ESC_TYPE_SMALL
+  printf("\nSmall ESC");
+#endif
+
+#if ESC_TYPE_DESKTOP
+  printf("\nDesktop ESC");
+#endif
+
+#if ESC_KBD_VOLT_TOUCH
+  printf("\nVoltage Touch Keyboard");
+#endif
+
+#if ESC_KBD_QT
+  printf("\nQT Touch Keyboard");
+#endif
+  
   // Set up GPIOs
   set_kbd_gpios();
   
@@ -9714,6 +9999,9 @@ int main(void)
   // Main loop
 #if ESC_TYPE_SMALL
   set_kbd_gpios();
+#endif
+
+#if ESC_TYPE_DESKTOP
 #endif
   
   while(1)
