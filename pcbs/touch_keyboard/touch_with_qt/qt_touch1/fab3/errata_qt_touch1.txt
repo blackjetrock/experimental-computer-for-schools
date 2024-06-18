@@ -7,5 +7,11 @@ QT Touch keyboard Errata
 4. SS on QT IC is not connected, so internal pull-up is used.
 5. TP8 X is not connected.
 6. A and RUN have the same X and Y onnections
-
+7. 0, 9
+8. 1, 2
+9. 4,5
+10. 7,8
+11. LOAD IAR, LOAD ADDR
+12. DECR ADDR, INC ADDR
+13. CLEAR, MINUS
 

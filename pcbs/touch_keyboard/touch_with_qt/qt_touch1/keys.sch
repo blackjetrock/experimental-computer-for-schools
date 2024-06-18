@@ -47,17 +47,6 @@ F 3 "" H 2775 2200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ajm:Touchpad_qt TP3
-U 1 1 664ABAAE
-P 1925 2800
-F 0 "TP3" H 2000 2865 50  0000 C CNN
-F 1 "Touchpad_qt" H 2000 2774 50  0000 C CNN
-F 2 "ajm_kicad:qt_touch_12_x_12" H 1925 2800 50  0001 C CNN
-F 3 "" H 1925 2800 50  0001 C CNN
-	1    1925 2800
-	1    0    0    -1  
-$EndComp
-$Comp
 L ajm:Touchpad_qt TP11
 U 1 1 664ABD2E
 P 3650 2825
@@ -350,14 +339,9 @@ Y4
 Text GLabel 7325 5925 2    50   Input ~ 0
 Y5
 Wire Wire Line
-	925  1875 1475 1875
-Wire Wire Line
-	1475 1875 1475 1275
-Wire Wire Line
-	1475 1275 3200 1275
+	925  1875 1150 1875
 Wire Wire Line
 	3200 1275 3200 1875
-Connection ~ 1475 1875
 Wire Wire Line
 	3200 1275 5025 1275
 Wire Wire Line
@@ -377,20 +361,13 @@ Wire Wire Line
 	925  1975 2375 1975
 Wire Wire Line
 	2375 1975 2375 2450
-Wire Wire Line
-	2375 1975 4550 1975
-Wire Wire Line
-	4550 1975 4550 2475
 Connection ~ 2375 1975
-Wire Wire Line
-	4550 1975 4950 1975
 Wire Wire Line
 	4950 1975 4950 2075
 Wire Wire Line
 	4950 2075 5750 2075
 Wire Wire Line
 	5750 2075 5750 2475
-Connection ~ 4550 1975
 Wire Wire Line
 	5750 2075 7125 2075
 Wire Wire Line
@@ -404,19 +381,9 @@ Wire Wire Line
 	1525 2625 3250 2625
 Wire Wire Line
 	3250 2625 3250 3075
-Connection ~ 1525 2625
-Wire Wire Line
-	1525 2625 1525 3050
-Wire Wire Line
-	3250 2625 5100 2625
-Wire Wire Line
-	5100 2625 5100 3125
 Connection ~ 3250 2625
 Wire Wire Line
-	5100 2625 6400 2625
-Wire Wire Line
 	6400 2625 6400 3125
-Connection ~ 5100 2625
 Wire Wire Line
 	6400 2625 7725 2625
 Wire Wire Line
@@ -425,30 +392,21 @@ Connection ~ 6400 2625
 Wire Wire Line
 	925  2175 1375 2175
 Wire Wire Line
-	1375 2175 1375 3775
+	1375 2175 1375 3050
 Wire Wire Line
 	1375 3775 2350 3775
 Wire Wire Line
 	2350 3775 2350 3350
-Wire Wire Line
-	2350 3350 4400 3350
-Wire Wire Line
-	4400 3350 4400 3800
 Connection ~ 2350 3775
 Wire Wire Line
 	2350 3775 2450 3775
 Wire Wire Line
-	4400 3350 5875 3350
-Wire Wire Line
 	5875 3350 5875 3825
-Connection ~ 4400 3350
 Wire Wire Line
 	5875 3350 7225 3350
 Wire Wire Line
 	7225 3350 7225 3825
 Connection ~ 5875 3350
-Wire Wire Line
-	8600 3350 8600 3800
 Wire Wire Line
 	925  2275 1300 2275
 Wire Wire Line
@@ -518,7 +476,7 @@ Wire Wire Line
 Wire Wire Line
 	1075 4075 775  4075
 Wire Wire Line
-	775  4075 775  7175
+	775  4075 775  5100
 Wire Wire Line
 	775  7175 1750 7175
 Wire Wire Line
@@ -700,11 +658,54 @@ Connection ~ 8975 2450
 Wire Wire Line
 	8975 2450 8975 3125
 Wire Wire Line
-	7225 3350 8600 3350
-Connection ~ 7225 3350
-Wire Wire Line
 	1075 4575 2475 4575
-Connection ~ 1075 4575
 Wire Wire Line
-	1075 4575 1075 5100
+	1075 5100 775  5100
+Connection ~ 775  5100
+Wire Wire Line
+	775  5100 775  7175
+Text GLabel 8550 3800 0    50   Input ~ 0
+X0
+Wire Wire Line
+	8550 3800 8600 3800
+Wire Wire Line
+	2375 1975 4950 1975
+Text GLabel 4475 2475 0    50   Input ~ 0
+X0
+Wire Wire Line
+	4475 2475 4550 2475
+Wire Wire Line
+	3250 2625 6400 2625
+Text GLabel 5000 3125 0    50   Input ~ 0
+X2
+Wire Wire Line
+	5000 3125 5100 3125
+Wire Wire Line
+	2350 3350 5875 3350
+Text GLabel 4400 3800 0    50   Input ~ 0
+X1
+Wire Wire Line
+	1150 1275 1150 1875
+Wire Wire Line
+	1150 1275 3200 1275
+Text GLabel 1400 1875 0    50   Input ~ 0
+X0
+Wire Wire Line
+	1400 1875 1475 1875
+$Comp
+L ajm:Touchpad_qt TP3
+U 1 1 664ABAAE
+P 1925 2800
+F 0 "TP3" H 2000 2865 50  0000 C CNN
+F 1 "Touchpad_qt" H 2000 2774 50  0000 C CNN
+F 2 "ajm_kicad:qt_touch_12_x_12" H 1925 2800 50  0001 C CNN
+F 3 "" H 1925 2800 50  0001 C CNN
+	1    1925 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1525 3050 1375 3050
+Connection ~ 1375 3050
+Wire Wire Line
+	1375 3050 1375 3775
 $EndSCHEMATC

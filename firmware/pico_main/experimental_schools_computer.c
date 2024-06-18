@@ -50,6 +50,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
+int status[7];
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Tests
@@ -4928,22 +4930,178 @@ void drive_fsms(void)
 //  Key        X   Y   Code
 //  -----------------------
 //
-//  KI RESET   0   4    4
-//  A          3   0   27
-//  B          2   0   19
-//  C          1   4   12
-//  0
-//  1
-//  2
-//  3
-//  4
-//  5
-//  6
-//  7
-//  8
-//  9
-//  RUN
-//  STOP       2   4
+//  KI RESET   0   4    32
+//  A          0   0    0      ****               Was  3   0
+//  B          2   0    2
+//  C          1   4    33
+//  0          0   1    8      (((((               Was 4   1 
+//  1          0   2   16     ====                Was 6   2
+//  2          6   2   22     ====
+//  3          6   1
+//  4          2   2          !!!!                Was 5 2
+//  5          5   2          !!!!
+//  6          5   1
+//  7          1   2   10        $$$$$              Was 4  2
+//  8          4   2           $$$$$
+//  9          4   1           (((((((
+//  RUN        3   0    3        ****
+//  STOP       2   4   36
+//  RELOAD     1   5
+//  CHECK      2   5
+//  DUMP       3   5
+//  LOAD IAR   0   3   24  +++++                    Was 7  3
+//  LOAD ADDR  7   3       +++++
+//  LOAD STORE 6   3
+//  DECR ADDR  4   3        ------                  Was 5   3
+//  INCR ADDR  5   3        ------
+//  NORM RESET 4   3
+//  CLEAR      3   2    19   &&&&&                    Was 7   2
+//  DOT        7   1
+//  MINUS      7   2       &&&&&
+//
+////////////////////////////////////////////////////////////////////////////////
+
+typedef struct _QT_KEYS
+{
+  char *name;
+  int x;
+  int y;
+} QT_KEYS;
+
+QT_KEYS qt_keycode[] =
+  {
+   {"KI RESET   ", 0,   4},
+   {"A          ", 0,   0},
+   {"B          ", 2,   0},
+   {"C          ", 1,   4},
+   {"0          ", 0,   1},
+   {"1          ", 0,   2},
+   {"2          ", 6,   2},
+   {"3          ", 6,   1},
+   {"4          ", 2,   2},
+   {"5          ", 5,   2},
+   {"6          ", 5,   1},
+   {"7          ", 1,   2},
+   {"8          ", 4,   2},
+   {"9          ", 4,   1},
+   {"RUN        ", 3,   0},
+   {"STOP       ", 2,   4},
+   {"RELOAD     ", 1,   5},
+   {"CHECK      ", 2,   5},
+   {"DUMP       ", 3,   5},
+   {"LOAD IAR   ", 0,   3},
+   {"LOAD ADDR  ", 7,   3},
+   {"LOAD STORE ", 6,   3},
+   {"DECR ADDR  ", 4,   3},
+   {"INCR ADDR  ", 5,   3},
+   {"NORM RESET ", 4,   3},
+   {"CLEAR      ", 3,   2},
+   {"DOT        ", 7,   1},
+   {"MINUS      ", 7,   2},
+  };
+
+#define NUM_QT_KEYS (sizeof(qt_keycode)/sizeof(QT_KEYS))
+
+char *qt_key_name(int code)
+{
+  for(int i=0; i<NUM_QT_KEYS;i++)
+    {
+      //printf("\n%d: %d  %s", i, ((qt_keycode[i].x)+8*(qt_keycode[i].y)), qt_keycode[i].name);
+      if( ((qt_keycode[i].x)+8*(qt_keycode[i].y)) == code )
+      {
+	return(qt_keycode[i].name);
+      }	
+    }
+
+return("????");
+}
+
+// 16 bits crc calculation. Initial crc entry value must be 0.
+// The message is not augmented with 'zero' bits.
+// polynomial = X16 + X12 + X5 + 1
+// data is an 8 bit number, unsigned
+// crc is a 16 bit number, unsigned
+// repeat this function for each data block byte, folding the result
+// back into the call parameter crc
+
+uint16_t sixteen_bit_crc(unsigned long crc, unsigned char data)
+{
+  unsigned char index;  // shift counter
+  crc ^= (uint16_t)(data) << 8;
+  index = 8;
+
+  do
+    // loop 8 times
+    {
+      if(crc & 0x8000)
+	{
+	  crc= (crc << 1) ^ 0x1021;
+	}
+      else
+	{
+	  crc= crc << 1;
+	}
+    }
+  while(--index);
+
+  return crc;
+}
+
+int get_byte(void)
+{
+  while( !uart_is_readable(uart0) )
+    {
+    }
+  
+  return(uart_getc(uart0));
+}
+
+#define SETUPS_BLOCK_DATA_LEN   350-2
+#define SETUPS_BLOCK_LEN 350
+
+int setups_block[SETUPS_BLOCK_LEN];
+
+void dump_setups_block(void)
+{
+  uint16_t crc = 0L;
+  
+  for(int i=0; i<SETUPS_BLOCK_LEN; i++)
+    {
+      setups_block[i] = get_byte();      
+    }
+
+  for(int i=0; i<SETUPS_BLOCK_LEN; i++)
+    {
+      if( (i %16) == 0 )
+	{
+	  printf("\n%04X: ", i);
+	}
+      
+      printf("%02X ", setups_block[i]);
+
+      if( i < (SETUPS_BLOCK_LEN - 2))
+	{
+	  crc = sixteen_bit_crc(crc, setups_block[i]);
+	}
+    }
+
+  printf("\nCRC= %04lX\n", crc);
+}
+
+
+void check_status(void)
+{
+
+  
+  uart_putc(uart0, 0x06);
+  printf("\n");
+  
+  for(int i=0; i<7; i++)
+    {
+      status[i] = get_byte();
+      printf("%02X ", status[i]);
+    }
+}
 
 void cli_qt_debug(void)
 {
@@ -5007,7 +5165,7 @@ void cli_qt_debug(void)
 		    {
 		      if( keymap[i] & (1<<j) )
 			{
-			  printf("%d  ", i*8+j);
+			  printf("%s (%d)  ", qt_key_name(i*8+j), i*8+j);
 			}
 		    }
 		}
@@ -5037,6 +5195,11 @@ void cli_qt_debug(void)
 	      printf("\nCal All");
 	      uart_putc(uart0, 0x03);
 	      uart_putc(uart0, 0x03);
+	      do
+		{
+		  check_status();
+		}
+	      while(status[0] & 0x2);
 	      break;
 
 	    case 'L':
@@ -5044,6 +5207,7 @@ void cli_qt_debug(void)
 	      printf("\nLow Level Cal and Offset");
 	      uart_putc(uart0, 0x02);
 	      uart_putc(uart0, 0x02);
+	      check_status();
 	      break;
 
 	    case 'O':
@@ -5067,6 +5231,8 @@ void cli_qt_debug(void)
 	    case 'd':
 	      printf("\nDump Setups Block");
 	      uart_putc(uart0, 0x0D);
+	      dump_setups_block();
+	      
 	      break;
 
 	    case 'r':
