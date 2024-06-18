@@ -51,6 +51,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 int status[7];
+int kbd_scan_code = 0;
+
+#define CHAR_MS_DELAY 20
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -220,6 +223,7 @@ SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
 void register_assign_register(ESC_STATE *s, int dest, int src);
 
 volatile uint32_t touch_key_raw = 0;
+int get_qt_key_code(void);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -464,7 +468,7 @@ int kbd_drv_i = 0;
 int kbd_sense = 0;
 int kbd_output_scan_code = 0;
 int kbd_last_output_scan_code = 0;
-int kbd_scan_code = 0;
+
 int kbd_last_scan_code = 0;
 int kbd_db_state = KBD_DB_STATE_IDLE;
 
@@ -561,6 +565,8 @@ int test_loop_count = 0;
 
 int test_res_i = 0;
 
+int last_token = TOK_NONE;
+
 // read scan code
 void kbd_read(ESC_STATE *s)
 {
@@ -586,8 +592,25 @@ void kbd_read(ESC_STATE *s)
 #endif
 
 #if ESC_TYPE_DESKTOP
-  if( 1 )
+
+  
+  // Get the keycode of the key currently pressed if there is one.
+  kbd_scan_code = get_qt_key_code();
+
+  if( kbd_scan_code == TOK_NONE )
     {
+      last_token = TOK_NONE;
+    }
+  
+  if( kbd_scan_code != TOK_NONE )
+    {
+      // Key pressed, new key?
+      if( kbd_scan_code != last_token )
+	{
+	  queue_token(kbd_scan_code);
+	}
+      
+      last_token = kbd_scan_code;
     }
 #endif
   else
@@ -4954,7 +4977,7 @@ void drive_fsms(void)
 //  LOAD STORE 6   3
 //  DECR ADDR  4   3        ------                  Was 5   3
 //  INCR ADDR  5   3        ------
-//  NORM RESET 4   3
+//  NORM RESET 0   3
 //  CLEAR      3   2    19   &&&&&                    Was 7   2
 //  DOT        7   1
 //  MINUS      7   2       &&&&&
@@ -4966,41 +4989,43 @@ typedef struct _QT_KEYS
   char *name;
   int x;
   int y;
+  int esc_token;
 } QT_KEYS;
 
 QT_KEYS qt_keycode[] =
   {
-   {"KI RESET   ", 0,   4},
-   {"A          ", 0,   0},
-   {"B          ", 2,   0},
-   {"C          ", 1,   4},
-   {"0          ", 0,   1},
-   {"1          ", 0,   2},
-   {"2          ", 6,   2},
-   {"3          ", 6,   1},
-   {"4          ", 2,   2},
-   {"5          ", 5,   2},
-   {"6          ", 5,   1},
-   {"7          ", 1,   2},
-   {"8          ", 4,   2},
-   {"9          ", 4,   1},
-   {"RUN        ", 3,   0},
-   {"STOP       ", 2,   4},
-   {"RELOAD     ", 1,   5},
-   {"CHECK      ", 2,   5},
-   {"DUMP       ", 3,   5},
-   {"LOAD IAR   ", 0,   3},
-   {"LOAD ADDR  ", 7,   3},
-   {"LOAD STORE ", 6,   3},
-   {"DECR ADDR  ", 4,   3},
-   {"INCR ADDR  ", 5,   3},
-   {"NORM RESET ", 4,   3},
-   {"CLEAR      ", 3,   2},
-   {"DOT        ", 7,   1},
-   {"MINUS      ", 7,   2},
+   {"KI RESET   ", 0,   4, TOK_KEY_KI_RESET},
+   {"A          ", 0,   0, TOK_KEY_A},
+   {"B          ", 2,   0, TOK_KEY_B},
+   {"C          ", 1,   4, TOK_KEY_C},
+   {"0          ", 0,   1, TOK_KEY_0},
+   {"1          ", 0,   2, TOK_KEY_1},
+   {"2          ", 6,   2, TOK_KEY_2},
+   {"3          ", 6,   1, TOK_KEY_3},
+   {"4          ", 2,   2, TOK_KEY_4},
+   {"5          ", 5,   2, TOK_KEY_5},
+   {"6          ", 5,   1, TOK_KEY_6},
+   {"7          ", 1,   2, TOK_KEY_7},
+   {"8          ", 4,   2, TOK_KEY_8},
+   {"9          ", 4,   1, TOK_KEY_9},
+   {"RUN        ", 3,   0, TOK_KEY_RUN},
+   {"STOP       ", 2,   4, TOK_KEY_STOP},
+   {"RELOAD     ", 1,   5, TOK_KEY_RELOAD},
+   {"CHECK      ", 2,   5, TOK_KEY_CHECK},
+   {"DUMP       ", 3,   5, TOK_KEY_DUMP},
+   {"LOAD IAR   ", 0,   3, TOK_KEY_LOAD_IAR},
+   {"LOAD ADDR  ", 7,   3, TOK_KEY_LOAD_ADDR},
+   {"LOAD STORE ", 6,   3, TOK_KEY_LOAD_STORE},
+   {"DECR ADDR  ", 4,   3, TOK_KEY_DECR_ADDR},
+   {"INCR ADDR  ", 5,   3, TOK_KEY_INCR_ADDR},
+   {"NORM RESET ", 2,   3, TOK_KEY_NORMAL_RESET},
+   {"CLEAR      ", 3,   2, TOK_KEY_CLEAR},
+   {"DOT        ", 7,   1, TOK_KEY_DOT},
+   {"MINUS      ", 7,   2, TOK_KEY_MINUS},
   };
 
 #define NUM_QT_KEYS (sizeof(qt_keycode)/sizeof(QT_KEYS))
+#define UNKNOWN_NAME "????"
 
 char *qt_key_name(int code)
 {
@@ -5013,7 +5038,32 @@ char *qt_key_name(int code)
       }	
     }
 
-return("????");
+return(UNKNOWN_NAME);
+}
+
+int qt_esc_code(int code)
+{
+  for(int i=0; i<NUM_QT_KEYS;i++)
+    {
+      if( ((qt_keycode[i].x)+8*(qt_keycode[i].y)) == code )
+	{
+	  return(qt_keycode[i].esc_token);
+      }	
+    }
+
+return(TOK_NONE);
+}
+
+int qt_key_used(int code)
+{
+  char *name = qt_key_name(code);
+
+  if( strcmp(name, UNKNOWN_NAME)==0 )
+    {
+      return(0);
+    }
+
+  return(1);
 }
 
 // 16 bits crc calculation. Initial crc entry value must be 0.
@@ -5088,11 +5138,78 @@ void dump_setups_block(void)
   printf("\nCRC= %04lX\n", crc);
 }
 
+// Setups block based on default, altered to match our keyboard
+
+uint8_t setups_block_esc[SETUPS_BLOCK_LEN] =
+  {
+   0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26,
+   0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26,
+   0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26,
+   0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+   0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+   0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+   0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52,
+   0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52,
+   0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52,
+   0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,
+   0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,
+   0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,
+   0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66,
+   0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66,
+   0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66,
+   0x09, 0x01, 0x07, 0x07, 0x04, 0x00, 0x03, 0x00, 0x07, 0x00, 0x00, 0x00, 0x07, 0x06, 0x05, 0x00,
+   0x04, 0x00, 0x00, 0x00, 0x07, 0x04, 0x05, 0x00, 0x08, 0x00, 0x00, 0x00, 0x0E, 0x07, 0x08, 0x00,
+   0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+   0x12, 0x04, 0x0A, 0x0D, 0x03, 0x03, 0x03, 0x00, 0x10, 0x00, 0x00, 0x00, 0x09, 0x08, 0x0A, 0x00,
+   0x08, 0x00, 0x00, 0x00, 0x0E, 0x08, 0x0C, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x1A, 0x0F, 0x0F, 0x00,
+   0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+   0x01, 0x01, 0x64, 0x70, 0x20, 0x0F, 0x00, 0x18, 0x1E, 0x24, 0x30, 0x00, 0x11, 0x50,
+  };
+
+void write_setups_block(uint8_t *block)
+{
+  // Copy the setups block to the buffer
+  for(int i=0; i<SETUPS_BLOCK_LEN; i++)
+    {
+      setups_block[i] = *(block++);
+    }
+
+  // Remove unused keys
+  for(int i = 96; i<96+48; i++)
+    {
+      if( !qt_key_used(i-96) )
+	{
+	  // Clear lower nibble
+	  setups_block[i] &= 0xF0;
+	}
+    }
+  
+  // Calculate crc
+  uint16_t crc = 0;
+  
+  for(int i=0; i<SETUPS_BLOCK_LEN-2; i++)
+    {
+      crc = sixteen_bit_crc(crc, setups_block[i]);
+    }
+
+  setups_block[SETUPS_BLOCK_LEN-1] = crc >> 8;
+  setups_block[SETUPS_BLOCK_LEN-2] = crc &  0xFF;
+
+  // Write the data
+  uart_putc(uart0, 0x01);
+  sleep_ms(CHAR_MS_DELAY);
+  uart_putc(uart0, 0x01);
+  sleep_ms(CHAR_MS_DELAY);
+  
+  for(int i=0; i<SETUPS_BLOCK_LEN; i++)
+    {
+      uart_putc(uart0, setups_block[i]);
+      sleep_ms(CHAR_MS_DELAY);
+    }
+}
 
 void check_status(void)
 {
-
-  
   uart_putc(uart0, 0x06);
   printf("\n");
   
@@ -5161,7 +5278,7 @@ void cli_qt_debug(void)
 	      // See what keys are pressed
 	      for(int i = 0; i<6; i++)
 		{
-		  for(int j=0; j<7; j++)
+		  for(int j=0; j<8; j++)
 		    {
 		      if( keymap[i] & (1<<j) )
 			{
@@ -5235,6 +5352,11 @@ void cli_qt_debug(void)
 	      
 	      break;
 
+	    case 'W':
+	      printf("\nWrite setups Block");
+	      write_setups_block(&(setups_block_esc[0]));
+	      break;
+
 	    case 'r':
 	      // report all keys
 	      printf("\nReport All Keys");
@@ -5249,7 +5371,58 @@ void cli_qt_debug(void)
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// QT Touch keyboard keycode determination
+//
 
+int get_qt_key_code(void)
+{
+  int keymap[8];
+  
+  // Send command and read 8 bytes back
+  uart_putc(uart0, 0x07);
+  
+  for(int i = 0; i<8; i++)
+    {
+      while( !uart_is_readable(uart0) )
+	{
+	}
+      
+      keymap[i] = uart_getc(uart0);
+      sleep_ms(1);
+    }
+  
+  // Any keys pressed?
+  int t = 0;
+  for(int i = 0; i<6; i++)
+    {
+      t += keymap[i];
+    }
+  
+  if( t > 0 )
+    {
+
+      // See what keys are pressed
+      for(int i = 0; i<6; i++)
+	{
+	  for(int j=0; j<8; j++)
+	    {
+	      if( keymap[i] & (1<<j) )
+		{
+		  // We now know what the QT  key code is, now look that up
+		  // and find the appropriate ESc code
+		  return(qt_esc_code(i*8+j));
+#if DEBUG_QT_KB
+		  printf("%s (%d)  ", qt_key_name(i*8+j), i*8+j);
+#endif		  
+		}
+	    }
+	}
+    }
+  return(0);
+}
+  
 ////////////////////////////////////////////////////////////////////////////////
 
 void cli_boot_mass(void)
@@ -10178,6 +10351,10 @@ int main(void)
       
 #if ESC_TYPE_SMALL      
       kbd_scan(&esc_state);
+#endif
+
+#if ESC_TYPE_DESKTOP
+      kbd_read(&esc_state);
 #endif
       
       drive_fsms();
