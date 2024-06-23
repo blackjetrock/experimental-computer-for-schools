@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/experimental_schools_computer.dir/esc_desktop_display.c.obj"
+  "CMakeFiles/experimental_schools_computer.dir/esc_desktop_display.c.obj.d"
   "CMakeFiles/experimental_schools_computer.dir/esc_fsms.c.obj"
   "CMakeFiles/experimental_schools_computer.dir/esc_fsms.c.obj.d"
   "CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.obj"

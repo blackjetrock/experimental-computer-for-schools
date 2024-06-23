@@ -1,7 +1,7 @@
 QT Touch keyboard Errata
 ========================
 
-1. CS_N should be CS_N_3V3
+
 2. TX and RX are swapped on the jumpers. Not a problem.
 3. CS_N and CS_N_3V3 are different signals
 4. SS on QT IC is not connected, so internal pull-up is used.
@@ -14,4 +14,5 @@ QT Touch keyboard Errata
 11. LOAD IAR, LOAD ADDR
 12. DECR ADDR, INC ADDR
 13. CLEAR, MINUS
+14. C16 footprint too small for 100uF
 

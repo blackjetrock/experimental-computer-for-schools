@@ -36,6 +36,7 @@
 #define DEBUG_STOP_LOOP while(1) {}
 
 // Some logic to analyse:
+
 #include "hardware/structs/pwm.h"
 #include "pico/multicore.h"
 #include "pico/bootrom.h"
@@ -47,6 +48,7 @@
 #include "esc_fsms.h"
 
 #include "esc.h"
+#include "esc_desktop_display.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -559,6 +561,11 @@ void kbd_queue_key(int k)
 }
 
 #endif
+
+void cli_display_test(void)
+{
+  escdd_main();
+}
 
 int test_loop_count = 0;
 #define TEST_EVERY_N_LOOPS  10
@@ -5138,6 +5145,20 @@ void dump_setups_block(void)
   printf("\nCRC= %04lX\n", crc);
 }
 
+void wait_for_uart_byte(int byte)
+{
+  printf("\nWaiting for QT byte");
+  
+  while( !uart_is_readable(uart0) )
+    {
+    }
+  
+  char c = uart_getc(uart0);
+  
+  printf("\nReceived QT RX:%d 0x%02X", c, c);
+  
+}
+
 // Setups block based on default, altered to match our keyboard
 
 uint8_t setups_block_esc[SETUPS_BLOCK_LEN] =
@@ -5206,6 +5227,13 @@ void write_setups_block(uint8_t *block)
       uart_putc(uart0, setups_block[i]);
       sleep_ms(CHAR_MS_DELAY);
     }
+
+  // Wait for two 0xFE bytes from the keyboard
+  uart_putc(uart0, 0x02);
+  uart_putc(uart0, 0x02);
+  wait_for_uart_byte(0xFE);
+  wait_for_uart_byte(0xFE);
+
 }
 
 void check_status(void)
@@ -9407,6 +9435,16 @@ SERIAL_COMMAND serial_cmds[] =
     "Qt Touch Debug",
     cli_qt_debug,
    },
+   {
+    'L',
+    "Desktop display test",
+    cli_display_test,
+   },
+   {
+    '/',
+    "Desktop display CLI",
+    cli_escdd,
+   },
 #endif   
   };
 
@@ -9990,6 +10028,11 @@ void update_computer_display(ESC_STATE *es)
   strcat(dsp, tmp);
 
 #endif
+
+#if ESC_TYPE_DESKTOP
+  lcd_cls(0);
+  lcd_cls(1);
+#endif
   
   // Display the lower four lines that have been set up
   for(int i=1; i<=6; i++)
@@ -10004,6 +10047,10 @@ void update_computer_display(ESC_STATE *es)
       sprintf(tmp, "\n%d: %s", i, &(display_line[i-1][0]));
       strcat(dsp, tmp);
 #endif
+      
+#if ESC_TYPE_DESKTOP
+      show_char(0, (i-1), &(display_line[i-1][0]));
+#endif
     }
   
   // Now update the display output device(s)
@@ -10014,17 +10061,31 @@ void update_reload_display(ESC_STATE *es)
 {
   int oledy = 0;
   char line[MAX_LINE+2];
-  
+
+#if OLED_ON
   oled_clear_display(&oled0);
+#endif
+
+#if ESC_TYPE_DESKTOP
+  lcd_cls(0);
+  lcd_cls(1);
+#endif
   
   file_partial_list(ESC_DIR, es->reload_file_first, 6);
   
   for(int i=0; i<FILE_LIST_DATA_LINES_MAX; i++)
     {
+#if OLED_ON
       oled_set_xy(&oled0, 0, oledy);
-      oledy+=8;
       sprintf(line, "%c%s", (i==0)?'>':' ', file_list_data[i]);
       oled_display_string(&oled0, line);
+#endif
+      
+#if ESC_TYPE_DESKTOP
+      show_char(0, oledy, &(display_line[i-1][0]));
+#endif
+      
+      oledy+=8;
     }
 }
 
@@ -10248,6 +10309,8 @@ int main(void)
 
 #if ESC_TYPE_DESKTOP
   printf("\nDesktop ESC");
+  escdd_display_start();
+  
 #endif
 
 #if ESC_KBD_VOLT_TOUCH
@@ -10256,10 +10319,21 @@ int main(void)
 
 #if ESC_KBD_QT
   printf("\nQT Touch Keyboard");
+
+
+  // Set up the touch keyboard. This should be stored in the IC
+  // but it doesn't, so we set it up and then calibrate every time
+  // we start up.
+
+  printf("\nWriting setups block...");
+  
+  write_setups_block(&(setups_block_esc[0]));
+  printf("done.");
 #endif
   
   // Set up GPIOs
   set_kbd_gpios();
+
   
 #if OLED_ON
   // Set up OLED display
@@ -10323,7 +10397,18 @@ int main(void)
   oled_display_string(&oled0, "Computer");
 #endif
 
+#if ESC_TYPE_DESKTOP
+  // Overall loop, which contains the polling loop and the menu loop
+  lcd_cls(0);
+  lcd_cls(1);
 
+  show_char(12, 10, "Experimental");
+  show_char(12, 12, "  School's");
+  show_char(12, 14, "  Computer");
+  
+
+#endif
+  
 #ifdef ESC_USE_WIFI
   printf("\n** Wifi Enabled **");
 	 

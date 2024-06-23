@@ -1784,7 +1784,7 @@ CMakeFiles/experimental_schools_computer.dir/all: pico_extras/src/rp2_common/pic
 
 # Build rule for subdir invocation for target.
 CMakeFiles/experimental_schools_computer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 93
+	$(CMAKE_COMMAND) -E cmake_progress_start /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 94
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/experimental_schools_computer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 0
 .PHONY : CMakeFiles/experimental_schools_computer.dir/rule
@@ -1805,12 +1805,12 @@ CMakeFiles/experimental_schools_computer.dir/clean:
 pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/all: pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default.dir/all
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/build.make pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/depend
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/build.make pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num=16 "Built target bs2_default_padded_checksummed_asm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num=15,16 "Built target bs2_default_padded_checksummed_asm"
 .PHONY : pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/all
 
 # Build rule for subdir invocation for target.
 pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 0
 .PHONY : pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/rule
@@ -1831,12 +1831,12 @@ pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_as
 pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/all: pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default.dir/all
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/build.make pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/depend
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/build.make pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num=15 "Built target bs2_default_bin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num= "Built target bs2_default_bin"
 .PHONY : pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/all
 
 # Build rule for subdir invocation for target.
 pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 0
 .PHONY : pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_bin.dir/rule

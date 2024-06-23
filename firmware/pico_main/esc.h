@@ -218,6 +218,8 @@ char *get_display(void);
 int wifi_main(void);
 void clear_keyboard_register(ESC_STATE *s);
 void kbd_scan(ESC_STATE *s);
+void set_gpio_output(const int gpio);
+void escdd_main(void);
 
 ////////////////////////////////////////////////////////////////////////////////
 

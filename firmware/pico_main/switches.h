@@ -123,6 +123,7 @@
 #define ESC_TYPE_SMALL         0
 #define ESC_TYPE_DESKTOP       1
 #define ESC_KBD_VOLT_TOUCH     0
+#define ESC_KBD_QT             0
 
 #define OLED_ON                1
 #define SD_ON                  1

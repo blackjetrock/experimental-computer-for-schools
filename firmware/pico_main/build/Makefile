@@ -298,6 +298,30 @@ pico_scanvideo_dpi_timing_pio_h/fast:
 	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build.make pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build
 .PHONY : pico_scanvideo_dpi_timing_pio_h/fast
 
+esc_desktop_display.obj: esc_desktop_display.c.obj
+.PHONY : esc_desktop_display.obj
+
+# target to build an object file
+esc_desktop_display.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/esc_desktop_display.c.obj
+.PHONY : esc_desktop_display.c.obj
+
+esc_desktop_display.i: esc_desktop_display.c.i
+.PHONY : esc_desktop_display.i
+
+# target to preprocess a source file
+esc_desktop_display.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/esc_desktop_display.c.i
+.PHONY : esc_desktop_display.c.i
+
+esc_desktop_display.s: esc_desktop_display.c.s
+.PHONY : esc_desktop_display.s
+
+# target to generate assembly for a file
+esc_desktop_display.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/esc_desktop_display.c.s
+.PHONY : esc_desktop_display.c.s
+
 esc_fsms.obj: esc_fsms.c.obj
 .PHONY : esc_fsms.obj
 
@@ -2448,6 +2472,9 @@ help:
 	@echo "... pico_sd_card_sd_card_pio_h"
 	@echo "... bs2_default"
 	@echo "... experimental_schools_computer"
+	@echo "... esc_desktop_display.obj"
+	@echo "... esc_desktop_display.i"
+	@echo "... esc_desktop_display.s"
 	@echo "... esc_fsms.obj"
 	@echo "... esc_fsms.i"
 	@echo "... esc_fsms.s"

@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 3
 Title "Experimental Schools Computer Desktop Replica"
-Date "2024-05-27"
-Rev ""
+Date "2024-06-21"
+Rev "2.0"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -398,12 +398,12 @@ Text GLabel 4900 3225 0    50   Input ~ 0
 RD_N_3V3
 Text GLabel 4900 3325 0    50   Input ~ 0
 WR_N_3V3
-Text GLabel 6625 2725 2    50   Input ~ 0
+Text GLabel 4900 3625 0    50   Input ~ 0
 A0_3V3
 Text GLabel 6625 2825 2    50   Input ~ 0
 RESET_N_3V3
 Text GLabel 4500 6150 0    50   Input ~ 0
-CS_N
+CS_N_3V3
 Wire Wire Line
 	4900 3225 5225 3225
 Wire Wire Line
@@ -464,7 +464,7 @@ L Device:R_POT RV1
 U 1 1 665B4DE6
 P 3175 3550
 F 0 "RV1" V 3060 3550 50  0000 C CNN
-F 1 "R_POT" V 2969 3550 50  0000 C CNN
+F 1 "20k" V 2969 3550 50  0000 C CNN
 F 2 "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" H 3175 3550 50  0001 C CNN
 F 3 "~" H 3175 3550 50  0001 C CNN
 	1    3175 3550
@@ -620,8 +620,6 @@ Text GLabel 1225 5925 2    50   Input ~ 0
 MOSI_3V3
 Text GLabel 1225 6025 2    50   Input ~ 0
 SCK_3V3
-Text GLabel 1225 6125 2    50   Input ~ 0
-MISO_3V3
 Text GLabel 1225 6225 2    50   Input ~ 0
 DBG_DATA_3V3
 Text GLabel 1225 6325 2    50   Input ~ 0
@@ -631,15 +629,13 @@ WS_3V3
 Text Notes 4875 5425 0    50   ~ 0
 We have a shortage of GPIOs. If CS for the LCD is not asserted\nthen we can drive thetouch keyboard IC with the data lines. \nWhen the touch IC isnot selected then it will ignore those \nlines as we drive the LCD.\n
 Text Notes 2075 6125 0    50   ~ 0
-Touch is controlled by either SPI or UART.
+Touch is controlled by UART.
 Text GLabel 4500 6250 0    50   Input ~ 0
 RX_3V3
 Text GLabel 4525 6650 0    50   Input ~ 0
 TX_3V3
 Text GLabel 6625 3125 2    50   Input ~ 0
 DRDY_3V3
-Text GLabel 4900 3625 0    50   Input ~ 0
-MOSI_3V3
 Text GLabel 4900 3525 0    50   Input ~ 0
 SCK_3V3
 Text GLabel 4525 6550 0    50   Input ~ 0
@@ -779,4 +775,103 @@ Wire Wire Line
 	5350 1300 4925 1300
 Wire Wire Line
 	4925 1300 4925 1125
+$Comp
+L Device:C_Small C3
+U 1 1 667613DA
+P 1650 4225
+F 0 "C3" H 1742 4271 50  0000 L CNN
+F 1 "150pF" H 1742 4180 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1650 4225 50  0001 C CNN
+F 3 "~" H 1650 4225 50  0001 C CNN
+	1    1650 4225
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 66762B83
+P 2150 4500
+AR Path="/63690FA3/66762B83" Ref="#PWR?"  Part="1" 
+AR Path="/66762B83" Ref="#PWR0107"  Part="1" 
+F 0 "#PWR0107" H 2150 4250 50  0001 C CNN
+F 1 "GND" H 2155 4327 50  0000 C CNN
+F 2 "" H 2150 4500 50  0001 C CNN
+F 3 "" H 2150 4500 50  0001 C CNN
+	1    2150 4500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 4325 1650 4425
+Wire Wire Line
+	1650 4425 2150 4425
+Wire Wire Line
+	2150 4425 2150 4325
+Wire Wire Line
+	2150 4425 2150 4500
+Connection ~ 2150 4425
+Wire Wire Line
+	2600 4325 2600 4425
+Wire Wire Line
+	2600 4425 2150 4425
+Wire Wire Line
+	2600 4425 3075 4425
+Wire Wire Line
+	3075 4425 3075 4325
+Connection ~ 2600 4425
+Text GLabel 3100 3975 2    50   Input ~ 0
+CS_N_5V
+Wire Wire Line
+	3100 3975 3075 3975
+Wire Wire Line
+	3075 3975 3075 4125
+Text GLabel 2650 3975 2    50   Input ~ 0
+WR_N_5V
+Wire Wire Line
+	2650 3975 2600 3975
+Wire Wire Line
+	2600 3975 2600 4125
+Text GLabel 1600 3975 0    50   Input ~ 0
+RD_N_5V
+Wire Wire Line
+	1650 4125 1650 3975
+Wire Wire Line
+	1650 3975 1600 3975
+Text GLabel 2075 3825 0    50   Input ~ 0
+RESET_N_5V
+Wire Wire Line
+	2075 3825 2150 3825
+Wire Wire Line
+	2150 3825 2150 4125
+$Comp
+L Device:C_Small C4
+U 1 1 667A0F0B
+P 2150 4225
+F 0 "C4" H 2242 4271 50  0000 L CNN
+F 1 "150pF" H 2242 4180 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 2150 4225 50  0001 C CNN
+F 3 "~" H 2150 4225 50  0001 C CNN
+	1    2150 4225
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C5
+U 1 1 667A5D6B
+P 2600 4225
+F 0 "C5" H 2692 4271 50  0000 L CNN
+F 1 "150pF" H 2692 4180 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 2600 4225 50  0001 C CNN
+F 3 "~" H 2600 4225 50  0001 C CNN
+	1    2600 4225
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C6
+U 1 1 667AABBB
+P 3075 4225
+F 0 "C6" H 3167 4271 50  0000 L CNN
+F 1 "150pF" H 3167 4180 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 3075 4225 50  0001 C CNN
+F 3 "~" H 3075 4225 50  0001 C CNN
+	1    3075 4225
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

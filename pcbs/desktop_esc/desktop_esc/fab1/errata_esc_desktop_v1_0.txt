@@ -1,0 +1,8 @@
+ESC Desktop V1.0 Errata
+
+0. CS_N should be CS_N_3V3   DONE
+1. AO signal goes to ADC ref, which isn't a GPIO.   DONE GPIO11
+2. Add 150pF caps to wr,rd,cs,cd Not needed when PCB mounted on back of LCD, added anyway.
+
+3. Rotate the display connector by 180 degrees so it can be mounte don th ebak of the display. Reduces corruption.
+

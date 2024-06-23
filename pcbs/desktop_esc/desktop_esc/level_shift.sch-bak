@@ -480,17 +480,6 @@ Wire Wire Line
 Wire Wire Line
 	6900 4625 6900 4475
 $Comp
-L power:+5V #PWR0107
-U 1 1 6671749A
-P -500 1550
-F 0 "#PWR0107" H -500 1400 50  0001 C CNN
-F 1 "+5V" H -485 1723 50  0000 C CNN
-F 2 "" H -500 1550 50  0001 C CNN
-F 3 "" H -500 1550 50  0001 C CNN
-	1    -500 1550
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+5V #PWR0109
 U 1 1 66717F4C
 P 1625 1425

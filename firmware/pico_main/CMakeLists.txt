@@ -33,12 +33,13 @@ add_subdirectory(/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/Fat
 
 add_executable(experimental_schools_computer
   experimental_schools_computer.c
+  esc_desktop_display.c
   fsms.c
   esc_fsms.c
   match_token.c
   oled.c
   sdcard.c
-
+  
   )
 
 #add_library( gcc111libbid_hard UNKNOWN IMPORTED)

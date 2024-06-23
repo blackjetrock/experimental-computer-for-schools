@@ -141,6 +141,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_desktop_display.c" "CMakeFiles/experimental_schools_computer.dir/esc_desktop_display.c.obj" "gcc" "CMakeFiles/experimental_schools_computer.dir/esc_desktop_display.c.obj.d"
   "/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.c" "CMakeFiles/experimental_schools_computer.dir/esc_fsms.c.obj" "gcc" "CMakeFiles/experimental_schools_computer.dir/esc_fsms.c.obj.d"
   "/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c" "CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.obj" "gcc" "CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.obj.d"
   "/tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.c" "CMakeFiles/experimental_schools_computer.dir/fsms.c.obj" "gcc" "CMakeFiles/experimental_schools_computer.dir/fsms.c.obj.d"
