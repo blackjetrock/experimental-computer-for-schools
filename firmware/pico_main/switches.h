@@ -120,8 +120,8 @@
 // drive a capacitive touch keyboard and a large LCD screen. There is no
 // keyboard or display on this PCB.
 
-#define ESC_TYPE_SMALL         1
-#define ESC_TYPE_DESKTOP       0
+#define ESC_TYPE_SMALL         0
+#define ESC_TYPE_DESKTOP       1
 
 #define ESC_KBD_VOLT_TOUCH     0
 #define ESC_KBD_QT             0
