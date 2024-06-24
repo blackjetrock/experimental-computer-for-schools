@@ -4378,6 +4378,20 @@ void state_esc_minus(FSM_DATA *fs, TOKEN tok)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+void state_esc_clear(FSM_DATA *fs, TOKEN tok)
+{
+  ESC_STATE *s;
+
+  s = (ESC_STATE *)fs;
+
+  clear_keyboard_register(s);
+  
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
+
+  // Re-display
+  s->update_display = 1;
+}
+
 void state_esc_normal_reset(FSM_DATA *fs, TOKEN tok)
 {
   ESC_STATE *s;
@@ -4889,6 +4903,7 @@ STATE esc_table[ ] =
      {TOK_KEY_STOP,         STATE_ESC_INIT,   state_esc_stop},
      {TOK_KEY_DUMP,         STATE_ESC_INIT,   state_esc_dump},
      {TOK_KEY_RELOAD,       STATE_ESC_RELOAD, state_esc_reload},
+     {TOK_KEY_CLEAR,        STATE_ESC_INIT,   state_esc_clear},
      
      // Execute code at full speed
      {TOK_NO_TOK,           STATE_ESC_INIT,  state_esc_execute},
@@ -10253,6 +10268,16 @@ void core1_main(void)
 #endif
 
 #if ESC_TYPE_DESKTOP
+void core1_main(void)
+{
+  while(1)
+    {
+
+    }
+}
+#endif
+
+#if ESC_TYPE_SMALL
 void core1_main(void)
 {
   while(1)

@@ -18,7 +18,7 @@ typedef struct _TRANSITION
   FSM_FNPTR fn;
 } TRANSITION;
 
-#define NUM_TRANS  20
+#define NUM_TRANS  21
 
 #define _STATE(XX)  XX, (char *) #XX
   
