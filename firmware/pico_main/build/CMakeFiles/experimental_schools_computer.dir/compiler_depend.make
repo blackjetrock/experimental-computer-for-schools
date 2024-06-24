@@ -117,7 +117,8 @@ CMakeFiles/experimental_schools_computer.dir/esc_desktop_display.c.obj: ../esc_d
   /tree/downloaded_tools/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
   ../fsms.h \
   ../esc_fsms.h \
-  ../esc.h
+  ../esc.h \
+  ../esc_desktop_display.h
 
 CMakeFiles/experimental_schools_computer.dir/esc_fsms.c.obj: ../esc_fsms.c \
   ../fsms.h \

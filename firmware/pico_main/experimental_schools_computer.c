@@ -10049,7 +10049,9 @@ void update_computer_display(ESC_STATE *es)
 #endif
       
 #if ESC_TYPE_DESKTOP
-      show_char(0, (i-1), &(display_line[i-1][0]));
+      escdd_text(0, (i-1)*PIXEL_SCALE*9, &(display_line[i-1][0]), strlen(&(display_line[i-1][0])));
+
+      //      show_char(0, (i-1), &(display_line[i-1][0]));
 #endif
     }
   
