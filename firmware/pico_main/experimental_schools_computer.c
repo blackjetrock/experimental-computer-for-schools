@@ -4324,7 +4324,7 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
       
   s->keyboard_register = kbr;
   
-  display_on_line(s, DISPLAY_UPDATE, 1, "%02s   %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
   
   s->update_display = 1;
 }

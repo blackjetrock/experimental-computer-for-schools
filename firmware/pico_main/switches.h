@@ -131,5 +131,6 @@
 #define WARNINGS_ON            0
 
 
-#define PIXEL_SCALE 2
+#define PIXEL_SCALE  3
+#define PIXEL_SCALE2 2
 
