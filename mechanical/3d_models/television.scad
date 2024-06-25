@@ -179,6 +179,51 @@ slot_v_spacing = slot_y*2;
 line_z = 1.0;
 line_x = 0.5;
 
+knob_d1 = slot_x*2;
+knob_d2 = knob_d1 *1/3;
+knob_h1 = 2.5;
+knob_h2 = knob_h1*2;
+tsz = 20;
+tz = 0.5;
+
+module k_text(a)
+{
+    translate([-tsz/2, -tsz/2, 30])
+    linear_extrude(tz)
+    text(a, size = tsz);
+}
+txt = [
+   [  "1"],
+   [  "2"],
+   [  "3"],
+   [  "4"],
+   [  "5"],
+   [  "6"],
+   [  "7"],
+   [  "8"],
+   [  "9"],
+   [  "10"],
+   [  "11"],
+   [  "12"],
+ ];
+
+module knob()
+{
+
+translate([0, 0, knob_h1/2])    
+cylinder(d=knob_d1, h=knob_h1, center=true);
+translate([0, 0, knob_h1/2+knob_h2/2])    
+cylinder(d=knob_d2, h=knob_h2, center=true);
+
+for(rotz=[0:1:12])
+{    
+    translate([0, knob_d1*2/3,30])
+    rotate([0, 0, rotz*30])
+    translate([0, 0, knob_h1-tz+0.01])
+    k_text(txt[rotz]);
+}
+}
+
 module tv_rh_panel()
 {
      difference()
@@ -206,11 +251,30 @@ module tv_rh_panel()
 
       translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+rh_p_x/2, -15, rh_p_th/2+0.01])
       cube([rh_p_x, line_x, line_z], center=true);
+      
+           translate([-2.5, 45, 0.5])
+     cube([20, 5, 1], center=1);
+
      }
+     
+     translate([7, 0, 0])
+     knob();
+
+     translate([7, 20, 0])
+     knob();
+
+     translate([15, 40, 0])
+     cylinder(d=5, h=3, center=1);
+
+     translate([0, 37.5, 0])
+     cube([8, 5, 2], center=1);
+
+
 }
 
-lcd();
+//lcd();
 
 tv_front();
 translate([lcd_aa_x/2+rh_p_x/2+bez_x, 0, lcd_pcb_z+lcd_disp_z+bez_x-1.8])
 tv_rh_panel();
+
