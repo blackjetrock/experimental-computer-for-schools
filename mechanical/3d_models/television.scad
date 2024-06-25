@@ -143,6 +143,7 @@ slot_panel_xo = -14;
 slot_row_w = slot_x+2;
 slot_v_spacing = slot_y*2;
 line_z = 1.0;
+line_x = 0.5;
 
 module tv_rh_panel()
 {
@@ -163,12 +164,14 @@ module tv_rh_panel()
 		    cube([slot_x, slot_y, 100], center=true);
 	  }
       
-      translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2, 0, rh_p_th/2+0.01])
-      cube([1.0, 400, line_z], center=true);
+      translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+0.5, 0, rh_p_th/2+0.01])
+      cube([line_x, 400, line_z], center=true);
+
+      translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+slot_row_w, 22.5, rh_p_th/2+0.01])
+      cube([line_x, (lcd_disp_y+bez_t*2)/2+20, line_z], center=true);
 
       translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+rh_p_x/2, -15, rh_p_th/2+0.01])
-      cube([rh_p_x, 1.0, line_z], center=true);
-
+      cube([rh_p_x, line_x, line_z], center=true);
      }
 }
 
