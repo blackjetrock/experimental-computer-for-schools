@@ -126,6 +126,10 @@
 #define ESC_KBD_VOLT_TOUCH     0
 #define ESC_KBD_QT             0
 
+// Suppressed output has no leading zeros and no + sign.
+// This is closer to the original machine.
+
+#define SUPPRESSED_OUTPUT      0
 #define OLED_ON                1
 #define SD_ON                  1
 #define ERRORS_ON              0

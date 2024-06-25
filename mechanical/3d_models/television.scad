@@ -3,7 +3,7 @@
 //
 //
 
-show_front = 1;
+show_front = 0;
 show_rear  = 1;
 show_lcd = 0;
 

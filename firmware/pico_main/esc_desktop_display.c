@@ -40,7 +40,7 @@
 #include "esc_desktop_display.h"
 
 #define DELAY_LENGTH delay_length
-int delay_length = 5;
+int delay_length = 3;
 
 const int PIN_ESCDD_D0  = 0;
 const int PIN_ESCDD_D1  = 1;

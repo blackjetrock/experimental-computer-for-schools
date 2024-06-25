@@ -4351,7 +4351,7 @@ void state_esc_dot(FSM_DATA *fs, TOKEN tok)
   // Minus key will over-ride at the end of entry
   s->keyboard_register = STORE_SET_SIGN(s->keyboard_register, WORD_SIGN_PLUS);
 
-  sprintf(line, "%02s   %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
+  sprintf(line, "%02s %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
   display_on_line(s, 1, DISPLAY_UPDATE, line);
 
   s->update_display = 1;
@@ -4368,7 +4368,7 @@ void state_esc_minus(FSM_DATA *fs, TOKEN tok)
 
   s->keyboard_register = SET_SW_SIGN(s->keyboard_register, WORD_SIGN_MINUS);
 
-  sprintf(line, "%02s   %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
+  sprintf(line, "%02s %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
   display_on_line(s, 1, DISPLAY_UPDATE, line);
 
   s->update_display = 1;
@@ -9662,6 +9662,59 @@ char *display_instruction(SINGLE_WORD inst)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// Modify the dispolayed number to be in suppressed form.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+char *suppress_output(char *t)
+{
+  char *t1 = t;
+  int non_zero_seen = 0;
+  
+  // First, remove plus sign
+  for(;(*t)!='\0'; t++)
+    {
+      switch(*t)
+	{
+	case '+':
+	  *t = ' ';
+	  break;
+
+	case '0':
+	  if( !non_zero_seen )
+	    {
+	      for(char *p = t; p>=(t1+1); p--)
+		{
+		  *p = *(p-1);
+		}
+	      
+	      *t1 = ' ';
+	    }
+	  break;
+
+	case '1':
+	case '2':
+	case '3':
+	case '4':
+	case '5':
+	case '6':
+	case '7':
+	case '8':
+	case '9':
+	  non_zero_seen = 1;
+	  break;
+	}
+    }
+
+  if( strlen(t1)== 0 )
+    {
+      strcpy(t1, "0");
+    }
+  return(t1);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // Store can hold floating point or instruction
 //
 ////////////////////////////////////////////////////////////////////////////////
@@ -9723,6 +9776,12 @@ char *display_store_word(SINGLE_WORD w)
       break;
     }
 
+#if SUPPRESSED_OUTPUT
+  // Suppressed output has no + symbol or leading zeros. This is closer to the original machine.
+  suppress_output(result);
+  
+#endif
+  
   return(result);
 }
 
@@ -9988,14 +10047,14 @@ void update_computer_display(ESC_STATE *es)
   // Line 1
   //------------------------------------------------------------------------------
   
-  sprintf(tmp, "1: %02s   %8s",
+  sprintf(tmp, "1: %02s %8s",
 	  display_iar(es->iar),
 	  display_store_word(es->keyboard_register));
   strcat(dsp, tmp);
   
 #if OLED_ON
   oled_clear_display(&oled0);
-  sprintf(tmp, "%02s   %8s",
+  sprintf(tmp, "%02s %8s",
 	  display_iar(es->iar),
 	  display_store_word(es->keyboard_register));
   
@@ -10014,7 +10073,7 @@ void update_computer_display(ESC_STATE *es)
     }
   else
     {
-      sprintf(tmp, "\n2: %2s  %8s %c",
+      sprintf(tmp, "\n2: %2s %8s %c",
 	      display_iar(es->aux_iar),
 	      display_instruction(es->instruction_register),
 	      es->stage
@@ -10028,7 +10087,7 @@ void update_computer_display(ESC_STATE *es)
     }
   else
     {
-      sprintf(tmp, "%2s  %8s %c",
+      sprintf(tmp, "%2s %8s %c",
 	      display_iar(es->aux_iar),
 	      display_instruction(es->instruction_register),
 	      es->stage
