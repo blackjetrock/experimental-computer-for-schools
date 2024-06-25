@@ -3,6 +3,10 @@
 //
 //
 
+show_front = 1;
+show_rear  = 1;
+show_lcd = 0;
+
 $fn = 200;
 
 lcd_disp_x = 136.55;
@@ -272,9 +276,69 @@ module tv_rh_panel()
 
 }
 
-//lcd();
+module r_grill(n)
+{
+rotate([0, 0, 90])
 
+     //Grill
+     for(p=[0:slot_v_spacing:n*slot_v_spacing])
+     {
+	  translate([0, p, 0])
+	       cube([slot_x, slot_y, 100], center=true);
+	  
+         if(0)
+         {
+	  translate([slot_panel_xo+2*slot_row_w+slot_off_x, p-slot_off_y, 0])
+	       cube([slot_x, slot_y, 100], center=true);
+	  
+	  translate([slot_panel_xo+3*slot_row_w+slot_off_x, p-slot_off_y, 0])
+	       cube([slot_x, slot_y, 100], center=true);
+         }
+     }
+}
+
+ty = lcd_disp_y+bez_t*2+bez_t/2;
+
+module tv_rear()
+{
+    translate([rh_p_x/2, 0, 0])
+    difference()
+    {
+	 cube([rh_p_x+lcd_aa_x+bez_x*2+bez_t, lcd_disp_y+bez_t*2+bez_t/2, rh_p_th*2], center=true);
+	 translate([0, 0, -rh_p_th])
+	 cube([rh_p_x+lcd_aa_x+bez_x*2+bez_t-bez_t*2, lcd_disp_y+bez_t*2+bez_t/2-bez_t*2, rh_p_th*2], center=true);
+
+translate([-65*slot_y, ty/2-slot_x*3/2, 0])
+	 r_grill(16);
+
+translate([-65+55*slot_y, ty/2-slot_x*3/2, 0])
+	 r_grill(16);
+
+translate([90, 0, 0])
+        {
+translate([-55*slot_y, ty/2-slot_x*3/2, 0])
+	 r_grill(16);
+
+translate([-55+55*slot_y, ty/2-slot_x*3/2, 0])
+	 r_grill(16);
+        }
+    }
+}
+
+
+if(show_lcd)
+{
+lcd();
+}
+
+if(show_front)
+{
 tv_front();
 translate([lcd_aa_x/2+rh_p_x/2+bez_x, 0, lcd_pcb_z+lcd_disp_z+bez_x-1.8])
 tv_rh_panel();
+}
 
+if(show_rear)
+{
+    tv_rear();
+}
