@@ -39,7 +39,7 @@ module lcd_a()
 
 module lcd_screw()
 {
-%cylinder(d=2.5, h=100, center=true);
+     %cylinder(d=2.5, h=100, center=true);
 }
 
 module lcd()
@@ -51,17 +51,17 @@ module lcd()
      translate([0, 0, lcd_disp_z+lcd_pcb_z/2+lcd_va_z])
 	  lcd_a();
  
-    translate([lcd_h2h_x/2, lcd_h2h_y/2, 0])
-    lcd_screw();
+     translate([lcd_h2h_x/2, lcd_h2h_y/2, 0])
+	  lcd_screw();
 
-    translate([-lcd_h2h_x/2, lcd_h2h_y/2, 0])
-    lcd_screw();
+     translate([-lcd_h2h_x/2, lcd_h2h_y/2, 0])
+	  lcd_screw();
 
-    translate([lcd_h2h_x/2, -lcd_h2h_y/2, 0])
-    lcd_screw();
+     translate([lcd_h2h_x/2, -lcd_h2h_y/2, 0])
+	  lcd_screw();
 
-    translate([-lcd_h2h_x/2, -lcd_h2h_y/2, 0])
-    lcd_screw();
+     translate([-lcd_h2h_x/2, -lcd_h2h_y/2, 0])
+	  lcd_screw();
 }
 
 big_rad_scale_1 = 15;
@@ -148,10 +148,10 @@ module tv_bezel()
 	  bezel_prism(lcd_disp_y+0.8);
 
      translate([-lcd_aa_x/2-bez_x-bez_t/2, lcd_aa_y/2+bez_x+bez_t/2, bez_y+lcd_disp_z+lcd_pcb_z/2-rh_p_th/2])
-    cube([bez_t, bez_t, rh_p_th], center=true);
+	  cube([bez_t, bez_t, rh_p_th], center=true);
 
      translate([-lcd_aa_x/2-bez_x-bez_t/2, -lcd_aa_y/2-bez_x-bez_t/2, bez_y+lcd_disp_z+lcd_pcb_z/2-rh_p_th/2])
-    cube([bez_t, bez_t, rh_p_th], center=true);
+	  cube([bez_t, bez_t, rh_p_th], center=true);
 
 }
 
@@ -192,40 +192,40 @@ tz = 0.5;
 
 module k_text(a)
 {
-    translate([-tsz/2, -tsz/2, 30])
-    linear_extrude(tz)
-    text(a, size = tsz);
+     translate([-tsz/2, -tsz/2, 30])
+	  linear_extrude(tz)
+	  text(a, size = tsz);
 }
 txt = [
-   [  "1"],
-   [  "2"],
-   [  "3"],
-   [  "4"],
-   [  "5"],
-   [  "6"],
-   [  "7"],
-   [  "8"],
-   [  "9"],
-   [  "10"],
-   [  "11"],
-   [  "12"],
- ];
+     [  "1"],
+     [  "2"],
+     [  "3"],
+     [  "4"],
+     [  "5"],
+     [  "6"],
+     [  "7"],
+     [  "8"],
+     [  "9"],
+     [  "10"],
+     [  "11"],
+     [  "12"],
+     ];
 
 module knob()
 {
 
-translate([0, 0, knob_h1/2])    
-cylinder(d=knob_d1, h=knob_h1, center=true);
-translate([0, 0, knob_h1/2+knob_h2/2])    
-cylinder(d=knob_d2, h=knob_h2, center=true);
+     translate([0, 0, knob_h1/2])    
+	  cylinder(d=knob_d1, h=knob_h1, center=true);
+     translate([0, 0, knob_h1/2+knob_h2/2])    
+	  cylinder(d=knob_d2, h=knob_h2, center=true);
 
-for(rotz=[0:1:12])
-{    
-    translate([0, knob_d1*2/3,30])
-    rotate([0, 0, rotz*30])
-    translate([0, 0, knob_h1-tz+0.01])
-    k_text(txt[rotz]);
-}
+     for(rotz=[0:1:12])
+     {    
+	  translate([0, knob_d1*2/3,30])
+	       rotate([0, 0, rotz*30])
+	       translate([0, 0, knob_h1-tz+0.01])
+	       k_text(txt[rotz]);
+     }
 }
 
 module tv_rh_panel()
@@ -247,98 +247,185 @@ module tv_rh_panel()
 		    cube([slot_x, slot_y, 100], center=true);
 	  }
       
-      translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+0.5, 0, rh_p_th/2+0.01])
-      cube([line_x, 400, line_z], center=true);
+	  translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+0.5, 0, rh_p_th/2+0.01])
+	       cube([line_x, 400, line_z], center=true);
 
-      translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+slot_row_w, 22.5, rh_p_th/2+0.01])
-      cube([line_x, (lcd_disp_y+bez_t*2)/2+20, line_z], center=true);
+	  translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+slot_row_w, 22.5, rh_p_th/2+0.01])
+	       cube([line_x, (lcd_disp_y+bez_t*2)/2+20, line_z], center=true);
 
-      translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+rh_p_x/2, -15, rh_p_th/2+0.01])
-      cube([rh_p_x, line_x, line_z], center=true);
+	  translate([-(lcd_aa_x/2+rh_p_x/2+bez_x)+(lcd_disp_x+bez_t*2-0.8)/2+rh_p_x/2, -15, rh_p_th/2+0.01])
+	       cube([rh_p_x, line_x, line_z], center=true);
       
-           translate([-2.5, 45, 0.5])
-     cube([20, 5, 1], center=1);
+	  translate([-2.5, 45, 0.5])
+	       cube([20, 5, 1], center=1);
 
      }
      
      translate([7, 0, 0])
-     knob();
+	  knob();
 
      translate([7, 20, 0])
-     knob();
+	  knob();
 
      translate([15, 40, 0])
-     cylinder(d=5, h=3, center=1);
+	  cylinder(d=5, h=3, center=1);
 
      translate([0, 37.5, 0])
-     cube([8, 5, 2], center=1);
+	  cube([8, 5, 2], center=1);
 
 
+}
+
+module double_rounded_cuboid(x, y, z, rd)
+{
+     // Minkowski adds z dimensions of components
+     scale([1, 1, 2*z/(2*rd+z)])
+	  translate([-x/2, -y/2, 0])
+	  minkowski()
+     {  
+	  cube([x-rd-rd, y-rd-rd, z], center=true);
+	  translate([x/2, y/2, 0])
+	       sphere(r=rd, $fn=100);
+     }
+}
+
+module half_double_rounded_cuboid(x, y, z, rd)
+{
+     translate([0, 0, -z/4])
+	  difference()
+     {
+	  double_rounded_cuboid(x, y, z, rd);
+	  translate([0, 0, -z/2])
+	       cube([x+10, y+10, z+0.5], center=true);
+     }
+}
+
+sh_th = 2;
+
+module hdrc_shell(x, y, z, rd)
+{
+     difference()
+     {
+	  half_double_rounded_cuboid(x, y, z, rd);
+	  translate([0, 0, -sh_th])
+	       half_double_rounded_cuboid(x-4*sh_th, y-4*sh_th, z, rd);
+     }
 }
 
 module r_grill(n)
 {
-rotate([0, 0, 90])
+     rotate([0, 0, 90])
 
-     //Grill
-     for(p=[0:slot_v_spacing:n*slot_v_spacing])
-     {
-	  translate([0, p, 0])
-	       cube([slot_x, slot_y, 100], center=true);
+	  //Grill
+	  for(p=[0:slot_v_spacing:n*slot_v_spacing])
+	  {
+	       translate([0, p, 0])
+		    cube([slot_x, slot_y, 100], center=true);
 	  
-         if(0)
-         {
-	  translate([slot_panel_xo+2*slot_row_w+slot_off_x, p-slot_off_y, 0])
-	       cube([slot_x, slot_y, 100], center=true);
+	       if(0)
+	       {
+		    translate([slot_panel_xo+2*slot_row_w+slot_off_x, p-slot_off_y, 0])
+			 cube([slot_x, slot_y, 100], center=true);
 	  
-	  translate([slot_panel_xo+3*slot_row_w+slot_off_x, p-slot_off_y, 0])
-	       cube([slot_x, slot_y, 100], center=true);
-         }
-     }
+		    translate([slot_panel_xo+3*slot_row_w+slot_off_x, p-slot_off_y, 0])
+			 cube([slot_x, slot_y, 100], center=true);
+	       }
+	  }
 }
 
 ty = lcd_disp_y+bez_t*2+bez_t/2;
 
+cuboid_scale = 0.8;
+
+module tv_rear1()
+{
+     translate([rh_p_x/2, 0, 0])
+     {
+	  translate([0, 0, -rh_p_th*3])
+	       rotate([0, 180, 0])
+	       hdrc_shell(lcd_va_x, lcd_va_y*cuboid_scale, lcd_va_y/3, 5);
+    
+	  difference()
+	  {
+	       cube([rh_p_x+lcd_aa_x+bez_x*2+bez_t, lcd_disp_y+bez_t*2+bez_t/2, rh_p_th*2], center=true);
+        
+	       double_rounded_cuboid(lcd_va_x, lcd_va_y*cuboid_scale, lcd_va_y/3, 5);
+        
+	       translate([0, 0, -rh_p_th])
+		    cube([rh_p_x+lcd_aa_x+bez_x*2+bez_t-bez_t*2, lcd_disp_y+bez_t*2+bez_t/2-bez_t*2, rh_p_th*2], center=true);
+	  }
+    
+     }
+}
+
+module grills()
+{
+     translate([-65*slot_y, ty/2-slot_x*3/2, 0])
+	  r_grill(16);
+
+     translate([-65+55*slot_y, ty/2-slot_x*3/2, 0])
+	  r_grill(16);
+
+     translate([90, 0, 0])
+     {
+	  translate([-55*slot_y, ty/2-slot_x*3/2, 0])
+	       r_grill(16);
+
+	  translate([-55+55*slot_y, ty/2-slot_x*3/2, 0])
+	       r_grill(16);
+
+	  translate([-50*slot_y, ty/2-slot_x*5/2-3, 0])
+	       r_grill(16);
+
+	  translate([-135*slot_y, ty/2-slot_x*5/2-3, 0])
+	       r_grill(16);
+
+	  translate([-100*slot_y, ty/2-slot_x*5/2-3, 0])
+	       r_grill(9);
+     }
+}
+
 module tv_rear()
 {
-    translate([rh_p_x/2, 0, 0])
-    difference()
-    {
-	 cube([rh_p_x+lcd_aa_x+bez_x*2+bez_t, lcd_disp_y+bez_t*2+bez_t/2, rh_p_th*2], center=true);
-	 translate([0, 0, -rh_p_th])
-	 cube([rh_p_x+lcd_aa_x+bez_x*2+bez_t-bez_t*2, lcd_disp_y+bez_t*2+bez_t/2-bez_t*2, rh_p_th*2], center=true);
+     difference()
+     {
+	  tv_rear1();
+         
+	  translate([22, 0, 0])
+	  {
+	       grills();
 
-translate([-65*slot_y, ty/2-slot_x*3/2, 0])
-	 r_grill(16);
+         rotate([0, 0, 180])
+          {
+              translate([90, 0, 0])
+{
+	  translate([-50*slot_y, ty/2-slot_x*5/2-3, 0])
+	       r_grill(25);
 
-translate([-65+55*slot_y, ty/2-slot_x*3/2, 0])
-	 r_grill(16);
-
-translate([90, 0, 0])
-        {
-translate([-55*slot_y, ty/2-slot_x*3/2, 0])
-	 r_grill(16);
-
-translate([-55+55*slot_y, ty/2-slot_x*3/2, 0])
-	 r_grill(16);
-        }
-    }
+	  translate([-110*slot_y, ty/2-slot_x*5/2-3, 0])
+	       r_grill(25);
+          }
+      }
+	  }
+     }
 }
+
+
 
 
 if(show_lcd)
 {
-lcd();
+     lcd();
 }
 
 if(show_front)
 {
-tv_front();
-translate([lcd_aa_x/2+rh_p_x/2+bez_x, 0, lcd_pcb_z+lcd_disp_z+bez_x-1.8])
-tv_rh_panel();
+     tv_front();
+     translate([lcd_aa_x/2+rh_p_x/2+bez_x, 0, lcd_pcb_z+lcd_disp_z+bez_x-1.8])
+	  tv_rh_panel();
 }
 
 if(show_rear)
 {
-    tv_rear();
+     tv_rear();
 }
