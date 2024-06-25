@@ -21,6 +21,9 @@ lcd_va_x = 120.14;
 lcd_va_y = 92.14;
 lcd_va_z = 0.5;
 
+lcd_h2h_x = 140;
+lcd_h2h_y = 112.5;
+
 module lcd_a()
 {
      difference()
@@ -28,6 +31,11 @@ module lcd_a()
 	  cube([lcd_va_x, lcd_va_y, lcd_va_z], center=true);
 	  cube([lcd_aa_x, lcd_aa_y, lcd_aa_z], center=true);
      }
+}
+
+module lcd_screw()
+{
+%cylinder(d=2.5, h=100, center=true);
 }
 
 module lcd()
@@ -38,6 +46,18 @@ module lcd()
     
      translate([0, 0, lcd_disp_z+lcd_pcb_z/2+lcd_va_z])
 	  lcd_a();
+ 
+    translate([lcd_h2h_x/2, lcd_h2h_y/2, 0])
+    lcd_screw();
+
+    translate([-lcd_h2h_x/2, lcd_h2h_y/2, 0])
+    lcd_screw();
+
+    translate([lcd_h2h_x/2, -lcd_h2h_y/2, 0])
+    lcd_screw();
+
+    translate([-lcd_h2h_x/2, -lcd_h2h_y/2, 0])
+    lcd_screw();
 }
 
 big_rad_scale_1 = 15;
@@ -67,9 +87,17 @@ module bezel_prism(len)
 	  polygon(
 	       points = 
 	       [
-		    [0,                0],
-		    [bez_x+bez_t,      0],
-		    [bez_x+bez_t,  bez_y],
+		    
+		    //[0,                0],
+		    //[bez_x+bez_t,      0],
+		    //[bez_x+bez_t,  bez_y],
+		    //[bez_x,        bez_y],
+
+		    [0,                  0],
+		    [bez_x,              0],
+		    [bez_x,  bez_y-rh_p_th],
+ 		    [bez_x+bez_t,  bez_y-rh_p_th],
+ 		    [bez_x+bez_t,  bez_y],
 		    [bez_x,        bez_y],
 
 		    ]
@@ -101,19 +129,25 @@ module tv_front_cutout()
 module tv_bezel()
 {
      translate([0, lcd_aa_y/2, 0])
-	  bezel_prism(lcd_disp_x+bez_t*2-0.8);
+	  bezel_prism(lcd_disp_x-0.8);
     
      translate([0, -lcd_aa_y/2, 0])
 	  rotate([0, 0, 180])
-	  bezel_prism(lcd_disp_x+bez_t*2-0.8);
+	  bezel_prism(lcd_disp_x-0.8);
 
      translate([-lcd_aa_x/2, 0, 0])
 	  rotate([0, 0, 90])
-	  bezel_prism(lcd_disp_y+bez_t*2);
+	  bezel_prism(lcd_disp_y+1.5);
 
      translate([lcd_aa_x/2, 0, 0])
 	  rotate([0, 0, -90])
-	  bezel_prism(lcd_disp_y+bez_t*2);
+	  bezel_prism(lcd_disp_y+0.8);
+
+     translate([-lcd_aa_x/2-bez_x-bez_t/2, lcd_aa_y/2+bez_x+bez_t/2, bez_y+lcd_disp_z+lcd_pcb_z/2-rh_p_th/2])
+    cube([bez_t, bez_t, rh_p_th], center=true);
+
+     translate([-lcd_aa_x/2-bez_x-bez_t/2, -lcd_aa_y/2-bez_x-bez_t/2, bez_y+lcd_disp_z+lcd_pcb_z/2-rh_p_th/2])
+    cube([bez_t, bez_t, rh_p_th], center=true);
 
 }
 
