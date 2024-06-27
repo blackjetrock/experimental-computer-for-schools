@@ -2273,7 +2273,7 @@ SINGLE_WORD fp_add(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b, int normalise)
 #if 1  
   if( normalise)
     {
-      // Before we do any calculations, nove the MS digit to one digit right of the left most position so we get
+      // Before we do any calculations, move the MS digit to one digit right of the left most position so we get
       // full resolution for the result and to make the test of exponents meaningful. We leave one digit to the 
       // This is done to both a and b
       
