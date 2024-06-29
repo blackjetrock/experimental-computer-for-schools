@@ -12,3 +12,4 @@ pico_main/build
 .#*
 a.txt
 \#*
+*.stl
