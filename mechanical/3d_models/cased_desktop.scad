@@ -2,7 +2,7 @@
 //
 //
 
-$fn = 200;
+$fn = 20;
 
 show_top = 0;
 show_kb_part = 1;
@@ -44,6 +44,7 @@ case_z = 110+th;
 module kb_pcb()
 {
      cube([len_x, 104.5, 1.6], center=true);
+    import("overlay1-F_SilkS.dxf");
 }
 
 // Put a lip at one end of the PCB sandwich and a plate at the other end
@@ -141,7 +142,6 @@ module k_bevel()
 	  [29.986, 29.4979, 0], 
 	  [29.986+1*15, 29.4979, 0], 
 	  [29.986+2*15, 29.4979, 0], 
-	  [29.986+3*15, 29.4979, 0], 
 	  [29.986+5*15, 29.4979, 0], 
 	  [29.986+6*15, 29.4979, 0], 
 	  [29.986+8*15, 29.4979, 0],
@@ -151,7 +151,7 @@ module k_bevel()
 	  [-7.513+4*15, 14.5036, 0], 
 	  [-7.513+5*15, 14.5036, 0], 
 	  [-7.513+8*15, 14.5036, 0], 
-	  [-7.513+10*15, 14.5036, 0], 
+	  [-7.513+10*15-2, 14.5036, 0], 
 	  [-7.513+0*15, 14.5036+29.9801, 0], 
 	  [-7.513+1*15, 14.5036+29.9801, 0], 
 	  [-7.513+3*15, 14.5036+29.9801, 0], 
@@ -193,21 +193,22 @@ module fr()
 	  
 	  translate([0, kb_plate_y/2, 0])
 	  key_plate();
-     
+
+     sh2 = 2;
      translate([0, kb_plate_y*cos(12), kb_fr_z/2+kb_plate_y*sin(12)])
 	  rotate([-kb_bk_angle, 0, 0])    
-	  translate([0, 0, kb_bk_z/2])    
-	  cube([len_x, th, kb_bk_z], center=true);
+	  translate([0, 0, kb_bk_z/2-sh2/2])    
+	  cube([len_x, th, kb_bk_z+sh2], center=true);
 }
 
 module kb_part()
 {
  
-    sh = 2.5;
+     sh = 2.5;
     
 // front vertical surface   
-    translate([0, 0, sh/2])
-     cube([len_x, th, kb_fr_z+sh], center=true);
+     translate([0, 0, sh/2])
+	  cube([len_x, th, kb_fr_z+sh], center=true);
 
 // Add some tabs for fixing the front of the part to the base
      for(off=[-100:50:100])
@@ -220,7 +221,7 @@ module kb_part()
 	  }
      }
     
-    fr();
+     fr();
      
 }
 
@@ -265,7 +266,7 @@ module top()
 
 module front_panel()
 {
-     translate([0, kb_plate_y*cos(12), kb_bk_z*2+kb_fr_z/2+kb_plate_y*sin(12)])
+     translate([0, kb_plate_y*cos(12), kb_bk_z*2+kb_fr_z/2+kb_plate_y*sin(12)-kb_bk_z])
 	  translate([0, 0, -kb_fr_z/2])
 	  rotate([-front_panel_angle+90, 0, 0])
 	  translate([0, front_panel_y/2, 0])
@@ -275,15 +276,26 @@ module front_panel()
 //key_plate();
 
 //kb_pcb();
-
-if(show_kb_part)
-{
-    difference()
+    module kb_part_full()
     {
-        kb_part();
+     translate([0, len_y-kb_panel_rad*2-0.4, sin(12)*len_y+kb_bk_z+th/2+kb_panel_rad-0.65])
+	  rotate([180, 0, 0])
+	  part_hollow_tube(len_x, kb_panel_rad, kb_panel_rad+th, kb_bk_angle, 0);
+     
+     difference()
+     {
+	  kb_part();
 	  translate([0, kb_panel_rad-th/2, kb_panel_rad+th+4.86])
 	       rotate([0, 0, 0])
 	       part_hollow_tube(case_top_x, kb_panel_rad, kb_panel_rad*2, 12, 0);
+     }
+ }
+
+if(show_kb_part)
+{
+//projection()
+    {
+kb_part_full();
     }
 }
 
