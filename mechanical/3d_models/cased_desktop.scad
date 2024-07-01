@@ -2,10 +2,13 @@
 //
 //
 
-$fn = 20;
+$fn = 200;
 
+show_pcb = 0;
 show_top = 0;
 show_kb_part = 1;
+show_kb_part_proj = 0;
+
 show_front_panel = 0;
 
 
@@ -40,10 +43,13 @@ case_top_y = 184;
 case_y = 291;
 case_z = 110+th;
 
+pcb_x = 229;
+pcb_y = 104.5;
+pcb_th = 1.6;
 
 module kb_pcb()
 {
-     cube([len_x, 104.5, 1.6], center=true);
+     cube([pcb_x, pcb_y, pcb_th], center=true);
     import("overlay1-F_SilkS.dxf");
 }
 
@@ -275,7 +281,13 @@ module front_panel()
 
 //key_plate();
 
-//kb_pcb();
+if( show_pcb )
+{
+    translate([0, len_y/2, kb_fr_z-th])
+    rotate([front_panel_angle, 0])
+kb_pcb();
+}
+
     module kb_part_full()
     {
      translate([0, len_y-kb_panel_rad*2-0.4, sin(12)*len_y+kb_bk_z+th/2+kb_panel_rad-0.65])
@@ -291,9 +303,16 @@ module front_panel()
      }
  }
 
+
+ 
 if(show_kb_part)
 {
-//projection()
+kb_part_full();
+}
+
+if(show_kb_part_proj)
+{
+projection()
     {
 kb_part_full();
     }
