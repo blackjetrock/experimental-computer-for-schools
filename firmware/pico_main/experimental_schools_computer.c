@@ -700,7 +700,7 @@ void kbd_read(ESC_STATE *s)
 			      printf("\nTesting R[%d]", rn);
 			      break;
 
-			    case TC_REG_IAR:
+			    case TC_REG_IAR:
 			    case TC_REG_KI:
 			    case TC_REG_ADDR:
 			    case TC_CL:
@@ -2138,7 +2138,7 @@ DOUBLE_WORD shift_dw_left(DOUBLE_WORD x)
   return(x);
 }
 
-// Most significat digit shifted to left most position
+// Most significant digit shifted to left most position
 
 SINGLE_WORD sw_msd_to_left(SINGLE_WORD x)
 {
@@ -2199,6 +2199,12 @@ SINGLE_WORD sw_shift_right(SINGLE_WORD x, int n)
   exp    = STORE_GET_EXPONENT(x);
   digits = STORE_GET_DIGITS(x);
 
+  // If exponent is zero then we can't do this
+  if( exp == 0 )
+    {
+      return(x);
+    }
+  
   // Shift the digits
 
   for(int i=0; i<n; i++)
@@ -5016,6 +5022,7 @@ typedef struct _QT_KEYS
 
 QT_KEYS qt_keycode[] =
   {
+#if 0
    {"KI RESET   ", 0,   4, TOK_KEY_KI_RESET},
    {"A          ", 0,   0, TOK_KEY_A},
    {"B          ", 2,   0, TOK_KEY_B},
@@ -5044,6 +5051,37 @@ QT_KEYS qt_keycode[] =
    {"CLEAR      ", 3,   2, TOK_KEY_CLEAR},
    {"DOT        ", 7,   1, TOK_KEY_DOT},
    {"MINUS      ", 7,   2, TOK_KEY_MINUS},
+#endif   
+#if 1
+   {"KI RESET   ", 0,   4, TOK_KEY_KI_RESET},
+   {"A          ", 0,   3, TOK_KEY_A},
+   {"B          ", 2,   3, TOK_KEY_B},
+   {"C          ", 1,   4, TOK_KEY_C},
+   {"0          ", 0,   2, TOK_KEY_0},
+   {"1          ", 0,   1, TOK_KEY_1},
+   {"2          ", 6,   1, TOK_KEY_2},
+   {"3          ", 6,   2, TOK_KEY_3},
+   {"4          ", 2,   1, TOK_KEY_4},
+   {"5          ", 5,   1, TOK_KEY_5},
+   {"6          ", 5,   2, TOK_KEY_6},
+   {"7          ", 1,   1, TOK_KEY_7},
+   {"8          ", 4,   1, TOK_KEY_8},
+   {"9          ", 4,   2, TOK_KEY_9},
+   {"RUN        ", 3,   3, TOK_KEY_RUN},
+   {"STOP       ", 2,   4, TOK_KEY_STOP},
+   {"RELOAD     ", 1,   5, TOK_KEY_RELOAD},
+   {"CHECK      ", 2,   5, TOK_KEY_CHECK},
+   {"DUMP       ", 3,   5, TOK_KEY_DUMP},
+   {"LOAD IAR   ", 0,   0, TOK_KEY_LOAD_IAR},
+   {"LOAD ADDR  ", 7,   0, TOK_KEY_LOAD_ADDR},
+   {"LOAD STORE ", 6,   0, TOK_KEY_LOAD_STORE},
+   {"DECR ADDR  ", 4,   0, TOK_KEY_DECR_ADDR},
+   {"INCR ADDR  ", 5,   0, TOK_KEY_INCR_ADDR},
+   {"NORM RESET ", 2,   0, TOK_KEY_NORMAL_RESET},
+   {"CLEAR      ", 3,   1, TOK_KEY_CLEAR},
+   {"DOT        ", 7,   2, TOK_KEY_DOT},
+   {"MINUS      ", 7,   1, TOK_KEY_MINUS},
+#endif   
   };
 
 #define NUM_QT_KEYS (sizeof(qt_keycode)/sizeof(QT_KEYS))
@@ -8547,6 +8585,89 @@ TEST_LOAD_STORE test_27_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 28
+//
+// Set up the store so this program can be run as a sequence.
+//
+// 
+
+INIT_INFO test_init_28[] =
+  {
+   {IC_SET_REG_N,    3},
+   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+
+   {IC_END,          0},
+  };
+
+TOKEN test_seq_28[] =
+  {
+   TOK_KEY_NORMAL_RESET,
+
+   TOK_KEY_1,
+   TOK_KEY_0,
+   TOK_KEY_LOAD_IAR,
+
+   TOK_KEY_A,
+   TOK_KEY_B,
+   TOK_KEY_C,
+
+   TOK_TEST_CHECK_RES,
+
+   TOK_NONE,
+  };
+
+TEST_INFO test_res_28[] =
+  {
+   
+   {TC_STORE_N,   0x20},
+   {TC_MUST_BE, 0xA0200000},
+   {TC_END_SECTION, 0},
+
+   {TC_END,     0},
+  };
+
+TEST_LOAD_STORE test_28_store =
+  {
+   {
+    //----------------------------------------
+    // Program for L <- Logb N
+    //
+    0x00000000,  // 00
+    0x00000000,  // 01
+    0x00000000,  // 02
+    0x00000000,  // 03
+    0x00000000,  // 04
+    0x00000000,  // 05
+    0x00000000,  // 06
+    0x00000000,  // 07
+    0x03000310,  // 08
+    0x21000311,  // 09
+    0x70202122,  // 10
+    0x28022803,  // 11
+    0x20022104,  // 12
+    0x71290403,  // 13
+    0x74292918,  // 14
+    0x73040403,  // 15
+    0x20000011,  // 16
+    0x21002413,  // 17
+    0x73010106,  // 18
+    0x71290105,  // 19
+    0xA0222222,  // 20
+    0xA0100000,  // 21
+    0xA0100000,  // 22
+    0x74292918,  // 
+    0x73040403,  // 
+    0x70000001,  // 
+    0x24180000,  // 
+    0x79020300,  // 
+    0x28080000,  // 
+    0x00000000,  
+
+    -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
@@ -8578,6 +8699,7 @@ ESC_TEST_INFO tests[] =
    {"Fig 11",                  test_init_25, test_seq_25, test_res_25, 0, &test_25_store, ""},
    {"Load Prog",               test_init_26, test_seq_26, test_res_26, 0, &test_26_store, ""},
    {"Load Log N",              test_init_27, test_seq_27, test_res_27, 0, &test_27_store, ""},
+   {"Double 100000",           test_init_28, test_seq_28, test_res_28, 0, &test_28_store, ""},
    
    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };

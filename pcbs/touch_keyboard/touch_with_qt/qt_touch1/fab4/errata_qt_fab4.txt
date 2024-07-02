@@ -1,0 +1,6 @@
+Errata for V2.0 QT Touch Keyboard
+=================================
+
+1. GND is not good, re-instate GND plane but only along bottom of PB to supply decent GND to circuitry.
+2. Minus key should not be X7 to X2 but X7 to Y2
+3. Y0-Y3 are reversed, to Y3-Y0. This can be handled in code.
