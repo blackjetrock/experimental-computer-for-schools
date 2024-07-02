@@ -887,12 +887,12 @@ Connection ~ 4175 900
 $Comp
 L power:GND #PWR0108
 U 1 1 664EBBC5
-P 4675 1225
-F 0 "#PWR0108" H 4675 975 50  0001 C CNN
-F 1 "GND" H 4680 1052 50  0000 C CNN
-F 2 "" H 4675 1225 50  0001 C CNN
-F 3 "" H 4675 1225 50  0001 C CNN
-	1    4675 1225
+P 4675 1275
+F 0 "#PWR0108" H 4675 1025 50  0001 C CNN
+F 1 "GND" H 4680 1102 50  0000 C CNN
+F 2 "" H 4675 1275 50  0001 C CNN
+F 3 "" H 4675 1275 50  0001 C CNN
+	1    4675 1275
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -908,8 +908,6 @@ F 3 "" H 4175 1225 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	4175 1225 4175 1175
-Wire Wire Line
-	4675 1225 4675 1200
 $Comp
 L Device:R_Small R22
 U 1 1 6650BD73
@@ -997,16 +995,11 @@ Connection ~ 5225 900
 Connection ~ 5675 900 
 Wire Wire Line
 	4675 900  5225 900 
-Connection ~ 4675 1200
-Wire Wire Line
-	4675 1200 4675 1175
 Wire Wire Line
 	5675 900  6150 900 
 Connection ~ 6150 900 
 Wire Wire Line
 	6150 900  6650 900 
-Wire Wire Line
-	4675 1200 6650 1200
 $Comp
 L Device:C_Small C18
 U 1 1 668C5002
@@ -1059,4 +1052,20 @@ F 3 "~" H 6650 1100 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6650 900  6650 1000
+Wire Wire Line
+	5225 1200 5675 1200
+Connection ~ 5675 1200
+Wire Wire Line
+	5675 1200 6150 1200
+Connection ~ 6150 1200
+Wire Wire Line
+	6150 1200 6650 1200
+Wire Wire Line
+	4675 1175 4675 1200
+Wire Wire Line
+	5225 1200 4675 1200
+Connection ~ 5225 1200
+Connection ~ 4675 1200
+Wire Wire Line
+	4675 1200 4675 1275
 $EndSCHEMATC

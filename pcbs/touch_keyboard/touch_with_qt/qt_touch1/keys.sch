@@ -472,5 +472,5 @@ Y1
 Text GLabel 6375 1925 0    50   Input ~ 0
 X7
 Text GLabel 7325 1925 2    50   Input ~ 0
-X2
+Y2
 $EndSCHEMATC

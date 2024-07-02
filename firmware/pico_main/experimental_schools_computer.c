@@ -5020,39 +5020,50 @@ typedef struct _QT_KEYS
   int esc_token;
 } QT_KEYS;
 
+   // Note that on the PCB Y0-Y3 are reversed and so are actually
+   // Y3-Y0
+
+#define Y0 3
+#define Y1 2
+#define Y2 1
+#define Y3 0
+#define Y4 4
+#define Y5 5
+
 QT_KEYS qt_keycode[] =
   {
-#if 0
-   {"KI RESET   ", 0,   4, TOK_KEY_KI_RESET},
-   {"A          ", 0,   0, TOK_KEY_A},
-   {"B          ", 2,   0, TOK_KEY_B},
-   {"C          ", 1,   4, TOK_KEY_C},
-   {"0          ", 0,   1, TOK_KEY_0},
-   {"1          ", 0,   2, TOK_KEY_1},
-   {"2          ", 6,   2, TOK_KEY_2},
-   {"3          ", 6,   1, TOK_KEY_3},
-   {"4          ", 2,   2, TOK_KEY_4},
-   {"5          ", 5,   2, TOK_KEY_5},
-   {"6          ", 5,   1, TOK_KEY_6},
-   {"7          ", 1,   2, TOK_KEY_7},
-   {"8          ", 4,   2, TOK_KEY_8},
-   {"9          ", 4,   1, TOK_KEY_9},
-   {"RUN        ", 3,   0, TOK_KEY_RUN},
-   {"STOP       ", 2,   4, TOK_KEY_STOP},
-   {"RELOAD     ", 1,   5, TOK_KEY_RELOAD},
-   {"CHECK      ", 2,   5, TOK_KEY_CHECK},
-   {"DUMP       ", 3,   5, TOK_KEY_DUMP},
-   {"LOAD IAR   ", 0,   3, TOK_KEY_LOAD_IAR},
-   {"LOAD ADDR  ", 7,   3, TOK_KEY_LOAD_ADDR},
-   {"LOAD STORE ", 6,   3, TOK_KEY_LOAD_STORE},
-   {"DECR ADDR  ", 4,   3, TOK_KEY_DECR_ADDR},
-   {"INCR ADDR  ", 5,   3, TOK_KEY_INCR_ADDR},
-   {"NORM RESET ", 2,   3, TOK_KEY_NORMAL_RESET},
-   {"CLEAR      ", 3,   2, TOK_KEY_CLEAR},
-   {"DOT        ", 7,   1, TOK_KEY_DOT},
-   {"MINUS      ", 7,   2, TOK_KEY_MINUS},
-#endif   
 #if 1
+   {"KI RESET   ", 0,   Y4, TOK_KEY_KI_RESET},
+   {"A          ", 0,   Y0, TOK_KEY_A},
+   {"B          ", 2,   Y0, TOK_KEY_B},
+   {"C          ", 1,   Y4, TOK_KEY_C},
+   {"0          ", 0,   Y1, TOK_KEY_0},
+   {"1          ", 0,   Y2, TOK_KEY_1},
+   {"2          ", 6,   Y2, TOK_KEY_2},
+   {"3          ", 6,   Y1, TOK_KEY_3},
+   {"4          ", 2,   Y2, TOK_KEY_4},
+   {"5          ", 5,   Y2, TOK_KEY_5},
+   {"6          ", 5,   Y1, TOK_KEY_6},
+   {"7          ", 1,   Y2, TOK_KEY_7},
+   {"8          ", 4,   Y2, TOK_KEY_8},
+   {"9          ", 4,   Y1, TOK_KEY_9},
+   {"RUN        ", 3,   Y0, TOK_KEY_RUN},
+   {"STOP       ", 2,   Y4, TOK_KEY_STOP},
+   {"RELOAD     ", 1,   Y5, TOK_KEY_RELOAD},
+   {"CHECK      ", 2,   Y5, TOK_KEY_CHECK},
+   {"DUMP       ", 3,   Y5, TOK_KEY_DUMP},
+   {"LOAD IAR   ", 0,   Y3, TOK_KEY_LOAD_IAR},
+   {"LOAD ADDR  ", 7,   Y3, TOK_KEY_LOAD_ADDR},
+   {"LOAD STORE ", 6,   Y3, TOK_KEY_LOAD_STORE},
+   {"DECR ADDR  ", 4,   Y3, TOK_KEY_DECR_ADDR},
+   {"INCR ADDR  ", 5,   Y3, TOK_KEY_INCR_ADDR},
+   {"NORM RESET ", 2,   Y3, TOK_KEY_NORMAL_RESET},
+   {"CLEAR      ", 3,   Y2, TOK_KEY_CLEAR},
+   {"DOT        ", 7,   Y1, TOK_KEY_DOT},
+   {"MINUS      ", 7,   Y2, TOK_KEY_MINUS},
+#endif
+
+#if 0
    {"KI RESET   ", 0,   4, TOK_KEY_KI_RESET},
    {"A          ", 0,   3, TOK_KEY_A},
    {"B          ", 2,   3, TOK_KEY_B},
