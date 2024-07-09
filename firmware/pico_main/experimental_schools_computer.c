@@ -5160,11 +5160,11 @@ uint16_t sixteen_bit_crc(unsigned long crc, unsigned char data)
 	}
       else
 	{
-	  crc= crc << 1;
+	  crc = crc << 1;
 	}
     }
   while(--index);
-
+  
   return crc;
 }
 
@@ -5223,6 +5223,19 @@ void wait_for_uart_byte(int byte)
   
 }
 
+// Reset the touch controller. This should write the setups to internal EEPROM
+
+void do_qt_reset(void)
+{
+  // Write the data
+  uart_putc(uart0, 0x04);
+  sleep_ms(CHAR_MS_DELAY);
+  uart_putc(uart0, 0x04);
+  sleep_ms(CHAR_MS_DELAY);
+
+  wait_for_uart_byte(0xFB);
+}
+
 // Setups block based on default, altered to match our keyboard
 
 uint8_t setups_block_esc[SETUPS_BLOCK_LEN] =
@@ -5253,6 +5266,8 @@ uint8_t setups_block_esc[SETUPS_BLOCK_LEN] =
 
 void write_setups_block(uint8_t *block)
 {
+  printf("\nCopying setup data...");
+  
   // Copy the setups block to the buffer
   for(int i=0; i<SETUPS_BLOCK_LEN; i++)
     {
@@ -5260,6 +5275,7 @@ void write_setups_block(uint8_t *block)
     }
 
   // Remove unused keys
+  printf("\nRemoving unused keys...");
   for(int i = 96; i<96+48; i++)
     {
       if( !qt_key_used(i-96) )
@@ -5271,7 +5287,8 @@ void write_setups_block(uint8_t *block)
   
   // Calculate crc
   uint16_t crc = 0;
-  
+
+  printf("\nCalculating CRC...");
   for(int i=0; i<SETUPS_BLOCK_LEN-2; i++)
     {
       crc = sixteen_bit_crc(crc, setups_block[i]);
@@ -5281,11 +5298,14 @@ void write_setups_block(uint8_t *block)
   setups_block[SETUPS_BLOCK_LEN-2] = crc &  0xFF;
 
   // Write the data
+  printf("\nWriting command...");
+    
   uart_putc(uart0, 0x01);
   sleep_ms(CHAR_MS_DELAY);
   uart_putc(uart0, 0x01);
   sleep_ms(CHAR_MS_DELAY);
-  
+
+  printf("\nWriting data...");
   for(int i=0; i<SETUPS_BLOCK_LEN; i++)
     {
       uart_putc(uart0, setups_block[i]);
@@ -5293,10 +5313,16 @@ void write_setups_block(uint8_t *block)
     }
 
   // Wait for two 0xFE bytes from the keyboard
-  uart_putc(uart0, 0x02);
-  uart_putc(uart0, 0x02);
+  printf("\nSending write command");
+  //  uart_putc(uart0, 0x02);
+  //uart_putc(uart0, 0x02);
+  printf("\nWaiting for 0xFE twice...");
   wait_for_uart_byte(0xFE);
+  printf("\nReceived 0xFE");
   wait_for_uart_byte(0xFE);
+  printf("\nReceived 0xFE");
+
+  printf("\nCommand completed");
 
 }
 
@@ -5310,6 +5336,18 @@ void check_status(void)
       status[i] = get_byte();
       printf("%02X ", status[i]);
     }
+}
+
+//Send Cal All command twice then wait for an 0xFC
+void do_calibrate_all(void)
+{
+  printf("\nCal All");
+  uart_putc(uart0, 0x03);
+  sleep_ms(CHAR_MS_DELAY);
+  uart_putc(uart0, 0x03);
+  sleep_ms(CHAR_MS_DELAY);
+
+  wait_for_uart_byte(0xFC);
 }
 
 void cli_qt_debug(void)
@@ -5330,6 +5368,8 @@ void cli_qt_debug(void)
   printf("\ns: Setups CRC Check");
   printf("\nd: Dump Setups Block");
   printf("\n*: Toggle continuous read");
+  printf("\nW: Write setups Block");
+  printf("\nR: Reset");
   printf("\n");
   
   while(1)
@@ -5447,6 +5487,11 @@ void cli_qt_debug(void)
 	    case 'W':
 	      printf("\nWrite setups Block");
 	      write_setups_block(&(setups_block_esc[0]));
+	      break;
+
+	    case 'R':
+	      printf("\nReset");
+	      do_qt_reset();
 	      break;
 
 	    case 'r':
@@ -10536,23 +10581,31 @@ int main(void)
   printf("\nVoltage Touch Keyboard");
 #endif
 
-#if ESC_KBD_QT
+#if ESC_TYPE_DESKTOP
+
   printf("\nQT Touch Keyboard");
 
+  // Set up GPIOs
+  set_kbd_gpios();
 
   // Set up the touch keyboard. This should be stored in the IC
   // but it doesn't, so we set it up and then calibrate every time
   // we start up.
 
   printf("\nWriting setups block...");
+  sleep_ms(3000);
   
   write_setups_block(&(setups_block_esc[0]));
-  printf("done.");
+
+  printf("\nCalibrating all...");
+  
+  do_calibrate_all();
+  
+  printf("\nresetting touch controller...");
+  do_qt_reset();
+  printf("\ndone.");
 #endif
   
-  // Set up GPIOs
-  set_kbd_gpios();
-
   
 #if OLED_ON
   // Set up OLED display

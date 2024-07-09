@@ -3,9 +3,11 @@
 //
 //
 
-show_front = 0;
-show_rear  = 1;
+show_front = 1;
+show_rear  = 0;
 show_lcd = 0;
+show_panel = 0;
+show_top_panel = 1;
 
 $fn = 200;
 
@@ -123,10 +125,10 @@ module tv_front_cutout()
      translate([0, 0, lcd_disp_z+lcd_pcb_z/2+lcd_va_z-10])
 	  intersection()
      {
-	  round_x(-lcd_va_y*big_rad_scale_1+lcd_va_y/2, lcd_va_y);
-	  round_x( lcd_va_y*big_rad_scale_1-lcd_va_y/2, lcd_va_y);
-	  round_y(-lcd_va_x*big_rad_scale_2+lcd_va_x/2, lcd_va_x);
-	  round_y( lcd_va_x*big_rad_scale_2-lcd_va_x/2, lcd_va_x);
+	  round_x(-lcd_va_y*big_rad_scale_1+lcd_va_y/2-1, lcd_va_y);
+	  round_x( lcd_va_y*big_rad_scale_1-lcd_va_y/2+1, lcd_va_y);
+	  round_y(-lcd_va_x*big_rad_scale_2+lcd_va_x/2-1, lcd_va_x);
+	  round_y( lcd_va_x*big_rad_scale_2-lcd_va_x/2+1, lcd_va_x);
      }
 }
 
@@ -337,6 +339,11 @@ ty = lcd_disp_y+bez_t*2+bez_t/2;
 
 cuboid_scale = 0.8;
 
+//back_x = rh_p_x+lcd_aa_x+bez_x*2+bez_t;
+//back_y = lcd_disp_y+bez_t*2+bez_t/2;
+back_x = 207;
+back_y = 139;
+
 module tv_rear1()
 {
      translate([rh_p_x/2, 0, 0])
@@ -347,12 +354,12 @@ module tv_rear1()
     
 	  difference()
 	  {
-	       cube([rh_p_x+lcd_aa_x+bez_x*2+bez_t, lcd_disp_y+bez_t*2+bez_t/2, rh_p_th*2], center=true);
+	       cube([back_x, back_y, rh_p_th*2], center=true);
         
 	       double_rounded_cuboid(lcd_va_x, lcd_va_y*cuboid_scale, lcd_va_y/3, 5);
         
 	       translate([0, 0, -rh_p_th])
-		    cube([rh_p_x+lcd_aa_x+bez_x*2+bez_t-bez_t*2, lcd_disp_y+bez_t*2+bez_t/2-bez_t*2, rh_p_th*2], center=true);
+		    cube([back_x-bez_t*2, back_y-bez_t*2, rh_p_th*2], center=true);
 	  }
     
      }
@@ -391,6 +398,14 @@ module tv_rear()
      {
 	  tv_rear1();
          
+      //  Cutout for the panel (two panels so cables can fit through)
+         // that allows the cables in.
+         
+      translate([0, 0, 0])
+      {
+          cube([30, 20, 300], center=true);
+      }   
+      
 	  translate([22, 0, 0])
 	  {
 	       grills();
@@ -428,4 +443,63 @@ if(show_front)
 if(show_rear)
 {
      tv_rear();
+}
+
+cab1_d = 3;
+cab2_d = 3.5;
+
+module full_panel()
+{
+translate([0, 0, -33])
+    {
+        rotate([180, 0, 0])
+        half_double_rounded_cuboid(50, 40, 2, 2, center=true);
+    }
+    
+    translate([-5, 0, -36.4])
+    difference()
+    {
+      cylinder(d=cab1_d+3, h=2);
+      cylinder(d=cab1_d, h=2.1);
+    }
+
+    translate([5, 0, -36.4])
+    difference()
+    {
+      cylinder(d=cab2_d+3, h=2, center=1);
+      cylinder(d=cab2_d, h=10, center=1);
+    }
+    
+}
+
+if(show_panel)
+{
+difference()
+{
+  full_panel();
+
+      translate([-40/2, -30/2, -40])
+      cylinder(d=1.5, h=10);
+      translate([40/2, -30/2, -40])
+      cylinder(d=1.5, h=10);
+      translate([-40/2, 30/2, -40])
+      cylinder(d=1.5, h=10);
+      translate([40/2, 30/2, -40])
+      cylinder(d=1.5, h=10);
+    
+  translate([0, 0, -33])
+  if( 1 )
+  {
+      show_tp = (1*show_top_panel);
+      show_bp = 1-show_tp;
+      chop = (-1*show_tp)+(1*show_bp);
+      chop_y = 25/2 * chop;
+      
+      echo("chopy=",chop_y);
+      
+      translate([0, chop_y, 0])
+      cube([60, 25, 40], center=true);
+  }
+}
+
 }

@@ -107,8 +107,6 @@ void esc_desktop_display_gpio_init(void)
 // MCU 			: STC12C5A60AD OR STC12C5A60S2
 // VDD			: 5V                 
 //***************************************************************************    
-#define uchar unsigned char  
-#define uint  unsigned int 
 
 
 /******************************************************* 
