@@ -292,6 +292,8 @@ void demo_roll(void);     //show scroll
 void demo_hz(void);       //show chinese 
 void demo_game(void);     //show moving circle 
 
+uint8_t lcd_buffer[320*240/8];
+
 int data_pin[8] =
   {
    PIN_ESCDD_D0,
@@ -399,6 +401,8 @@ void write_dat(unsigned char dat)
 *******************************************************/
 
 // ESC hardware doesn't support reading data
+// So we get the data from a pixel buffer
+
 
 uchar read_dat(void)
 {
@@ -553,7 +557,14 @@ void lcd_cls(uchar part)
     {
       write_dat(0x00);     //1area
     }
-  else if(part == 2) write_dat(basepart2);//2area
+  else if(part == 2)
+    {
+      write_dat(basepart2);//2area
+      for(int i=0; i<(320*240/8); i++)
+	{
+	  lcd_buffer[i] = 0;
+	}
+    }
   else if(part == 3) write_dat(basepart3);//3area
   else if(part == 4) write_dat(basepart4);//4area
   else {i = 32768;   write_dat(0x00);}    //After writing the high eight, All dispay area 32KB RAM
@@ -615,6 +626,26 @@ void locate_xy2(uint x, uchar y)
   write_dat((uchar)(addr & 0xff));    //First write the low eight
   write_dat((uchar)(addr >> 8) + basepart2); //After writing the high eight
 }
+
+#define LCD_X (320/8)
+
+void write_buffer_pixel(int x, int y, int attr)
+{
+  if( attr == 0 )
+    {
+      lcd_buffer[y*LCD_X+x/8] |= (0x80 >> (x%8));
+    }
+  else
+    {
+      lcd_buffer[y*LCD_X+x/8] &= ~(0x80 >> (x%8));
+    }
+}
+
+uint8_t read_buffer_byte(int x, int y)
+{
+  return(lcd_buffer[y*LCD_X+x/8]);
+}
+
 /******************************************************* 
                       Cursor positioning
                   x: 0~319 320
@@ -810,8 +841,9 @@ void show_pixel(uint x, uchar y, int attr)
 
   //write_cmd(mread);
 
-  temp = 0x00; //read_dat();
-
+  //  temp = 0x00; //read_dat();
+  temp = read_buffer_byte(x, y);
+  
   if(attr)
     {
       temp &= ~tempd;
@@ -824,6 +856,9 @@ void show_pixel(uint x, uchar y, int attr)
   locate_xy2(x, y);     //Cursor positioning
   write_cmd(mwrite);     //write data 
   write_dat(temp);
+
+  write_buffer_pixel(x,y,attr);
+  
 }
 
 /******************************************************* 
@@ -838,32 +873,66 @@ void show_line(uint x1,uchar y1,uint x2,uchar y2,int attr)
   char inc_x, inc_y;
   int  xerr = 0, yerr = 0;    //Initialize variables
   uint i, ds;
+  
   dx = x2 - x1;       //Calculate the coordinates increment
   dy = y2 - y1;
-  if(dx > 0) inc_x = 1;     //Set the single-step direction
+
+  if(dx > 0)
+    {
+      inc_x = 1;     //Set the single-step direction
+    }
   else 
     {
-      if(dx == 0) {inc_x = 0;     } //Vertical line
-      else  {inc_x = -1; dx = -dx;}
+      if (dx == 0)
+	{
+	  inc_x = 0;
+	} //Vertical line
+      else
+	{
+	  inc_x = -1;
+	  dx = -dx;
+	}
     }
-  if(dy > 0) inc_y = 1;     //Set the single-step direction
+
+  if(dy > 0)
+    {
+      inc_y = 1;     //Set the single-step direction
+    }
   else
     {
-      if(dy == 0) {inc_y = 0;     } //Horizontal line
-      else  {inc_y = -1; dy = -dy;}
+      if(dy == 0)
+	{
+	  inc_y = 0;
+	} //Horizontal line
+      else
+	{
+	  inc_y = -1;
+	  dy = -dy;
+	}
     }
-  if(dx > dy) ds = dx;     //select the basic incremental axis
-  else  ds = dy;
+  
+  if(dx > dy)
+    {
+      ds = dx;     //select the basic incremental axis
+    }
+  else
+    {
+      ds = dy;
+    }
+  
   for(i = 0; i <= ds+1; i++)    //drawing line
     {
       show_pixel(x1, y1, attr);   //drawing pixel
+
       xerr += dx;
       yerr += dy;
+
       if(xerr > ds)
 	{
 	  xerr -= ds;
 	  x1   += inc_x;
 	}
+
       if(yerr > ds)
 	{
 	  yerr -= ds;
@@ -871,6 +940,7 @@ void show_line(uint x1,uchar y1,uint x2,uchar y2,int attr)
 	}
     }
 }
+
 /******************************************************* 
                      display square
                  x: 0~319 320
@@ -1319,9 +1389,19 @@ void escdd_display_start(void)
   show_on();           //display on
   show_on();           //display on
 
-  demo_line();      //drawing line
   lcd_init();
-  demo_line();      //drawing line
+  //  demo_line();      //drawing line
+
+  lcd_cls(0);
+  lcd_cls(1);
+
+  show_rectangle(1, 1, 319, 239, 0);
+  
+  show_char(12, 10, "Experimental");
+  show_char(12, 12, "  School's");
+  show_char(12, 14, "  Computer");
+
+  show_char(12, 18, "  Initialising...");
 
 }
 

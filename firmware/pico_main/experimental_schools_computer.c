@@ -10553,6 +10553,11 @@ int main(void)
   /* Overclock */
   set_sys_clock_khz( OVERCLOCK, 1 );
 
+#if ESC_TYPE_DESKTOP
+  printf("\nDesktop ESC");
+  escdd_display_start();
+  
+#endif
   
   //stdio_init_all();
   stdio_usb_init();
@@ -10571,11 +10576,6 @@ int main(void)
   printf("\nSmall ESC");
 #endif
 
-#if ESC_TYPE_DESKTOP
-  printf("\nDesktop ESC");
-  escdd_display_start();
-  
-#endif
 
 #if ESC_KBD_VOLT_TOUCH
   printf("\nVoltage Touch Keyboard");
