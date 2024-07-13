@@ -81,7 +81,7 @@ module corner()
 {
 translate([0, 40, 0])
 rotate([0, 0, -180])
-%corner1();
+corner1();
     
 translate([40-0.1, 0, 0])
 rotate([0, 0, 90])
