@@ -9,12 +9,12 @@ show_top = 0;
 show_kb_part = 1;
 show_kb_part_proj = 0;
 
-show_front_panel = 0;
-
+show_front_panel = 1;
+show_base = 1;
 
 // Angle of back part of kb plate
 kb_bk_angle= 4;
-front_panel_angle = 12;
+front_panel_angle = 4;
 
 // Extra 1mm all round for wall to hold PCBs
 len_x = 229+2;
@@ -204,7 +204,7 @@ module fr()
      translate([0, kb_plate_y*cos(12), kb_fr_z/2+kb_plate_y*sin(12)])
 	  rotate([-kb_bk_angle, 0, 0])    
 	  translate([0, 0, kb_bk_z/2-sh2/2])    
-	  cube([len_x, th, kb_bk_z+sh2], center=true);
+	  %cube([len_x, th, kb_bk_z+sh2], center=true);
 }
 
 module kb_part()
@@ -270,16 +270,40 @@ module top()
      top_side( len_x/2+th/2);
 }
 
-module front_panel()
+module f_panel()
 {
-     translate([0, kb_plate_y*cos(12), kb_bk_z*2+kb_fr_z/2+kb_plate_y*sin(12)-kb_bk_z])
-	  translate([0, 0, -kb_fr_z/2])
-	  rotate([-front_panel_angle+90, 0, 0])
-	  translate([0, front_panel_y/2, 0])
-	  cube([front_panel_x, front_panel_y, th], center=true);
+  linear_extrude(height = 1.5, convexity = 20, twist=0)
+    
+    //import("../test.dxf");
+    import("../front_panel2.dxf");
+    //import("../kb_holes.dxf");
+    
 }
 
+module front_panel()
+{
+     translate([-115.5, kb_plate_y*cos(12)+0.7, kb_bk_z*2+kb_fr_z/2+kb_plate_y*sin(12)-kb_bk_z])
+	  translate([0, 0, -kb_fr_z/2])
+	  rotate([-front_panel_angle+90, 0, 0])
+	  translate([0, front_panel_y/2-18.9, 0])
+      f_panel();
+	  //cube([front_panel_x, front_panel_y, th], center=true);
+}
+
+module base()
+{
+  translate([0, 288/2, -9.5])
+  cube([231, 288, 1.5], center=true);
+}
+
+//f_panel();
+
 //key_plate();
+
+if( show_base )
+{
+  base();
+}
 
 if( show_pcb )
 {
