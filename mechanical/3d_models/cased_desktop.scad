@@ -6,11 +6,13 @@ $fn = 200;
 
 show_pcb = 0;
 show_top = 0;
-show_kb_part = 1;
+show_kb_part = 0;
 show_kb_part_proj = 0;
+show_left_support = 1;
+show_right_support = 1;
 
-show_front_panel = 1;
-show_base = 1;
+show_front_panel = 0;
+show_base = 0;
 
 // Angle of back part of kb plate
 kb_bk_angle= 4;
@@ -50,7 +52,7 @@ pcb_th = 1.6;
 module kb_pcb()
 {
      cube([pcb_x, pcb_y, pcb_th], center=true);
-    import("overlay1-F_SilkS.dxf");
+     import("overlay1-F_SilkS.dxf");
 }
 
 // Put a lip at one end of the PCB sandwich and a plate at the other end
@@ -204,7 +206,7 @@ module fr()
      translate([0, kb_plate_y*cos(12), kb_fr_z/2+kb_plate_y*sin(12)])
 	  rotate([-kb_bk_angle, 0, 0])    
 	  translate([0, 0, kb_bk_z/2-sh2/2])    
-	  %cube([len_x, th, kb_bk_z+sh2], center=true);
+	  cube([len_x, th, kb_bk_z+sh2], center=true);
 }
 
 module kb_part()
@@ -272,11 +274,11 @@ module top()
 
 module f_panel()
 {
-  linear_extrude(height = 1.5, convexity = 20, twist=0)
+     linear_extrude(height = 1.5, convexity = 20, twist=0)
     
-    //import("../test.dxf");
-    import("../front_panel2.dxf");
-    //import("../kb_holes.dxf");
+	  //import("../test.dxf");
+	  import("../front_panel2.dxf");
+     //import("../kb_holes.dxf");
     
 }
 
@@ -286,15 +288,74 @@ module front_panel()
 	  translate([0, 0, -kb_fr_z/2])
 	  rotate([-front_panel_angle+90, 0, 0])
 	  translate([0, front_panel_y/2-18.9, 0])
-      f_panel();
+     {
+	  f_panel();
+	  translate([10, 10, 0])
+	       cylinder(d=3, h=40, center=true);
+	  translate([231-10, 10, 0])
+	       cylinder(d=3, h=40, center=true);
+	  translate([10, 64-10, 0])
+	       cylinder(d=3, h=40, center=true);
+	  translate([231-10, 64-10, 0])
+	       cylinder(d=3, h=40, center=true);
+           
 	  //cube([front_panel_x, front_panel_y, th], center=true);
+     }
 }
 
 module base()
 {
-  translate([0, 288/2, -9.5])
-  cube([231, 288, 1.5], center=true);
+     translate([0, 288/2, -9.5])
+	  cube([231, 288, 1.5], center=true);
 }
+
+module base_support(dir)
+{
+     translate([0, 2, 53])
+	  rotate([-4, 0, 0])
+	  cube([10, 10, 60], center=true);
+     
+     cube([10, 10, 50], center=true);
+    
+    translate([dir*10, 0, -22.5])
+     cube([20, 10, 5], center=true); 
+
+    translate([0, 10, -22.5])
+     cube([10, 20, 5], center=true); 
+    
+}
+
+module left_support()
+{
+    difference()
+    {   
+     base_support(1);
+    translate([0, 15, -40])
+    cylinder(d=3.5, h=40);
+    translate([15, 0, -40])
+    cylinder(d=3.5, h=40);
+}
+    translate([28, 2, 73])
+     cube([38+9, 5, 8.5], center=true); 
+
+}
+
+module right_support()
+{
+    difference()
+    {   
+     base_support(-1);
+    translate([0, 15, -40])
+    cylinder(d=3.5, h=40);
+    translate([-15, 0, -40])
+    cylinder(d=3.5, h=40);
+}
+    translate([-12.5, 4, 73])
+     cube([20+15, 5, 30], center=true); 
+
+}
+
+//==============================================================================
 
 //f_panel();
 
@@ -302,18 +363,18 @@ module base()
 
 if( show_base )
 {
-  base();
+     base();
 }
 
 if( show_pcb )
 {
-    translate([0, len_y/2, kb_fr_z-th])
-    rotate([front_panel_angle, 0])
-kb_pcb();
+     translate([0, len_y/2, kb_fr_z-th])
+	  rotate([front_panel_angle, 0])
+	  kb_pcb();
 }
 
-    module kb_part_full()
-    {
+module kb_part_full()
+{
      translate([0, len_y-kb_panel_rad*2-0.4, sin(12)*len_y+kb_bk_z+th/2+kb_panel_rad-0.65])
 	  rotate([180, 0, 0])
 	  part_hollow_tube(len_x, kb_panel_rad, kb_panel_rad+th, kb_bk_angle, 0);
@@ -325,21 +386,19 @@ kb_pcb();
 	       rotate([0, 0, 0])
 	       part_hollow_tube(case_top_x, kb_panel_rad, kb_panel_rad*2, 12, 0);
      }
- }
-
-
+}
  
 if(show_kb_part)
 {
-kb_part_full();
+     kb_part_full();
 }
 
 if(show_kb_part_proj)
 {
-projection()
-    {
-kb_part_full();
-    }
+     projection()
+     {
+	  kb_part_full();
+     }
 }
 
 if(show_top)
@@ -350,4 +409,26 @@ if(show_top)
 if(show_front_panel)
 {
      front_panel();
+}
+
+if( show_left_support )
+{
+     difference()
+     {
+	  translate([-231/2+10-0, 115, 65/4])
+	       left_support();
+	  kb_part_full();
+	  front_panel();
+     }
+}
+
+if( show_right_support )
+{
+     difference()
+     {
+	  translate([231/2+10-20, 115, 65/4])
+	       right_support();
+	  kb_part_full();
+	  front_panel();
+     }
 }
