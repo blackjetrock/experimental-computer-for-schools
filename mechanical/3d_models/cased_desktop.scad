@@ -4,15 +4,17 @@
 
 $fn = 200;
 
-show_pcb = 0;
-show_top = 0;
-show_kb_part = 0;
-show_kb_part_proj = 0;
-show_left_support = 1;
-show_right_support = 1;
-
-show_front_panel = 0;
-show_base = 0;
+show_pcb             = 0;
+show_top             = 0;
+show_kb_part         = 0;
+show_kb_part_proj    = 0;
+show_left_support    = 0;
+show_right_support   = 1;
+show_front_panel     = 0;
+show_base            = 0;
+show_kb_pcb_holder   = 0;
+show_angle_bracket   = 0;
+show_name_plate      = 0;
 
 // Angle of back part of kb plate
 kb_bk_angle= 4;
@@ -125,7 +127,7 @@ module key_plate_1()
      {
 	  retain_a();
 
-// Take centreof cube away to leave a wall around the PCBs
+// Take centre of cube away to leave a wall around the PCBs
 	  cube([len_x-2, len_y-2, wall_z+0.1], center=true);
      
 	  for(x=[-len_x/2+20:20:len_x/2-20])
@@ -135,6 +137,31 @@ module key_plate_1()
 
    
 }
+
+// Bar that holds keyboard pcbs in the frame
+
+module holder_a()
+{   
+     translate([0, len_y/2+bracket_y/2, 0])
+	  cube([len_x-170, bracket_y*2.0, wall_z], center=true);
+}
+
+module kb_pcb_holder()
+{
+     translate([0, -bracket_y/2, -th/2-wall_z/2])
+	  difference()
+     {
+	  holder_a();
+
+	  cube([len_x-2, len_y-4, wall_z+0.1], center=true);
+     
+	  for(x=[-len_x/2+20:20:len_x/2-20])
+	       translate([x, len_y/2+bracket_y/2+4, 0])   
+		    cylinder(d=2.5, h=6, center=true);
+     }
+   
+}
+
 
 module k_bevel()
 {
@@ -171,7 +198,8 @@ module k_bevel()
     
      translate([-kb_plate_x/2+37.5206+1, -kb_plate_y/2+37.9969+1, -th/2+th/2])    
 	  for( a = kh) for( b = a) {
-		    translate(a) cylinder(r1=6.252, r2=6.252+1, h=th+0.1, center=true);
+		    translate(a) 
+			 cylinder(r1=6.252, r2=6.252+1, h=th+0.1, center=true);
 	       }
 }
 
@@ -317,42 +345,112 @@ module base_support(dir)
      
      cube([10, 10, 50], center=true);
     
-    translate([dir*10, 0, -22.5])
-     cube([20, 10, 5], center=true); 
+     translate([dir*10, 0, -22.5])
+	  cube([20, 10, 5], center=true); 
 
-    translate([0, 10, -22.5])
-     cube([10, 20, 5], center=true); 
+     translate([0, 10, -22.5])
+	  cube([10, 20, 5], center=true); 
     
+}
+
+// 3D printed name plate. needs to be painted to match the original colour scheme.
+// Embossed writing should helpo the painting.
+
+module name_plate_core()
+{
+     rotate([-4, 0, 0])
+	  cube([38, 1.5, 8.5], center=true);
+	  
+     translate([-38/4, 0, 0])
+	  rotate([90-4, 0, 0])
+	  translate([0, 0, -30])
+	  cylinder(d=3, h=30);
+	  
+     translate([+38/4, 0, 0])
+	  rotate([90-4, 0, 0])
+	  translate([0, 0, -30])
+	  cylinder(d=3, h=30);
+	  
+}
+
+module name_plate_writing()
+{
+      translate([-15, -0.8, -4])
+      rotate([90-4, 0, 0])
+	  linear_extrude(height = 0.7, center = true, convexity = 10,twist=0)
+	  import("../name_plate_writing.dxf");
+}
+
+module name_plate()
+{
+     translate([-76.5, 108.1, 89.3])
+     {
+	  difference()
+	  {
+	       name_plate_core();
+	       name_plate_writing();
+	  }
+     }
 }
 
 module left_support()
 {
-    difference()
-    {   
-     base_support(1);
-    translate([0, 15, -40])
-    cylinder(d=3.5, h=40);
-    translate([15, 0, -40])
-    cylinder(d=3.5, h=40);
-}
-    translate([28, 2, 73])
-     cube([38+9, 5, 8.5], center=true); 
+     difference()
+     {   
+	  base_support(1);
+	  translate([0, 15, -40])
+	       cylinder(d=3.5, h=40);
+	  translate([15, 0, -40])
+	       cylinder(d=3.5, h=40);
+     }
+     translate([28, 2, 73])
+	  rotate([-4, 0, 0])
+	  cube([38+9, 5, 17], center=true); 
 
 }
+
+rh_pl_x = 42;
+rh_pl_z = 40;
+sw_pl_hole_x = 31;
+sw_pl_hole_z = 34;
 
 module right_support()
 {
-    difference()
-    {   
-     base_support(-1);
-    translate([0, 15, -40])
-    cylinder(d=3.5, h=40);
-    translate([-15, 0, -40])
-    cylinder(d=3.5, h=40);
-}
-    translate([-12.5, 4, 73])
-     cube([20+15, 5, 30], center=true); 
+     difference()
+     {   
+	  base_support(-1);
+	  translate([0, 15, -40])
+	       cylinder(d=3.5, h=40);
+	  translate([-15, 0, -40])
+	       cylinder(d=3.5, h=40);
+     }
+     translate([-25, 4, 59])
+	  rotate([-3, 0, 0])
+      difference()
+     {
+	  cube([rh_pl_x, 4, rh_pl_z], center=true); 
+         
+       translate([sw_pl_hole_x/2, 10, sw_pl_hole_z/2])
+       rotate([90, 0, 0])
+       cylinder(r=3/2,h=20);
 
+       translate([-sw_pl_hole_x/2, 10, sw_pl_hole_z/2])
+       rotate([90, 0, 0])
+       cylinder(r=3/2,h=20);
+
+       translate([sw_pl_hole_x/2, 10, -sw_pl_hole_z/2])
+       rotate([90, 0, 0])
+       cylinder(r=3/2,h=20);
+
+       translate([-sw_pl_hole_x/2, 10, -sw_pl_hole_z/2])
+       rotate([90, 0, 0])
+       cylinder(r=3/2,h=20);
+
+       translate([0, 10, 0])
+       rotate([90, 0, 0])
+       cylinder(d=12,h=20);
+
+     }
 }
 
 //==============================================================================
@@ -413,12 +511,14 @@ if(show_front_panel)
 
 if( show_left_support )
 {
+ 
      difference()
      {
-	  translate([-231/2+10-0, 115, 65/4])
+	  translate([-231/2+10-0, 115, 65/4+0.5])
 	       left_support();
 	  kb_part_full();
 	  front_panel();
+	  name_plate();
      }
 }
 
@@ -426,9 +526,41 @@ if( show_right_support )
 {
      difference()
      {
-	  translate([231/2+10-20, 115, 65/4])
+	  translate([231/2+10-20, 115, 65/4-0.5])
 	       right_support();
 	  kb_part_full();
 	  front_panel();
      }
+}
+
+if( show_kb_pcb_holder )
+{
+     translate([0, len_y/2, kb_bk_z+15])
+	  kb_pcb_holder();
+}
+
+// Bracket that bolts base to top cover
+if( show_angle_bracket )
+{
+     difference()
+     {
+	  cube([14, 14, 14], center= true);
+	  translate([0, 5, 5])
+	       cube([14.1, 14, 14], center= true);
+        
+        
+	  translate([0, 14/2-9/2, -12])
+	       cylinder(d=2.5, h=20);
+
+	  translate([0, 0, 14/2-9/2])
+	       rotate([90, 0, 0])
+	       cylinder(d=2.5, h=20);
+
+     }
+}
+
+if( show_name_plate )
+{
+     name_plate();
+    
 }
