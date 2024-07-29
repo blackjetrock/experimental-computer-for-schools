@@ -15,6 +15,8 @@ show_base            = 0;
 show_kb_pcb_holder   = 0;
 show_angle_bracket   = 0;
 show_name_plate      = 0;
+show_lh_ruler        = 0;
+show_rh_ruler        = 0;
 
 // Angle of back part of kb plate
 kb_bk_angle= 4;
@@ -339,9 +341,9 @@ module base()
 
 module base_support(dir)
 {
-     translate([0, 2, 53])
+     translate([0, 2, 55.6])
 	  rotate([-4, 0, 0])
-	  cube([10, 10, 60], center=true);
+	  cube([10, 10, 65], center=true);
      
      cube([10, 10, 50], center=true);
     
@@ -355,8 +357,12 @@ module base_support(dir)
 
 // 3D printed name plate. needs to be painted to match the original colour scheme.
 // Embossed writing should helpo the painting.
+// name plate is an engraved outline with a vinyl sticker
+// stuck on top. So no separate part.
 
 module name_plate_core()
+{
+if ( 0 )
 {
      rotate([-4, 0, 0])
 	  cube([38, 1.5, 8.5], center=true);
@@ -370,7 +376,7 @@ module name_plate_core()
 	  rotate([90-4, 0, 0])
 	  translate([0, 0, -30])
 	  cylinder(d=3, h=30);
-	  
+} 
 }
 
 module name_plate_writing()
@@ -403,16 +409,21 @@ module left_support()
 	  translate([15, 0, -40])
 	       cylinder(d=3.5, h=40);
      }
-     translate([28, 2, 73])
-	  rotate([-4, 0, 0])
-	  cube([38+9, 5, 17], center=true); 
+     //translate([28, 2, 73])
+	  //rotate([-4, 0, 0])
+	  //cube([38+9, 5, 17], center=true); 
 
+     if (show_lh_ruler)
+       {
+       translate([20, 0, 32.5])
+       cube([10,10,115], center=true);
+       }
 }
 
-rh_pl_x = 42;
-rh_pl_z = 40;
-sw_pl_hole_x = 31;
-sw_pl_hole_z = 34;
+rh_pl_x = 29;
+rh_pl_z = 32;
+sw_pl_hole_x = 24;
+sw_pl_hole_z = 27;
 
 module right_support()
 {
@@ -423,8 +434,23 @@ module right_support()
 	       cylinder(d=3.5, h=40);
 	  translate([-15, 0, -40])
 	       cylinder(d=3.5, h=40);
-     }
-     translate([-25, 4, 59])
+         
+         
+      translate([-17.5, 4, 72])
+         rotate([-3, 0, 0])
+         {
+        translate([sw_pl_hole_x/2, 10, sw_pl_hole_z/2])
+       rotate([90, 0, 0])
+       cylinder(r=3/2,h=20);
+
+      translate([sw_pl_hole_x/2, 10, -sw_pl_hole_z/2])
+       rotate([90, 0, 0])
+       cylinder(r=3/2,h=20);
+         }
+     
+         }
+     
+     translate([-17.5, 4, 72])
 	  rotate([-3, 0, 0])
       difference()
      {
@@ -451,6 +477,13 @@ module right_support()
        cylinder(d=12,h=20);
 
      }
+     
+     if (show_rh_ruler)
+       {
+       translate([20, 0, 32.5])
+       cube([10,10,115], center=true);
+       }
+
 }
 
 //==============================================================================
