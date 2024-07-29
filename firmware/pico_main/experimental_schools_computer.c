@@ -2714,18 +2714,29 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 
   result = digits_r;
 
-   exp_r = exp_a - exp_b + 5 - number_of_shifts;
-  
+  //exp_r = exp_a - exp_b + 5 - number_of_shifts;
+  exp_r = 5 - (exp_b - exp_a); // + 5 - number_of_shifts;
+  result = STORE_SET_EXPONENT(result, exp_r);
+    
 #if DEBUG_FP
   printf("\nexp_r :%016X", exp_r);
 #endif
 
   while( exp_r > 6 )
     {
+      printf("\nsw loop");
+#if DEBUG_FP
+      printf("\nresult:%016X", result); 
+#endif
+
       // Shift result right so it fits
       result = sw_shift_right(result, 1);
       exp_r--;
     }
+
+#if DEBUG_FP
+  printf("\nexp_r after normalise:%016X", exp_r);
+#endif
   
   // Put exponent back as same number of decimal places as arg b
   result = STORE_SET_EXPONENT(result, exp_r);
