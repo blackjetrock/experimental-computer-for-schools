@@ -34,7 +34,8 @@ This has a 0.96" OLED display that shows the same information as the original ma
  The Pico can be a PicoW, in which case a WiFi access point is generated.
 
 <h1>Wifi Version</h1>
-This version has a USB interface, and a Wifi interface (it generates a hot spot). The USB interface still works. The Wifi page shows the display and allows control from a web page. This version of the code runs on a Pico W and generates it's own access point.
+This version has a USB interface, and a Wifi interface (it generates a hot spot). The USB interface still works. The Wifi page shows the display and allows control from a web page. This version of the code runs on a Pico W and generates its own access point.
+
 
 ![Screenshot from 2024-08-30 09-09-44](https://github.com/user-attachments/assets/dc671aa7-ae32-4101-8cae-64d0d611e354)
 
@@ -62,7 +63,7 @@ in the
 
 directory and then make as usual.
 
-<h1>Half Scale Replica</h1>h1>
+<h1>Half Scale Replica</h1>
 
 ![IMG_20240827_103823604_HDR](https://github.com/user-attachments/assets/04b15898-e2ba-4993-99cf-3b7841f57b29)
 
