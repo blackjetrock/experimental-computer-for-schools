@@ -1,6 +1,6 @@
 # IBM Experimental Computer for Schools
 
-The schools computer dates from around 1969 and was an experimental machine that was never sold. It was designed to be used in schools to teach the basics of computer design and programming. The hardware was based on the same components that the IBM system 360 used. The computer was programmed in machine code, and unlike modern machines the machine code is BCD based, not binary. There are 'extracodes' in the system that are analogous to subroutines, these provided floating point arithmetic at the machine code level. The extracodes could be replaced with user code if desired, and provide a completely different set of functions.
+The schools computer project ran from 1966 to 1970 and was an experimental machine that was never sold, although several were made and were used in schools in the UK. One machine was used for ten years before it failed. It was designed to be used in schools to teach the basics of computer design and programming. The hardware was based on the same components that the IBM system 360 used. The computer was programmed in machine code, and unlike modern machines the machine code is BCD based, not binary. There are 'extracodes' in the system that are analogous to subroutines, these provided floating point arithmetic at the machine code level. The extracodes could be replaced with user code if desired, and provide a completely different set of functions.
 
 This is a simulation of the machine. It can run code written for the original machine.
 
