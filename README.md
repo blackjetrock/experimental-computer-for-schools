@@ -2,6 +2,9 @@
 
 The schools computer project ran from 1966 to 1970 and was an experimental machine that was never sold, although several were made and were used in schools in the UK. One machine was used for ten years before it failed. It was designed to be used in schools to teach the basics of computer design and programming. The hardware was based on the same components that the IBM system 360 used. The computer was programmed in machine code, and unlike modern machines the machine code is BCD based, not binary. There are 'extracodes' in the system that are analogous to subroutines, these provided floating point arithmetic at the machine code level. The extracodes could be replaced with user code if desired, and provide a completely different set of functions.
 
+As far as I an tell this machine was the first machine purpose built for education. there are lots of examples of computers being used to teach fundamentals of programming and computer architecture, but they are general purpose machines in educational situations, this is the earliest machine designed for the purpose I can find.
+It also seems to be the first machine to use a domestic television as a display.
+
 This is a simulation of the machine. It can run code written for the original machine.
 
 <h1>USB</h1>
