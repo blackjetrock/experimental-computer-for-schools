@@ -83,3 +83,7 @@ Describes the hardware and code design of the machine. This is a technical descr
 This is a four page document that has flowcharts and programs for log<sub>b</sub>N and b<sup>L</sup>.
 The programs use an extracode that isn't in the standard set, which is a square root instruction. The instruction also has a jump and the jump part is used in the programs without use of the square root operation. Together with the first course on the school's computer these are the only known programs for the computer from the time whenit was being develped and trialled.
 
+<h1>References</h1>
+
+https://ibmhursleymuseum.info/hardware-data-detail.asp?id1=140
+https://news.ycombinator.com/item?id=36112633
