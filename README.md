@@ -87,3 +87,4 @@ The programs use an extracode that isn't in the standard set, which is a square 
 
 https://ibmhursleymuseum.info/hardware-data-detail.asp?id1=140
 https://news.ycombinator.com/item?id=36112633
+https://www.stedwardsoxford.org/obituary/david-tinsley/
