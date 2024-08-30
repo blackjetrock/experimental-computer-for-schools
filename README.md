@@ -5,7 +5,7 @@ The schools computer dates from around 1969 and was an experimental machine that
 This is a simulation of the machine. It can run code written for the original machine.
 
 <h1>USB</h1>
-Interaction with the simulator is over USB. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi as well.
+USB can be used to interact with the simulator. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi as well.
 A command line interface (CLI) is available on the USB connection, this requires a terminal emulator program such as minicom. Using the interface you can:
 
 * Drive keys as if they came from the keyboard
@@ -58,6 +58,12 @@ in the
 <code>experimental_schools_computer/build</code>
 
 directory and then make as usual.
+
+<h1>Half Scale Replica</h1>h1>
+
+![IMG_20240827_103823604_HDR](https://github.com/user-attachments/assets/04b15898-e2ba-4993-99cf-3b7841f57b29)
+
+The half scale replica is constructed of similar materials to the original, and runs the same code as the small PCB version, with some modiufications for the different display and keyboard. The display is a large LCD instead of a small OLED and a touch keyboard is used instead of tactile switches. The case is aluminium which has been powder coated, the keyboard surround is a 3D printed resin part. The original machine also used a plastic surround, this is probably because a metal surround would interfere with the touch keyboard.
 
 <h1>Assembler</h1>
 I have created an assembler that assembles instructions expressed in the verbose comments seen in the documents available for this computer. 
