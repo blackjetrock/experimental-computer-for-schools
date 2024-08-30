@@ -36,6 +36,9 @@ This has a 0.96" OLED display that shows the same information as the original ma
 <h1>Wifi Version</h1>
 This version has a USB interface, and a Wifi interface (it generates a hot spot). The USB interface still works. The Wifi page shows the display and allows control from a web page. This version of the code runs on a Pico W and generates it's own access point.
 
+![Screenshot from 2024-08-30 09-09-44](https://github.com/user-attachments/assets/dc671aa7-ae32-4101-8cae-64d0d611e354)
+
+
 If building for a Pico W then use this command line:
 
 <code>cmake -DPICO_BOARD=pico_w -DWIFI_SSID="Schools" -DWIFI_PASSWORD="password" ..</code>
