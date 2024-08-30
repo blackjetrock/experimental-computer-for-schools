@@ -92,10 +92,17 @@ A photo of the schools computer in a classroom in the 60s:
 https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d685%26zoom%3dpage-fit&searchText=schools%27%20computer
 
 https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d685%26zoom%3dpage-fit&searchText=schools%27%20computer
+
 https://ibmhursleymuseum.info/hardware-data-detail.asp?id1=140
+
 https://news.ycombinator.com/item?id=36112633
+
 https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d607%26zoom%3dpage-fit&searchText=ibm
+
 https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d602%26zoom%3dpage-fit&searchText=ibm
+
 https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d606%26zoom%3dpage-fit&searchText=ibm
+
 https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d674%26zoom%3dpage-fit&searchText=schools%27%20computer
+
 https://www.stedwardsoxford.org/obituary/david-tinsley/
