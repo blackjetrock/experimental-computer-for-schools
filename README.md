@@ -84,7 +84,14 @@ This is a four page document that has flowcharts and programs for log<sub>b</sub
 The programs use an extracode that isn't in the standard set, which is a square root instruction. The instruction also has a jump and the jump part is used in the programs without use of the square root operation. Together with the first course on the school's computer these are the only known programs for the computer from the time whenit was being develped and trialled.
 
 <h1>References</h1>
+A photo of the schools computer in a classroom in the 60s:
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d685%26zoom%3dpage-fit&searchText=schools%27%20computer
 
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d685%26zoom%3dpage-fit&searchText=schools%27%20computer
 https://ibmhursleymuseum.info/hardware-data-detail.asp?id1=140
 https://news.ycombinator.com/item?id=36112633
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d607%26zoom%3dpage-fit&searchText=ibm
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d602%26zoom%3dpage-fit&searchText=ibm
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d606%26zoom%3dpage-fit&searchText=ibm
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d674%26zoom%3dpage-fit&searchText=schools%27%20computer
 https://www.stedwardsoxford.org/obituary/david-tinsley/
