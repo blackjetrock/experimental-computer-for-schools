@@ -71,7 +71,7 @@ directory and then make as usual.
 
 ![IMG_20240827_103823604_HDR](https://github.com/user-attachments/assets/04b15898-e2ba-4993-99cf-3b7841f57b29)
 
-The half scale replica is constructed of similar materials to the original, and runs the same code as the small PCB version, with some modiufications for the different display and keyboard. The display is a large LCD instead of a small OLED and a touch keyboard is used instead of tactile switches. The case is aluminium which has been powder coated, the keyboard surround is a 3D printed resin part. The original machine also used a plastic surround, this is probably because a metal surround would interfere with the touch keyboard.
+The half scale replica is constructed of similar materials to the original, and runs the same code as the small PCB version, with some modiufications for the different display and keyboard. The display is a large LCD instead of a small OLED and a touch keyboard is used instead of tactile switches. The case is aluminium which has been powder coated, the keyboard surround is a 3D printed resin part. The original machine also used a plastic surround, this is probably because a metal surround would interfere with the touch keyboard. And, yes, that is the original machine next to the replica.
 
 <h1>Assembler</h1>
 I have created an assembler that assembles instructions expressed in the verbose comments seen in the documents available for this computer. 
