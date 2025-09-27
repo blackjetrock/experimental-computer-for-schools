@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name picopak-rescue)(type Legacy)(uri /tree/projects/github/pak-gadget/pcbs/picopak/picopak-rescue.lib)(options "")(descr ""))
-  (lib (name 502p)(type Legacy)(uri /tree/projects/github/fx-502p-recreate/pcbs/pcb1/fx502-recreate/fx502p.lib)(options "")(descr ""))
-)

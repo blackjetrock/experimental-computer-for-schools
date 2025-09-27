@@ -97,4 +97,5 @@ CMakeFiles/escw.dir/tree/projects/github/experimental-computer-for-schools/firmw
  /tree/downloaded_tools/pico/new_sdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h \
  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
  /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
- /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h
+ /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc.h \
+ /tree/projects/github/experimental-computer-for-schools/firmware/pico_main/esc_desktop_display.h

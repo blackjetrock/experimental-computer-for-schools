@@ -1,11 +1,15 @@
 # IBM Experimental Computer for Schools
 
-The schools computer dates from around 1969 and was an experimental machine that was never sold. It was designed to be used in schools to teach the basics of computer design and programming. The hardware was based on the same components that the IBM system 360 used. The computer was programmed in machine code, and unlike modern machines the machine code is BCD based, not binary. There are 'extracodes' in the system that are analogous to subroutines, these provided floating point arithmetic at the machine code level. The extracodes could be replaced with user code if desired, and provide a completely different set of functions.
+The schools computer project ran from 1966 to 1970 and was an experimental machine that was never sold, although several were made and were used in schools in the UK. One machine was used for ten years before it failed. It was designed to be used in schools to teach the basics of computer design and programming. The hardware was based on the same components that the IBM system 360 used. The computer was programmed in machine code, and unlike modern machines the machine code is BCD based, not binary. There are 'extracodes' in the system that are analogous to subroutines, these provided floating point arithmetic at the machine code level. The extracodes could be replaced with user code if desired, and provide a completely different set of functions.
+
+As far as I an tell this machine was the first machine purpose built for education. there are lots of examples of computers being used to teach fundamentals of programming and computer architecture, but they are general purpose machines in educational situations, this is the earliest machine designed for the purpose I can find.
+
+It also seems to be the first machine to use a domestic television as a display.
 
 This is a simulation of the machine. It can run code written for the original machine.
 
 <h1>USB</h1>
-Interaction with the simulator is over USB. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi as well.
+USB can be used to interact with the simulator. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi as well.
 A command line interface (CLI) is available on the USB connection, this requires a terminal emulator program such as minicom. Using the interface you can:
 
 * Drive keys as if they came from the keyboard
@@ -34,7 +38,11 @@ This has a 0.96" OLED display that shows the same information as the original ma
  The Pico can be a PicoW, in which case a WiFi access point is generated.
 
 <h1>Wifi Version</h1>
-This version has a USB interface, and a Wifi interface (it generates a hot spot). The USB interface still works. The Wifi page shows the display and allows control from a web page. This version of the code runs on a Pico W and generates it's own access point.
+This version has a USB interface, and a Wifi interface (it generates a hot spot). The USB interface still works. The Wifi page shows the display and allows control from a web page. This version of the code runs on a Pico W and generates its own access point.
+
+
+![Screenshot from 2024-08-30 09-09-44](https://github.com/user-attachments/assets/dc671aa7-ae32-4101-8cae-64d0d611e354)
+
 
 If building for a Pico W then use this command line:
 
@@ -59,6 +67,12 @@ in the
 
 directory and then make as usual.
 
+<h1>Half Scale Replica</h1>
+
+![IMG_20240827_103823604_HDR](https://github.com/user-attachments/assets/04b15898-e2ba-4993-99cf-3b7841f57b29)
+
+The half scale replica is constructed of similar materials to the original, and runs the same code as the small PCB version, with some modifications for the different display and keyboard. The display is a large LCD instead of a small OLED and a touch keyboard is used instead of tactile switches. The case is aluminium which has been powder coated, the keyboard surround is a 3D printed resin part. The original machine also used a plastic surround, this is probably because a metal surround would interfere with the touch keyboard. And, yes, that is the original machine next to the replica.
+
 <h1>Assembler</h1>
 I have created an assembler that assembles instructions expressed in the verbose comments seen in the documents available for this computer. 
 
@@ -77,3 +91,22 @@ Describes the hardware and code design of the machine. This is a technical descr
 This is a four page document that has flowcharts and programs for log<sub>b</sub>N and b<sup>L</sup>.
 The programs use an extracode that isn't in the standard set, which is a square root instruction. The instruction also has a jump and the jump part is used in the programs without use of the square root operation. Together with the first course on the school's computer these are the only known programs for the computer from the time whenit was being develped and trialled.
 
+<h1>References</h1>
+A photo of the schools computer in a classroom in the 60s:
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d685%26zoom%3dpage-fit&searchText=schools%27%20computer
+
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d685%26zoom%3dpage-fit&searchText=schools%27%20computer
+
+https://ibmhursleymuseum.info/hardware-data-detail.asp?id1=140
+
+https://news.ycombinator.com/item?id=36112633
+
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d607%26zoom%3dpage-fit&searchText=ibm
+
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d602%26zoom%3dpage-fit&searchText=ibm
+
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d606%26zoom%3dpage-fit&searchText=ibm
+
+https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d674%26zoom%3dpage-fit&searchText=schools%27%20computer
+
+https://www.stedwardsoxford.org/obituary/david-tinsley/
