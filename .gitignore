@@ -6,8 +6,8 @@
 *.elf.map
 *.obj
 *.obj.d
-pico_main/build
-escw/build
+*pico_main/build*
+*escw/build*
 *.internal
 \#*\#
 .#*
