@@ -51,7 +51,7 @@ void oled_printf(I2C_SLAVE_DESC *slave, char *format, ...);
 void oled_setup(I2C_SLAVE_DESC *slave);
 void oled_display_scaled_string_xy(I2C_SLAVE_DESC *slave, char *string, int x, int y, int scale);
 
-I2C_SLAVE_DESC oled0;
-I2C_PORT_DESC i2c_bus_0;
+extern I2C_SLAVE_DESC oled0;
+extern I2C_PORT_DESC i2c_bus_0;
 
 #endif /* I2C_FUNCTIONS_H_ */

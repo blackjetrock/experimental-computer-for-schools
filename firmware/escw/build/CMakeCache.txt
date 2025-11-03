@@ -573,9 +573,9 @@ PICO_SDK_TESTS_ENABLED:INTERNAL=
 PICO_TOOLCHAIN_PATH:INTERNAL=
 PICO_TOOLS_DIR:INTERNAL=/home/menadue/pico/pico-sdk/tools
 //WiFi password for examples
-WIFI_PASSWORD:INTERNAL=password
+WIFI_PASSWORD:INTERNAL=schools
 //WiFi SSID for examples
-WIFI_SSID:INTERNAL=Schools
+WIFI_SSID:INTERNAL=SchoolsCompSim
 //Compiler reason failure
 _Python3_Compiler_REASON_FAILURE:INTERNAL=
 //Development reason failure
