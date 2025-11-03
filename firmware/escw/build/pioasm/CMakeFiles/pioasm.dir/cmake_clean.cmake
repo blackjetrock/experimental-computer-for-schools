@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/pioasm.dir/link.d"
   "CMakeFiles/pioasm.dir/ada_output.cpp.o"
   "CMakeFiles/pioasm.dir/ada_output.cpp.o.d"
   "CMakeFiles/pioasm.dir/c_sdk_output.cpp.o"
@@ -7,8 +8,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/pioasm.dir/gen/lexer.cpp.o.d"
   "CMakeFiles/pioasm.dir/gen/parser.cpp.o"
   "CMakeFiles/pioasm.dir/gen/parser.cpp.o.d"
+  "CMakeFiles/pioasm.dir/go_output.cpp.o"
+  "CMakeFiles/pioasm.dir/go_output.cpp.o.d"
   "CMakeFiles/pioasm.dir/hex_output.cpp.o"
   "CMakeFiles/pioasm.dir/hex_output.cpp.o.d"
+  "CMakeFiles/pioasm.dir/json_output.cpp.o"
+  "CMakeFiles/pioasm.dir/json_output.cpp.o.d"
   "CMakeFiles/pioasm.dir/main.cpp.o"
   "CMakeFiles/pioasm.dir/main.cpp.o.d"
   "CMakeFiles/pioasm.dir/pio_assembler.cpp.o"

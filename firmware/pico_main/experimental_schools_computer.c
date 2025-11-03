@@ -25,12 +25,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
 #include "hardware/dma.h"
 #include "hardware/irq.h"
 #include "hardware/flash.h"
+#include "hardware/clocks.h"
 #include "hardware/structs/bus_ctrl.h"
 
 #define DEBUG_STOP_LOOP while(1) {}
