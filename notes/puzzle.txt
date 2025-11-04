@@ -1,0 +1,2 @@
+Jack I was told there were 15. We had one at Exeter School. Chelsea collage University of London had two, one of which they dropped down the stairs.
+I wrote a program to brute force solve a puzzle, written in what passed foe machine code, which freed up a load of registers. It took about 17,000 passes and solved it in well under a second.

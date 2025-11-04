@@ -1,0 +1,5 @@
+/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/pioasm-install/pioasm/pioasm
+/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/pioasm-install/pioasm/pioasmTargets.cmake
+/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/pioasm-install/pioasm/pioasmTargets-release.cmake
+/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/pioasm-install/pioasm/pioasmConfig.cmake
+/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/pioasm-install/pioasm/pioasmConfigVersion.cmake

@@ -25,12 +25,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
 #include "hardware/dma.h"
 #include "hardware/irq.h"
 #include "hardware/flash.h"
+#include "hardware/clocks.h"
 #include "hardware/structs/bus_ctrl.h"
 
 #define DEBUG_STOP_LOOP while(1) {}
@@ -3839,21 +3841,38 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Stop and when restarted transfer keyboard register contents into Aa
 	  s->stop = 1;
 	  s->on_restart_load_aa = 1;
-	  
+
+          next_iar(s);
+          
 	  // Input
+#if 0
 	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%02d", s->inst_aa);
 	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
+	  display_on_line(s, display, 5, "IN             ");
+#else
+	  display_line_2(s,  DISPLAY_UPDATE);
+	  display_on_line(s, DISPLAY_UPDATE, 3, "%02d", s->inst_aa);
+	  display_on_line(s, DISPLAY_UPDATE, 4, "               ");
+	  display_on_line(s, DISPLAY_UPDATE, 5, "IN             ");
+#endif
 	  break;
 	  
 	case 9:
 	  // Display
+          next_iar(s);
+
+#if 0
 	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
-
+	  display_on_line(s, display, 5, "DISP           ");
+#else
+	  display_line_2(s,  DISPLAY_UPDATE);
+	  display_on_line(s, DISPLAY_UPDATE, 3, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, DISPLAY_UPDATE, 4, "               ");
+	  display_on_line(s, DISPLAY_UPDATE, 5, "DISP           ");
+#endif
 	  // Stop and display (Aa)
 	  s->stop = 1;
 	  break;
