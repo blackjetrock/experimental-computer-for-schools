@@ -702,7 +702,7 @@ void kbd_read(ESC_STATE *s)
 			      printf("\nTesting R[%d]", rn);
 			      break;
 
-			    case TC_REG_IAR:
+			    case TC_REG_IAR:
 			    case TC_REG_KI:
 			    case TC_REG_ADDR:
 			    case TC_CL:
