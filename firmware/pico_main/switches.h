@@ -5,7 +5,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // All debug switches off or set up
-#if 1
+#if 0
 
 #define DEBUG_CALC_STATE       0
 #define DEBUG_A_DECODE         0
@@ -39,7 +39,7 @@
 #endif
 
 // All debug switches off or set up
-#if 0
+#if 1
 
 #define DEBUG_CALC_STATE       1
 #define DEBUG_A_DECODE         1
