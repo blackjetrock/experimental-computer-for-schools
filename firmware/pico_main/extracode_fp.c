@@ -38,15 +38,16 @@ int extracode_fp[100] =
     0x16901098          //  125                                | Left Shift R9 by R0          |  R9 = R9 + R8
     0x03060000          //  126                                | R0 = 6                       |  
     0x05002351          //  127                                | Test R0 = 0                  |  Branch if yes to 131
-    0x                  //  128                                |                              |
-    0x                  //  129                                |                              |
-    0x                  //  130                                |                              |
-    0x                  //                                     |                              |
-    0x                  //                                     |                              |
-    0x                  //                                     |                              |
-    0x                  //                                     |                              |
-    0x                  //                                     |                              |
-    0x                  //                                     |                              |
+    0x05932631          //  128   Left Justify                 | Test MSD R9 = 0              |  Branch if no to 131
+    0x06910101          //  129   Answer                       | Left Shift R9 by 1           |  R0 = R0 - 1
+    0x24270000          //  130                                | Branch to 127                |  
+    0x03150614          //  131                                | R1 = 5                       |  R1 = 50000
+    0x05922634          //  132                                | Test R9 < 0                  |  Branch if no to 134
+    0x02100000          //  133                                | R1 = -R1                     |  
+    0x07911091          //  134                                | Right Shift R9 by 1          |  R9 = R9 + R1
+    0x05932637          //  135                                | Test MSD R9 = 0              |  Branch if no to 137
+    0x06910101          //  136                                | Left Shift R9 by 1           |  R0 = R0 - 1
+    
     0x                  //                                     |                              |
     0x                  //                                     |                              |
     0x                  //                                     |                              |
