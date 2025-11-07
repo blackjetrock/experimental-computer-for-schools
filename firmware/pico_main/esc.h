@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 //
 //
 //
@@ -180,6 +180,8 @@ typedef struct _ESC_STATE
   int last_run;    // Used to detect program restart
   int stop;
   int error;       // true if in error state
+
+  int extracode;   // true if executing instructions for an extracode
   
   //------------------------------------------------------------------------------
   // Restart
@@ -220,6 +222,14 @@ void clear_keyboard_register(ESC_STATE *s);
 void kbd_scan(ESC_STATE *s);
 void set_gpio_output(const int gpio);
 void escdd_main(void);
+void enter_extracode(ESC_STATE *s);
+void run_stage_a(ESC_STATE *s, int display);
+void load_extracode(ESC_STATE *s);
+extern int extracode_fp[100];
+void prepare_instruction(ESC_STATE *s);
+SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
+void register_assign_register(ESC_STATE *s, int dest, int src);
+void next_iar(ESC_STATE *s);
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -69,6 +69,7 @@
 
 #define DEBUG_DISPLAY          1
 #define DEBUG_DISPLAY_ON_LINE  1
+#define DEBUG_BRANCH           1
 
 #endif
 
@@ -125,6 +126,10 @@
 
 #define ESC_KBD_VOLT_TOUCH     0
 #define ESC_KBD_QT             1
+
+// Implement the extracode framework as instruction sin 100..199
+// Otherwise coded instructions.
+#define EXTRACODE_FRAMEWORK    1
 
 // Suppressed output has no leading zeros and no + sign.
 // This is closer to the original machine.

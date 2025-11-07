@@ -331,6 +331,54 @@ experimental_schools_computer.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.s
 .PHONY : experimental_schools_computer.c.s
 
+extracode.o: extracode.c.o
+.PHONY : extracode.o
+
+# target to build an object file
+extracode.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode.c.o
+.PHONY : extracode.c.o
+
+extracode.i: extracode.c.i
+.PHONY : extracode.i
+
+# target to preprocess a source file
+extracode.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode.c.i
+.PHONY : extracode.c.i
+
+extracode.s: extracode.c.s
+.PHONY : extracode.s
+
+# target to generate assembly for a file
+extracode.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode.c.s
+.PHONY : extracode.c.s
+
+extracode_fp.o: extracode_fp.c.o
+.PHONY : extracode_fp.o
+
+# target to build an object file
+extracode_fp.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode_fp.c.o
+.PHONY : extracode_fp.c.o
+
+extracode_fp.i: extracode_fp.c.i
+.PHONY : extracode_fp.i
+
+# target to preprocess a source file
+extracode_fp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode_fp.c.i
+.PHONY : extracode_fp.c.i
+
+extracode_fp.s: extracode_fp.c.s
+.PHONY : extracode_fp.s
+
+# target to generate assembly for a file
+extracode_fp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode_fp.c.s
+.PHONY : extracode_fp.c.s
+
 fsms.o: fsms.c.o
 .PHONY : fsms.o
 
@@ -2727,6 +2775,12 @@ help:
 	@echo "... experimental_schools_computer.o"
 	@echo "... experimental_schools_computer.i"
 	@echo "... experimental_schools_computer.s"
+	@echo "... extracode.o"
+	@echo "... extracode.i"
+	@echo "... extracode.s"
+	@echo "... extracode_fp.o"
+	@echo "... extracode_fp.i"
+	@echo "... extracode_fp.s"
 	@echo "... fsms.o"
 	@echo "... fsms.i"
 	@echo "... fsms.s"

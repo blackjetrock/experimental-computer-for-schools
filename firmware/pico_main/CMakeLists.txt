@@ -39,7 +39,8 @@ add_executable(experimental_schools_computer
   match_token.c
   oled.c
   sdcard.c
-  
+  extracode_fp.c
+  extracode.c
   )
 
 #add_library( gcc111libbid_hard UNKNOWN IMPORTED)
