@@ -96,21 +96,21 @@ int extracode_fp[100] =
     0x13901381          //  181       |  to X if Y > Z         | R9 = R0                      |  R8 = R1
     0x60020000          //  182       v                        | Z -> R0 R1                   |
     0x11091391          //  183       ^                        | R0 = R0 - R9                 |  R9 = R1
-    0x05022586          //  184       |                        |                              |
-    0x16802487          //  185       |                        |                              |
-    0x16900000          //  186       | Test Condition         |                              |
-    0x11890580          //  187       | and Branch             |                              |
-    0x26910126          //  188       |                        |                              |
-    0x05246600          //  189       |                        |                              |
-    0x64030000          //  190       |                        |                              |
-    0x05822590          //  191       |                        |                              |
-    0x01252489          //  192       V                        |                              |
-    0x60011390          //  193       ^                        |                              |
-    0x05122696          //  194       | Branch to X if         |                              |
-    0x02100000          //  195       |  |Y| > |Z|             |                              |
-    0x13810326          //  196       |                        |                              |
-    0x60020512          //  197       |                        |                              |
-    0x26830210          //  198       |                        |                              |
-    0x25830400          //  199       v                        |                              |
+    0x05022586          //  184       |                        | Test R0 < 0                  |  Branch if yes to 186
+    0x16802487          //  185       |                        | Left Shift R8 by R0          |  Branch to 187
+    0x16900000          //  186       | Test Condition         | Left Shift R9 by R0          |  
+    0x11890580          //  187       | and Branch             | R8 = R8 - R9                 |  Test R8 = 0
+    0x26910126          //  188       |                        | Branch if no to 191          |  R2 = R2 - 6
+    0x05246600          //  189       |                        | Test LSD R2 = 0              |  Branch if no to X
+    0x64030000          //  190       |                        | Return to program            |
+    0x05822590          //  191       |                        | Test R8 < 0                  |  Branch if yes to 190
+    0x01252489          //  192       V                        | R2 = R2 - R5                 |  Branch to 189
+    0x60011390          //  193       ^                        | Y -> R0 R1                   |  R9 = R0
+    0x05122696          //  194       | Branch to X if         | Test R1 < 0                  |  Branch if no to 196
+    0x02100000          //  195       |  |Y| > |Z|             | R1 = - R1                    |  
+    0x13810326          //  196       |                        | R8 = R1                      |  R2 = 6
+    0x60020512          //  197       |                        | Z -> R0 R1                   |  Test R1 < 0
+    0x26830210          //  198       |                        | Branch if no to 183          |  R1 = - R1
+    0x25830400          //  199       v                        |  Branch if yes to 183        |  Invalid op for overflow
   };
   
