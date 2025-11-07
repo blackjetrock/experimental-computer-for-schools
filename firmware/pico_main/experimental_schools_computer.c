@@ -223,8 +223,6 @@ int display_any_size_register_on_line(ESC_STATE *s, int display, int line_no, in
 
 void clear_lines_3_to_6(ESC_STATE *s, int display);
 
-SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
-void register_assign_register(ESC_STATE *s, int dest, int src);
 
 volatile uint32_t touch_key_raw = 0;
 int get_qt_key_code(void);
@@ -2027,6 +2025,18 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
       return;
     }
 
+  if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_SW_REGISTER(src2) )
+    {
+      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), SW_TO_DW(SW_REG_CONTENTS(src2)));
+      return;
+    }
+
+  if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_DW_REGISTER(src2) )
+    {
+      SW_REG_CONTENTS(dest) = bcd_dw_addition(SW_REG_CONTENTS(src1), DW_TO_SW(DW_REG_CONTENTS(src2)));
+      return;
+    }
+
   // error
   error_msg("Registers of different sizes");
 }
@@ -2794,11 +2804,23 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 ////////////////////////////////////////////////////////////////////////////////
 //
 
-  void next_iar(ESC_STATE *s)
+// Load IAR
+// Only lower two digits are loaded so if we are in extracode we stay in extracode
+//
+
+void load_iar_bcd(ESC_STATE *s, int bcdval)
+{
+  // Clear current digits
+  s->iar.address &= 0xF00;
+  s->iar.address |= bcdval;
+}
+
+
+void next_iar(ESC_STATE *s)
 {
   int digit_a = INST_A_FIELD(s->instruction_register);
-
-  if( s->ki_reset_flag )
+  
+  if( s->ki_reset_flag && !s->extracode )
     {
       return;
     }
@@ -2814,10 +2836,12 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 	}
       
       // 8 digit instruction so move to next address
-      s->iar.address = single_sum_normalise(bcd_addition_single(s->iar.address,1));
+      load_iar_bcd(s, single_sum_normalise(bcd_addition_single(s->iar.address,1)));
+      
+      //s->iar.address = single_sum_normalise(bcd_addition_single(s->iar.address,1));
 
-      // IAR only two digits
-      s->iar.address &= 0xFF;
+      // IAR only three digits
+      s->iar.address &= 0xFFF;
       s->iar.a_flag = 0;
       break;
       
@@ -2830,10 +2854,10 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
     case 6:
       if( s->iar.a_flag )
 	{
-	  s->iar.address = single_sum_normalise(bcd_addition_single(s->iar.address,1));
+	  load_iar_bcd(s, single_sum_normalise(bcd_addition_single(s->iar.address,1)));
 
-	  // IAR only two digits
-	  s->iar.address &= 0xFF;
+	  // IAR only three digits
+	  s->iar.address &= 0xFFF;
 	  s->iar.a_flag = 0;
 	}
       else
@@ -3141,7 +3165,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      printf("\n**Branch taken**");
 #endif
 	      
-	      s->iar.address = a1v;
+              //	      s->iar.address = a1v;
+              load_iar_bcd(s, a1v);
 	      s->iar.a_flag = 0;
 	    }
 	  else
@@ -3191,8 +3216,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
 	      printf("\n**Branch taken**");
 #endif
-	      
-	      s->iar.address = a1v;
+
+              load_iar_bcd(s, a1v);
+              //	      s->iar.address = a1v;
 	      s->iar.a_flag = 0;
 	    }
 	  else
@@ -3248,8 +3274,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
 	      printf("\n**Branch taken**");
 #endif
-	      
-	      s->iar.address = a1v;
+
+              load_iar_bcd(s, a1v);
+              //	      s->iar.address = a1v;
 	      s->iar.a_flag = 0;
 	    }
 	  else
@@ -3775,20 +3802,27 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  s->link_register = s->iar.address;
 	  
 	  // Now over-write that IAR with the address we want to jump to
-	  s->iar.address = s->inst_aa;
-	  s->iar.a_flag = 0;
+
+          load_iar_bcd(s, s->inst_aa);
+          //	  s->iar.address = s->inst_aa;
+
+          s->iar.a_flag = 0;
 	  break;
 	  
 	case 5:
 	  // Branch if control latch is 1
 	  if( s->control_latch == 1 )
 	    {
+#if DEBUG_BRANCH
+              printf("\n25xx BRANCH");
+#endif
 	      // Move the IAR on to the next address and store that in the link register
 	      next_iar(s);
 	      s->link_register = s->iar.address;
 	      
 	      // Now over-write that IAR with the address we want to jump to
-	      s->iar.address = s->inst_aa;
+              //	      s->iar.address = s->inst_aa;
+              load_iar_bcd(s, s->inst_aa);
 	      s->iar.a_flag = 0;
 	    }
 	  else
@@ -3812,7 +3846,8 @@ void stage_b_decode(ESC_STATE *s, int display)
 	      s->link_register = s->iar.address;
 	      
 	      // Now over-write that IAR with the address we want to jump to
-	      s->iar.address = s->inst_aa;
+              //	      s->iar.address = s->inst_aa;
+              load_iar_bcd(s, s->inst_aa);
 	      s->iar.a_flag = 0;
 	    }
 	  else
@@ -3831,10 +3866,12 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Store contents of link address in Aa
 	  write_sw_to_store(s, s->inst_aa, s->link_register);
 
+          next_iar(s);
 	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "               ");
+          
 	  break;
 	  
 	case 8:
@@ -3925,6 +3962,8 @@ void stage_b_decode(ESC_STATE *s, int display)
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
 // Fetch instruction
 // Decode presumptive addresses
 
@@ -4064,7 +4103,10 @@ void stage_a_decode(ESC_STATE *s, int display)
       
     case 6:
       // Indirect addressing
-      s->inst_aa = load_from_store(s, REMOVED_SW_SIGN(s->inst_ap));
+      // Indirect addressing uses the hundreds digit of the IAR. This is to ensure that
+      // the addressing works correctly when used in an extracoide instruction.
+      
+      s->inst_aa = load_from_store(s, REMOVED_SW_SIGN(s->inst_ap) + (s->iar.address & 0xF00));
       
 #if DEBUG_ADDR_MODES
       printf("\naa:%08X", s->inst_aa);
@@ -4079,54 +4121,75 @@ void stage_a_decode(ESC_STATE *s, int display)
       // 3 address instructions
 
     case 7:
-      // Absolute
-      s->Ap1 = INST_3_ADDR_1(s->instruction_register);
-      s->Ap2 = INST_3_ADDR_2(s->instruction_register);
-      s->Ap3 = INST_3_ADDR_3(s->instruction_register);
-
-      s->Aa1 = convert_store_to_address(s->Ap1);
-      s->Aa2 = convert_store_to_address(s->Ap2);
-      s->Aa3 = convert_store_to_address(s->Ap3);
-
-      display_line_2(s, display);
-      display_on_line(s, display, 3, "%2X", s->Ap1);
-      display_on_line(s, display, 4, "%2X", s->Ap2);
-      display_on_line(s, display, 5, "%2X", s->Ap3);
-      display_on_line(s, display, 6, "               ");
-      break;
-      
     case 8:
-      // Relative
-      s->Ap1 = INST_3_ADDR_1(s->instruction_register);
-      s->Ap2 = INST_3_ADDR_2(s->instruction_register);
-      s->Ap3 = INST_3_ADDR_3(s->instruction_register);
-
-      s->Aa1 = convert_store_to_address(s->Ap1 + s->R3); 
-      s->Aa2 = convert_store_to_address(s->Ap2 + s->R4); 
-      s->Aa3 = convert_store_to_address(s->Ap3 + s->R5); 
-
-      display_line_2(s, display);
-      display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Aa1));
-      display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Aa2));
-      display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
-      display_on_line(s, display, 6, "               ");
-
     case 9:
-      // Indirect
-      s->Ap1 = INST_3_ADDR_1(s->instruction_register);
-      s->Ap2 = INST_3_ADDR_2(s->instruction_register);
-      s->Ap3 = INST_3_ADDR_3(s->instruction_register);
 
-      s->Aa1 = convert_store_to_address(load_from_store(s, s->Ap1));
-      s->Aa2 = convert_store_to_address(load_from_store(s, s->Ap2));
-      s->Aa3 = convert_store_to_address(load_from_store(s, s->Ap3));
+      // Three address instructions can be executed as extracode,
+      // or coded instructions
+      
+      if (s->inst_digit_a == 7 )
+        {
+          
+          // Absolute
+          s->Ap1 = INST_3_ADDR_1(s->instruction_register);
+          s->Ap2 = INST_3_ADDR_2(s->instruction_register);
+          s->Ap3 = INST_3_ADDR_3(s->instruction_register);
+          
+          s->Aa1 = convert_store_to_address(s->Ap1);
+          s->Aa2 = convert_store_to_address(s->Ap2);
+          s->Aa3 = convert_store_to_address(s->Ap3);
 
-      display_line_2(s, display);
-      display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Aa1));
-      display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Aa2));
-      display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
-      display_on_line(s, display, 6, "               ");
+          
+          display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X", s->Ap1);
+          display_on_line(s, display, 4, "%2X", s->Ap2);
+          display_on_line(s, display, 5, "%2X", s->Ap3);
+          display_on_line(s, display, 6, "               ");
+        }
+      
+      if( s->inst_digit_a == 8)
+        {
+          // Relative
+          s->Ap1 = INST_3_ADDR_1(s->instruction_register);
+          s->Ap2 = INST_3_ADDR_2(s->instruction_register);
+          s->Ap3 = INST_3_ADDR_3(s->instruction_register);
+          
+          s->Aa1 = convert_store_to_address(s->Ap1 + s->R3); 
+          s->Aa2 = convert_store_to_address(s->Ap2 + s->R4); 
+          s->Aa3 = convert_store_to_address(s->Ap3 + s->R5); 
 
+          display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Aa1));
+          display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Aa2));
+          display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
+          display_on_line(s, display, 6, "               ");
+        }
+      
+
+      if( s->inst_digit_a == 9)
+        {
+          // Indirect
+          s->Ap1 = INST_3_ADDR_1(s->instruction_register);
+          s->Ap2 = INST_3_ADDR_2(s->instruction_register);
+          s->Ap3 = INST_3_ADDR_3(s->instruction_register);
+          
+          s->Aa1 = convert_store_to_address(load_from_store(s, s->Ap1));
+          s->Aa2 = convert_store_to_address(load_from_store(s, s->Ap2));
+          s->Aa3 = convert_store_to_address(load_from_store(s, s->Ap3));
+
+          display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Aa1));
+          display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Aa2));
+          display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
+          display_on_line(s, display, 6, "               ");
+        }
+
+#if EXTRACODE_FRAMEWORK
+      // Set up the extracode framework and then execute stage A of the first instruction. Then execution can continue
+      enter_extracode(s);
+#else
+
+#endif      
       break;
     }
 }
@@ -4273,6 +4336,9 @@ void state_esc_decr_addr(FSM_DATA *fs, TOKEN tok)
 }
 
 // Load IAR from KBD
+// This is a load so we don't preservbe the upper digit. If extracode execution is required then it will
+// work.
+
 void state_esc_load_iar(FSM_DATA *fs, TOKEN tok)
 {
   ESC_STATE *s;
@@ -4510,7 +4576,7 @@ void prepare_instruction(ESC_STATE *s)
   printf("\n%s:ki_reset:%d", __FUNCTION__, s->ki_reset_flag);
 #endif
   
-  if( s->ki_reset_flag )
+  if( s->ki_reset_flag && !s->extracode )
     {
       s->instruction_register = s->keyboard_register;
     }
@@ -10600,6 +10666,9 @@ int main(void)
   printf("\n                                  ********************************************");
   printf("\n");
 
+  // Load extracode
+  load_extracode(&esc_state);
+  
   // Configuration
 
 #if ESC_TYPE_SMALL

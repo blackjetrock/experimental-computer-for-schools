@@ -2895,12 +2895,12 @@ pico_extras/src/common/pico_scanvideo/CMakeFiles/pico_scanvideo_scanvideo_pio_h.
 pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/all:
 	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/depend
 	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num= "Built target pico_audio_i2s_audio_i2s_pio_h"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num=96 "Built target pico_audio_i2s_audio_i2s_pio_h"
 .PHONY : pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/all
 
 # Build rule for subdir invocation for target.
 pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 0
 .PHONY : pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/rule
@@ -2912,7 +2912,7 @@ pico_audio_i2s_audio_i2s_pio_h: pico_extras/src/rp2_common/pico_audio_i2s/CMakeF
 # codegen rule for target.
 pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num= "Finished codegen for target pico_audio_i2s_audio_i2s_pio_h"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num=96 "Finished codegen for target pico_audio_i2s_audio_i2s_pio_h"
 .PHONY : pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pio_h.dir/codegen
 
 # clean rule for target.
@@ -2927,12 +2927,12 @@ pico_extras/src/rp2_common/pico_audio_i2s/CMakeFiles/pico_audio_i2s_audio_i2s_pi
 pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/all:
 	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/depend
 	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num=96 "Built target pico_audio_pwm_audio_pwm_pio_h"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num= "Built target pico_audio_pwm_audio_pwm_pio_h"
 .PHONY : pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/all
 
 # Build rule for subdir invocation for target.
 pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles 0
 .PHONY : pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/rule
@@ -2944,7 +2944,7 @@ pico_audio_pwm_audio_pwm_pio_h: pico_extras/src/rp2_common/pico_audio_pwm/CMakeF
 # codegen rule for target.
 pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/build.make pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num=96 "Finished codegen for target pico_audio_pwm_audio_pwm_pio_h"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/CMakeFiles --progress-num= "Finished codegen for target pico_audio_pwm_audio_pwm_pio_h"
 .PHONY : pico_extras/src/rp2_common/pico_audio_pwm/CMakeFiles/pico_audio_pwm_audio_pwm_pio_h.dir/codegen
 
 # clean rule for target.
