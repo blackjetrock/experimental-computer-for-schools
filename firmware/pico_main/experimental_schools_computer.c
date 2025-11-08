@@ -7206,10 +7206,11 @@ TOKEN test_seq_11[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   //TOK_KEY_C,
+   //TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
+   //TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
    TOK_NONE,
@@ -7232,7 +7233,7 @@ TEST_LOAD_STORE test_11_store =
    {
     0x70212223,    // 00  (21) = (22) + (23)
     0x70202324,    // 01  (20) = (23) + (24)
-    0x00000000,    // 02
+    0x19200000,    // 02  DISPLAY (STOP)
     0x00000000,    // 03
     0x00000000,    // 04
     0x00000000,    // 05
@@ -8809,9 +8810,10 @@ TOKEN test_seq_28[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_A,
-   TOK_KEY_B,
-   TOK_KEY_C,
+   TOK_TEST_WAIT_FOR_STOP,
+   //TOK_KEY_A,
+   //TOK_KEY_B,
+   //TOK_KEY_C,
 
    TOK_TEST_CHECK_RES,
 
