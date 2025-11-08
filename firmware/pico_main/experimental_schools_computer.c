@@ -9384,7 +9384,7 @@ int write_state_to_file(ESC_STATE *es, char *fn)
 
   for(int i=0;i<NUM_DBL_WORD_REGISTERS; i++)
     {
-      f_printf(&fp, "\n*R%d:%016llX", i+NUM_WORD_REGISTERS, es->R[i]);
+      f_printf(&fp, "\n*R%d:%016lX", i+NUM_WORD_REGISTERS, es->R[i]);
     }
 
   f_printf(&fp, "\n*STORE:");
