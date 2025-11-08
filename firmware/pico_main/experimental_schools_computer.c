@@ -2811,7 +2811,7 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 void load_iar_bcd(ESC_STATE *s, int bcdval)
 {
   // Clear current digits
-  s->iar.address &= 0xF00;
+  s->iar.address &= 0x000;
   s->iar.address |= bcdval;
 }
 
@@ -2820,7 +2820,7 @@ void next_iar(ESC_STATE *s)
 {
   int digit_a = INST_A_FIELD(s->instruction_register);
   
-  if( s->ki_reset_flag && !s->extracode )
+  if( s->ki_reset_flag && !IS_EXTRACODE )
     {
       return;
     }
@@ -3409,7 +3409,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	case 5:
 	  // Test (Rc)
 #if DEBUG_TEST
-	  printf("\nTEST (5) [R%d] = %08X", s->reginst_rc, s->R[s->reginst_rc]);
+	  printf("\nTEST (5) [R%d] = %08X", s->reginst_rc, read_any_size_register_absolute(s, s->reginst_rc));
 #endif
 	  switch(s->inst_digit_d)
 	    {
@@ -3488,24 +3488,61 @@ void stage_b_decode(ESC_STATE *s, int display)
 	      break;
 	      
 	    case 2:
+              // Check for R < 0
+              // If zero then no
+              // The reason for the check of zero is that it is possible for the sign to be -ve
+              // and the value to be zero.
 	      is_lt_zero = 0;
+              is_zero = 0;
 	      
+#if DEBUG_TEST
+	      printf("\nTEST (5) ");
+#endif
+              
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  if( SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+		  if( (SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) == 0 )
 		    {
-		      is_lt_zero = 1;
+		      is_zero = 1;
 		    }
 		}
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  if( DW_SIGN(DW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+		  if( (DW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
 		    {
-		      is_lt_zero = 1;
+		      is_zero = 1;
 		    }
 		}
 	      
+	      if( is_zero )
+		{
+#if DEBUG_TEST
+		  printf("\nCL = 0 after test (is < 0) as is 0");
+#endif
+		  s->control_latch = 0;
+		}
+              else
+                {
+                  // Not zero, so check sign
+                  
+                  if( IS_SW_REGISTER(s->reginst_rc) )
+                    {
+                      if( SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+                        {
+                          is_lt_zero = 1;
+                        }
+                    }
+                  
+                  if( IS_DW_REGISTER(s->reginst_rc) )
+                    {
+                      if( DW_SIGN(DW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+                        {
+                          is_lt_zero = 1;
+                        }
+                    }
+                }
+              
 	      if( is_lt_zero )
 		{
 #if DEBUG_TEST
@@ -3984,6 +4021,7 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->inst_digit_d = INST_D_FIELD(s->instruction_register);
     }
 
+
 #if DEBUG_A_DECODE
   printf("\n*******abcd = %d%d%d%d",
 	 s->inst_digit_a,
@@ -3996,7 +4034,17 @@ void stage_a_decode(ESC_STATE *s, int display)
   // decoding
 
   s->inst_ap = (s->inst_digit_c) * 16 + (s->inst_digit_d);
-  
+
+  // If an extracode then we refer to the upper half of store
+  if( IS_EXTRACODE )
+    {
+      s->inst_ap += 0x100;
+    }
+
+#if DEBUG_A_DECODE
+  printf("\ninst_ap: %04X", s->inst_ap);
+#endif
+
   // Calculate the presumptive addresses
   
   switch(s->inst_digit_a)
@@ -4106,7 +4154,7 @@ void stage_a_decode(ESC_STATE *s, int display)
       // Indirect addressing uses the hundreds digit of the IAR. This is to ensure that
       // the addressing works correctly when used in an extracoide instruction.
       
-      s->inst_aa = load_from_store(s, REMOVED_SW_SIGN(s->inst_ap) + (s->iar.address & 0xF00));
+      s->inst_aa = load_from_store(s, REMOVED_SW_SIGN(s->inst_ap));
       
 #if DEBUG_ADDR_MODES
       printf("\naa:%08X", s->inst_aa);
@@ -4336,7 +4384,7 @@ void state_esc_decr_addr(FSM_DATA *fs, TOKEN tok)
 }
 
 // Load IAR from KBD
-// This is a load so we don't preservbe the upper digit. If extracode execution is required then it will
+// This is a load so we don't preserve the upper digit. If extracode execution is required then it will
 // work.
 
 void state_esc_load_iar(FSM_DATA *fs, TOKEN tok)
@@ -4576,7 +4624,7 @@ void prepare_instruction(ESC_STATE *s)
   printf("\n%s:ki_reset:%d", __FUNCTION__, s->ki_reset_flag);
 #endif
   
-  if( s->ki_reset_flag && !s->extracode )
+  if( s->ki_reset_flag && !IS_EXTRACODE )
     {
       s->instruction_register = s->keyboard_register;
     }
@@ -5734,6 +5782,7 @@ void cli_dump(void)
   printf("\nInst Aa       : %02X   ap : %02X ", s->inst_aa, s->inst_ap);
   printf("\nKI Reset      : %d",                s->ki_reset_flag);
   printf("\nError         : %d",                s->error);
+  printf("\nExtracode     : %d",                IS_EXTRACODE);
   printf("\n");
 
   printf("\nTest");

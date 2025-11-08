@@ -119,7 +119,16 @@ typedef uint32_t ADDRESS;
   
 #define IS_SW_REGISTER(REGNO) ((REGNO >= 0) && (REGNO < NUM_WORD_REGISTERS))
 #define IS_DW_REGISTER(REGNO) ((REGNO >= NUM_WORD_REGISTERS) && (REGNO < NUM_WORD_REGISTERS+NUM_DBL_WORD_REGISTERS))
-  
+
+//------------------------------------------------------------------------------
+//
+// Are we executing as extracode?
+//
+// Using the IAR should work.
+// The flag in the ESC_STATE is not used.
+
+#define IS_EXTRACODE (((s->iar.address) & 0x100) != 0)
+
 // IAR type registers have an implicit flag that addresses
 // one of the two 4 digit instructions in a register
 
