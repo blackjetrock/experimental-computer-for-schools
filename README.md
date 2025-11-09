@@ -8,6 +8,9 @@ It also seems to be the first machine to use a domestic television as a display,
 
 This is a simulation of the machine. It can run code written for the original machine.
 
+<h2>Update Nov 2025</h2>h2>
+More information about the School's Computer has been found. This is a large collection of documents, programs for the machine, and information about the machine. One item that is of particular interest is the original extracode for the machine. In fact, there are about four different extracodes for the machine. There is also a draft of a 'Second Course on the School's COmoputer', which provides more detailed information abou thow the machine works. This information has been kept (for over 50 years) by one of the pupils that used the machine when it was trialled. Thanks to him, the original extracode can be used by the replica.
+
 <h1>USB</h1>
 USB can be used to interact with the simulator. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi as well.
 A command line interface (CLI) is available on the USB connection, this requires a terminal emulator program such as minicom. Using the interface you can:
@@ -88,12 +91,32 @@ copied and put together into a PDF document. It has several programs written for
 when the machine was trialled. These programs almost exclusively use the extracodes for the programs, not the half-word basic instructions which must have been used to implement
 the extracodes themselves in the store from address 100 to 199. 
 
+<h2>A Draft Second Course on the School's Computer</h2>
+This is a short typewritten document that is the beginning of a second course on the machine. It expains some of the instructions that weren't detailed in the first course. It appears that the School's Computer project was cancelled before this course could be completed.
+
 <h2>Experimental Computer for Schools</h2>
 Describes the hardware and code design of the machine. This is a technical description of the machine, and contains no program listings at all.
 
 <h2>Flowcharts</h2>
 This is a four page document that has flowcharts and programs for log<sub>b</sub>N and b<sup>L</sup>.
 The programs use an extracode that isn't in the standard set, which is a square root instruction. The instruction also has a jump and the jump part is used in the programs without use of the square root operation. Together with the first course on the school's computer these are the only known programs for the computer from the time whenit was being develped and trialled.
+
+<h2>Extracode</h2>
+The extracode of the machien is sort of equivalent to the ROM in an 80's home computer, but duifferent. In its original form it provided some floating point instructions, and so compared to a ROM it provides a small number of features. Unlike a ROM, though, it was intended that people altered or even completely rewrote the extracode, and that is what happened. Several different extracodes exist, for various reasons.
+
+<h3>Standard Floating Point</h3>
+This is the extracode that provoides the instructions used in the 'First Course'. It provides simple floatoing point operations, these are listed in the 'Experimental Computer fo School's' document.
+
+<h3>BASIC</h3>
+this extracode is supplied in the form of a set of changes to be made to the standard extracode. It provides insrtuctiins that mirror a few BASIC commands. A BASIC program can be written (by hand, on paper) and then translated to extracdoe instructions, these can be entered into the school's computer and executed. There are some examples of this isn the documents.
+
+<h3>Pseudo Random Number Generator</h3>
+
+<h3>Square Root</h3>
+This extracode provides a square root instruction. It replaced one of the standard extracodes and was used for any program that needed a square root. It is mentioned in some of the first documents I found, and a listing is in the latest documents.
+
+<h3>Noughts and Crosses</h3>
+This game was written by Tony Malins around 1970 and was such a large program that is used the extracode space as well as the use r space.
 
 <h1>References</h1>
 A photo of the schools computer in a classroom in the 60s:
