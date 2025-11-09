@@ -27,7 +27,7 @@ A command line interface (CLI) is available on the USB connection, this requires
 <h1>Tests</h1>
 
 There is a set of tests built in to the firmware that can be run to check th eoperation of the machine.
-The tests are run using the '=' menu option on the USB CLI. They take quite a while to run and once finished the '@' menu option can be used to display the result. If a test is successful then 'Passed' is display. If it failed the 'Failed' is displayed, along with the expected and calculated results.
+The tests are run using the '=' menu option on the USB CLI. They take quite a while to run and once finished the '@' menu option can be used to display the result. If a test is successful then 'Passed' is displayed. If it failed the 'Failed' is displayed, along with the expected and calculated results. It is possible to run a single test using the '[' command to load the test (after entering the test number with z nn ESC), then '+' to run it. The resut is displayed using '@'.
 
 <h1>PCB</h1>
 
