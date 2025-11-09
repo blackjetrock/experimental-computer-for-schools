@@ -24,7 +24,7 @@ A command line interface (CLI) is available on the USB connection, this requires
 * Examine the machine state
 * Load and store machine state from and to the SD card
 
-<h2>Tests</h2>
+<h1>Tests</h1>
 
 There is a set of tests built in to the firmware that can be run to check th eoperation of the machine.
 The tests are run using the '=' menu option on the USB CLI. They take quite a while to run and once finished the '@' menu option can be used to display the result. If a test is successful then 'Passed' is display. If it failed the 'Failed' is displayed, along with the expected and calculated results.
