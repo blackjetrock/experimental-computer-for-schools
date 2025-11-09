@@ -4,7 +4,7 @@ The schools computer project ran from 1966 to 1970 and was an experimental machi
 
 As far as I an tell this machine was the first machine purpose built for education. there are lots of examples of computers being used to teach fundamentals of programming and computer architecture, but they are general purpose machines in educational situations, this is the earliest machine designed for the purpose I can find.
 
-It also seems to be the first machine to use a domestic television as a display.
+It also seems to be the first machine to use a domestic television as a display, and the first to use a tape recorder to store and load code.
 
 This is a simulation of the machine. It can run code written for the original machine.
 
@@ -20,7 +20,11 @@ A command line interface (CLI) is available on the USB connection, this requires
 * Examine the store
 * Examine the machine state
 * Load and store machine state from and to the SD card
-  
+
+<h2>Tests</h2>
+
+There is a set of tests built in to the firmware that can be run to check th eoperation of the machine.
+The tests are run using the '=' menu option on the USB CLI. They take quite a while to run and once finished the '@' menu option can be used to display the result. If a test is successful then 'Passed' is display. If it failed the 'Failed' is displayed, along with the expected and calculated results.
 
 <h1>PCB</h1>
 
