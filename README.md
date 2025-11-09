@@ -102,7 +102,7 @@ This is a four page document that has flowcharts and programs for log<sub>b</sub
 The programs use an extracode that isn't in the standard set, which is a square root instruction. The instruction also has a jump and the jump part is used in the programs without use of the square root operation. Together with the first course on the school's computer these are the only known programs for the computer from the time whenit was being develped and trialled.
 
 <h2>Extracode</h2>
-The extracode of the machien is sort of equivalent to the ROM in an 80's home computer, but duifferent. In its original form it provided some floating point instructions, and so compared to a ROM it provides a small number of features. Unlike a ROM, though, it was intended that people altered or even completely rewrote the extracode, and that is what happened. Several different extracodes exist, for various reasons.
+The extracode of the machine is sort of equivalent to the ROM in an 80's home computer, but there are significant differences. In its original form it provided some floating point instructions, and so compared to a ROM it provides a small number of features. Unlike a ROM, though, it was intended that people altered or even completely rewrote the extracode, and that did happen. Several different extracodes exist, for various reasons, they are listed below.
 
 <h3>Standard Floating Point</h3>
 This is the extracode that provoides the instructions used in the 'First Course'. It provides simple floatoing point operations, these are listed in the 'Experimental Computer fo School's' document.
