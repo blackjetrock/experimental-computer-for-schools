@@ -8,7 +8,7 @@ It also seems to be the first machine to use a domestic television as a display,
 
 This is a simulation of the machine. It can run code written for the original machine.
 
-<h2>Update Nov 2025</h2>h2>
+<h2>Update Nov 2025</h2>
 More information about the School's Computer has been found. This is a large collection of documents, programs for the machine, and information about the machine. One item that is of particular interest is the original extracode for the machine. In fact, there are about four different extracodes for the machine. There is also a draft of a 'Second Course on the School's COmoputer', which provides more detailed information abou thow the machine works. This information has been kept (for over 50 years) by one of the pupils that used the machine when it was trialled. Thanks to him, the original extracode can be used by the replica.
 
 <h1>USB</h1>
