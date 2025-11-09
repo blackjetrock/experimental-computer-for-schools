@@ -119,6 +119,10 @@ This extracode provides a square root instruction. It replaced one of the standa
 This game was written by Tony Malins around 1970 and was such a large program that is used the extracode space as well as the use r space.
 
 <h1>References</h1>
+
+The thread on 'retrocomputingforum.com' where Tony presents his documents and proigrams:
+https://retrocomputingforum.com/t/rare-ibm-schools-computer-1969/5209/51
+
 A photo of the schools computer in a classroom in the 60s:
 https://www.stedwardsarchives.org/PDFViewer/web/viewer.html?file=%2fFilename.ashx%3ftableName%3dta_Publications%26columnName%3dfilename%26recordId%3d685%26zoom%3dpage-fit&searchText=schools%27%20computer
 
