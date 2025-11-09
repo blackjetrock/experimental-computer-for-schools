@@ -9,7 +9,7 @@ It also seems to be the first machine to use a domestic television as a display,
 This is a simulation of the machine. It can run code written for the original machine.
 
 <h2>Update Nov 2025</h2>
-More information about the School's Computer has been found. This is a large collection of documents, programs for the machine, and information about the machine. One item that is of particular interest is the original extracode for the machine. In fact, there are about four different extracodes for the machine. There is also a draft of a 'Second Course on the School's COmoputer', which provides more detailed information abou thow the machine works. This information has been kept (for over 50 years) by one of the pupils that used the machine when it was trialled. Thanks to him, the original extracode can be used by the replica.
+More information about the School's Computer has been found. This is a large collection of documents, programs for the machine, and information about the machine. One item that is of particular interest is the original extracode for the machine. In fact, there are about four different extracodes for the machine. There is also a draft of a 'Second Course on the School's Computer', which provides more detailed information abou thow the machine works. This information has been kept (for over 50 years) by one of the pupils (thanks Toby) that used the machine when it was trialled. Thanks to him, the original extracode can be used by the replica.
 
 <h1>USB</h1>
 USB can be used to interact with the simulator. It just requires a Pico. You can run a simulator with just a Pico, the PCB isn't necessary. If you have a Pico W then you can access over WiFi as well.
@@ -86,7 +86,7 @@ I have created an assembler that assembles instructions expressed in the verbose
 <h1>Documents</h1>
 
 <h2>A First Course on the Schools's Computer</h2>
-This is a document that provided a course on programming the computer, there is only one known paper copy of this document, but it has been
+This is a document that provided a course on programming the computer, there are only three known paper copies of this document (in two revisions), but it has been
 copied and put together into a PDF document. It has several programs written for the machine, which are the only ones I know of from the time
 when the machine was trialled. These programs almost exclusively use the extracodes for the programs, not the half-word basic instructions which must have been used to implement
 the extracodes themselves in the store from address 100 to 199. 
