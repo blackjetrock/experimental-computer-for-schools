@@ -1520,7 +1520,7 @@ REGISTER_SINGLE_WORD bcd_sw_addition(ESC_STATE *s, REGISTER_SINGLE_WORD a, REGIS
     }
 
 #if DEBUG_SW_BCD_SUM
-  printf("\na(rs)=%08X  b(rs)=%08X", a, b);
+  printf("\na(rs)=%08X  b(rs)=%08X result sign:%d", a, b, res_sign);
 #endif
 
   // If both numbers are positive or both are negative the just add the digits
@@ -1675,7 +1675,7 @@ REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WOR
     }
 
 #if DEBUG_DW_BCD_SUM
-  printf("\na(rs)=%016llX  b(rs)=%016llX", a, b);
+  printf("\na(rs)=%016llX  b(rs)=%016llX result sign:%d", a, b, res_sign);
 #endif
 
   // If both numbers are positive or both are negative the just add the digits
@@ -1715,7 +1715,7 @@ REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WOR
   // If we get here then the signs of the numbers are different
   // If number negative then use tens complemet
 #if DEBUG_DW_BCD_SUM
-  printf("\nSigns different");
+  printf("\nSigns different result sign:%d", res_sign);
 #endif
 
   if( a_sign == WORD_SIGN_MINUS )
@@ -1767,7 +1767,11 @@ REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WOR
   // This format matches the floating point format
   if( res_sign == WORD_SIGN_MINUS )
     {
-      c = bcd_sw_nines_complement(c);
+#if DEBUG_DW_BCD_SUM
+      printf("res_sign is negative");
+#endif
+      
+      c = bcd_dw_nines_complement(c);
       c = bcd_addition_double(c, 1);
       c = double_sum_normalise(c);
     }
@@ -1966,6 +1970,11 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 
     }
 }
+
+//------------------------------------------------------------------------------
+//
+// Subtract a register from a constant
+//
 
 void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, int src)
 {
@@ -7216,6 +7225,7 @@ TOKEN test_seq_11[] =
    TOK_NONE,
   };
 
+#if EXTRACODE_CODED
 TEST_INFO test_res_11[] =
   {
    {TC_STORE_N,   0x21},
@@ -7227,6 +7237,21 @@ TEST_INFO test_res_11[] =
 
    {TC_END,     0},
   };
+#endif
+
+#if EXTRACODE_FRAMEWORK
+TEST_INFO test_res_11[] =
+  {
+   {TC_STORE_N,   0x21},
+   {TC_MUST_BE, 0xA3113201},
+   {TC_END_SECTION, 0},
+
+   {TC_STORE_N,   0x20},
+   {TC_MUST_BE, 0xA3088201},
+
+   {TC_END,     0},
+  };
+#endif
 
 TEST_LOAD_STORE test_11_store =
   {
@@ -7295,23 +7320,31 @@ TOKEN test_seq_12[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   
+#if 0
+   TOK_KEY_C,   
    TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
-
+#endif
+   
    TOK_NONE,
   };
 
 TEST_INFO test_res_12[] =
   {
    {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xB2008820},
+   {TC_MUST_BE,     0xB3088201},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x20},
-   {TC_MUST_BE,     0xA2011320},
+   {TC_MUST_BE,     0xA3113201},
 
    {TC_END,     0},
   };
@@ -7320,9 +7353,9 @@ TEST_LOAD_STORE test_12_store =
   {
    {
     0x71212223,    // 00
-    0x71202324,    // 01
-    0x00000000,    // 02
-    0x00000000,    // 03
+    0x19210000,    // 01
+    0x71202324,    // 02
+    0x19200000,    // 03
     0x00000000,    // 04
     0x00000000,    // 05
     0x00000000,    // 06
