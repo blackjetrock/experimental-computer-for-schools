@@ -2013,7 +2013,8 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
     {
       REGISTER_DOUBLE_WORD t;
 
-      t       = SET_DW_SIGN((REGISTER_DOUBLE_WORD) DW_REG_CONTENTS(src), WORD_SIGN_MINUS);
+      //t       = SET_DW_SIGN((REGISTER_DOUBLE_WORD) DW_REG_CONTENTS(src), WORD_SIGN_MINUS);
+      t = invert_dw_sign(DW_REG_CONTENTS(src));
       literal = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal,   WORD_SIGN_PLUS);
 
       DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) literal, t);
