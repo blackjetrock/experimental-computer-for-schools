@@ -7951,6 +7951,7 @@ TOKEN test_seq_18[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
+#if 0
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -7958,6 +7959,16 @@ TOKEN test_seq_18[] =
    TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+#endif
+
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+
+   TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
 
    TOK_NONE,
@@ -7981,24 +7992,24 @@ TEST_INFO test_res_18[] =
 
 TEST_LOAD_STORE test_18_store =
   {
-   {
-    0x73101112,    //00 (10) = (11) / (12)
-    0x73131415,    //01 (13) = (14) / (15)
-    0x73070809,    //02 (07) = (08) / (09)
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0xA6001410,     //08
-    0xB5400000,     //09
-    0x00000000,     //10
-    0xA5100000,     //11
-    0xA5700000,     //12
-    0x00000000,
-    0xA0000001,     //14
-    0xA0000007,     //15
-    -1},
+    {
+      0x73101112,     //00 (10) = (11) / (12)
+      0x19200000,     //01   Stop for results check
+      0x73131415,     //02 (13) = (14) / (15)
+      0x19200000,     //03   Stop for results check
+      0x73070809,     //04 (07) = (08) / (09)
+      0x19200000,     //05   Stop for results check
+      0x00000000,     //06
+      0x00000000,     //07
+      0xA6001410,     //08
+      0xB5400000,     //09
+      0x00000000,     //10
+      0xA5100000,     //11
+      0xA5700000,     //12
+      0x00000000,
+      0xA0000001,     //14
+      0xA0000007,     //15
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
