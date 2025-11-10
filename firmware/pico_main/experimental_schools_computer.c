@@ -7342,6 +7342,7 @@ TOKEN test_seq_12[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
+   // Run until a stop and then check results
    TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
 
@@ -7586,7 +7587,7 @@ TEST_INFO test_res_14[] =
    {TC_MUST_BE,     0xA4050000},
    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x10},
+   {TC_STORE_N,     0x35},
    {TC_MUST_BE,     0xB4100000},
    {TC_END_SECTION, 0},
 
@@ -7675,6 +7676,8 @@ TOKEN test_seq_15[] =
    //   TOK_KEY_C,
 
    // Calculate r * r
+
+#if 0
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -7695,6 +7698,10 @@ TOKEN test_seq_15[] =
 
    TOK_KEY_C,
    TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+#endif
+
+   TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
 
    TOK_NONE,
@@ -7767,10 +7774,16 @@ TOKEN test_seq_16[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
+#if 0
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+#endif
+   
+   // Run untul a stop and then check results
+   TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
 
    TOK_NONE,
@@ -7792,17 +7805,17 @@ TEST_LOAD_STORE test_16_store =
   {
    {
     0x74101516,    // 00 branch to Aa1 if (Aa2) = (Aa3) 
-    0x00000000,    // 01
+    0x19200000,    // 01   Stop on error branch
     0x00000000,    // 02
     0x00000000,    // 03
     0x00000000,    // 04
-    0x00000000,    // 05
+    0x19200000,    // 05   Stop on erroneous branch
     0x00000000,    // 06
     0x00000000,    // 07
     0x00000000,    // 08
     0x00000000,    // 09
     0x74051415,    // 10  Branch to 05 if (14) = (15)
-    0x00000000,    // 11
+    0x19200000,    // 11
     0x00000000,    // 12
     0x00000000,    // 13
     0x00000000,    // 14
