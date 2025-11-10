@@ -1315,6 +1315,23 @@ REGISTER_SINGLE_WORD invert_sw_sign(REGISTER_SINGLE_WORD n)
   return(r);
 }
 
+REGISTER_SINGLE_WORD invert_dw_sign(REGISTER_DOUBLE_WORD n)
+{
+  REGISTER_DOUBLE_WORD r = n;
+  
+  if( DW_SIGN(n) == WORD_SIGN_PLUS)
+    {
+      r = SET_DW_SIGN(r, WORD_SIGN_MINUS);
+    }
+
+  if( DW_SIGN(n) == WORD_SIGN_MINUS)
+    {
+      r = SET_DW_SIGN(r, WORD_SIGN_PLUS);
+    }
+  
+  return(r);
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // 24 bits BCD addition, positive only (no sign digit or exponent)
@@ -1975,6 +1992,8 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 //
 // Subtract a register from a constant
 //
+// Swap register sign and add
+// Literal is always positive
 
 void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, int src)
 {
@@ -1982,7 +2001,9 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
     {
       REGISTER_SINGLE_WORD t;
 
-      t       = SET_SW_SIGN((REGISTER_SINGLE_WORD) SW_REG_CONTENTS(src), WORD_SIGN_MINUS);
+      //      t       = SET_SW_SIGN((REGISTER_SINGLE_WORD) SW_REG_CONTENTS(src), WORD_SIGN_MINUS);
+      t = invert_sw_sign(SW_REG_CONTENTS(src));
+      
       literal = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal,   WORD_SIGN_PLUS);
 
       SW_REG_CONTENTS(dest) = bcd_sw_addition(s, (REGISTER_SINGLE_WORD) literal, t);
