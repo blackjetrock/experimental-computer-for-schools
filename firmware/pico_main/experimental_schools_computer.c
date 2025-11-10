@@ -7437,6 +7437,7 @@ TOKEN test_seq_13[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
+#if 0
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -7445,6 +7446,16 @@ TOKEN test_seq_13[] =
 
    TOK_KEY_C,
    TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+#endif
+   
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+
+   TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
 
    TOK_NONE,
@@ -7470,11 +7481,11 @@ TEST_LOAD_STORE test_13_store =
   {
    {
     0x72212223,    // 00 (21) = (22) * (23)
-    0x72202324,    // 01 (20) = (23) * (24)
-    0x72101112,    // 02 (10) = (11) * (12)
-    0x00000000,    // 03
-    0x00000000,    // 04
-    0x00000000,    // 05
+    0x19210000,    // 01
+    0x72202324,    // 02 (20) = (23) * (24)
+    0x19210000,    // 03
+    0x72101112,    // 04 (10) = (11) * (12)
+    0x19210000,    // 05
     0x00000000,    // 06
     0x00000000,    // 07
     0x00000000,    // 08
@@ -7533,6 +7544,7 @@ TOKEN test_seq_14[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
+#if 0
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -7549,6 +7561,20 @@ TOKEN test_seq_14[] =
    TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+#endif
+
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
 
    TOK_NONE,
@@ -7586,17 +7612,18 @@ TEST_LOAD_STORE test_14_store =
   {
    {
     0x73212223,    // 00 (21) = (22) / (23)
-    0x73101112,    // 01 (10) = (11) / (12)
-    0x73131415,    // 02 (13) = (14) / (15)
-    0x73161718,    // 03 (16) = (17) / (18)
-    0x93282930,    // 04 ((28)) = ((29)) / ((30)) or: (26) = (18) / (17)
-    0x73313233,    // 05 (31) = (32)/ (33)
-    0x00000000,    // 06
-    0x00000000,    // 07
-    0x00000000,    // 08
-    0x00000000,    // 09
-    0x00000000,    // 10
-    0xA2010000,    // 11
+    0x19210000,    // 01
+    0x73353412,    // 02 (35) = (34) / (12)
+    0x19210000,    // 03
+    0x73131415,    // 04 (13) = (14) / (15)
+    0x19210000,    // 05
+    0x73161718,    // 06 (16) = (17) / (18)
+    0x19210000,    // 07
+    0x93282930,    // 08 ((28)) = ((29)) / ((30)) or: (26) = (18) / (17)
+    0x19210000,    // 09
+    0x73313233,    // 10 (31) = (32)/ (33)
+    0x19210000,    // 11
+
     0xB0000010,    // 12
     0x00000000,    // 13
     0xA2010000,    // 14
@@ -7619,6 +7646,8 @@ TEST_LOAD_STORE test_14_store =
     0x00000000,    // 31
     0xA0000004,    // 32
     0xA0000125,    // 33
+    0xA2010000,    // 34
+    0x00000000,    // 35
     -1},
   };
 
