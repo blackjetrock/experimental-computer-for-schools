@@ -1773,7 +1773,7 @@ REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WOR
 
   if( a_sign == WORD_SIGN_MINUS )
     {
-      a = bcd_sw_nines_complement(a);
+      a = bcd_dw_nines_complement(a);
     }
 
   if( b_sign == WORD_SIGN_MINUS )
@@ -2100,7 +2100,7 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
 
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
-      SW_REG_CONTENTS(dest) = bcd_dw_addition(SW_REG_CONTENTS(src1), DW_TO_SW(DW_REG_CONTENTS(src2)));
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), DW_TO_SW(DW_REG_CONTENTS(src2)));
       return;
     }
 
@@ -7639,19 +7639,19 @@ TOKEN test_seq_14[] =
 TEST_INFO test_res_14[] =
   {
    {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xA4050000},
+   {TC_MUST_BE,     0xA0000005},
    {TC_END_SECTION, 0},
    
    {TC_STORE_N,     0x35},
-   {TC_MUST_BE,     0xB4100000},
+   {TC_MUST_BE,     0xB0000010},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x13},
-   {TC_MUST_BE,     0xA4100000},
+   {TC_MUST_BE,     0xA0000010},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x16},
-   {TC_MUST_BE,     0xA4031428},
+   {TC_MUST_BE,     0xA5314286},
    {TC_END_SECTION, 0},
    
    {TC_STORE_N,     0x26},
@@ -7659,7 +7659,7 @@ TEST_INFO test_res_14[] =
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x31},
-   {TC_MUST_BE,     0xA6032000},
+   {TC_MUST_BE,     0xA3000032},
    
    {TC_END,     0},
   };
@@ -7685,7 +7685,7 @@ TEST_LOAD_STORE test_14_store =
     0xA2010000,    // 14    +100.00
     0xA1000100,    // 15    +10.0
     0x00000000,    // 16
-    0xA4220000,    // 17    +200.00
+    0xA4220000,    // 17    +22.00
     0xA0000007,    // 18    +7
     0x00000000,    // 19 
     0xA0000004,    // 20    +4
