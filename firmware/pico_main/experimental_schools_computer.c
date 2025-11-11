@@ -577,7 +577,17 @@ int last_token = TOK_NONE;
 // read scan code
 void kbd_read(ESC_STATE *s)
 {
-  
+
+      if( s->store[168] == 0 )
+    {
+      printf("\n**** 168 == 0 *******\n\n");
+      while(1)
+        {
+        }
+    }
+   
+       
+
 #if ESC_TYPE_SMALL  
   // If the drive index is zero then reset the scan code
   if( kbd_drv_i == 0 )
@@ -1339,7 +1349,7 @@ REGISTER_SINGLE_WORD invert_sw_sign(REGISTER_SINGLE_WORD n)
   return(r);
 }
 
-REGISTER_SINGLE_WORD invert_dw_sign(REGISTER_DOUBLE_WORD n)
+REGISTER_DOUBLE_WORD invert_dw_sign(REGISTER_DOUBLE_WORD n)
 {
   REGISTER_DOUBLE_WORD r = n;
   
@@ -2102,13 +2112,25 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
 {
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), SET_SW_SIGN((REGISTER_SINGLE_WORD) SW_REG_CONTENTS(src2), WORD_SIGN_MINUS));
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), invert_sw_sign( SW_REG_CONTENTS(src2)));
       return;
     }
 
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
-      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), SET_DW_SIGN((REGISTER_DOUBLE_WORD) DW_REG_CONTENTS(src2), WORD_SIGN_MINUS));
+      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign( DW_REG_CONTENTS(src2)));
+      return;
+    }
+
+  if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_SW_REGISTER(src2) )
+    {
+      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign(SW_TO_DW(SW_REG_CONTENTS(src2))));
+      return;
+    }
+
+  if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_DW_REGISTER(src2) )
+    {
+      SW_REG_CONTENTS(dest) = bcd_dw_addition(SW_REG_CONTENTS(src1), invert_sw_sign(DW_TO_SW(DW_REG_CONTENTS(src2))));
       return;
     }
 
@@ -3392,6 +3414,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 #if DUMP_STATE_STAGE_C
   cli_dump();
+
+  
 #endif
 }
 
@@ -7643,9 +7667,9 @@ TEST_INFO test_res_14[] =
 TEST_LOAD_STORE test_14_store =
   {
    {
-    0x73212223,    // 00 (21) = (22) / (23)
+    0x73212223,    // 00 (21) = (22) / (23)   +5.0
     0x19210000,    // 01
-    0x73353412,    // 02 (35) = (34) / (12)
+    0x73353412,    // 02 (35) = (34) / (12)   -10
     0x19210000,    // 03
     0x73131415,    // 04 (13) = (14) / (15)
     0x19210000,    // 05
@@ -7656,29 +7680,29 @@ TEST_LOAD_STORE test_14_store =
     0x73313233,    // 10 (31) = (32)/ (33)
     0x19210000,    // 11
 
-    0xB0000010,    // 12
+    0xB0000010,    // 12    -10.0
     0x00000000,    // 13
-    0xA2010000,    // 14
-    0xA1000100,    // 15
+    0xA2010000,    // 14    +100.00
+    0xA1000100,    // 15    +10.0
     0x00000000,    // 16
-    0xA4220000,    // 17
-    0xA0000007,    // 18
+    0xA4220000,    // 17    +200.00
+    0xA0000007,    // 18    +7
     0x00000000,    // 19 
-    0xA0000004,    // 20
-    0xA0000125,    // 21
-    0xA0000015,    // 22
-    0xA1000030,    // 23
-    0xB0000125,    // 24
-    0xB1000050,    // 25
-    0xA0000022,    // 26
+    0xA0000004,    // 20    +4
+    0xA0000125,    // 21    +125
+    0xA0000015,    // 22    +15
+    0xA1000030,    // 23    +3.0
+    0xB0000125,    // 24    -125
+    0xB1000050,    // 25    -5.0
+    0xA0000022,    // 26    +22
     0x00000000,    // 27
-    0xA0000026,    // 28
-    0xA0000018,    // 29
-    0xA0000017,    // 30
+    0xA0000026,    // 28    +26
+    0xA0000018,    // 29    +18
+    0xA0000017,    // 30    +17
     0x00000000,    // 31
-    0xA0000004,    // 32
-    0xA0000125,    // 33
-    0xA2010000,    // 34
+    0xA0000004,    // 32    +4
+    0xA0000125,    // 33    +125
+    0xA2010000,    // 34    +100.00
     0x00000000,    // 35
     -1},
   };
