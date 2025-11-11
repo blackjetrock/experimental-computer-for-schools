@@ -631,7 +631,7 @@ void kbd_read(ESC_STATE *s)
 	  // Wait another loop before running test
 	}
       else
-	{      
+	{
 	  test_loop_count = 0;
 	  
 	  if( test_running )
@@ -645,6 +645,10 @@ void kbd_read(ESC_STATE *s)
 		  int rn = -1;
 		  int test_type = TC_END;		  
 		  int done = 0;
+
+#if DUMP_STATE_STAGE_C
+                  cli_dump();
+#endif
 
 #if DEBUG_TEST_SEQ
 		  printf("\n  Token:%d", t);
@@ -1200,6 +1204,26 @@ REGISTER_DOUBLE_WORD double_sum_normalise(REGISTER_DOUBLE_WORD v)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// Ensure signs are tagged
+// If there's no explicit plus then change it
+
+int fix_sign(int sign)
+{
+  switch(sign)
+    {
+    case WORD_SIGN_MINUS:
+    case WORD_SIGN_PLUS:
+      break;
+      
+    default:
+      sign = WORD_SIGN_PLUS;
+      break;
+    }
+  return(sign);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // Nines complement
 //
 
@@ -1671,6 +1695,8 @@ REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WOR
   a_sign = DW_SIGN(a);
   b_sign = DW_SIGN(b);
 
+  a_sign = fix_sign(a_sign);
+  b_sign = fix_sign(b_sign);
   
 #if DEBUG_DW_BCD_SUM
   printf("\nasgn=%d  bsgn=%d", a_sign, b_sign);
@@ -3363,6 +3389,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	}
       break;
     }
+
+#if DUMP_STATE_STAGE_C
+  cli_dump();
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4665,6 +4695,7 @@ void prepare_instruction(ESC_STATE *s)
       s->instruction_register = load_from_store(s, s->iar.address);
 #if DEBUG_PREPARE
   printf("\n%s:iar:%08X", __FUNCTION__, s->iar.address);
+  cli_dump_store();
 #endif
 
     }
@@ -7465,15 +7496,15 @@ TOKEN test_seq_13[] =
 TEST_INFO test_res_13[] =
   {
    {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xA5450000},
+   {TC_MUST_BE,     0xA1000045},
    {TC_END_SECTION, 0},
    
    {TC_STORE_N,     0x20},
-   {TC_MUST_BE,     0xB4187500},
+   {TC_MUST_BE,     0xB2001875},
    {TC_END_SECTION, 0},
    
    {TC_STORE_N,     0x10},
-   {TC_MUST_BE,     0xA5986958},
+   {TC_MUST_BE,     0xA5986959},
    
    {TC_END,     0},
   };
@@ -7481,19 +7512,19 @@ TEST_INFO test_res_13[] =
 TEST_LOAD_STORE test_13_store =
   {
    {
-    0x72212223,    // 00 (21) = (22) * (23)
+    0x72212223,    // 00 (21) = (22) * (23)  +4.5
     0x19210000,    // 01
-    0x72202324,    // 02 (20) = (23) * (24)
+    0x72202324,    // 02 (20) = (23) * (24)  -18.75
     0x19210000,    // 03
-    0x72101112,    // 04 (10) = (11) * (12)
+    0x72101112,    // 04 (10) = (11) * (12)  +9.869589 
     0x19210000,    // 05
     0x00000000,    // 06
     0x00000000,    // 07
     0x00000000,    // 08
     0x00000000,    // 09
     0x00000000,    // 10
-    0xA5314159,    // 11
-    0xA5314159,    // 12
+    0xA5314159,    // 11  3.14159
+    0xA5314159,    // 12  3.14159
     0x00000000,    // 13
     0x00000000,    // 14
     0x00000000,    // 15
@@ -7503,9 +7534,9 @@ TEST_LOAD_STORE test_13_store =
     0x00000000,    // 19
     0x00000000,    // 20
     0x00000000,    // 21
-    0xA0000003,    // 22
-    0xA1000015,    // 23
-    0xB1000125,    // 24
+    0xA0000003,    // 22    +3.0
+    0xA1000015,    // 23    +1.5
+    0xB1000125,    // 24    -12.5
     0x00000000,    // 25
     0x00000000,    // 26
     0x00000000,    // 27
