@@ -4719,7 +4719,7 @@ void prepare_instruction(ESC_STATE *s)
       s->instruction_register = load_from_store(s, s->iar.address);
 #if DEBUG_PREPARE
   printf("\n%s:iar:%08X", __FUNCTION__, s->iar.address);
-  cli_dump_store();
+  //  cli_dump_store();
 #endif
 
     }
@@ -7758,6 +7758,14 @@ TOKEN test_seq_15[] =
 
    TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
 
    TOK_NONE,
   };
@@ -7765,23 +7773,23 @@ TOKEN test_seq_15[] =
 TEST_INFO test_res_15[] =
   {
    {TC_STORE_N,     0x03},
-   {TC_MUST_BE,     0xA5625000},
+   {TC_MUST_BE,     0xA2000625},
    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x03},
+   {TC_STORE_N,     0x50},
    {TC_MUST_BE,     0xA4196349},
    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x03},
+   {TC_STORE_N,     0x51},
    {TC_MUST_BE,     0xA4785396},
    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x04},
+   {TC_STORE_N,     0x52},
    {TC_MUST_BE,     0xA3196349},
    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x04},
-   {TC_MUST_BE,     0xA3065449},
+   {TC_STORE_N,     0x53},
+   {TC_MUST_BE,     0xA4654497},
 
    {TC_END,     0},
   };
@@ -7799,12 +7807,17 @@ TEST_LOAD_STORE test_15_store =
     0xA0000003,    // 07  Constant 3
     0x00000000,    // 08
     0x00000000,    // 09
-    0x78020507,    // 10  Input r; display 3.14159 and 3
+    0x78020507,    // 10  Input r; display 3.14159 and 3 (not executed)
     0x72030202,    // 11  a <- r * r
-    0x72030305,    // 12  a <- a * 3.14159
-    0x72030306,    // 13  a <- a * 4
-    0x72040302,    // 14  b <- a * r
-    0x73040407,    // 15  b = b / 3
+    0x19030000,    // 12    Stop for result check (2.5 * 2.5 = 6.25)
+    0x72500305,    // 13  a <- a * 3.14159
+    0x19030000,    // 14    Stop (a = 19.6349)
+    0x72515006,    // 15  a <- a * 4
+    0x19030000,    // 16    Stop (a = 78.5398)
+    0x72525102,    // 17  b <- a * r
+    0x19040000,    // 18    Stop (a = 196.349)
+    0x73535207,    // 15  b = b / 3
+    0x19040000,    //       Stop (b = 65.497) 65.44792
     0x79020304,    // 16  Display r, a and b
     -1},
   };
@@ -7837,7 +7850,7 @@ TOKEN test_seq_16[] =
    TOK_TEST_CHECK_RES,
 #endif
    
-   // Run untul a stop and then check results
+   // Run until a stop and then check results
    TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
 
@@ -8382,14 +8395,15 @@ TOKEN test_seq_22[] =
 
    //TOK_KEY_RUN,
    TOK_TEST_WAIT_FOR_STOP,
-
+   TOK_TEST_CHECK_RES,
+   
    TOK_NONE,
   };
 
 TEST_INFO test_res_22[] =
   {
    {TC_STORE_N,   0x3},
-   {TC_MUST_BE, 0xA4008416},
+   {TC_MUST_BE, 0xA6841471},
    
    {TC_END,     0},
   };
