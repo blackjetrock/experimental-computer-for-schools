@@ -239,6 +239,8 @@ void prepare_instruction(ESC_STATE *s);
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
 void register_assign_register(ESC_STATE *s, int dest, int src);
 void next_iar(ESC_STATE *s);
+void cli_dump(void);
+void cli_dump_store(void);
 
 ////////////////////////////////////////////////////////////////////////////////
 

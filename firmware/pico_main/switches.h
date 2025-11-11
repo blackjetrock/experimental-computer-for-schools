@@ -71,6 +71,7 @@
 #define DEBUG_DISPLAY_ON_LINE  1
 #define DEBUG_BRANCH           1
 
+#define DUMP_STATE_STAGE_C     1
 #endif
 
 //------------------------------------------------------------------------------
