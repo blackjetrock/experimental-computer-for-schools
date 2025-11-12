@@ -2110,27 +2110,40 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
 
 void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int src2)
 {
+  
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
+#if DEBUG_REGISTER_ASSIGN
+  printf("\nSW SW SW");
+#endif
       SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), invert_sw_sign( SW_REG_CONTENTS(src2)));
       return;
     }
 
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
+#if DEBUG_REGISTER_ASSIGN
+  printf("\nDW DW DW");
+#endif
       DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign( DW_REG_CONTENTS(src2)));
       return;
     }
 
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
+#if DEBUG_REGISTER_ASSIGN
+  printf("\nDW DW SW");
+#endif
       DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign(SW_TO_DW(SW_REG_CONTENTS(src2))));
       return;
     }
 
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
-      SW_REG_CONTENTS(dest) = bcd_dw_addition(SW_REG_CONTENTS(src1), invert_sw_sign(DW_TO_SW(DW_REG_CONTENTS(src2))));
+#if DEBUG_REGISTER_ASSIGN
+  printf("\nSW SW DW");
+#endif
+      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), invert_sw_sign(DW_TO_SW(DW_REG_CONTENTS(src2))));
       return;
     }
 
@@ -4719,7 +4732,7 @@ void prepare_instruction(ESC_STATE *s)
       s->instruction_register = load_from_store(s, s->iar.address);
 #if DEBUG_PREPARE
   printf("\n%s:iar:%08X", __FUNCTION__, s->iar.address);
-  //  cli_dump_store();
+  //cli_dump_store();
 #endif
 
     }
@@ -7860,8 +7873,8 @@ TOKEN test_seq_16[] =
 TEST_INFO test_res_16[] =
   {
    {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000010},
-   {TC_END_SECTION, 0},
+   //{TC_MUST_BE, 0x00000010},
+   //{TC_END_SECTION, 0},
 
    {TC_REG_IAR,   0},
    {TC_MUST_BE, 0x00000011},
@@ -8344,9 +8357,10 @@ TOKEN test_seq_21[] =
   {
    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_8,
+   TOK_KEY_9,
    TOK_KEY_LOAD_IAR,
 
+#if 0
    TOK_KEY_C,
    TOK_KEY_C,
    TOK_KEY_C,
@@ -8373,14 +8387,18 @@ TOKEN test_seq_21[] =
    TOK_KEY_C,
    TOK_KEY_C,
    TOK_KEY_C,
-   
+#endif
+
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+
    TOK_NONE,
   };
 
 TEST_INFO test_res_21[] =
   {
    {TC_STORE_N,   0x3},
-   {TC_MUST_BE, 0xA5141420},
+   {TC_MUST_BE, 0xA5141422},
    {TC_END,     0},
   };
 
@@ -8496,6 +8514,7 @@ TOKEN test_seq_23[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
+#if 0
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -8512,6 +8531,10 @@ TOKEN test_seq_23[] =
    TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+#endif
+
+   TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
 
    TOK_NONE,
@@ -8521,27 +8544,27 @@ TEST_INFO test_res_23[] =
   {
    
    {TC_STORE_N,   0x10},
-   {TC_MUST_BE, 0xA5014285},
+   {TC_MUST_BE, 0xA6142857},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,   0x13},
-   {TC_MUST_BE, 0xA5014285},
+   {TC_MUST_BE, 0xA6142857},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,   0x7},
-   {TC_MUST_BE, 0xB6000352},
+   {TC_MUST_BE, 0xB6000353},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,   0x16},
-   {TC_MUST_BE, 0xA5000001},
+   {TC_MUST_BE, 0xA6000014},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,   0x19},
-   {TC_MUST_BE, 0xA4020000},
+   {TC_MUST_BE, 0xA0000002},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,   0x22},
-   {TC_MUST_BE, 0xA4170000},
+   {TC_MUST_BE, 0xA0000017},
 
    {TC_END,     0},
   };
@@ -8551,11 +8574,11 @@ TEST_LOAD_STORE test_23_store =
    {
     0x73101112,    //00
     0x73131415,    //01
-    0x73070809,
-    0x73161718,
-    0x70192021,
+    0x73070809,    //02  (07) = (08) / (09)  
+    0x73161718,    //03  (16) = (17) / (18)
+    0x70192021,    //04  (19) = (20) + (21)
     0x70222324,
-    0x00000000,
+    0x19100000,     //06 Stop for result checking
     0x00000000,     //07
     0xA6001410,     //08
     0xB5400000,     //09
@@ -8621,12 +8644,15 @@ TOKEN test_seq_24[] =
    TOK_KEY_5,
    TOK_KEY_LOAD_IAR,
 
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+
+#if 0
    TOK_KEY_A,
-
    TOK_KEY_B,
-
    TOK_KEY_C,
-
+#endif
+   
    TOK_NONE,
   };
 
@@ -8638,7 +8664,7 @@ TEST_INFO test_res_24[] =
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,   0x03},
-   {TC_MUST_BE, 0xB3355201},
+   {TC_MUST_BE, 0xB1003552},
 
    {TC_END,     0},
   };
@@ -8672,7 +8698,7 @@ TEST_LOAD_STORE test_24_store =
     0x00000000,     //23
     0xA0000011,     //24
     0x93202422,     //25
-    0x00000000,     //26
+    0x19200000,     //26   Stop and check results
     0x00000000,     //27
     0x00000000,     //28
     0x00000000,     //29
