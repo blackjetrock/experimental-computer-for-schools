@@ -578,15 +578,15 @@ int last_token = TOK_NONE;
 void kbd_read(ESC_STATE *s)
 {
 
-      if( s->store[168] == 0 )
+  if( s->store[168] == 0 )
     {
       printf("\n**** 168 == 0 *******\n\n");
-      while(1)
+      while(0)
         {
         }
     }
-   
-       
+  
+  
 
 #if ESC_TYPE_SMALL  
   // If the drive index is zero then reset the scan code
@@ -7921,6 +7921,7 @@ TOKEN test_seq_17[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
+#if 0
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
 
@@ -7937,6 +7938,21 @@ TOKEN test_seq_17[] =
    TOK_TEST_CHECK_RES,
 
    TOK_KEY_C,
+   TOK_TEST_CHECK_RES,
+#endif
+
+   // Run until a stop and then check results
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
    TOK_TEST_CHECK_RES,
 
    TOK_NONE,
@@ -7984,9 +8000,12 @@ TEST_LOAD_STORE test_17_store =
     0x0,
     0x0,
     0x0,
-    0x00810082,          // 10  
-    0x00891389,
-    0x13901318,
+    0x00811900,          // 10  
+    0x00821900,          // 10  
+    0x00891900,
+    0x13891900,
+    0x13901900,
+    0x13181900,
     -1},
   };
 
