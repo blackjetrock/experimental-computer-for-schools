@@ -204,6 +204,7 @@ typedef struct _ESC_STATE
   int inst_update_display;
   int reload_display;
   int delete_display;
+  int setup_display;
   
   char stage;
 

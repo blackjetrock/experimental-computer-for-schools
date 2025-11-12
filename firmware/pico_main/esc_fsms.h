@@ -70,6 +70,7 @@ typedef struct _TOKEN_INFO
   const char *tok_name;
 } TOKEN_INFO;
 
+#define TOK_KEY_SETUP  TOK_KEY_CHECK
 
 #define CTOK_NAMES_LEN (sizeof(ctok_names)/sizeof(TOKEN_INFO))
 #define TOKEN_NAMES_LEN (sizeof(token_names)/sizeof(TOKEN_INFO))
@@ -86,4 +87,5 @@ enum
    STATE_ESC_INIT = 1,
    STATE_ESC_RELOAD,
    STATE_ESC_DELETE,
+   STATE_ESC_SETUP,
   };
