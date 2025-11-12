@@ -5048,8 +5048,12 @@ void state_esc_dump(FSM_DATA *es, TOKEN tok)
   printf("\nWritten state to '%s", filename);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
 // Reload a state file.
 // Display all state files and allow the user to pick one.
+//
+//------------------------------------------------------------------------------
 
 void state_esc_reload(FSM_DATA *es, TOKEN tok)
 {
@@ -5058,6 +5062,7 @@ void state_esc_reload(FSM_DATA *es, TOKEN tok)
   s->reload_file_first = 0;
   s->reload_display = 1;
   s->update_display = 1;
+  s->setup_display  = 0;
 }
 
 void state_reload_incr(FSM_DATA *es, TOKEN tok)
@@ -5086,6 +5091,7 @@ void state_reload_clear(FSM_DATA *es, TOKEN tok)
 
   s->reload_display = 0;
   s->update_display = 1;
+  s->setup_display  = 0;
 }
 
 void state_reload_delete(FSM_DATA *es, TOKEN tok)
@@ -5095,6 +5101,7 @@ void state_reload_delete(FSM_DATA *es, TOKEN tok)
   s->delete_display = 1;
   s->reload_display = 0;
   s->update_display = 1;
+  s->setup_display  = 0;
 }
 
 void state_reload_reload(FSM_DATA *es, TOKEN tok)
@@ -5106,6 +5113,7 @@ void state_reload_reload(FSM_DATA *es, TOKEN tok)
   s->delete_display = 0;
   s->reload_display = 0;
   s->update_display = 1;
+  s->setup_display  = 0;
 }
 
 void state_delete_do_delete(FSM_DATA *es, TOKEN tok)
@@ -5117,8 +5125,101 @@ void state_delete_do_delete(FSM_DATA *es, TOKEN tok)
   s->delete_display = 0;
   s->reload_display = 1;
   s->update_display = 1;
+  s->setup_display  = 0;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Setup Menu
+// As the CHECK key isn't really needed, it is used for a setup menu
+//
+//------------------------------------------------------------------------------
+
+typedef struct {
+  char *title;
+  int *value_var;
+  char *val0;
+  char *val1;
+} SETUP_ENTRY;
+
+int suppressed_display = 0;
+
+SETUP_ENTRY setup_entries[] =
+  {
+    {"Numbers:", &suppressed_display, "Original", "Full    "},
+  };
+
+#define NUM_SETUP_ENTRIES (sizeof(setup_entries)/sizeof(SETUP_ENTRY))
+
+void state_esc_setup(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+  
+  s->reload_file_first = 0;
+  s->reload_display = 0;
+  s->update_display = 1;
+  s->setup_display  = 1;
+}
+
+void state_setup_val0(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  *(setup_entries[s->reload_file_first].value_var) = 0;
+  s->update_display = 1;
+}
+
+void state_setup_val1(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  *(setup_entries[s->reload_file_first].value_var) = 1;
+  s->update_display = 1;
+}
+
+void state_setup_incr(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  if( s->reload_file_first < (NUM_SETUP_ENTRIES - 1 ) )
+    {
+      s->reload_file_first++;
+    }
+  s->update_display = 1;
+}
+
+void state_setup_decr(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+  
+  if( s->reload_file_first > 0 )
+    {
+      s->reload_file_first--;
+    }
+  
+  s->update_display = 1;
+}
+
+void state_setup_clear(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  s->reload_display = 0;
+  s->setup_display  = 0;
+  s->update_display = 1;
+}
+
+void state_setup_select(FSM_DATA *es, TOKEN tok)
+{
+  ESC_STATE *s = (ESC_STATE *)es;
+
+  read_file_into_state(&(file_list_data[0][0]), s);
+
+  s->delete_display = 0;
+  s->reload_display = 0;
+  s->setup_display  = 0;
+  s->update_display = 1;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -5152,6 +5253,7 @@ STATE esc_table[ ] =
      {TOK_KEY_STOP,         STATE_ESC_INIT,   state_esc_stop},
      {TOK_KEY_DUMP,         STATE_ESC_INIT,   state_esc_dump},
      {TOK_KEY_RELOAD,       STATE_ESC_RELOAD, state_esc_reload},
+     {TOK_KEY_SETUP,        STATE_ESC_SETUP,  state_esc_setup},
      {TOK_KEY_CLEAR,        STATE_ESC_INIT,   state_esc_clear},
      
      // Execute code at full speed
@@ -5170,6 +5272,20 @@ STATE esc_table[ ] =
      {TOK_KEY_CLEAR,        STATE_ESC_DELETE,  state_reload_delete},
      {TOK_KEY_RELOAD,       STATE_ESC_INIT,    state_reload_reload},
      {TOK_KEY_KI_RESET,     STATE_ESC_INIT,    state_reload_clear},
+     {CTOK_END,             STATE_NULL,        NULL},
+    }
+   },
+   {
+    _STATE(STATE_ESC_SETUP),
+    null_entry_fn,
+    null_every_fn,
+    {
+     {TOK_KEY_INCR_ADDR,    STATE_ESC_SETUP,   state_setup_incr},
+     {TOK_KEY_DECR_ADDR,    STATE_ESC_SETUP,   state_setup_decr},
+     {TOK_KEY_0,            STATE_ESC_SETUP,   state_setup_val0},
+     {TOK_KEY_1,            STATE_ESC_SETUP,   state_setup_val1},
+     {TOK_KEY_SETUP,        STATE_ESC_INIT,    state_setup_select},
+     //     {TOK_KEY_KI_RESET,     STATE_ESC_INIT,    state_setup_clear},
      {CTOK_END,             STATE_NULL,        NULL},
     }
    },
@@ -10342,8 +10458,10 @@ char *display_store_word(SINGLE_WORD w)
     }
 
 #if SUPPRESSED_OUTPUT
+  
   // Suppressed output has no + symbol or leading zeros. This is closer to the original machine.
   suppress_output(result);
+  printf("\nSuppressed:'%s'", result);
   
 #endif
   
@@ -10698,6 +10816,8 @@ void update_computer_display(ESC_STATE *es)
   printf("\n%s\n", dsp);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
 void update_reload_display(ESC_STATE *es)
 {
   int oledy = 0;
@@ -10745,6 +10865,50 @@ void update_delete_display(ESC_STATE *es)
   
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
+void update_setup_display(ESC_STATE *es)
+{
+  int oledy = 0;
+  char line[MAX_LINE+2];
+  int varval;
+  
+#if OLED_ON
+  oled_clear_display(&oled0);
+#endif
+
+#if ESC_TYPE_DESKTOP
+  lcd_cls(0);
+  lcd_cls(1);
+#endif
+  
+  //  file_partial_list(ESC_DIR, es->reload_file_first, 6);
+  
+  for(int i=0; i<FILE_LIST_DATA_LINES_MAX; i++)
+    {
+      if( i + es->reload_file_first >= NUM_SETUP_ENTRIES )
+        {
+          break;
+        }
+
+      varval = *(setup_entries[es->reload_file_first].value_var);
+      
+#if OLED_ON
+      oled_set_xy(&oled0, 0, oledy);
+      sprintf(line, "%s%s", setup_entries[es->reload_file_first].title, varval?setup_entries[es->reload_file_first].val0:setup_entries[es->reload_file_first].val1);
+      oled_display_string(&oled0, line);
+#endif
+      
+#if ESC_TYPE_DESKTOP
+      show_char(0, oledy, &(display_line[i-1][0]));
+#endif
+      
+      oledy+=8;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 void update_display(void)
 {
   ESC_STATE *s= &esc_state;
@@ -10768,6 +10932,10 @@ void update_display(void)
 	{
 	  update_delete_display(s);
 	}
+      else if( s->setup_display )
+        {
+          update_setup_display(s);
+        }
       else
 	{
 	  update_computer_display(s);

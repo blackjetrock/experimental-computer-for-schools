@@ -137,7 +137,7 @@
 // Suppressed output has no leading zeros and no + sign.
 // This is closer to the original machine.
 
-#define SUPPRESSED_OUTPUT      0
+#define SUPPRESSED_OUTPUT      1
 #define OLED_ON                1
 #define SD_ON                  1
 #define ERRORS_ON              0
