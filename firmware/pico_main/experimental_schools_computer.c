@@ -8239,10 +8239,15 @@ TOKEN test_seq_20[] =
   {
    TOK_KEY_NORMAL_RESET,
 
+   TOK_KEY_2,
    TOK_KEY_1,
-   TOK_KEY_5,
    TOK_KEY_LOAD_IAR,
 
+   // Run program to end
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+
+#if 0
    TOK_KEY_C,
    TOK_KEY_C,
    TOK_KEY_C,
@@ -8261,16 +8266,18 @@ TOKEN test_seq_20[] =
    TOK_KEY_C,
    TOK_KEY_C,
    TOK_KEY_C,
+#endif
+   
    TOK_NONE,
   };
 
 TEST_INFO test_res_20[] =
   {
    {TC_STORE_N,   0x09},
-   {TC_MUST_BE, 0xA6326474},
+   {TC_MUST_BE, 0xA6326471},
 
    {TC_STORE_N,   0x10},
-   {TC_MUST_BE, 0xB6036209},
+   {TC_MUST_BE, 0xB5003621},
 
    {TC_END,     0},
   };
