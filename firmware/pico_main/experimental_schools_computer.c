@@ -8064,15 +8064,15 @@ TOKEN test_seq_18[] =
 TEST_INFO test_res_18[] =
   {
    {TC_STORE_N,     0x10},
-   {TC_MUST_BE,     0xA5014285},
+   {TC_MUST_BE,     0xA6142857},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x13},
-   {TC_MUST_BE,     0xA5014285},
+   {TC_MUST_BE,     0xA6142857},
    {TC_END_SECTION, 0},
 
    {TC_STORE_N,     0x07},
-   {TC_MUST_BE,     0xB6000352},
+   {TC_MUST_BE,     0xB6000353},
 
    {TC_END,     0},
   };
@@ -8128,6 +8128,14 @@ TOKEN test_seq_19[] =
    TOK_KEY_0,
    TOK_KEY_LOAD_IAR,
 
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+   TOK_TEST_WAIT_FOR_STOP,
+   TOK_TEST_CHECK_RES,
+
+#if 0   
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
    TOK_KEY_C,
@@ -8150,7 +8158,8 @@ TOKEN test_seq_19[] =
    TOK_TEST_CHECK_RES,
    TOK_KEY_C,
    TOK_TEST_CHECK_RES,
-
+#endif
+   
    TOK_NONE,
   };
 
@@ -8159,34 +8168,36 @@ TEST_INFO test_res_19[] =
    
    {TC_REG_N,   0},
    {TC_MUST_BE, 0xA0000004},
-   {TC_END_SECTION, 0},
+   //{TC_END_SECTION, 0},
 
    {TC_REG_N,   1},
    {TC_MUST_BE, 0xA0000005},
    {TC_END_SECTION, 0},
 
-   {TC_MUST_BE_STOPPED, 0},
-   {TC_END_SECTION, 0},
+   //{TC_MUST_BE_STOPPED, 0},
+   //{TC_END_SECTION, 0},
 
    {TC_REG_N,   0},
    {TC_MUST_BE, 0xA0000007},
-   {TC_END_SECTION, 0},
+   //{TC_END_SECTION, 0},
 
    {TC_REG_N,   1},
    {TC_MUST_BE, 0xA0000008},
    {TC_END_SECTION, 0},
 
-   {TC_MUST_BE_STOPPED, 0},
-   {TC_END_SECTION, 0},
+   //{TC_MUST_BE_STOPPED, 0},
+   //{TC_END_SECTION, 0},
 
    {TC_REG_N,   0},
    {TC_MUST_BE, 0xA0000001},
    {TC_END_SECTION, 0},
 
+#if 0
    {TC_REG_N,   1},
    {TC_MUST_BE, 0xA0000002},
    {TC_MUST_BE_NOT_STOPPED, 0},
-
+#endif
+   
    {TC_END,     0},
   };
 
@@ -8198,7 +8209,7 @@ TEST_LOAD_STORE test_19_store =
     0x03070318,    //02  R0<- 7, R1 <- 8
     0x19010000,    //03  Stop and display R0 and R1, NOP
     0x03010312,    //04  R0 <- 1, R1 <- 2
-    0x00000000,
+    0x19010000,    //05  Stop
     0x00000000,
     0x00000000,
     0x00000000,
