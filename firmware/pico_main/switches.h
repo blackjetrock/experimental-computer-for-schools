@@ -72,6 +72,8 @@
 #define DEBUG_BRANCH           1
 
 #define DUMP_STATE_STAGE_C     1
+#define DEBUG_REGISTER_ASSIGN  1
+
 #endif
 
 //------------------------------------------------------------------------------
