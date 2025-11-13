@@ -116,7 +116,7 @@ this extracode is supplied in the form of a set of changes to be made to the sta
 This extracode provides a square root instruction. It replaced one of the standard extracodes and was used for any program that needed a square root. It is mentioned in some of the first documents I found, and a listing is in the latest documents.
 
 <h3>Noughts and Crosses</h3>
-This game was written by Tony Malins around 1970 and was such a large program that is used the extracode space as well as the use r space.
+This game was written by Tony Malins around 1970 and was such a large program that it used the extracode space as well as the user space.
 
 <h1>References</h1>
 
