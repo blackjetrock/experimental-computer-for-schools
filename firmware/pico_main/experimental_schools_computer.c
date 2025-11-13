@@ -203,6 +203,7 @@ int wfn_link_register(ESC_STATE *es, void *fi, char *line);
 int wfn_instruction_register(ESC_STATE *es, void *fi, char *line);
 int wfn_store_data(ESC_STATE *es, void *fi, char *line);
 int wfn_store(ESC_STATE *es, void *fi, char *line);
+int wfn_suppressed_display(ESC_STATE *es, void *fi, char *line);
 
 void update_computer_display(ESC_STATE *es);
 void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n);
@@ -9457,6 +9458,7 @@ FIELD_INFO  field_info[] =
    {"*LINK_REGISTER:",          wfn_link_register},
    {"*LINK_REGISTER:",          wfn_store},
    {"*LINK_REGISTER:",          wfn_store_data},
+   {"*SUPPRESSED_DISPLAY",      wfn_suppressed_display},
   };
 
 #define NUM_FIELD_INFO (sizeof(field_info)/sizeof(FIELD_INFO))
@@ -9627,6 +9629,22 @@ int wfn_store_data(ESC_STATE *es, void *fi, char *line)
   return(0);
 }
 
+int wfn_suppressed_display(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
+  
+  if( sscanf(line, "*SUPPRESSED_DISPLAY:%X", &value) == 1 )
+    {
+      suppressed_display = (ADDRESS)value;
+      
+      printf("\nSuppressed_display now:%08X", suppressed_display);
+      return(1);
+    }
+  
+  return(0);
+}
+
 //------------------------------------------------------------------------------
 
 void read_state_field(char *line, ESC_STATE *es)
@@ -9724,15 +9742,17 @@ int write_state_to_file(ESC_STATE *es, char *fn)
 
   f_printf(&fp, "# Experimental Schools Computer State File");
 
-  f_printf(&fp, "\n*IAR_ADDRESS:%08X", es->iar.address);
-  f_printf(&fp, "\n*IAR_A_FLAG:%08X",  es->iar.a_flag);
-  f_printf(&fp, "\n*KB_REGISTER:%08X", es->keyboard_register);
-  f_printf(&fp, "\n*ADDRESS_REGISTER_0:%08X", es->address_register0);
-  f_printf(&fp, "\n*ADDRESS_REGISTER_1:%08X", es->address_register1);
-  f_printf(&fp, "\n*ADDRESS_REGISTER_2:%08X", es->address_register2);
+  f_printf(&fp, "\n*IAR_ADDRESS:%08X",          es->iar.address);
+  f_printf(&fp, "\n*IAR_A_FLAG:%08X",           es->iar.a_flag);
+  f_printf(&fp, "\n*KB_REGISTER:%08X",          es->keyboard_register);
+  f_printf(&fp, "\n*ADDRESS_REGISTER_0:%08X",   es->address_register0);
+  f_printf(&fp, "\n*ADDRESS_REGISTER_1:%08X",   es->address_register1);
+  f_printf(&fp, "\n*ADDRESS_REGISTER_2:%08X",   es->address_register2);
 
   f_printf(&fp, "\n*INSTRUCTION_REGISTER:%08X", es->instruction_register);
   f_printf(&fp, "\n*LINK_REGISTER:%08X",        es->link_register);
+
+  f_printf(&fp, "\n*SUPPRESSED_DISPLAY:%08X",   suppressed_display);
     
   for(int i=0;i<NUM_WORD_REGISTERS; i++)
     {
@@ -10714,7 +10734,7 @@ void update_computer_display(ESC_STATE *es)
 #if DEBUG_DISPLAY
   printf("\n*** %s ***", __FUNCTION__);
 #endif
-  
+
   printf("\n");
   
   printf("\nKeyboard register: %08X   IAR:%8s", es->keyboard_register, display_iar(es->iar));

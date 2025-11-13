@@ -5,7 +5,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // All debug switches off or set up
-#if 0
+#if 1
 
 #define DEBUG_CALC_STATE       0
 #define DEBUG_A_DECODE         0
@@ -35,11 +35,15 @@
 #define DEBUG_PREPARE          0
 #define DEBUG_DISPLAY          0
 #define DEBUG_DISPLAY_ON_LINE  0
+#define DEBUG_BRANCH           0
+
+#define DUMP_STATE_STAGE_C     0
+#define DEBUG_REGISTER_ASSIGN  0
 
 #endif
 
 // All debug switches off or set up
-#if 1
+#if 0
 
 #define DEBUG_CALC_STATE       1
 #define DEBUG_A_DECODE         1
@@ -108,6 +112,10 @@
 #define DEBUG_RESTART          0
 #define DEBUG_EXECUTE          0
 #define DEBUG_PREPARE          1
+#define DEBUG_BRANCH           1
+
+#define DUMP_STATE_STAGE_C     1
+#define DEBUG_REGISTER_ASSIGN  1
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
