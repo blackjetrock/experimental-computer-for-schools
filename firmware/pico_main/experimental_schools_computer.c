@@ -5209,11 +5209,12 @@ void state_setup_clear(FSM_DATA *es, TOKEN tok)
   s->update_display = 1;
 }
 
+// The variables are updated when they are changed in the setup display
+// so this is just an exit.
+
 void state_setup_select(FSM_DATA *es, TOKEN tok)
 {
   ESC_STATE *s = (ESC_STATE *)es;
-
-  read_file_into_state(&(file_list_data[0][0]), s);
 
   s->delete_display = 0;
   s->reload_display = 0;
@@ -10343,7 +10344,7 @@ char *display_instruction(SINGLE_WORD inst)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Modify the dispolayed number to be in suppressed form.
+// Modify the displayed number to be in suppressed form.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -10457,13 +10458,13 @@ char *display_store_word(SINGLE_WORD w)
       break;
     }
 
-#if SUPPRESSED_OUTPUT
-  
-  // Suppressed output has no + symbol or leading zeros. This is closer to the original machine.
-  suppress_output(result);
-  printf("\nSuppressed:'%s'", result);
-  
-#endif
+  if( suppressed_display )
+    {
+      // Suppressed output has no + symbol or leading zeros. This is closer to the original machine.
+
+      suppress_output(result);
+      //      printf("\nSuppressed:'%s'", result);
+    }      
   
   return(result);
 }
