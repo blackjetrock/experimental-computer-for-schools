@@ -10438,7 +10438,70 @@ char *display_instruction(SINGLE_WORD inst)
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-char *suppress_output(char *t)
+char suppressed[MAX_LINE];
+
+void suppress_output(char *t)
+{
+  strcpy(suppressed, t);
+
+#if DEBUG_SUPPRESSED
+  printf("\n%s:'%s'", __FUNCTION__, suppressed);
+#endif
+  
+  // Remove any plus
+  for(int i=0; suppressed[i] != '\0'; i++)
+    {
+      if( suppressed[i] == '+' )
+        {
+          suppressed[i] = ' ';
+        }
+    }
+
+  // Now start at the front and blank any zero that is followed by a zero
+
+  // We remove any zero that is before a non zero, but only once
+  int first_zero = 1;
+  
+  for(int i=0; i<strlen(suppressed); i++)
+    {
+      // If we see a '-' then skip over it
+      if( suppressed[i] == '-' )
+        {
+          continue;
+        }
+
+      // Skip spaces
+      if( suppressed[i] == ' ' )
+        {
+          continue;
+        }
+
+      if( (suppressed[i] == '0') && (suppressed[i+1] != '0') && first_zero )
+        {
+          suppressed[i] = ' ';
+        }
+
+
+      // If we see anything other than a zero then we stop, as only leading zeroes are being removed.
+      if( (suppressed[i] != '0' ) )
+        {
+          break;
+        }
+      
+      if( (suppressed[i] == '0') && (suppressed[i+1] == '0') )
+        {
+          suppressed[i] = ' ';
+        }
+    }
+
+#if DEBUG_SUPPRESSED
+  printf("\n%s:'%s'", __FUNCTION__, suppressed);
+#endif
+  strcpy(t, suppressed);
+}
+
+#if 0
+char *suppress_output_old(char *t)
 {
   char *t1 = t;
   int non_zero_seen = 0;
@@ -10478,12 +10541,48 @@ char *suppress_output(char *t)
 	}
     }
 
-  if( strlen(t1)== 0 )
+#if 0
+  if( strlen(t1) == 0 )
     {
       strcpy(t1, "0");
     }
+  
+#else
+  int blank = 1;
+  
+  for(int i=0; i<strlen(output); i++)
+    {
+      switch(output[i])
+        {
+        case'0':
+        case'1':
+        case'2':
+        case'3':
+        case'4':
+        case'5':
+        case'6':
+        case'7':
+        case'8':
+        case'9':
+          blank = 0;
+          break;
+          
+        case'.':
+          //blank = 0;
+          break;
+        }
+    }
+
+  if( blank )
+    {
+      strcpy(output, "0");
+    }
+  
+#endif
+  
   return(t1);
 }
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //

@@ -40,6 +40,7 @@
 #define DUMP_STATE_STAGE_C     0
 #define DEBUG_REGISTER_ASSIGN  0
 
+#define DEBUG_SUPPRESSED       1
 #endif
 
 // All debug switches off or set up
