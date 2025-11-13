@@ -129,6 +129,8 @@ typedef uint32_t ADDRESS;
 #define LOWER_STORE   0, 99
 #define ALL_STORE     0,199
 
+// Mask for the ADDRESS register
+#define ADDRESS_MASK 0x1FF
 
 
 //------------------------------------------------------------------------------

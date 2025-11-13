@@ -8,7 +8,7 @@
 //
 // Runs on RP Pico
 // 0.96" OLED display
-// tactile switch keys
+// Tactile switch keys
 //
 // USB CLI
 // Wifi hot spot with screen display 
@@ -579,7 +579,9 @@ int last_token = TOK_NONE;
 // read scan code
 void kbd_read(ESC_STATE *s)
 {
+#if 0
 
+  // Hopefully transient error during extracode implementation
   if( s->store[168] == 0 )
     {
       printf("\n**** 168 == 0 *******\n\n");
@@ -588,6 +590,7 @@ void kbd_read(ESC_STATE *s)
         }
     }
   
+#endif
   
 
 #if ESC_TYPE_SMALL  
@@ -4411,10 +4414,12 @@ void null_every_fn(FSM_DATA *s, TOKEN tok)
 {
 }
 
-
-
+////////////////////////////////////////////////////////////////////////////////
+//
 // Load ADDR from KBD
 // Address needs to be limited to valid range
+//
+////////////////////////////////////////////////////////////////////////////////
 
 void state_esc_load_addr(FSM_DATA *fs, TOKEN tok)
 {
@@ -10414,7 +10419,7 @@ char *display_address(REGISTER_SINGLE_WORD x)
     }
 
   // Drop sign
-  sprintf(result, "%02X", x & 0xFF);
+  sprintf(result, "%02X", x & ADDRESS_MASK);
   return(result);
 }
 
