@@ -39,9 +39,10 @@ add_executable(experimental_schools_computer
   match_token.c
   oled.c
   sdcard.c
-  extracode_fp.c
   extracode.c
-  )
+  extracode_fp.c
+  extracode_basic.c
+)
 
 #add_library( gcc111libbid_hard UNKNOWN IMPORTED)
 #SET_PROPERTY(TARGET gcc111libbid_hard  PROPERTY IMPORTED_LOCATION /tree/projects/github/fx201p-ram-replacement/firmware/experimental_schools_computer/build/gcc111libbid_hard.a)

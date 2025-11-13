@@ -245,8 +245,12 @@ void set_gpio_output(const int gpio);
 void escdd_main(void);
 void enter_extracode(ESC_STATE *s);
 void run_stage_a(ESC_STATE *s, int display);
-void load_extracode(ESC_STATE *s);
+
+void load_extracode_by_csum(ESC_STATE *s);
+
 extern int extracode_fp[100];
+extern int extracode_basic[100];
+
 void prepare_instruction(ESC_STATE *s);
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
 void register_assign_register(ESC_STATE *s, int dest, int src);

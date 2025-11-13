@@ -215,6 +215,7 @@ CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.o: 
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/esc.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/esc_desktop_display.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
+  /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/oled.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/sdcard.h \
@@ -344,6 +345,7 @@ CMakeFiles/experimental_schools_computer.dir/extracode.c.o: /home/menadue/tree/g
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/esc.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/esc_desktop_display.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
+  /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/fsms.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/oled.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/sdcard.h \
@@ -388,6 +390,8 @@ CMakeFiles/experimental_schools_computer.dir/extracode.c.o: /home/menadue/tree/g
   /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
   /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
   /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+
+CMakeFiles/experimental_schools_computer.dir/extracode_basic.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c
 
 CMakeFiles/experimental_schools_computer.dir/extracode_fp.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c
 
@@ -5250,8 +5254,6 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
 
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c:
 
-/usr/lib/gcc/arm-none-eabi/15.1.0/include/float.h:
-
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/include/pico/float.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c:
@@ -5301,6 +5303,14 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
 /home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c:
+
+/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c:
+
+/home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/vreg_and_chip_reset.h:
+
+/home/menadue/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/xip.h:
+
+/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c:
 
 /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c:
 
@@ -5404,10 +5414,6 @@ generated/pico_base/pico/version.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/include/pico/flash.h:
 
-/home/menadue/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/xip.h:
-
-/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c:
-
 /home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/include/hardware/sync/spin_lock.h:
@@ -5449,6 +5455,10 @@ generated/pico_base/pico/version.h:
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/busctrl.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h:
+
+/usr/lib/gcc/arm-none-eabi/15.1.0/include/float.h:
+
+/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c:
 
 /usr/arm-none-eabi/include/sys/lock.h:
 
@@ -5605,10 +5615,6 @@ generated/pico_base/pico/version.h:
 /home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/include/hardware/boot_lock.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h:
-
-/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c:
-
-/home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/vreg_and_chip_reset.h:
 
 /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/f_util.h:
 
@@ -5771,6 +5777,8 @@ pico_extras/src/rp2_common/pico_sd_card/sd_card.pio.h:
 /home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/usb_dpram.h:
+
+/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/include/hardware/ticks.h:
 

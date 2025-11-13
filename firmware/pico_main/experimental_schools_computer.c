@@ -51,6 +51,7 @@
 
 #include "esc.h"
 #include "esc_desktop_display.h"
+#include "extracode.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -6015,26 +6016,13 @@ void cli_dump(void)
 // Dump Store
 //
 
-typedef struct
+char *csum_desc(uint32_t csum)
 {
-  uint32_t csum;
-  char *id;
-} CSUM_ID;
-
-CSUM_ID csum_ids[] =
-  {
-    {0x9C086BCF, "Original standard extracode"},
-  };
-
-#define NUM_CSUM_IDS (sizeof(csum_ids)/sizeof(CSUM_ID))
-
-char *identify_csum(uint32_t csum)
-{
-  for(int i=0; i<NUM_CSUM_IDS; i++)
+  for(int i=0; i<NUM_EXTRACODE_IDS; i++)
     {
-      if( csum_ids[i].csum == csum )
+      if( extracode_info[i].csum == csum )
         {
-          return(csum_ids[i].id);
+          return(extracode_info[i].desc);
         }
     }
   
@@ -6044,7 +6032,7 @@ char *identify_csum(uint32_t csum)
 char *display_store_checksum(ESC_STATE *s, char *title, int first, int last)
 {
   uint32_t csum = checksum_store(s, first, last);
-  printf("\n%s checksum:%08X %s", title, csum, identify_csum(csum));
+  printf("\n%s checksum:%08X %s", title, csum, csum_desc(csum));
 }
 
   
@@ -9778,7 +9766,7 @@ int read_file_into_state(char *fn, ESC_STATE *es)
 char *write_store_checksum(FIL *fp, ESC_STATE *s, char *title, int first, int last)
 {
   uint32_t csum = checksum_store(s, first, last);
-  f_printf(fp, "\n# %s checksum:%08X %s", title, csum, identify_csum(csum));
+  f_printf(fp, "\n# %s checksum:%08X %s", title, csum, csum_desc(csum));
 }
 
 int write_state_to_file(ESC_STATE *es, char *fn)
@@ -11224,7 +11212,7 @@ int main(void)
   printf("\n");
 
   // Load extracode
-  load_extracode(&esc_state);
+  load_extracode_by_id(&esc_state, EXTRACODE_STANDARD);
   
   // Configuration
 

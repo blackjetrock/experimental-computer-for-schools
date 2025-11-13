@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.o.d"
   "CMakeFiles/experimental_schools_computer.dir/extracode.c.o"
   "CMakeFiles/experimental_schools_computer.dir/extracode.c.o.d"
+  "CMakeFiles/experimental_schools_computer.dir/extracode_basic.c.o"
+  "CMakeFiles/experimental_schools_computer.dir/extracode_basic.c.o.d"
   "CMakeFiles/experimental_schools_computer.dir/extracode_fp.c.o"
   "CMakeFiles/experimental_schools_computer.dir/extracode_fp.c.o.d"
   "CMakeFiles/experimental_schools_computer.dir/fsms.c.o"

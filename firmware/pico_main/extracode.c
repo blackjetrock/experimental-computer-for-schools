@@ -36,6 +36,22 @@
 #include "esc.h"
 #include "esc_desktop_display.h"
 
+#include "extracode.h"
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Extracode information
+//
+
+
+
+EXTRACODE_INFO extracode_info[NUM_EXTRACODE_IDS] =
+  {
+    {EXTRACODE_STANDARD, "Original standard extracode", 0x9C086BCF, &(extracode_fp[0])},
+    {EXTRACODE_BASIC,    "BASIC extracode",             0x9C086BCF, &(extracode_basic[0])},
+  };
+
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Start the execution of an extracode instruction.
@@ -72,11 +88,25 @@ void enter_extracode(ESC_STATE *s)
   
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Load a particular extracode, using the checksum to identify it
+//
+// We have a table of extracode checksums.
+//
 
-void load_extracode(ESC_STATE *s)
+void load_extracode_by_id(ESC_STATE *s, EXTRACODE_ID id)
 {
-  for(int i = 0; i<100; i++)
+  for(int e=0; e<NUM_EXTRACODE_IDS; e++)
     {
-      s->store[100+i] = extracode_fp[i];
+      if( extracode_info[e].id == id )
+        {
+          for(int i = 0; i<100; i++)
+            {
+              s->store[100+i] = extracode_info[e].extracode_data[i];
+            }
+
+          return;
+        }
     }
 }

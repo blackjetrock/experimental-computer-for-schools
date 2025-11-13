@@ -355,6 +355,30 @@ extracode.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode.c.s
 .PHONY : extracode.c.s
 
+extracode_basic.o: extracode_basic.c.o
+.PHONY : extracode_basic.o
+
+# target to build an object file
+extracode_basic.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode_basic.c.o
+.PHONY : extracode_basic.c.o
+
+extracode_basic.i: extracode_basic.c.i
+.PHONY : extracode_basic.i
+
+# target to preprocess a source file
+extracode_basic.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode_basic.c.i
+.PHONY : extracode_basic.c.i
+
+extracode_basic.s: extracode_basic.c.s
+.PHONY : extracode_basic.s
+
+# target to generate assembly for a file
+extracode_basic.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/experimental_schools_computer.dir/build.make CMakeFiles/experimental_schools_computer.dir/extracode_basic.c.s
+.PHONY : extracode_basic.c.s
+
 extracode_fp.o: extracode_fp.c.o
 .PHONY : extracode_fp.o
 
@@ -2778,6 +2802,9 @@ help:
 	@echo "... extracode.o"
 	@echo "... extracode.i"
 	@echo "... extracode.s"
+	@echo "... extracode_basic.o"
+	@echo "... extracode_basic.i"
+	@echo "... extracode_basic.s"
 	@echo "... extracode_fp.o"
 	@echo "... extracode_fp.i"
 	@echo "... extracode_fp.s"
