@@ -6010,7 +6010,44 @@ void cli_dump(void)
   
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
 // Dump Store
+//
+
+typedef struct
+{
+  uint32_t csum;
+  char *id;
+} CSUM_ID;
+
+CSUM_ID csum_ids[] =
+  {
+    {0x9C086BCF, "Original standard extracode"},
+  };
+
+#define NUM_CSUM_IDS (sizeof(csum_ids)/sizeof(CSUM_ID))
+
+char *identify_csum(uint32_t csum)
+{
+  for(int i=0; i<NUM_CSUM_IDS; i++)
+    {
+      if( csum_ids[i].csum == csum )
+        {
+          return(csum_ids[i].id);
+        }
+    }
+  
+  return("");
+}
+
+char *display_store_checksum(ESC_STATE *s, char *title, int first, int last)
+{
+  uint32_t csum = checksum_store(s, first, last);
+  printf("\n%s checksum:%08X %s", title, csum, identify_csum(csum));
+}
+
+  
 void cli_dump_store(void)
 {
   ESC_STATE *s = &esc_state;
@@ -6024,11 +6061,40 @@ void cli_dump_store(void)
 
       printf("  %03d:%08X (%s)", i, s->store[i], display_store_word(s->store[i]));
     }
+  
   printf("\n");
-	   
+  display_store_checksum(s, "lower store", LOWER_STORE);
+  display_store_checksum(s, "Upper store", UPPER_STORE);
+  display_store_checksum(s, "All   store", ALL_STORE);
+  printf("\n");
+
 }
 
+//------------------------------------------------------------------------------
+//
+// Checksum the store.
+//
+// This can be used to used to identify the extracodes that are currently stored
+// or check the user program
+//
+
+uint32_t checksum_store(ESC_STATE *s, int first, int last)
+{
+  uint32_t csum = 0;
+  
+  for(int i=first; i<=last; i++)
+    {
+      csum += s->store[i];
+    }
+  
+  return(csum);	   
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // Another digit pressed, update the parameter variable
+//
+
 void cli_digit(void)
 {
   printf("\n%d", keypress);
@@ -9709,6 +9775,12 @@ int read_file_into_state(char *fn, ESC_STATE *es)
 //
 // All files are written in the ESC directory
 
+char *write_store_checksum(FIL *fp, ESC_STATE *s, char *title, int first, int last)
+{
+  uint32_t csum = checksum_store(s, first, last);
+  f_printf(fp, "\n# %s checksum:%08X %s", title, csum, identify_csum(csum));
+}
+
 int write_state_to_file(ESC_STATE *es, char *fn)
 {
   char filename[20];
@@ -9776,6 +9848,11 @@ int write_state_to_file(ESC_STATE *es, char *fn)
     }
 
   f_printf(&fp, "\n");
+  write_store_checksum(&fp, es, "Lower store", LOWER_STORE);
+  write_store_checksum(&fp, es, "Upper store", UPPER_STORE);
+  write_store_checksum(&fp, es, "All   store", ALL_STORE);
+  f_printf(&fp, "\n");
+  
   fr = f_close(&fp);
 
   if (FR_OK != fr)

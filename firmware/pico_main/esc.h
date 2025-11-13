@@ -122,6 +122,17 @@ typedef uint32_t ADDRESS;
 
 //------------------------------------------------------------------------------
 //
+// Store ranges
+//
+
+#define UPPER_STORE 100,199
+#define LOWER_STORE   0, 99
+#define ALL_STORE     0,199
+
+
+
+//------------------------------------------------------------------------------
+//
 // Are we executing as extracode?
 //
 // Using the IAR should work.
@@ -242,6 +253,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src);
 void next_iar(ESC_STATE *s);
 void cli_dump(void);
 void cli_dump_store(void);
+uint32_t checksum_store(ESC_STATE *s, int first, int last);
 
 ////////////////////////////////////////////////////////////////////////////////
 
