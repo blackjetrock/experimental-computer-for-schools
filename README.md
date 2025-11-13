@@ -103,6 +103,7 @@ The programs use an extracode that isn't in the standard set, which is a square 
 
 <h2>Extracode</h2>
 The extracode of the machine is sort of equivalent to the ROM in an 80's home computer, but there are significant differences. In its original form it provided some floating point instructions, and so compared to a ROM it provides a small number of features. Unlike a ROM, though, it was intended that people altered or even completely rewrote the extracode, and that did happen. Several different extracodes exist, for various reasons, they are listed below.
+There is now framework for running extracode, so the original extracodes can be executed. It's not quite correct at the moment as the A,B and C stage keys step through the extracode instructions, on th eoriginal they stepped through the 'top level' three address instruction. 
 
 <h3>Standard Floating Point</h3>
 This is the extracode that provoides the instructions used in the 'First Course'. It provides simple floatoing point operations, these are listed in the 'Experimental Computer fo School's' document.
@@ -120,7 +121,7 @@ This game was written by Tony Malins around 1970 and was such a large program th
 
 <h1>References</h1>
 
-The thread on 'retrocomputingforum.com' where Tony presents his documents and proigrams:
+The thread on 'retrocomputingforum.com' where Tony presents his documents and programs:
 https://retrocomputingforum.com/t/rare-ibm-schools-computer-1969/5209/51
 
 A photo of the schools computer in a classroom in the 60s:
