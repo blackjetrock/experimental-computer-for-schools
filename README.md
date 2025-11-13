@@ -29,6 +29,8 @@ A command line interface (CLI) is available on the USB connection, this requires
 There is a set of tests built in to the firmware that can be run to check th eoperation of the machine.
 The tests are run using the '=' menu option on the USB CLI. They take quite a while to run and once finished the '@' menu option can be used to display the result. If a test is successful then 'Passed' is displayed. If it failed the 'Failed' is displayed, along with the expected and calculated results. It is possible to run a single test using the '[' command to load the test (after entering the test number with z nn ESC), then '+' to run it. The resut is displayed using '@'.
 
+The tests are currently set up to test the standard extracode. This means the results are tailored to that extracode. As an instruction like 70202122 can perform any function, depending on th eextracode in 100..199 this will have to change.  I allowed the original extracode to be tested, though.
+
 <h1>PCB</h1>
 
 There is a PCB that has a Pico mounted on it. This photo shows the PCB with a Pico W attached. The simulator code can be built with or without WiFi support.
