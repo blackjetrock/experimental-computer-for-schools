@@ -205,6 +205,7 @@ int wfn_instruction_register(ESC_STATE *es, void *fi, char *line);
 int wfn_store_data(ESC_STATE *es, void *fi, char *line);
 int wfn_store(ESC_STATE *es, void *fi, char *line);
 int wfn_suppressed_display(ESC_STATE *es, void *fi, char *line);
+int wfn_step_extracode(ESC_STATE *es, void *fi, char *line);
 
 void update_computer_display(ESC_STATE *es);
 void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n);
@@ -4993,7 +4994,7 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
   // Being in the extracode is treated as running, so we execute the extracode subroutine as
   // as block of code. This could be extended to allow stepping of the extracode as a feature, later
   
-  if( s->run || IS_EXTRACODE )
+  if( s->run || (IS_EXTRACODE && !setup_step_extracode) )
     {
 #if DEBUG_EXECUTE
       printf("  EXEC:RUN(%s%c)", display_iar(s->iar), s->stage);
@@ -5166,10 +5167,12 @@ typedef struct {
 } SETUP_ENTRY;
 
 int suppressed_display = 0;
+int setup_step_extracode = 0;
 
 SETUP_ENTRY setup_entries[] =
   {
-    {"Numbers:", &suppressed_display, "Original", "Full    "},
+    {"Numbers  : ", &suppressed_display,   "Original", "Full    "},
+    {"Extracode: ", &setup_step_extracode, "Run ",     "Step"},
   };
 
 #define NUM_SETUP_ENTRIES (sizeof(setup_entries)/sizeof(SETUP_ENTRY))
@@ -5243,6 +5246,11 @@ void state_setup_select(FSM_DATA *es, TOKEN tok)
   s->reload_display = 0;
   s->setup_display  = 0;
   s->update_display = 1;
+
+#if OLED_ON
+  oled_clear_display(&oled0);
+#endif
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9534,6 +9542,7 @@ FIELD_INFO  field_info[] =
    {"*LINK_REGISTER:",          wfn_store},
    {"*LINK_REGISTER:",          wfn_store_data},
    {"*SUPPRESSED_DISPLAY",      wfn_suppressed_display},
+   {"*STEP_EXTRACODE",          wfn_step_extracode},
   };
 
 #define NUM_FIELD_INFO (sizeof(field_info)/sizeof(FIELD_INFO))
@@ -9720,6 +9729,22 @@ int wfn_suppressed_display(ESC_STATE *es, void *fi, char *line)
   return(0);
 }
 
+int wfn_step_extracode(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
+  
+  if( sscanf(line, "*STEP_EXTRACODE:%X", &value) == 1 )
+    {
+      suppressed_display = (ADDRESS)value;
+      
+      printf("\nStep_extracode now:%08X", setup_step_extracode);
+      return(1);
+    }
+  
+  return(0);
+}
+
 //------------------------------------------------------------------------------
 
 void read_state_field(char *line, ESC_STATE *es)
@@ -9834,6 +9859,7 @@ int write_state_to_file(ESC_STATE *es, char *fn)
   f_printf(&fp, "\n*LINK_REGISTER:%08X",        es->link_register);
 
   f_printf(&fp, "\n*SUPPRESSED_DISPLAY:%08X",   suppressed_display);
+  f_printf(&fp, "\n*STEP_EXTRACODE:%08X",       setup_step_extracode  );
     
   for(int i=0;i<NUM_WORD_REGISTERS; i++)
     {
@@ -10480,6 +10506,10 @@ void suppress_output(char *t)
   
   for(int i=0; i<strlen(suppressed); i++)
     {
+#if DEBUG_SUPPRESSED
+      printf("\n%s:i:%d:'%s'", __FUNCTION__, i, suppressed);
+#endif
+
       // If we see a '-' then skip over it
       if( suppressed[i] == '-' )
         {
@@ -10492,11 +10522,11 @@ void suppress_output(char *t)
           continue;
         }
 
+      // Lose leading zero in front of a digit, but only once
       if( (suppressed[i] == '0') && (suppressed[i+1] != '0') && first_zero )
         {
           suppressed[i] = ' ';
         }
-
 
       // If we see anything other than a zero then we stop, as only leading zeroes are being removed.
       if( (suppressed[i] != '0' ) )
@@ -10510,6 +10540,15 @@ void suppress_output(char *t)
         }
     }
 
+  // Lose any trailing point
+  int last = strlen(suppressed)-1;
+  
+  if( (suppressed[last] == '.') && (suppressed[last+1] == '\0') )
+    {
+      suppressed[last] = ' ';
+    }
+
+  
 #if DEBUG_SUPPRESSED
   printf("\n%s:'%s'", __FUNCTION__, suppressed);
 #endif
@@ -11097,11 +11136,11 @@ void update_setup_display(ESC_STATE *es)
           break;
         }
 
-      varval = *(setup_entries[es->reload_file_first].value_var);
+      varval = *(setup_entries[es->reload_file_first+i].value_var);
       
 #if OLED_ON
       oled_set_xy(&oled0, 0, oledy);
-      sprintf(line, "%s%s", setup_entries[es->reload_file_first].title, varval?setup_entries[es->reload_file_first].val0:setup_entries[es->reload_file_first].val1);
+      sprintf(line, "%s%s", setup_entries[es->reload_file_first+i].title, varval?setup_entries[es->reload_file_first+i].val0:setup_entries[es->reload_file_first+i].val1);
       oled_display_string(&oled0, line);
 #endif
       
