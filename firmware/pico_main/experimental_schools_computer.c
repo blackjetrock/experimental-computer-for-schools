@@ -4097,6 +4097,15 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
 	  break;
 	}
+
+#if 1
+#if EXTRACODE_FRAMEWORK
+      // Set up the extracode framework and then execute stage A of the first instruction. Then execution can continue
+      enter_extracode(s);
+#else
+
+#endif
+#endif
       
       break;
     }
@@ -4334,13 +4343,14 @@ void stage_a_decode(ESC_STATE *s, int display)
           display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
           display_on_line(s, display, 6, "               ");
         }
-
+#if 0
 #if EXTRACODE_FRAMEWORK
       // Set up the extracode framework and then execute stage A of the first instruction. Then execution can continue
       enter_extracode(s);
 #else
 
-#endif      
+#endif
+#endif
       break;
     }
 }
