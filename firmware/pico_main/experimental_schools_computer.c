@@ -4990,7 +4990,10 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
   s->last_run = s->run;
   
   // If not running then exit, nothing to do
-  if( s->run )
+  // Being in the extracode is treated as running, so we execute the extracode subroutine as
+  // as block of code. This could be extended to allow stepping of the extracode as a feature, later
+  
+  if( s->run || IS_EXTRACODE )
     {
 #if DEBUG_EXECUTE
       printf("  EXEC:RUN(%s%c)", display_iar(s->iar), s->stage);
@@ -5033,7 +5036,10 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
       state_esc_next_no_disp(s, tok);
 #endif
     }
-
+  else
+    {
+      // Not running
+    }
 
 }
 
