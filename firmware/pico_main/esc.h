@@ -203,8 +203,9 @@ typedef struct _ESC_STATE
   int stop;
   int error;       // true if in error state
 
-  int extracode;   // true if executing instructions for an extracode
-  
+  int extracode;         // true if executing instructions for an extracode
+  int exiting_extracode; // true if an extracode subroutine has just been exited. The stage C decode is
+                         // different in this case. reset by stage C display
   //------------------------------------------------------------------------------
   // Restart
   int on_restart_load_aa;
@@ -260,6 +261,8 @@ void next_iar(ESC_STATE *s);
 void cli_dump(void);
 void cli_dump_store(void);
 uint32_t checksum_store(ESC_STATE *s, int first, int last);
+void display_line_2(ESC_STATE *s, int display);
+char *display_store_and_contents_from_tar(ESC_STATE *s, int tar_address);
 
 ////////////////////////////////////////////////////////////////////////////////
 //

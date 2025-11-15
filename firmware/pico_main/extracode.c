@@ -72,7 +72,7 @@ void enter_extracode(ESC_STATE *s)
   s->iar.address = 0x110+s->inst_digit_b;
   s->iar.a_flag = 0;
 
-  // Now run the stage a of the instruction we ar epointing at, this will over-ride the
+  // Now run the stage a of the instruction we are pointing at, this will over-ride the
   // three instruction stage a
   // Execution will continue until a return to program
 

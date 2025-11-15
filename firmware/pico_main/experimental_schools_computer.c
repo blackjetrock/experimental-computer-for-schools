@@ -2905,9 +2905,53 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 // Load IAR
 // Only lower two digits are loaded so if we are in extracode we stay in extracode
 //
+//
+// We can detect exiting an extracode here if the hundreds digit goes from 1 (or non-zero?)
+// to zero
 
 void load_iar_bcd(ESC_STATE *s, int bcdval)
 {
+  // Exiting extracode?
+  if( IS_EXTRACODE )
+    {
+      printf("\n*** IAR being loaded in extracode***");
+      
+      if( (bcdval & 0xF00) == 0 )
+        {
+          printf("\n*** IAR will be in lower store ***");
+          s->exiting_extracode = 1;
+
+#if DEBUG_EXTRACODE
+          printf("\nexiting_extracode=%d\n", s->exiting_extracode);
+#endif
+          
+          // We will be exiting extracode, put up the appropriate display for
+          // stage C, if we are in extracode step setting
+          if( setup_step_extracode )
+            {
+              printf("\n*** Exiting extracode ***");
+
+              s->stop = 1;
+              
+              // Put display up
+              display_line_2(s, DISPLAY_UPDATE);
+              display_on_line(s, DISPLAY_UPDATE, 2, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+              display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+              display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+              display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+            }
+        }
+      else
+        {
+          // Not exiting an extracode subroutine
+          s->exiting_extracode = 0;
+
+#if DEBUG_EXTRACODE
+          printf("\nexiting_extracode=%d\n", s->exiting_extracode);
+#endif
+        }
+    }
+  
   // Clear current digits
   s->iar.address &= 0x000;
   s->iar.address |= bcdval;
@@ -2997,19 +3041,52 @@ void display_line_2(ESC_STATE *s, int display)
   
   // We display IAR and the decoded digits of the instruction from the stage A decode
 
+  // A different display if we have just exited an extracode. 
+  // AUX IAR is used to find the instruction, as that works for the extracodes.
+  // the previous stages are from the extracode subroutine instructions for extracodes.
+  SINGLE_WORD extracode_inst = load_from_store(s, s->aux_iar.address);
+  printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
+  
+  if( s->exiting_extracode )
+    {
+      // Force inst_digit_a to use the extracode instruction diit a, not the last subroutine
+      // instruction digit a
+      s->inst_digit_a = INST_A_FIELD(extracode_inst);
+
+      printf("\nInst digit A set to %d", s->inst_digit_a);
+    }
+  
   switch(s->inst_digit_a)
     {
     case 7:
     case 8:
     case 9:
-      inst_str[0] = INST_A_FIELD(s->instruction_register)+'0';
-      inst_str[1] = INST_B_FIELD(s->instruction_register)+'0';
-      inst_str[2] = INST_C_FIELD(s->instruction_register)+'0';
-      inst_str[3] = INST_D_FIELD(s->instruction_register)+'0';
-      inst_str[4] = INST_E_FIELD(s->instruction_register)+'0';
-      inst_str[5] = INST_F_FIELD(s->instruction_register)+'0';
-      inst_str[6] = INST_G_FIELD(s->instruction_register)+'0';
-      inst_str[7] = INST_H_FIELD(s->instruction_register)+'0';
+      if( s->exiting_extracode )
+        {
+          // Get the instruction from the auxiliary IAR as that has the extyracode address in it
+          // The auxiliary IAR isn't updated during th eextracode subroutine execution
+
+          
+          inst_str[0] = INST_A_FIELD(extracode_inst)+'0';
+          inst_str[1] = INST_B_FIELD(extracode_inst)+'0';
+          inst_str[2] = INST_C_FIELD(extracode_inst)+'0';
+          inst_str[3] = INST_D_FIELD(extracode_inst)+'0';
+          inst_str[4] = INST_E_FIELD(extracode_inst)+'0';
+          inst_str[5] = INST_F_FIELD(extracode_inst)+'0';
+          inst_str[6] = INST_G_FIELD(extracode_inst)+'0';
+          inst_str[7] = INST_H_FIELD(extracode_inst)+'0';
+        }
+      else
+        {
+          inst_str[0] = INST_A_FIELD(s->instruction_register)+'0';
+          inst_str[1] = INST_B_FIELD(s->instruction_register)+'0';
+          inst_str[2] = INST_C_FIELD(s->instruction_register)+'0';
+          inst_str[3] = INST_D_FIELD(s->instruction_register)+'0';
+          inst_str[4] = INST_E_FIELD(s->instruction_register)+'0';
+          inst_str[5] = INST_F_FIELD(s->instruction_register)+'0';
+          inst_str[6] = INST_G_FIELD(s->instruction_register)+'0';
+          inst_str[7] = INST_H_FIELD(s->instruction_register)+'0';
+        }
       break;
 
     default:
@@ -3057,6 +3134,29 @@ void display_line_2(ESC_STATE *s, int display)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+
+
+void display_three_address_values(ESC_STATE *s, int display)
+{
+  printf("\n%s", __FUNCTION__);
+  
+  // If exiting from an extracode subroutine, display the extracode values, not
+  // the s->Aa values as they will be from the last subroutine instruction.
+  if( s->exiting_extracode )
+    {
+      display_on_line(s, display, 3, "%s", display_store_and_contents_from_tar(s, 0x100));
+      display_on_line(s, display, 4, "%s", display_store_and_contents_from_tar(s, 0x101));
+      display_on_line(s, display, 5, "%s", display_store_and_contents_from_tar(s, 0x102));
+    }
+  else
+    {
+      display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+      display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+      display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
 //
 // Instruction decode
 //
@@ -3067,9 +3167,27 @@ void stage_c_decode(ESC_STATE *s, int display)
 {
   SINGLE_WORD a1v, a2v, a3v;
   SINGLE_WORD tst;
+
+#if DEBUG_STAGES
+  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+#endif
   
   // Decode the instruction
   // First the digits 1-4
+  // A different display if we have just exited an extracode. 
+  // AUX IAR is used to find the instruction, as that works for the extracodes.
+  // the previous stages are from the extracode subroutine instructions for extracodes.
+  SINGLE_WORD extracode_inst = load_from_store(s, s->aux_iar.address);
+  printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
+  
+  if( s->exiting_extracode )
+    {
+      // Force inst_digit_a to use the extracode instruction diit a, not the last subroutine
+      // instruction digit a
+      s->inst_digit_a = INST_A_FIELD(extracode_inst);
+
+      printf("\nInst digit A set to %d", s->inst_digit_a);
+    }
 
   switch(s->inst_digit_a)
     {
@@ -3147,10 +3265,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  next_iar(s);
 
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
-
+          display_three_address_values(s, display);
 	  break;
 
 	  //(Aa1) <- (Aa2) - (Aa3)
@@ -3173,9 +3288,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  next_iar(s);
 
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+          display_three_address_values(s, display);
+          //	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  //display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  //display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
 
 	  break;
 	  
@@ -3198,9 +3314,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  next_iar(s);
 
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+          display_three_address_values(s, display);
+	  //display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  //display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  //display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
 
 	  break;
 	  
@@ -3223,9 +3340,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  next_iar(s);
 
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+          display_three_address_values(s, display);
+          //	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+	  //display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+	  //display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
 
 	  break;
 
@@ -3276,9 +3394,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	    }
 
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+          display_three_address_values(s, display);
+	  //display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
 	  break;
 
 	  // Branch to Aa1 if (Aa2) > (Aa3)
@@ -3328,9 +3447,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	    }
 	  
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+          display_three_address_values(s, display);
+          //	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
 
 	  break;
 
@@ -3386,9 +3506,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	    }
 
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+          display_three_address_values(s, display);
+	  //display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
 
 	  break;
 
@@ -3407,9 +3528,11 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // when A,B or C is reached.
 	  s->stop = 0;
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+          display_three_address_values(s, display);
+
+          //	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
 
 	  break;
 	  
@@ -3422,9 +3545,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	  // Display
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+          display_three_address_values(s, display);
+	  //display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
+	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
 	  break;
 
 	}
@@ -3446,6 +3570,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 void stage_b_decode(ESC_STATE *s, int display)
 {
+#if DEBUG_STAGES
+  printf(" [Stage B: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+#endif
+
   // Decode the instruction
   // First the digits 1-4
 
@@ -3943,8 +4071,8 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  s->link_register = s->iar.address;
 	  
 	  // Now over-write that IAR with the address we want to jump to
-
           load_iar_bcd(s, s->inst_aa);
+
           //	  s->iar.address = s->inst_aa;
 
           s->iar.a_flag = 0;
@@ -4101,8 +4229,18 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 #if 1
 #if EXTRACODE_FRAMEWORK
-      // Set up the extracode framework and then execute stage A of the first instruction. Then execution can continue
+      // Put up stage B display, we have to force this display as we are running in the upper store after
+      //entering extracode above.
+
+      int save_update_display = s->update_display;
+      s->update_display = 1;
+      update_display();
+      s->update_display = save_update_display;
+
+      // Set up the extracode framework 
       enter_extracode(s);
+
+      
 #else
 
 #endif
@@ -4119,6 +4257,10 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 void stage_a_decode(ESC_STATE *s, int display)
 {
+#if DEBUG_STAGES
+  printf("\n [Stage A: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+#endif
+  
   if( s->iar.a_flag )
     {
       s->inst_digit_a = INST_E_FIELD(s->instruction_register);
@@ -4320,9 +4462,9 @@ void stage_a_decode(ESC_STATE *s, int display)
           s->Aa3 = convert_store_to_address(s->Ap3 + s->R5); 
 
           display_line_2(s, display);
-          display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Aa1));
-          display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Aa2));
-          display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
+          display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Ap1));
+          display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Ap2));
+          display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Ap3));
           display_on_line(s, display, 6, "               ");
         }
       
@@ -4339,9 +4481,9 @@ void stage_a_decode(ESC_STATE *s, int display)
           s->Aa3 = convert_store_to_address(load_from_store(s, s->Ap3));
 
           display_line_2(s, display);
-          display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Aa1));
-          display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Aa2));
-          display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Aa3));
+          display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Ap1));
+          display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Ap2));
+          display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Ap3));
           display_on_line(s, display, 6, "               ");
         }
 #if 0
@@ -4378,7 +4520,12 @@ void run_stage_a(ESC_STATE *s, int display)
   if( !(s->ki_reset_flag) )
     {
       // load aux iar
-      s->aux_iar = s->iar;
+      if( !IS_EXTRACODE )
+        {
+          // Only load during non-extracode execution, as the stage display of extracodes requires this
+          // to show the extracode IAR not the subroutine instruction values.
+          s->aux_iar = s->iar;
+        }
     }
     
   // Decode instruction
@@ -5172,7 +5319,7 @@ int setup_step_extracode = 0;
 SETUP_ENTRY setup_entries[] =
   {
     {"Numbers  : ", &suppressed_display,   "Original", "Full    "},
-    {"Extracode: ", &setup_step_extracode, "Run ",     "Step"},
+    {"Extracode: ", &setup_step_extracode, "Step",     "Run "},
   };
 
 #define NUM_SETUP_ENTRIES (sizeof(setup_entries)/sizeof(SETUP_ENTRY))
@@ -6027,6 +6174,8 @@ void cli_dump(void)
   printf("\nReg Inst Rd   : %d",                s->reginst_rd);
   printf("\nReg Inst Lit  : %d",                s->reginst_literal);
   printf("\nInst Aa       : %02X   ap : %02X ", s->inst_aa, s->inst_ap);
+  printf("\nAp1..3        : %03X %03X %03X",    s->Ap1, s->Ap2, s->Ap3);
+  printf("\nAa1..3        : %03X %03X %03X",    s->Aa1, s->Aa2, s->Aa3);
   printf("\nKI Reset      : %d",                s->ki_reset_flag);
   printf("\nError         : %d",                s->error);
   printf("\nExtracode     : %d",                IS_EXTRACODE);
@@ -10437,14 +10586,30 @@ char *display_register_and_contents(ESC_STATE *s, int regno)
   return(result);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Display the address and contents of a store location
+//
+////////////////////////////////////////////////////////////////////////////////
 
 char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address)
 {
   static char result[MAX_LINE*2];
 
   result[0] = '\0';
-  
+
   sprintf(result, "%2X %s", address, display_store_word(load_from_store(s, address)));
+
+  return(result);
+}
+
+char *display_store_and_contents_from_tar(ESC_STATE *s, int tar_address)
+{
+  static char result[MAX_LINE*2];
+
+  result[0] = '\0';
+
+  sprintf(result, "%2X %s", load_from_store(s, tar_address), display_store_word(load_from_store(s, load_from_store(s, tar_address))));
 
   return(result);
 }
