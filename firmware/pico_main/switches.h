@@ -7,8 +7,8 @@
 // All debug switches off or set up
 #if 1
 
-#define DEBUG_STAGES           1
-#define DEBUG_EXTRACODE        1
+#define DEBUG_STAGES           0
+#define DEBUG_EXTRACODE        0
 #define DEBUG_CALC_STATE       0
 #define DEBUG_A_DECODE         0
 #define DEBUG_LOOP             0
@@ -23,7 +23,7 @@
 #define DEBUG_BCD_TO_BINARY    0
 
 #define DEBUG_TEST             0    // Test instruction
-#define DEBUG_TEST_SEQ         1    // Test sequences
+#define DEBUG_TEST_SEQ         0    // Test sequences
 
 #define DEBUG_SERIAL           0
 #define DEBUG_KEY_SCAN         0
@@ -32,7 +32,7 @@
 #define DEBUG_INST_22          0
 
 #define DEBUG_STOP             0
-#define DEBUG_RESTART          1
+#define DEBUG_RESTART          0
 #define DEBUG_EXECUTE          0
 #define DEBUG_PREPARE          0
 #define DEBUG_DISPLAY          0
@@ -42,7 +42,7 @@
 #define DUMP_STATE_STAGE_C     0
 #define DEBUG_REGISTER_ASSIGN  0
 
-#define DEBUG_SUPPRESSED       1
+#define DEBUG_SUPPRESSED       0
 #endif
 
 // All debug switches off or set up

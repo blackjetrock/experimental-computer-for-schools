@@ -3041,15 +3041,15 @@ void display_line_2(ESC_STATE *s, int display)
   
   // We display IAR and the decoded digits of the instruction from the stage A decode
 
-  // A different display if we have just exited an extracode. 
+  // A different display if we have just exited an extracode or we are in an extracode subroutine 
   // AUX IAR is used to find the instruction, as that works for the extracodes.
   // the previous stages are from the extracode subroutine instructions for extracodes.
   SINGLE_WORD extracode_inst = load_from_store(s, s->aux_iar.address);
   printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
   
-  if( s->exiting_extracode )
+  if( s->exiting_extracode || IS_EXTRACODE)
     {
-      // Force inst_digit_a to use the extracode instruction diit a, not the last subroutine
+      // Force inst_digit_a to use the extracode instruction digit a, not the last subroutine
       // instruction digit a
       s->inst_digit_a = INST_A_FIELD(extracode_inst);
 
@@ -3061,7 +3061,7 @@ void display_line_2(ESC_STATE *s, int display)
     case 7:
     case 8:
     case 9:
-      if( s->exiting_extracode )
+      if( s->exiting_extracode || IS_EXTRACODE )
         {
           // Get the instruction from the auxiliary IAR as that has the extyracode address in it
           // The auxiliary IAR isn't updated during th eextracode subroutine execution
@@ -3128,7 +3128,15 @@ void display_line_2(ESC_STATE *s, int display)
     }
   else
     {
-      display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->iar));
+      
+      if( s->exiting_extracode || IS_EXTRACODE)
+        {
+          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->aux_iar));
+        }
+      else
+        {
+          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->iar));
+        }
       display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s->aux_iar), inst_str, s->stage, stopch);
     }
 }
@@ -4001,11 +4009,32 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  break;
 
 	case 9:
-	  // Stop and display (Rc) and (Rd)
-	  s->stop = 1;
-	  s->inst_update_display = 1;
-	  display_line_2(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+          // This instruction is used to stop and disolay X,Y,Z when running in an extracode subroutine.
+          // Check if we are in an extracode and behave appropriately.
+
+          if( IS_EXTRACODE )
+            {
+              //
+              // Stop and display X, Y, Z
+              // 
+              s->stop = 1;
+              s->inst_update_display = 1;
+              display_line_2(s, DISPLAY_UPDATE);
+              display_on_line(s, DISPLAY_UPDATE, 2, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+              display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+              display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+              display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+
+            }
+          else
+            {
+              // Stop and display (Rc) and (Rd)
+              // 
+              s->stop = 1;
+              s->inst_update_display = 1;
+              display_line_2(s, display);
+              display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+            }
 	  break;
 	}
 
@@ -5132,7 +5161,8 @@ void state_esc_run(FSM_DATA *es, TOKEN tok)
 {
   ESC_STATE *s = (ESC_STATE *)es;
 
-  s->run = 1;
+  s->run  = 1;
+  s->stop = 0;
 }
 
 void state_esc_stop(FSM_DATA *es, TOKEN tok)
@@ -5147,6 +5177,10 @@ void state_esc_stop(FSM_DATA *es, TOKEN tok)
 // Run at full speed
 //
 ////////////////////////////////////////////////////////////////////////////////
+//
+// This is called when no keypresses are detectd, so it is an idle loop
+//
+//
 
 void state_esc_execute(FSM_DATA *es, TOKEN tok)
 {
@@ -5195,7 +5229,7 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 	  // As we run to stage C for each instruction this stops at the end
 	  // of stage C for the current instruction.
 	  s->run = 0;
-	  s->stop = 0;
+	  //s->stop = 0;
 	  return;
 	}
 
