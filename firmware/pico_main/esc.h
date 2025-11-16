@@ -286,3 +286,5 @@ typedef struct _FIELD_INFO
 
 #define STORE_DATA_FILE_CHUNK_SIZE 8
 
+#define ERROR_RECTANGLE 0x7F
+

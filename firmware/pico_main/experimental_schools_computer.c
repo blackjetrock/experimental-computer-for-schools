@@ -3018,6 +3018,22 @@ void next_iar(ESC_STATE *s)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+//  Enter ERROR state
+// 
+////////////////////////////////////////////////////////////////////////////////
+
+void enter_error_state(ESC_STATE *s)
+{
+  // Stop execution
+  s->run  = 0;
+  s->stop = 1;
+
+  display_on_line(s, DISPLAY_UPDATE, 2, "            %c  ", ERROR_RECTANGLE);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // Displays standard line 2 with IAR and instruction
 //
 // Instruction display matches Fig 10 in IEE document.
@@ -4395,6 +4411,7 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  
 	case 4:
 	  // Not used
+          enter_error_state(s);
 	  break;
 	  
 	case 5:
@@ -4417,85 +4434,141 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  clear_lines_3_to_6(s, display);
 	  display_any_size_register_on_line(s, display, 3, s->reginst_rc, NO_CONTENTS);
 	  break;
+          
+        case 8:
+        case 9:
+          enter_error_state(s);
+          break;
 	}
       break;
       
     case 1:
-      // Register instructions
-      s->reginst_rc = s->inst_digit_c;
-      s->reginst_rd = s->inst_digit_d;
-
-      display_line_2(s, display);
-      clear_lines_3_to_6(s, display);
-      clear_lines_3_to_6(s, display);
-      display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, NO_CONTENTS);
+      switch(s->inst_digit_b)
+	{
+	case 5:
+        case 8:
+          enter_error_state(s);    
+          break;
+        default:
+          
+          // Register instructions
+          s->reginst_rc = s->inst_digit_c;
+          s->reginst_rd = s->inst_digit_d;
+          
+          display_line_2(s, display);
+          clear_lines_3_to_6(s, display);
+          clear_lines_3_to_6(s, display);
+          display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, NO_CONTENTS);
+          
+          break;
+        }
       break;
-
-    case 2:
-      // Absolute addressing
-      s->inst_aa = s->inst_ap;
-      s->reginst_rc = s->inst_digit_c;
-      s->reginst_rd = s->inst_digit_d;
       
-      display_line_2(s, display);
-      display_on_line(s, display, 3, "               ");
-      display_on_line(s, display, 4, "%02X", s->inst_aa);
-      display_on_line(s, display, 5, "               ");
-      display_on_line(s, display, 6, "               ");
+    case 2:
+      switch(s->inst_digit_b)
+        {
+        case 3:
+          break;
+
+        default:
+          // Absolute addressing
+          s->inst_aa = s->inst_ap;
+          s->reginst_rc = s->inst_digit_c;
+          s->reginst_rd = s->inst_digit_d;
+          
+          display_line_2(s, display);
+          display_on_line(s, display, 3, "               ");
+          display_on_line(s, display, 4, "%02X", s->inst_aa);
+          display_on_line(s, display, 5, "               ");
+          display_on_line(s, display, 6, "               ");
+          break;
+        }
       break;
 
       // relative addressing
     case 3:
-      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
-      s->reginst_rc = s->inst_digit_c;
-      s->reginst_rd = s->inst_digit_d;
-
-      display_line_2(s, display);
-      display_on_line(s, display, 3, "%02X", s->inst_ap);
-      display_on_line(s, display, 4, "               ");
-      display_on_line(s, display, 5, "               ");
-      display_on_line(s, display, 6, "               ");
+      switch(s->inst_digit_b)
+        {
+        case 3:
+          break;
+          
+        default:
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
+          s->reginst_rc = s->inst_digit_c;
+          s->reginst_rd = s->inst_digit_d;
+          
+          display_line_2(s, display);
+          display_on_line(s, display, 3, "%02X", s->inst_ap);
+          display_on_line(s, display, 4, "               ");
+          display_on_line(s, display, 5, "               ");
+          display_on_line(s, display, 6, "               ");
+          break;
+        }
       break;
-
+      
     case 4:
-      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
-
-      display_line_2(s, display);
-      display_on_line(s, display, 3, "               ");
-      display_on_line(s, display, 4, "%02X", s->inst_aa);
-      display_on_line(s, display, 5, "               ");
-      display_on_line(s, display, 6, "               ");
+      switch(s->inst_digit_b)
+        {
+        case 3:
+          break;
+          
+        default:
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
+          
+          display_line_2(s, display);
+          display_on_line(s, display, 3, "               ");
+          display_on_line(s, display, 4, "%02X", s->inst_aa);
+          display_on_line(s, display, 5, "               ");
+          display_on_line(s, display, 6, "               ");
+          break;
+        }
       break;
       
     case 5:
-      s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
-
-      display_line_2(s, display);
-      display_on_line(s, display, 3, "%02X", s->inst_aa);
-      display_on_line(s, display, 4, "               ");
-      display_on_line(s, display, 5, "               ");
-      display_on_line(s, display, 6, "               ");
+      switch(s->inst_digit_b)
+        {
+        case 3:
+          break;
+          
+        default:
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
+          
+          display_line_2(s, display);
+          display_on_line(s, display, 3, "%02X", s->inst_aa);
+          display_on_line(s, display, 4, "               ");
+          display_on_line(s, display, 5, "               ");
+          display_on_line(s, display, 6, "               ");
+          break;
+        }
       break;
       
     case 6:
-      // Indirect addressing
-      // Indirect addressing uses the hundreds digit of the IAR. This is to ensure that
-      // the addressing works correctly when used in an extracoide instruction.
-      
-      s->inst_aa = load_from_store(s, REMOVED_SW_SIGN(s->inst_ap));
-      
+      switch(s->inst_digit_b)
+        {
+        case 3:
+          break;
+          
+        default:
+          // Indirect addressing
+          // Indirect addressing uses the hundreds digit of the IAR. This is to ensure that
+          // the addressing works correctly when used in an extracoide instruction.
+          
+          s->inst_aa = load_from_store(s, REMOVED_SW_SIGN(s->inst_ap));
+          
 #if DEBUG_ADDR_MODES
-      printf("\naa:%08X", s->inst_aa);
+          printf("\naa:%08X", s->inst_aa);
 #endif
-      display_line_2(s, display);
-      display_on_line(s, display, 3, "%02X", s->inst_aa);
-      display_on_line(s, display, 4, "               ");
-      display_on_line(s, display, 5, "               ");
-      display_on_line(s, display, 6, "               ");
+          display_line_2(s, display);
+          display_on_line(s, display, 3, "%02X", s->inst_aa);
+          display_on_line(s, display, 4, "               ");
+          display_on_line(s, display, 5, "               ");
+          display_on_line(s, display, 6, "               ");
+          break;
+        }
       break;
-
+      
       // 3 address instructions
-
+      
     case 7:
     case 8:
     case 9:
