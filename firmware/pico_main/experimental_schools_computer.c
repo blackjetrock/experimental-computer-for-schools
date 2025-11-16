@@ -3171,6 +3171,29 @@ void stage_c_decode(ESC_STATE *s, int display)
 #if DEBUG_STAGES
   printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
 #endif
+
+  // The input instructions stop at stage B so that the keyboard register can be loaded with
+  // a value. At the beginning of stage C, the entered value is loaded as required.
+  
+  if( s->on_restart_load_aa )
+    {
+#if DEBUG_RESTART
+      printf("\nLoading aa (%02X) with %s", s->inst_aa, display_store_word(s->keyboard_register));
+#endif
+      // Load aa with KB register
+      write_sw_to_store(s, s->inst_aa, s->keyboard_register);
+      s->on_restart_load_aa = 0;
+    }
+  
+  if( s->on_restart_load_aa1 )
+    {
+#if DEBUG_RESTART
+      printf("\nLoading Aa1 (%02X) with %s", s->Aa1, display_store_word(s->keyboard_register));
+#endif
+      // Load Aa1 with KB register
+      write_sw_to_store(s, s->Aa1, s->keyboard_register);
+      s->on_restart_load_aa1 = 0;
+    }
   
   // Decode the instruction
   // First the digits 1-4
@@ -3182,12 +3205,19 @@ void stage_c_decode(ESC_STATE *s, int display)
   
   if( s->exiting_extracode )
     {
-      // Force inst_digit_a to use the extracode instruction diit a, not the last subroutine
+      // Force inst_digit_a to use the extracode instruction digit a, not the last subroutine
       // instruction digit a
+      // Do same for digit b
+      // This ensures the correct instruction is decoded if exiting extracode
       s->inst_digit_a = INST_A_FIELD(extracode_inst);
+      s->inst_digit_b = INST_B_FIELD(extracode_inst);
 
       printf("\nInst digit A set to %d", s->inst_digit_a);
     }
+
+#if DEBUG_STAGES
+  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+#endif
 
   switch(s->inst_digit_a)
     {
@@ -3247,29 +3277,32 @@ void stage_c_decode(ESC_STATE *s, int display)
     case 7:
     case 8:
     case 9:
-
+      printf("\ndigit b:%d", s->inst_digit_b);
       switch(s->inst_digit_b)
 	{
 	  //(Aa1) <- (Aa2) + (Aa3)
 	case 0:
+#if 0
 #if DEBUG_FP
 	  printf("\nFP Addition");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
 #endif
+          
 	  a2v = load_from_store(s, s->Aa2);
 	  a3v = load_from_store(s, s->Aa3);
 
 	  a1v = fp_add(s, a2v, a3v, 1);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
-	  next_iar(s);
-
+	  //next_iar(s);
+#endif
 	  display_line_2(s, display);
           display_three_address_values(s, display);
 	  break;
 
 	  //(Aa1) <- (Aa2) - (Aa3)
 	case 1:
+#if 0
 	  // Perform addition but reverse sign of second argument
 #if DEBUG_FP
 	  printf("\nFP Subtraction");
@@ -3285,8 +3318,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  a1v = fp_subtract(s, a2v, a3v, 1);
 	  write_sw_to_store(s, s->Aa1, a1v);
 
-	  next_iar(s);
-
+	  //next_iar(s);
+#endif
+          
 	  display_line_2(s, display);
           display_three_address_values(s, display);
           //	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
@@ -3297,6 +3331,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	  //(Aa1) <- (Aa2) * (Aa3)
 	case 2:
+#if 0
 #if DEBUG_FP
 	  printf("\nFP Multiply");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
@@ -3312,7 +3347,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  next_iar(s);
-
+#endif
 	  display_line_2(s, display);
           display_three_address_values(s, display);
 	  //display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
@@ -3323,6 +3358,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	  //(Aa1) <- (Aa2) / (Aa3)
 	case 3:
+#if 0
 #if DEBUG_FP
 	  printf("\nFP Divide");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
@@ -3338,7 +3374,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  write_sw_to_store(s, s->Aa1, a1v);
 
 	  next_iar(s);
-
+#endif
 	  display_line_2(s, display);
           display_three_address_values(s, display);
           //	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
@@ -3349,6 +3385,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	  // Branch to Aa1 if (Aa2) = (Aa3)
 	case 4:
+#if 0
 #if DEBUG_FP
 	  printf("\nBranch to Aa1 if (Aa2) = (Aa3)");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
@@ -3392,7 +3429,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      printf("\n**Branch NOT taken**");
 #endif
 	    }
-
+#endif
 	  display_line_2(s, display);
           display_three_address_values(s, display);
 	  //display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -3402,6 +3439,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	  // Branch to Aa1 if (Aa2) > (Aa3)
 	case 5:
+#if 0
 #if DEBUG_FP
 	  printf("\nBranch to Aa1 if (Aa2) > (Aa3)");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
@@ -3445,7 +3483,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      printf("\n**Branch NOT taken**");
 #endif
 	    }
-	  
+#endif	  
 	  display_line_2(s, display);
           display_three_address_values(s, display);
           //	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -3456,6 +3494,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	  // Branch to Aa1 if |(Aa2)| < |(Aa3)|
 	case 6:
+#if 0
 #if DEBUG_FP
 	  printf("\nBranch to Aa1 if (Aa2) > (Aa3)");
 	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
@@ -3504,7 +3543,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      printf("\n**Branch NOT taken**");
 #endif
 	    }
-
+#endif
 	  display_line_2(s, display);
           display_three_address_values(s, display);
 	  //display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
@@ -3520,10 +3559,11 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Input and display. When restarted KB register is copied to Aa1
 	  // While stopped (Aa1), (Aa2) and (Aa3) are displayed.
 	case 8:
-
+#if 0
 	  // Copy keyboard register to aa1
 	  write_sw_to_store(s, s->Aa1, s->keyboard_register);
 
+#endif
 	  // We have reached stage C so continue if running, if not running we will pause anyway
 	  // when A,B or C is reached.
 	  s->stop = 0;
@@ -3538,11 +3578,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
  	  // Stop and display (Aa1), (Aa2) and (Aa3).
 	case 9:
+#if 0
 	  s->stop = 1;
 	  s->inst_update_display = 1;
 
 	  next_iar(s);
-	  
+#endif	  
 	  // Display
 	  display_line_2(s, display);
           display_three_address_values(s, display);
@@ -3554,6 +3595,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	}
       break;
     }
+
+#if DEBUG_STAGES
+  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] exit", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+#endif
 
 #if DUMP_STATE_STAGE_C
   cli_dump();
@@ -4101,7 +4146,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	    }
 
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%02d", s->inst_aa);
+	  display_on_line(s, display, 3, "%02X", s->inst_aa);
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
 	  break;
@@ -4126,7 +4171,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	    }
 
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%02d", s->inst_aa);
+	  display_on_line(s, display, 3, "%02X", s->inst_aa);
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
 	  break;
@@ -4153,12 +4198,12 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Input
 #if 0
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%02d", s->inst_aa);
+	  display_on_line(s, display, 3, "%02X", s->inst_aa);
 	  display_on_line(s, display, 4, "               ");
 	  display_on_line(s, display, 5, "IN             ");
 #else
 	  display_line_2(s,  DISPLAY_UPDATE);
-	  display_on_line(s, DISPLAY_UPDATE, 3, "%02d", s->inst_aa);
+	  display_on_line(s, DISPLAY_UPDATE, 3, "%02X", s->inst_aa);
 	  display_on_line(s, DISPLAY_UPDATE, 4, "               ");
 	  display_on_line(s, DISPLAY_UPDATE, 5, "IN             ");
 #endif
@@ -4239,7 +4284,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 
       // Set up the extracode framework 
       enter_extracode(s);
-
       
 #else
 
@@ -4285,7 +4329,7 @@ void stage_a_decode(ESC_STATE *s, int display)
 	 s->inst_digit_d);
 #endif
 
-  // Pre-calculate the Aa field of the instruction for some later
+  // Pre-calculate the Ap field of the instruction for some later
   // decoding
 
   s->inst_ap = (s->inst_digit_c) * 16 + (s->inst_digit_d);
@@ -4378,7 +4422,7 @@ void stage_a_decode(ESC_STATE *s, int display)
       s->reginst_rd = s->inst_digit_d;
 
       display_line_2(s, display);
-      display_on_line(s, display, 3, "%02X", s->inst_aa);
+      display_on_line(s, display, 3, "%02X", s->inst_ap);
       display_on_line(s, display, 4, "               ");
       display_on_line(s, display, 5, "               ");
       display_on_line(s, display, 6, "               ");
@@ -5114,25 +5158,6 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 #if DEBUG_RESTART
       printf("\n%s:", __FUNCTION__);
 #endif
-      if( s->on_restart_load_aa )
-	{
-#if DEBUG_RESTART
-	  printf("\nLoading aa (%02X) with %s", s->inst_aa, display_store_word(s->keyboard_register));
-#endif
-	  // Load aa with KB register
-	  write_sw_to_store(s, s->inst_aa, s->keyboard_register);
-	  s->on_restart_load_aa = 0;
-	}
-
-      if( s->on_restart_load_aa1 )
-	{
-#if DEBUG_RESTART
-	  printf("\nLoading Aa1 (%02X) with %s", s->Aa1, display_store_word(s->keyboard_register));
-#endif
-	  // Load Aa1 with KB register
-	  write_sw_to_store(s, s->Aa1, s->keyboard_register);
-	  s->on_restart_load_aa1 = 0;
-	}
     }
 
   s->last_run = s->run;

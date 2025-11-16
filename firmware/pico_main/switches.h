@@ -32,7 +32,7 @@
 #define DEBUG_INST_22          0
 
 #define DEBUG_STOP             0
-#define DEBUG_RESTART          0
+#define DEBUG_RESTART          1
 #define DEBUG_EXECUTE          0
 #define DEBUG_PREPARE          0
 #define DEBUG_DISPLAY          0
