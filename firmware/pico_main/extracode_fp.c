@@ -71,7 +71,7 @@ int extracode_fp[100] =
     0x60011320,         //  157       ^                        | Y -> R0 R1                   |  R2 = R0
     0x13810390,         //  158       |                        | R8 = R1                      |  R9 = 0
     0x60020510,         //  159       |                        | Z -> R0 R1                   |  Test R1 = 0
-    0x25790007,         //  160       |                        | Branch if yes to overflow    |  R0 = R0 + 7
+    0x25390007,         //  160       |                        | Branch if yes to overflow    |  R0 = R0 + 7
     0x11020321,         //  161       |                        | R0 = R0 - R2                 |  R2 = 1
     0x06250582,         //  162       |                        | R2 = 100000                  |  Test R8 < 0
     0x25660511,         //  163       |                        | Branch if yes to 166         |  Test R1 > 0
