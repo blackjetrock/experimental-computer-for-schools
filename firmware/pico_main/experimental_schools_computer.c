@@ -3061,9 +3061,12 @@ void display_line_2(ESC_STATE *s, int display)
   // AUX IAR is used to find the instruction, as that works for the extracodes.
   // the previous stages are from the extracode subroutine instructions for extracodes.
   SINGLE_WORD extracode_inst = load_from_store(s, s->aux_iar.address);
-  printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
   
-  if( s->exiting_extracode || IS_EXTRACODE)
+  printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
+
+  // If stepping extracode then we want to see the subroutine instructions
+  
+  if( s->exiting_extracode || (IS_EXTRACODE && !setup_step_extracode) )
     {
       // Force inst_digit_a to use the extracode instruction digit a, not the last subroutine
       // instruction digit a
@@ -3077,9 +3080,9 @@ void display_line_2(ESC_STATE *s, int display)
     case 7:
     case 8:
     case 9:
-      if( s->exiting_extracode || IS_EXTRACODE )
+      if( s->exiting_extracode || (IS_EXTRACODE && !setup_step_extracode) )
         {
-          // Get the instruction from the auxiliary IAR as that has the extyracode address in it
+          // Get the instruction from the auxiliary IAR as that has the extracode address in it
           // The auxiliary IAR isn't updated during th eextracode subroutine execution
 
           
@@ -3144,16 +3147,21 @@ void display_line_2(ESC_STATE *s, int display)
     }
   else
     {
-      
-      if( s->exiting_extracode || IS_EXTRACODE)
+
+      // If we are exiting extracode then we want to display the AUX IAR (extracode instruction
+      // store address). Unless we are stepping extracode then we want to display the
+      // subroutine instruction address
+      if( s->exiting_extracode || (IS_EXTRACODE && !setup_step_extracode))
         {
-          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->aux_iar));
+          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->iar));
+          display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s->aux_iar), inst_str, s->stage, stopch);
         }
       else
         {
           display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->iar));
+          display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s->aux_iar), inst_str, s->stage, stopch);
         }
-      display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s->aux_iar), inst_str, s->stage, stopch);
+
     }
 }
 
@@ -3207,6 +3215,7 @@ void stage_c_decode(ESC_STATE *s, int display)
       // Load aa with KB register
       write_sw_to_store(s, s->inst_aa, s->keyboard_register);
       s->on_restart_load_aa = 0;
+      clear_keyboard_register(s);
     }
   
   if( s->on_restart_load_aa1 )
@@ -3217,6 +3226,7 @@ void stage_c_decode(ESC_STATE *s, int display)
       // Load Aa1 with KB register
       write_sw_to_store(s, s->Aa1, s->keyboard_register);
       s->on_restart_load_aa1 = 0;
+      clear_keyboard_register(s);
     }
   
   // Decode the instruction
@@ -3224,10 +3234,12 @@ void stage_c_decode(ESC_STATE *s, int display)
   // A different display if we have just exited an extracode. 
   // AUX IAR is used to find the instruction, as that works for the extracodes.
   // the previous stages are from the extracode subroutine instructions for extracodes.
+  
   SINGLE_WORD extracode_inst = load_from_store(s, s->aux_iar.address);
   printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
-  
-  if( s->exiting_extracode )
+
+  // If we are stepping extracode then we do want to display the subroutine instruction
+  if( s->exiting_extracode && !setup_step_extracode)
     {
       // Force inst_digit_a to use the extracode instruction digit a, not the last subroutine
       // instruction digit a
@@ -3582,12 +3594,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	  // Input and display. When restarted KB register is copied to Aa1
 	  // While stopped (Aa1), (Aa2) and (Aa3) are displayed.
-	case 8:
-#if 0
-	  // Copy keyboard register to aa1
-	  write_sw_to_store(s, s->Aa1, s->keyboard_register);
 
-#endif
+	case 8:
+
 	  // We have reached stage C so continue if running, if not running we will pause anyway
 	  // when A,B or C is reached.
 	  s->stop = 0;
@@ -4036,10 +4045,10 @@ void stage_b_decode(ESC_STATE *s, int display)
               s->stop = 1;
               s->inst_update_display = 1;
               display_line_2(s, DISPLAY_UPDATE);
-              display_on_line(s, DISPLAY_UPDATE, 2, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
-              display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
-              display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
-              display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+              display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+              display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+              display_on_line(s, DISPLAY_UPDATE, 5, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+              display_on_line(s, DISPLAY_UPDATE, 6, "               ");
 
             }
           else
@@ -4374,6 +4383,17 @@ void stage_a_decode(ESC_STATE *s, int display)
 	 s->inst_digit_d);
 #endif
 
+  // Check here for a value in the store location, i.e. a sign
+  // Error if we see one
+  switch(s->inst_digit_a)
+    {
+    case WORD_SIGN_PLUS:
+    case WORD_SIGN_MINUS:
+    case WORD_SIGN_NONE:       // No sign is still a bad value for an instruction
+      enter_error_state(s);
+      break;
+    }
+  
   // Pre-calculate the Ap field of the instruction for some later
   // decoding
 
@@ -4666,7 +4686,7 @@ void run_stage_a(ESC_STATE *s, int display)
   if( !(s->ki_reset_flag) )
     {
       // load aux iar
-      if( !IS_EXTRACODE )
+      if( !IS_EXTRACODE || setup_step_extracode )
         {
           // Only load during non-extracode execution, as the stage display of extracodes requires this
           // to show the extracode IAR not the subroutine instruction values.
@@ -4735,7 +4755,6 @@ void state_esc_load_addr(FSM_DATA *fs, TOKEN tok)
 
   clear_keyboard_register(s);
   
-  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
   display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
 
   s->update_display = 1;
@@ -4752,7 +4771,6 @@ void state_esc_load_store(FSM_DATA *fs, TOKEN tok)
 
   clear_keyboard_register(s);
     
-  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
   display_on_line(s, DISPLAY_UPDATE, 6, "%s   %s", display_address(s->address_register), display_store_word(load_from_store(s, s->address_register)));
   
   s->update_display = 1;
@@ -4822,6 +4840,8 @@ void clear_keyboard_register(ESC_STATE *s)
 {
   s->keyboard_register = 0;
   s->dot_entered = 0;
+  
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4945,8 +4965,6 @@ void state_esc_clear(FSM_DATA *fs, TOKEN tok)
 
   clear_keyboard_register(s);
   
-  display_on_line(s, DISPLAY_UPDATE, 1, "%02s %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
-
   // Re-display
   s->update_display = 1;
 }

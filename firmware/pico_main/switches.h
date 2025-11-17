@@ -7,7 +7,7 @@
 // All debug switches off or set up
 #if 1
 
-#define DEBUG_STAGES           0
+#define DEBUG_STAGES           1
 #define DEBUG_EXTRACODE        0
 #define DEBUG_CALC_STATE       0
 #define DEBUG_A_DECODE         0
