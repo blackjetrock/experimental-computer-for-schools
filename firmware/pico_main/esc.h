@@ -231,10 +231,23 @@ typedef struct _ESC_STATE
 extern ESC_STATE esc_state;
 
 ////////////////////////////////////////////////////////////////////////////////
+typedef struct
+{
+  char *name;
+  int  tok;
+} KEY_INFO;
 
 char *display_register_double_word(REGISTER_DOUBLE_WORD x);
 char *display_register_single_word(REGISTER_SINGLE_WORD x);
-char *display_iar(IAR iar);
+typedef enum
+  {
+    SPEC_AUX_IAR = 1,
+    SPEC_IAR,
+    SPEC_FORCE_AUX_IAR,
+    SPEC_FORCE_IAR,
+  } IAR_SPEC;
+
+char *display_iar(ESC_STATE *s, IAR_SPEC aux);
 char *display_address(REGISTER_SINGLE_WORD x);
 char *get_string_state(void);
 void drive_fsms(void);
@@ -248,7 +261,7 @@ void set_gpio_output(const int gpio);
 void escdd_main(void);
 void enter_extracode(ESC_STATE *s);
 void run_stage_a(ESC_STATE *s, int display);
-
+char *qt_key_name(int code);
 void load_extracode_by_csum(ESC_STATE *s);
 
 extern int extracode_fp[100];

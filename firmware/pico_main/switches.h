@@ -4,8 +4,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+//------------------------------------------------------------------------------
+//
+// Execution flow debug
+//
+#define DEBUG_ENTRY           1
+
+#if DEBUG_ENTRY
+#define FN_ENTRY         printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%s\n", __FUNCTION__)
+#define FN_ENTRY_DISPLAY printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%s display:%d\n", __FUNCTION__, display)
+#define FN_EXIT          printf("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<%s\n", __FUNCTION__)
+#else
+#define FN_ENTRY
+#define FN_EXIT
+#endif
+
+
+//------------------------------------------------------------------------------
+//
 // All debug switches off or set up
-#if 1
+#if 0
 
 #define DEBUG_STAGES           1
 #define DEBUG_EXTRACODE        0
@@ -46,8 +64,9 @@
 #endif
 
 // All debug switches off or set up
-#if 0
+#if 1
 
+#define DEBUG_STAGES           1
 #define DEBUG_CALC_STATE       1
 #define DEBUG_A_DECODE         1
 #define DEBUG_LOOP             0
@@ -71,7 +90,7 @@
 #define DEBUG_INST_22          1
 
 #define DEBUG_RESTART          1
-#define DEBUG_EXECUTE          1
+#define DEBUG_EXECUTE          0
 #define DEBUG_PREPARE          1
 
 #define DEBUG_DISPLAY          1
@@ -80,7 +99,9 @@
 
 #define DUMP_STATE_STAGE_C     1
 #define DEBUG_REGISTER_ASSIGN  1
-
+#define DEBUG_DISPLAY_IAR      1
+#define DEBUG_FN_CALL          1
+#define DEBUG_KEYS             1
 #endif
 
 //------------------------------------------------------------------------------

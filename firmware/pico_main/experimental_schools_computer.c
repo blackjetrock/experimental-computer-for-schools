@@ -60,6 +60,57 @@ int kbd_scan_code = 0;
 
 #define CHAR_MS_DELAY 20
 
+//------------------------------------------------------------------------------
+//
+// Decode key tokens
+//
+
+KEY_INFO key_info[] =
+  {
+   {"KI RESET   ", TOK_KEY_KI_RESET},
+   {"A          ", TOK_KEY_A},
+   {"B          ", TOK_KEY_B},
+   {"C          ", TOK_KEY_C},
+   {"0          ", TOK_KEY_0},
+   {"1          ", TOK_KEY_1},
+   {"2          ", TOK_KEY_2},
+   {"3          ", TOK_KEY_3},
+   {"4          ", TOK_KEY_4},
+   {"5          ", TOK_KEY_5},
+   {"6          ", TOK_KEY_6},
+   {"7          ", TOK_KEY_7},
+   {"8          ", TOK_KEY_8},
+   {"9          ", TOK_KEY_9},
+   {"RUN        ", TOK_KEY_RUN},
+   {"STOP       ", TOK_KEY_STOP},
+   {"RELOAD     ", TOK_KEY_RELOAD},
+   {"CHECK      ", TOK_KEY_CHECK},
+   {"DUMP       ", TOK_KEY_DUMP},
+   {"LOAD IAR   ", TOK_KEY_LOAD_IAR},
+   {"LOAD ADDR  ", TOK_KEY_LOAD_ADDR},
+   {"LOAD STORE ", TOK_KEY_LOAD_STORE},
+   {"DECR ADDR  ", TOK_KEY_DECR_ADDR},
+   {"INCR ADDR  ", TOK_KEY_INCR_ADDR},
+   {"NORM RESET ", TOK_KEY_NORMAL_RESET},
+   {"CLEAR      ", TOK_KEY_CLEAR},
+   {"DOT        ", TOK_KEY_DOT},
+   {"MINUS      ", TOK_KEY_MINUS},
+  };
+
+#define NUM_KEY_INFO (sizeof(key_info)/sizeof(KEY_INFO))
+
+char *key_name(int tok)
+{
+  for(int i=0; i<NUM_KEY_INFO; i++)
+  {
+    if( key_info[i].tok == tok )
+      {
+        return(key_info[i].name);
+      }
+  }
+  return("????");
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Tests
@@ -558,6 +609,9 @@ void kbd_queue_key(int k)
       if( k == key_map[i].scan_code )
 	{
 	  queue_token(key_map[i].token);
+#if DEBUG_KEYS
+          printf("\nKey: %s", key_name(key_map[i].token)); 
+#endif
 	  return;
 	}
     }
@@ -985,7 +1039,7 @@ void kbd_read(ESC_STATE *s)
       if( (kbd_last_output_scan_code != kbd_output_scan_code) && (kbd_output_scan_code != 0) )
 	{
 #if DEBUG_KEY_SCAN
-	  printf("\nKey:%03X", kbd_output_scan_code);
+	  printf("\nKeyscan code :%03X", kbd_output_scan_code);
 #endif
 	  kbd_queue_key(kbd_output_scan_code);
 	}
@@ -2960,7 +3014,10 @@ void load_iar_bcd(ESC_STATE *s, int bcdval)
 
 void next_iar(ESC_STATE *s)
 {
+  FN_ENTRY;
+  
   int digit_a = INST_A_FIELD(s->instruction_register);
+
   
   if( s->ki_reset_flag && !IS_EXTRACODE )
     {
@@ -3014,6 +3071,8 @@ void next_iar(ESC_STATE *s)
       
       break;
     }
+  
+  FN_EXIT;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3153,13 +3212,17 @@ void display_line_2(ESC_STATE *s, int display)
       // subroutine instruction address
       if( s->exiting_extracode || (IS_EXTRACODE && !setup_step_extracode))
         {
-          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->iar));
-          display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s->aux_iar), inst_str, s->stage, stopch);
+          // In an extracode instruction, if we aren't stepping through the extracode
+          // then the IAR is not showing the program address, but the extracode
+          // instruction address. Do not display it.
+          //          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s, SPEC_IAR));
+          display_on_line(s, DISPLAY_UPDATE, 1, "   ");
+          display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s, SPEC_AUX_IAR), inst_str, s->stage, stopch);
         }
       else
         {
-          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s->iar));
-          display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s->aux_iar), inst_str, s->stage, stopch);
+          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s, SPEC_IAR));
+          display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s, SPEC_IAR), inst_str, s->stage, stopch);
         }
 
     }
@@ -3170,21 +3233,24 @@ void display_line_2(ESC_STATE *s, int display)
 
 void display_three_address_values(ESC_STATE *s, int display)
 {
-  printf("\n%s", __FUNCTION__);
-  
-  // If exiting from an extracode subroutine, display the extracode values, not
-  // the s->Aa values as they will be from the last subroutine instruction.
-  if( s->exiting_extracode )
+  printf("\n%s display=%d", __FUNCTION__, display);
+
+  if( display )
     {
-      display_on_line(s, display, 3, "%s", display_store_and_contents_from_tar(s, 0x100));
-      display_on_line(s, display, 4, "%s", display_store_and_contents_from_tar(s, 0x101));
-      display_on_line(s, display, 5, "%s", display_store_and_contents_from_tar(s, 0x102));
-    }
-  else
-    {
-      display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-      display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-      display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+      // If exiting from an extracode subroutine, display the extracode values, not
+      // the s->Aa values as they will be from the last subroutine instruction.
+      if( s->exiting_extracode )
+        {
+          display_on_line(s, display, 3, "%s", display_store_and_contents_from_tar(s, 0x100));
+          display_on_line(s, display, 4, "%s", display_store_and_contents_from_tar(s, 0x101));
+          display_on_line(s, display, 5, "%s", display_store_and_contents_from_tar(s, 0x102));
+        }
+      else
+        {
+          display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
+          display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
+          display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+        }
     }
 }
 
@@ -3200,6 +3266,8 @@ void stage_c_decode(ESC_STATE *s, int display)
   SINGLE_WORD a1v, a2v, a3v;
   SINGLE_WORD tst;
 
+  FN_ENTRY_DISPLAY;
+  
 #if DEBUG_STAGES
   printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
 #endif
@@ -3638,6 +3706,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 
   
 #endif
+  FN_EXIT;
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -3648,6 +3718,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 void stage_b_decode(ESC_STATE *s, int display)
 {
+  FN_ENTRY_DISPLAY;
+  
 #if DEBUG_STAGES
   printf(" [Stage B: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
 #endif
@@ -4246,7 +4318,8 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Stop and when restarted transfer keyboard register contents into Aa
 	  s->stop = 1;
 	  s->on_restart_load_aa = 1;
-
+          s->update_display = 1;
+          
           next_iar(s);
           
 	  // Input
@@ -4292,8 +4365,10 @@ void stage_b_decode(ESC_STATE *s, int display)
       switch(s->inst_digit_b)
 	{
 	case 8:
+          // This functionality done by extracodes, not here.
+#if 0
 	  // Stop and when restarted transfer (in stage C) keyboard register contents into Aa
-	  s->stop = 1;
+	  /s->stop = 1;
 	  s->on_restart_load_aa1 = 0;
 	  s->inst_update_display = 1;
 	  
@@ -4302,10 +4377,14 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  // Display
 	  // We have to force the display on here as we could be running and we want to see the prompt
 	  
-	  display_line_2(s, DISPLAY_UPDATE);
-	  display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+          if( display)
+            {
+              display_line_2(s, DISPLAY_UPDATE);
+              display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
+              display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
+              display_on_line(s, DISPLAY_UPDATE, 5, "               ");
+            }
+#endif
 	  break;
 
 	  
@@ -4318,11 +4397,12 @@ void stage_b_decode(ESC_STATE *s, int display)
 	case 6:
 	case 7:
 	case 9:
-
+#if 0
 	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
 	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
 	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+#endif
 	  break;
 	}
 
@@ -4330,12 +4410,15 @@ void stage_b_decode(ESC_STATE *s, int display)
 #if EXTRACODE_FRAMEWORK
       // Put up stage B display, we have to force this display as we are running in the upper store after
       //entering extracode above.
-
+#if 0
       int save_update_display = s->update_display;
       s->update_display = 1;
+#endif
       update_display();
-      s->update_display = save_update_display;
 
+#if 0
+      s->update_display = save_update_display;
+#endif
       // Set up the extracode framework 
       enter_extracode(s);
       
@@ -4346,6 +4429,8 @@ void stage_b_decode(ESC_STATE *s, int display)
       
       break;
     }
+  
+  FN_EXIT;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4355,6 +4440,12 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 void stage_a_decode(ESC_STATE *s, int display)
 {
+  FN_ENTRY_DISPLAY;
+  
+#if DEBUG_FN_CALL
+  printf("\n%s:display=%d", __FUNCTION__, display);
+#endif
+  
 #if DEBUG_STAGES
   printf("\n [Stage A: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
 #endif
@@ -4376,7 +4467,7 @@ void stage_a_decode(ESC_STATE *s, int display)
 
 
 #if DEBUG_A_DECODE
-  printf("\n*******abcd = %d%d%d%d",
+  printf("\n***  abcd = %d%d%d%d  ***  ",
 	 s->inst_digit_a,
 	 s->inst_digit_b,
 	 s->inst_digit_c,
@@ -4406,7 +4497,7 @@ void stage_a_decode(ESC_STATE *s, int display)
     }
 
 #if DEBUG_A_DECODE
-  printf("\ninst_ap: %04X", s->inst_ap);
+  printf("   inst_ap: %04X\n", s->inst_ap);
 #endif
 
   // Calculate the presumptive addresses
@@ -4613,7 +4704,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           display_on_line(s, display, 3, "%2X", s->Ap1);
           display_on_line(s, display, 4, "%2X", s->Ap2);
           display_on_line(s, display, 5, "%2X", s->Ap3);
-          display_on_line(s, display, 6, "               ");
+          display_on_line(s, display, 6, "     YY        ");
         }
       
       if( s->inst_digit_a == 8)
@@ -4652,16 +4743,10 @@ void stage_a_decode(ESC_STATE *s, int display)
           display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Ap3));
           display_on_line(s, display, 6, "               ");
         }
-#if 0
-#if EXTRACODE_FRAMEWORK
-      // Set up the extracode framework and then execute stage A of the first instruction. Then execution can continue
-      enter_extracode(s);
-#else
-
-#endif
-#endif
       break;
     }
+  
+  FN_EXIT;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4810,6 +4895,8 @@ void state_esc_decr_addr(FSM_DATA *fs, TOKEN tok)
   s->update_display = 1;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
 // Load IAR from KBD
 // This is a load so we don't preserve the upper digit. If extracode execution is required then it will
 // work.
@@ -4824,8 +4911,9 @@ void state_esc_load_iar(FSM_DATA *fs, TOKEN tok)
   s->iar.a_flag = 0;
 
   clear_keyboard_register(s);
+
   
-  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s, SPEC_FORCE_IAR));
 
   s->update_display = 1;
 }
@@ -4841,7 +4929,7 @@ void clear_keyboard_register(ESC_STATE *s)
   s->keyboard_register = 0;
   s->dot_entered = 0;
   
-  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s->iar));
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s           ", display_iar(s, SPEC_IAR));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -4903,7 +4991,7 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
       
   s->keyboard_register = kbr;
   
-  display_on_line(s, DISPLAY_UPDATE, 1, "%02s %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s %8s", display_iar(s, SPEC_IAR), display_store_word(s->keyboard_register));
   
   s->update_display = 1;
 }
@@ -4930,7 +5018,7 @@ void state_esc_dot(FSM_DATA *fs, TOKEN tok)
   // Minus key will over-ride at the end of entry
   s->keyboard_register = STORE_SET_SIGN(s->keyboard_register, WORD_SIGN_PLUS);
 
-  sprintf(line, "%02s %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
+  sprintf(line, "%02s %8s", display_iar(s, SPEC_IAR), display_store_word(s->keyboard_register));
   display_on_line(s, 1, DISPLAY_UPDATE, line);
 
   s->update_display = 1;
@@ -4947,7 +5035,7 @@ void state_esc_minus(FSM_DATA *fs, TOKEN tok)
 
   s->keyboard_register = SET_SW_SIGN(s->keyboard_register, WORD_SIGN_MINUS);
 
-  sprintf(line, "%02s %8s", display_iar(s->iar), display_store_word(s->keyboard_register));
+  sprintf(line, "%02s %8s", display_iar(s, SPEC_IAR), display_store_word(s->keyboard_register));
   display_on_line(s, 1, DISPLAY_UPDATE, line);
 
   s->update_display = 1;
@@ -4988,7 +5076,7 @@ void state_esc_normal_reset(FSM_DATA *fs, TOKEN tok)
   s->address_register1 = EMPTY_ADDRESS;
   s->address_register2 = EMPTY_ADDRESS;
 
-  display_on_line(s, DISPLAY_UPDATE, 1, "%02s             ", display_iar(s->iar));
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s             ", display_iar(s, SPEC_FORCE_IAR));
   display_on_line(s, DISPLAY_UPDATE, 2, "               ");
   display_on_line(s, DISPLAY_UPDATE, 3, "               ");
   display_on_line(s, DISPLAY_UPDATE, 4, "               ");
@@ -5028,7 +5116,7 @@ void state_esc_ki_reset(FSM_DATA *fs, TOKEN tok)
   s->aux_iar.a_flag = 0;
   s->iar.a_flag = 0;
   
-  display_on_line(s, DISPLAY_UPDATE, 1, "%02s             ", display_iar(s->iar));
+  display_on_line(s, DISPLAY_UPDATE, 1, "%02s             ", display_iar(s, SPEC_IAR));
   display_on_line(s, DISPLAY_UPDATE, 2, "K              ");
   display_on_line(s, DISPLAY_UPDATE, 3, "               ");
   display_on_line(s, DISPLAY_UPDATE, 4, "               ");
@@ -5047,6 +5135,10 @@ void state_esc_ki_reset(FSM_DATA *fs, TOKEN tok)
 
 void prepare_instruction(ESC_STATE *s)
 {
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
+
 #if DEBUG_PREPARE
   printf("\n%s:ki_reset:%d", __FUNCTION__, s->ki_reset_flag);
 #endif
@@ -5077,6 +5169,9 @@ void prepare_instruction(ESC_STATE *s)
 void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
 {
   ESC_STATE *s;
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
 
   s = (ESC_STATE *)es;
 
@@ -5105,11 +5200,17 @@ void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
 
 void state_esc_a_disp(FSM_DATA *es, TOKEN tok)
 {
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
   state_esc_a_core(es, tok, DISPLAY_UPDATE);
 }
 
 void state_esc_a_no_disp(FSM_DATA *es, TOKEN tok)
 {
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
   state_esc_a_core(es, tok, DISPLAY_NO_UPDATE);
 }
 
@@ -5118,6 +5219,9 @@ void state_esc_a_no_disp(FSM_DATA *es, TOKEN tok)
 void state_esc_b_core(FSM_DATA *es, TOKEN tok, int display_flag)
 {
   ESC_STATE *s;
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
 
   s = (ESC_STATE *)es;
   //s->update_display = display_flag;
@@ -5144,11 +5248,18 @@ void state_esc_b_core(FSM_DATA *es, TOKEN tok, int display_flag)
 
 void state_esc_b_disp(FSM_DATA *es, TOKEN tok)
 {
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
   state_esc_b_core(es, tok, DISPLAY_UPDATE);
 }
 
 void state_esc_b_no_disp(FSM_DATA *es, TOKEN tok)
 {
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
+
   state_esc_b_core(es, tok, DISPLAY_NO_UPDATE);
 }
 
@@ -5157,6 +5268,10 @@ void state_esc_b_no_disp(FSM_DATA *es, TOKEN tok)
 void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
 {
   ESC_STATE *s;
+
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
 
   s = (ESC_STATE *)es;
 
@@ -5195,6 +5310,10 @@ void state_esc_next_core(FSM_DATA *es, TOKEN tok, int display_flag)
 {
   ESC_STATE *s;
 
+#if DEBUG_FN_CALL
+  printf("\n%s display=%d", __FUNCTION__, display_flag);
+#endif
+
   s = (ESC_STATE *)es;
 
   switch(s->stage)
@@ -5228,21 +5347,33 @@ void state_esc_next_core(FSM_DATA *es, TOKEN tok, int display_flag)
 
 void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
 {
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
   state_esc_c_core(es, tok, DISPLAY_UPDATE);
 }
 
 void state_esc_c_no_disp(FSM_DATA *es, TOKEN tok)
 {
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
   state_esc_c_core(es, tok, DISPLAY_NO_UPDATE);
 }
 
 void state_esc_next_disp(FSM_DATA *es, TOKEN tok)
 {
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
   state_esc_next_core(es, tok, DISPLAY_UPDATE);
 }
 
 void state_esc_next_no_disp(FSM_DATA *es, TOKEN tok)
 {
+#if DEBUG_FN_CALL
+  printf("\n%s", __FUNCTION__);
+#endif
   state_esc_next_core(es, tok, DISPLAY_NO_UPDATE);
 }
 
@@ -5252,15 +5383,23 @@ void state_esc_run(FSM_DATA *es, TOKEN tok)
 {
   ESC_STATE *s = (ESC_STATE *)es;
 
+  FN_ENTRY;
+  
   s->run  = 1;
   s->stop = 0;
+
+  FN_EXIT;
 }
 
 void state_esc_stop(FSM_DATA *es, TOKEN tok)
 {
   ESC_STATE *s = (ESC_STATE *)es;
 
+  FN_ENTRY;
+  
   s->stop = 1;
+
+  FN_EXIT;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -5294,7 +5433,7 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
   if( s->run || (IS_EXTRACODE && !setup_step_extracode) )
     {
 #if DEBUG_EXECUTE
-      printf("  EXEC:RUN(%s%c)", display_iar(s->iar), s->stage);
+      printf("  EXEC:RUN(%s%c)", display_iar(s, SPEC_IAR), s->stage);
 #endif
 
       // Check for stop
@@ -6270,9 +6409,9 @@ char *get_string_state(void)
   ESC_STATE *s = &esc_state;
 
   
-  sprintf(str_state, "\nIAR           : %s", display_iar(s->iar));
+  sprintf(str_state, "\nIAR           : %s", display_iar(s, SPEC_FORCE_IAR));
   
-  sprintf(line, "\nAux IAR       : %s", display_iar(s->aux_iar));
+  sprintf(line, "\nAux IAR       : %s", display_iar(s, SPEC_FORCE_AUX_IAR));
   strcat(str_state, line);
 
   sprintf(line, "\nKI            : %s", display_register_double_word(s->keyboard_register));
@@ -11157,12 +11296,56 @@ char *display_kb_reg(DOUBLE_WORD w)
   return(result);
 }
 
-char *display_iar(IAR iar)
+////////////////////////////////////////////////////////////////////////////////
+//
+// Display IAR
+//
+// Do not display IAR if we are inside an extracode subroutine and aren't
+// stepping through the extracode.
+
+char *display_iar(ESC_STATE *s, IAR_SPEC spec_iar)
 {
   static char result2[MAX_LINE];
+  IAR val;
+  int force = 0;
   
-  sprintf(result2, "%02X%c", iar.address, iar.a_flag?'A':' ');
-  return(result2);
+  switch(spec_iar)
+    {
+    case SPEC_IAR:
+      val = s->iar;
+      force = 0;
+      break;
+
+    case SPEC_AUX_IAR:
+      val = s->aux_iar;
+      force = 0;
+      break;
+
+    case SPEC_FORCE_IAR:
+      val = s->iar;
+      force = 1;
+      break;
+
+    case SPEC_FORCE_AUX_IAR:
+      val = s->aux_iar;
+      force = 1;
+      break;
+    }
+
+#if DEBUG_DISPLAY_IAR
+  printf("\ns:exiting extracode:%d IS_EXTRACODE:%d setup_step_extracode:%d", s->exiting_extracode, IS_EXTRACODE, setup_step_extracode);
+#endif
+  
+  if( ((s->exiting_extracode || IS_EXTRACODE) && !setup_step_extracode) && !force)
+    {
+      sprintf(result2, "    ");
+    }
+  else
+    {
+      sprintf(result2, "%02X%c", val.address, val.a_flag?'A':' ');
+    }
+
+return(result2);
 }
 
 char *display_presumptive_address_1(ESC_STATE *s)
@@ -11223,6 +11406,11 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...)
 {
   va_list args;
   va_start(args, fmt);
+
+  if( !display )
+    {
+      return;
+    }
   
 #if DEBUG_DISPLAY_ON_LINE
   if( line_no > NUM_LINES )
@@ -11249,7 +11437,7 @@ void display_on_line(ESC_STATE *s, int display, int line_no, char *fmt, ...)
     }
   
 #if DEBUG_DISPLAY
-  printf("\n*** %s ***", __FUNCTION__);
+  printf("\n*** %s ***  display=%d", __FUNCTION__, display);
 #endif
 
   vsnprintf(&(display_line[line_no-1][0]), MAX_LINE, fmt, args);
@@ -11333,7 +11521,7 @@ void update_computer_display(ESC_STATE *es)
 
   printf("\n");
   
-  printf("\nKeyboard register: %08X   IAR:%8s", es->keyboard_register, display_iar(es->iar));
+  printf("\nKeyboard register: %08X   IAR:%8s", es->keyboard_register, display_iar(es, SPEC_IAR));
   printf("\n");
   
   //
@@ -11348,14 +11536,14 @@ void update_computer_display(ESC_STATE *es)
   //------------------------------------------------------------------------------
   
   sprintf(tmp, "1: %02s %8s",
-	  display_iar(es->iar),
+	  display_iar(es, SPEC_IAR),
 	  display_store_word(es->keyboard_register));
   strcat(dsp, tmp);
   
 #if OLED_ON
   oled_clear_display(&oled0);
   sprintf(tmp, "%02s %8s",
-	  display_iar(es->iar),
+	  display_iar(es, SPEC_IAR),
 	  display_store_word(es->keyboard_register));
   
   oled_set_xy(&oled0, 0, oledy);
@@ -11374,7 +11562,7 @@ void update_computer_display(ESC_STATE *es)
   else
     {
       sprintf(tmp, "\n2: %2s %8s %c",
-	      display_iar(es->aux_iar),
+	      display_iar(es, SPEC_AUX_IAR),
 	      display_instruction(es->instruction_register),
 	      es->stage
 	      );
@@ -11388,7 +11576,7 @@ void update_computer_display(ESC_STATE *es)
   else
     {
       sprintf(tmp, "%2s %8s %c",
-	      display_iar(es->aux_iar),
+	      display_iar(es, SPEC_AUX_IAR),
 	      display_instruction(es->instruction_register),
 	      es->stage
 	      );

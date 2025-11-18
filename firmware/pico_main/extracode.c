@@ -27,6 +27,8 @@
 #include "pico/multicore.h"
 #include "pico/bootrom.h"
 
+#include "switches.h"
+
 #include "oled.h"
 #include "sdcard.h"
 
@@ -59,6 +61,13 @@ EXTRACODE_INFO extracode_info[NUM_EXTRACODE_IDS] =
 
 void enter_extracode(ESC_STATE *s)
 {
+  FN_ENTRY;
+  printf("\n-------------------------------------------------------------------------------- enter extracode");
+#if DEBUG_STAGES
+  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+#endif
+
+  
   // Set up TAR1..TAR3
   s->store[100] = s->Aa1;
   s->store[101] = s->Aa2;
@@ -85,7 +94,9 @@ void enter_extracode(ESC_STATE *s)
 
   // Run first part of first extracode instruction
   run_stage_a(s, DISPLAY_NO_UPDATE);
-  
+
+printf("\n-------------------------------------------------------------------------------- exit extracode");
+  FN_EXIT;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
