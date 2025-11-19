@@ -261,9 +261,6 @@ FETCHCONTENT_QUIET:BOOL=ON
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
-//Git command line client
-GIT_EXECUTABLE:FILEPATH=/usr/bin/git
-
 //PICO target board (e.g. pico, pico2)
 PICO_BOARD:STRING=pico
 
@@ -331,9 +328,6 @@ PICO_STDIO_UART:BOOL=ON
 //Globally enable stdio USB
 PICO_STDIO_USB:BOOL=OFF
 
-//Directory where pioasm has been installed
-PIOASM_INSTALL_DIR:PATH=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/pioasm-install
-
 //Value Computed by CMake
 experimental_schools_computer_BINARY_DIR:STATIC=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build
 
@@ -360,15 +354,6 @@ pico_sdk_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 pico_sdk_SOURCE_DIR:STATIC=/home/menadue/pico/pico-sdk
-
-//The directory containing a CMake configuration file for picotool.
-picotool_DIR:PATH=picotool_DIR-NOTFOUND
-
-//Directory where picotool has been installed
-picotool_INSTALL_DIR:PATH=/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/build/_deps
-
-//The directory containing a CMake configuration file for pioasm.
-pioasm_DIR:PATH=pioasm_DIR-NOTFOUND
 
 
 ########################
@@ -546,8 +531,6 @@ DOXYGEN_EXECUTABLE-ADVANCED:INTERNAL=1
 FAMILY_MCUS:INTERNAL=RP2040
 //Details about finding Python3
 FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/usr/bin/python3.13][cfound components: Interpreter ][v3.13.5()]
-//ADVANCED property for variable: GIT_EXECUTABLE
-GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 PICO_32BIT:INTERNAL=1
 PICO_ARM:INTERNAL=1
 PICO_BOOT_STAGE2_DIR:INTERNAL=/home/menadue/pico/pico-sdk/src/rp2040/boot_stage2
