@@ -53,6 +53,58 @@ EXTRACODE_INFO extracode_info[NUM_EXTRACODE_IDS] =
     {EXTRACODE_BASIC,    "BASIC extracode",             0x9C086BCF, &(extracode_basic[0])},
   };
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Print the extracode information
+//
+
+void print_extracode_info(void)
+{
+  printf("\nExtracode Information");
+  printf("\n=====================");
+  printf("\n");
+  
+  for(int i=0; i<NUM_EXTRACODE_IDS; i++)
+    {
+      printf("\n%2d: %30s csum:%08X", i, extracode_info[i].desc, extracode_info[i].csum);
+    }
+
+  printf("\n");
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+uint32_t checksum_extracode(int i)
+{
+  uint32_t csum = 0;
+  
+  for(int j=EXTRACODE_CSUM_FIRST-EXTRACODE_START; j<=EXTRACODE_CSUM_LAST-EXTRACODE_START; j++)
+    {
+      csum += extracode_info[i].extracode_data[j];
+    }
+  
+  return(csum);	   
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Calculate the extracode checksums. This saves having to adjust the extracode
+// checksums when the extracode is changed.
+
+void calculate_extracode_checksums(void)
+{
+  printf("\nCalculating extracode checksums...");
+  
+  for(int i=0; i<NUM_EXTRACODE_IDS; i++)
+    {
+      extracode_info[i].csum = checksum_extracode(i);
+    }
+
+  printf("   Done.");
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //

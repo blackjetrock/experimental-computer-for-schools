@@ -6529,8 +6529,9 @@ void cli_dump_store(void)
     }
   
   printf("\n");
-  display_store_checksum(s, "lower store", LOWER_STORE);
+  display_store_checksum(s, "Lower store", LOWER_STORE);
   display_store_checksum(s, "Upper store", UPPER_STORE);
+  display_store_checksum(s, "Extracode  ", EXTRACODE_CSUM_RANGE);
   display_store_checksum(s, "All   store", ALL_STORE);
   printf("\n");
 
@@ -10390,7 +10391,7 @@ int write_state_to_file(ESC_STATE *es, char *fn)
 
   f_printf(&fp, "\n");
   write_store_checksum(&fp, es, "Lower store", LOWER_STORE);
-  write_store_checksum(&fp, es, "Upper store", UPPER_STORE);
+  write_store_checksum(&fp, es, "Upper store", EXTRACODE_CSUM_RANGE);
   write_store_checksum(&fp, es, "All   store", ALL_STORE);
   f_printf(&fp, "\n");
   
@@ -10672,6 +10673,11 @@ SERIAL_COMMAND serial_cmds[] =
     'K',
     "KI Reset",
     cli_ki_reset,
+   },
+   {
+    'x',
+    "Dump Extracode Information",
+    print_extracode_info,
    },
    {
     'I',
@@ -11980,7 +11986,9 @@ int main(void)
   do_qt_reset();
   printf("\ndone.");
 #endif
-  
+
+  // Set up the checksums of the extracodes we have in the code.
+  calculate_extracode_checksums();
   
 #if OLED_ON
   // Set up OLED display
