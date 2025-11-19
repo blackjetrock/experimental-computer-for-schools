@@ -4023,10 +4023,12 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 	case 8:
 	  // Not used
+          enter_error_state(s);
 	  break;
 
 	case 9:
 	  // Not used
+          enter_error_state(s);
 	  break;
 	}
       break;
@@ -4103,6 +4105,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 	case 8:
 	  // Not used
+          enter_error_state(s);
 	  break;
 
 	case 9:
@@ -4129,8 +4132,8 @@ void stage_b_decode(ESC_STATE *s, int display)
               // 
               s->stop = 1;
               s->inst_update_display = 1;
-              display_line_2(s, display);
-              display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+              display_line_2(s, DISPLAY_UPDATE);
+              display_two_any_size_register_on_line(s, DISPLAY_UPDATE, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
             }
 	  break;
 	}
@@ -5076,6 +5079,10 @@ void state_esc_normal_reset(FSM_DATA *fs, TOKEN tok)
   s->address_register1 = EMPTY_ADDRESS;
   s->address_register2 = EMPTY_ADDRESS;
 
+#if OLED_ON
+  oled_clear_display(&oled0);
+#endif
+  
   display_on_line(s, DISPLAY_UPDATE, 1, "%02s             ", display_iar(s, SPEC_FORCE_IAR));
   display_on_line(s, DISPLAY_UPDATE, 2, "               ");
   display_on_line(s, DISPLAY_UPDATE, 3, "               ");
@@ -5569,6 +5576,10 @@ void state_reload_reload(FSM_DATA *es, TOKEN tok)
   ESC_STATE *s = (ESC_STATE *)es;
 
   read_file_into_state(&(file_list_data[0][0]), s);
+  
+#if OLED_ON
+  oled_clear_display(&oled0);
+#endif
 
   s->delete_display = 0;
   s->reload_display = 0;
@@ -11495,6 +11506,7 @@ int display_two_any_size_register_on_line(ESC_STATE *s, int display, int lineno,
   int lineno2 = display_any_size_register_on_line(s, display, lineno,  regno1, contents);
       lineno2 = display_any_size_register_on_line(s, display, lineno2, regno2, contents);
 
+      display_on_line(s, display, 5, "OUT            ");
   return(lineno2);
 }
 
