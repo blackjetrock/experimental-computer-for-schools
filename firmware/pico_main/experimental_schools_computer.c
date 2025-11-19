@@ -4739,12 +4739,20 @@ void stage_a_decode(ESC_STATE *s, int display)
           s->Aa1 = convert_store_to_address(load_from_store(s, s->Ap1));
           s->Aa2 = convert_store_to_address(load_from_store(s, s->Ap2));
           s->Aa3 = convert_store_to_address(load_from_store(s, s->Ap3));
-
+#if 0
           display_line_2(s, display);
           display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Ap1));
           display_on_line(s, display, 4, "%2X    %s", s->Ap2, display_store_word(s->Ap2));
           display_on_line(s, display, 5, "%2X    %s", s->Ap3, display_store_word(s->Ap3));
           display_on_line(s, display, 6, "               ");
+#endif
+#if 1
+          display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X    %02X", s->Ap1, s->Aa1);
+          display_on_line(s, display, 4, "%2X    %02X", s->Ap2, s->Aa2);
+          display_on_line(s, display, 5, "%2X    %02X", s->Ap3, s->Aa3);
+          display_on_line(s, display, 6, "               ");
+#endif
         }
       break;
     }
