@@ -273,10 +273,15 @@ int display_two_any_size_register_on_line(ESC_STATE *s, int display, int lineno,
 #define NO_CONTENTS 0
 #define CONTENTS    1
 
+//------------------------------------------------------------------------------
+
 int display_any_size_register_on_line(ESC_STATE *s, int display, int line_no, int regno, int contents);
 
 void clear_lines_3_to_6(ESC_STATE *s, int display);
+void clear_line(ESC_STATE *s, int display, int n);
+void clear_display(ESC_STATE *s, int display);
 
+//------------------------------------------------------------------------------
 
 volatile uint32_t touch_key_raw = 0;
 int get_qt_key_code(void);
@@ -3202,6 +3207,7 @@ void display_line_2(ESC_STATE *s, int display)
   
   if( s->ki_reset_flag )
     {
+      // Keyboard inout on line 1?  **TODO**
       display_on_line(s, DISPLAY_UPDATE, 2, "K  %s %c %c", inst_str, s->stage, stopch);
     }
   else
@@ -3216,12 +3222,12 @@ void display_line_2(ESC_STATE *s, int display)
           // then the IAR is not showing the program address, but the extracode
           // instruction address. Do not display it.
           //          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s, SPEC_IAR));
-          display_on_line(s, DISPLAY_UPDATE, 1, "   ");
+          //display_on_line(s, DISPLAY_UPDATE, 1, "   ");
           display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s, SPEC_AUX_IAR), inst_str, s->stage, stopch);
         }
       else
         {
-          display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s, SPEC_IAR));
+          //     display_on_line(s, DISPLAY_UPDATE, 1, "%02s",       display_iar(s, SPEC_IAR));
           display_on_line(s, DISPLAY_UPDATE, 2, "%02s %s %c %c", display_iar(s, SPEC_IAR), inst_str, s->stage, stopch);
         }
 
@@ -3694,6 +3700,30 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  break;
 
 	}
+
+      
+#if 1
+#if EXTRACODE_FRAMEWORK
+      // Put up stage B display, we have to force this display as we are running in the upper store after
+      //entering extracode above.
+#if 0
+      int save_update_display = s->update_display;
+      s->update_display = 1;
+#endif
+      update_display();
+
+#if 0
+      s->update_display = save_update_display;
+#endif
+      // Set up the extracode framework 
+      enter_extracode(s);
+      
+#else
+
+#endif
+#endif
+      
+
       break;
     }
 
@@ -4408,28 +4438,6 @@ void stage_b_decode(ESC_STATE *s, int display)
 #endif
 	  break;
 	}
-
-#if 1
-#if EXTRACODE_FRAMEWORK
-      // Put up stage B display, we have to force this display as we are running in the upper store after
-      //entering extracode above.
-#if 0
-      int save_update_display = s->update_display;
-      s->update_display = 1;
-#endif
-      update_display();
-
-#if 0
-      s->update_display = save_update_display;
-#endif
-      // Set up the extracode framework 
-      enter_extracode(s);
-      
-#else
-
-#endif
-#endif
-      
       break;
     }
   
@@ -4438,8 +4446,66 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// Display for stage A
+//
+////////////////////////////////////////////////////////////////////////////////
+
+// Display varies sightly depending on instruction field a
+
+void stage_a_display(ESC_STATE *s, int display, int a)
+{
+  // Common Items
+
+  clear_display(s, display);
+  
+  // Top line clear
+  clear_line(s, display, 1);
+
+  display_line_2(s, display);
+  clear_line(s, display, 3);
+  
+  switch(a)
+    {
+      // Register instructions
+    case 0:
+    case 1:
+      break;
+
+      // Absolute addressing
+    case 7:
+    case 2:
+      clear_line(s, display, 4);
+      clear_line(s, display, 5);
+      clear_line(s, display, 6);
+      break;
+      
+      // Relative
+    case 8:
+    case 3:
+    case 4:
+    case 5:
+      char *display_register_and_contents(ESC_STATE *s, int regno);
+      display_any_size_register_on_line(s, display, 4, 3, CONTENTS);
+      display_any_size_register_on_line(s, display, 5, 4, CONTENTS);
+      display_any_size_register_on_line(s, display, 6, 5, CONTENTS);
+      break;
+
+      // Indirect
+    case 9:
+    case 6:
+      display_on_line(s, display, 4, "%2X    %s", s->Ap1, display_store_word(load_from_store(s, s->Ap1)));
+      display_on_line(s, display, 5, "%2X    %s", s->Ap2, display_store_word(load_from_store(s, s->Ap2)));
+      display_on_line(s, display, 6, "%2X    %s", s->Ap3, display_store_word(load_from_store(s, s->Ap3)));
+      break;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // Fetch instruction
 // Decode presumptive addresses
+//
+////////////////////////////////////////////////////////////////////////////////
 
 void stage_a_decode(ESC_STATE *s, int display)
 {
@@ -4756,7 +4822,9 @@ void stage_a_decode(ESC_STATE *s, int display)
         }
       break;
     }
-  
+
+  // Display stage A information
+  stage_a_display(s, display, s->inst_digit_a);
   FN_EXIT;
 }
 
@@ -5213,6 +5281,13 @@ void state_esc_a_core(FSM_DATA *es, TOKEN tok, int display_flag)
 }
 
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Run stage a
+//
+// Called from A key
+//
+
 void state_esc_a_disp(FSM_DATA *es, TOKEN tok)
 {
 #if DEBUG_FN_CALL
@@ -5260,6 +5335,13 @@ void state_esc_b_core(FSM_DATA *es, TOKEN tok, int display_flag)
       break;
     }
 }
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Run stage b
+//
+// Called from B key
+//
 
 void state_esc_b_disp(FSM_DATA *es, TOKEN tok)
 {
@@ -5359,6 +5441,13 @@ void state_esc_next_core(FSM_DATA *es, TOKEN tok, int display_flag)
       break;
     }
 }
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Run stage c
+//
+// Called from C key
+//
 
 void state_esc_c_disp(FSM_DATA *es, TOKEN tok)
 {
@@ -11522,6 +11611,21 @@ int display_two_any_size_register_on_line(ESC_STATE *s, int display, int lineno,
 
       display_on_line(s, display, 5, "OUT            ");
   return(lineno2);
+}
+
+void clear_display(ESC_STATE *s, int display)
+{
+  if( display )
+    {
+#if OLED_ON
+      oled_clear_display(&oled0);
+#endif
+    }
+}
+
+void clear_line(ESC_STATE *s, int display, int n)
+{
+  display_on_line(s, display, n, "               ");
 }
 
 void clear_lines_3_to_6(ESC_STATE *s, int display)

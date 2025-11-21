@@ -201,8 +201,9 @@ typedef struct _ESC_STATE
   int run;
   int last_run;    // Used to detect program restart
   int stop;
-  int error;       // true if in error state
-
+  int error;                 // true if in error state
+  int stop_at_end_of_stage;  // Run to end of stage
+  
   int extracode;         // true if executing instructions for an extracode
   int exiting_extracode; // true if an extracode subroutine has just been exited. The stage C decode is
                          // different in this case. reset by stage C display
