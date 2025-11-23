@@ -1969,6 +1969,10 @@ int bcd_to_binary(SINGLE_WORD bcd)
 //
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address)
 {
+#if DEBUG_LOAD_FROM_STORE
+  printf("\n%s:address:%04X", __FUNCTION__, address);
+#endif
+  
   return(s->store[bcd_to_binary(REMOVED_SW_SIGN(address))]);
 }
 
@@ -3928,7 +3932,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 
           next_iar(s);
           break;
-          
+
+          // x8 and x9 done in stage B
+#if 0          
         case 8:
       	  // Stop and when restarted transfer keyboard register contents into Aa
 	  s->stop = 1;
@@ -3945,7 +3951,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Stop and display (Aa)
 	  s->stop = 1;
           break;
-
+#endif
 	}
       
       break;
@@ -3983,8 +3989,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 #if DUMP_STATE_STAGE_C
   cli_dump();
-
-  
 #endif
 
   // Stage C only displayed if we aren't in extracode
@@ -3992,6 +3996,17 @@ void stage_c_decode(ESC_STATE *s, int display)
   if( !IS_EXTRACODE )
     {
       stage_c_display(s, display, s->inst_digit_a);
+    }
+
+  if( s->exiting_extracode )
+    {
+      printf("\nExiting extracode...");
+
+      // This is always displayed, so over-ride display setting
+      stage_c_display(s, DISPLAY_UPDATE, s->inst_digit_a);
+
+      // Not exiting any more
+      s->exiting_extracode = 0;
     }
   
   FN_EXIT;
@@ -4012,6 +4027,37 @@ void stage_b_decode(ESC_STATE *s, int display)
   printf(" [Stage B: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
 #endif
 
+  switch(s->inst_digit_b)
+    {
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      switch(s->inst_digit_b)
+	{
+        case 8:
+      	  // Stop and when restarted transfer keyboard register contents into Aa
+	  s->stop = 1;
+	  s->on_restart_load_aa = 1;
+          s->update_display = 1;
+          
+          next_iar(s);
+          break;
+          
+        case 9:
+      	  // Display
+          next_iar(s);
+
+	  // Stop and display (Aa)
+	  s->stop = 1;
+          break;
+
+	}
+      
+      break;
+    }
+  
   stage_b_display(s, display, s->inst_digit_a);
   
   FN_EXIT;
@@ -4219,6 +4265,22 @@ void stage_c_display(ESC_STATE *s, int display, int a)
   display_line_2(s, display);
   clear_line(s, display, 3);
   
+  // A different display if we have just exited an extracode or we are in an extracode subroutine 
+  // AUX IAR is used to find the instruction, as that works for the extracodes.
+  // the previous stages are from the extracode subroutine instructions for extracodes.
+  SINGLE_WORD extracode_inst = load_from_store(s, s->aux_iar.address);
+  
+  // If stepping extracode then we want to see the subroutine instructions
+  
+  if( s->exiting_extracode || (IS_EXTRACODE && !setup_step_extracode) )
+    {
+      // Force inst_digit_a to use the extracode instruction digit a, not the last subroutine
+      // instruction digit a
+      a = INST_A_FIELD(extracode_inst);
+
+      printf("\nInst digit A set to %d", a);
+    }
+
   switch(a)
     {
       // Register instructions
@@ -4951,6 +5013,9 @@ void state_esc_normal_reset(FSM_DATA *fs, TOKEN tok)
 
   s->stage = ' ';
   clear_keyboard_register(s);
+
+  s->extracode         = 0;
+  s->exiting_extracode = 0;
   
   s->ki_reset_flag     = 0;
   s->error             = 0;
@@ -5105,6 +5170,10 @@ void state_esc_a_no_disp(FSM_DATA *es, TOKEN tok)
 #if DEBUG_FN_CALL
   printf("\n%s", __FUNCTION__);
 #endif
+
+  // The extracode instructions do not display their stage data, by default.
+  // This can be tuirned on if the setup wants stepping of subroutine instructions
+  
   state_esc_a_core(es, tok, DISPLAY_NO_UPDATE);
 }
 
@@ -6370,16 +6439,17 @@ void cli_dump(void)
   printf("\nInternal");
   printf("\n========");
 
-  printf("\nStage         : '%c'",                s->stage);
-  printf("\nReg Inst Rc   : %d",                s->reginst_rc);
-  printf("\nReg Inst Rd   : %d",                s->reginst_rd);
-  printf("\nReg Inst Lit  : %d",                s->reginst_literal);
-  printf("\nInst Aa       : %02X   ap : %02X ", s->inst_aa, s->inst_ap);
-  printf("\nAp1..3        : %03X %03X %03X",    s->Ap1, s->Ap2, s->Ap3);
-  printf("\nAa1..3        : %03X %03X %03X",    s->Aa1, s->Aa2, s->Aa3);
-  printf("\nKI Reset      : %d",                s->ki_reset_flag);
-  printf("\nError         : %d",                s->error);
-  printf("\nExtracode     : %d",                IS_EXTRACODE);
+  printf("\nStage             : '%c'",                s->stage);
+  printf("\nReg Inst Rc       : %d",                s->reginst_rc);
+  printf("\nReg Inst Rd       : %d",                s->reginst_rd);
+  printf("\nReg Inst Lit      : %d",                s->reginst_literal);
+  printf("\nInst Aa           : %02X   ap : %02X ", s->inst_aa, s->inst_ap);
+  printf("\nAp1..3            : %03X %03X %03X",    s->Ap1, s->Ap2, s->Ap3);
+  printf("\nAa1..3            : %03X %03X %03X",    s->Aa1, s->Aa2, s->Aa3);
+  printf("\nKI Reset          : %d",                s->ki_reset_flag);
+  printf("\nError             : %d",                s->error);
+  printf("\nExtracode         : %d",                IS_EXTRACODE);
+  printf("\nExiting extracode : %d",                s->exiting_extracode);
   printf("\n");
 
   printf("\nTest");

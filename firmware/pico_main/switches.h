@@ -104,6 +104,7 @@
 #define DEBUG_KEYS             1
 #define DEBUG_NEXT_IAR         1
 #define DEBUG_ENTER_EXTRACODE  1
+#define DEBUG_LOAD_FROM_STORE  1
 
 #endif
 
