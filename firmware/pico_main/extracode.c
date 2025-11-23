@@ -114,7 +114,11 @@ void calculate_extracode_checksums(void)
 void enter_extracode(ESC_STATE *s)
 {
   FN_ENTRY;
-  printf("\n-------------------------------------------------------------------------------- enter extracode");
+
+#if DEBUG_ENTER_EXTRACODE
+  cli_dump();
+#endif
+  
 #if DEBUG_STAGES
   printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
 #endif

@@ -67,34 +67,34 @@ int kbd_scan_code = 0;
 
 KEY_INFO key_info[] =
   {
-   {"KI RESET   ", TOK_KEY_KI_RESET},
-   {"A          ", TOK_KEY_A},
-   {"B          ", TOK_KEY_B},
-   {"C          ", TOK_KEY_C},
-   {"0          ", TOK_KEY_0},
-   {"1          ", TOK_KEY_1},
-   {"2          ", TOK_KEY_2},
-   {"3          ", TOK_KEY_3},
-   {"4          ", TOK_KEY_4},
-   {"5          ", TOK_KEY_5},
-   {"6          ", TOK_KEY_6},
-   {"7          ", TOK_KEY_7},
-   {"8          ", TOK_KEY_8},
-   {"9          ", TOK_KEY_9},
-   {"RUN        ", TOK_KEY_RUN},
-   {"STOP       ", TOK_KEY_STOP},
-   {"RELOAD     ", TOK_KEY_RELOAD},
-   {"CHECK      ", TOK_KEY_CHECK},
-   {"DUMP       ", TOK_KEY_DUMP},
-   {"LOAD IAR   ", TOK_KEY_LOAD_IAR},
-   {"LOAD ADDR  ", TOK_KEY_LOAD_ADDR},
-   {"LOAD STORE ", TOK_KEY_LOAD_STORE},
-   {"DECR ADDR  ", TOK_KEY_DECR_ADDR},
-   {"INCR ADDR  ", TOK_KEY_INCR_ADDR},
-   {"NORM RESET ", TOK_KEY_NORMAL_RESET},
-   {"CLEAR      ", TOK_KEY_CLEAR},
-   {"DOT        ", TOK_KEY_DOT},
-   {"MINUS      ", TOK_KEY_MINUS},
+    {"KI RESET   ", TOK_KEY_KI_RESET},
+    {"A          ", TOK_KEY_A},
+    {"B          ", TOK_KEY_B},
+    {"C          ", TOK_KEY_C},
+    {"0          ", TOK_KEY_0},
+    {"1          ", TOK_KEY_1},
+    {"2          ", TOK_KEY_2},
+    {"3          ", TOK_KEY_3},
+    {"4          ", TOK_KEY_4},
+    {"5          ", TOK_KEY_5},
+    {"6          ", TOK_KEY_6},
+    {"7          ", TOK_KEY_7},
+    {"8          ", TOK_KEY_8},
+    {"9          ", TOK_KEY_9},
+    {"RUN        ", TOK_KEY_RUN},
+    {"STOP       ", TOK_KEY_STOP},
+    {"RELOAD     ", TOK_KEY_RELOAD},
+    {"CHECK      ", TOK_KEY_CHECK},
+    {"DUMP       ", TOK_KEY_DUMP},
+    {"LOAD IAR   ", TOK_KEY_LOAD_IAR},
+    {"LOAD ADDR  ", TOK_KEY_LOAD_ADDR},
+    {"LOAD STORE ", TOK_KEY_LOAD_STORE},
+    {"DECR ADDR  ", TOK_KEY_DECR_ADDR},
+    {"INCR ADDR  ", TOK_KEY_INCR_ADDR},
+    {"NORM RESET ", TOK_KEY_NORMAL_RESET},
+    {"CLEAR      ", TOK_KEY_CLEAR},
+    {"DOT        ", TOK_KEY_DOT},
+    {"MINUS      ", TOK_KEY_MINUS},
   };
 
 #define NUM_KEY_INFO (sizeof(key_info)/sizeof(KEY_INFO))
@@ -102,12 +102,12 @@ KEY_INFO key_info[] =
 char *key_name(int tok)
 {
   for(int i=0; i<NUM_KEY_INFO; i++)
-  {
-    if( key_info[i].tok == tok )
-      {
-        return(key_info[i].name);
-      }
-  }
+    {
+      if( key_info[i].tok == tok )
+        {
+          return(key_info[i].name);
+        }
+    }
   return("????");
 }
 
@@ -121,11 +121,11 @@ char *key_name(int tok)
 // Initialise registers and store
 typedef enum _INIT_CODE
   {
-   IC_SET_REG_N = 10,
-   IC_SET_REG_V,
-   IC_SET_STORE_A,
-   IC_SET_STORE_V,
-   IC_END,
+    IC_SET_REG_N = 10,
+    IC_SET_REG_V,
+    IC_SET_STORE_A,
+    IC_SET_STORE_V,
+    IC_END,
   } INIT_CODE;
 
 typedef struct _INIT_INFO
@@ -139,33 +139,33 @@ typedef struct _INIT_INFO
 
 typedef enum _TEST_CODE
   {
-   TC_REG_N = 20,
-   TC_REG_IAR,
-   TC_REG_ADDR,
-   TC_CL,
-   TC_REG_KI,
-   TC_STORE_N,
-   TC_MUST_BE,
-   TC_MUST_BE_STOPPED,
-   TC_MUST_BE_NOT_STOPPED,
-   TC_END_SECTION,    // End of sub section results. Check up to here (or a TC_END) by TOK_TEST_CHECK_RES token
-                      // Do not put a spurious TC_SECTION_END before a TC_END
-   TC_END,
+    TC_REG_N = 20,
+    TC_REG_IAR,
+    TC_REG_ADDR,
+    TC_CL,
+    TC_REG_KI,
+    TC_STORE_N,
+    TC_MUST_BE,
+    TC_MUST_BE_STOPPED,
+    TC_MUST_BE_NOT_STOPPED,
+    TC_END_SECTION,    // End of sub section results. Check up to here (or a TC_END) by TOK_TEST_CHECK_RES token
+    // Do not put a spurious TC_SECTION_END before a TC_END
+    TC_END,
   } TEST_CODE;
 
 char *tc_names[] =
   {
-   "TC_REG_N",
-   "TC_REG_IAR",
-   "TC_REG_ADDR",
-   "TC_CL",
-   "TC_REG_KI",
-   "TC_STORE_N",
-   "TC_MUST_BE",
-   "TC_MUST_BE_STOPPED",
-   "TC_MUST_BE_NOT_STOPPED",
-   "TC_END_SECTION",
-   "TC_END",
+    "TC_REG_N",
+    "TC_REG_IAR",
+    "TC_REG_ADDR",
+    "TC_CL",
+    "TC_REG_KI",
+    "TC_STORE_N",
+    "TC_MUST_BE",
+    "TC_MUST_BE_STOPPED",
+    "TC_MUST_BE_NOT_STOPPED",
+    "TC_END_SECTION",
+    "TC_END",
   };
 
 #define MAX_TC_REG_BUF 20
@@ -269,6 +269,10 @@ char *display_register_and_contents(ESC_STATE *s, int regno);
 char *display_store_and_contents(ESC_STATE *s, SINGLE_WORD address);
 char *display_store_word(SINGLE_WORD w);
 int display_two_any_size_register_on_line(ESC_STATE *s, int display, int lineno, int regno1, int regno2, int contents);
+
+void stage_a_display(ESC_STATE *s, int display, int a);
+void stage_b_display(ESC_STATE *s, int display, int a);
+void stage_c_display(ESC_STATE *s, int display, int a);
 
 #define NO_CONTENTS 0
 #define CONTENTS    1
@@ -457,23 +461,23 @@ void kbd_gpio_sens(const int gpio)
 
 const int kbd_drv_gpios[] =
   {
-   PIN_KBD_DRV0,   
-   PIN_KBD_DRV1,   
-   PIN_KBD_DRV2,   
-   PIN_KBD_DRV3,   
+    PIN_KBD_DRV0,   
+    PIN_KBD_DRV1,   
+    PIN_KBD_DRV2,   
+    PIN_KBD_DRV3,   
   };
 
 #define NUM_KBD_DRV (sizeof(kbd_drv_gpios)/sizeof(const int))
 
 const int kbd_sens_gpios[] =
   {
-   PIN_KBD_SENS0,   
-   PIN_KBD_SENS1,   
-   PIN_KBD_SENS2,   
-   PIN_KBD_SENS3,   
-   PIN_KBD_SENS4,   
-   PIN_KBD_SENS5,   
-   PIN_KBD_SENS6,
+    PIN_KBD_SENS0,   
+    PIN_KBD_SENS1,   
+    PIN_KBD_SENS2,   
+    PIN_KBD_SENS3,   
+    PIN_KBD_SENS4,   
+    PIN_KBD_SENS5,   
+    PIN_KBD_SENS6,
   };
 
 #define NUM_KBD_SENS (sizeof(kbd_sens_gpios)/sizeof(const int))
@@ -519,9 +523,9 @@ int kbd_read_sense(void)
 
 enum
   {
-   KBD_DB_STATE_IDLE = 1,
-   KBD_DB_STATE_PRESSING,
-   KBD_DB_STATE_RELEASING,
+    KBD_DB_STATE_IDLE = 1,
+    KBD_DB_STATE_PRESSING,
+    KBD_DB_STATE_RELEASING,
   };
 
 int kbd_t_slot = 0;
@@ -573,37 +577,37 @@ struct _KEYMAP
   TOKEN token;
 }
   key_map[] =
-    {
-     {0x1C0, TOK_KEY_CLEAR},
-     {0x101, TOK_KEY_MINUS},
-     {0x102, TOK_KEY_DOT},
-     {0x090, TOK_KEY_0},
-     {0x104, TOK_KEY_1},
-     {0x108, TOK_KEY_2},
-     {0x110, TOK_KEY_3},
-     {0x120, TOK_KEY_4},
-     {0x140, TOK_KEY_5},
-     {0x081, TOK_KEY_6},
-     {0x082, TOK_KEY_7},
-     {0x084, TOK_KEY_8},
-     {0x088, TOK_KEY_9},
-     {0x010, TOK_KEY_DUMP},
-     {0x020, TOK_KEY_CHECK},
-     {0x040, TOK_KEY_RELOAD},
+  {
+    {0x1C0, TOK_KEY_CLEAR},
+    {0x101, TOK_KEY_MINUS},
+    {0x102, TOK_KEY_DOT},
+    {0x090, TOK_KEY_0},
+    {0x104, TOK_KEY_1},
+    {0x108, TOK_KEY_2},
+    {0x110, TOK_KEY_3},
+    {0x120, TOK_KEY_4},
+    {0x140, TOK_KEY_5},
+    {0x081, TOK_KEY_6},
+    {0x082, TOK_KEY_7},
+    {0x084, TOK_KEY_8},
+    {0x088, TOK_KEY_9},
+    {0x010, TOK_KEY_DUMP},
+    {0x020, TOK_KEY_CHECK},
+    {0x040, TOK_KEY_RELOAD},
 
-     {0x1A0, TOK_KEY_NORMAL_RESET},
-     {0x002, TOK_KEY_KI_RESET},
-     {0x181, TOK_KEY_LOAD_IAR},
-     {0x182, TOK_KEY_LOAD_ADDR},
-     {0x190, TOK_KEY_INCR_ADDR},
-     {0x188, TOK_KEY_DECR_ADDR},
-     {0x184, TOK_KEY_LOAD_STORE},
-     {0x0A0, TOK_KEY_A},
-     {0x0C0, TOK_KEY_B},
-     {0x001, TOK_KEY_C},
-     {0x004, TOK_KEY_RUN},
-     {0x008, TOK_KEY_STOP},
-    };
+    {0x1A0, TOK_KEY_NORMAL_RESET},
+    {0x002, TOK_KEY_KI_RESET},
+    {0x181, TOK_KEY_LOAD_IAR},
+    {0x182, TOK_KEY_LOAD_ADDR},
+    {0x190, TOK_KEY_INCR_ADDR},
+    {0x188, TOK_KEY_DECR_ADDR},
+    {0x184, TOK_KEY_LOAD_STORE},
+    {0x0A0, TOK_KEY_A},
+    {0x0C0, TOK_KEY_B},
+    {0x001, TOK_KEY_C},
+    {0x004, TOK_KEY_RUN},
+    {0x008, TOK_KEY_STOP},
+  };
 
 #define NUM_KEY_MAPS (sizeof(key_map)/sizeof( struct _KEYMAP))
   
@@ -792,7 +796,7 @@ void kbd_read(ESC_STATE *s)
 
 			    case TC_MUST_BE_STOPPED:
 #if DEBUG_TEST_SEQ
-				  printf("\nTesting for stopped. Stop = %d Run=%d", s->stop, s->run);
+                              printf("\nTesting for stopped. Stop = %d Run=%d", s->stop, s->run);
 #endif
 			      if( s->stop )
 				{
@@ -807,7 +811,7 @@ void kbd_read(ESC_STATE *s)
 
 			    case TC_MUST_BE_NOT_STOPPED:
 #if DEBUG_TEST_SEQ
-				  printf("\nTesting for not stopped. Stop = %d Run=%d", s->stop, s->run);
+                              printf("\nTesting for not stopped. Stop = %d Run=%d", s->stop, s->run);
 #endif
 			      if( !s->stop )
 				{
@@ -2179,7 +2183,7 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
 #if DEBUG_REGISTER_ASSIGN
-  printf("\nSW SW SW");
+      printf("\nSW SW SW");
 #endif
       SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), invert_sw_sign( SW_REG_CONTENTS(src2)));
       return;
@@ -2188,7 +2192,7 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
 #if DEBUG_REGISTER_ASSIGN
-  printf("\nDW DW DW");
+      printf("\nDW DW DW");
 #endif
       DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign( DW_REG_CONTENTS(src2)));
       return;
@@ -2197,7 +2201,7 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
 #if DEBUG_REGISTER_ASSIGN
-  printf("\nDW DW SW");
+      printf("\nDW DW SW");
 #endif
       DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign(SW_TO_DW(SW_REG_CONTENTS(src2))));
       return;
@@ -2206,7 +2210,7 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
 #if DEBUG_REGISTER_ASSIGN
-  printf("\nSW SW DW");
+      printf("\nSW SW DW");
 #endif
       SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), invert_sw_sign(DW_TO_SW(DW_REG_CONTENTS(src2))));
       return;
@@ -2426,9 +2430,9 @@ SINGLE_WORD fp_add(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b, int normalise)
     {
 
 #if DEBUG_FP_SUMMARY
-  printf("\n%s: %s + ", __FUNCTION__, display_store_word(a));
-  printf("%s = ", display_store_word(b));
-  printf("%s", display_store_word(b));
+      printf("\n%s: %s + ", __FUNCTION__, display_store_word(a));
+      printf("%s = ", display_store_word(b));
+      printf("%s", display_store_word(b));
 #endif
 
       return(b);
@@ -2437,9 +2441,9 @@ SINGLE_WORD fp_add(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b, int normalise)
   if( STORE_GET_DIGITS(b) == 0 )
     {
 #if DEBUG_FP_SUMMARY
-  printf("\n%s: %s + ", __FUNCTION__, display_store_word(a));
-  printf("%s = ", display_store_word(b));
-  printf("%s", display_store_word(a));
+      printf("\n%s: %s + ", __FUNCTION__, display_store_word(a));
+      printf("%s = ", display_store_word(b));
+      printf("%s", display_store_word(a));
 #endif
 
       return(a);
@@ -2593,30 +2597,30 @@ SINGLE_WORD fp_multiply(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
   // Any overflow with addition => error
 
   for(int i=0; i<6; i++)
-  {
+    {
 #if DEBUG_FP
-    printf("\nTested:%08X  shifted:%016llX", tested_arg_digits, shifted_arg_digits); 
+      printf("\nTested:%08X  shifted:%016llX", tested_arg_digits, shifted_arg_digits); 
 #endif
 
-    // test
-    if( (tested_arg_digits & 0xF) != 0 )
-      {
-	for(int j=0; j<(tested_arg_digits & 0xF); j++)
-	  {
-	    digits_r = bcd_dw_addition(digits_r, shifted_arg_digits);
-	  }
-      }
+      // test
+      if( (tested_arg_digits & 0xF) != 0 )
+        {
+          for(int j=0; j<(tested_arg_digits & 0xF); j++)
+            {
+              digits_r = bcd_dw_addition(digits_r, shifted_arg_digits);
+            }
+        }
     
-    // Remove sign
-    shifted_arg_digits = REMOVED_DW_SIGN(shifted_arg_digits);
-    tested_arg_digits  = REMOVED_SW_SIGN(tested_arg_digits);
+      // Remove sign
+      shifted_arg_digits = REMOVED_DW_SIGN(shifted_arg_digits);
+      tested_arg_digits  = REMOVED_SW_SIGN(tested_arg_digits);
     
-    // Shift
-    tested_arg_digits >>= 4;
-    shifted_arg_digits <<=4;
-    shifted_arg_digits = SET_DW_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
-    tested_arg_digits  = SET_SW_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
-  }
+      // Shift
+      tested_arg_digits >>= 4;
+      shifted_arg_digits <<=4;
+      shifted_arg_digits = SET_DW_SIGN(shifted_arg_digits, WORD_SIGN_PLUS);
+      tested_arg_digits  = SET_SW_SIGN(tested_arg_digits,  WORD_SIGN_PLUS);
+    }
 
   
 #if DEBUG_FP
@@ -3020,9 +3024,12 @@ void load_iar_bcd(ESC_STATE *s, int bcdval)
 void next_iar(ESC_STATE *s)
 {
   FN_ENTRY;
-  
-  int digit_a = INST_A_FIELD(s->instruction_register);
 
+#if DEBUG_NEXT_IAR
+  printf("\nIAR before:%03X", s->iar);
+#endif
+
+  int digit_a = INST_A_FIELD(s->instruction_register);
   
   if( s->ki_reset_flag && !IS_EXTRACODE )
     {
@@ -3076,7 +3083,11 @@ void next_iar(ESC_STATE *s)
       
       break;
     }
-  
+
+#if DEBUG_NEXT_IAR
+  printf("\nIAR after8:%03X", s->iar);
+#endif
+
   FN_EXIT;
 }
 
@@ -3086,13 +3097,16 @@ void next_iar(ESC_STATE *s)
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-void enter_error_state(ESC_STATE *s)
+void enter_error_state(ESC_STATE *s, char *msg)
 {
   // Stop execution
   s->run  = 0;
   s->stop = 1;
 
   display_on_line(s, DISPLAY_UPDATE, 2, "            %c  ", ERROR_RECTANGLE);
+
+  printf("\n**** Error state:%s ****\n", msg);
+  printf("\n    IAR:%s\n", display_iar(s, SPEC_IAR));
 }
 
 
@@ -3271,7 +3285,14 @@ void stage_c_decode(ESC_STATE *s, int display)
 {
   SINGLE_WORD a1v, a2v, a3v;
   SINGLE_WORD tst;
-
+  int extreme_left_digit = 0;
+  int extreme_right_digit = 0;
+  int src_sign;
+  int is_gt_zero = 0;
+  int is_zero = 0;
+  int is_lt_zero = 0;
+  REGISTER_SINGLE_WORD  store_value;
+  
   FN_ENTRY_DISPLAY;
   
 #if DEBUG_STAGES
@@ -3332,464 +3353,15 @@ void stage_c_decode(ESC_STATE *s, int display)
   switch(s->inst_digit_a)
     {
     case 0:
-    case 1:
-      // Instruction complete, move IAR on
-      next_iar(s);
-      display_line_2(s, display);
-      break;
-
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
       switch(s->inst_digit_b)
 	{
 	case 0:
-	  next_iar(s);
-	  
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "               ");
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
-	  break;
-	  
-	case 1:
-	  next_iar(s);
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "               ");
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
-	  break;
-	  
-	case 2:
-	  next_iar(s);
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "               ");
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
-	  break;
-	  
-	case 4:
-	  // Unconditional branch
-	  // IAR already set up.
+          register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rc, s->reginst_literal);
+          break;
 
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
-	  break;
-	}
-      
-      break;
-      
-    case 7:
-    case 8:
-    case 9:
-      printf("\ndigit b:%d", s->inst_digit_b);
-      switch(s->inst_digit_b)
-	{
-	  //(Aa1) <- (Aa2) + (Aa3)
-	case 0:
-#if 0
-#if DEBUG_FP
-	  printf("\nFP Addition");
-	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
-#endif
-          
-	  a2v = load_from_store(s, s->Aa2);
-	  a3v = load_from_store(s, s->Aa3);
-
-	  a1v = fp_add(s, a2v, a3v, 1);
-	  write_sw_to_store(s, s->Aa1, a1v);
-
-	  //next_iar(s);
-#endif
-	  display_line_2(s, display);
-          display_three_address_values(s, display);
-	  break;
-
-	  //(Aa1) <- (Aa2) - (Aa3)
-	case 1:
-#if 0
-	  // Perform addition but reverse sign of second argument
-#if DEBUG_FP
-	  printf("\nFP Subtraction");
-	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
-#endif
-	  a2v = load_from_store(s, s->Aa2);
-	  a3v = load_from_store(s, s->Aa3);
-
-#if DEBUG_FP
-	  printf("\nA3v=%X", a3v);
-#endif
-
-	  a1v = fp_subtract(s, a2v, a3v, 1);
-	  write_sw_to_store(s, s->Aa1, a1v);
-
-	  //next_iar(s);
-#endif
-          
-	  display_line_2(s, display);
-          display_three_address_values(s, display);
-          //	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-	  //display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-	  //display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
-
-	  break;
-	  
-	  //(Aa1) <- (Aa2) * (Aa3)
-	case 2:
-#if 0
-#if DEBUG_FP
-	  printf("\nFP Multiply");
-	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
-#endif
-	  a2v = load_from_store(s, s->Aa2);
-	  a3v = load_from_store(s, s->Aa3);
-
-#if DEBUG_FP
-	  printf("\nA3v=%X", a3v);
-#endif
-
-	  a1v = fp_multiply(s, a2v, a3v);
-	  write_sw_to_store(s, s->Aa1, a1v);
-
-	  next_iar(s);
-#endif
-	  display_line_2(s, display);
-          display_three_address_values(s, display);
-	  //display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-	  //display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-	  //display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
-
-	  break;
-	  
-	  //(Aa1) <- (Aa2) / (Aa3)
-	case 3:
-#if 0
-#if DEBUG_FP
-	  printf("\nFP Divide");
-	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
-#endif
-	  a2v = load_from_store(s, s->Aa2);
-	  a3v = load_from_store(s, s->Aa3);
-
-#if DEBUG_FP
-	  printf("\nA3v=%X", a3v);
-#endif
-
-	  a1v = fp_divide(s, a2v, a3v);
-	  write_sw_to_store(s, s->Aa1, a1v);
-
-	  next_iar(s);
-#endif
-	  display_line_2(s, display);
-          display_three_address_values(s, display);
-          //	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-	  //display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-	  //display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
-
-	  break;
-
-	  // Branch to Aa1 if (Aa2) = (Aa3)
-	case 4:
-#if 0
-#if DEBUG_FP
-	  printf("\nBranch to Aa1 if (Aa2) = (Aa3)");
-	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
-#endif
-	  //	  a1v = load_from_store(s, s->Aa1);
-	  a1v = s->Ap1;
-	  a2v = load_from_store(s, s->Aa2);
-	  a3v = load_from_store(s, s->Aa3);
-
-#if DEBUG_FP
-	  printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
-#endif
-
-	  // move to next IAR, in case the branch isn't taken.
-	  next_iar(s);
-
-	  // Subtract the values and look for zero as that will account for different forms of the same value,
-	  // e.g:   A1000050 and A2000500
-	  // which are both 5 (5.0 and 5.00)
-	  tst = fp_subtract(s, a2v, a3v, 1);
-
-#if DEBUG_FP
-	  printf("\ntst=%08X", tst);
-#endif
-	  
-	  if( (tst & 0x00FFFFFF) == 0 )
-	    {
-#if DEBUG_FP
-	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
-	      printf("\n**Branch taken**");
-#endif
-	      
-              //	      s->iar.address = a1v;
-              load_iar_bcd(s, a1v);
-	      s->iar.a_flag = 0;
-	    }
-	  else
-	    {
-#if DEBUG_FP
-	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
-	      printf("\n**Branch NOT taken**");
-#endif
-	    }
-#endif
-	  display_line_2(s, display);
-          display_three_address_values(s, display);
-	  //display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  break;
-
-	  // Branch to Aa1 if (Aa2) > (Aa3)
-	case 5:
-#if 0
-#if DEBUG_FP
-	  printf("\nBranch to Aa1 if (Aa2) > (Aa3)");
-	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
-#endif
-	  //	  a1v = load_from_store(s, s->Aa1);
-	  a1v = s->Ap1;
-	  a2v = load_from_store(s, s->Aa2);
-	  a3v = load_from_store(s, s->Aa3);
-
-#if DEBUG_FP
-	  printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
-#endif
-
-	  // move to next IAR, in case the branch isn't taken.
-	  next_iar(s);
-
-	  // Subtract the values and look for a positive value and not zero
-	  // e.g:   A1000050 and A2000500
-	  // which are both 5 (5.0 and 5.00)
-	  tst = fp_subtract(s, a2v, a3v, 1);
-
-#if DEBUG_FP
-	  printf("\ntst=%08X", tst);
-#endif
-	  
-	  if( ((tst & 0x00FFFFFF) != 0) && ((tst & 0xF0000000) == 0xA0000000) )
-	    {
-#if DEBUG_FP
-	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
-	      printf("\n**Branch taken**");
-#endif
-
-              load_iar_bcd(s, a1v);
-              //	      s->iar.address = a1v;
-	      s->iar.a_flag = 0;
-	    }
-	  else
-	    {
-#if DEBUG_FP
-	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
-	      printf("\n**Branch NOT taken**");
-#endif
-	    }
-#endif	  
-	  display_line_2(s, display);
-          display_three_address_values(s, display);
-          //	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-
-	  break;
-
-	  // Branch to Aa1 if |(Aa2)| < |(Aa3)|
-	case 6:
-#if 0
-#if DEBUG_FP
-	  printf("\nBranch to Aa1 if (Aa2) > (Aa3)");
-	  printf("\nAa1=%X Aa2=%X Aa3=%X", s->Aa1, s->Aa2, s->Aa3);
-#endif
-	  //	  a1v = load_from_store(s, s->Aa1);
-	  a1v = s->Ap1;
-	  a2v = load_from_store(s, s->Aa2);
-	  a3v = load_from_store(s, s->Aa3);
-
-#if DEBUG_FP
-	  printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
-#endif
-
-	  // move to next IAR, in case the branch isn't taken.
-	  next_iar(s);
-
-	  // Subtract the values and look for a positive value and not zero
-	  // e.g:   A1000050 and A2000500
-	  // which are both 5 (5.0 and 5.00)
-
-	  // Force both values to be positive (modulus)
-	  a2v = SET_SW_SIGN(a2v, WORD_SIGN_PLUS);
-	  a3v = SET_SW_SIGN(a3v, WORD_SIGN_PLUS);
-	  
-	  SINGLE_WORD tst = fp_subtract(s, a2v, a3v, 1);
-
-#if DEBUG_FP
-	  printf("\ntst=%08X", tst);
-#endif
-	  
-	  if( ((tst & 0x00FFFFFF) != 0) && ((tst & 0xF0000000) == 0xA0000000) )
-	    {
-#if DEBUG_FP
-	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
-	      printf("\n**Branch taken**");
-#endif
-
-              load_iar_bcd(s, a1v);
-              //	      s->iar.address = a1v;
-	      s->iar.a_flag = 0;
-	    }
-	  else
-	    {
-#if DEBUG_FP
-	      printf("\na1v=%X a2v=%X a3v=%X", a1v, a2v, a3v);
-	      printf("\n**Branch NOT taken**");
-#endif
-	    }
-#endif
-	  display_line_2(s, display);
-          display_three_address_values(s, display);
-	  //display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-
-	  break;
-
-	  // Branch to (Aa1) if (Aa3) <> 0 and store link address in Aa2
-	case 7:
-	  break;
-	  
-	  // Input and display. When restarted KB register is copied to Aa1
-	  // While stopped (Aa1), (Aa2) and (Aa3) are displayed.
-
-	case 8:
-
-	  // We have reached stage C so continue if running, if not running we will pause anyway
-	  // when A,B or C is reached.
-	  s->stop = 0;
-	  display_line_2(s, display);
-          display_three_address_values(s, display);
-
-          //	  display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-
-	  break;
-	  
- 	  // Stop and display (Aa1), (Aa2) and (Aa3).
-	case 9:
-#if 0
-	  s->stop = 1;
-	  s->inst_update_display = 1;
-
-	  next_iar(s);
-#endif	  
-	  // Display
-	  display_line_2(s, display);
-          display_three_address_values(s, display);
-	  //display_on_line(s, display, 3, "%3X    %s", s->Ap1, display_store_word(load_from_store(s, s->Aa1)));
-	  //display_on_line(s, display, 4, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-	  //display_on_line(s, display, 5, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-	  break;
-
-	}
-
-      
-#if 1
-#if EXTRACODE_FRAMEWORK
-      // Put up stage B display, we have to force this display as we are running in the upper store after
-      //entering extracode above.
-#if 0
-      int save_update_display = s->update_display;
-      s->update_display = 1;
-#endif
-      update_display();
-
-#if 0
-      s->update_display = save_update_display;
-#endif
-      // Set up the extracode framework 
-      enter_extracode(s);
-      
-#else
-
-#endif
-#endif
-      
-
-      break;
-    }
-
-#if DEBUG_STAGES
-  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] exit", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
-#endif
-
-#if DUMP_STATE_STAGE_C
-  cli_dump();
-
-  
-#endif
-  FN_EXIT;
-  
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Stage B
-// Decode absolute addresses
-// Execute if possible
-////////////////////////////////////////////////////////////////////////////////
-
-void stage_b_decode(ESC_STATE *s, int display)
-{
-  FN_ENTRY_DISPLAY;
-  
-#if DEBUG_STAGES
-  printf(" [Stage B: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
-#endif
-
-  // Decode the instruction
-  // First the digits 1-4
-
-  int extreme_left_digit = 0;
-  int extreme_right_digit = 0;
-  int src_sign;
-  int is_gt_zero = 0;
-  int is_zero = 0;
-  int is_lt_zero = 0;
-  REGISTER_SINGLE_WORD  store_value;
-	  
-  switch(s->inst_digit_a)
-    {
-    case 0:
-      switch(s->inst_digit_b)
-	{
-	case 0:
-	  // (Rc) <= (Rc) + d
-	  register_assign_sum_register_literal(s, s->reginst_rc, s->reginst_rc, s->reginst_literal);
-
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
-	  break;
-
-	case 1:
+        case 1:
 	  // (Rc) <= (Rc) - d
 	  register_assign_sub_register_literal(s, s->reginst_rc, s->reginst_rc, s->reginst_literal);
-
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
 	  break;
 
 	case 2:
@@ -4053,14 +3625,17 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 	case 8:
 	  // Not used
-          enter_error_state(s);
+          enter_error_state(s, "08xx not used");
 	  break;
 
 	case 9:
 	  // Not used
-          enter_error_state(s);
+          enter_error_state(s, "09xx not used");
 	  break;
-	}
+        }
+
+      // All instructions move to next IAR (no branches)
+      next_iar(s);
       break;
       
     case 1:
@@ -4135,11 +3710,11 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 	case 8:
 	  // Not used
-          enter_error_state(s);
+          enter_error_state(s, "18xx not used");
 	  break;
 
 	case 9:
-          // This instruction is used to stop and disolay X,Y,Z when running in an extracode subroutine.
+          // This instruction is used to stop and display X,Y,Z when running in an extracode subroutine.
           // Check if we are in an extracode and behave appropriately.
 
           if( IS_EXTRACODE )
@@ -4167,10 +3742,13 @@ void stage_b_decode(ESC_STATE *s, int display)
             }
 	  break;
 	}
+      
+      // Instruction complete, move IAR on
+      printf("\nBBB\n");
+      next_iar(s);
 
       break;
 
-      // Single address instructions
     case 2:
     case 3:
     case 4:
@@ -4179,13 +3757,13 @@ void stage_b_decode(ESC_STATE *s, int display)
       switch(s->inst_digit_b)
 	{
 	case 0:
-	  // Copy (Aa) into R0 and R1 as follows. If Aa contains
+          // Copy (Aa) into R0 and R1 as follows. If Aa contains
 	  // data (recognisable by a sign in digit position 1), copy the
 	  // exponent digit into R0 and the sign and significant digits into
 	  // R1. If Aa contains an instruction (recognisable by a decimal
 	  // digit in position 1), copy the left-hand four digits into Ro and
 	  // the right-hand four digits into Ri
-
+          
 	  // Fixed registers
 	  s->reginst_rc = 0;
 	  s->reginst_rd = 1;
@@ -4208,13 +3786,18 @@ void stage_b_decode(ESC_STATE *s, int display)
 	      s->R[1] = STORE_GET_RH4_DIGITS(store_value);
 	      s->R[1] = SET_SW_SIGN(s->R[1], WORD_SIGN_PLUS);
 	    }
+
+          printf("\nCCC\n");
+	  next_iar(s);
 	  
 	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "               ");
 	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
 	  break;
 	  
 	case 1:
-	  
 	  // Store (R0) and (R1) in location Aa in data format; i.e. copy (R0)
 	  // into the exponent position, and copy (RO into the sign and
 	  // significant digit positions. If the number is outside the range
@@ -4235,17 +3818,21 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  printf("\nINST 21");
 	  printf("\nWriting %08X to store location %02X", store_value, s->inst_aa);
 #endif
+
+          printf("\nDDD\n");
+          next_iar(s);
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rd));
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
 	  break;
 	  
 	case 2:
 	  // Store (R0) and (R1) in location Aa in instruction format; i.e.
 	  // copy (R0) into the left-hand four digit positions and (R1) into
 	  // the right-hand four digit positions
-	  	  // Fixed registers
+          // Fixed registers
 	  s->reginst_rc = 0;
 	  s->reginst_rd = 1;
 
@@ -4258,19 +3845,20 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  printf("\nINST 22");
 	  printf("\nWriting %08X to store location %02X", store_value, s->inst_aa);
 #endif
+
+          printf("\nEEE\n");
+          next_iar(s);
 	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 4, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rd));
-	  break;
-	  
-	case 3:
-	  // Not used
+	  display_on_line(s, display, 3, "               ");
+	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
 	  break;
 	  
 	case 4:
 	  // Unconditional branch
 	  // Move the IAR on to the next address and store that in the link register
+          printf("\nFFF\n");
 	  next_iar(s);
 	  s->link_register = s->iar.address;
 	  
@@ -4280,38 +3868,42 @@ void stage_b_decode(ESC_STATE *s, int display)
           //	  s->iar.address = s->inst_aa;
 
           s->iar.a_flag = 0;
+
+	  // Unconditional branch
+	  // IAR already set up.
+
+	  display_line_2(s, display);
+	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  break;
-	  
-	case 5:
-	  // Branch if control latch is 1
-	  if( s->control_latch == 1 )
-	    {
+
+        case 5:
+          // Branch if control latch is 1
+          if( s->control_latch == 1 )
+            {
 #if DEBUG_BRANCH
               printf("\n25xx BRANCH");
 #endif
-	      // Move the IAR on to the next address and store that in the link register
-	      next_iar(s);
-	      s->link_register = s->iar.address;
-	      
-	      // Now over-write that IAR with the address we want to jump to
+              // Move the IAR on to the next address and store that in the link register
+              printf("\nGGG\n");
+              next_iar(s);
+              s->link_register = s->iar.address;
+	  
+              // Now over-write that IAR with the address we want to jump to
               //	      s->iar.address = s->inst_aa;
               load_iar_bcd(s, s->inst_aa);
-	      s->iar.a_flag = 0;
-	    }
-	  else
-	    {
-	      // Move to next IAR if test fails
-	      next_iar(s);
-	    }
+              s->iar.a_flag = 0;
+            }
+          else
+            {
+              // Move to next IAR if test fails
+              printf("\nHHH\n");
+              next_iar(s);
+            }
+      
+          break;
 
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%02X", s->inst_aa);
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
-	  break;
-	  
-	case 6:
-	  // Branch if control latch is 0
+        case 6:
+      	  // Branch if control latch is 0
 	  if( s->control_latch == 0 )
 	    {
 	      // Move the IAR on to the next address and store that in the link register
@@ -4328,118 +3920,99 @@ void stage_b_decode(ESC_STATE *s, int display)
 	      // Move to next IAR if test fails
 	      next_iar(s);
 	    }
-
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%02X", s->inst_aa);
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "CL            %d", s->control_latch);
-	  break;
-	  
-	case 7:
-	  // Store contents of link address in Aa
+          break;
+      
+        case 7:
+      	  // Store contents of link address in Aa
 	  write_sw_to_store(s, s->inst_aa, s->link_register);
 
           next_iar(s);
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
+          break;
           
-	  break;
-	  
-	case 8:
-	  // Stop and when restarted transfer keyboard register contents into Aa
+        case 8:
+      	  // Stop and when restarted transfer keyboard register contents into Aa
 	  s->stop = 1;
 	  s->on_restart_load_aa = 1;
           s->update_display = 1;
           
           next_iar(s);
+          break;
           
-	  // Input
-#if 0
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%02X", s->inst_aa);
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "IN             ");
-#else
-	  display_line_2(s,  DISPLAY_UPDATE);
-	  display_on_line(s, DISPLAY_UPDATE, 3, "%02X", s->inst_aa);
-	  display_on_line(s, DISPLAY_UPDATE, 4, "               ");
-	  display_on_line(s, DISPLAY_UPDATE, 5, "IN             ");
-#endif
-	  break;
-	  
-	case 9:
-	  // Display
+        case 9:
+      	  // Display
           next_iar(s);
 
-#if 0
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "DISP           ");
-#else
-	  display_line_2(s,  DISPLAY_UPDATE);
-	  display_on_line(s, DISPLAY_UPDATE, 3, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, DISPLAY_UPDATE, 4, "               ");
-	  display_on_line(s, DISPLAY_UPDATE, 5, "DISP           ");
-#endif
 	  // Stop and display (Aa)
 	  s->stop = 1;
-	  break;
-	  
+          break;
+
 	}
+      
       break;
 
-      // Three address instructions
     case 7:
     case 8:
     case 9:
-      switch(s->inst_digit_b)
-	{
-	case 8:
-          // This functionality done by extracodes, not here.
-#if 0
-	  // Stop and when restarted transfer (in stage C) keyboard register contents into Aa
-	  /s->stop = 1;
-	  s->on_restart_load_aa1 = 0;
-	  s->inst_update_display = 1;
-	  
-	  next_iar(s);
-	  
-	  // Display
-	  // We have to force the display on here as we could be running and we want to see the prompt
-	  
-          if( display)
-            {
-              display_line_2(s, DISPLAY_UPDATE);
-              display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Ap2, display_store_word(load_from_store(s, s->Aa2)));
-              display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Ap3, display_store_word(load_from_store(s, s->Aa3)));
-              display_on_line(s, DISPLAY_UPDATE, 5, "               ");
-            }
-#endif
-	  break;
+      
+#if EXTRACODE_FRAMEWORK
+      // Put up stage B display, we have to force this display as we are running in the upper store after
+      //entering extracode above.
+      //      update_display();
 
-	  
-	case 0:
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-	case 5:
-	case 6:
-	case 7:
-	case 9:
-#if 0
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->Aa1));
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->Aa2));
-	  display_on_line(s, display, 5, "%s", display_store_and_contents(s, s->Aa3));
+      
+      // Set up the extracode framework, if we aren't already in extracode
+      // Extracode instructions aren't allowed in extracode subroutines
+      if( !IS_EXTRACODE )
+        {
+          enter_extracode(s);
+        }
+      else
+        {
+          // Error
+          enter_error_state(s, "Threee address instruction found in extracode subroutine");
+        }
+#else
+      
 #endif
-	  break;
-	}
       break;
     }
+
+#if DEBUG_STAGES
+  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] exit", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+#endif
+
+#if DUMP_STATE_STAGE_C
+  cli_dump();
+
+  
+#endif
+
+  // Stage C only displayed if we aren't in extracode
+  // If we are then it is displayed when we exit
+  if( !IS_EXTRACODE )
+    {
+      stage_c_display(s, display, s->inst_digit_a);
+    }
+  
+  FN_EXIT;
+  
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Stage B
+// Decode absolute addresses
+// Execute if possible
+////////////////////////////////////////////////////////////////////////////////
+
+void stage_b_decode(ESC_STATE *s, int display)
+{
+  FN_ENTRY_DISPLAY;
+  
+#if DEBUG_STAGES
+  printf(" [Stage B: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+#endif
+
+  stage_b_display(s, display, s->inst_digit_a);
   
   FN_EXIT;
 }
@@ -4468,12 +4041,59 @@ void stage_a_display(ESC_STATE *s, int display, int a)
     {
       // Register instructions
     case 0:
+      switch(s->inst_digit_b)
+	{
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+
+        case 5:
+        case 6:
+        case 7:
+	  display_line_2(s, display);
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc, NO_CONTENTS);
+          break;
+        }
+      
     case 1:
+      display_line_2(s, display);
+      clear_lines_3_to_6(s, display);
+      display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, NO_CONTENTS);
       break;
 
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      switch(s->inst_digit_b)
+	{
+	case 0:
+	case 1:
+	case 2:
+	  display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X    %s", s->inst_ap, display_store_word(load_from_store(s, s->inst_ap)));
+	  display_any_size_register_on_line(s, display, 4, 0, NO_CONTENTS);
+          display_any_size_register_on_line(s, display, 5, 1, NO_CONTENTS);
+          break;
+          
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+	  display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X    %s", s->inst_ap, display_store_word(load_from_store(s, s->inst_ap)));
+          break;
+        }
+      
+      break;
+      
       // Absolute addressing
     case 7:
-    case 2:
       clear_line(s, display, 4);
       clear_line(s, display, 5);
       clear_line(s, display, 6);
@@ -4481,10 +4101,6 @@ void stage_a_display(ESC_STATE *s, int display, int a)
       
       // Relative
     case 8:
-    case 3:
-    case 4:
-    case 5:
-      char *display_register_and_contents(ESC_STATE *s, int regno);
       display_any_size_register_on_line(s, display, 4, 3, CONTENTS);
       display_any_size_register_on_line(s, display, 5, 4, CONTENTS);
       display_any_size_register_on_line(s, display, 6, 5, CONTENTS);
@@ -4492,10 +4108,191 @@ void stage_a_display(ESC_STATE *s, int display, int a)
 
       // Indirect
     case 9:
-    case 6:
+
       display_on_line(s, display, 4, "%2X    %s", s->Ap1, display_store_word(load_from_store(s, s->Ap1)));
       display_on_line(s, display, 5, "%2X    %s", s->Ap2, display_store_word(load_from_store(s, s->Ap2)));
       display_on_line(s, display, 6, "%2X    %s", s->Ap3, display_store_word(load_from_store(s, s->Ap3)));
+      break;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Display for stage B
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+void stage_b_display(ESC_STATE *s, int display, int a)
+{
+  // Common Items
+
+  clear_display(s, display);
+  
+  // Top line clear
+  clear_line(s, display, 1);
+
+  display_line_2(s, display);
+  clear_line(s, display, 3);
+  
+  switch(a)
+    {
+      // Register instructions
+    case 0:
+    case 1:
+      display_line_2(s, display);
+      clear_lines_3_to_6(s, display);
+      display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+      break;
+
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      switch(s->inst_digit_b)
+	{
+	case 0:
+	case 1:
+	case 2:
+	  display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X    %s", s->inst_aa, display_store_word(load_from_store(s, s->inst_aa)));
+	  display_any_size_register_on_line(s, display, 4, 0, CONTENTS);
+          display_any_size_register_on_line(s, display, 5, 1, CONTENTS);
+          break;
+          
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+	  display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X    %s", s->inst_aa, display_store_word(load_from_store(s, s->inst_aa)));
+          break;
+        }
+
+      break;
+      
+      // Absolute addressing
+    case 7:
+      display_on_line(s, display, 4, "%2X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+      display_on_line(s, display, 5, "%2X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+      display_on_line(s, display, 6, "%2X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+      break;
+      
+      // Relative
+    case 8:
+      display_on_line(s, display, 4, "%2X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+      display_on_line(s, display, 5, "%2X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+      display_on_line(s, display, 6, "%2X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+
+      //display_any_size_register_on_line(s, display, 4, 3, CONTENTS);
+      //display_any_size_register_on_line(s, display, 5, 4, CONTENTS);
+      //display_any_size_register_on_line(s, display, 6, 5, CONTENTS);
+      break;
+      
+      // Indirect
+    case 9:
+      display_on_line(s, display, 4, "%2X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+      display_on_line(s, display, 5, "%2X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+      display_on_line(s, display, 6, "%2X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+      break;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Display for stage C
+//
+////////////////////////////////////////////////////////////////////////////////
+
+void stage_c_display(ESC_STATE *s, int display, int a)
+{
+  // Common Items
+
+  clear_display(s, display);
+  
+  // Top line clear
+  clear_line(s, display, 1);
+
+  display_line_2(s, display);
+  clear_line(s, display, 3);
+  
+  switch(a)
+    {
+      // Register instructions
+    case 0:
+    case 1:
+      display_line_2(s, display);
+      clear_lines_3_to_6(s, display);
+      display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+      break;
+
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      switch(s->inst_digit_b)
+	{
+	case 0:
+	case 1:
+	case 2:
+	  display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X    %s", s->inst_aa, display_store_word(load_from_store(s, s->inst_aa)));
+	  display_any_size_register_on_line(s, display, 4, 0, CONTENTS);
+          display_any_size_register_on_line(s, display, 5, 1, CONTENTS);
+          break;
+          
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+	  display_line_2(s, display);
+          display_on_line(s, display, 3, "%2X    %s", s->inst_aa, display_store_word(load_from_store(s, s->inst_aa)));
+          break;
+        }
+
+      break;
+      
+      // Three address instructions have the three TARs in upper store (100..102) which
+      // hold the address of the values X, Y and Z.
+      // We can use those to display the results after stage C
+#if 0
+    case 7:
+
+      //display_on_line(s, display, 4, "%2X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+      //display_on_line(s, display, 5, "%2X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+      //display_on_line(s, display, 6, "%2X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+      //break;
+      
+      // Relative
+    case 8:
+      //display_on_line(s, display, 4, "%2X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+      //display_on_line(s, display, 5, "%2X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+      //display_on_line(s, display, 6, "%2X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+
+      //display_any_size_register_on_line(s, display, 4, 3, CONTENTS);
+      //display_any_size_register_on_line(s, display, 5, 4, CONTENTS);
+      //display_any_size_register_on_line(s, display, 6, 5, CONTENTS);
+      //break;
+      
+      // Indirect
+    case 9:
+      //display_on_line(s, display, 4, "%2X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+      //display_on_line(s, display, 5, "%2X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+      //display_on_line(s, display, 6, "%2X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+      break;
+#endif
+    case 7:
+    case 8:
+    case 9:
+      display_on_line(s, display, 4, "%2X    %s", load_from_store(s, TAR1), display_store_word(load_from_store(s, load_from_store(s, TAR1))));
+      display_on_line(s, display, 5, "%2X    %s", load_from_store(s, TAR2), display_store_word(load_from_store(s, load_from_store(s, TAR2))));
+      display_on_line(s, display, 6, "%2X    %s", load_from_store(s, TAR3), display_store_word(load_from_store(s, load_from_store(s, TAR3))));
       break;
     }
 }
@@ -4550,7 +4347,7 @@ void stage_a_decode(ESC_STATE *s, int display)
     case WORD_SIGN_PLUS:
     case WORD_SIGN_MINUS:
     case WORD_SIGN_NONE:       // No sign is still a bad value for an instruction
-      enter_error_state(s);
+      enter_error_state(s, "Expecting instruction");
       break;
     }
   
@@ -4591,12 +4388,12 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  
 	case 4:
 	  // Not used
-          enter_error_state(s);
+          enter_error_state(s, "04xx not used");
 	  break;
 	  
 	case 5:
 	  // TEST
-	  // Performed in stage B
+	  // Performed in stage C
 	  s->reginst_rc = s->inst_digit_c;
 
 	  display_line_2(s, display);
@@ -4616,8 +4413,11 @@ void stage_a_decode(ESC_STATE *s, int display)
 	  break;
           
         case 8:
+          enter_error_state(s, "08xx not used");
+          break;
+
         case 9:
-          enter_error_state(s);
+          enter_error_state(s, "09xx not used");
           break;
 	}
       break;
@@ -4626,9 +4426,13 @@ void stage_a_decode(ESC_STATE *s, int display)
       switch(s->inst_digit_b)
 	{
 	case 5:
-        case 8:
-          enter_error_state(s);    
+          enter_error_state(s, "15xx not used");    
           break;
+          
+        case 8:
+          enter_error_state(s, "18xx not used");
+          break;
+          
         default:
           
           // Register instructions
@@ -5235,8 +5039,8 @@ void prepare_instruction(ESC_STATE *s)
       // Load instruction into instruction register
       s->instruction_register = load_from_store(s, s->iar.address);
 #if DEBUG_PREPARE
-  printf("\n%s:iar:%08X", __FUNCTION__, s->iar.address);
-  //cli_dump_store();
+      printf("\n%s:iar:%08X", __FUNCTION__, s->iar.address);
+      //cli_dump_store();
 #endif
 
     }
@@ -5805,84 +5609,84 @@ void state_setup_select(FSM_DATA *es, TOKEN tok)
 
 STATE esc_table[ ] =
   {
-   {
-    _STATE(STATE_ESC_INIT),
-    null_entry_fn,
-    null_every_fn,
     {
-     {CTOK_NUMERIC,         STATE_ESC_INIT,   state_esc_numeric},
+      _STATE(STATE_ESC_INIT),
+      null_entry_fn,
+      null_every_fn,
+      {
+        {CTOK_NUMERIC,         STATE_ESC_INIT,   state_esc_numeric},
 
-     {TOK_KEY_DOT,          STATE_ESC_INIT,   state_esc_dot},
-     {TOK_KEY_MINUS,        STATE_ESC_INIT,   state_esc_minus},
+        {TOK_KEY_DOT,          STATE_ESC_INIT,   state_esc_dot},
+        {TOK_KEY_MINUS,        STATE_ESC_INIT,   state_esc_minus},
      
-     {TOK_KEY_NORMAL_RESET, STATE_ESC_INIT,   state_esc_normal_reset},
-     {TOK_KEY_KI_RESET,     STATE_ESC_INIT,   state_esc_ki_reset},
-     {TOK_KEY_LOAD_IAR,     STATE_ESC_INIT,   state_esc_load_iar},
-     {TOK_KEY_LOAD_ADDR,    STATE_ESC_INIT,   state_esc_load_addr},
-     {TOK_KEY_INCR_ADDR,    STATE_ESC_INIT,   state_esc_incr_addr},
-     {TOK_KEY_DECR_ADDR,    STATE_ESC_INIT,   state_esc_decr_addr},
-     {TOK_KEY_LOAD_STORE,   STATE_ESC_INIT,   state_esc_load_store},
-     {TOK_KEY_A,            STATE_ESC_INIT,   state_esc_a_disp},
-     {TOK_KEY_B,            STATE_ESC_INIT,   state_esc_b_disp},
-     {TOK_KEY_C,            STATE_ESC_INIT,   state_esc_c_disp},
-     {TOK_KEY_RUN,          STATE_ESC_INIT,   state_esc_run},
-     {TOK_KEY_STOP,         STATE_ESC_INIT,   state_esc_stop},
-     {TOK_KEY_DUMP,         STATE_ESC_INIT,   state_esc_dump},
-     {TOK_KEY_RELOAD,       STATE_ESC_RELOAD, state_esc_reload},
-     {TOK_KEY_SETUP,        STATE_ESC_SETUP,  state_esc_setup},
-     {TOK_KEY_CLEAR,        STATE_ESC_INIT,   state_esc_clear},
+        {TOK_KEY_NORMAL_RESET, STATE_ESC_INIT,   state_esc_normal_reset},
+        {TOK_KEY_KI_RESET,     STATE_ESC_INIT,   state_esc_ki_reset},
+        {TOK_KEY_LOAD_IAR,     STATE_ESC_INIT,   state_esc_load_iar},
+        {TOK_KEY_LOAD_ADDR,    STATE_ESC_INIT,   state_esc_load_addr},
+        {TOK_KEY_INCR_ADDR,    STATE_ESC_INIT,   state_esc_incr_addr},
+        {TOK_KEY_DECR_ADDR,    STATE_ESC_INIT,   state_esc_decr_addr},
+        {TOK_KEY_LOAD_STORE,   STATE_ESC_INIT,   state_esc_load_store},
+        {TOK_KEY_A,            STATE_ESC_INIT,   state_esc_a_disp},
+        {TOK_KEY_B,            STATE_ESC_INIT,   state_esc_b_disp},
+        {TOK_KEY_C,            STATE_ESC_INIT,   state_esc_c_disp},
+        {TOK_KEY_RUN,          STATE_ESC_INIT,   state_esc_run},
+        {TOK_KEY_STOP,         STATE_ESC_INIT,   state_esc_stop},
+        {TOK_KEY_DUMP,         STATE_ESC_INIT,   state_esc_dump},
+        {TOK_KEY_RELOAD,       STATE_ESC_RELOAD, state_esc_reload},
+        {TOK_KEY_SETUP,        STATE_ESC_SETUP,  state_esc_setup},
+        {TOK_KEY_CLEAR,        STATE_ESC_INIT,   state_esc_clear},
      
-     // Execute code at full speed
-     {TOK_NO_TOK,           STATE_ESC_INIT,  state_esc_execute},
-     {CTOK_ERROR,           STATE_ESC_INIT,  NULL},
-     {CTOK_END,             STATE_NULL,      NULL},
-    }
-   },
-   {
-    _STATE(STATE_ESC_RELOAD),
-    null_entry_fn,
-    null_every_fn,
+        // Execute code at full speed
+        {TOK_NO_TOK,           STATE_ESC_INIT,  state_esc_execute},
+        {CTOK_ERROR,           STATE_ESC_INIT,  NULL},
+        {CTOK_END,             STATE_NULL,      NULL},
+      }
+    },
     {
-     {TOK_KEY_INCR_ADDR,    STATE_ESC_RELOAD,  state_reload_incr},
-     {TOK_KEY_DECR_ADDR,    STATE_ESC_RELOAD,  state_reload_decr},
-     {TOK_KEY_CLEAR,        STATE_ESC_DELETE,  state_reload_delete},
-     {TOK_KEY_RELOAD,       STATE_ESC_INIT,    state_reload_reload},
-     {TOK_KEY_KI_RESET,     STATE_ESC_INIT,    state_reload_clear},
-     {CTOK_END,             STATE_NULL,        NULL},
-    }
-   },
-   {
-    _STATE(STATE_ESC_SETUP),
-    null_entry_fn,
-    null_every_fn,
+      _STATE(STATE_ESC_RELOAD),
+      null_entry_fn,
+      null_every_fn,
+      {
+        {TOK_KEY_INCR_ADDR,    STATE_ESC_RELOAD,  state_reload_incr},
+        {TOK_KEY_DECR_ADDR,    STATE_ESC_RELOAD,  state_reload_decr},
+        {TOK_KEY_CLEAR,        STATE_ESC_DELETE,  state_reload_delete},
+        {TOK_KEY_RELOAD,       STATE_ESC_INIT,    state_reload_reload},
+        {TOK_KEY_KI_RESET,     STATE_ESC_INIT,    state_reload_clear},
+        {CTOK_END,             STATE_NULL,        NULL},
+      }
+    },
     {
-     {TOK_KEY_INCR_ADDR,    STATE_ESC_SETUP,   state_setup_incr},
-     {TOK_KEY_DECR_ADDR,    STATE_ESC_SETUP,   state_setup_decr},
-     {TOK_KEY_0,            STATE_ESC_SETUP,   state_setup_val0},
-     {TOK_KEY_1,            STATE_ESC_SETUP,   state_setup_val1},
-     {TOK_KEY_SETUP,        STATE_ESC_INIT,    state_setup_select},
-     //     {TOK_KEY_KI_RESET,     STATE_ESC_INIT,    state_setup_clear},
-     {CTOK_END,             STATE_NULL,        NULL},
-    }
-   },
-   {
-    _STATE(STATE_ESC_DELETE),
-    null_entry_fn,
-    null_every_fn,
+      _STATE(STATE_ESC_SETUP),
+      null_entry_fn,
+      null_every_fn,
+      {
+        {TOK_KEY_INCR_ADDR,    STATE_ESC_SETUP,   state_setup_incr},
+        {TOK_KEY_DECR_ADDR,    STATE_ESC_SETUP,   state_setup_decr},
+        {TOK_KEY_0,            STATE_ESC_SETUP,   state_setup_val0},
+        {TOK_KEY_1,            STATE_ESC_SETUP,   state_setup_val1},
+        {TOK_KEY_SETUP,        STATE_ESC_INIT,    state_setup_select},
+        //     {TOK_KEY_KI_RESET,     STATE_ESC_INIT,    state_setup_clear},
+        {CTOK_END,             STATE_NULL,        NULL},
+      }
+    },
     {
-     {TOK_KEY_NORMAL_RESET, STATE_ESC_RELOAD,  state_delete_do_delete},
-     {TOK_KEY_CLEAR,        STATE_ESC_RELOAD,  state_reload_clear},
-     {TOK_KEY_KI_RESET,     STATE_ESC_RELOAD,  state_reload_clear},
-     {CTOK_END,             STATE_NULL,        NULL},
-    }
-   },
+      _STATE(STATE_ESC_DELETE),
+      null_entry_fn,
+      null_every_fn,
+      {
+        {TOK_KEY_NORMAL_RESET, STATE_ESC_RELOAD,  state_delete_do_delete},
+        {TOK_KEY_CLEAR,        STATE_ESC_RELOAD,  state_reload_clear},
+        {TOK_KEY_KI_RESET,     STATE_ESC_RELOAD,  state_reload_clear},
+        {CTOK_END,             STATE_NULL,        NULL},
+      }
+    },
   };
 
 FSM esc_fsm =
   {
-   "ESC FSM",
-   STATE_ESC_INIT,
-   esc_table,
+    "ESC FSM",
+    STATE_ESC_INIT,
+    esc_table,
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -5955,8 +5759,8 @@ typedef struct _QT_KEYS
   int esc_token;
 } QT_KEYS;
 
-   // Note that on the PCB Y0-Y3 are reversed and so are actually
-   // Y3-Y0
+// Note that on the PCB Y0-Y3 are reversed and so are actually
+// Y3-Y0
 
 #define Y0 3
 #define Y1 2
@@ -5968,65 +5772,65 @@ typedef struct _QT_KEYS
 QT_KEYS qt_keycode[] =
   {
 #if 1
-   {"KI RESET   ", 0,   Y4, TOK_KEY_KI_RESET},
-   {"A          ", 0,   Y0, TOK_KEY_A},
-   {"B          ", 2,   Y0, TOK_KEY_B},
-   {"C          ", 1,   Y4, TOK_KEY_C},
-   {"0          ", 0,   Y1, TOK_KEY_0},
-   {"1          ", 0,   Y2, TOK_KEY_1},
-   {"2          ", 6,   Y2, TOK_KEY_2},
-   {"3          ", 6,   Y1, TOK_KEY_3},
-   {"4          ", 2,   Y2, TOK_KEY_4},
-   {"5          ", 5,   Y2, TOK_KEY_5},
-   {"6          ", 5,   Y1, TOK_KEY_6},
-   {"7          ", 1,   Y2, TOK_KEY_7},
-   {"8          ", 4,   Y2, TOK_KEY_8},
-   {"9          ", 4,   Y1, TOK_KEY_9},
-   {"RUN        ", 3,   Y0, TOK_KEY_RUN},
-   {"STOP       ", 2,   Y4, TOK_KEY_STOP},
-   {"RELOAD     ", 1,   Y5, TOK_KEY_RELOAD},
-   {"CHECK      ", 2,   Y5, TOK_KEY_CHECK},
-   {"DUMP       ", 3,   Y5, TOK_KEY_DUMP},
-   {"LOAD IAR   ", 0,   Y3, TOK_KEY_LOAD_IAR},
-   {"LOAD ADDR  ", 7,   Y3, TOK_KEY_LOAD_ADDR},
-   {"LOAD STORE ", 6,   Y3, TOK_KEY_LOAD_STORE},
-   {"DECR ADDR  ", 4,   Y3, TOK_KEY_DECR_ADDR},
-   {"INCR ADDR  ", 5,   Y3, TOK_KEY_INCR_ADDR},
-   {"NORM RESET ", 2,   Y3, TOK_KEY_NORMAL_RESET},
-   {"CLEAR      ", 3,   Y2, TOK_KEY_CLEAR},
-   {"DOT        ", 7,   Y1, TOK_KEY_DOT},
-   {"MINUS      ", 7,   Y2, TOK_KEY_MINUS},
+    {"KI RESET   ", 0,   Y4, TOK_KEY_KI_RESET},
+    {"A          ", 0,   Y0, TOK_KEY_A},
+    {"B          ", 2,   Y0, TOK_KEY_B},
+    {"C          ", 1,   Y4, TOK_KEY_C},
+    {"0          ", 0,   Y1, TOK_KEY_0},
+    {"1          ", 0,   Y2, TOK_KEY_1},
+    {"2          ", 6,   Y2, TOK_KEY_2},
+    {"3          ", 6,   Y1, TOK_KEY_3},
+    {"4          ", 2,   Y2, TOK_KEY_4},
+    {"5          ", 5,   Y2, TOK_KEY_5},
+    {"6          ", 5,   Y1, TOK_KEY_6},
+    {"7          ", 1,   Y2, TOK_KEY_7},
+    {"8          ", 4,   Y2, TOK_KEY_8},
+    {"9          ", 4,   Y1, TOK_KEY_9},
+    {"RUN        ", 3,   Y0, TOK_KEY_RUN},
+    {"STOP       ", 2,   Y4, TOK_KEY_STOP},
+    {"RELOAD     ", 1,   Y5, TOK_KEY_RELOAD},
+    {"CHECK      ", 2,   Y5, TOK_KEY_CHECK},
+    {"DUMP       ", 3,   Y5, TOK_KEY_DUMP},
+    {"LOAD IAR   ", 0,   Y3, TOK_KEY_LOAD_IAR},
+    {"LOAD ADDR  ", 7,   Y3, TOK_KEY_LOAD_ADDR},
+    {"LOAD STORE ", 6,   Y3, TOK_KEY_LOAD_STORE},
+    {"DECR ADDR  ", 4,   Y3, TOK_KEY_DECR_ADDR},
+    {"INCR ADDR  ", 5,   Y3, TOK_KEY_INCR_ADDR},
+    {"NORM RESET ", 2,   Y3, TOK_KEY_NORMAL_RESET},
+    {"CLEAR      ", 3,   Y2, TOK_KEY_CLEAR},
+    {"DOT        ", 7,   Y1, TOK_KEY_DOT},
+    {"MINUS      ", 7,   Y2, TOK_KEY_MINUS},
 #endif
 
 #if 0
-   {"KI RESET   ", 0,   4, TOK_KEY_KI_RESET},
-   {"A          ", 0,   3, TOK_KEY_A},
-   {"B          ", 2,   3, TOK_KEY_B},
-   {"C          ", 1,   4, TOK_KEY_C},
-   {"0          ", 0,   2, TOK_KEY_0},
-   {"1          ", 0,   1, TOK_KEY_1},
-   {"2          ", 6,   1, TOK_KEY_2},
-   {"3          ", 6,   2, TOK_KEY_3},
-   {"4          ", 2,   1, TOK_KEY_4},
-   {"5          ", 5,   1, TOK_KEY_5},
-   {"6          ", 5,   2, TOK_KEY_6},
-   {"7          ", 1,   1, TOK_KEY_7},
-   {"8          ", 4,   1, TOK_KEY_8},
-   {"9          ", 4,   2, TOK_KEY_9},
-   {"RUN        ", 3,   3, TOK_KEY_RUN},
-   {"STOP       ", 2,   4, TOK_KEY_STOP},
-   {"RELOAD     ", 1,   5, TOK_KEY_RELOAD},
-   {"CHECK      ", 2,   5, TOK_KEY_CHECK},
-   {"DUMP       ", 3,   5, TOK_KEY_DUMP},
-   {"LOAD IAR   ", 0,   0, TOK_KEY_LOAD_IAR},
-   {"LOAD ADDR  ", 7,   0, TOK_KEY_LOAD_ADDR},
-   {"LOAD STORE ", 6,   0, TOK_KEY_LOAD_STORE},
-   {"DECR ADDR  ", 4,   0, TOK_KEY_DECR_ADDR},
-   {"INCR ADDR  ", 5,   0, TOK_KEY_INCR_ADDR},
-   {"NORM RESET ", 2,   0, TOK_KEY_NORMAL_RESET},
-   {"CLEAR      ", 3,   1, TOK_KEY_CLEAR},
-   {"DOT        ", 7,   2, TOK_KEY_DOT},
-   {"MINUS      ", 7,   1, TOK_KEY_MINUS},
+    {"KI RESET   ", 0,   4, TOK_KEY_KI_RESET},
+    {"A          ", 0,   3, TOK_KEY_A},
+    {"B          ", 2,   3, TOK_KEY_B},
+    {"C          ", 1,   4, TOK_KEY_C},
+    {"0          ", 0,   2, TOK_KEY_0},
+    {"1          ", 0,   1, TOK_KEY_1},
+    {"2          ", 6,   1, TOK_KEY_2},
+    {"3          ", 6,   2, TOK_KEY_3},
+    {"4          ", 2,   1, TOK_KEY_4},
+    {"5          ", 5,   1, TOK_KEY_5},
+    {"6          ", 5,   2, TOK_KEY_6},
+    {"7          ", 1,   1, TOK_KEY_7},
+    {"8          ", 4,   1, TOK_KEY_8},
+    {"9          ", 4,   2, TOK_KEY_9},
+    {"RUN        ", 3,   3, TOK_KEY_RUN},
+    {"STOP       ", 2,   4, TOK_KEY_STOP},
+    {"RELOAD     ", 1,   5, TOK_KEY_RELOAD},
+    {"CHECK      ", 2,   5, TOK_KEY_CHECK},
+    {"DUMP       ", 3,   5, TOK_KEY_DUMP},
+    {"LOAD IAR   ", 0,   0, TOK_KEY_LOAD_IAR},
+    {"LOAD ADDR  ", 7,   0, TOK_KEY_LOAD_ADDR},
+    {"LOAD STORE ", 6,   0, TOK_KEY_LOAD_STORE},
+    {"DECR ADDR  ", 4,   0, TOK_KEY_DECR_ADDR},
+    {"INCR ADDR  ", 5,   0, TOK_KEY_INCR_ADDR},
+    {"NORM RESET ", 2,   0, TOK_KEY_NORMAL_RESET},
+    {"CLEAR      ", 3,   1, TOK_KEY_CLEAR},
+    {"DOT        ", 7,   2, TOK_KEY_DOT},
+    {"MINUS      ", 7,   1, TOK_KEY_MINUS},
 #endif   
   };
 
@@ -6039,12 +5843,12 @@ char *qt_key_name(int code)
     {
       //printf("\n%d: %d  %s", i, ((qt_keycode[i].x)+8*(qt_keycode[i].y)), qt_keycode[i].name);
       if( ((qt_keycode[i].x)+8*(qt_keycode[i].y)) == code )
-      {
-	return(qt_keycode[i].name);
-      }	
+        {
+          return(qt_keycode[i].name);
+        }	
     }
 
-return(UNKNOWN_NAME);
+  return(UNKNOWN_NAME);
 }
 
 int qt_esc_code(int code)
@@ -6054,10 +5858,10 @@ int qt_esc_code(int code)
       if( ((qt_keycode[i].x)+8*(qt_keycode[i].y)) == code )
 	{
 	  return(qt_keycode[i].esc_token);
-      }	
+        }	
     }
 
-return(TOK_NONE);
+  return(TOK_NONE);
 }
 
 int qt_key_used(int code)
@@ -6175,28 +5979,28 @@ void do_qt_reset(void)
 
 uint8_t setups_block_esc[SETUPS_BLOCK_LEN] =
   {
-   0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26,
-   0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26,
-   0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26,
-   0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
-   0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
-   0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
-   0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52,
-   0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52,
-   0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52,
-   0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,
-   0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,
-   0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,
-   0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66,
-   0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66,
-   0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66,
-   0x09, 0x01, 0x07, 0x07, 0x04, 0x00, 0x03, 0x00, 0x07, 0x00, 0x00, 0x00, 0x07, 0x06, 0x05, 0x00,
-   0x04, 0x00, 0x00, 0x00, 0x07, 0x04, 0x05, 0x00, 0x08, 0x00, 0x00, 0x00, 0x0E, 0x07, 0x08, 0x00,
-   0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-   0x12, 0x04, 0x0A, 0x0D, 0x03, 0x03, 0x03, 0x00, 0x10, 0x00, 0x00, 0x00, 0x09, 0x08, 0x0A, 0x00,
-   0x08, 0x00, 0x00, 0x00, 0x0E, 0x08, 0x0C, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x1A, 0x0F, 0x0F, 0x00,
-   0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-   0x01, 0x01, 0x64, 0x70, 0x20, 0x0F, 0x00, 0x18, 0x1E, 0x24, 0x30, 0x00, 0x11, 0x50,
+    0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26,
+    0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26,
+    0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26, 0x26,
+    0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+    0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+    0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA,
+    0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52,
+    0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52,
+    0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52,
+    0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,
+    0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,
+    0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14, 0x14,
+    0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66,
+    0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66,
+    0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66,
+    0x09, 0x01, 0x07, 0x07, 0x04, 0x00, 0x03, 0x00, 0x07, 0x00, 0x00, 0x00, 0x07, 0x06, 0x05, 0x00,
+    0x04, 0x00, 0x00, 0x00, 0x07, 0x04, 0x05, 0x00, 0x08, 0x00, 0x00, 0x00, 0x0E, 0x07, 0x08, 0x00,
+    0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x12, 0x04, 0x0A, 0x0D, 0x03, 0x03, 0x03, 0x00, 0x10, 0x00, 0x00, 0x00, 0x09, 0x08, 0x0A, 0x00,
+    0x08, 0x00, 0x00, 0x00, 0x0E, 0x08, 0x0C, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x1A, 0x0F, 0x0F, 0x00,
+    0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x01, 0x01, 0x64, 0x70, 0x20, 0x0F, 0x00, 0x18, 0x1E, 0x24, 0x30, 0x00, 0x11, 0x50,
   };
 
 void write_setups_block(uint8_t *block)
@@ -6771,21 +6575,21 @@ typedef struct _SW_BCD_TEST
 
 SW_BCD_TEST sw_bcd_test[] =
   {
-   {0xA0000010, 0xA0000020, 0xA0000030},
-   {0xA0000020, 0xA0000010, 0xA0000030},
-   {0xA0000007, 0xA0000005, 0xA0000012},
-   {0xB0000020, 0xB0000010, 0xB0000030},
-   {0xA0123456, 0xA0654321, 0xA0777777},
-   {0xB0123456, 0xB0654321, 0xB0777777},
-   {0xB0077777, 0xB0777777, 0xB0855554},
-   {0xA0002345, 0xB0000045, 0xA0002300},
-   {0xA0000045, 0xB0002345, 0xB0002300},
+    {0xA0000010, 0xA0000020, 0xA0000030},
+    {0xA0000020, 0xA0000010, 0xA0000030},
+    {0xA0000007, 0xA0000005, 0xA0000012},
+    {0xB0000020, 0xB0000010, 0xB0000030},
+    {0xA0123456, 0xA0654321, 0xA0777777},
+    {0xB0123456, 0xB0654321, 0xB0777777},
+    {0xB0077777, 0xB0777777, 0xB0855554},
+    {0xA0002345, 0xB0000045, 0xA0002300},
+    {0xA0000045, 0xB0002345, 0xB0002300},
 
-   {0xA0999900, 0xA0000099, 0xA0999999},
-   {0xA0999900, 0xA0000100, 0xA0000000},
+    {0xA0999900, 0xA0000099, 0xA0999999},
+    {0xA0999900, 0xA0000100, 0xA0000000},
 
-   {0xB0999900, 0xB0000099, 0xB0999999},
-   {0xB0999900, 0xB0000100, 0xB0000000},
+    {0xB0999900, 0xB0000099, 0xB0999999},
+    {0xB0999900, 0xB0000100, 0xB0000000},
 
    
   };
@@ -6810,21 +6614,21 @@ typedef struct _DW_BCD_TEST
 
 DW_BCD_TEST dw_bcd_test[] =
   {
-   {0xA000000000000010L, 0xA000000000000020L, 0xA000000000000030L},
-   {0xA000000000000020L, 0xA000000000000010L, 0xA000000000000030L},
-   {0xA000000000000007L, 0xA000000000000005L, 0xA000000000000012L},
-   {0xB000000000000020L, 0xB000000000000010L, 0xB000000000000030L},
-   {0xA000000000123456L, 0xA000000000654321L, 0xA000000000777777L},
-   {0xB000000000123456L, 0xB000000000654321L, 0xB000000000777777L},
-   {0xB000000000077777L, 0xB000000000777777L, 0xB000000000855554L},
-   {0xA000000000002345L, 0xB000000000000045L, 0xA000000000002300L},
-   {0xA000000000000045L, 0xB000000000002345L, 0xB000000000002300L},
+    {0xA000000000000010L, 0xA000000000000020L, 0xA000000000000030L},
+    {0xA000000000000020L, 0xA000000000000010L, 0xA000000000000030L},
+    {0xA000000000000007L, 0xA000000000000005L, 0xA000000000000012L},
+    {0xB000000000000020L, 0xB000000000000010L, 0xB000000000000030L},
+    {0xA000000000123456L, 0xA000000000654321L, 0xA000000000777777L},
+    {0xB000000000123456L, 0xB000000000654321L, 0xB000000000777777L},
+    {0xB000000000077777L, 0xB000000000777777L, 0xB000000000855554L},
+    {0xA000000000002345L, 0xB000000000000045L, 0xA000000000002300L},
+    {0xA000000000000045L, 0xB000000000002345L, 0xB000000000002300L},
 
-   {0xA000000000999900L, 0xA000000000000099L, 0xA000000000999999L},
-   {0xA000000000999900L, 0xA000000000000100L, 0xA000000000000000L},
+    {0xA000000000999900L, 0xA000000000000099L, 0xA000000000999999L},
+    {0xA000000000999900L, 0xA000000000000100L, 0xA000000000000000L},
 
-   {0xB000000000999900L, 0xB000000000000099L, 0xB000000000999999L},
-   {0xB000000000999900L, 0xB000000000000100L, 0xB000000000000000L},
+    {0xB000000000999900L, 0xB000000000000099L, 0xB000000000999999L},
+    {0xB000000000999900L, 0xB000000000000100L, 0xB000000000000000L},
 
 
 
@@ -6986,46 +6790,46 @@ void cli_file_read_state(void)
 
 INIT_INFO test_init_0[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    0x123456},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    0x987654321},
-   {IC_END,          0},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    0x123456},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    0x987654321},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_0[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_2,
-   TOK_KEY_2,
-   TOK_KEY_3,
-   TOK_KEY_3,
-   TOK_KEY_5,
-   TOK_NONE,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_2,
+    TOK_KEY_2,
+    TOK_KEY_3,
+    TOK_KEY_3,
+    TOK_KEY_5,
+    TOK_NONE,
   };
 
 
 TEST_INFO test_res_0[] =
   {
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0x123456},
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0x987654321L},
-   {TC_END,     0},
+    {TC_REG_N,   0},
+    {TC_MUST_BE, 0x123456},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0x987654321L},
+    {TC_END,     0},
 
   };
 
 TEST_LOAD_STORE test_0_store =
   {
-   {0x12345678, 0x112233, -1},
+    {0x12345678, 0x112233, -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7038,127 +6842,127 @@ TEST_LOAD_STORE test_0_store =
 
 INIT_INFO test_init_1[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x123456)},
-   {IC_SET_REG_N,    2},
-   {IC_SET_REG_V,    SW_PLUS(0x5)},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_MINUS(0x987654321)},
-   {IC_END,          0},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x123456)},
+    {IC_SET_REG_N,    2},
+    {IC_SET_REG_V,    SW_PLUS(0x5)},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    DW_MINUS(0x987654321)},
+    {IC_END,          0},
   };
 
 // Run just one instruction at 00
 
 TOKEN test_seq_1[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
    
-   TOK_KEY_C,                 // One added to R1
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,                 // One added to R1
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,                // r1-2
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,                // r1-2
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,                 //
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,                 //
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_1[] =
   {
-   // Original register contents must be unchanged
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xa0123456},
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0xb000000987654321L},
+    // Original register contents must be unchanged
+    {TC_REG_N,   0},
+    {TC_MUST_BE, 0xa0123456},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xb000000987654321L},
 
-   // Copied value must be there
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0123456},
-   {TC_END_SECTION, 0},   
+    // Copied value must be there
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0123456},
+    {TC_END_SECTION, 0},   
 
-   // One added to R1
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0123457},
-   {TC_END_SECTION, 0},   
+    // One added to R1
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0123457},
+    {TC_END_SECTION, 0},   
 
-   // Two subtracted from R1
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0123455},
-   {TC_END_SECTION, 0},   
+    // Two subtracted from R1
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0123455},
+    {TC_END_SECTION, 0},   
 
-   // Two subtracted from R1
-   {TC_REG_N,   2},
-   {TC_MUST_BE, 0xa0000003},
-   {TC_END_SECTION, 0},   
+    // Two subtracted from R1
+    {TC_REG_N,   2},
+    {TC_MUST_BE, 0xa0000003},
+    {TC_END_SECTION, 0},   
 
-   // Load R1 with 2
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0000002},
-   {TC_END_SECTION, 0},   
+    // Load R1 with 2
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0000002},
+    {TC_END_SECTION, 0},   
 
-   // Subtract 9 from R1
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xb0000007},
-   {TC_END_SECTION, 0},   
+    // Subtract 9 from R1
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xb0000007},
+    {TC_END_SECTION, 0},   
 
-   // Assign R1 and R2
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0000003},
-   {TC_END_SECTION, 0},   
+    // Assign R1 and R2
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0000003},
+    {TC_END_SECTION, 0},   
 
-   // Add R1 and R2
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0000006},
-   {TC_END_SECTION, 0},   
+    // Add R1 and R2
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0000006},
+    {TC_END_SECTION, 0},   
 
-   // Subtract R2 from R1 after loading R2 with 5
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0000001},
-   {TC_END_SECTION, 0},   
+    // Subtract R2 from R1 after loading R2 with 5
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0000001},
+    {TC_END_SECTION, 0},   
 
-   //Subtract R1 from R0
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xb0123455},
+    //Subtract R1 from R0
+    {TC_REG_N,   0},
+    {TC_MUST_BE, 0xb0123455},
    
-   {TC_END,     0},
+    {TC_END,     0},
 
   };
 
 TEST_LOAD_STORE test_1_store =
   {
-   {
-    0x13100011,      // Copy R0 to R1, Add 1 to R1
-    0x01120228,      // Subtract 2 from R1, subtract R2 from 8
-    0x03120119,      // Load R1 with 2, subtract 9 from R1
-    0x13121012,      // Assign R1, R2,  Add R1 and R2
-    0x03251112,      // load R1 with 5, subtract R2 from R1
-    0x12010000,      // Subtract R1 from R0
-    -1},
+    {
+      0x13100011,      // Copy R0 to R1, Add 1 to R1
+      0x01120228,      // Subtract 2 from R1, subtract R2 from 8
+      0x03120119,      // Load R1 with 2, subtract 9 from R1
+      0x13121012,      // Assign R1, R2,  Add R1 and R2
+      0x03251112,      // load R1 with 5, subtract R2 from R1
+      0x12010000,      // Subtract R1 from R0
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7170,48 +6974,48 @@ TEST_LOAD_STORE test_1_store =
 
 INIT_INFO test_init_2[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    0xa0123456},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    0x987654321},
-   {IC_END,          0},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    0xa0123456},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    0x987654321},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_2[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_0,
-   TOK_KEY_2,
-   TOK_KEY_2,
-   TOK_KEY_3,
-   TOK_KEY_3,
-   TOK_KEY_5,
-   TOK_NONE,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_0,
+    TOK_KEY_2,
+    TOK_KEY_2,
+    TOK_KEY_3,
+    TOK_KEY_3,
+    TOK_KEY_5,
+    TOK_NONE,
   };
 
 
 TEST_INFO test_res_2[] =
   {
-   // Original register contents must be unchanged
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xa0123456},
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0x00000987654321L},
+    // Original register contents must be unchanged
+    {TC_REG_N,   0},
+    {TC_MUST_BE, 0xa0123456},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0x00000987654321L},
 
-   {TC_END,     0},
+    {TC_END,     0},
 
   };
 
 TEST_LOAD_STORE test_2_store =
   {
-   {0x12345678, 0x112233, -1},
+    {0x12345678, 0x112233, -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7223,83 +7027,83 @@ TEST_LOAD_STORE test_2_store =
 
 INIT_INFO test_init_3[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    0x123456},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    0x987654321},
-   {IC_END,          0},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    0x123456},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    0x987654321},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_3[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_9,
-   TOK_KEY_8,
-   TOK_KEY_DOT,
-   TOK_KEY_LOAD_ADDR,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_9,
+    TOK_KEY_8,
+    TOK_KEY_DOT,
+    TOK_KEY_LOAD_ADDR,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_INCR_ADDR,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_INCR_ADDR,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_INCR_ADDR,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_INCR_ADDR,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_INCR_ADDR,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_INCR_ADDR,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_2,
-   TOK_KEY_DOT,
-   TOK_KEY_LOAD_ADDR,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_2,
+    TOK_KEY_DOT,
+    TOK_KEY_LOAD_ADDR,
+    TOK_TEST_CHECK_RES,
    
-   TOK_KEY_DECR_ADDR,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_DECR_ADDR,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_DECR_ADDR,
-   TOK_TEST_CHECK_RES,
-   TOK_NONE,
+    TOK_KEY_DECR_ADDR,
+    TOK_TEST_CHECK_RES,
+    TOK_NONE,
   };
 
 
 TEST_INFO test_res_3[] =
   {
-   // Original register contents must be unchanged
-   {TC_REG_ADDR,    0},
-   {TC_MUST_BE,     0xA0000098},
-   {TC_END_SECTION, 0},   
+    // Original register contents must be unchanged
+    {TC_REG_ADDR,    0},
+    {TC_MUST_BE,     0xA0000098},
+    {TC_END_SECTION, 0},   
 
-   {TC_REG_ADDR,    0},
-   {TC_MUST_BE,     0xA0000099},
-   {TC_END_SECTION, 0},   
+    {TC_REG_ADDR,    0},
+    {TC_MUST_BE,     0xA0000099},
+    {TC_END_SECTION, 0},   
 
-   {TC_REG_ADDR,    0},
-   {TC_MUST_BE,     0xA0000100},
-   {TC_END_SECTION, 0},   
+    {TC_REG_ADDR,    0},
+    {TC_MUST_BE,     0xA0000100},
+    {TC_END_SECTION, 0},   
 
-   {TC_REG_ADDR,    0},
-   {TC_MUST_BE,     0xA0000101},
-   {TC_END_SECTION, 0},   
+    {TC_REG_ADDR,    0},
+    {TC_MUST_BE,     0xA0000101},
+    {TC_END_SECTION, 0},   
 
-   {TC_REG_ADDR,    0},
-   {TC_MUST_BE,     0xA0000002},
-   {TC_END_SECTION, 0},   
+    {TC_REG_ADDR,    0},
+    {TC_MUST_BE,     0xA0000002},
+    {TC_END_SECTION, 0},   
 
-   {TC_REG_ADDR,    0},
-   {TC_MUST_BE,     0xA0000001},
-   {TC_END_SECTION, 0},   
+    {TC_REG_ADDR,    0},
+    {TC_MUST_BE,     0xA0000001},
+    {TC_END_SECTION, 0},   
 
-   {TC_REG_ADDR,    0},
-   {TC_MUST_BE,     0xA0000000},
+    {TC_REG_ADDR,    0},
+    {TC_MUST_BE,     0xA0000000},
 
-   {TC_END,         0},
+    {TC_END,         0},
 
   };
 
 TEST_LOAD_STORE test_3_store =
   {
-   {0x12345678, 0x112233, -1},
+    {0x12345678, 0x112233, -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7312,63 +7116,63 @@ TEST_LOAD_STORE test_3_store =
 
 INIT_INFO test_init_4[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x123456)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    2},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_PLUS (0xA000000987654321L)},
-   {IC_SET_REG_N,    9},
-   {IC_SET_REG_V,    DW_MINUS(0xA000112233445566L)},
-   {IC_END,          0},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x123456)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    2},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    DW_PLUS (0xA000000987654321L)},
+    {IC_SET_REG_N,    9},
+    {IC_SET_REG_V,    DW_MINUS(0xA000112233445566L)},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_4[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_4[] =
   {
-   // Original register contents must be unchanged
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0123456},
-   {TC_END_SECTION, 0},
+    // Original register contents must be unchanged
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0123456},
+    {TC_END_SECTION, 0},
    
-   {TC_REG_N,   2},
-   {TC_MUST_BE, 0xa0654321},
-   {TC_END_SECTION, 0},   
+    {TC_REG_N,   2},
+    {TC_MUST_BE, 0xa0654321},
+    {TC_END_SECTION, 0},   
 
-   {TC_REG_N,   3},
-   {TC_MUST_BE, 0xb0445566},
+    {TC_REG_N,   3},
+    {TC_MUST_BE, 0xb0445566},
 
-   {TC_END,     0},
+    {TC_END,     0},
 
   };
 
 TEST_LOAD_STORE test_4_store =
   {
-   {
-    0x14101428,      // RH 6 dig of R0 into R1, RH 6 dig of R8 into R2
-    0x14390000,      // RH 6 dig of R9 into R3
-    -1},
+    {
+      0x14101428,      // RH 6 dig of R0 into R1, RH 6 dig of R8 into R2
+      0x14390000,      // RH 6 dig of R9 into R3
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7381,146 +7185,146 @@ TEST_LOAD_STORE test_4_store =
 
 INIT_INFO test_init_5[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    2},
-   {IC_SET_REG_V,    SW_MINUS(0x1)},
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x00011111)},
-   {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_PLUS(0x00111110)},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_PLUS (0xA000056987654321)},
-   {IC_SET_REG_N,    9},
-   {IC_SET_REG_V,    DW_MINUS(0xA000112233445560)},
-   {IC_END,          0},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    2},
+    {IC_SET_REG_V,    SW_MINUS(0x1)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x00011111)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_PLUS(0x00111110)},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    DW_PLUS (0xA000056987654321)},
+    {IC_SET_REG_N,    9},
+    {IC_SET_REG_V,    DW_MINUS(0xA000112233445560)},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_5[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_5[] =
   {
-   // Test control latch after TEST instructions
-   {TC_CL,          0},
-   {TC_MUST_BE,     1},
-   {TC_END_SECTION, 0},
+    // Test control latch after TEST instructions
+    {TC_CL,          0},
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     0},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     1},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     0},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     1},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     0},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     1},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     0},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     1},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     0},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     1},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     0},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     1},
-   {TC_END_SECTION, 0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
 
-   {TC_CL,          0},
-   {TC_MUST_BE,     0},
+    {TC_CL,          0},
+    {TC_MUST_BE,     0},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_5_store =
   {
-   {
-    0x05000510,      // TEST R0=0, TEST R1=0
-    0x05110501,      // TEST R1>0, TEST R0>0
-    0x05220502,      // TEST R1<0, TEST R0<0
-    0x05330543,      // TEST LH digit R3=0, TEST LH digit R4=0
-    0x05440534,      // TEST RH digit R4=0, TEST RH digit R3=0
-    0x05830593,      // TEST LH digit R8=0, TEST LH digit R9=0
-    0x05940584,      // TEST RH digit R9=0, TEST RH digit R8=0
-    -1},
+    {
+      0x05000510,      // TEST R0=0, TEST R1=0
+      0x05110501,      // TEST R1>0, TEST R0>0
+      0x05220502,      // TEST R1<0, TEST R0<0
+      0x05330543,      // TEST LH digit R3=0, TEST LH digit R4=0
+      0x05440534,      // TEST RH digit R4=0, TEST RH digit R3=0
+      0x05830593,      // TEST LH digit R8=0, TEST LH digit R9=0
+      0x05940584,      // TEST RH digit R9=0, TEST RH digit R8=0
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7533,99 +7337,99 @@ TEST_LOAD_STORE test_5_store =
 
 INIT_INFO test_init_6[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x2)},
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x00123456)},
-   {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_PLUS(0x00123456)},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
-   {IC_SET_REG_N,    9},
-   {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
-   {IC_END,          0},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x2)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x00123456)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_PLUS(0x00123456)},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+    {IC_SET_REG_N,    9},
+    {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_6[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_6[] =
   {
    
-   {TC_REG_N,   3},
-   {TC_MUST_BE, 0xa0234560},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   3},
+    {TC_MUST_BE, 0xa0234560},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   3},
-   {TC_MUST_BE, 0xa0456000},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   3},
+    {TC_MUST_BE, 0xa0456000},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   4},
-   {TC_MUST_BE, 0xa0234560},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   4},
+    {TC_MUST_BE, 0xa0234560},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   4},
-   {TC_MUST_BE, 0xa0456000},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   4},
+    {TC_MUST_BE, 0xa0456000},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0xa000234567890120},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xa000234567890120},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0xa000456789012000},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xa000456789012000},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   9},
-   {TC_MUST_BE, 0xa000234567890120},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xa000234567890120},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   9},
-   {TC_MUST_BE, 0xa000456789012000},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xa000456789012000},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_6_store =
   {
-   {
-    0x06310632,
-    0x16401641,
-    0x06810682,
-    0x16901691,
-    -1},
+    {
+      0x06310632,
+      0x16401641,
+      0x06810682,
+      0x16901691,
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7638,99 +7442,99 @@ TEST_LOAD_STORE test_6_store =
 
 INIT_INFO test_init_7[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x2)},
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x00123456)},
-   {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_PLUS(0x00123456)},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
-   {IC_SET_REG_N,    9},
-   {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
-   {IC_END,          0},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x2)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x00123456)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_PLUS(0x00123456)},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+    {IC_SET_REG_N,    9},
+    {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_7[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_7[] =
   {
    
-   {TC_REG_N,   3},
-   {TC_MUST_BE, 0xa0012345},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   3},
+    {TC_MUST_BE, 0xa0012345},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   3},
-   {TC_MUST_BE, 0xa0000123},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   3},
+    {TC_MUST_BE, 0xa0000123},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   4},
-   {TC_MUST_BE, 0xa0012345},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   4},
+    {TC_MUST_BE, 0xa0012345},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   4},
-   {TC_MUST_BE, 0xa0000123},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   4},
+    {TC_MUST_BE, 0xa0000123},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0xa000012345678901},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xa000012345678901},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0xa000000123456789},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xa000000123456789},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   9},
-   {TC_MUST_BE, 0xa000012345678901},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xa000012345678901},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   9},
-   {TC_MUST_BE, 0xa000000123456789},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xa000000123456789},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_7_store =
   {
-   {
-    0x07310732,
-    0x17401741,
-    0x07810782,
-    0x17901791,
-    -1},
+    {
+      0x07310732,
+      0x17401741,
+      0x07810782,
+      0x17901791,
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7743,79 +7547,79 @@ TEST_LOAD_STORE test_7_store =
 
 INIT_INFO test_init_8[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_END,          0},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_8[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_1,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_1,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_8[] =
   {
    
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xa0000005},
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0310732},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   0},
+    {TC_MUST_BE, 0xa0000005},
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0310732},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xa0001234},
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xa0005678},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   0},
+    {TC_MUST_BE, 0xa0001234},
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xa0005678},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,   0x3},
-   {TC_MUST_BE, 0xa5310732},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x3},
+    {TC_MUST_BE, 0xa5310732},
+    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,   0x4},
-   {TC_MUST_BE, 0x12345678},
+    {TC_STORE_N,   0x4},
+    {TC_MUST_BE, 0x12345678},
    
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_8_store =
   {
-   {
-    SW_PLUS(0x05310732),
-    0x12345678,
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x20002001,
-    0x20002103,
-    0x20012204,
-    -1},
+    {
+      SW_PLUS(0x05310732),
+      0x12345678,
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x20002001,
+      0x20002103,
+      0x20012204,
+      -1},
   };
 
 
@@ -7829,100 +7633,100 @@ TEST_LOAD_STORE test_8_store =
 
 INIT_INFO test_init_9[] =
   {
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_MINUS(0x02)},
-   {IC_SET_REG_N,    5},
-   {IC_SET_REG_V,    SW_PLUS(0x20)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_MINUS(0x02)},
+    {IC_SET_REG_N,    5},
+    {IC_SET_REG_V,    SW_PLUS(0x20)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_9[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_9[] =
   {
    
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000002},
-   {TC_END_SECTION, 0},
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000002},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000001},
-   {TC_END_SECTION, 0},
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000001},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000030},
-   {TC_END_SECTION, 0},
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000030},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000018},
-   {TC_END_SECTION, 0},
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000018},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000024},
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000024},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_9_store =
   {
-   {
-    0x24020000,    // 00
-    0x54100000,    // 01
-    0x34000000,    // 02
-    0x00000000,    // 03
-    0x00000000,    // 04
-    0x00000000,    // 05
-    0xA0000006,    // 06
-    0x00000024,    // 07
-    0x00000000,    // 08
-    0x00000000,    // 09
-    0x00000000,    // 10
-    0x00000000,    // 11
-    0x00000000,    // 12
-    0x00000000,    // 13
-    0x00000000,    // 14
-    0x00000000,    // 15
-    0x00000000,    // 16
-    0x00000000,    // 17
-    0x64070000,    // 18
-    0x00000000,    // 19
-    0x00000000,    // 20
-    0x00000000,    // 21
-    0x00000000,    // 22
-    0x00000000,    // 23
-    0x00000000,    // 24
-    0x00000000,    // 25
-    0x00000000,    // 26
-    0x00000000,    // 27
-    0x00000000,    // 28
-    0x00000000,    // 29
-    0x44200000,    // 30
-    -1},
+    {
+      0x24020000,    // 00
+      0x54100000,    // 01
+      0x34000000,    // 02
+      0x00000000,    // 03
+      0x00000000,    // 04
+      0x00000000,    // 05
+      0xA0000006,    // 06
+      0x00000024,    // 07
+      0x00000000,    // 08
+      0x00000000,    // 09
+      0x00000000,    // 10
+      0x00000000,    // 11
+      0x00000000,    // 12
+      0x00000000,    // 13
+      0x00000000,    // 14
+      0x00000000,    // 15
+      0x00000000,    // 16
+      0x00000000,    // 17
+      0x64070000,    // 18
+      0x00000000,    // 19
+      0x00000000,    // 20
+      0x00000000,    // 21
+      0x00000000,    // 22
+      0x00000000,    // 23
+      0x00000000,    // 24
+      0x00000000,    // 25
+      0x00000000,    // 26
+      0x00000000,    // 27
+      0x00000000,    // 28
+      0x00000000,    // 29
+      0x44200000,    // 30
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7935,93 +7739,93 @@ TEST_LOAD_STORE test_9_store =
 
 INIT_INFO test_init_10[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_MINUS(0x02)},
-   {IC_SET_REG_N,    5},
-   {IC_SET_REG_V,    SW_PLUS(0x20)},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_MINUS(0x02)},
+    {IC_SET_REG_N,    5},
+    {IC_SET_REG_V,    SW_PLUS(0x20)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_10[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_10[] =
   {
    
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000010},
-   {TC_END_SECTION, 0},
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000010},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000011},
-   {TC_END_SECTION, 0},
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000011},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000015},
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000015},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_10_store =
   {
-   {
-    0x05002510,    // 00
-    0x00000000,    // 01
-    0x00000000,    // 02
-    0x00000000,    // 03
-    0x00000000,    // 04
-    0x00000000,    // 05
-    0x00000000,    // 06
-    0x00000000,    // 07
-    0x00000000,    // 08
-    0x00000000,    // 09
-    0x05102520,    // 10
-    0x05102615,    // 11
-    0x00000000,    // 12
-    0x00000000,    // 13
-    0x00000000,    // 14
-    0x00000000,    // 15
-    0x00000000,    // 16
-    0x00000000,    // 17
-    0x64070000,    // 18
-    0x00000000,    // 19
-    0x00000000,    // 20
-    0x00000000,    // 21
-    0x00000000,    // 22
-    0x00000000,    // 23
-    0x00000000,    // 24
-    0x00000000,    // 25
-    0x00000000,    // 26
-    0x00000000,    // 27
-    0x00000000,    // 28
-    0x00000000,    // 29
-    0x44200000,    // 30
-    -1},
+    {
+      0x05002510,    // 00
+      0x00000000,    // 01
+      0x00000000,    // 02
+      0x00000000,    // 03
+      0x00000000,    // 04
+      0x00000000,    // 05
+      0x00000000,    // 06
+      0x00000000,    // 07
+      0x00000000,    // 08
+      0x00000000,    // 09
+      0x05102520,    // 10
+      0x05102615,    // 11
+      0x00000000,    // 12
+      0x00000000,    // 13
+      0x00000000,    // 14
+      0x00000000,    // 15
+      0x00000000,    // 16
+      0x00000000,    // 17
+      0x64070000,    // 18
+      0x00000000,    // 19
+      0x00000000,    // 20
+      0x00000000,    // 21
+      0x00000000,    // 22
+      0x00000000,    // 23
+      0x00000000,    // 24
+      0x00000000,    // 25
+      0x00000000,    // 26
+      0x00000000,    // 27
+      0x00000000,    // 28
+      0x00000000,    // 29
+      0x44200000,    // 30
+      -1},
   };
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -8033,100 +7837,100 @@ TEST_LOAD_STORE test_10_store =
 
 INIT_INFO test_init_11[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_MINUS(0x02)},
-   {IC_SET_REG_N,    5},
-   {IC_SET_REG_V,    SW_PLUS(0x20)},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_MINUS(0x02)},
+    {IC_SET_REG_N,    5},
+    {IC_SET_REG_V,    SW_PLUS(0x20)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_11[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   //TOK_KEY_C,
-   //TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    //TOK_KEY_C,
+    //TOK_TEST_CHECK_RES,
 
-   //TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    //TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 #if EXTRACODE_CODED
 TEST_INFO test_res_11[] =
   {
-   {TC_STORE_N,   0x21},
-   {TC_MUST_BE, 0xA2011320},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x21},
+    {TC_MUST_BE, 0xA2011320},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,   0x20},
-   {TC_MUST_BE, 0xA2008820},
+    {TC_STORE_N,   0x20},
+    {TC_MUST_BE, 0xA2008820},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 #endif
 
 #if EXTRACODE_FRAMEWORK
 TEST_INFO test_res_11[] =
   {
-   {TC_STORE_N,   0x21},
-   {TC_MUST_BE, 0xA3113201},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x21},
+    {TC_MUST_BE, 0xA3113201},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,   0x20},
-   {TC_MUST_BE, 0xA3088201},
+    {TC_STORE_N,   0x20},
+    {TC_MUST_BE, 0xA3088201},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 #endif
 
 TEST_LOAD_STORE test_11_store =
   {
-   {
-    0x70212223,    // 00  (21) = (22) + (23)
-    0x70202324,    // 01  (20) = (23) + (24)
-    0x19200000,    // 02  DISPLAY (STOP)
-    0x00000000,    // 03
-    0x00000000,    // 04
-    0x00000000,    // 05
-    0x00000000,    // 06
-    0x00000000,    // 07
-    0x00000000,    // 08
-    0x00000000,    // 09
-    0x00000000,    // 10
-    0x00000000,    // 11
-    0x00000000,    // 12
-    0x00000000,    // 13
-    0x00000000,    // 14
-    0x00000000,    // 15
-    0x00000000,    // 16
-    0x00000000,    // 17
-    0x00000000,    // 18
-    0x00000000,    // 19
-    0x00000000,    // 20
-    0x00000000,    // 21
-    0xA1000125,    // 22
-    0xA3100701,    // 23
-    0xB1000125,    // 24
-    0x00000000,    // 25
-    0x00000000,    // 26
-    0x00000000,    // 27
-    0x00000000,    // 28
-    0x00000000,    // 29
-    0x44200000,    // 30
-    -1},
+    {
+      0x70212223,    // 00  (21) = (22) + (23)
+      0x70202324,    // 01  (20) = (23) + (24)
+      0x19200000,    // 02  DISPLAY (STOP)
+      0x00000000,    // 03
+      0x00000000,    // 04
+      0x00000000,    // 05
+      0x00000000,    // 06
+      0x00000000,    // 07
+      0x00000000,    // 08
+      0x00000000,    // 09
+      0x00000000,    // 10
+      0x00000000,    // 11
+      0x00000000,    // 12
+      0x00000000,    // 13
+      0x00000000,    // 14
+      0x00000000,    // 15
+      0x00000000,    // 16
+      0x00000000,    // 17
+      0x00000000,    // 18
+      0x00000000,    // 19
+      0x00000000,    // 20
+      0x00000000,    // 21
+      0xA1000125,    // 22
+      0xA3100701,    // 23
+      0xB1000125,    // 24
+      0x00000000,    // 25
+      0x00000000,    // 26
+      0x00000000,    // 27
+      0x00000000,    // 28
+      0x00000000,    // 29
+      0x44200000,    // 30
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -8139,95 +7943,95 @@ TEST_LOAD_STORE test_11_store =
 
 INIT_INFO test_init_12[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_MINUS(0x02)},
-   {IC_SET_REG_N,    5},
-   {IC_SET_REG_V,    SW_PLUS(0x20)},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_MINUS(0x02)},
+    {IC_SET_REG_N,    5},
+    {IC_SET_REG_V,    SW_PLUS(0x20)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_12[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_RUN,
+    TOK_KEY_RUN,
    
-   // Run until a stop and then check results
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    // Run until a stop and then check results
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
+    TOK_KEY_RUN,
 
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
    
 #if 0
-   TOK_KEY_C,   
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,   
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 #endif
    
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_12[] =
   {
-   {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xB3088201},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x21},
+    {TC_MUST_BE,     0xB3088201},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x20},
-   {TC_MUST_BE,     0xA3113201},
+    {TC_STORE_N,     0x20},
+    {TC_MUST_BE,     0xA3113201},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_12_store =
   {
-   {
-    0x71212223,    // 00
-    0x19210000,    // 01
-    0x71202324,    // 02
-    0x19200000,    // 03
-    0x00000000,    // 04
-    0x00000000,    // 05
-    0x00000000,    // 06
-    0x00000000,    // 07
-    0x00000000,    // 08
-    0x00000000,    // 09
-    0x00000000,    // 10
-    0x00000000,    // 11
-    0x00000000,    // 12
-    0x00000000,    // 13
-    0x00000000,    // 14
-    0x00000000,    // 15
-    0x00000000,    // 16
-    0x00000000,    // 17
-    0x00000000,    // 18
-    0x00000000,    // 19
-    0x00000000,    // 20
-    0x00000000,    // 21
-    0xA1000125,    // 22
-    0xA3100701,    // 23
-    0xB1000125,    // 24
-    0x00000000,    // 25
-    0x00000000,    // 26
-    0x00000000,    // 27
-    0x00000000,    // 28
-    0x00000000,    // 29
-    0x44200000,    // 30
-    -1},
+    {
+      0x71212223,    // 00
+      0x19210000,    // 01
+      0x71202324,    // 02
+      0x19200000,    // 03
+      0x00000000,    // 04
+      0x00000000,    // 05
+      0x00000000,    // 06
+      0x00000000,    // 07
+      0x00000000,    // 08
+      0x00000000,    // 09
+      0x00000000,    // 10
+      0x00000000,    // 11
+      0x00000000,    // 12
+      0x00000000,    // 13
+      0x00000000,    // 14
+      0x00000000,    // 15
+      0x00000000,    // 16
+      0x00000000,    // 17
+      0x00000000,    // 18
+      0x00000000,    // 19
+      0x00000000,    // 20
+      0x00000000,    // 21
+      0xA1000125,    // 22
+      0xA3100701,    // 23
+      0xB1000125,    // 24
+      0x00000000,    // 25
+      0x00000000,    // 26
+      0x00000000,    // 27
+      0x00000000,    // 28
+      0x00000000,    // 29
+      0x44200000,    // 30
+      -1},
   };
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -8239,109 +8043,109 @@ TEST_LOAD_STORE test_12_store =
 
 INIT_INFO test_init_13[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_MINUS(0x02)},
-   {IC_SET_REG_N,    5},
-   {IC_SET_REG_V,    SW_PLUS(0x20)},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_MINUS(0x02)},
+    {IC_SET_REG_N,    5},
+    {IC_SET_REG_V,    SW_PLUS(0x20)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_13[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_RUN,
+    TOK_KEY_RUN,
 
 #if 0
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 #endif
 
-   TOK_KEY_RUN,
+    TOK_KEY_RUN,
 
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
+    TOK_KEY_RUN,
       
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
+    TOK_KEY_RUN,
 
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_13[] =
   {
-   {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xA1000045},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x21},
+    {TC_MUST_BE,     0xA1000045},
+    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x20},
-   {TC_MUST_BE,     0xB2001875},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x20},
+    {TC_MUST_BE,     0xB2001875},
+    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x10},
-   {TC_MUST_BE,     0xA5986959},
+    {TC_STORE_N,     0x10},
+    {TC_MUST_BE,     0xA5986959},
    
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_13_store =
   {
-   {
-    0x72212223,    // 00 (21) = (22) * (23)  +4.5
-    0x19210000,    // 01
-    0x72202324,    // 02 (20) = (23) * (24)  -18.75
-    0x19210000,    // 03
-    0x72101112,    // 04 (10) = (11) * (12)  +9.869589 
-    0x19210000,    // 05
-    0x00000000,    // 06
-    0x00000000,    // 07
-    0x00000000,    // 08
-    0x00000000,    // 09
-    0x00000000,    // 10
-    0xA5314159,    // 11  3.14159
-    0xA5314159,    // 12  3.14159
-    0x00000000,    // 13
-    0x00000000,    // 14
-    0x00000000,    // 15
-    0x00000000,    // 16
-    0x00000000,    // 17
-    0x00000000,    // 18
-    0x00000000,    // 19
-    0x00000000,    // 20
-    0x00000000,    // 21
-    0xA0000003,    // 22    +3.0
-    0xA1000015,    // 23    +1.5
-    0xB1000125,    // 24    -12.5
-    0x00000000,    // 25
-    0x00000000,    // 26
-    0x00000000,    // 27
-    0x00000000,    // 28
-    0x00000000,    // 29
-    0x44200000,    // 30
-    -1},
+    {
+      0x72212223,    // 00 (21) = (22) * (23)  +4.5
+      0x19210000,    // 01
+      0x72202324,    // 02 (20) = (23) * (24)  -18.75
+      0x19210000,    // 03
+      0x72101112,    // 04 (10) = (11) * (12)  +9.869589 
+      0x19210000,    // 05
+      0x00000000,    // 06
+      0x00000000,    // 07
+      0x00000000,    // 08
+      0x00000000,    // 09
+      0x00000000,    // 10
+      0xA5314159,    // 11  3.14159
+      0xA5314159,    // 12  3.14159
+      0x00000000,    // 13
+      0x00000000,    // 14
+      0x00000000,    // 15
+      0x00000000,    // 16
+      0x00000000,    // 17
+      0x00000000,    // 18
+      0x00000000,    // 19
+      0x00000000,    // 20
+      0x00000000,    // 21
+      0xA0000003,    // 22    +3.0
+      0xA1000015,    // 23    +1.5
+      0xB1000125,    // 24    -12.5
+      0x00000000,    // 25
+      0x00000000,    // 26
+      0x00000000,    // 27
+      0x00000000,    // 28
+      0x00000000,    // 29
+      0x44200000,    // 30
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -8354,144 +8158,144 @@ TEST_LOAD_STORE test_13_store =
 
 INIT_INFO test_init_14[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0x1)},
-   {IC_SET_REG_N,    4},
-   {IC_SET_REG_V,    SW_MINUS(0x02)},
-   {IC_SET_REG_N,    5},
-   {IC_SET_REG_V,    SW_PLUS(0x20)},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0x1)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_MINUS(0x02)},
+    {IC_SET_REG_N,    5},
+    {IC_SET_REG_V,    SW_PLUS(0x20)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_14[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_RUN,
+    TOK_KEY_RUN,
 
 #if 0
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 #endif
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_14[] =
   {
-   {TC_STORE_N,     0x21},
-   {TC_MUST_BE,     0xA0000005},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x21},
+    {TC_MUST_BE,     0xA0000005},
+    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x35},
-   {TC_MUST_BE,     0xB0000010},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x35},
+    {TC_MUST_BE,     0xB0000010},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x13},
-   {TC_MUST_BE,     0xA0000010},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x13},
+    {TC_MUST_BE,     0xA0000010},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x16},
-   {TC_MUST_BE,     0xA5314286},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x16},
+    {TC_MUST_BE,     0xA5314286},
+    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x26},
-   {TC_MUST_BE,     0xA6318182},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x26},
+    {TC_MUST_BE,     0xA6318182},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x31},
-   {TC_MUST_BE,     0xA3000032},
+    {TC_STORE_N,     0x31},
+    {TC_MUST_BE,     0xA3000032},
    
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_14_store =
   {
-   {
-    0x73212223,    // 00 (21) = (22) / (23)   +5.0
-    0x19210000,    // 01
-    0x73353412,    // 02 (35) = (34) / (12)   -10
-    0x19210000,    // 03
-    0x73131415,    // 04 (13) = (14) / (15)
-    0x19210000,    // 05
-    0x73161718,    // 06 (16) = (17) / (18)
-    0x19210000,    // 07
-    0x93282930,    // 08 ((28)) = ((29)) / ((30)) or: (26) = (18) / (17)
-    0x19210000,    // 09
-    0x73313233,    // 10 (31) = (32)/ (33)
-    0x19210000,    // 11
+    {
+      0x73212223,    // 00 (21) = (22) / (23)   +5.0
+      0x19210000,    // 01
+      0x73353412,    // 02 (35) = (34) / (12)   -10
+      0x19210000,    // 03
+      0x73131415,    // 04 (13) = (14) / (15)
+      0x19210000,    // 05
+      0x73161718,    // 06 (16) = (17) / (18)
+      0x19210000,    // 07
+      0x93282930,    // 08 ((28)) = ((29)) / ((30)) or: (26) = (18) / (17)
+      0x19210000,    // 09
+      0x73313233,    // 10 (31) = (32)/ (33)
+      0x19210000,    // 11
 
-    0xB0000010,    // 12    -10.0
-    0x00000000,    // 13
-    0xA2010000,    // 14    +100.00
-    0xA1000100,    // 15    +10.0
-    0x00000000,    // 16
-    0xA4220000,    // 17    +22.00
-    0xA0000007,    // 18    +7
-    0x00000000,    // 19 
-    0xA0000004,    // 20    +4
-    0xA0000125,    // 21    +125
-    0xA0000015,    // 22    +15
-    0xA1000030,    // 23    +3.0
-    0xB0000125,    // 24    -125
-    0xB1000050,    // 25    -5.0
-    0xA0000022,    // 26    +22
-    0x00000000,    // 27
-    0xA0000026,    // 28    +26
-    0xA0000018,    // 29    +18
-    0xA0000017,    // 30    +17
-    0x00000000,    // 31
-    0xA0000004,    // 32    +4
-    0xA0000125,    // 33    +125
-    0xA2010000,    // 34    +100.00
-    0x00000000,    // 35
-    -1},
+      0xB0000010,    // 12    -10.0
+      0x00000000,    // 13
+      0xA2010000,    // 14    +100.00
+      0xA1000100,    // 15    +10.0
+      0x00000000,    // 16
+      0xA4220000,    // 17    +22.00
+      0xA0000007,    // 18    +7
+      0x00000000,    // 19 
+      0xA0000004,    // 20    +4
+      0xA0000125,    // 21    +125
+      0xA0000015,    // 22    +15
+      0xA1000030,    // 23    +3.0
+      0xB0000125,    // 24    -125
+      0xB1000050,    // 25    -5.0
+      0xA0000022,    // 26    +22
+      0x00000000,    // 27
+      0xA0000026,    // 28    +26
+      0xA0000018,    // 29    +18
+      0xA0000017,    // 30    +17
+      0x00000000,    // 31
+      0xA0000004,    // 32    +4
+      0xA0000125,    // 33    +125
+      0xA2010000,    // 34    +100.00
+      0x00000000,    // 35
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -8504,119 +8308,119 @@ TEST_LOAD_STORE test_14_store =
 
 INIT_INFO test_init_15[] =
   {
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_15[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_1,
-   TOK_KEY_1,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_1,
+    TOK_KEY_1,
+    TOK_KEY_LOAD_IAR,
 
-   // Skip the entry instruction, nothing changes
-   //   TOK_KEY_C,
+    // Skip the entry instruction, nothing changes
+    //   TOK_KEY_C,
 
-   // Calculate r * r
+    // Calculate r * r
 
 #if 0
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 #endif
 
    
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_15[] =
   {
-   {TC_STORE_N,     0x03},
-   {TC_MUST_BE,     0xA2000625},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x03},
+    {TC_MUST_BE,     0xA2000625},
+    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x50},
-   {TC_MUST_BE,     0xA4196349},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x50},
+    {TC_MUST_BE,     0xA4196349},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x51},
-   {TC_MUST_BE,     0xA4785396},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x51},
+    {TC_MUST_BE,     0xA4785396},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x52},
-   {TC_MUST_BE,     0xA3196349},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x52},
+    {TC_MUST_BE,     0xA3196349},
+    {TC_END_SECTION, 0},
    
-   {TC_STORE_N,     0x53},
-   {TC_MUST_BE,     0xA4654497},
+    {TC_STORE_N,     0x53},
+    {TC_MUST_BE,     0xA4654497},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_15_store =
   {
-   {
-    0x00000000,    // 00
-    0x00000000,    // 01
-    0xA1000025,    // 02  Set up r
-    0x00000000,    // 03
-    0x00000000,    // 04
-    0xA5314159,    // 05  Set up Pi
-    0xA0000004,    // 06  Constant 4
-    0xA0000003,    // 07  Constant 3
-    0x00000000,    // 08
-    0x00000000,    // 09
-    0x78020507,    // 10  Input r; display 3.14159 and 3 (not executed)
-    0x72030202,    // 11  a <- r * r
-    0x19030000,    // 12    Stop for result check (2.5 * 2.5 = 6.25)
-    0x72500305,    // 13  a <- a * 3.14159
-    0x19030000,    // 14    Stop (a = 19.6349)
-    0x72515006,    // 15  a <- a * 4
-    0x19030000,    // 16    Stop (a = 78.5398)
-    0x72525102,    // 17  b <- a * r
-    0x19040000,    // 18    Stop (a = 196.349)
-    0x73535207,    // 15  b = b / 3
-    0x19040000,    //       Stop (b = 65.497) 65.44792
-    0x79020304,    // 16  Display r, a and b
-    -1},
+    {
+      0x00000000,    // 00
+      0x00000000,    // 01
+      0xA1000025,    // 02  Set up r
+      0x00000000,    // 03
+      0x00000000,    // 04
+      0xA5314159,    // 05  Set up Pi
+      0xA0000004,    // 06  Constant 4
+      0xA0000003,    // 07  Constant 3
+      0x00000000,    // 08
+      0x00000000,    // 09
+      0x78020507,    // 10  Input r; display 3.14159 and 3 (not executed)
+      0x72030202,    // 11  a <- r * r
+      0x19030000,    // 12    Stop for result check (2.5 * 2.5 = 6.25)
+      0x72500305,    // 13  a <- a * 3.14159
+      0x19030000,    // 14    Stop (a = 19.6349)
+      0x72515006,    // 15  a <- a * 4
+      0x19030000,    // 16    Stop (a = 78.5398)
+      0x72525102,    // 17  b <- a * r
+      0x19040000,    // 18    Stop (a = 196.349)
+      0x73535207,    // 15  b = b / 3
+      0x19040000,    //       Stop (b = 65.497) 65.44792
+      0x79020304,    // 16  Display r, a and b
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -8630,64 +8434,64 @@ TEST_LOAD_STORE test_15_store =
 
 INIT_INFO test_init_16[] =
   {
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_16[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
 #if 0
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 #endif
    
-   // Run until a stop and then check results
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    // Run until a stop and then check results
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_16[] =
   {
-   {TC_REG_IAR,   0},
-   //{TC_MUST_BE, 0x00000010},
-   //{TC_END_SECTION, 0},
+    {TC_REG_IAR,   0},
+    //{TC_MUST_BE, 0x00000010},
+    //{TC_END_SECTION, 0},
 
-   {TC_REG_IAR,   0},
-   {TC_MUST_BE, 0x00000011},
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000011},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_16_store =
   {
-   {
-    0x74101516,    // 00 branch to Aa1 if (Aa2) = (Aa3) 
-    0x19200000,    // 01   Stop on error branch
-    0x00000000,    // 02
-    0x00000000,    // 03
-    0x00000000,    // 04
-    0x19200000,    // 05   Stop on erroneous branch
-    0x00000000,    // 06
-    0x00000000,    // 07
-    0x00000000,    // 08
-    0x00000000,    // 09
-    0x74051415,    // 10  Branch to 05 if (14) = (15)
-    0x19200000,    // 11
-    0x00000000,    // 12
-    0x00000000,    // 13
-    0x00000000,    // 14
-    0xA2000500,    // 15
-    0xA1000050,    // 16
-    -1},
+    {
+      0x74101516,    // 00 branch to Aa1 if (Aa2) = (Aa3) 
+      0x19200000,    // 01   Stop on error branch
+      0x00000000,    // 02
+      0x00000000,    // 03
+      0x00000000,    // 04
+      0x19200000,    // 05   Stop on erroneous branch
+      0x00000000,    // 06
+      0x00000000,    // 07
+      0x00000000,    // 08
+      0x00000000,    // 09
+      0x74051415,    // 10  Branch to 05 if (14) = (15)
+      0x19200000,    // 11
+      0x00000000,    // 12
+      0x00000000,    // 13
+      0x00000000,    // 14
+      0xA2000500,    // 15
+      0xA1000050,    // 16
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -8700,117 +8504,117 @@ TEST_LOAD_STORE test_16_store =
 
 INIT_INFO test_init_17[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x112233)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
-   {IC_SET_REG_N,    9},
-   {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x112233)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
+    {IC_SET_REG_N,    9},
+    {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_17[] =
   {
-   TOK_KEY_NORMAL_RESET,
-   TOK_KEY_1,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_NORMAL_RESET,
+    TOK_KEY_1,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
 #if 0
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 #endif
 
-   // Run until a stop and then check results
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    // Run until a stop and then check results
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_17[] =
   {
    
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0xA000000000314160},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xA000000000314160},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0xA000000000314162L},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xA000000000314162L},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0xA000000000314171L},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xA000000000314171L},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   8},
-   {TC_MUST_BE, 0xA600012345314159L},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xA600012345314159L},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   9},
-   {TC_MUST_BE, 0xA000000000112233L},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xA000000000112233L},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0314159},
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xA0314159},
    
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_17_store =
   {
-   {
-    SW_PLUS(0x05310732),  // 00
-    0x12345678,           // 01
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x0,
-    0x00811900,          // 10  
-    0x00821900,          // 10  
-    0x00891900,
-    0x13891900,
-    0x13901900,
-    0x13181900,
-    -1},
+    {
+      SW_PLUS(0x05310732),  // 00
+      0x12345678,           // 01
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x0,
+      0x00811900,          // 10  
+      0x00821900,          // 10  
+      0x00891900,
+      0x13891900,
+      0x13901900,
+      0x13181900,
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -8823,65 +8627,65 @@ TEST_LOAD_STORE test_17_store =
 
 INIT_INFO test_init_18[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x112233)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
-   {IC_SET_REG_N,    9},
-   {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x112233)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
+    {IC_SET_REG_N,    9},
+    {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_18[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
 #if 0
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 #endif
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_18[] =
   {
-   {TC_STORE_N,     0x10},
-   {TC_MUST_BE,     0xA6142857},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x10},
+    {TC_MUST_BE,     0xA6142857},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x13},
-   {TC_MUST_BE,     0xA6142857},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,     0x13},
+    {TC_MUST_BE,     0xA6142857},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,     0x07},
-   {TC_MUST_BE,     0xB6000353},
+    {TC_STORE_N,     0x07},
+    {TC_MUST_BE,     0xB6000353},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_18_store =
@@ -8916,121 +8720,121 @@ TEST_LOAD_STORE test_18_store =
 
 INIT_INFO test_init_19[] =
   {
-   {IC_SET_REG_N,    0},
-   {IC_SET_REG_V,    SW_PLUS(0x112233)},
-   {IC_SET_REG_N,    1},
-   {IC_SET_REG_V,    SW_PLUS(0x0)},
-   {IC_SET_REG_N,    8},
-   {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
-   {IC_SET_REG_N,    9},
-   {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
+    {IC_SET_REG_N,    0},
+    {IC_SET_REG_V,    SW_PLUS(0x112233)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    8},
+    {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
+    {IC_SET_REG_N,    9},
+    {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_19[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
 #if 0   
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,             // 0000
+    TOK_KEY_C,             // 0000
    
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,             // 0000
+    TOK_KEY_C,             // 0000
    
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 #endif
    
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_19[] =
   {
    
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0000004},
-   //{TC_END_SECTION, 0},
+    {TC_REG_N,   0},
+    {TC_MUST_BE, 0xA0000004},
+    //{TC_END_SECTION, 0},
 
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0000005},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xA0000005},
+    {TC_END_SECTION, 0},
 
-   //{TC_MUST_BE_STOPPED, 0},
-   //{TC_END_SECTION, 0},
+    //{TC_MUST_BE_STOPPED, 0},
+    //{TC_END_SECTION, 0},
 
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0000007},
-   //{TC_END_SECTION, 0},
+    {TC_REG_N,   0},
+    {TC_MUST_BE, 0xA0000007},
+    //{TC_END_SECTION, 0},
 
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0000008},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xA0000008},
+    {TC_END_SECTION, 0},
 
-   //{TC_MUST_BE_STOPPED, 0},
-   //{TC_END_SECTION, 0},
+    //{TC_MUST_BE_STOPPED, 0},
+    //{TC_END_SECTION, 0},
 
-   {TC_REG_N,   0},
-   {TC_MUST_BE, 0xA0000001},
-   {TC_END_SECTION, 0},
+    {TC_REG_N,   0},
+    {TC_MUST_BE, 0xA0000001},
+    {TC_END_SECTION, 0},
 
 #if 0
-   {TC_REG_N,   1},
-   {TC_MUST_BE, 0xA0000002},
-   {TC_MUST_BE_NOT_STOPPED, 0},
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xA0000002},
+    {TC_MUST_BE_NOT_STOPPED, 0},
 #endif
    
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_19_store =
   {
-   {
-    0x03040315,    //00  R0 <-4, R1 <- 5
-    0x19010000,    //01  Stop and display R0 and R1, NOP
-    0x03070318,    //02  R0<- 7, R1 <- 8
-    0x19010000,    //03  Stop and display R0 and R1, NOP
-    0x03010312,    //04  R0 <- 1, R1 <- 2
-    0x19010000,    //05  Stop
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,     //10
-    0xA4062500,     //11
-    0xA5314159,     //12
-    0x00000000,     //13
-    0xA0000001,
-    0xA0000007,
-    -1},
+    {
+      0x03040315,    //00  R0 <-4, R1 <- 5
+      0x19010000,    //01  Stop and display R0 and R1, NOP
+      0x03070318,    //02  R0<- 7, R1 <- 8
+      0x19010000,    //03  Stop and display R0 and R1, NOP
+      0x03010312,    //04  R0 <- 1, R1 <- 2
+      0x19010000,    //05  Stop
+      0x00000000,
+      0x00000000,
+      0x00000000,
+      0x00000000,
+      0x00000000,     //10
+      0xA4062500,     //11
+      0xA5314159,     //12
+      0x00000000,     //13
+      0xA0000001,
+      0xA0000007,
+      -1},
   };
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -9042,55 +8846,55 @@ TEST_LOAD_STORE test_19_store =
 
 INIT_INFO test_init_20[] =
   {
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_20[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_2,
-   TOK_KEY_1,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_2,
+    TOK_KEY_1,
+    TOK_KEY_LOAD_IAR,
 
-   // Run program to end
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    // Run program to end
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
 #if 0
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
 #endif
    
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_20[] =
   {
-   {TC_STORE_N,   0x09},
-   {TC_MUST_BE, 0xA6326471},
+    {TC_STORE_N,   0x09},
+    {TC_MUST_BE, 0xA6326471},
 
-   {TC_STORE_N,   0x10},
-   {TC_MUST_BE, 0xB5003621},
+    {TC_STORE_N,   0x10},
+    {TC_MUST_BE, 0xB5003621},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 // ad-bc = 125.4392
@@ -9101,41 +8905,41 @@ TEST_INFO test_res_20[] =
 
 TEST_LOAD_STORE test_20_store =
   {
-   {
-    0x00000000,    // 00 spare
-    0x00000000,    // 01 spare
-    0x00000000,    // 02 spare
-    0xA0000010,    // 03 a     10
-    0xA1000034,    // 04 b     3.4
-    0xA5314159,    // 05 p     3.14159
-    0xA3007812,    // 06 c     7.812
-    0xA1000152,    // 07 d     15.2
-    0xA0000002,    // 08 q     2
-    0x00000000,    // 09 r     
-    0x00000000,    // 10 s
-    0x00000000,    // 11 u
-    0x00000000,    // 12 v
-    0x00000000,    // 13 spare
-    0x00000000,    // 14 spare
-    0x78030303,    // 15
-    0x78040303,    // 16
-    0x78050403,    // 17
-    0x78060504,    // 18
-    0x78070605,    // 19
-    0x78080706,    // 20
-    0x72090705,    // 21
-    0x72100408,    // 22
-    0x71090910,    // 23
-    0x72100307,    // 24
-    0x72110406,    // 25
-    0x71101011,    // 26
-    0x73090910,    // 27
-    0x72110308,    // 28
-    0x72120605,    // 29
-    0x71111112,    // 30
-    0x73101110,    // 31
-    0x79091010,    // 32
-    -1},
+    {
+      0x00000000,    // 00 spare
+      0x00000000,    // 01 spare
+      0x00000000,    // 02 spare
+      0xA0000010,    // 03 a     10
+      0xA1000034,    // 04 b     3.4
+      0xA5314159,    // 05 p     3.14159
+      0xA3007812,    // 06 c     7.812
+      0xA1000152,    // 07 d     15.2
+      0xA0000002,    // 08 q     2
+      0x00000000,    // 09 r     
+      0x00000000,    // 10 s
+      0x00000000,    // 11 u
+      0x00000000,    // 12 v
+      0x00000000,    // 13 spare
+      0x00000000,    // 14 spare
+      0x78030303,    // 15
+      0x78040303,    // 16
+      0x78050403,    // 17
+      0x78060504,    // 18
+      0x78070605,    // 19
+      0x78080706,    // 20
+      0x72090705,    // 21
+      0x72100408,    // 22
+      0x71090910,    // 23
+      0x72100307,    // 24
+      0x72110406,    // 25
+      0x71101011,    // 26
+      0x73090910,    // 27
+      0x72110308,    // 28
+      0x72120605,    // 29
+      0x71111112,    // 30
+      0x73101110,    // 31
+      0x79091010,    // 32
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9148,82 +8952,82 @@ TEST_LOAD_STORE test_20_store =
 
 INIT_INFO test_init_21[] =
   {
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_21[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_9,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_9,
+    TOK_KEY_LOAD_IAR,
 
 #if 0
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
-   TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
 #endif
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_21[] =
   {
-   {TC_STORE_N,   0x3},
-   {TC_MUST_BE, 0xA5141422},
-   {TC_END,     0},
+    {TC_STORE_N,   0x3},
+    {TC_MUST_BE, 0xA5141422},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_21_store =
   {
-   {
-    0x00000000,    // 00 spare
-    0x00000000,    // 01 spare
-    0xA0000002,    // 02 v
-    0x00000000,    // 03 q
-    0x00000000,    // 04 p
-    0xA0000002,    // 05 2
-    0xA0000000,    // 06 0
-    0x00000000,    // 07 spare
-    0x78020506,    // 08 
-    0x73030205,    // 09 
-    0x70040306,    // 10 
-    0x73030204,    // 11 
-    0x70030304,    // 12 
-    0x73030305,    // 13 
-    0x74160304,    // 14 
-    0x74100505,    // 15
-    0x79020304,    // 16
-    0x00000000,    // 31
-    0x00000000,    // 32
-    -1},
+    {
+      0x00000000,    // 00 spare
+      0x00000000,    // 01 spare
+      0xA0000002,    // 02 v
+      0x00000000,    // 03 q
+      0x00000000,    // 04 p
+      0xA0000002,    // 05 2
+      0xA0000000,    // 06 0
+      0x00000000,    // 07 spare
+      0x78020506,    // 08 
+      0x73030205,    // 09 
+      0x70040306,    // 10 
+      0x73030204,    // 11 
+      0x70030304,    // 12 
+      0x73030305,    // 13 
+      0x74160304,    // 14 
+      0x74100505,    // 15
+      0x79020304,    // 16
+      0x00000000,    // 31
+      0x00000000,    // 32
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9236,62 +9040,62 @@ TEST_LOAD_STORE test_21_store =
 
 INIT_INFO test_init_22[] =
   {
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_22[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_1,
-   TOK_KEY_1,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_1,
+    TOK_KEY_1,
+    TOK_KEY_LOAD_IAR,
 
-   //TOK_KEY_RUN,
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    //TOK_KEY_RUN,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
    
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_22[] =
   {
-   {TC_STORE_N,   0x3},
-   {TC_MUST_BE, 0xA6841471},
+    {TC_STORE_N,   0x3},
+    {TC_MUST_BE, 0xA6841471},
    
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_22_store =
   {
-   {
-    0x00000000,    // 00 spare
-    0x00000000,    // 01 spare
-    0xA0000001,    // 02 x
-    0x00000000,    // 03 s
-    0x00000000,    // 04 a
-    0xA0000002,    // 05 b
-    0xA0000000,    // 06 t
-    0x00000000,    // 07 0
-    0xA0000001,    // 08 1
-    0x00000000,    // 09 spare 
-    0x78020708,    // 10 
-    0x70030707,    // 11 
-    0x70040807,    // 12 
-    0x72050202,    // 13 
-    0x71050705,    // 14 
-    0x70060207,    // 15
-    0x74220808,    // 16
-    0x72060605,    // 17
-    0x70040408,    // 18
-    0x73060604,    // 19
-    0x70040408,    // 20
-    0x73060604,    // 21
-    0x70030306,    // 22
-    0x76170607,    // 23
-    0x79020307,    // 24
-    -1},
+    {
+      0x00000000,    // 00 spare
+      0x00000000,    // 01 spare
+      0xA0000001,    // 02 x
+      0x00000000,    // 03 s
+      0x00000000,    // 04 a
+      0xA0000002,    // 05 b
+      0xA0000000,    // 06 t
+      0x00000000,    // 07 0
+      0xA0000001,    // 08 1
+      0x00000000,    // 09 spare 
+      0x78020708,    // 10 
+      0x70030707,    // 11 
+      0x70040807,    // 12 
+      0x72050202,    // 13 
+      0x71050705,    // 14 
+      0x70060207,    // 15
+      0x74220808,    // 16
+      0x72060605,    // 17
+      0x70040408,    // 18
+      0x73060604,    // 19
+      0x70040408,    // 20
+      0x73060604,    // 21
+      0x70030306,    // 22
+      0x76170607,    // 23
+      0x79020307,    // 24
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9304,108 +9108,108 @@ TEST_LOAD_STORE test_22_store =
 
 INIT_INFO test_init_23[] =
   {
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_23[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
 #if 0
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_C,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 #endif
 
-   TOK_KEY_RUN,
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_23[] =
   {
    
-   {TC_STORE_N,   0x10},
-   {TC_MUST_BE, 0xA6142857},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x10},
+    {TC_MUST_BE, 0xA6142857},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,   0x13},
-   {TC_MUST_BE, 0xA6142857},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x13},
+    {TC_MUST_BE, 0xA6142857},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,   0x7},
-   {TC_MUST_BE, 0xB6000353},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x7},
+    {TC_MUST_BE, 0xB6000353},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,   0x16},
-   {TC_MUST_BE, 0xA6000014},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x16},
+    {TC_MUST_BE, 0xA6000014},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,   0x19},
-   {TC_MUST_BE, 0xA0000002},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x19},
+    {TC_MUST_BE, 0xA0000002},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,   0x22},
-   {TC_MUST_BE, 0xA0000017},
+    {TC_STORE_N,   0x22},
+    {TC_MUST_BE, 0xA0000017},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_23_store =
   {
-   {
-    0x73101112,    //00
-    0x73131415,    //01
-    0x73070809,    //02  (07) = (08) / (09)  
-    0x73161718,    //03  (16) = (17) / (18)
-    0x70192021,    //04  (19) = (20) + (21)
-    0x70222324,
-    0x19100000,     //06 Stop for result checking
-    0x00000000,     //07
-    0xA6001410,     //08
-    0xB5400000,     //09
-    0x00000000,     //10
-    0xA5100000,     //11
-    0xA5700000,     //12
-    0x00000000,     //13
-    0xA0000001,     //14
-    0xA0000007,     //15
-    0x00000000,     //16
-    0xA4000001,     //17
-    0xA5700000,     //18
-    0x00000000,     //19
-    0xA5100000,     //20
-    0xA5100000,     //21
-    0x00000000,     //22
-    0xA5900000,     //23
-    0xA5800000,     //24
-    0x00000000,     //25
-    0xA0000001,     //26
-    0xA0000007,     //27
-    0x00000000,     //28
-    0xA0000001,     //29
-    0xA0000007,     //30
+    {
+      0x73101112,    //00
+      0x73131415,    //01
+      0x73070809,    //02  (07) = (08) / (09)  
+      0x73161718,    //03  (16) = (17) / (18)
+      0x70192021,    //04  (19) = (20) + (21)
+      0x70222324,
+      0x19100000,     //06 Stop for result checking
+      0x00000000,     //07
+      0xA6001410,     //08
+      0xB5400000,     //09
+      0x00000000,     //10
+      0xA5100000,     //11
+      0xA5700000,     //12
+      0x00000000,     //13
+      0xA0000001,     //14
+      0xA0000007,     //15
+      0x00000000,     //16
+      0xA4000001,     //17
+      0xA5700000,     //18
+      0x00000000,     //19
+      0xA5100000,     //20
+      0xA5100000,     //21
+      0x00000000,     //22
+      0xA5900000,     //23
+      0xA5800000,     //24
+      0x00000000,     //25
+      0xA0000001,     //26
+      0xA0000007,     //27
+      0x00000000,     //28
+      0xA0000001,     //29
+      0xA0000007,     //30
     
-    -1},
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9418,96 +9222,96 @@ TEST_LOAD_STORE test_23_store =
 
 INIT_INFO test_init_24[] =
   {
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_24[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_9,
-   TOK_KEY_5,
-   TOK_KEY_LOAD_ADDR,
+    TOK_KEY_9,
+    TOK_KEY_5,
+    TOK_KEY_LOAD_ADDR,
 
-   TOK_KEY_DOT,
-   TOK_KEY_0,
-   TOK_KEY_2,
-   TOK_KEY_6,
-   TOK_KEY_4,
-   TOK_KEY_1,
-   TOK_KEY_5,
-   TOK_KEY_MINUS,
+    TOK_KEY_DOT,
+    TOK_KEY_0,
+    TOK_KEY_2,
+    TOK_KEY_6,
+    TOK_KEY_4,
+    TOK_KEY_1,
+    TOK_KEY_5,
+    TOK_KEY_MINUS,
    
-   TOK_KEY_LOAD_STORE,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_LOAD_STORE,
+    TOK_TEST_CHECK_RES,
    
-   TOK_KEY_2,
-   TOK_KEY_5,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_2,
+    TOK_KEY_5,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_RUN,
+    TOK_KEY_RUN,
 
-   TOK_TEST_WAIT_FOR_STOP,
-   TOK_TEST_CHECK_RES,
+    TOK_TEST_WAIT_FOR_STOP,
+    TOK_TEST_CHECK_RES,
 
 #if 0
-   TOK_KEY_A,
-   TOK_KEY_B,
-   TOK_KEY_C,
+    TOK_KEY_A,
+    TOK_KEY_B,
+    TOK_KEY_C,
 #endif
    
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_24[] =
   {
    
-   {TC_STORE_N,   0x95},
-   {TC_MUST_BE, 0xB6026415},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x95},
+    {TC_MUST_BE, 0xB6026415},
+    {TC_END_SECTION, 0},
 
-   {TC_STORE_N,   0x03},
-   {TC_MUST_BE, 0xB1003552},
+    {TC_STORE_N,   0x03},
+    {TC_MUST_BE, 0xB1003552},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_24_store =
   {
-   {
-    0x00000000,    //00
-    0x00000000,    //01
-    0x00000000,
-    0x00000000,    //03
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,     //07
-    0x00000000,     //08
-    0x00000000,     //09
-    0x00000000,     //10
-    0xA5938261,     //11
-    0x00000000,     //12
-    0x00000000,     //13
-    0x00000000,     //14
-    0x00000000,     //15
-    0x00000000,     //16
-    0x00000000,     //17
-    0x00000000,     //18
-    0x00000000,     //19
-    0xA0000003,     //20
-    0x00000000,     //21
-    0xA0000095,     //22
-    0x00000000,     //23
-    0xA0000011,     //24
-    0x93202422,     //25
-    0x19200000,     //26   Stop and check results
-    0x00000000,     //27
-    0x00000000,     //28
-    0x00000000,     //29
-    0x00000000,     //30
+    {
+      0x00000000,    //00
+      0x00000000,    //01
+      0x00000000,
+      0x00000000,    //03
+      0x00000000,
+      0x00000000,
+      0x00000000,
+      0x00000000,     //07
+      0x00000000,     //08
+      0x00000000,     //09
+      0x00000000,     //10
+      0xA5938261,     //11
+      0x00000000,     //12
+      0x00000000,     //13
+      0x00000000,     //14
+      0x00000000,     //15
+      0x00000000,     //16
+      0x00000000,     //17
+      0x00000000,     //18
+      0x00000000,     //19
+      0xA0000003,     //20
+      0x00000000,     //21
+      0xA0000095,     //22
+      0x00000000,     //23
+      0xA0000011,     //24
+      0x93202422,     //25
+      0x19200000,     //26   Stop and check results
+      0x00000000,     //27
+      0x00000000,     //28
+      0x00000000,     //29
+      0x00000000,     //30
     
-    -1},
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9520,111 +9324,111 @@ TEST_LOAD_STORE test_24_store =
 
 INIT_INFO test_init_25[] =
   {
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_25[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_6,
-   TOK_KEY_8,
-   TOK_KEY_LOAD_ADDR,
+    TOK_KEY_6,
+    TOK_KEY_8,
+    TOK_KEY_LOAD_ADDR,
 
-   TOK_KEY_8,
-   TOK_KEY_2,
-   TOK_KEY_1,
-   TOK_KEY_DOT,
-   TOK_KEY_3,
-   TOK_KEY_4,
-   TOK_KEY_6,
-   TOK_KEY_MINUS,
+    TOK_KEY_8,
+    TOK_KEY_2,
+    TOK_KEY_1,
+    TOK_KEY_DOT,
+    TOK_KEY_3,
+    TOK_KEY_4,
+    TOK_KEY_6,
+    TOK_KEY_MINUS,
    
-   TOK_KEY_LOAD_STORE,
-   TOK_TEST_CHECK_RES,
+    TOK_KEY_LOAD_STORE,
+    TOK_TEST_CHECK_RES,
    
-   TOK_KEY_1,
-   TOK_KEY_7,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_1,
+    TOK_KEY_7,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_A,
-   TOK_KEY_B,
-   TOK_KEY_C,
+    TOK_KEY_A,
+    TOK_KEY_B,
+    TOK_KEY_C,
 
-   TOK_TEST_CHECK_RES,
+    TOK_TEST_CHECK_RES,
 
-   TOK_KEY_1,
-   TOK_KEY_8,
+    TOK_KEY_1,
+    TOK_KEY_8,
 
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_A,
-   TOK_KEY_B,
-   TOK_KEY_C,
+    TOK_KEY_A,
+    TOK_KEY_B,
+    TOK_KEY_C,
 
-   TOK_TEST_CHECK_RES,
+    TOK_TEST_CHECK_RES,
 
    
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_25[] =
   {
    
-   {TC_STORE_N,   0x68},
-   {TC_MUST_BE, 0xB3821346},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x68},
+    {TC_MUST_BE, 0xB3821346},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   0x00},
-   {TC_MUST_BE, 0xA0000003},
+    {TC_REG_N,   0x00},
+    {TC_MUST_BE, 0xA0000003},
 
-   {TC_REG_N,   0x01},
-   {TC_MUST_BE, 0xB0821346},
+    {TC_REG_N,   0x01},
+    {TC_MUST_BE, 0xB0821346},
 
-   {TC_END_SECTION, 0},
+    {TC_END_SECTION, 0},
    
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_25_store =
   {
-   {
-    0x00000000,    //00
-    0x00000000,    //01
-    0x00000000,
-    0x00000000,    //03
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,     //07
-    0x00000000,     //08
-    0x00000000,     //09
-    0x00000000,     //10
-    0x00000000,     //11
-    0x00000000,     //12
-    0x00000000,     //13
-    0x00000000,     //14
-    0x00000000,     //15
-    0x00000000,     //16
-    0x20680000,     //17
-    0x05321089,     //18
-    0x38640000,     //19
-    0x00000000,     //20
-    0x00000000,     //21
-    0x00000000,     //22
-    0x00000000,     //23
-    0x00000000,     //24
-    0x00000000,     //25
-    0x00000000,     //26
-    0x00000000,     //27
-    0x00000000,     //28
-    0x00000000,     //29
-    0x00000000,     //30
+    {
+      0x00000000,    //00
+      0x00000000,    //01
+      0x00000000,
+      0x00000000,    //03
+      0x00000000,
+      0x00000000,
+      0x00000000,
+      0x00000000,     //07
+      0x00000000,     //08
+      0x00000000,     //09
+      0x00000000,     //10
+      0x00000000,     //11
+      0x00000000,     //12
+      0x00000000,     //13
+      0x00000000,     //14
+      0x00000000,     //15
+      0x00000000,     //16
+      0x20680000,     //17
+      0x05321089,     //18
+      0x38640000,     //19
+      0x00000000,     //20
+      0x00000000,     //21
+      0x00000000,     //22
+      0x00000000,     //23
+      0x00000000,     //24
+      0x00000000,     //25
+      0x00000000,     //26
+      0x00000000,     //27
+      0x00000000,     //28
+      0x00000000,     //29
+      0x00000000,     //30
     
-    -1},
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9637,77 +9441,77 @@ TEST_LOAD_STORE test_25_store =
 
 INIT_INFO test_init_26[] =
   {
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_26[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_1,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_1,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_26[] =
   {
    
-   {TC_STORE_N,   0x68},
-   {TC_MUST_BE, 0xB3821346},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x68},
+    {TC_MUST_BE, 0xB3821346},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   0x00},
-   {TC_MUST_BE, 0xA0000003},
+    {TC_REG_N,   0x00},
+    {TC_MUST_BE, 0xA0000003},
 
-   {TC_REG_N,   0x01},
-   {TC_MUST_BE, 0xB0821346},
+    {TC_REG_N,   0x01},
+    {TC_MUST_BE, 0xB0821346},
 
-   {TC_END_SECTION, 0},
+    {TC_END_SECTION, 0},
    
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_26_store =
   {
-   {
-    0x00000000,    //00
-    0x00000000,    //01
-    0x00000000,
-    0x00000000,    //03
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,     //07
-    0x00000000,     //08
-    0x00000000,     //09
-    0x78010203,     //10
-    0x70010101,     //11
-    0x79010910,     //12
-    0x00000000,     //13
-    0x00000000,     //14
-    0x00000000,     //15
-    0x00000000,     //16
-    0x00000000,     //17
-    0x00000000,     //18
-    0x00000000,     //19
-    0x00000000,     //20
-    0x00000000,     //21
-    0x00000000,     //22
-    0x00000000,     //23
-    0x00000000,     //24
-    0x00000000,     //25
-    0x00000000,     //26
-    0x00000000,     //27
-    0x00000000,     //28
-    0x00000000,     //29
-    0x00000000,     //30
+    {
+      0x00000000,    //00
+      0x00000000,    //01
+      0x00000000,
+      0x00000000,    //03
+      0x00000000,
+      0x00000000,
+      0x00000000,
+      0x00000000,     //07
+      0x00000000,     //08
+      0x00000000,     //09
+      0x78010203,     //10
+      0x70010101,     //11
+      0x79010910,     //12
+      0x00000000,     //13
+      0x00000000,     //14
+      0x00000000,     //15
+      0x00000000,     //16
+      0x00000000,     //17
+      0x00000000,     //18
+      0x00000000,     //19
+      0x00000000,     //20
+      0x00000000,     //21
+      0x00000000,     //22
+      0x00000000,     //23
+      0x00000000,     //24
+      0x00000000,     //25
+      0x00000000,     //26
+      0x00000000,     //27
+      0x00000000,     //28
+      0x00000000,     //29
+      0x00000000,     //30
     
-    -1},
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9723,110 +9527,110 @@ TEST_LOAD_STORE test_26_store =
 
 INIT_INFO test_init_27[] =
   {
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_27[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_1,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_1,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_27[] =
   {
    
-   {TC_STORE_N,   0x68},
-   {TC_MUST_BE, 0xB3821346},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x68},
+    {TC_MUST_BE, 0xB3821346},
+    {TC_END_SECTION, 0},
 
-   {TC_REG_N,   0x00},
-   {TC_MUST_BE, 0xA0000003},
+    {TC_REG_N,   0x00},
+    {TC_MUST_BE, 0xA0000003},
 
-   {TC_REG_N,   0x01},
-   {TC_MUST_BE, 0xB0821346},
+    {TC_REG_N,   0x01},
+    {TC_MUST_BE, 0xB0821346},
 
-   {TC_END_SECTION, 0},
+    {TC_END_SECTION, 0},
    
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_27_store =
   {
-   {
-    //----------------------------------------
-    // Program for L <- Logb N
-    //
-    0x00000000,     //00          L
-    0x00000000,     //01          J
-    0x00000000,     //02          N
-    0x00000000,     //03          b
-    0x00000000,     //04          x, P
-    0x00000000,     //05          2 E6  |
-    0x00000000,     //06          2     | Constants (load with program)
-    0x00000000,     //07          Q     |
-    0x03000310,     //08  START   R0 <- 0    R1<-0
-    0x21000311,     //09          L <- 0     E1<-1
-    0x21010000,     //10          J <- 1
-    0x28022803,     //11          Input N     Input b
-    0x20022104,     //12          x <- N
-    0x71290403,     //13  A       \ * Branch to B if b>x
-    0x74292918,     //14          /   (i.e. if x-b<0)
-    0x73040403,     //15          x <- x / b
-    0x20000011,     //16          L <- L + 1
-    0x21002413,     //17                      Branh to A
-    0x73010106,     //18  B       J <- J / 2
-    0x71290105,     //19          \  * Branch to C if
-    0x74292927,     //20          /  J - (2 E -6) < 0
-    0x72040404,     //21          x <- x * x
-    0x71290403,     //22          \  * Branch to B if
-    0x74292918,     //23          /    x - b < 0
-    0x73040403,     //24          x <- x / b
-    0x70000001,     //25          L <- L + J
-    0x24180000,     //26          Branch to B
-    0x79020300,     //27  C       Display N, b, L
-    0x28080000,     //28          Branch to start
-    0x00000000,     //29           Working
+    {
+      //----------------------------------------
+      // Program for L <- Logb N
+      //
+      0x00000000,     //00          L
+      0x00000000,     //01          J
+      0x00000000,     //02          N
+      0x00000000,     //03          b
+      0x00000000,     //04          x, P
+      0x00000000,     //05          2 E6  |
+      0x00000000,     //06          2     | Constants (load with program)
+      0x00000000,     //07          Q     |
+      0x03000310,     //08  START   R0 <- 0    R1<-0
+      0x21000311,     //09          L <- 0     E1<-1
+      0x21010000,     //10          J <- 1
+      0x28022803,     //11          Input N     Input b
+      0x20022104,     //12          x <- N
+      0x71290403,     //13  A       \ * Branch to B if b>x
+      0x74292918,     //14          /   (i.e. if x-b<0)
+      0x73040403,     //15          x <- x / b
+      0x20000011,     //16          L <- L + 1
+      0x21002413,     //17                      Branh to A
+      0x73010106,     //18  B       J <- J / 2
+      0x71290105,     //19          \  * Branch to C if
+      0x74292927,     //20          /  J - (2 E -6) < 0
+      0x72040404,     //21          x <- x * x
+      0x71290403,     //22          \  * Branch to B if
+      0x74292918,     //23          /    x - b < 0
+      0x73040403,     //24          x <- x / b
+      0x70000001,     //25          L <- L + J
+      0x24180000,     //26          Branch to B
+      0x79020300,     //27  C       Display N, b, L
+      0x28080000,     //28          Branch to start
+      0x00000000,     //29           Working
 
-    // * Branches employ the square root subroutine
-    //
-    //----------------------------------------
-    //
-    // Program for N <- b ^ L
-    //
-    0xA0000001,     //30          1    Constant (load with program)
-    0x73023030,     //31  START   N <- 1
-    0x28032800,     //32          Input b    Input L
-    0x20032101,     //33          J <- b
-    0x20001710,     //34          (R0R1) <- L
-    0x03002104,     //35          R0<-0   P<-[L]
-    0x71070004,     //36          Q <- L-P
-    0x20040510,     //37  A       | * Branch to B if P = 0
-    0x25420000,     //38          |
-    0x01112104,     //39          P <- P - 1
+      // * Branches employ the square root subroutine
+      //
+      //----------------------------------------
+      //
+      // Program for N <- b ^ L
+      //
+      0xA0000001,     //30          1    Constant (load with program)
+      0x73023030,     //31  START   N <- 1
+      0x28032800,     //32          Input b    Input L
+      0x20032101,     //33          J <- b
+      0x20001710,     //34          (R0R1) <- L
+      0x03002104,     //35          R0<-0   P<-[L]
+      0x71070004,     //36          Q <- L-P
+      0x20040510,     //37  A       | * Branch to B if P = 0
+      0x25420000,     //38          |
+      0x01112104,     //39          P <- P - 1
     
-    0x72020203,     //40          N <- N * b
-    0x24370000,     //41          Branch to A
-    0x74010130,     //42  B       J <- sqrt(J)
-    0x20010111,     //43          |  * Branch to C if J = 1
-    0x05102551,     //44          | 
-    0x70070707,     //45          Q <- Q + Q
-    0x71290730,     //46          | Branch to B if Q - 1 < 0
-    0x74292942,     //47          |
-    0x71070730,     //48          Q <- Q - 1
-    0x72020201,     //49          N <- N * J
-    0x24420000,     //50          Branch to B
-    0x79030002,     //51  C       Display b, L, N
-    0x24310000,     //52          Branch to start
+      0x72020203,     //40          N <- N * b
+      0x24370000,     //41          Branch to A
+      0x74010130,     //42  B       J <- sqrt(J)
+      0x20010111,     //43          |  * Branch to C if J = 1
+      0x05102551,     //44          | 
+      0x70070707,     //45          Q <- Q + Q
+      0x71290730,     //46          | Branch to B if Q - 1 < 0
+      0x74292942,     //47          |
+      0x71070730,     //48          Q <- Q - 1
+      0x72020201,     //49          N <- N * J
+      0x24420000,     //50          Branch to B
+      0x79030002,     //51  C       Display b, L, N
+      0x24310000,     //52          Branch to start
 
-    -1},
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -9839,117 +9643,117 @@ TEST_LOAD_STORE test_27_store =
 
 INIT_INFO test_init_28[] =
   {
-   {IC_SET_REG_N,    3},
-   {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+    {IC_SET_REG_N,    3},
+    {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
 
-   {IC_END,          0},
+    {IC_END,          0},
   };
 
 TOKEN test_seq_28[] =
   {
-   TOK_KEY_NORMAL_RESET,
+    TOK_KEY_NORMAL_RESET,
 
-   TOK_KEY_1,
-   TOK_KEY_0,
-   TOK_KEY_LOAD_IAR,
+    TOK_KEY_1,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
 
-   TOK_KEY_RUN,
+    TOK_KEY_RUN,
 
-   TOK_TEST_WAIT_FOR_STOP,
-   //TOK_KEY_A,
-   //TOK_KEY_B,
-   //TOK_KEY_C,
+    TOK_TEST_WAIT_FOR_STOP,
+    //TOK_KEY_A,
+    //TOK_KEY_B,
+    //TOK_KEY_C,
 
-   TOK_TEST_CHECK_RES,
+    TOK_TEST_CHECK_RES,
 
-   TOK_NONE,
+    TOK_NONE,
   };
 
 TEST_INFO test_res_28[] =
   {
    
-   {TC_STORE_N,   0x20},
-   {TC_MUST_BE, 0xA0200000},
-   {TC_END_SECTION, 0},
+    {TC_STORE_N,   0x20},
+    {TC_MUST_BE, 0xA0200000},
+    {TC_END_SECTION, 0},
 
-   {TC_END,     0},
+    {TC_END,     0},
   };
 
 TEST_LOAD_STORE test_28_store =
   {
-   {
-    //----------------------------------------
-    // Program for L <- Logb N
-    //
-    0x00000000,  // 00
-    0x00000000,  // 01
-    0x00000000,  // 02
-    0x00000000,  // 03
-    0x00000000,  // 04
-    0x00000000,  // 05
-    0x00000000,  // 06
-    0x00000000,  // 07
-    0x03000310,  // 08
-    0x21000311,  // 09
-    0x70202122,  // 10
-    0x28022803,  // 11
-    0x20022104,  // 12
-    0x71290403,  // 13
-    0x74292918,  // 14
-    0x73040403,  // 15
-    0x20000011,  // 16
-    0x21002413,  // 17
-    0x73010106,  // 18
-    0x71290105,  // 19
-    0xA0222222,  // 20
-    0xA0100000,  // 21
-    0xA0100000,  // 22
-    0x74292918,  // 
-    0x73040403,  // 
-    0x70000001,  // 
-    0x24180000,  // 
-    0x79020300,  // 
-    0x28080000,  // 
-    0x00000000,  
+    {
+      //----------------------------------------
+      // Program for L <- Logb N
+      //
+      0x00000000,  // 00
+      0x00000000,  // 01
+      0x00000000,  // 02
+      0x00000000,  // 03
+      0x00000000,  // 04
+      0x00000000,  // 05
+      0x00000000,  // 06
+      0x00000000,  // 07
+      0x03000310,  // 08
+      0x21000311,  // 09
+      0x70202122,  // 10
+      0x28022803,  // 11
+      0x20022104,  // 12
+      0x71290403,  // 13
+      0x74292918,  // 14
+      0x73040403,  // 15
+      0x20000011,  // 16
+      0x21002413,  // 17
+      0x73010106,  // 18
+      0x71290105,  // 19
+      0xA0222222,  // 20
+      0xA0100000,  // 21
+      0xA0100000,  // 22
+      0x74292918,  // 
+      0x73040403,  // 
+      0x70000001,  // 
+      0x24180000,  // 
+      0x79020300,  // 
+      0x28080000,  // 
+      0x00000000,  
 
-    -1},
+      -1},
   };
 
 ////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
-   {"KB Input",                test_init_0,  test_seq_0,  test_res_0,  0, &test_0_store,  ""},
-   {"Reg Inst 0[0-3],1[0-3]",  test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
-   {"Test 2",                  test_init_2,  test_seq_2,  test_res_2,  0, &test_2_store,  ""},
-   {"ADDR inc/dec",            test_init_3,  test_seq_3,  test_res_3,  0, &test_3_store,  ""},
-   {"RH 6 Digits",             test_init_4,  test_seq_4,  test_res_4,  0, &test_4_store,  ""},
-   {"TEST",                    test_init_5,  test_seq_5,  test_res_5,  0, &test_5_store,  ""},
-   {"Left Shift",              test_init_6,  test_seq_6,  test_res_6,  0, &test_6_store,  ""},
-   {"Right Shift",             test_init_7,  test_seq_7,  test_res_7,  0, &test_7_store,  ""},
-   {"Inst 20",                 test_init_8,  test_seq_8,  test_res_8,  0, &test_8_store,  ""},
-   {"Branches",                test_init_9,  test_seq_9,  test_res_9,  0, &test_9_store,  ""},
-   {"CL=1,0 Branches",         test_init_10, test_seq_10, test_res_10, 0, &test_10_store, ""},
-   {"Fp Addition",             test_init_11, test_seq_11, test_res_11, 0, &test_11_store, ""},
-   {"Fp Subtraction",          test_init_12, test_seq_12, test_res_12, 0, &test_12_store, ""},
-   {"Fp Multiply",             test_init_13, test_seq_13, test_res_13, 0, &test_13_store, ""},
-   {"Fp Divide",               test_init_14, test_seq_14, test_res_14, 0, &test_14_store, ""},
-   {"Surface & volume",        test_init_15, test_seq_15, test_res_15, 0, &test_15_store, ""},
-   {"Fp Branches",             test_init_16, test_seq_16, test_res_16, 0, &test_16_store, ""},
-   {"Inst [0-1][0-3] DW",      test_init_17, test_seq_17, test_res_17, 0, &test_17_store, ""},
-   {"FP test",                 test_init_18, test_seq_18, test_res_18, 0, &test_18_store, ""},
-   {"Stop (19)",               test_init_19, test_seq_19, test_res_19, 0, &test_19_store, ""},
-   {"Simultaneous Eq",         test_init_20, test_seq_20, test_res_20, 0, &test_20_store, ""},
-   {"Square root",             test_init_21, test_seq_21, test_res_21, 0, &test_21_store, ""},
-   {"sin(x)",                  test_init_22, test_seq_22, test_res_22, 0, &test_22_store, ""},
-   {"FP tests",                test_init_23, test_seq_23, test_res_23, 0, &test_23_store, ""},
-   {"Fig 10",                  test_init_24, test_seq_24, test_res_24, 0, &test_24_store, ""},
-   {"Fig 11",                  test_init_25, test_seq_25, test_res_25, 0, &test_25_store, ""},
-   {"Load Prog",               test_init_26, test_seq_26, test_res_26, 0, &test_26_store, ""},
-   {"Load Log N",              test_init_27, test_seq_27, test_res_27, 0, &test_27_store, ""},
-   {"Double 100000",           test_init_28, test_seq_28, test_res_28, 0, &test_28_store, ""},
+    {"KB Input",                test_init_0,  test_seq_0,  test_res_0,  0, &test_0_store,  ""},
+    {"Reg Inst 0[0-3],1[0-3]",  test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
+    {"Test 2",                  test_init_2,  test_seq_2,  test_res_2,  0, &test_2_store,  ""},
+    {"ADDR inc/dec",            test_init_3,  test_seq_3,  test_res_3,  0, &test_3_store,  ""},
+    {"RH 6 Digits",             test_init_4,  test_seq_4,  test_res_4,  0, &test_4_store,  ""},
+    {"TEST",                    test_init_5,  test_seq_5,  test_res_5,  0, &test_5_store,  ""},
+    {"Left Shift",              test_init_6,  test_seq_6,  test_res_6,  0, &test_6_store,  ""},
+    {"Right Shift",             test_init_7,  test_seq_7,  test_res_7,  0, &test_7_store,  ""},
+    {"Inst 20",                 test_init_8,  test_seq_8,  test_res_8,  0, &test_8_store,  ""},
+    {"Branches",                test_init_9,  test_seq_9,  test_res_9,  0, &test_9_store,  ""},
+    {"CL=1,0 Branches",         test_init_10, test_seq_10, test_res_10, 0, &test_10_store, ""},
+    {"Fp Addition",             test_init_11, test_seq_11, test_res_11, 0, &test_11_store, ""},
+    {"Fp Subtraction",          test_init_12, test_seq_12, test_res_12, 0, &test_12_store, ""},
+    {"Fp Multiply",             test_init_13, test_seq_13, test_res_13, 0, &test_13_store, ""},
+    {"Fp Divide",               test_init_14, test_seq_14, test_res_14, 0, &test_14_store, ""},
+    {"Surface & volume",        test_init_15, test_seq_15, test_res_15, 0, &test_15_store, ""},
+    {"Fp Branches",             test_init_16, test_seq_16, test_res_16, 0, &test_16_store, ""},
+    {"Inst [0-1][0-3] DW",      test_init_17, test_seq_17, test_res_17, 0, &test_17_store, ""},
+    {"FP test",                 test_init_18, test_seq_18, test_res_18, 0, &test_18_store, ""},
+    {"Stop (19)",               test_init_19, test_seq_19, test_res_19, 0, &test_19_store, ""},
+    {"Simultaneous Eq",         test_init_20, test_seq_20, test_res_20, 0, &test_20_store, ""},
+    {"Square root",             test_init_21, test_seq_21, test_res_21, 0, &test_21_store, ""},
+    {"sin(x)",                  test_init_22, test_seq_22, test_res_22, 0, &test_22_store, ""},
+    {"FP tests",                test_init_23, test_seq_23, test_res_23, 0, &test_23_store, ""},
+    {"Fig 10",                  test_init_24, test_seq_24, test_res_24, 0, &test_24_store, ""},
+    {"Fig 11",                  test_init_25, test_seq_25, test_res_25, 0, &test_25_store, ""},
+    {"Load Prog",               test_init_26, test_seq_26, test_res_26, 0, &test_26_store, ""},
+    {"Load Log N",              test_init_27, test_seq_27, test_res_27, 0, &test_27_store, ""},
+    {"Double 100000",           test_init_28, test_seq_28, test_res_28, 0, &test_28_store, ""},
    
-   {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
+    {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
   
 ////////////////////////////////////////////////////////////////////////////////
@@ -10135,18 +9939,18 @@ int cat_file(char *fn)
 
 FIELD_INFO  field_info[] =
   {
-   {"*IAR_ADDRESS:",            wfn_iar_address},
-   {"*IAR_A_FLAG:",             wfn_iar_a_flag},
-   {"*KB_REGISTER:",            wfn_kb_register},
-   {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
-   {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
-   {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
-   {"*INSTRUCTION_REGISTER:",   wfn_instruction_register},
-   {"*LINK_REGISTER:",          wfn_link_register},
-   {"*LINK_REGISTER:",          wfn_store},
-   {"*LINK_REGISTER:",          wfn_store_data},
-   {"*SUPPRESSED_DISPLAY",      wfn_suppressed_display},
-   {"*STEP_EXTRACODE",          wfn_step_extracode},
+    {"*IAR_ADDRESS:",            wfn_iar_address},
+    {"*IAR_A_FLAG:",             wfn_iar_a_flag},
+    {"*KB_REGISTER:",            wfn_kb_register},
+    {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
+    {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
+    {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
+    {"*INSTRUCTION_REGISTER:",   wfn_instruction_register},
+    {"*LINK_REGISTER:",          wfn_link_register},
+    {"*LINK_REGISTER:",          wfn_store},
+    {"*LINK_REGISTER:",          wfn_store_data},
+    {"*SUPPRESSED_DISPLAY",      wfn_suppressed_display},
+    {"*STEP_EXTRACODE",          wfn_step_extracode},
   };
 
 #define NUM_FIELD_INFO (sizeof(field_info)/sizeof(FIELD_INFO))
@@ -10510,38 +10314,38 @@ int write_state_to_file(ESC_STATE *es, char *fn)
 ////////////////////////////////////////////////////////////////////////////////
 
 char *paddesc[100] = {
-		      "00",
-		      "01",
-		      "02",
-		      "03",
-		      "04",
-		      "05",
-		      "06",
-		      "07",
-		      "08",
-		      "09",
-		      "10",
-		      "11",
-		      "12",
-		      "13",
-		      "14",
-		      "15",
-		      "16",
-		      "17",
-		      "18",
-		      "19",
-		      "20",
-		      "21",
-		      "22",
-		      "23",
-		      "24",
-		      "25",
-		      "26",
-		      "27",
-		      "28",
-		      "29",
-		      "30",
-		      "31",
+  "00",
+  "01",
+  "02",
+  "03",
+  "04",
+  "05",
+  "06",
+  "07",
+  "08",
+  "09",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
+  "22",
+  "23",
+  "24",
+  "25",
+  "26",
+  "27",
+  "28",
+  "29",
+  "30",
+  "31",
 		      
 };
 
@@ -10646,243 +10450,243 @@ typedef struct
 
 SERIAL_COMMAND serial_cmds[] =
   {
-   {
-    '?',
-    "Serial command help",
-    serial_help,
-   },
-   {
-    '!',
-    "Boot to mass storage",
-    cli_boot_mass,
-   },
-   {
-    'z',
-    "Enter parameter value",
-    cli_enter_parameter,
-   },
-   {
-    '^',
-    "Update Display",
-    cli_update_display,
-   },
-   {
-    '$',
-    "Test BCD",
-    cli_test_bcd,
-   },
-   {
-    '*',
-    "Dump State",
-    cli_dump,
-   },
-   {
-    '&',
-    "Dump Store",
-    cli_dump_store,
-   },
-   {
-    'T',
-    "Load Test Code",
-    cli_load_test_code,
-   },
-   {
-    'U',
-    "Load Test Code 2",
-    cli_load_test_code_2,
-   },
-   {
-    '0',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '1',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '2',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '3',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '4',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '5',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '6',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '7',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '8',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '9',
-    "*Digit",
-    cli_digit,
-   },
-   {
-    '-',
-    "*Digit",
-    cli_minus,
-   },
-   {
-    '.',
-    "*Digit",
-    cli_dot,
-   },
-   {
-    'r',
-    "Run",
-    cli_run,
-   },
-   {
-    's',
-    "Stop",
-    cli_stop,
-   },
-   {
-    'N',
-    "Normal Reset",
-    cli_normal_reset,
-   },
-   {
-    'K',
-    "KI Reset",
-    cli_ki_reset,
-   },
-   {
-    'x',
-    "Dump Extracode Information",
-    print_extracode_info,
-   },
-   {
-    'I',
-    "Load IAR",
-    cli_load_iar,
-   },
-   {
-    'A',
-    "Load ADDR",
-    cli_load_addr,
-   },
-   {
-    'i',
-    "Incr ADDR",
-    cli_incr_addr,
-   },
-   {
-    'd',
-    "Decr ADDR",
-    cli_decr_addr,
-   },
-   {
-    'S',
-    "Load STORE",
-    cli_load_store,
-   },
-   {
-    'a',
-    "A",
-    cli_key_a,
-   },
-   {
-    'b',
-    "B",
-    cli_key_b,
-   },
-   {
-    'c',
-    "C",
-    cli_key_c,
-   },
+    {
+      '?',
+      "Serial command help",
+      serial_help,
+    },
+    {
+      '!',
+      "Boot to mass storage",
+      cli_boot_mass,
+    },
+    {
+      'z',
+      "Enter parameter value",
+      cli_enter_parameter,
+    },
+    {
+      '^',
+      "Update Display",
+      cli_update_display,
+    },
+    {
+      '$',
+      "Test BCD",
+      cli_test_bcd,
+    },
+    {
+      '*',
+      "Dump State",
+      cli_dump,
+    },
+    {
+      '&',
+      "Dump Store",
+      cli_dump_store,
+    },
+    {
+      'T',
+      "Load Test Code",
+      cli_load_test_code,
+    },
+    {
+      'U',
+      "Load Test Code 2",
+      cli_load_test_code_2,
+    },
+    {
+      '0',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '1',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '2',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '3',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '4',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '5',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '6',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '7',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '8',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '9',
+      "*Digit",
+      cli_digit,
+    },
+    {
+      '-',
+      "*Digit",
+      cli_minus,
+    },
+    {
+      '.',
+      "*Digit",
+      cli_dot,
+    },
+    {
+      'r',
+      "Run",
+      cli_run,
+    },
+    {
+      's',
+      "Stop",
+      cli_stop,
+    },
+    {
+      'N',
+      "Normal Reset",
+      cli_normal_reset,
+    },
+    {
+      'K',
+      "KI Reset",
+      cli_ki_reset,
+    },
+    {
+      'x',
+      "Dump Extracode Information",
+      print_extracode_info,
+    },
+    {
+      'I',
+      "Load IAR",
+      cli_load_iar,
+    },
+    {
+      'A',
+      "Load ADDR",
+      cli_load_addr,
+    },
+    {
+      'i',
+      "Incr ADDR",
+      cli_incr_addr,
+    },
+    {
+      'd',
+      "Decr ADDR",
+      cli_decr_addr,
+    },
+    {
+      'S',
+      "Load STORE",
+      cli_load_store,
+    },
+    {
+      'a',
+      "A",
+      cli_key_a,
+    },
+    {
+      'b',
+      "B",
+      cli_key_b,
+    },
+    {
+      'c',
+      "C",
+      cli_key_c,
+    },
 #if ESC_TYPE_SMALL   
-   {
-    '%',
-    "Key test",
-    cli_key_key_test,
-   },
+    {
+      '%',
+      "Key test",
+      cli_key_key_test,
+    },
 #endif   
 #if ESC_TYPE_SMALL   
-   {
-    '|',
-    "KBD Dump",
-    cli_kbd_dump,
-   },
+    {
+      '|',
+      "KBD Dump",
+      cli_kbd_dump,
+    },
 #endif
    
-   {
-    'F',
-    "File list",
-    cli_file_list,
-   },
-   {
-    'R',
-    "Read file into state",
-    cli_file_read_state,
-   },
-   {
-    '+',
-    "Run test",
-    cli_run_single_test,
-   },
-   {
-    '=',
-    "Run all tests",
-    cli_run_tests,
-   },
-   {
-    '[',
-    "Load test code into store",
-    cli_load_test_code_into_store,
-   },
-   {
-    '@',
-    "Test results",
-    cli_test_results,
-   },
-   {
-    '<',
-    "Dump touch key data",
-    cli_dump_touch_key_data,
-   },
+    {
+      'F',
+      "File list",
+      cli_file_list,
+    },
+    {
+      'R',
+      "Read file into state",
+      cli_file_read_state,
+    },
+    {
+      '+',
+      "Run test",
+      cli_run_single_test,
+    },
+    {
+      '=',
+      "Run all tests",
+      cli_run_tests,
+    },
+    {
+      '[',
+      "Load test code into store",
+      cli_load_test_code_into_store,
+    },
+    {
+      '@',
+      "Test results",
+      cli_test_results,
+    },
+    {
+      '<',
+      "Dump touch key data",
+      cli_dump_touch_key_data,
+    },
    
 #if ESC_TYPE_DESKTOP
-   {
-    'Q',
-    "Qt Touch Debug",
-    cli_qt_debug,
-   },
-   {
-    'L',
-    "Desktop display test",
-    cli_display_test,
-   },
-   {
-    '/',
-    "Desktop display CLI",
-    cli_escdd,
-   },
+    {
+      'Q',
+      "Qt Touch Debug",
+      cli_qt_debug,
+    },
+    {
+      'L',
+      "Desktop display test",
+      cli_display_test,
+    },
+    {
+      '/',
+      "Desktop display CLI",
+      cli_escdd,
+    },
 #endif   
   };
 
@@ -11459,7 +11263,7 @@ char *display_iar(ESC_STATE *s, IAR_SPEC spec_iar)
       sprintf(result2, "%02X%c", val.address, val.a_flag?'A':' ');
     }
 
-return(result2);
+  return(result2);
 }
 
 char *display_presumptive_address_1(ESC_STATE *s)
@@ -11607,9 +11411,9 @@ int display_any_size_register_on_line(ESC_STATE *s, int display, int lineno, int
 int display_two_any_size_register_on_line(ESC_STATE *s, int display, int lineno, int regno1, int regno2, int contents)
 {
   int lineno2 = display_any_size_register_on_line(s, display, lineno,  regno1, contents);
-      lineno2 = display_any_size_register_on_line(s, display, lineno2, regno2, contents);
+  lineno2 = display_any_size_register_on_line(s, display, lineno2, regno2, contents);
 
-      display_on_line(s, display, 5, "OUT            ");
+  //  display_on_line(s, display, 5, "OUT            ");
   return(lineno2);
 }
 
@@ -11882,8 +11686,8 @@ void update_display(void)
 #if 0
 I2C_PORT_DESC i2c_bus_0 =
   {
-   0, 18,
-   0, 7,
+    0, 18,
+    0, 7,
   };
 
 #endif
@@ -11892,8 +11696,8 @@ I2C_PORT_DESC i2c_bus_0 =
 // Dummy structure
 I2C_SLAVE_DESC oled0 =
   {
-   &i2c_bus_0,
-   0x78 >>1,
+    &i2c_bus_0,
+    0x78 >>1,
   };
 
 #endif

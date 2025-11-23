@@ -102,6 +102,9 @@
 #define DEBUG_DISPLAY_IAR      1
 #define DEBUG_FN_CALL          1
 #define DEBUG_KEYS             1
+#define DEBUG_NEXT_IAR         1
+#define DEBUG_ENTER_EXTRACODE  1
+
 #endif
 
 //------------------------------------------------------------------------------
