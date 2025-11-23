@@ -3314,6 +3314,8 @@ void stage_c_decode(ESC_STATE *s, int display)
       // Load aa with KB register
       write_sw_to_store(s, s->inst_aa, s->keyboard_register);
       s->on_restart_load_aa = 0;
+      s->stop = 0;
+      
       clear_keyboard_register(s);
     }
   
@@ -3325,6 +3327,7 @@ void stage_c_decode(ESC_STATE *s, int display)
       // Load Aa1 with KB register
       write_sw_to_store(s, s->Aa1, s->keyboard_register);
       s->on_restart_load_aa1 = 0;
+      s->stop = 0;
       clear_keyboard_register(s);
     }
   
@@ -4022,12 +4025,13 @@ void stage_c_decode(ESC_STATE *s, int display)
 void stage_b_decode(ESC_STATE *s, int display)
 {
   FN_ENTRY_DISPLAY;
+  int display_override = display;
   
 #if DEBUG_STAGES
   printf(" [Stage B: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
 #endif
 
-  switch(s->inst_digit_b)
+  switch(s->inst_digit_a)
     {
     case 2:
     case 3:
@@ -4041,7 +4045,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 	  s->stop = 1;
 	  s->on_restart_load_aa = 1;
           s->update_display = 1;
-          
+          display_override = DISPLAY_UPDATE;
           next_iar(s);
           break;
           
@@ -4051,6 +4055,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 	  // Stop and display (Aa)
 	  s->stop = 1;
+          display_override = DISPLAY_UPDATE;
           break;
 
 	}
@@ -4058,7 +4063,7 @@ void stage_b_decode(ESC_STATE *s, int display)
       break;
     }
   
-  stage_b_display(s, display, s->inst_digit_a);
+  stage_b_display(s, display_override, s->inst_digit_a);
   
   FN_EXIT;
 }
