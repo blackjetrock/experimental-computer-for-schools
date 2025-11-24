@@ -3043,7 +3043,7 @@ void next_iar(ESC_STATE *s)
   FN_ENTRY;
 
 #if DEBUG_NEXT_IAR
-  printf("\nIAR before:%03X", s->iar);
+  printf("\nIAR before:%s", display_iar(s, SPEC_IAR));
 #endif
 
   int digit_a = INST_A_FIELD(s->instruction_register);
@@ -3102,9 +3102,9 @@ void next_iar(ESC_STATE *s)
     }
 
 #if DEBUG_NEXT_IAR
-  printf("\nIAR after8:%03X", s->iar);
+  printf("\nIAR after: %s", display_iar(s, SPEC_IAR));
 #endif
-
+  
   FN_EXIT;
 }
 
@@ -3142,7 +3142,8 @@ void enter_error_state(ESC_STATE *s, char *msg)
 void display_line_2(ESC_STATE *s, int display)
 {
   char inst_str[9];
-
+  int digit_a;
+  
   inst_str[8] = '\0';
   
   if( !display )
@@ -3162,19 +3163,21 @@ void display_line_2(ESC_STATE *s, int display)
 #endif
   
   // If stepping extracode then we want to see the subroutine instructions
+
+  digit_a = s->inst_digit_a;
   
   if( s->exiting_extracode || (IS_EXTRACODE && !setup_step_extracode) )
     {
       // Force inst_digit_a to use the extracode instruction digit a, not the last subroutine
       // instruction digit a
-      s->inst_digit_a = INST_A_FIELD(extracode_inst);
+      digit_a = INST_A_FIELD(extracode_inst);
 
 #if DEBUG_EXTRACODE
-      printf("\nInst digit A set to %d", s->inst_digit_a);
+      printf("\nUsing digit A set to %d", digit_a);
 #endif
     }
   
-  switch(s->inst_digit_a)
+  switch(digit_a)
     {
     case 7:
     case 8:
@@ -3361,7 +3364,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 #endif
   
   // If we are stepping extracode then we do want to display the subroutine instruction
-  if( s->exiting_extracode && !setup_step_extracode)
+#if 0
+  if( s->exiting_extracode || (IS_EXTRACODE && !setup_step_extracode) )
     {
       // Force inst_digit_a to use the extracode instruction digit a, not the last subroutine
       // instruction digit a
@@ -3369,11 +3373,12 @@ void stage_c_decode(ESC_STATE *s, int display)
       // This ensures the correct instruction is decoded if exiting extracode
       s->inst_digit_a = INST_A_FIELD(extracode_inst);
       s->inst_digit_b = INST_B_FIELD(extracode_inst);
-
+    }
+#endif
+  
 #if DEBUG_EXTRACODE
       printf("\nInst digit A set to %d", s->inst_digit_a);
 #endif
-    }
 
 #if DEBUG_STAGES
   printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
@@ -9852,6 +9857,28 @@ TOKEN test_seq_29[] =
     TOK_KEY_RUN,
     TOK_TEST_WAIT_FOR_STOP,
 
+    // result 1
+    TOK_TEST_CHECK_RES,
+
+
+    // Enter values using three address instructions
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+
+    TOK_KEY_9,
+    TOK_KEY_5,
+    TOK_KEY_DOT,
+
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+
+    TOK_KEY_2,
+    TOK_KEY_DOT,
+
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+
+    // Result 2
     TOK_TEST_CHECK_RES,
 
     TOK_NONE,
@@ -9861,6 +9888,10 @@ TEST_INFO test_res_29[] =
   {
     {TC_STORE_N,   0x00},
     {TC_MUST_BE,   0xA6142857},
+    {TC_END_SECTION, 0},
+    
+    {TC_STORE_N,   0x00},
+    {TC_MUST_BE,   0xA1000475},
     {TC_END,       0},
   };
 
@@ -9877,13 +9908,13 @@ TEST_LOAD_STORE test_29_store =
       0x00000000,    // 07
       0x00000000,    // 08 
       0x00000000,    // 09 
-      0x28012802,    // 10 
-      0x73000102,    // 11 
-      0x79000102,    // 12 
-      0x00000000,    // 13 
-      0x00000000,    // 14 
-      0x00000000,    // 15
-      0x00000000,    // 16
+      0x28012802,    // 10  input a    input b 
+      0x73000102,    // 11  divide
+      0x79000102,    // 12  display and stop
+      0x78010202,    // 13  stop and input a
+      0x78020102,    // 14  stop and input b
+      0x73000102,    // 15  divide
+      0x79000102,    // 16  display and stop
       0x00000000,    // 17
       0x00000000,    // 18
       -1},

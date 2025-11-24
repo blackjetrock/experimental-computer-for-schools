@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 //
 // All debug switches off or set up
-#if 1
+#if 0
 #define DEBUG_VERBOSE_TEST     0
 #define DEBUG_STAGES           0
 #define DEBUG_EXTRACODE        0
@@ -50,10 +50,11 @@
 #endif
 
 // All debug switches off or set up
-#if 0
+#if 1
 #define DEBUG_VERBOSE_TEST     1
 #define DEBUG_ENTRY            1
 #define DEBUG_STAGES           1
+#define DEBUG_EXTRACODE        1
 #define DEBUG_CALC_STATE       1
 #define DEBUG_A_DECODE         1
 #define DEBUG_LOOP             0
