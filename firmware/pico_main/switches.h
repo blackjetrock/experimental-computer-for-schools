@@ -4,28 +4,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-//------------------------------------------------------------------------------
-//
-// Execution flow debug
-//
-#define DEBUG_ENTRY           1
-
-#if DEBUG_ENTRY
-#define FN_ENTRY         printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%s\n", __FUNCTION__)
-#define FN_ENTRY_DISPLAY printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%s display:%d\n", __FUNCTION__, display)
-#define FN_EXIT          printf("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<%s\n", __FUNCTION__)
-#else
-#define FN_ENTRY
-#define FN_EXIT
-#endif
 
 
 //------------------------------------------------------------------------------
 //
 // All debug switches off or set up
-#if 0
-
-#define DEBUG_STAGES           1
+#if 1
+#define DEBUG_VERBOSE_TEST     0
+#define DEBUG_STAGES           0
 #define DEBUG_EXTRACODE        0
 #define DEBUG_CALC_STATE       0
 #define DEBUG_A_DECODE         0
@@ -64,8 +50,9 @@
 #endif
 
 // All debug switches off or set up
-#if 1
-
+#if 0
+#define DEBUG_VERBOSE_TEST     1
+#define DEBUG_ENTRY            1
 #define DEBUG_STAGES           1
 #define DEBUG_CALC_STATE       1
 #define DEBUG_A_DECODE         1
@@ -183,3 +170,18 @@
 #define PIXEL_SCALE  3
 #define PIXEL_SCALE2 2
 
+//------------------------------------------------------------------------------
+//
+// Execution flow debug
+//
+
+
+#if DEBUG_ENTRY
+#define FN_ENTRY         printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%s\n", __FUNCTION__)
+#define FN_ENTRY_DISPLAY printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%s display:%d\n", __FUNCTION__, display)
+#define FN_EXIT          printf("\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<%s\n", __FUNCTION__)
+#else
+#define FN_ENTRY_DISPLAY
+#define FN_ENTRY
+#define FN_EXIT
+#endif

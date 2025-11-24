@@ -29,7 +29,7 @@
 
 #define DISPLAY_UPDATE         1
 #define DISPLAY_NO_UPDATE      0
-#define MAX_LINE               16
+#define MAX_LINE               18
 #define NUM_LINES              6
 #define MAX_FILE_LINE          200
 

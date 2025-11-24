@@ -757,10 +757,12 @@ void kbd_read(ESC_STATE *s)
 
 		      // This test is not waiting for a stop any more
 		      test_waiting_for_stop = 0;
+
+#if DEBUG_TEST_SEQ                      
 		      printf("\n  Checking results  test_waiting_for_stop:%d", test_waiting_for_stop);
 				      
 		      printf("\nChecking results for test: %s", tests[test_number].desc);
-
+#endif
 		      // Which type of test do we do?
 		      test_type = TC_END;
 			  
@@ -774,13 +776,17 @@ void kbd_read(ESC_STATE *s)
 			    case TC_STORE_N:
 			      test_type = TC_STORE_N;
 			      rn = tests[test_number].result_codes[test_res_i].n;
+#if DEBUG_VERBOSE_TEST
 			      printf("\nTesting store[%04X]", rn);
+#endif
 			      break;
 
 			    case TC_REG_N:
 			      test_type = TC_REG_N;
 			      rn = tests[test_number].result_codes[test_res_i].n;
+#if DEBUG_VERBOSE_TEST
 			      printf("\nTesting R[%d]", rn);
+#endif
 			      break;
 
 			    case TC_REG_IAR:
@@ -946,9 +952,10 @@ void kbd_read(ESC_STATE *s)
 				{
 				  strcpy(tests[test_number].fail_text, test_fail_buffer);
 				}
-			      
+
+#if DEBUG_VERBOSE_TEST
 			      printf("\nMoving to next test...");
-			      
+#endif	      
 			      // Move to next test if there is one
 			      test_number++;
 			      clear_test_fail_buffer();
@@ -995,10 +1002,11 @@ void kbd_read(ESC_STATE *s)
 		  int rn = 0;
 		  int done = 0;
 
+#if DEBUG_VERBOSE_TEST
 		  printf("\n================================================");
 		  printf("\nInitialising test: %s", tests[test_number].desc);
 		  printf("\n================================================");
-		  
+#endif
 		  test_res_i = 0;
 		  
 		  load_store_from_test(s, test_number);
@@ -1384,7 +1392,8 @@ SINGLE_WORD any_size_rh6(ESC_STATE *s, int regno)
     {
       int reg_contents = SW_REG_CONTENTS(regno);
       reg_contents &= 0x00FFFFFF;      
-      printf("\nRH6 of %d is %08X", regno, reg_contents);
+
+      //printf("\nRH6 of %d is %08X", regno, reg_contents);
       return(reg_contents);
     }
 
@@ -2981,11 +2990,14 @@ void load_iar_bcd(ESC_STATE *s, int bcdval)
   // Exiting extracode?
   if( IS_EXTRACODE )
     {
+#if DEBUG_EXTRACODE
       printf("\n*** IAR being loaded in extracode***");
-      
+#endif
       if( (bcdval & 0xF00) == 0 )
         {
+#if DEBUG_EXTRACODE
           printf("\n*** IAR will be in lower store ***");
+#endif
           s->exiting_extracode = 1;
 
 #if DEBUG_EXTRACODE
@@ -2996,8 +3008,9 @@ void load_iar_bcd(ESC_STATE *s, int bcdval)
           // stage C, if we are in extracode step setting
           if( setup_step_extracode )
             {
+#if DEBUG_EXTRACODE
               printf("\n*** Exiting extracode ***");
-
+#endif
               s->stop = 1;
               
               // Put display up
@@ -3143,9 +3156,11 @@ void display_line_2(ESC_STATE *s, int display)
   // AUX IAR is used to find the instruction, as that works for the extracodes.
   // the previous stages are from the extracode subroutine instructions for extracodes.
   SINGLE_WORD extracode_inst = load_from_store(s, s->aux_iar.address);
-  
-  printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
 
+#if DEBUG_EXTRACODE
+  printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
+#endif
+  
   // If stepping extracode then we want to see the subroutine instructions
   
   if( s->exiting_extracode || (IS_EXTRACODE && !setup_step_extracode) )
@@ -3154,7 +3169,9 @@ void display_line_2(ESC_STATE *s, int display)
       // instruction digit a
       s->inst_digit_a = INST_A_FIELD(extracode_inst);
 
+#if DEBUG_EXTRACODE
       printf("\nInst digit A set to %d", s->inst_digit_a);
+#endif
     }
   
   switch(s->inst_digit_a)
@@ -3338,8 +3355,11 @@ void stage_c_decode(ESC_STATE *s, int display)
   // the previous stages are from the extracode subroutine instructions for extracodes.
   
   SINGLE_WORD extracode_inst = load_from_store(s, s->aux_iar.address);
-  printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
 
+#if DEBUG_EXTRACODE
+  printf("\nexiting extracode = %d extracode_inst=%08X", s->exiting_extracode, extracode_inst);
+#endif
+  
   // If we are stepping extracode then we do want to display the subroutine instruction
   if( s->exiting_extracode && !setup_step_extracode)
     {
@@ -3350,7 +3370,9 @@ void stage_c_decode(ESC_STATE *s, int display)
       s->inst_digit_a = INST_A_FIELD(extracode_inst);
       s->inst_digit_b = INST_B_FIELD(extracode_inst);
 
+#if DEBUG_EXTRACODE
       printf("\nInst digit A set to %d", s->inst_digit_a);
+#endif
     }
 
 #if DEBUG_STAGES
@@ -3680,16 +3702,16 @@ void stage_c_decode(ESC_STATE *s, int display)
 	case 4:
 	  // First the sign
 	  src_sign = any_size_sign(s, s->reginst_rd);
-	  printf("\nsrc_sign=%d", src_sign);
+	  //@printf("\nsrc_sign=%d", src_sign);
 	  
 	  set_any_size_sign(s, s->reginst_rc, src_sign);
 
-	  printf("\nR[]=%08X", s->R[s->reginst_rc]);
+	  //printf("\nR[]=%08X", s->R[s->reginst_rc]);
 	  
 	  // Then the RH six digits
 	  int rh6 = any_size_rh6(s, s->reginst_rd);
 	  set_any_size_rh6(s, s->reginst_rc, rh6);
-	  printf("\nR[]=%08X", s->R[s->reginst_rc]);
+	  //printf("\nR[]=%08X", s->R[s->reginst_rc]);
 
 	  display_line_2(s, display);
 	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
@@ -3751,7 +3773,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	}
       
       // Instruction complete, move IAR on
-      printf("\nBBB\n");
       next_iar(s);
 
       break;
@@ -3794,7 +3815,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      s->R[1] = SET_SW_SIGN(s->R[1], WORD_SIGN_PLUS);
 	    }
 
-          printf("\nCCC\n");
 	  next_iar(s);
 	  
 	  display_line_2(s, display);
@@ -3826,7 +3846,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  printf("\nWriting %08X to store location %02X", store_value, s->inst_aa);
 #endif
 
-          printf("\nDDD\n");
           next_iar(s);
 	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "               ");
@@ -3853,7 +3872,6 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  printf("\nWriting %08X to store location %02X", store_value, s->inst_aa);
 #endif
 
-          printf("\nEEE\n");
           next_iar(s);
 	  display_line_2(s, display);
 	  display_on_line(s, display, 3, "               ");
@@ -3865,7 +3883,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 	case 4:
 	  // Unconditional branch
 	  // Move the IAR on to the next address and store that in the link register
-          printf("\nFFF\n");
+
 	  next_iar(s);
 	  s->link_register = s->iar.address;
 	  
@@ -3891,7 +3909,6 @@ void stage_c_decode(ESC_STATE *s, int display)
               printf("\n25xx BRANCH");
 #endif
               // Move the IAR on to the next address and store that in the link register
-              printf("\nGGG\n");
               next_iar(s);
               s->link_register = s->iar.address;
 	  
@@ -3903,7 +3920,6 @@ void stage_c_decode(ESC_STATE *s, int display)
           else
             {
               // Move to next IAR if test fails
-              printf("\nHHH\n");
               next_iar(s);
             }
       
@@ -4003,8 +4019,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 
   if( s->exiting_extracode )
     {
+#if DEBUG_EXTRACODE
       printf("\nExiting extracode...");
-
+#endif
+      
       // This is always displayed, so over-ride display setting
       stage_c_display(s, DISPLAY_UPDATE, s->inst_digit_a);
 
@@ -4283,7 +4301,9 @@ void stage_c_display(ESC_STATE *s, int display, int a)
       // instruction digit a
       a = INST_A_FIELD(extracode_inst);
 
+#if DEBUG_EXTRACODE
       printf("\nInst digit A set to %d", a);
+#endif
     }
 
   switch(a)
@@ -4914,7 +4934,7 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
       digits *= 16;
       digits += num;
 
-      printf("\ndigits=%08X", digits);
+      //printf("\ndigits=%08X", digits);
       
       // If we have a non zero exponent then we increment it as we have added a fractional digit
       if( (exp > 0) || (s->dot_entered) )
@@ -9795,6 +9815,81 @@ TEST_LOAD_STORE test_28_store =
   };
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Test 29
+//
+// Stop, enter a
+// Stop, enter b
+// Divide a / b -> c
+// Stop, display a, b, c
+// 
+
+INIT_INFO test_init_29[] =
+  {
+    {IC_END,          0},
+  };
+
+TOKEN test_seq_29[] =
+  {
+    TOK_KEY_NORMAL_RESET,
+
+    TOK_KEY_1,
+    TOK_KEY_0,
+    TOK_KEY_LOAD_IAR,
+
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+
+    TOK_KEY_1,
+    TOK_KEY_DOT,
+
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+
+    TOK_KEY_7,
+    TOK_KEY_DOT,
+
+    TOK_KEY_RUN,
+    TOK_TEST_WAIT_FOR_STOP,
+
+    TOK_TEST_CHECK_RES,
+
+    TOK_NONE,
+  };
+
+TEST_INFO test_res_29[] =
+  {
+    {TC_STORE_N,   0x00},
+    {TC_MUST_BE,   0xA6142857},
+    {TC_END,       0},
+  };
+
+TEST_LOAD_STORE test_29_store =
+  {
+    {
+      0x00000000,    // 00 c
+      0x00000000,    // 01 a
+      0x00000000,    // 02 b
+      0x00000000,    // 03 
+      0x00000000,    // 04 
+      0x00000000,    // 05 
+      0x00000000,    // 06 
+      0x00000000,    // 07
+      0x00000000,    // 08 
+      0x00000000,    // 09 
+      0x28012802,    // 10 
+      0x73000102,    // 11 
+      0x79000102,    // 12 
+      0x00000000,    // 13 
+      0x00000000,    // 14 
+      0x00000000,    // 15
+      0x00000000,    // 16
+      0x00000000,    // 17
+      0x00000000,    // 18
+      -1},
+  };
+
+////////////////////////////////////////////////////////////////////////////////
 
 ESC_TEST_INFO tests[] =
   {
@@ -9827,6 +9922,7 @@ ESC_TEST_INFO tests[] =
     {"Load Prog",               test_init_26, test_seq_26, test_res_26, 0, &test_26_store, ""},
     {"Load Log N",              test_init_27, test_seq_27, test_res_27, 0, &test_27_store, ""},
     {"Double 100000",           test_init_28, test_seq_28, test_res_28, 0, &test_28_store, ""},
+    {"Input/Disp",              test_init_29, test_seq_29, test_res_29, 0, &test_29_store, ""},
    
     {"--END--",                 test_init_1,  test_seq_1,  test_res_1,  0, &test_1_store,  ""},
   };
@@ -11526,12 +11622,12 @@ void update_computer_display(ESC_STATE *es)
 
 #if DEBUG_DISPLAY
   printf("\n*** %s ***", __FUNCTION__);
-#endif
 
   printf("\n");
   
   printf("\nKeyboard register: %08X   IAR:%8s", es->keyboard_register, display_iar(es, SPEC_IAR));
   printf("\n");
+#endif
   
   //
   // Print a representation of the TV display
@@ -11625,9 +11721,11 @@ void update_computer_display(ESC_STATE *es)
       //      show_char(0, (i-1), &(display_line[i-1][0]));
 #endif
     }
-  
+
+#if DEBUG_DISPLAY
   // Now update the display output device(s)
   printf("\n%s\n", dsp);
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////

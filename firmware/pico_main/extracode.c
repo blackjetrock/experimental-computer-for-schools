@@ -151,7 +151,6 @@ void enter_extracode(ESC_STATE *s)
   // Run first part of first extracode instruction
   run_stage_a(s, DISPLAY_NO_UPDATE);
 
-printf("\n-------------------------------------------------------------------------------- exit extracode");
   FN_EXIT;
 }
 
