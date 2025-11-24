@@ -4934,7 +4934,7 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
       digits *= 16;
       digits += num;
 
-      //printf("\ndigits=%08X", digits);
+      //@printf("\ndigits=%08X", digits);
       
       // If we have a non zero exponent then we increment it as we have added a fractional digit
       if( (exp > 0) || (s->dot_entered) )
@@ -9992,8 +9992,21 @@ void cli_run_tests(void)
 
 void cli_test_results(void)
 {
-  printf("\nTest results\n");
+  printf("\n");
+  printf("\nTest results");
+  printf("\n============\n");
+  
+  if( test_running )
+    {
+      printf("\nRunning test:%d", test_number);
+    }
+  else
+    {
+      printf("\nNo tests running");
+    }
 
+  printf("\n");
+  
   for(int i=0; i<NUM_TESTS; i++)
     {
       if( strcmp(tests[i].desc, "--END--") != 0 )
