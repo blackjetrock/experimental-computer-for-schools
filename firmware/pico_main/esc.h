@@ -200,6 +200,9 @@ typedef struct _ESC_STATE
   // Execution
   int run;
   int last_run;    // Used to detect program restart
+  int extracode_run;     // Set if running because we want to exeucte an extracode subroutine.
+                         // Some instrcutions (inoput, output) behave differently if in this
+                         // type of RUN
   int stop;
   int error;                 // true if in error state
   int stop_at_end_of_stage;  // Run to end of stage
@@ -272,7 +275,7 @@ void prepare_instruction(ESC_STATE *s);
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address);
 void register_assign_register(ESC_STATE *s, int dest, int src);
 void next_iar(ESC_STATE *s);
-void cli_dump(void);
+void cli_dump_state(void);
 void cli_dump_store(void);
 uint32_t checksum_store(ESC_STATE *s, int first, int last);
 void display_line_2(ESC_STATE *s, int display);

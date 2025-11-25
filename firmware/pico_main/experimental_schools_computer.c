@@ -726,7 +726,7 @@ void kbd_read(ESC_STATE *s)
 		  int done = 0;
 
 #if DUMP_STATE_STAGE_C
-                  cli_dump();
+                  cli_dump_state();
 #endif
 
 #if DEBUG_TEST_SEQ
@@ -3020,6 +3020,17 @@ void load_iar_bcd(ESC_STATE *s, int bcdval)
               display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
               display_on_line(s, DISPLAY_UPDATE, 5, "               ");
             }
+          else
+            {
+              // Not stepping extracode, so we would have been in run mode.
+              // We need to stop if not running
+              //s->run = 0;
+              s->extracode_run = 0;
+              if( !s->run )
+                {
+                  s->stop = 1;
+                }
+            }
         }
       else
         {
@@ -4012,7 +4023,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 #endif
 
 #if DUMP_STATE_STAGE_C
-  cli_dump();
+  cli_dump_state();
 #endif
 
   // Stage C only displayed if we aren't in extracode
@@ -4065,7 +4076,14 @@ void stage_b_decode(ESC_STATE *s, int display)
 	{
         case 8:
       	  // Stop and when restarted transfer keyboard register contents into Aa
-	  s->stop = 1;
+          // Only stop if we aren't in an extracode subroutine and running the instruction
+          // action. 
+
+          if( s->run )
+            {
+              s->stop = 1;
+            }
+
 	  s->on_restart_load_aa = 1;
           s->update_display = 1;
           display_override = DISPLAY_UPDATE;
@@ -4077,7 +4095,11 @@ void stage_b_decode(ESC_STATE *s, int display)
           next_iar(s);
 
 	  // Stop and display (Aa)
-	  s->stop = 1;
+          // If running extracode we don't stop, but use the stage step stops
+          if( s->run )
+            {
+              s->stop = 1;
+            }
           display_override = DISPLAY_UPDATE;
           break;
 
@@ -5391,9 +5413,10 @@ void state_esc_run(FSM_DATA *es, TOKEN tok)
   ESC_STATE *s = (ESC_STATE *)es;
 
   FN_ENTRY;
-  
-  s->run  = 1;
-  s->stop = 0;
+
+  s->extracode_run = 0;
+  s->run           = 1;
+  s->stop          = 0;
 
   FN_EXIT;
 }
@@ -5437,7 +5460,7 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
   // Being in the extracode is treated as running, so we execute the extracode subroutine as
   // as block of code. This could be extended to allow stepping of the extracode as a feature, later
   
-  if( s->run || (IS_EXTRACODE && !setup_step_extracode) )
+  if( (s->run || s->extracode_run) || (IS_EXTRACODE && !setup_step_extracode) )
     {
 #if DEBUG_EXECUTE
       printf("  EXEC:RUN(%s%c)", display_iar(s, SPEC_IAR), s->stage);
@@ -6446,7 +6469,7 @@ char *get_string_state(void)
 }
 
 // Dump state info
-void cli_dump(void)
+void cli_dump_state(void)
 {
   ESC_STATE *s = &esc_state;
 
@@ -6627,6 +6650,21 @@ void cli_load_addr(void)
 void cli_load_store(void)
 {
   queue_token(TOK_KEY_LOAD_STORE);
+}
+
+void cli_dump(void)
+{
+  queue_token(TOK_KEY_DUMP);
+}
+
+void cli_reload(void)
+{
+  queue_token(TOK_KEY_RELOAD);
+}
+
+void cli_check(void)
+{
+  queue_token(TOK_KEY_CHECK);
 }
 
 void cli_load_test_code(void)
@@ -10693,7 +10731,7 @@ SERIAL_COMMAND serial_cmds[] =
     {
       '*',
       "Dump State",
-      cli_dump,
+      cli_dump_state,
     },
     {
       '&',
@@ -10884,6 +10922,21 @@ SERIAL_COMMAND serial_cmds[] =
       '<',
       "Dump touch key data",
       cli_dump_touch_key_data,
+    },
+    {
+      'D',
+      "DUMP",
+      cli_dump,
+    },
+    {
+      'O',
+      "RELOAD",
+      cli_reload,
+    },
+    {
+      'H',
+      "CHECK",
+      cli_check,
     },
    
 #if ESC_TYPE_DESKTOP

@@ -116,7 +116,7 @@ void enter_extracode(ESC_STATE *s)
   FN_ENTRY;
 
 #if DEBUG_ENTER_EXTRACODE
-  cli_dump();
+  cli_dump_state();
 #endif
   
 #if DEBUG_STAGES
@@ -148,6 +148,15 @@ void enter_extracode(ESC_STATE *s)
   // instruction must come from store
   s->instruction_register = load_from_store(s, s->iar.address);
 
+  // If we are not stepping extracode then we run to the end of the subroutine
+  if( !setup_step_extracode )
+    {
+      s->extracode_run = 1;       // We are running to execute extracode
+      //s->run = 0;
+      s->extracode_run;           // Internal use of running mode
+      s->stop = 0;
+    }
+  
   // Run first part of first extracode instruction
   run_stage_a(s, DISPLAY_NO_UPDATE);
 
