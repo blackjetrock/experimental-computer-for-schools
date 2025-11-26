@@ -141,6 +141,7 @@ typedef enum _TEST_CODE
   {
     TC_REG_N = 20,
     TC_REG_IAR,
+    TC_REG_LINK,
     TC_REG_ADDR,
     TC_CL,
     TC_REG_KI,
@@ -157,6 +158,7 @@ char *tc_names[] =
   {
     "TC_REG_N",
     "TC_REG_IAR",
+    "TC_REG_LINK",
     "TC_REG_ADDR",
     "TC_CL",
     "TC_REG_KI",
@@ -790,6 +792,7 @@ void kbd_read(ESC_STATE *s)
 			      break;
 
 			    case TC_REG_IAR:
+                            case TC_REG_LINK:
 			    case TC_REG_KI:
 			    case TC_REG_ADDR:
 			    case TC_CL:
@@ -870,6 +873,7 @@ void kbd_read(ESC_STATE *s)
 					  break;
 					  
 					case TC_REG_IAR:
+                                        case TC_REG_LINK:
 					case TC_REG_KI:
 					case TC_REG_ADDR:
 					case TC_CL:
@@ -1155,6 +1159,11 @@ REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
   if( n == TC_REG_IAR )
     {
       return((REGISTER_DOUBLE_WORD)s->iar.address);
+    }
+
+  if( n == TC_REG_LINK )
+    {
+      return((REGISTER_DOUBLE_WORD)s->link_register);
     }
 
   if( n == TC_REG_KI )
@@ -3048,6 +3057,47 @@ void load_iar_bcd(ESC_STATE *s, int bcdval)
   s->iar.address |= bcdval;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Calculate the ddress to put in the LINK register
+//
+// This is the next address, ignoring half addresses
+//
+////////////////////////////////////////////////////////////////////////////////
+
+IAR calculate_link_address(IAR current_iar)
+{
+  IAR retval = current_iar;
+
+  // We return the address of the next word
+
+  // IAR is BCD so add one
+
+  // Wrap from 099 to 000
+  if( retval.address == 0x99 )
+    {
+      retval.address = 0x000;
+    }
+  else
+    {
+      retval.address = single_sum_normalise(bcd_addition_single(retval.address,1));
+    }
+
+  // Bound to three digits
+  retval.address &= 0xFFF;
+  retval.a_flag = 0;
+
+  return(retval);
+}
+
+
+//------------------------------------------------------------------------------
+//
+// Move to next IAR while executing code.
+//
+// Also detects instrcution as single address instructions and three address
+// instructions are treated differently
+//
 
 void next_iar(ESC_STATE *s)
 {
@@ -3075,9 +3125,15 @@ void next_iar(ESC_STATE *s)
 	}
       
       // 8 digit instruction so move to next address
-      load_iar_bcd(s, single_sum_normalise(bcd_addition_single(s->iar.address,1)));
-      
-      //s->iar.address = single_sum_normalise(bcd_addition_single(s->iar.address,1));
+      // While executing, address wraps from 0x99 to 0x00
+      if( s->iar.address == 0x99 )
+        {
+          s->iar.address = 0x000;
+        }
+      else
+        {
+          load_iar_bcd(s, single_sum_normalise(bcd_addition_single(s->iar.address,1)));
+        }
 
       // IAR only three digits
       s->iar.address &= 0xFFF;
@@ -3093,8 +3149,16 @@ void next_iar(ESC_STATE *s)
     case 6:
       if( s->iar.a_flag )
 	{
-	  load_iar_bcd(s, single_sum_normalise(bcd_addition_single(s->iar.address,1)));
-
+          // While executing, address wraps from 0x99 to 0x00
+          if( s->iar.address == 0x99 )
+            {
+              s->iar.address = 0x000;
+            }
+          else
+            {
+              load_iar_bcd(s, single_sum_normalise(bcd_addition_single(s->iar.address,1)));
+            }
+          
 	  // IAR only three digits
 	  s->iar.address &= 0xFFF;
 	  s->iar.a_flag = 0;
@@ -3898,9 +3962,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	case 4:
 	  // Unconditional branch
-	  // Move the IAR on to the next address and store that in the link register
 
-	  next_iar(s);
+	  // Calculate and store the link address
+          s->iar = calculate_link_address(s->iar);
 	  s->link_register = s->iar.address;
 	  
 	  // Now over-write that IAR with the address we want to jump to
@@ -3924,8 +3988,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 #if DEBUG_BRANCH
               printf("\n25xx BRANCH");
 #endif
-              // Move the IAR on to the next address and store that in the link register
-              next_iar(s);
+              // Calculate and store the link address
+              s->iar = calculate_link_address(s->iar);
               s->link_register = s->iar.address;
 	  
               // Now over-write that IAR with the address we want to jump to
@@ -3945,10 +4009,10 @@ void stage_c_decode(ESC_STATE *s, int display)
       	  // Branch if control latch is 0
 	  if( s->control_latch == 0 )
 	    {
-	      // Move the IAR on to the next address and store that in the link register
-	      next_iar(s);
-	      s->link_register = s->iar.address;
-	      
+              // Calculate and store the link address
+              s->iar = calculate_link_address(s->iar);
+              s->link_register = s->iar.address;
+
 	      // Now over-write that IAR with the address we want to jump to
               //	      s->iar.address = s->inst_aa;
               load_iar_bcd(s, s->inst_aa);
@@ -6441,29 +6505,29 @@ char *get_string_state(void)
 {
   char line[80];
   ESC_STATE *s = &esc_state;
-
   
   sprintf(str_state, "\nIAR           : %s", display_iar(s, SPEC_FORCE_IAR));
-  
-  sprintf(line, "\nAux IAR       : %s", display_iar(s, SPEC_FORCE_AUX_IAR));
+  sprintf(line,      "\nAux IAR       : %s", display_iar(s, SPEC_FORCE_AUX_IAR));
   strcat(str_state, line);
-
-  sprintf(line, "\nKI            : %s", display_register_double_word(s->keyboard_register));
+  sprintf(line,      "\nKI            : %s", display_register_double_word(s->keyboard_register));
   strcat(str_state, line);
-  
-  sprintf(line, "\nInst Reg      : %08X", s->instruction_register);
+  sprintf(line,      "\nInst Reg      : %08X", s->instruction_register);
   strcat(str_state, line);
-  
-  sprintf(line, "\nControl latch : %d   Run:%d   Stop:%d", s->control_latch, s->run, s->stop);
+  sprintf(line,     "\nLink register  : %02X", s->link_register);
   strcat(str_state, line);
-  
-  sprintf(line, "\nAddr R0       : %s", display_address(s->address_register0));
+  sprintf(line,     "\nControl latch  : %d",
+          s->control_latch);
   strcat(str_state, line);
-  
-  sprintf(line, "\nAddr R1       : %s", display_address(s->address_register1));
+  sprintf(line,     "\nRun            : %d   Extracode Run:%d  Stop:%d",
+          s->run,
+          s->extracode_run,
+          s->stop);
   strcat(str_state, line);
-  
-  sprintf(line, "\nAddr R2       : %s", display_address(s->address_register2));
+  sprintf(line,      "\nAddr R0       : %s", display_address(s->address_register0));
+  strcat(str_state, line);
+  sprintf(line,      "\nAddr R1       : %s", display_address(s->address_register1));
+  strcat(str_state, line);
+  sprintf(line,      "\nAddr R2       : %s", display_address(s->address_register2));
   strcat(str_state, line);
   return(str_state);
 }
@@ -6473,9 +6537,11 @@ void cli_dump_state(void)
 {
   ESC_STATE *s = &esc_state;
 
-  printf("\nState");
-  printf("\n=====");
-
+  printf("\n");
+  printf("\n/=========\\");
+  printf("\n|  State  |");
+  printf("\n\\=========/");
+  
   printf("\n%s", get_string_state());
   
   for(int i=0; i<NUM_WORD_REGISTERS; i++)
@@ -6496,10 +6562,11 @@ void cli_dump_state(void)
   printf("\nReg Inst Rc       : %d",                s->reginst_rc);
   printf("\nReg Inst Rd       : %d",                s->reginst_rd);
   printf("\nReg Inst Lit      : %d",                s->reginst_literal);
-  printf("\nInst Aa           : %02X   ap : %02X ", s->inst_aa, s->inst_ap);
+  printf("\nInst Aa           : %02X ap:  %02X ",   s->inst_aa, s->inst_ap);
   printf("\nAp1..3            : %03X %03X %03X",    s->Ap1, s->Ap2, s->Ap3);
   printf("\nAa1..3            : %03X %03X %03X",    s->Aa1, s->Aa2, s->Aa3);
   printf("\nKI Reset          : %d",                s->ki_reset_flag);
+
   printf("\nError             : %d",                s->error);
   printf("\nExtracode         : %d",                IS_EXTRACODE);
   printf("\nExiting extracode : %d",                s->exiting_extracode);
@@ -7765,7 +7832,7 @@ TEST_LOAD_STORE test_8_store =
 //
 // Test 9
 //
-// Branches
+// Single address instrcution branches
 // 
 // 
 
@@ -7802,6 +7869,10 @@ TOKEN test_seq_9[] =
     TOK_KEY_C,
     TOK_TEST_CHECK_RES,
 
+    TOK_KEY_C,             // Execute NOP
+    TOK_KEY_C,             
+    TOK_TEST_CHECK_RES,
+
     TOK_NONE,
   };
 
@@ -7810,22 +7881,38 @@ TEST_INFO test_res_9[] =
    
     {TC_REG_IAR,   0},
     {TC_MUST_BE, 0x00000002},
-    {TC_END_SECTION, 0},
-
-    {TC_REG_IAR,   0},
+    {TC_REG_LINK,   0},
     {TC_MUST_BE, 0x00000001},
     {TC_END_SECTION, 0},
 
     {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000001},
+    {TC_REG_LINK,   0},
+    {TC_MUST_BE, 0x00000003},
+    {TC_END_SECTION, 0},
+
+    {TC_REG_IAR,   0},
     {TC_MUST_BE, 0x00000030},
+    {TC_REG_LINK,   0},
+    {TC_MUST_BE, 0x00000002},
     {TC_END_SECTION, 0},
 
     {TC_REG_IAR,   0},
     {TC_MUST_BE, 0x00000018},
+    {TC_REG_LINK,   0},
+    {TC_MUST_BE, 0x00000031},
     {TC_END_SECTION, 0},
 
     {TC_REG_IAR,   0},
     {TC_MUST_BE, 0x00000024},
+    {TC_REG_LINK,   0},
+    {TC_MUST_BE, 0x00000019},
+    {TC_END_SECTION, 0},
+    
+    {TC_REG_IAR,   0},
+    {TC_MUST_BE, 0x00000016},
+    {TC_REG_LINK,   0},
+    {TC_MUST_BE, 0x00000025},
 
     {TC_END,     0},
   };
@@ -7833,9 +7920,9 @@ TEST_INFO test_res_9[] =
 TEST_LOAD_STORE test_9_store =
   {
     {
-      0x24020000,    // 00
-      0x54100000,    // 01
-      0x34000000,    // 02
+      0x24020000,    // 00  Branch to 02
+      0x54100000,    // 01  Branch to 10+(R5) R5=20, so branch to 30
+      0x34000000,    // 02  Branch to 00+(R3) R3=01, so branch to 01
       0x00000000,    // 03
       0x00000000,    // 04
       0x00000000,    // 05
@@ -7851,19 +7938,19 @@ TEST_LOAD_STORE test_9_store =
       0x00000000,    // 15
       0x00000000,    // 16
       0x00000000,    // 17
-      0x64070000,    // 18
+      0x64070000,    // 18 Branch to (07) = 24
       0x00000000,    // 19
       0x00000000,    // 20
       0x00000000,    // 21
       0x00000000,    // 22
       0x00000000,    // 23
-      0x00000000,    // 24
+      0x00002416,    // 24 NOP , Branch to 16
       0x00000000,    // 25
       0x00000000,    // 26
       0x00000000,    // 27
       0x00000000,    // 28
       0x00000000,    // 29
-      0x44200000,    // 30
+      0x44200000,    // 30 Branch to 20+(R4) R4=-2, so branch to 18
       -1},
   };
 
