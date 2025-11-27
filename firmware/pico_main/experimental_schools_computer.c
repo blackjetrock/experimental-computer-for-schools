@@ -16,6 +16,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include "switches.h"
+#include "version.h"
 
 #pragma GCC diagnostic ignored "-Wwrite-strings"
 
@@ -12220,7 +12221,7 @@ int main(void)
   printf("\n                                  * Experimental Schools Computer Simulation *");
   printf("\n                                  ********************************************");
   printf("\n");
-  printf("\nCompile time:%s %s", __DATE__, __TIME__);
+  printf("\nVersion:1.1.%d Compile time:%s %s", VERSION_INC, __DATE__, __TIME__);
   printf("\n");
   
   // Load extracode
