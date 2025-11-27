@@ -16262,7 +16262,7 @@ Disassembly of section .text:
 20008882:	f005 fc8d 	bl	2000e1a0 <__wrap_putchar>
 20008886:	4bca      	ldr	r3, [pc, #808]	@ (20008bb0 <main+0x384>)
 20008888:	4aca      	ldr	r2, [pc, #808]	@ (20008bb4 <main+0x388>)
-2000888a:	2106      	movs	r1, #6
+2000888a:	2107      	movs	r1, #7
 2000888c:	48ca      	ldr	r0, [pc, #808]	@ (20008bb8 <main+0x38c>)
 2000888e:	f005 fd53 	bl	2000e338 <__wrap_printf>
 20008892:	200a      	movs	r0, #10
@@ -63313,7 +63313,7 @@ Disassembly of section .data:
 20020e24:	6f697461 	.word	0x6f697461
 20020e28:	002a206e 	.word	0x002a206e
 20020e2c:	333a3830 	.word	0x333a3830
-20020e30:	39353a30 	.word	0x39353a30
+20020e30:	32323a36 	.word	0x32323a36
 20020e34:	00000000 	.word	0x00000000
 20020e38:	20766f4e 	.word	0x20766f4e
 20020e3c:	32203732 	.word	0x32203732

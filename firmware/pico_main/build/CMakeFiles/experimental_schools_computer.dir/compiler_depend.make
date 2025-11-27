@@ -220,6 +220,7 @@ CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.o: 
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/oled.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/sdcard.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/switches.h \
+  /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/version.h \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffconf.h \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/f_util.h \
@@ -5386,6 +5387,10 @@ generated/pico_base/pico/version.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h:
 
+/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c:
+
+/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h:
+
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h:
 
 /usr/arm-none-eabi/include/errno.h:
@@ -5664,6 +5669,8 @@ generated/pico_base/pico/config_autogen.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c:
 
+/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/version.h:
+
 /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdatomic.h:
 
 /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/match_token.h:
@@ -5881,7 +5888,3 @@ pico_extras/src/rp2_common/pico_sd_card/sd_card.pio.h:
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma_debug.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c:
-
-/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h:
-
-/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c:
