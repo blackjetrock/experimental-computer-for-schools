@@ -12220,7 +12220,9 @@ int main(void)
   printf("\n                                  * Experimental Schools Computer Simulation *");
   printf("\n                                  ********************************************");
   printf("\n");
-
+  printf("\nCompile time:%s %s", __DATE__, __TIME__);
+  printf("\n");
+  
   // Load extracode
   load_extracode_by_id(&esc_state, EXTRACODE_STANDARD);
   
