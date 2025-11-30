@@ -60353,8 +60353,8 @@ Disassembly of section .data:
 2001f1ea:	6203      	str	r3, [r0, #32]
 2001f1ec:	4660      	mov	r0, ip
 2001f1ee:	bd10      	pop	{r4, pc}
-2001f1f0:	323a3131 	.word	0x323a3131
-2001f1f4:	39333a39 	.word	0x39333a39
+2001f1f0:	353a3131 	.word	0x353a3131
+2001f1f4:	33333a38 	.word	0x33333a38
 2001f1f8:	00000000 	.word	0x00000000
 2001f1fc:	20766f4e 	.word	0x20766f4e
 2001f200:	32203033 	.word	0x32203033
