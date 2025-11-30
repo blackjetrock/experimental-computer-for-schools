@@ -631,6 +631,15 @@ void kbd_queue_key(int k)
 
 #endif
 
+//------------------------------------------------------------------------------
+
+void cli_version(void)
+{
+  printf("\nVersion:1.1.%d Compile time:%s %s\n", VERSION_INC, __DATE__, __TIME__);
+}
+
+//------------------------------------------------------------------------------
+
 void cli_display_test(void)
 {
   escdd_main();
@@ -4287,7 +4296,12 @@ void stage_a_display(ESC_STATE *s, int display, int a)
 void stage_b_display(ESC_STATE *s, int display, int a)
 {
   // Common Items
+  FN_ENTRY;
 
+#if DEBUG_STAGE_DISPLAY
+  printf("\n%s:display:%d  inst_ab:%d%d", __FUNCTION__, display, a, s->inst_digit_b);
+#endif
+  
   clear_display(s, display);
   
   // Top line clear
@@ -4326,10 +4340,28 @@ void stage_b_display(ESC_STATE *s, int display, int a)
         case 5:
         case 6:
         case 7:
-        case 8:
-        case 9:
 	  display_line_2(s, display);
           display_on_line(s, display, 3, "%2X    %s", s->inst_aa, display_store_word(load_from_store(s, s->inst_aa)));
+          break;
+
+          // Input instruction, in extracode mode needs to display all three TARs
+        case 8:
+        case 9:
+          if( IS_EXTRACODE )
+            {
+              display_line_2(s, display);
+              clear_lines_3_to_6(s, display);
+              display_on_line(s, display, 4, "%2X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+              display_on_line(s, display, 5, "%2X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+              display_on_line(s, display, 6, "%2X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+            }
+          else
+            {
+              display_line_2(s, display);
+              clear_lines_3_to_6(s, display);
+              
+              display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+            }
           break;
         }
 
@@ -4360,6 +4392,8 @@ void stage_b_display(ESC_STATE *s, int display, int a)
       display_on_line(s, display, 6, "%2X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
       break;
     }
+
+  FN_EXIT;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -10815,6 +10849,11 @@ SERIAL_COMMAND serial_cmds[] =
       '$',
       "Test BCD",
       cli_test_bcd,
+    },
+    {
+      'v',
+      "Version",
+      cli_version,
     },
     {
       '*',
