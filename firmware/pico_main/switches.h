@@ -94,6 +94,7 @@
 #define DEBUG_ENTER_EXTRACODE  1
 #define DEBUG_LOAD_FROM_STORE  1
 #define DEBUG_STAGE_DISPLAY    1
+#define DEBUG_LOAD_IAR         1
 
 #endif
 

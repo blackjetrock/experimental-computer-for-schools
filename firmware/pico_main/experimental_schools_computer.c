@@ -1945,7 +1945,7 @@ REGISTER_DOUBLE_WORD bcd_dw_addition(REGISTER_DOUBLE_WORD a, REGISTER_DOUBLE_WOR
 
 ADDRESS convert_store_to_address(SINGLE_WORD store_value)
 {
-  return(REMOVED_SW_SIGN(BOUND_ADDRESS(store_value)));
+  return(BOUND_ADDRESS(REMOVED_SW_SIGN(BOUND_ADDRESS(store_value))));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1997,11 +1997,17 @@ int bcd_to_binary(SINGLE_WORD bcd)
 //
 SINGLE_WORD load_from_store(ESC_STATE *s, ADDRESS address)
 {
-#if DEBUG_LOAD_FROM_STORE
-  printf("\n%s:address:%04X", __FUNCTION__, address);
-#endif
+  int idx = 0;
+  SINGLE_WORD retval = 0;
   
-  return(s->store[bcd_to_binary(REMOVED_SW_SIGN(address))]);
+  idx = bcd_to_binary(REMOVED_SW_SIGN(address));
+  retval = s->store[idx];
+  
+#if DEBUG_LOAD_FROM_STORE
+  printf("\n%s:address:%04X idx:%d retval=%08X", __FUNCTION__, address, idx, retval);
+#endif
+
+  return(retval);
 }
 
 void write_sw_to_store(ESC_STATE *s, ADDRESS address, REGISTER_SINGLE_WORD d)
@@ -3006,6 +3012,10 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 
 void load_iar_bcd(ESC_STATE *s, int bcdval)
 {
+#if DEBUG_LOAD_IAR
+  printf("\n%s:%08X", __FUNCTION__, bcdval);
+#endif
+  
   // Exiting extracode?
   if( IS_EXTRACODE )
     {
@@ -3063,13 +3073,18 @@ void load_iar_bcd(ESC_STATE *s, int bcdval)
     }
   
   // Clear current digits
-  s->iar.address &= 0x000;
-  s->iar.address |= bcdval;
+  //  s->iar.address &= 0x000;
+  s->iar.address = BOUND_ADDRESS(bcdval);
+
+#if DEBUG_LOAD_IAR
+  printf("\n%s:%08X", __FUNCTION__, s->iar.address);
+#endif
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Calculate the ddress to put in the LINK register
+// Calculate the address to put in the LINK register
 //
 // This is the next address, ignoring half addresses
 //
@@ -4670,6 +4685,8 @@ void stage_a_decode(ESC_STATE *s, int display)
         default:
           // Absolute addressing
           s->inst_aa = s->inst_ap;
+          s->inst_aa = BOUND_ADDRESS(s->inst_aa);
+          
           s->reginst_rc = s->inst_digit_c;
           s->reginst_rd = s->inst_digit_d;
           
@@ -4691,6 +4708,8 @@ void stage_a_decode(ESC_STATE *s, int display)
           
         default:
           s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
+          s->inst_aa = BOUND_ADDRESS(s->inst_aa);
+          
           s->reginst_rc = s->inst_digit_c;
           s->reginst_rd = s->inst_digit_d;
           
@@ -4711,7 +4730,8 @@ void stage_a_decode(ESC_STATE *s, int display)
           
         default:
           s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
-          
+          s->inst_aa = BOUND_ADDRESS(s->inst_aa);
+                    
           display_line_2(s, display);
           display_on_line(s, display, 3, "               ");
           display_on_line(s, display, 4, "%02X", s->inst_aa);
@@ -4729,7 +4749,8 @@ void stage_a_decode(ESC_STATE *s, int display)
           
         default:
           s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
-          
+          s->inst_aa = BOUND_ADDRESS(s->inst_aa);
+                    
           display_line_2(s, display);
           display_on_line(s, display, 3, "%02X", s->inst_aa);
           display_on_line(s, display, 4, "               ");
@@ -4748,9 +4769,13 @@ void stage_a_decode(ESC_STATE *s, int display)
         default:
           // Indirect addressing
           // Indirect addressing uses the hundreds digit of the IAR. This is to ensure that
-          // the addressing works correctly when used in an extracoide instruction.
+          // the addressing works correctly when used in an extracode instruction.
+#if DEBUG_ADDR_MODES
+          printf("\nap:%08X", s->inst_ap);
+#endif
           
           s->inst_aa = load_from_store(s, REMOVED_SW_SIGN(s->inst_ap));
+          s->inst_aa = BOUND_ADDRESS(s->inst_aa);
           
 #if DEBUG_ADDR_MODES
           printf("\naa:%08X", s->inst_aa);
@@ -7311,31 +7336,31 @@ TEST_INFO test_res_3[] =
   {
     // Original register contents must be unchanged
     {TC_REG_ADDR,    0},
-    {TC_MUST_BE,     0xA0000098},
+    {TC_MUST_BE,     0x00000098},
     {TC_END_SECTION, 0},   
 
     {TC_REG_ADDR,    0},
-    {TC_MUST_BE,     0xA0000099},
+    {TC_MUST_BE,     0x00000099},
     {TC_END_SECTION, 0},   
 
     {TC_REG_ADDR,    0},
-    {TC_MUST_BE,     0xA0000100},
+    {TC_MUST_BE,     0x00000100},
     {TC_END_SECTION, 0},   
 
     {TC_REG_ADDR,    0},
-    {TC_MUST_BE,     0xA0000101},
+    {TC_MUST_BE,     0x00000101},
     {TC_END_SECTION, 0},   
 
     {TC_REG_ADDR,    0},
-    {TC_MUST_BE,     0xA0000002},
+    {TC_MUST_BE,     0x00000002},
     {TC_END_SECTION, 0},   
 
     {TC_REG_ADDR,    0},
-    {TC_MUST_BE,     0xA0000001},
+    {TC_MUST_BE,     0x00000001},
     {TC_END_SECTION, 0},   
 
     {TC_REG_ADDR,    0},
-    {TC_MUST_BE,     0xA0000000},
+    {TC_MUST_BE,     0x00000000},
 
     {TC_END,         0},
 
