@@ -605,7 +605,7 @@ Disassembly of section .text:
 
 20000320 <cli_version>:
 20000320:	b510      	push	{r4, lr}
-20000322:	2108      	movs	r1, #8
+20000322:	2109      	movs	r1, #9
 20000324:	4b02      	ldr	r3, [pc, #8]	@ (20000330 <cli_version+0x10>)
 20000326:	4a03      	ldr	r2, [pc, #12]	@ (20000334 <cli_version+0x14>)
 20000328:	4803      	ldr	r0, [pc, #12]	@ (20000338 <cli_version+0x18>)
@@ -14126,7 +14126,7 @@ Disassembly of section .text:
 200079f6:	f005 fccd 	bl	2000d394 <__wrap_putchar>
 200079fa:	4acd      	ldr	r2, [pc, #820]	@ (20007d30 <main+0x390>)
 200079fc:	4bcd      	ldr	r3, [pc, #820]	@ (20007d34 <main+0x394>)
-200079fe:	2108      	movs	r1, #8
+200079fe:	2109      	movs	r1, #9
 20007a00:	48cd      	ldr	r0, [pc, #820]	@ (20007d38 <main+0x398>)
 20007a02:	f005 fd93 	bl	2000d52c <__wrap_printf>
 20007a06:	200a      	movs	r0, #10
@@ -60277,8 +60277,8 @@ Disassembly of section .data:
 2001f14a:	6203      	str	r3, [r0, #32]
 2001f14c:	4660      	mov	r0, ip
 2001f14e:	bd10      	pop	{r4, pc}
-2001f150:	353a3430 	.word	0x353a3430
-2001f154:	30353a39 	.word	0x30353a39
+2001f150:	303a3530 	.word	0x303a3530
+2001f154:	39303a38 	.word	0x39303a38
 2001f158:	00000000 	.word	0x00000000
 2001f15c:	20766f4e 	.word	0x20766f4e
 2001f160:	32203033 	.word	0x32203033
