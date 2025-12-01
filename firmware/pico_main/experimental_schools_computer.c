@@ -253,7 +253,9 @@ int cat_file(char *fn);
 int wfn_iar_address(ESC_STATE *es, void *fi, char *line);
 int wfn_iar_a_flag(ESC_STATE *es, void *fi, char *line);
 int wfn_kb_register(ESC_STATE *es, void *fi, char *line);
+#if 0
 int wfn_address_register(ESC_STATE *es, void *fi, char *line);
+#endif
 int wfn_link_register(ESC_STATE *es, void *fi, char *line);
 int wfn_instruction_register(ESC_STATE *es, void *fi, char *line);
 int wfn_store_data(ESC_STATE *es, void *fi, char *line);
@@ -292,6 +294,79 @@ void clear_display(ESC_STATE *s, int display);
 
 volatile uint32_t touch_key_raw = 0;
 int get_qt_key_code(void);
+////////////////////////////////////////////////////////////////////////////////
+//
+// Register access
+//
+
+// Register identiiers.
+// 0..9 are R0..R9
+
+typedef enum _REGN
+  {
+    REGN_0 = 0,
+    REGN_1 = 1,
+    REGN_2 = 2,
+    REGN_3 = 3,
+    REGN_4 = 4,
+    REGN_5 = 5,
+    REGN_6 = 6,
+    REGN_7 = 7,
+    REGN_8 = 8,
+    REGN_9 = 9,
+    REGN_IAR,
+    REGN_AUX_IAR,
+  } REGN;
+
+void write_register(ESC_STATE *s, REGN n, REGISTER_DOUBLE_WORD data)
+{
+  switch(n)
+    {
+    case REGN_0:
+    case REGN_1:
+    case REGN_2:
+    case REGN_3:
+    case REGN_4:
+    case REGN_5:
+    case REGN_6:
+    case REGN_7:
+      s->store[200+n] = (REGISTER_SINGLE_WORD)data;
+      break;
+
+    case REGN_8:
+    case REGN_9:
+      // R8 and R9 are in two locations each. Lower address is lower half of register
+      s->store[200+n] = (REGISTER_SINGLE_WORD) (data & 0xFFFFFFFF);
+      s->store[210+n] = (REGISTER_SINGLE_WORD) ((data & 0xFFFFFFFF00000000) >> 32);
+      break; 
+    }
+}
+
+// Read any register
+// For SW, cast result.
+
+REGISTER_DOUBLE_WORD read_register(ESC_STATE *s, REGN n)
+{
+  switch(n)
+    {
+    case REGN_0:
+    case REGN_1:
+    case REGN_2:
+    case REGN_3:
+    case REGN_4:
+    case REGN_5:
+    case REGN_6:
+    case REGN_7:
+      return (REGISTER_DOUBLE_WORD)(s->store[200+n]);
+      break;
+
+    case REGN_8:
+    case REGN_9:
+      // R8 and R9 are in two locations each. Lower address is lower half of register
+      return ( ((REGISTER_DOUBLE_WORD)(s->store[200+n])) | (((REGISTER_DOUBLE_WORD)(s->store[210+n])) << 32));
+      break; 
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1193,12 +1268,14 @@ REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
   
   if( IS_SW_REGISTER(n) )
     {
-      return((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n));
+      //      return((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n));
+      return(read_register(s, n));
     }
 
   if( IS_DW_REGISTER(n) )
     {
-      return((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n));
+      //return((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n));
+      return(read_register(s, n));
     }
 
   error_msg("Unrecognised register:R%d", n);
@@ -1213,12 +1290,13 @@ REGISTER_DOUBLE_WORD read_any_size_register_absolute(ESC_STATE *s, int n)
 {
   if( IS_SW_REGISTER(n) )
     {
-      return(REMOVED_SW_SIGN((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n)));
+      //      return(REMOVED_SW_SIGN((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n)));
+      return(REMOVED_SW_SIGN(read_register(s, n)));
     }
 
   if( IS_DW_REGISTER(n) )
     {
-      return(REMOVED_DW_SIGN((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n)));
+      return(REMOVED_DW_SIGN(read_register(s,n)));
     }
 
   error_msg("Unrecognised register:R%d", n);
@@ -1351,12 +1429,14 @@ int any_size_sign(ESC_STATE *s, int regno)
 {
   if( IS_SW_REGISTER(regno) )
     {
-      return( SW_SIGN(SW_REG_CONTENTS(regno)) );
+      //      return( SW_SIGN(SW_REG_CONTENTS(regno)) );
+      return( SW_SIGN(read_register(s, regno)) );
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      return( DW_SIGN(DW_REG_CONTENTS(regno)) );
+      //      return( DW_SIGN(DW_REG_CONTENTS(regno)) );
+      return( DW_SIGN(read_register(s, regno)) );
     }
 
   error_msg("Unrecognised register:R%d", regno);
@@ -1366,13 +1446,15 @@ void set_any_size_sign(ESC_STATE *s, int regno, int sign)
 {
   if( IS_SW_REGISTER(regno) )
     {
-      SW_REG_CONTENTS(regno) = SET_SW_SIGN(s->R[regno], sign);
+      //SW_REG_CONTENTS(regno) = SET_SW_SIGN(s->R[regno], sign);
+      write_register(s, regno, SET_SW_SIGN(read_register(s, regno), sign));
       return;
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      DW_REG_CONTENTS(regno) = SET_DW_SIGN(s->RD[regno-8], sign);
+      //DW_REG_CONTENTS(regno) = SET_DW_SIGN(s->RD[regno-8], sign);
+      write_register(s, regno, SET_DW_SIGN(read_register(s, regno), sign));
       return;
     }
 
@@ -1381,18 +1463,22 @@ void set_any_size_sign(ESC_STATE *s, int regno, int sign)
 
 void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
 {
+  REGISTER_DOUBLE_WORD reg_contents = read_register(s, regno);
+  
   if( IS_SW_REGISTER(regno) )
     {
-      int reg_contents = SW_REG_CONTENTS(regno);
-      
-      SW_REG_CONTENTS(regno) = (reg_contents & 0xF0000000) | rh6;
+      //      int reg_contents = SW_REG_CONTENTS(regno);
+      //      SW_REG_CONTENTS(regno) = (reg_contents & 0xF0000000) | rh6;
+      write_register(s, regno, (reg_contents & 0xF0000000) | rh6);
       return;
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      int reg_contents = DW_REG_CONTENTS(regno);
-      DW_REG_CONTENTS(regno) = (reg_contents & 0xF000000000000000) | rh6;
+      //int reg_contents = DW_REG_CONTENTS(regno);
+      //      int reg_contents = (REGISTER_SINGLE_WORD)read_register(s, regno);
+      //DW_REG_CONTENTS(regno) = (reg_contents & 0xF000000000000000) | rh6;
+      write_register(s, regno, (reg_contents & 0xF000000000000000) | rh6);
       return;
     }
 
@@ -1405,6 +1491,7 @@ void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
 // Get and set the RH 6 digits of any size register
 //
 
+#if 0
 SINGLE_WORD any_size_rh6(ESC_STATE *s, int regno)
 {
   if( IS_SW_REGISTER(regno) )
@@ -1426,6 +1513,18 @@ SINGLE_WORD any_size_rh6(ESC_STATE *s, int regno)
 
   error_msg("Unrecognised register:R%d", regno);
 }
+#else
+
+SINGLE_WORD any_size_rh6(ESC_STATE *s, int regno)
+{
+  REGISTER_DOUBLE_WORD reg_contents = read_register(s, regno);
+
+  reg_contents &= 0x00FFFFFF;      
+  //      DW_REG_CONTENTS(regno) = sign;
+  return((SINGLE_WORD)reg_contents);
+}
+
+#endif
 
 //------------------------------------------------------------------------------
 
@@ -2015,10 +2114,12 @@ void write_sw_to_store(ESC_STATE *s, ADDRESS address, REGISTER_SINGLE_WORD d)
   s->store[bcd_to_binary(REMOVED_SW_SIGN(address))] = d;
 }
 
+#if 0
 REGISTER_DOUBLE_WORD get_register(ESC_STATE *s, int reg)
 {
   return((REGISTER_DOUBLE_WORD)s->R[reg]);
 }
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -2036,7 +2137,8 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nSW REG, SW REG");
 #endif
-      SW_REG_CONTENTS(dest) = SW_REG_CONTENTS(src);
+      write_register(s, dest, read_register(s, src));
+      //SW_REG_CONTENTS(dest) = SW_REG_CONTENTS(src);
     }
   
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src) )
@@ -2044,10 +2146,11 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nDOUBLE WORD, DOUBLE WORD");
 #endif
-      DW_REG_CONTENTS(dest) = DW_REG_CONTENTS(src);
+      write_register(s, dest, read_register(s, src));
+      //DW_REG_CONTENTS(dest) = DW_REG_CONTENTS(src);
 
 #if DEBUG_REG_ASSIGN
-      printf("\n%s:dest:%016llX", __FUNCTION__, s->R[dest]);
+      printf("\n%s:dest:%016llX", __FUNCTION__, read_register(s, dest));
 #endif
     }
 
@@ -2056,10 +2159,11 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nSINGLE WORD <= DOUBLE WORD");
 #endif
-      SW_REG_CONTENTS(dest) = DW_TO_SW(DW_REG_CONTENTS(src));
+      write_register(s, dest, DW_TO_SW(read_register(s, src)));
+      //SW_REG_CONTENTS(dest) = DW_TO_SW(DW_REG_CONTENTS(src));
 
 #if DEBUG_REG_ASSIGN
-      printf("\n%s:dest:%016llX", __FUNCTION__, s->R[dest]);
+      printf("\n%s:dest:%016llX", __FUNCTION__, read_register(s, dest));
 #endif
     }
 
@@ -2068,10 +2172,11 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nSINGLE WORD <= DOUBLE WORD");
 #endif
-      DW_REG_CONTENTS(dest) = SW_TO_DW(SW_REG_CONTENTS(src));
+      write_register(s, dest, SW_TO_DW(read_register(s, src)));
+      //DW_REG_CONTENTS(dest) = SW_TO_DW(SW_REG_CONTENTS(src));
 
 #if DEBUG_REG_ASSIGN
-      printf("\n%s:dest:%016llX", __FUNCTION__, s->R[dest]);
+      printf("\n%s:dest:%016llX", __FUNCTION__, read_register(s, dest));
 #endif
     }
 }
@@ -2081,13 +2186,15 @@ void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
 {
   if( IS_SW_REGISTER(dest) )
     {
-      SW_REG_CONTENTS(dest) = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
+      write_register(s, dest, SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS));
+      //SW_REG_CONTENTS(dest) = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
       
     }
   
   if( IS_DW_REGISTER(dest) )
     {
-      DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) literal;
+      write_register(s, dest, SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_PLUS));
+      //DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) literal;
     }
 }
 
@@ -2109,7 +2216,8 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
 
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src), t);
+      write_register(s, dest, bcd_sw_addition(s, DW_TO_SW(read_register(s, src)), t));
+    //SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src), t);
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -2121,11 +2229,11 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 #endif
 
       t = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_PLUS);
-      
-      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src), t);
+      write_register(s, dest, bcd_dw_addition(read_register(s, src), t));
+  //  DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src), t);
 
 #if DEBUG_REG_ASSIGN
-      printf("\n%s:dest:%016llX (lit):%016llX", __FUNCTION__, s->R[dest], t);
+      printf("\n%s:dest:%016llX (lit):%016llX", __FUNCTION__, read_register(s, dest), t);
 #endif
 
     }
@@ -2145,11 +2253,13 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
       REGISTER_SINGLE_WORD t;
 
       //      t       = SET_SW_SIGN((REGISTER_SINGLE_WORD) SW_REG_CONTENTS(src), WORD_SIGN_MINUS);
-      t = invert_sw_sign(SW_REG_CONTENTS(src));
+      //      t = invert_sw_sign(SW_REG_CONTENTS(src));
+      t = invert_sw_sign((REGISTER_SINGLE_WORD)read_register(s, src));
       
       literal = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal,   WORD_SIGN_PLUS);
 
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, (REGISTER_SINGLE_WORD) literal, t);
+      //      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, (REGISTER_SINGLE_WORD) literal, t);
+      write_register(s, dest, bcd_sw_addition(s, (REGISTER_SINGLE_WORD) literal, t));
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -2157,10 +2267,13 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
       REGISTER_DOUBLE_WORD t;
 
       //t       = SET_DW_SIGN((REGISTER_DOUBLE_WORD) DW_REG_CONTENTS(src), WORD_SIGN_MINUS);
-      t = invert_dw_sign(DW_REG_CONTENTS(src));
+      //      t = invert_dw_sign(DW_REG_CONTENTS(src));
+      t = invert_dw_sign(read_register(s, src));
+      
       literal = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal,   WORD_SIGN_PLUS);
 
-      DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) literal, t);
+    //DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) literal, t);
+      write_register(s, dest, bcd_dw_addition((REGISTER_SINGLE_WORD) literal, t));
     }
 }
 
@@ -2172,7 +2285,8 @@ void register_assign_sub_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_MINUS);
 
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, (REGISTER_SINGLE_WORD) t, SW_REG_CONTENTS(src));
+     // SW_REG_CONTENTS(dest) = bcd_sw_addition(s, (REGISTER_SINGLE_WORD) t, SW_REG_CONTENTS(src));
+      write_register(s, dest,  bcd_sw_addition(s, (REGISTER_SINGLE_WORD) t, (REGISTER_SINGLE_WORD)read_register(s, src)));
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -2181,7 +2295,8 @@ void register_assign_sub_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_MINUS);
 
-      DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) t, DW_REG_CONTENTS(src));
+    // DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) t, DW_REG_CONTENTS(src));
+      write_register(s, dest,  bcd_dw_addition((REGISTER_DOUBLE_WORD) t, read_register(s, src)));
     }
 }
 
@@ -2189,25 +2304,29 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
 {
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), SW_REG_CONTENTS(src2));
+      //      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), SW_REG_CONTENTS(src2));
+      write_register(s, dest, bcd_sw_addition(s, read_register(s, src1), read_register(s, src2)));
       return;
     }
 
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
-      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), DW_REG_CONTENTS(src2));
+      //      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), DW_REG_CONTENTS(src2));
+      write_register(s, dest, bcd_dw_addition(read_register(s, src1), read_register(s, src2)));
       return;
     }
 
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
-      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), SW_TO_DW(SW_REG_CONTENTS(src2)));
+      //      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), SW_TO_DW(SW_REG_CONTENTS(src2)));
+      write_register(s, dest, bcd_dw_addition(read_register(s, src1), SW_TO_DW(read_register(s, src2))));
       return;
     }
 
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), DW_TO_SW(DW_REG_CONTENTS(src2)));
+      //  SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), DW_TO_SW(DW_REG_CONTENTS(src2)));
+      write_register(s, dest, bcd_sw_addition(s, read_register(s, src1), DW_TO_SW(read_register(s, src2))));
       return;
     }
 
@@ -2223,7 +2342,8 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
 #if DEBUG_REGISTER_ASSIGN
       printf("\nSW SW SW");
 #endif
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), invert_sw_sign( SW_REG_CONTENTS(src2)));
+      //      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), invert_sw_sign( SW_REG_CONTENTS(src2)));
+      write_register(s, dest, bcd_sw_addition(s, read_register(s, src1), invert_sw_sign( read_register(s, src2))));
       return;
     }
 
@@ -2232,7 +2352,9 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
 #if DEBUG_REGISTER_ASSIGN
       printf("\nDW DW DW");
 #endif
-      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign( DW_REG_CONTENTS(src2)));
+      //      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign( DW_REG_CONTENTS(src2)));
+      write_register(s, dest, bcd_dw_addition(read_register(s, src1), invert_dw_sign( read_register(s, src2))));
+      
       return;
     }
 
@@ -2241,7 +2363,8 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
 #if DEBUG_REGISTER_ASSIGN
       printf("\nDW DW SW");
 #endif
-      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign(SW_TO_DW(SW_REG_CONTENTS(src2))));
+      //      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src1), invert_dw_sign(SW_TO_DW(SW_REG_CONTENTS(src2))));
+      write_register(s, dest, bcd_dw_addition(read_register(s, src1), invert_dw_sign( SW_TO_DW(read_register(s, src2)))));
       return;
     }
 
@@ -2250,7 +2373,8 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
 #if DEBUG_REGISTER_ASSIGN
       printf("\nSW SW DW");
 #endif
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), invert_sw_sign(DW_TO_SW(DW_REG_CONTENTS(src2))));
+      //      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src1), invert_sw_sign(DW_TO_SW(DW_REG_CONTENTS(src2))));
+      write_register(s, dest, bcd_sw_addition(s, read_register(s, src1), invert_sw_sign( DW_TO_SW(read_register(s, src2)))));
       return;
     }
 
@@ -2262,13 +2386,15 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
 {
   if( IS_SW_REGISTER(dest) )
     {
-      SW_REG_CONTENTS(dest) = (REGISTER_SINGLE_WORD)n;
+      //      SW_REG_CONTENTS(dest) = (REGISTER_SINGLE_WORD)n;
+      write_register(s, dest, n);
       return;
     }
 
   if( IS_DW_REGISTER(dest) )
     {
-      DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) n;
+      //      DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) n;
+      write_register(s, dest, n);
       return;
     }
 
@@ -2276,7 +2402,7 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
   error_msg("Register unknown *%d), dest");
 }
 
-
+#if 0
 #define SHIFT_INST(SHIFT_TYPE,SHIFT_OP)					\
 									\
   void register_ ## SHIFT_TYPE ## _shift(ESC_STATE *s, int dest, int n)	\
@@ -2305,6 +2431,38 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
 									\
     error_msg("%s: Register unknown *%d", __FUNCTION__, dest);		\
   }
+
+#else
+#define SHIFT_INST(SHIFT_TYPE,SHIFT_OP)					\
+									\
+  void register_ ## SHIFT_TYPE ## _shift(ESC_STATE *s, int dest, int n)	\
+  {									\
+    int sign;								\
+    REGISTER_SINGLE_WORD sw_data;					\
+    REGISTER_DOUBLE_WORD dw_data;					\
+									\
+    if( IS_SW_REGISTER(dest) )						\
+      {									\
+	sign = SW_SIGN(read_register(s, dest));                          \
+	sw_data = REMOVED_SW_SIGN(DW_TO_SW(read_register(s, dest))) SHIFT_OP (4*n); \
+	sw_data = REMOVED_SW_UNUSED(sw_data);				\
+        write_register(s, dest, SET_SW_SIGN(sw_data, sign));		\
+	return;								\
+      }									\
+									\
+    if( IS_DW_REGISTER(dest) )						\
+      {									\
+	sign = DW_SIGN(read_register(s, dest));                        \
+	dw_data = REMOVED_DW_SIGN(read_register(s, dest)) SHIFT_OP (4*n); \
+	dw_data = REMOVED_DW_UNUSED(dw_data);				\
+	write_register(s, dest, SET_DW_SIGN(dw_data, sign));             \
+	return;								\
+      }									\
+									\
+    error_msg("%s: Register unknown *%d", __FUNCTION__, dest);		\
+  }
+#endif
+
 
 SHIFT_INST(left,<<);
 SHIFT_INST(right,>>);
@@ -3540,7 +3698,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  if( (SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) == 0 )
+                  //		  if( (SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) == 0 )
+                  if( (read_register(s, s->reginst_rc) & 0xFFFFFF) == 0 )
 		    {
 		      is_zero = 1;
 		    }
@@ -3548,7 +3707,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  if( (DW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
+		  if( (read_register(s, s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
 		    {
 		      is_zero = 1;
 		    }
@@ -3575,7 +3734,15 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  if( (SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_PLUS) && ((SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) != 0) )
+#if DEBUG_TEST
+		  printf("\nR%d = %016X", s->reginst_rc, read_register(s, s->reginst_rc));
+                  printf("\nR%d = %08X", s->reginst_rc, read_register(s, s->reginst_rc));
+                  printf("\nR%d = %08X", s->reginst_rc, SW_SIGN(read_register(s, s->reginst_rc)));
+#endif
+
+                  //		  if( (SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_PLUS) && ((SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) != 0) )
+                  if( (SW_SIGN(read_register(s, s->reginst_rc)) == WORD_SIGN_PLUS) &&
+                      ((read_register(s, s->reginst_rc) & 0xFFFFFF) != 0) )
 		    {
 		      is_gt_zero = 1;
 		    }
@@ -3583,7 +3750,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  if( (DW_SIGN(DW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_PLUS) && ((DW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFFFFFFFF) != 0) )
+		  if( (DW_SIGN(read_register(s, s->reginst_rc)) == WORD_SIGN_PLUS) && ((read_register(s, s->reginst_rc) & 0xFFFFFFFFFFFF) != 0) )
 		    {
 		      is_gt_zero = 1;
 		    }
@@ -3619,7 +3786,7 @@ void stage_c_decode(ESC_STATE *s, int display)
               
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  if( (SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) == 0 )
+		  if( (read_register(s, s->reginst_rc) & 0xFFFFFF) == 0 )
 		    {
 		      is_zero = 1;
 		    }
@@ -3627,7 +3794,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  if( (DW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
+		  if( (read_register(s, s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
 		    {
 		      is_zero = 1;
 		    }
@@ -3642,19 +3809,28 @@ void stage_c_decode(ESC_STATE *s, int display)
 		}
               else
                 {
+#if DEBUG_TEST
+		  printf("\nNot zero, test sign...");
+#endif
+
                   // Not zero, so check sign
+                  is_lt_zero = 0;
                   
                   if( IS_SW_REGISTER(s->reginst_rc) )
                     {
-                      if( SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+                      if( SW_SIGN(read_register(s, s->reginst_rc)) == WORD_SIGN_MINUS )
                         {
+#if DEBUG_TEST
+                          printf("\nSW value < 0 (%016X)", read_register(s, s->reginst_rc));
+#endif
+
                           is_lt_zero = 1;
                         }
                     }
                   
                   if( IS_DW_REGISTER(s->reginst_rc) )
                     {
-                      if( DW_SIGN(DW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+                      if( DW_SIGN(read_register(s, s->reginst_rc)) == WORD_SIGN_MINUS )
                         {
                           is_lt_zero = 1;
                         }
@@ -3682,12 +3858,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_left_digit = (SW_REG_CONTENTS(s->reginst_rc) & 0x00F00000) >> (5*4);
+		  extreme_left_digit = (read_register(s, s->reginst_rc) & 0x00F00000) >> (5*4);
 		}
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_left_digit = (DW_REG_CONTENTS(s->reginst_rc) & 0x0000F00000000000) >> (11*4);
+		  extreme_left_digit = (read_register(s, s->reginst_rc) & 0x0000F00000000000) >> (11*4);
 		}
 
 #if DEBUG_TEST
@@ -3708,12 +3884,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	    case 4:
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_right_digit = (SW_REG_CONTENTS(s->reginst_rc) & 0x0000000F) >> 0;
+		  extreme_right_digit = (read_register(s, s->reginst_rc) & 0x0000000F) >> 0;
 		}
 	      
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_right_digit = (DW_REG_CONTENTS(s->reginst_rc) & 0x000000000000000F) >> 0;
+		  extreme_right_digit = (read_register(s, s->reginst_rc) & 0x000000000000000F) >> 0;
 		}
 	      
 #if DEBUG_TEST
@@ -3906,18 +4082,32 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  if( (STORE_GET_SIGN(store_value)==WORD_SIGN_PLUS) || (STORE_GET_SIGN(store_value)==WORD_SIGN_MINUS) )
 	    {
 	      // Data (value)
+#if 0
 	      s->R[0] = STORE_GET_EXPONENT(store_value);
 	      s->R[0] = SET_SW_SIGN(s->R[0], WORD_SIGN_PLUS);
 	      s->R[1] = STORE_GET_DIGITS(store_value);
 	      s->R[1] = SET_SW_SIGN(s->R[1], STORE_GET_SIGN(store_value));
+#endif
+	      write_register(s, 0, STORE_GET_EXPONENT(store_value));
+	      write_register(s, 0, SET_SW_SIGN(read_register(s, 0), WORD_SIGN_PLUS));
+              write_register(s, 1, STORE_GET_DIGITS(store_value));
+              write_register(s, 1, SET_SW_SIGN(read_register(s, 1), STORE_GET_SIGN(store_value)));
+
 	    }
 	  else
 	    {
 	      // Instruction
+#if 0
 	      s->R[0] = STORE_GET_LH4_DIGITS(store_value);
 	      s->R[0] = SET_SW_SIGN(s->R[0], WORD_SIGN_PLUS);
 	      s->R[1] = STORE_GET_RH4_DIGITS(store_value);
 	      s->R[1] = SET_SW_SIGN(s->R[1], WORD_SIGN_PLUS);
+#endif
+	      write_register(s, 0, STORE_GET_LH4_DIGITS(store_value));
+	      write_register(s, 0, SET_SW_SIGN(read_register(s, 0), WORD_SIGN_PLUS));
+	      write_register(s, 1, STORE_GET_RH4_DIGITS(store_value));
+	      write_register(s, 1, SET_SW_SIGN(read_register(s, 1), WORD_SIGN_PLUS));
+
 	    }
 
 	  next_iar(s);
@@ -3941,9 +4131,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  s->reginst_rd = 1;
 
 	  store_value = 0;
-	  store_value = STORE_SET_EXPONENT(store_value, s->R[0]);
-	  store_value = STORE_SET_SIGN(    store_value, SW_SIGN(s->R[1]));
-	  store_value = STORE_SET_DIGITS(  store_value, SW_DIGITS(s->R[1]));
+	  store_value = STORE_SET_EXPONENT(store_value, read_register(s, 0));
+	  store_value = STORE_SET_SIGN(    store_value, SW_SIGN(read_register(s, 1)));
+	  store_value = STORE_SET_DIGITS(  store_value, SW_DIGITS(read_register(s, 1)));
 	  write_sw_to_store(s, s->inst_aa, store_value);
 	  
 #if DEBUG_INST_21
@@ -3968,8 +4158,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  s->reginst_rd = 1;
 
 	  store_value = 0;
-	  store_value = STORE_SET_LH4_DIGITS(store_value, s->R[0]);
-	  store_value = STORE_SET_RH4_DIGITS(store_value, s->R[1]);
+	  store_value = STORE_SET_LH4_DIGITS(store_value, read_register(s, 0));
+	  store_value = STORE_SET_RH4_DIGITS(store_value, read_register(s, 1));
 	  write_sw_to_store(s, s->inst_aa, store_value);
 	  
 #if DEBUG_INST_22
@@ -4707,7 +4897,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           break;
           
         default:
-          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), read_register(s, 3)));
           s->inst_aa = BOUND_ADDRESS(s->inst_aa);
           
           s->reginst_rc = s->inst_digit_c;
@@ -4729,7 +4919,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           break;
           
         default:
-          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), read_register(s,4)));
           s->inst_aa = BOUND_ADDRESS(s->inst_aa);
                     
           display_line_2(s, display);
@@ -4748,7 +4938,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           break;
           
         default:
-          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), read_register(s, 5)));
           s->inst_aa = BOUND_ADDRESS(s->inst_aa);
                     
           display_line_2(s, display);
@@ -4824,10 +5014,16 @@ void stage_a_decode(ESC_STATE *s, int display)
           s->Ap1 = INST_3_ADDR_1(s->instruction_register);
           s->Ap2 = INST_3_ADDR_2(s->instruction_register);
           s->Ap3 = INST_3_ADDR_3(s->instruction_register);
-          
-          s->Aa1 = convert_store_to_address(s->Ap1 + s->R3); 
+
+          // ** TODO Look at this addition, shoulkd it be BCD?
+#if 0
+          s->Aa1 = convert_store_to_address(s->Ap1 + read_register(s, 3)s->R3); 
           s->Aa2 = convert_store_to_address(s->Ap2 + s->R4); 
           s->Aa3 = convert_store_to_address(s->Ap3 + s->R5); 
+#endif
+          s->Aa1 = convert_store_to_address(s->Ap1 + read_register(s, 3)); 
+          s->Aa2 = convert_store_to_address(s->Ap2 + read_register(s, 4)); 
+          s->Aa3 = convert_store_to_address(s->Ap3 + read_register(s, 5)); 
 
           display_line_2(s, display);
           display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Ap1));
@@ -5196,10 +5392,12 @@ void state_esc_normal_reset(FSM_DATA *fs, TOKEN tok)
   s->ki_reset_flag     = 0;
   s->error             = 0;
 
+#if 0
   s->address_register0 = EMPTY_ADDRESS;
   s->address_register1 = EMPTY_ADDRESS;
   s->address_register2 = EMPTY_ADDRESS;
-
+#endif
+  
 #if OLED_ON
   oled_clear_display(&oled0);
 #endif
@@ -5232,10 +5430,12 @@ void state_esc_ki_reset(FSM_DATA *fs, TOKEN tok)
   s->dot_entered = 0;
   
   s->ki_reset_flag = 1;
+#if 0
   s->address_register0 = EMPTY_ADDRESS;
   s->address_register1 = EMPTY_ADDRESS;
   s->address_register2 = EMPTY_ADDRESS;
-
+#endif
+  
   s->reginst_rc = NO_VALUE;
   s->reginst_rd = NO_VALUE;
   s->reginst_literal = NO_VALUE;
@@ -6583,12 +6783,14 @@ char *get_string_state(void)
           s->extracode_run,
           s->stop);
   strcat(str_state, line);
+#if 0  
   sprintf(line,      "\nAddr R0       : %s", display_address(s->address_register0));
   strcat(str_state, line);
   sprintf(line,      "\nAddr R1       : %s", display_address(s->address_register1));
   strcat(str_state, line);
   sprintf(line,      "\nAddr R2       : %s", display_address(s->address_register2));
   strcat(str_state, line);
+#endif  
   return(str_state);
 }
 
@@ -6606,12 +6808,12 @@ void cli_dump_state(void)
   
   for(int i=0; i<NUM_WORD_REGISTERS; i++)
     {
-      printf("\nR%d    : %s", i, display_register_single_word(s->R[i]));
+      printf("\nR%d    : %s", i, display_register_single_word(read_register(s, i)));
     }
 
   for(int i=0; i<NUM_DBL_WORD_REGISTERS; i++)
     {
-      printf("\nR%d    : %s", i+NUM_WORD_REGISTERS, display_register_double_word(s->RD[i]));
+      printf("\nR%d    : %s", i+NUM_WORD_REGISTERS, display_register_double_word(read_register(s, i+NUM_WORD_REGISTERS)));
     }
   
   printf("\n");
@@ -6952,15 +7154,15 @@ void cli_load_test_code_2(void)
   // test copying of six and RH six digits from one register to another
 
   // Set registers up
-  s->R[0] = 0x00123456;
-  s->RD[0] = 0x00876543008765432L;
-  s->R[1] = 0x00000000;
+  write_register(s, 0, 0x00123456);
+  write_register(s, 0, 0x00876543008765432L);
+  write_register(s, 1, 0x00000000);
 
   // Copy d into c: 0 into 1
   s->store[i++] = 0x14101418;
 
   printf("\nSetup Test 2");
-  printf("\nSet up R[8] = %016llX", s->RD[0]);
+  printf("\nSet up R[8] = %016llX", read_register(s, 0));
 #endif
   
 }
@@ -10342,9 +10544,11 @@ FIELD_INFO  field_info[] =
     {"*IAR_ADDRESS:",            wfn_iar_address},
     {"*IAR_A_FLAG:",             wfn_iar_a_flag},
     {"*KB_REGISTER:",            wfn_kb_register},
+#if 0
     {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
     {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
     {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
+#endif
     {"*INSTRUCTION_REGISTER:",   wfn_instruction_register},
     {"*LINK_REGISTER:",          wfn_link_register},
     {"*LINK_REGISTER:",          wfn_store},
@@ -10403,6 +10607,7 @@ int wfn_kb_register(ESC_STATE *es, void *fi, char *line)
   return(0);
 }
 
+#if 0
 int wfn_address_register(ESC_STATE *es, void *fi, char *line)
 {
   FIELD_INFO *info = (FIELD_INFO *) fi;
@@ -10433,6 +10638,7 @@ int wfn_address_register(ESC_STATE *es, void *fi, char *line)
 
   return(0);
 }
+#endif
 
 int wfn_instruction_register(ESC_STATE *es, void *fi, char *line)
 {
@@ -10659,10 +10865,11 @@ int write_state_to_file(ESC_STATE *es, char *fn)
   f_printf(&fp, "\n*IAR_ADDRESS:%08X",          es->iar.address);
   f_printf(&fp, "\n*IAR_A_FLAG:%08X",           es->iar.a_flag);
   f_printf(&fp, "\n*KB_REGISTER:%08X",          es->keyboard_register);
+#if 0
   f_printf(&fp, "\n*ADDRESS_REGISTER_0:%08X",   es->address_register0);
   f_printf(&fp, "\n*ADDRESS_REGISTER_1:%08X",   es->address_register1);
   f_printf(&fp, "\n*ADDRESS_REGISTER_2:%08X",   es->address_register2);
-
+#endif
   f_printf(&fp, "\n*INSTRUCTION_REGISTER:%08X", es->instruction_register);
   f_printf(&fp, "\n*LINK_REGISTER:%08X",        es->link_register);
 
@@ -10671,12 +10878,12 @@ int write_state_to_file(ESC_STATE *es, char *fn)
     
   for(int i=0;i<NUM_WORD_REGISTERS; i++)
     {
-      f_printf(&fp, "\n*R%d:%08X", i, es->R[i]);
+      f_printf(&fp, "\n*R%d:%08X", i, read_register(es, i));
     }
 
   for(int i=0;i<NUM_DBL_WORD_REGISTERS; i++)
     {
-      f_printf(&fp, "\n*R%d:%016lX", i+NUM_WORD_REGISTERS, es->R[i]);
+      f_printf(&fp, "\n*R%d:%016lX", i+NUM_WORD_REGISTERS, read_register(es, i));
     }
 
   f_printf(&fp, "\n*STORE:");
@@ -11259,12 +11466,12 @@ char *display_register_and_contents(ESC_STATE *s, int regno)
   
   if( IS_SW_REGISTER(regno) )
     {
-      sprintf(result, "R%d %s", regno, display_register_single_word(s->R[regno]));
+      sprintf(result, "R%d %s", regno, display_register_single_word(DW_TO_SW(read_register(s, regno))));
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      snprintf(result, MAX_LINE, "R%d %s", regno, display_register_double_word(s->R[regno]));
+      snprintf(result, MAX_LINE, "R%d %s", regno, display_register_double_word(read_register(s, regno)));
     }
 
   return(result);
