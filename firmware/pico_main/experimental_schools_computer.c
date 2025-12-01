@@ -1446,14 +1446,14 @@ void set_any_size_sign(ESC_STATE *s, int regno, int sign)
 {
   if( IS_SW_REGISTER(regno) )
     {
-      SW_REG_CONTENTS(regno) = SET_SW_SIGN(s->R[regno], sign);
+      //SW_REG_CONTENTS(regno) = SET_SW_SIGN(s->R[regno], sign);
       write_register(s, regno, SET_SW_SIGN(read_register(s, regno), sign));
       return;
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      DW_REG_CONTENTS(regno) = SET_DW_SIGN(s->RD[regno-8], sign);
+      //DW_REG_CONTENTS(regno) = SET_DW_SIGN(s->RD[regno-8], sign);
       write_register(s, regno, SET_DW_SIGN(read_register(s, regno), sign));
       return;
     }
@@ -2138,7 +2138,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
       printf("\nSW REG, SW REG");
 #endif
       write_register(s, dest, SW_REG_CONTENTS(src));
-      SW_REG_CONTENTS(dest) = SW_REG_CONTENTS(src);
+      //SW_REG_CONTENTS(dest) = SW_REG_CONTENTS(src);
     }
   
   if( IS_DW_REGISTER(dest) && IS_DW_REGISTER(src) )
@@ -2147,7 +2147,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
       printf("\nDOUBLE WORD, DOUBLE WORD");
 #endif
       write_register(s, dest, DW_REG_CONTENTS(src));
-      DW_REG_CONTENTS(dest) = DW_REG_CONTENTS(src);
+      //DW_REG_CONTENTS(dest) = DW_REG_CONTENTS(src);
 
 #if DEBUG_REG_ASSIGN
       printf("\n%s:dest:%016llX", __FUNCTION__, read_register(s, dest));
@@ -2160,7 +2160,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
       printf("\nSINGLE WORD <= DOUBLE WORD");
 #endif
       write_register(s, dest, DW_TO_SW(DW_REG_CONTENTS(src)));
-      SW_REG_CONTENTS(dest) = DW_TO_SW(DW_REG_CONTENTS(src));
+      //SW_REG_CONTENTS(dest) = DW_TO_SW(DW_REG_CONTENTS(src));
 
 #if DEBUG_REG_ASSIGN
       printf("\n%s:dest:%016llX", __FUNCTION__, read_register(s, dest));
@@ -2173,7 +2173,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
       printf("\nSINGLE WORD <= DOUBLE WORD");
 #endif
       write_register(s, dest, SW_TO_DW(SW_REG_CONTENTS(src)));
-      DW_REG_CONTENTS(dest) = SW_TO_DW(SW_REG_CONTENTS(src));
+      //DW_REG_CONTENTS(dest) = SW_TO_DW(SW_REG_CONTENTS(src));
 
 #if DEBUG_REG_ASSIGN
       printf("\n%s:dest:%016llX", __FUNCTION__, read_register(s, dest));
@@ -2187,14 +2187,14 @@ void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
   if( IS_SW_REGISTER(dest) )
     {
       write_register(s, dest, SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS));
-      SW_REG_CONTENTS(dest) = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
+      //SW_REG_CONTENTS(dest) = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
       
     }
   
   if( IS_DW_REGISTER(dest) )
     {
       write_register(s, dest, SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_PLUS));
-      DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) literal;
+      //DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) literal;
     }
 }
 
@@ -2217,7 +2217,7 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
 
       write_register(s, dest, bcd_sw_addition(s, SW_REG_CONTENTS(src), t));
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src), t);
+    //SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src), t);
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -2230,7 +2230,7 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_PLUS);
       write_register(s, dest, bcd_dw_addition(DW_REG_CONTENTS(src), t));
-      DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src), t);
+  //  DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src), t);
 
 #if DEBUG_REG_ASSIGN
       printf("\n%s:dest:%016llX (lit):%016llX", __FUNCTION__, read_register(s, dest), t);
@@ -2257,7 +2257,8 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
       
       literal = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal,   WORD_SIGN_PLUS);
 
-      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, (REGISTER_SINGLE_WORD) literal, t);
+      //      SW_REG_CONTENTS(dest) = bcd_sw_addition(s, (REGISTER_SINGLE_WORD) literal, t);
+      write_register(s, dest, bcd_sw_addition(s, (REGISTER_SINGLE_WORD) literal, t));
     }
   
   if( IS_DW_REGISTER(dest) )
@@ -2268,7 +2269,8 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
       t = invert_dw_sign(DW_REG_CONTENTS(src));
       literal = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal,   WORD_SIGN_PLUS);
 
-      DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) literal, t);
+    //DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) literal, t);
+      write_register(s, dest, bcd_dw_addition((REGISTER_SINGLE_WORD) literal, t));
     }
 }
 
