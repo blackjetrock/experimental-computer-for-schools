@@ -11346,6 +11346,7 @@ void suppress_output(char *t)
         {
           suppressed[i] = ' ';
         }
+
     }
 
   // Now start at the front and blank any zero that is followed by a zero
@@ -11401,6 +11402,37 @@ void suppress_output(char *t)
 #if DEBUG_SUPPRESSED
   printf("\n%s:'%s'", __FUNCTION__, suppressed);
 #endif
+  strcpy(t, suppressed);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Process and C and D digits
+//
+
+
+void process_signs_output(char *t)
+{
+  strcpy(suppressed, t);
+
+#if DEBUG_SUPPRESSED
+  printf("\n%s:'%s'", __FUNCTION__, suppressed);
+#endif
+  
+  // Remove any plus
+  for(int i=0; suppressed[i] != '\0'; i++)
+    {
+      if( suppressed[i] == 'C' )
+        {
+          suppressed[i] = ' ';
+        }
+
+      if( suppressed[i] == 'D' )
+        {
+          suppressed[i] = '-';
+        }
+    }
+
   strcpy(t, suppressed);
 }
 
@@ -11548,6 +11580,7 @@ char *display_store_word(SINGLE_WORD w)
       strncat(result2, result+3+6-digit_b, digit_b);
       strcat( result2, "");
       strcpy( result, result2);
+
       break;
     }
 
@@ -11558,7 +11591,8 @@ char *display_store_word(SINGLE_WORD w)
       suppress_output(result);
       //      printf("\nSuppressed:'%s'", result);
     }      
-  
+
+  process_signs_output(result);
   return(result);
 }
 
