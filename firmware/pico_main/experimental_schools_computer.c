@@ -253,7 +253,9 @@ int cat_file(char *fn);
 int wfn_iar_address(ESC_STATE *es, void *fi, char *line);
 int wfn_iar_a_flag(ESC_STATE *es, void *fi, char *line);
 int wfn_kb_register(ESC_STATE *es, void *fi, char *line);
+#if 0
 int wfn_address_register(ESC_STATE *es, void *fi, char *line);
+#endif
 int wfn_link_register(ESC_STATE *es, void *fi, char *line);
 int wfn_instruction_register(ESC_STATE *es, void *fi, char *line);
 int wfn_store_data(ESC_STATE *es, void *fi, char *line);
@@ -292,6 +294,79 @@ void clear_display(ESC_STATE *s, int display);
 
 volatile uint32_t touch_key_raw = 0;
 int get_qt_key_code(void);
+////////////////////////////////////////////////////////////////////////////////
+//
+// Register access
+//
+
+// Register identiiers.
+// 0..9 are R0..R9
+
+typedef enum _REGN
+  {
+    REGN_0 = 0,
+    REGN_1 = 1,
+    REGN_2 = 2,
+    REGN_3 = 3,
+    REGN_4 = 4,
+    REGN_5 = 5,
+    REGN_6 = 6,
+    REGN_7 = 7,
+    REGN_8 = 8,
+    REGN_9 = 9,
+    REGN_IAR,
+    REGN_AUX_IAR,
+  } REGN;
+
+void write_register(ESC_STATE *s, REGN n, REGISTER_DOUBLE_WORD data)
+{
+  switch(n)
+    {
+    case REGN_0:
+    case REGN_1:
+    case REGN_2:
+    case REGN_3:
+    case REGN_4:
+    case REGN_5:
+    case REGN_6:
+    case REGN_7:
+      s->store[200+n] = (REGISTER_SINGLE_WORD)data;
+      break;
+
+    case REGN_8:
+    case REGN_9:
+      // R8 and R9 are in two locations each. Lower address is lower half of register
+      s->store[200+n] = (REGISTER_SINGLE_WORD) (data & 0xFFFFFFFF);
+      s->store[210+n] = (REGISTER_SINGLE_WORD) ((data & 0xFFFFFFFF00000000) >> 32);
+      break; 
+    }
+}
+
+// Read any register
+// For SW, cast result.
+
+REGISTER_DOUBLE_WORD read_register(ESC_STATE *s, REGN n)
+{
+  switch(n)
+    {
+    case REGN_0:
+    case REGN_1:
+    case REGN_2:
+    case REGN_3:
+    case REGN_4:
+    case REGN_5:
+    case REGN_6:
+    case REGN_7:
+      return (REGISTER_DOUBLE_WORD)(s->store[200+n]);
+      break;
+
+    case REGN_8:
+    case REGN_9:
+      // R8 and R9 are in two locations each. Lower address is lower half of register
+      return ( ((REGISTER_DOUBLE_WORD)(s->store[200+n])) | (((REGISTER_DOUBLE_WORD)(s->store[210+n])) << 32));
+      break; 
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1193,12 +1268,14 @@ REGISTER_DOUBLE_WORD read_any_size_register(ESC_STATE *s, int n)
   
   if( IS_SW_REGISTER(n) )
     {
-      return((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n));
+      //      return((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n));
+      return(read_register(s, n));
     }
 
   if( IS_DW_REGISTER(n) )
     {
-      return((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n));
+      //return((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n));
+      return(read_register(s, n));
     }
 
   error_msg("Unrecognised register:R%d", n);
@@ -1213,12 +1290,13 @@ REGISTER_DOUBLE_WORD read_any_size_register_absolute(ESC_STATE *s, int n)
 {
   if( IS_SW_REGISTER(n) )
     {
-      return(REMOVED_SW_SIGN((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n)));
+      //      return(REMOVED_SW_SIGN((REGISTER_DOUBLE_WORD)SW_REG_CONTENTS(n)));
+      return(REMOVED_SW_SIGN(read_register(s, n)));
     }
 
   if( IS_DW_REGISTER(n) )
     {
-      return(REMOVED_DW_SIGN((REGISTER_DOUBLE_WORD)DW_REG_CONTENTS(n)));
+      return(REMOVED_DW_SIGN(read_register(s,n)));
     }
 
   error_msg("Unrecognised register:R%d", n);
@@ -1351,12 +1429,14 @@ int any_size_sign(ESC_STATE *s, int regno)
 {
   if( IS_SW_REGISTER(regno) )
     {
-      return( SW_SIGN(SW_REG_CONTENTS(regno)) );
+      //      return( SW_SIGN(SW_REG_CONTENTS(regno)) );
+      return( SW_SIGN(read_register(s, regno)) );
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      return( DW_SIGN(DW_REG_CONTENTS(regno)) );
+      //      return( DW_SIGN(DW_REG_CONTENTS(regno)) );
+      return( DW_SIGN(read_register(s, regno)) );
     }
 
   error_msg("Unrecognised register:R%d", regno);
@@ -1367,12 +1447,14 @@ void set_any_size_sign(ESC_STATE *s, int regno, int sign)
   if( IS_SW_REGISTER(regno) )
     {
       SW_REG_CONTENTS(regno) = SET_SW_SIGN(s->R[regno], sign);
+      write_register(s, regno, SET_SW_SIGN(read_register(s, regno), sign));
       return;
     }
 
   if( IS_DW_REGISTER(regno) )
     {
       DW_REG_CONTENTS(regno) = SET_DW_SIGN(s->RD[regno-8], sign);
+      write_register(s, regno, SET_DW_SIGN(read_register(s, regno), sign));
       return;
     }
 
@@ -1381,18 +1463,22 @@ void set_any_size_sign(ESC_STATE *s, int regno, int sign)
 
 void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
 {
+  REGISTER_DOUBLE_WORD reg_contents = read_register(s, regno);
+  
   if( IS_SW_REGISTER(regno) )
     {
-      int reg_contents = SW_REG_CONTENTS(regno);
-      
-      SW_REG_CONTENTS(regno) = (reg_contents & 0xF0000000) | rh6;
+      //      int reg_contents = SW_REG_CONTENTS(regno);
+      //      SW_REG_CONTENTS(regno) = (reg_contents & 0xF0000000) | rh6;
+      write_register(s, regno, (reg_contents & 0xF0000000) | rh6);
       return;
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      int reg_contents = DW_REG_CONTENTS(regno);
-      DW_REG_CONTENTS(regno) = (reg_contents & 0xF000000000000000) | rh6;
+      //int reg_contents = DW_REG_CONTENTS(regno);
+      //      int reg_contents = (REGISTER_SINGLE_WORD)read_register(s, regno);
+      //DW_REG_CONTENTS(regno) = (reg_contents & 0xF000000000000000) | rh6;
+      write_register(s, regno, (reg_contents & 0xF000000000000000) | rh6);
       return;
     }
 
@@ -1405,6 +1491,7 @@ void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
 // Get and set the RH 6 digits of any size register
 //
 
+#if 0
 SINGLE_WORD any_size_rh6(ESC_STATE *s, int regno)
 {
   if( IS_SW_REGISTER(regno) )
@@ -1426,6 +1513,18 @@ SINGLE_WORD any_size_rh6(ESC_STATE *s, int regno)
 
   error_msg("Unrecognised register:R%d", regno);
 }
+#else
+
+SINGLE_WORD any_size_rh6(ESC_STATE *s, int regno)
+{
+  REGISTER_DOUBLE_WORD reg_contents = read_register(s, regno);
+
+  reg_contents &= 0x00FFFFFF;      
+  //      DW_REG_CONTENTS(regno) = sign;
+  return((SINGLE_WORD)reg_contents);
+}
+
+#endif
 
 //------------------------------------------------------------------------------
 
@@ -2015,10 +2114,12 @@ void write_sw_to_store(ESC_STATE *s, ADDRESS address, REGISTER_SINGLE_WORD d)
   s->store[bcd_to_binary(REMOVED_SW_SIGN(address))] = d;
 }
 
+#if 0
 REGISTER_DOUBLE_WORD get_register(ESC_STATE *s, int reg)
 {
   return((REGISTER_DOUBLE_WORD)s->R[reg]);
 }
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -2036,6 +2137,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nSW REG, SW REG");
 #endif
+      write_register(s, dest, SW_REG_CONTENTS(src));
       SW_REG_CONTENTS(dest) = SW_REG_CONTENTS(src);
     }
   
@@ -2044,10 +2146,11 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nDOUBLE WORD, DOUBLE WORD");
 #endif
+      write_register(s, dest, DW_REG_CONTENTS(src));
       DW_REG_CONTENTS(dest) = DW_REG_CONTENTS(src);
 
 #if DEBUG_REG_ASSIGN
-      printf("\n%s:dest:%016llX", __FUNCTION__, s->R[dest]);
+      printf("\n%s:dest:%016llX", __FUNCTION__, read_register(s, dest));
 #endif
     }
 
@@ -2056,10 +2159,11 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nSINGLE WORD <= DOUBLE WORD");
 #endif
+      write_register(s, dest, DW_TO_SW(DW_REG_CONTENTS(src)));
       SW_REG_CONTENTS(dest) = DW_TO_SW(DW_REG_CONTENTS(src));
 
 #if DEBUG_REG_ASSIGN
-      printf("\n%s:dest:%016llX", __FUNCTION__, s->R[dest]);
+      printf("\n%s:dest:%016llX", __FUNCTION__, read_register(s, dest));
 #endif
     }
 
@@ -2068,10 +2172,11 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nSINGLE WORD <= DOUBLE WORD");
 #endif
+      write_register(s, dest, SW_TO_DW(SW_REG_CONTENTS(src)));
       DW_REG_CONTENTS(dest) = SW_TO_DW(SW_REG_CONTENTS(src));
 
 #if DEBUG_REG_ASSIGN
-      printf("\n%s:dest:%016llX", __FUNCTION__, s->R[dest]);
+      printf("\n%s:dest:%016llX", __FUNCTION__, read_register(s, dest));
 #endif
     }
 }
@@ -2081,12 +2186,14 @@ void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
 {
   if( IS_SW_REGISTER(dest) )
     {
+      write_register(s, dest, SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS));
       SW_REG_CONTENTS(dest) = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
       
     }
   
   if( IS_DW_REGISTER(dest) )
     {
+      write_register(s, dest, SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_PLUS));
       DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) literal;
     }
 }
@@ -2109,6 +2216,7 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
 
+      write_register(s, dest, bcd_sw_addition(s, SW_REG_CONTENTS(src), t));
       SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src), t);
     }
   
@@ -2121,11 +2229,11 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 #endif
 
       t = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_PLUS);
-      
+      write_register(s, dest, bcd_dw_addition(DW_REG_CONTENTS(src), t));
       DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src), t);
 
 #if DEBUG_REG_ASSIGN
-      printf("\n%s:dest:%016llX (lit):%016llX", __FUNCTION__, s->R[dest], t);
+      printf("\n%s:dest:%016llX (lit):%016llX", __FUNCTION__, read_register(s, dest), t);
 #endif
 
     }
@@ -5196,10 +5304,12 @@ void state_esc_normal_reset(FSM_DATA *fs, TOKEN tok)
   s->ki_reset_flag     = 0;
   s->error             = 0;
 
+#if 0
   s->address_register0 = EMPTY_ADDRESS;
   s->address_register1 = EMPTY_ADDRESS;
   s->address_register2 = EMPTY_ADDRESS;
-
+#endif
+  
 #if OLED_ON
   oled_clear_display(&oled0);
 #endif
@@ -5232,10 +5342,12 @@ void state_esc_ki_reset(FSM_DATA *fs, TOKEN tok)
   s->dot_entered = 0;
   
   s->ki_reset_flag = 1;
+#if 0
   s->address_register0 = EMPTY_ADDRESS;
   s->address_register1 = EMPTY_ADDRESS;
   s->address_register2 = EMPTY_ADDRESS;
-
+#endif
+  
   s->reginst_rc = NO_VALUE;
   s->reginst_rd = NO_VALUE;
   s->reginst_literal = NO_VALUE;
@@ -6583,12 +6695,14 @@ char *get_string_state(void)
           s->extracode_run,
           s->stop);
   strcat(str_state, line);
+#if 0  
   sprintf(line,      "\nAddr R0       : %s", display_address(s->address_register0));
   strcat(str_state, line);
   sprintf(line,      "\nAddr R1       : %s", display_address(s->address_register1));
   strcat(str_state, line);
   sprintf(line,      "\nAddr R2       : %s", display_address(s->address_register2));
   strcat(str_state, line);
+#endif  
   return(str_state);
 }
 
@@ -10342,9 +10456,11 @@ FIELD_INFO  field_info[] =
     {"*IAR_ADDRESS:",            wfn_iar_address},
     {"*IAR_A_FLAG:",             wfn_iar_a_flag},
     {"*KB_REGISTER:",            wfn_kb_register},
+#if 0
     {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
     {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
     {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
+#endif
     {"*INSTRUCTION_REGISTER:",   wfn_instruction_register},
     {"*LINK_REGISTER:",          wfn_link_register},
     {"*LINK_REGISTER:",          wfn_store},
@@ -10403,6 +10519,7 @@ int wfn_kb_register(ESC_STATE *es, void *fi, char *line)
   return(0);
 }
 
+#if 0
 int wfn_address_register(ESC_STATE *es, void *fi, char *line)
 {
   FIELD_INFO *info = (FIELD_INFO *) fi;
@@ -10433,6 +10550,7 @@ int wfn_address_register(ESC_STATE *es, void *fi, char *line)
 
   return(0);
 }
+#endif
 
 int wfn_instruction_register(ESC_STATE *es, void *fi, char *line)
 {
@@ -10659,10 +10777,11 @@ int write_state_to_file(ESC_STATE *es, char *fn)
   f_printf(&fp, "\n*IAR_ADDRESS:%08X",          es->iar.address);
   f_printf(&fp, "\n*IAR_A_FLAG:%08X",           es->iar.a_flag);
   f_printf(&fp, "\n*KB_REGISTER:%08X",          es->keyboard_register);
+#if 0
   f_printf(&fp, "\n*ADDRESS_REGISTER_0:%08X",   es->address_register0);
   f_printf(&fp, "\n*ADDRESS_REGISTER_1:%08X",   es->address_register1);
   f_printf(&fp, "\n*ADDRESS_REGISTER_2:%08X",   es->address_register2);
-
+#endif
   f_printf(&fp, "\n*INSTRUCTION_REGISTER:%08X", es->instruction_register);
   f_printf(&fp, "\n*LINK_REGISTER:%08X",        es->link_register);
 

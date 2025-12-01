@@ -18,8 +18,15 @@
 
 #define NUM_WORD_REGISTERS     8
 #define NUM_DBL_WORD_REGISTERS 2
-#define STORE_SIZE             200
 
+// The store is 1000 words, as that allows a ful three BCD digits to be used.
+// The original has 200 bytes of store for instructions and data and also had
+// registers in some store at 200
+// The 1000 allows the regsisters in store and also more room for programs and data
+// The extracode is still in 100..199
+
+
+#define STORE_SIZE             1000
 
 #define EMPTY_REGISTER         0xA0000000
 
@@ -115,9 +122,11 @@ typedef uint32_t ADDRESS;
 #define R8 RD[0]
 #define R9 RD[1]
 
+#if 1
 #define SW_REG_CONTENTS(RR) (s->R[RR])
 #define DW_REG_CONTENTS(RR) (s->RD[RR-8])
-  
+#endif
+
 #define IS_SW_REGISTER(REGNO) ((REGNO >= 0) && (REGNO < NUM_WORD_REGISTERS))
 #define IS_DW_REGISTER(REGNO) ((REGNO >= NUM_WORD_REGISTERS) && (REGNO < NUM_WORD_REGISTERS+NUM_DBL_WORD_REGISTERS))
 
