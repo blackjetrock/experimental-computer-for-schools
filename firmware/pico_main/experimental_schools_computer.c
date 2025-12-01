@@ -1385,14 +1385,14 @@ void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
     {
       int reg_contents = SW_REG_CONTENTS(regno);
       
-      SW_REG_CONTENTS(regno) = (reg_contents & 0xF0000000) | rh6;
+      SW_REG_CONTENTS(regno) = (reg_contents & 0xFF000000) | rh6;
       return;
     }
 
   if( IS_DW_REGISTER(regno) )
     {
       int reg_contents = DW_REG_CONTENTS(regno);
-      DW_REG_CONTENTS(regno) = (reg_contents & 0xF000000000000000) | rh6;
+      DW_REG_CONTENTS(regno) = (reg_contents & 0xFFFFFFFFF000000) | rh6;
       return;
     }
 
