@@ -4076,18 +4076,32 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  if( (STORE_GET_SIGN(store_value)==WORD_SIGN_PLUS) || (STORE_GET_SIGN(store_value)==WORD_SIGN_MINUS) )
 	    {
 	      // Data (value)
+#if 0
 	      s->R[0] = STORE_GET_EXPONENT(store_value);
 	      s->R[0] = SET_SW_SIGN(s->R[0], WORD_SIGN_PLUS);
 	      s->R[1] = STORE_GET_DIGITS(store_value);
 	      s->R[1] = SET_SW_SIGN(s->R[1], STORE_GET_SIGN(store_value));
+#endif
+	      write_register(s, 0, STORE_GET_EXPONENT(store_value));
+	      write_register(s, 0, SET_SW_SIGN(read_register(s, 0), WORD_SIGN_PLUS));
+              write_register(s, 1, STORE_GET_DIGITS(store_value));
+              write_register(s, 1, SET_SW_SIGN(read_register(s, 1), STORE_GET_SIGN(store_value)));
+
 	    }
 	  else
 	    {
 	      // Instruction
+#if 0
 	      s->R[0] = STORE_GET_LH4_DIGITS(store_value);
 	      s->R[0] = SET_SW_SIGN(s->R[0], WORD_SIGN_PLUS);
 	      s->R[1] = STORE_GET_RH4_DIGITS(store_value);
 	      s->R[1] = SET_SW_SIGN(s->R[1], WORD_SIGN_PLUS);
+#endif
+	      write_register(s, 0, STORE_GET_LH4_DIGITS(store_value));
+	      write_register(s, 0, SET_SW_SIGN(read_register(s, 0), WORD_SIGN_PLUS));
+	      write_register(s, 1, STORE_GET_RH4_DIGITS(store_value));
+	      write_register(s, 1, SET_SW_SIGN(read_register(s, 1), WORD_SIGN_PLUS));
+
 	    }
 
 	  next_iar(s);
@@ -4111,9 +4125,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  s->reginst_rd = 1;
 
 	  store_value = 0;
-	  store_value = STORE_SET_EXPONENT(store_value, s->R[0]);
-	  store_value = STORE_SET_SIGN(    store_value, SW_SIGN(s->R[1]));
-	  store_value = STORE_SET_DIGITS(  store_value, SW_DIGITS(s->R[1]));
+	  store_value = STORE_SET_EXPONENT(store_value, read_register(s, 0));
+	  store_value = STORE_SET_SIGN(    store_value, SW_SIGN(read_register(s, 1)));
+	  store_value = STORE_SET_DIGITS(  store_value, SW_DIGITS(read_register(s, 1)));
 	  write_sw_to_store(s, s->inst_aa, store_value);
 	  
 #if DEBUG_INST_21
@@ -4138,8 +4152,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  s->reginst_rd = 1;
 
 	  store_value = 0;
-	  store_value = STORE_SET_LH4_DIGITS(store_value, s->R[0]);
-	  store_value = STORE_SET_RH4_DIGITS(store_value, s->R[1]);
+	  store_value = STORE_SET_LH4_DIGITS(store_value, read_register(s, 0));
+	  store_value = STORE_SET_RH4_DIGITS(store_value, read_register(s, 1));
 	  write_sw_to_store(s, s->inst_aa, store_value);
 	  
 #if DEBUG_INST_22
@@ -4877,7 +4891,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           break;
           
         default:
-          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[3]));
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), DW_TO_SW(read_register(s, 3))));
           s->inst_aa = BOUND_ADDRESS(s->inst_aa);
           
           s->reginst_rc = s->inst_digit_c;
@@ -4899,7 +4913,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           break;
           
         default:
-          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[4]));
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), DW_TO_SW(read_register(s,4))));
           s->inst_aa = BOUND_ADDRESS(s->inst_aa);
                     
           display_line_2(s, display);
@@ -4918,7 +4932,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           break;
           
         default:
-          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), s->R[5]));
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), DW_TO_SW(read_register(s, 5))));
           s->inst_aa = BOUND_ADDRESS(s->inst_aa);
                     
           display_line_2(s, display);
@@ -4994,10 +5008,16 @@ void stage_a_decode(ESC_STATE *s, int display)
           s->Ap1 = INST_3_ADDR_1(s->instruction_register);
           s->Ap2 = INST_3_ADDR_2(s->instruction_register);
           s->Ap3 = INST_3_ADDR_3(s->instruction_register);
-          
-          s->Aa1 = convert_store_to_address(s->Ap1 + s->R3); 
+
+          // ** TODO Look at this addition, shoulkd it be BCD?
+#if 0
+          s->Aa1 = convert_store_to_address(s->Ap1 + read_register(s, 3)s->R3); 
           s->Aa2 = convert_store_to_address(s->Ap2 + s->R4); 
           s->Aa3 = convert_store_to_address(s->Ap3 + s->R5); 
+#endif
+          s->Aa1 = convert_store_to_address(s->Ap1 + read_register(s, 3)); 
+          s->Aa2 = convert_store_to_address(s->Ap2 + read_register(s, 4)); 
+          s->Aa3 = convert_store_to_address(s->Ap3 + read_register(s, 5)); 
 
           display_line_2(s, display);
           display_on_line(s, display, 3, "%2X    %s", s->Ap1, display_store_word(s->Ap1));
