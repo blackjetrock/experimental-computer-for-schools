@@ -2137,7 +2137,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nSW REG, SW REG");
 #endif
-      write_register(s, dest, SW_REG_CONTENTS(src));
+      write_register(s, dest, read_register(s, src));
       //SW_REG_CONTENTS(dest) = SW_REG_CONTENTS(src);
     }
   
@@ -2146,7 +2146,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nDOUBLE WORD, DOUBLE WORD");
 #endif
-      write_register(s, dest, DW_REG_CONTENTS(src));
+      write_register(s, dest, read_register(s, src));
       //DW_REG_CONTENTS(dest) = DW_REG_CONTENTS(src);
 
 #if DEBUG_REG_ASSIGN
@@ -2159,7 +2159,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nSINGLE WORD <= DOUBLE WORD");
 #endif
-      write_register(s, dest, DW_TO_SW(DW_REG_CONTENTS(src)));
+      write_register(s, dest, DW_TO_SW(read_register(s, src)));
       //SW_REG_CONTENTS(dest) = DW_TO_SW(DW_REG_CONTENTS(src));
 
 #if DEBUG_REG_ASSIGN
@@ -2172,7 +2172,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
 #if DEBUG_REG_ASSIGN
       printf("\nSINGLE WORD <= DOUBLE WORD");
 #endif
-      write_register(s, dest, SW_TO_DW(SW_REG_CONTENTS(src)));
+      write_register(s, dest, SW_TO_DW(read_register(s, src)));
       //DW_REG_CONTENTS(dest) = SW_TO_DW(SW_REG_CONTENTS(src));
 
 #if DEBUG_REG_ASSIGN
@@ -2216,7 +2216,7 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
 
-      write_register(s, dest, bcd_sw_addition(s, SW_REG_CONTENTS(src), t));
+      write_register(s, dest, bcd_sw_addition(s, DW_TO_SW(read_register(s, src)), t));
     //SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src), t);
     }
   
@@ -2229,7 +2229,7 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 #endif
 
       t = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal, WORD_SIGN_PLUS);
-      write_register(s, dest, bcd_dw_addition(DW_REG_CONTENTS(src), t));
+      write_register(s, dest, bcd_dw_addition(read_register(s, src), t));
   //  DW_REG_CONTENTS(dest) = bcd_dw_addition(DW_REG_CONTENTS(src), t);
 
 #if DEBUG_REG_ASSIGN
@@ -2386,13 +2386,15 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
 {
   if( IS_SW_REGISTER(dest) )
     {
-      SW_REG_CONTENTS(dest) = (REGISTER_SINGLE_WORD)n;
+      //      SW_REG_CONTENTS(dest) = (REGISTER_SINGLE_WORD)n;
+      write_register(s, dest, n);
       return;
     }
 
   if( IS_DW_REGISTER(dest) )
     {
-      DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) n;
+      //      DW_REG_CONTENTS(dest) = (REGISTER_DOUBLE_WORD) n;
+      write_register(s, dest, n);
       return;
     }
 
@@ -2400,7 +2402,7 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
   error_msg("Register unknown *%d), dest");
 }
 
-
+#if 0
 #define SHIFT_INST(SHIFT_TYPE,SHIFT_OP)					\
 									\
   void register_ ## SHIFT_TYPE ## _shift(ESC_STATE *s, int dest, int n)	\
@@ -2429,6 +2431,38 @@ void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
 									\
     error_msg("%s: Register unknown *%d", __FUNCTION__, dest);		\
   }
+
+#else
+#define SHIFT_INST(SHIFT_TYPE,SHIFT_OP)					\
+									\
+  void register_ ## SHIFT_TYPE ## _shift(ESC_STATE *s, int dest, int n)	\
+  {									\
+    int sign;								\
+    REGISTER_SINGLE_WORD sw_data;					\
+    REGISTER_DOUBLE_WORD dw_data;					\
+									\
+    if( IS_SW_REGISTER(dest) )						\
+      {									\
+	sign = SW_SIGN(read_register(s, dest));                          \
+	sw_data = REMOVED_SW_SIGN(DW_TO_SW(read_register(s, dest))) SHIFT_OP (4*n); \
+	sw_data = REMOVED_SW_UNUSED(sw_data);				\
+        write_register(s, dest, SET_SW_SIGN(sw_data, sign));		\
+	return;								\
+      }									\
+									\
+    if( IS_DW_REGISTER(dest) )						\
+      {									\
+	sign = DW_SIGN(read_register(s, dest));                        \
+	dw_data = REMOVED_DW_SIGN(read_register(s, dest)) SHIFT_OP (4*n); \
+	dw_data = REMOVED_DW_UNUSED(dw_data);				\
+	write_register(s, dest, SET_DW_SIGN(dw_data, sign));             \
+	return;								\
+      }									\
+									\
+    error_msg("%s: Register unknown *%d", __FUNCTION__, dest);		\
+  }
+#endif
+
 
 SHIFT_INST(left,<<);
 SHIFT_INST(right,>>);
@@ -3664,7 +3698,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  if( (SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) == 0 )
+                  //		  if( (SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) == 0 )
+                  if( (read_register(s, s->reginst_rc) & 0xFFFFFF) == 0 )
 		    {
 		      is_zero = 1;
 		    }
@@ -3672,7 +3707,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  if( (DW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
+		  if( (read_register(s, s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
 		    {
 		      is_zero = 1;
 		    }
@@ -3699,7 +3734,9 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  if( (SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_PLUS) && ((SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) != 0) )
+                  //		  if( (SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_PLUS) && ((SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) != 0) )
+                  if( (SW_SIGN(DW_TO_SW(read_register(s, s->reginst_rc))) == WORD_SIGN_PLUS) &&
+                      ((DW_TO_SW(read_register(s, s->reginst_rc)) & 0xFFFFFF) != 0) )
 		    {
 		      is_gt_zero = 1;
 		    }
@@ -3707,7 +3744,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  if( (DW_SIGN(DW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_PLUS) && ((DW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFFFFFFFF) != 0) )
+		  if( (DW_SIGN(read_register(s, s->reginst_rc)) == WORD_SIGN_PLUS) && ((read_register(s, s->reginst_rc) & 0xFFFFFFFFFFFF) != 0) )
 		    {
 		      is_gt_zero = 1;
 		    }
@@ -3743,7 +3780,7 @@ void stage_c_decode(ESC_STATE *s, int display)
               
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  if( (SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) == 0 )
+		  if( (read_register(s, s->reginst_rc) & 0xFFFFFF) == 0 )
 		    {
 		      is_zero = 1;
 		    }
@@ -3751,7 +3788,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  if( (DW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
+		  if( (read_register(s, s->reginst_rc) & 0xFFFFFFFFFFFF) == 0 )
 		    {
 		      is_zero = 1;
 		    }
@@ -3766,19 +3803,28 @@ void stage_c_decode(ESC_STATE *s, int display)
 		}
               else
                 {
+#if DEBUG_TEST
+		  printf("\nNot zero, test sign...");
+#endif
+
                   // Not zero, so check sign
+                  is_lt_zero = 0;
                   
                   if( IS_SW_REGISTER(s->reginst_rc) )
                     {
-                      if( SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+                      if( SW_SIGN(read_register(s, s->reginst_rc)) == WORD_SIGN_MINUS )
                         {
+#if DEBUG_TEST
+                          printf("\nSW value < 0 (%016X)", read_register(s, s->reginst_rc));
+#endif
+
                           is_lt_zero = 1;
                         }
                     }
                   
                   if( IS_DW_REGISTER(s->reginst_rc) )
                     {
-                      if( DW_SIGN(DW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_MINUS )
+                      if( DW_SIGN(read_register(s, s->reginst_rc)) == WORD_SIGN_MINUS )
                         {
                           is_lt_zero = 1;
                         }
@@ -3806,12 +3852,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_left_digit = (SW_REG_CONTENTS(s->reginst_rc) & 0x00F00000) >> (5*4);
+		  extreme_left_digit = (read_register(s, s->reginst_rc) & 0x00F00000) >> (5*4);
 		}
 
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_left_digit = (DW_REG_CONTENTS(s->reginst_rc) & 0x0000F00000000000) >> (11*4);
+		  extreme_left_digit = (read_register(s, s->reginst_rc) & 0x0000F00000000000) >> (11*4);
 		}
 
 #if DEBUG_TEST
@@ -3832,12 +3878,12 @@ void stage_c_decode(ESC_STATE *s, int display)
 	    case 4:
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_right_digit = (SW_REG_CONTENTS(s->reginst_rc) & 0x0000000F) >> 0;
+		  extreme_right_digit = (read_register(s, s->reginst_rc) & 0x0000000F) >> 0;
 		}
 	      
 	      if( IS_DW_REGISTER(s->reginst_rc) )
 		{
-		  extreme_right_digit = (DW_REG_CONTENTS(s->reginst_rc) & 0x000000000000000F) >> 0;
+		  extreme_right_digit = (read_register(s, s->reginst_rc) & 0x000000000000000F) >> 0;
 		}
 	      
 #if DEBUG_TEST

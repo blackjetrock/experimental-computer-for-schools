@@ -122,7 +122,7 @@ typedef uint32_t ADDRESS;
 #define R8 RD[0]
 #define R9 RD[1]
 
-#if 1
+#if 0
 #define SW_REG_CONTENTS(RR) (s->R[RR])
 #define DW_REG_CONTENTS(RR) (s->RD[RR-8])
 #endif
