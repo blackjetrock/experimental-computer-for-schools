@@ -2835,7 +2835,7 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
       printf("\nDivide by zero");
 #endif
       // Error
-      return(0xA0999999);
+      return(0xC0999999);
     }
 
 #if 1
@@ -2864,7 +2864,7 @@ SINGLE_WORD fp_divide(ESC_STATE *s, SINGLE_WORD a, SINGLE_WORD b)
 #endif
   
   int out = 100;
-  added_digits = 0xA0100000;
+  added_digits = 0xC0100000;
   
   for(int i=0; (i<6) && (out > 0); i++,out--)
     {
@@ -6840,21 +6840,21 @@ typedef struct _SW_BCD_TEST
 
 SW_BCD_TEST sw_bcd_test[] =
   {
-    {0xA0000010, 0xA0000020, 0xA0000030},
-    {0xA0000020, 0xA0000010, 0xA0000030},
-    {0xA0000007, 0xA0000005, 0xA0000012},
-    {0xB0000020, 0xB0000010, 0xB0000030},
-    {0xA0123456, 0xA0654321, 0xA0777777},
-    {0xB0123456, 0xB0654321, 0xB0777777},
-    {0xB0077777, 0xB0777777, 0xB0855554},
-    {0xA0002345, 0xB0000045, 0xA0002300},
-    {0xA0000045, 0xB0002345, 0xB0002300},
+    {0xC0000010, 0xC0000020, 0xC0000030},
+    {0xC0000020, 0xC0000010, 0xC0000030},
+    {0xC0000007, 0xC0000005, 0xC0000012},
+    {0xD0000020, 0xD0000010, 0xD0000030},
+    {0xC0123456, 0xC0654321, 0xC0777777},
+    {0xD0123456, 0xD0654321, 0xD0777777},
+    {0xD0077777, 0xD0777777, 0xD0855554},
+    {0xC0002345, 0xD0000045, 0xC0002300},
+    {0xC0000045, 0xD0002345, 0xD0002300},
 
-    {0xA0999900, 0xA0000099, 0xA0999999},
-    {0xA0999900, 0xA0000100, 0xA0000000},
+    {0xC0999900, 0xC0000099, 0xC0999999},
+    {0xC0999900, 0xC0000100, 0xC0000000},
 
-    {0xB0999900, 0xB0000099, 0xB0999999},
-    {0xB0999900, 0xB0000100, 0xB0000000},
+    {0xD0999900, 0xD0000099, 0xD0999999},
+    {0xD0999900, 0xD0000100, 0xD0000000},
 
    
   };
@@ -6879,21 +6879,21 @@ typedef struct _DW_BCD_TEST
 
 DW_BCD_TEST dw_bcd_test[] =
   {
-    {0xA000000000000010L, 0xA000000000000020L, 0xA000000000000030L},
-    {0xA000000000000020L, 0xA000000000000010L, 0xA000000000000030L},
-    {0xA000000000000007L, 0xA000000000000005L, 0xA000000000000012L},
-    {0xB000000000000020L, 0xB000000000000010L, 0xB000000000000030L},
-    {0xA000000000123456L, 0xA000000000654321L, 0xA000000000777777L},
-    {0xB000000000123456L, 0xB000000000654321L, 0xB000000000777777L},
-    {0xB000000000077777L, 0xB000000000777777L, 0xB000000000855554L},
-    {0xA000000000002345L, 0xB000000000000045L, 0xA000000000002300L},
-    {0xA000000000000045L, 0xB000000000002345L, 0xB000000000002300L},
+    {0xC000000000000010L, 0xC000000000000020L, 0xC000000000000030L},
+    {0xC000000000000020L, 0xC000000000000010L, 0xC000000000000030L},
+    {0xC000000000000007L, 0xC000000000000005L, 0xC000000000000012L},
+    {0xD000000000000020L, 0xD000000000000010L, 0xD000000000000030L},
+    {0xC000000000123456L, 0xC000000000654321L, 0xC000000000777777L},
+    {0xD000000000123456L, 0xD000000000654321L, 0xD000000000777777L},
+    {0xD000000000077777L, 0xD000000000777777L, 0xD000000000855554L},
+    {0xC000000000002345L, 0xD000000000000045L, 0xC000000000002300L},
+    {0xC000000000000045L, 0xD000000000002345L, 0xD000000000002300L},
 
-    {0xA000000000999900L, 0xA000000000000099L, 0xA000000000999999L},
-    {0xA000000000999900L, 0xA000000000000100L, 0xA000000000000000L},
+    {0xC000000000999900L, 0xC000000000000099L, 0xC000000000999999L},
+    {0xC000000000999900L, 0xC000000000000100L, 0xC000000000000000L},
 
-    {0xB000000000999900L, 0xB000000000000099L, 0xB000000000999999L},
-    {0xB000000000999900L, 0xB000000000000100L, 0xB000000000000000L},
+    {0xD000000000999900L, 0xD000000000000099L, 0xD000000000999999L},
+    {0xD000000000999900L, 0xD000000000000100L, 0xD000000000000000L},
 
 
 
@@ -6944,7 +6944,7 @@ void cli_load_test_code_2(void)
   s->store[i++] = 0x06510751;
 
   // Floating point
-  s->store[i++] = 0xB5314159;
+  s->store[i++] = 0xD5314159;
 #endif
 
 #if 1
@@ -7161,58 +7161,58 @@ TEST_INFO test_res_1[] =
   {
     // Original register contents must be unchanged
     {TC_REG_N,   0},
-    {TC_MUST_BE, 0xa0123456},
+    {TC_MUST_BE, 0xc0123456},
     {TC_REG_N,   8},
-    {TC_MUST_BE, 0xb000000987654321L},
+    {TC_MUST_BE, 0xd000000987654321L},
 
     // Copied value must be there
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0123456},
+    {TC_MUST_BE, 0xc0123456},
     {TC_END_SECTION, 0},   
 
     // One added to R1
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0123457},
+    {TC_MUST_BE, 0xc0123457},
     {TC_END_SECTION, 0},   
 
     // Two subtracted from R1
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0123455},
+    {TC_MUST_BE, 0xc0123455},
     {TC_END_SECTION, 0},   
 
     // Two subtracted from R1
     {TC_REG_N,   2},
-    {TC_MUST_BE, 0xa0000003},
+    {TC_MUST_BE, 0xc0000003},
     {TC_END_SECTION, 0},   
 
     // Load R1 with 2
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0000002},
+    {TC_MUST_BE, 0xc0000002},
     {TC_END_SECTION, 0},   
 
     // Subtract 9 from R1
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xb0000007},
+    {TC_MUST_BE, 0xd0000007},
     {TC_END_SECTION, 0},   
 
     // Assign R1 and R2
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0000003},
+    {TC_MUST_BE, 0xc0000003},
     {TC_END_SECTION, 0},   
 
     // Add R1 and R2
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0000006},
+    {TC_MUST_BE, 0xc0000006},
     {TC_END_SECTION, 0},   
 
     // Subtract R2 from R1 after loading R2 with 5
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0000001},
+    {TC_MUST_BE, 0xc0000001},
     {TC_END_SECTION, 0},   
 
     //Subtract R1 from R0
     {TC_REG_N,   0},
-    {TC_MUST_BE, 0xb0123455},
+    {TC_MUST_BE, 0xd0123455},
    
     {TC_END,     0},
 
@@ -7240,7 +7240,7 @@ TEST_LOAD_STORE test_1_store =
 INIT_INFO test_init_2[] =
   {
     {IC_SET_REG_N,    0},
-    {IC_SET_REG_V,    0xa0123456},
+    {IC_SET_REG_V,    0xc0123456},
     {IC_SET_REG_N,    8},
     {IC_SET_REG_V,    0x987654321},
     {IC_END,          0},
@@ -7270,7 +7270,7 @@ TEST_INFO test_res_2[] =
   {
     // Original register contents must be unchanged
     {TC_REG_N,   0},
-    {TC_MUST_BE, 0xa0123456},
+    {TC_MUST_BE, 0xc0123456},
     {TC_REG_N,   8},
     {TC_MUST_BE, 0x00000987654321L},
 
@@ -7390,9 +7390,9 @@ INIT_INFO test_init_4[] =
     {IC_SET_REG_N,    3},
     {IC_SET_REG_V,    SW_PLUS(0x0)},
     {IC_SET_REG_N,    8},
-    {IC_SET_REG_V,    DW_PLUS (0xA000000987654321L)},
+    {IC_SET_REG_V,    DW_PLUS (0xC000000987654321L)},
     {IC_SET_REG_N,    9},
-    {IC_SET_REG_V,    DW_MINUS(0xA000112233445566L)},
+    {IC_SET_REG_V,    DW_MINUS(0xC000112233445566L)},
     {IC_END,          0},
   };
 
@@ -7418,15 +7418,15 @@ TEST_INFO test_res_4[] =
   {
     // Original register contents must be unchanged
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0123456},
+    {TC_MUST_BE, 0xc0123456},
     {TC_END_SECTION, 0},
    
     {TC_REG_N,   2},
-    {TC_MUST_BE, 0xa0654321},
+    {TC_MUST_BE, 0xc0654321},
     {TC_END_SECTION, 0},   
 
     {TC_REG_N,   3},
-    {TC_MUST_BE, 0xb0445566},
+    {TC_MUST_BE, 0xd0445566},
 
     {TC_END,     0},
 
@@ -7461,9 +7461,9 @@ INIT_INFO test_init_5[] =
     {IC_SET_REG_N,    4},
     {IC_SET_REG_V,    SW_PLUS(0x00111110)},
     {IC_SET_REG_N,    8},
-    {IC_SET_REG_V,    DW_PLUS (0xA000056987654321)},
+    {IC_SET_REG_V,    DW_PLUS (0xC000056987654321)},
     {IC_SET_REG_N,    9},
-    {IC_SET_REG_V,    DW_MINUS(0xA000112233445560)},
+    {IC_SET_REG_V,    DW_MINUS(0xC000112233445560)},
     {IC_END,          0},
   };
 
@@ -7611,9 +7611,9 @@ INIT_INFO test_init_6[] =
     {IC_SET_REG_N,    4},
     {IC_SET_REG_V,    SW_PLUS(0x00123456)},
     {IC_SET_REG_N,    8},
-    {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+    {IC_SET_REG_V,    DW_PLUS (0xC000123456789012)},
     {IC_SET_REG_N,    9},
-    {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+    {IC_SET_REG_V,    DW_PLUS (0xC000123456789012)},
     {IC_END,          0},
   };
 
@@ -7654,35 +7654,35 @@ TEST_INFO test_res_6[] =
   {
    
     {TC_REG_N,   3},
-    {TC_MUST_BE, 0xa0234560},
+    {TC_MUST_BE, 0xc0234560},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   3},
-    {TC_MUST_BE, 0xa0456000},
+    {TC_MUST_BE, 0xc0456000},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   4},
-    {TC_MUST_BE, 0xa0234560},
+    {TC_MUST_BE, 0xc0234560},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   4},
-    {TC_MUST_BE, 0xa0456000},
+    {TC_MUST_BE, 0xc0456000},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   8},
-    {TC_MUST_BE, 0xa000234567890120},
+    {TC_MUST_BE, 0xc000234567890120},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   8},
-    {TC_MUST_BE, 0xa000456789012000},
+    {TC_MUST_BE, 0xc000456789012000},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   9},
-    {TC_MUST_BE, 0xa000234567890120},
+    {TC_MUST_BE, 0xc000234567890120},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   9},
-    {TC_MUST_BE, 0xa000456789012000},
+    {TC_MUST_BE, 0xc000456789012000},
 
     {TC_END,     0},
   };
@@ -7716,9 +7716,9 @@ INIT_INFO test_init_7[] =
     {IC_SET_REG_N,    4},
     {IC_SET_REG_V,    SW_PLUS(0x00123456)},
     {IC_SET_REG_N,    8},
-    {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+    {IC_SET_REG_V,    DW_PLUS (0xC000123456789012)},
     {IC_SET_REG_N,    9},
-    {IC_SET_REG_V,    DW_PLUS (0xA000123456789012)},
+    {IC_SET_REG_V,    DW_PLUS (0xC000123456789012)},
     {IC_END,          0},
   };
 
@@ -7759,35 +7759,35 @@ TEST_INFO test_res_7[] =
   {
    
     {TC_REG_N,   3},
-    {TC_MUST_BE, 0xa0012345},
+    {TC_MUST_BE, 0xc0012345},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   3},
-    {TC_MUST_BE, 0xa0000123},
+    {TC_MUST_BE, 0xc0000123},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   4},
-    {TC_MUST_BE, 0xa0012345},
+    {TC_MUST_BE, 0xc0012345},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   4},
-    {TC_MUST_BE, 0xa0000123},
+    {TC_MUST_BE, 0xc0000123},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   8},
-    {TC_MUST_BE, 0xa000012345678901},
+    {TC_MUST_BE, 0xc000012345678901},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   8},
-    {TC_MUST_BE, 0xa000000123456789},
+    {TC_MUST_BE, 0xc000000123456789},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   9},
-    {TC_MUST_BE, 0xa000012345678901},
+    {TC_MUST_BE, 0xc000012345678901},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   9},
-    {TC_MUST_BE, 0xa000000123456789},
+    {TC_MUST_BE, 0xc000000123456789},
 
     {TC_END,     0},
   };
@@ -7847,19 +7847,19 @@ TEST_INFO test_res_8[] =
   {
    
     {TC_REG_N,   0},
-    {TC_MUST_BE, 0xa0000005},
+    {TC_MUST_BE, 0xc0000005},
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0310732},
+    {TC_MUST_BE, 0xc0310732},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   0},
-    {TC_MUST_BE, 0xa0001234},
+    {TC_MUST_BE, 0xc0001234},
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xa0005678},
+    {TC_MUST_BE, 0xc0005678},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,   0x3},
-    {TC_MUST_BE, 0xa5310732},
+    {TC_MUST_BE, 0xc5310732},
     {TC_END_SECTION, 0},
    
     {TC_STORE_N,   0x4},
@@ -7986,7 +7986,7 @@ TEST_LOAD_STORE test_9_store =
       0x00000000,    // 03
       0x00000000,    // 04
       0x00000000,    // 05
-      0xA0000006,    // 06
+      0xC0000006,    // 06
       0x00000024,    // 07
       0x00000000,    // 08
       0x00000000,    // 09
@@ -8157,11 +8157,11 @@ TOKEN test_seq_11[] =
 TEST_INFO test_res_11[] =
   {
     {TC_STORE_N,   0x21},
-    {TC_MUST_BE, 0xA2011320},
+    {TC_MUST_BE, 0xC2011320},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,   0x20},
-    {TC_MUST_BE, 0xA2008820},
+    {TC_MUST_BE, 0xC2008820},
 
     {TC_END,     0},
   };
@@ -8171,11 +8171,11 @@ TEST_INFO test_res_11[] =
 TEST_INFO test_res_11[] =
   {
     {TC_STORE_N,   0x21},
-    {TC_MUST_BE, 0xA3113201},
+    {TC_MUST_BE, 0xC3113201},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,   0x20},
-    {TC_MUST_BE, 0xA3088201},
+    {TC_MUST_BE, 0xC3088201},
 
     {TC_END,     0},
   };
@@ -8206,9 +8206,9 @@ TEST_LOAD_STORE test_11_store =
       0x00000000,    // 19
       0x00000000,    // 20
       0x00000000,    // 21
-      0xA1000125,    // 22
-      0xA3100701,    // 23
-      0xB1000125,    // 24
+      0xC1000125,    // 22
+      0xC3100701,    // 23
+      0xD1000125,    // 24
       0x00000000,    // 25
       0x00000000,    // 26
       0x00000000,    // 27
@@ -8273,11 +8273,11 @@ TOKEN test_seq_12[] =
 TEST_INFO test_res_12[] =
   {
     {TC_STORE_N,     0x21},
-    {TC_MUST_BE,     0xB3088201},
+    {TC_MUST_BE,     0xD3088201},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,     0x20},
-    {TC_MUST_BE,     0xA3113201},
+    {TC_MUST_BE,     0xC3113201},
 
     {TC_END,     0},
   };
@@ -8307,9 +8307,9 @@ TEST_LOAD_STORE test_12_store =
       0x00000000,    // 19
       0x00000000,    // 20
       0x00000000,    // 21
-      0xA1000125,    // 22
-      0xA3100701,    // 23
-      0xB1000125,    // 24
+      0xC1000125,    // 22
+      0xC3100701,    // 23
+      0xD1000125,    // 24
       0x00000000,    // 25
       0x00000000,    // 26
       0x00000000,    // 27
@@ -8383,15 +8383,15 @@ TOKEN test_seq_13[] =
 TEST_INFO test_res_13[] =
   {
     {TC_STORE_N,     0x21},
-    {TC_MUST_BE,     0xA1000045},
+    {TC_MUST_BE,     0xC1000045},
     {TC_END_SECTION, 0},
    
     {TC_STORE_N,     0x20},
-    {TC_MUST_BE,     0xB2001875},
+    {TC_MUST_BE,     0xD2001875},
     {TC_END_SECTION, 0},
    
     {TC_STORE_N,     0x10},
-    {TC_MUST_BE,     0xA5986959},
+    {TC_MUST_BE,     0xC5986959},
    
     {TC_END,     0},
   };
@@ -8410,8 +8410,8 @@ TEST_LOAD_STORE test_13_store =
       0x00000000,    // 08
       0x00000000,    // 09
       0x00000000,    // 10
-      0xA5314159,    // 11  3.14159
-      0xA5314159,    // 12  3.14159
+      0xC5314159,    // 11  3.14159
+      0xC5314159,    // 12  3.14159
       0x00000000,    // 13
       0x00000000,    // 14
       0x00000000,    // 15
@@ -8421,9 +8421,9 @@ TEST_LOAD_STORE test_13_store =
       0x00000000,    // 19
       0x00000000,    // 20
       0x00000000,    // 21
-      0xA0000003,    // 22    +3.0
-      0xA1000015,    // 23    +1.5
-      0xB1000125,    // 24    -12.5
+      0xC0000003,    // 22    +3.0
+      0xC1000015,    // 23    +1.5
+      0xD1000125,    // 24    -12.5
       0x00000000,    // 25
       0x00000000,    // 26
       0x00000000,    // 27
@@ -8515,27 +8515,27 @@ TOKEN test_seq_14[] =
 TEST_INFO test_res_14[] =
   {
     {TC_STORE_N,     0x21},
-    {TC_MUST_BE,     0xA0000005},
+    {TC_MUST_BE,     0xC0000005},
     {TC_END_SECTION, 0},
    
     {TC_STORE_N,     0x35},
-    {TC_MUST_BE,     0xB0000010},
+    {TC_MUST_BE,     0xD0000010},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,     0x13},
-    {TC_MUST_BE,     0xA0000010},
+    {TC_MUST_BE,     0xC0000010},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,     0x16},
-    {TC_MUST_BE,     0xA5314286},
+    {TC_MUST_BE,     0xC5314286},
     {TC_END_SECTION, 0},
    
     {TC_STORE_N,     0x26},
-    {TC_MUST_BE,     0xA6318182},
+    {TC_MUST_BE,     0xC6318182},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,     0x31},
-    {TC_MUST_BE,     0xA3000032},
+    {TC_MUST_BE,     0xC3000032},
    
     {TC_END,     0},
   };
@@ -8556,29 +8556,29 @@ TEST_LOAD_STORE test_14_store =
       0x73313233,    // 10 (31) = (32)/ (33)
       0x19210000,    // 11
 
-      0xB0000010,    // 12    -10.0
+      0xD0000010,    // 12    -10.0
       0x00000000,    // 13
-      0xA2010000,    // 14    +100.00
-      0xA1000100,    // 15    +10.0
+      0xC2010000,    // 14    +100.00
+      0xC1000100,    // 15    +10.0
       0x00000000,    // 16
-      0xA4220000,    // 17    +22.00
-      0xA0000007,    // 18    +7
+      0xC4220000,    // 17    +22.00
+      0xC0000007,    // 18    +7
       0x00000000,    // 19 
-      0xA0000004,    // 20    +4
-      0xA0000125,    // 21    +125
-      0xA0000015,    // 22    +15
-      0xA1000030,    // 23    +3.0
-      0xB0000125,    // 24    -125
-      0xB1000050,    // 25    -5.0
-      0xA0000022,    // 26    +22
+      0xC0000004,    // 20    +4
+      0xC0000125,    // 21    +125
+      0xC0000015,    // 22    +15
+      0xC1000030,    // 23    +3.0
+      0xD0000125,    // 24    -125
+      0xD1000050,    // 25    -5.0
+      0xC0000022,    // 26    +22
       0x00000000,    // 27
-      0xA0000026,    // 28    +26
-      0xA0000018,    // 29    +18
-      0xA0000017,    // 30    +17
+      0xC0000026,    // 28    +26
+      0xC0000018,    // 29    +18
+      0xC0000017,    // 30    +17
       0x00000000,    // 31
-      0xA0000004,    // 32    +4
-      0xA0000125,    // 33    +125
-      0xA2010000,    // 34    +100.00
+      0xC0000004,    // 32    +4
+      0xC0000125,    // 33    +125
+      0xC2010000,    // 34    +100.00
       0x00000000,    // 35
       -1},
   };
@@ -8659,23 +8659,23 @@ TOKEN test_seq_15[] =
 TEST_INFO test_res_15[] =
   {
     {TC_STORE_N,     0x03},
-    {TC_MUST_BE,     0xA2000625},
+    {TC_MUST_BE,     0xC2000625},
     {TC_END_SECTION, 0},
    
     {TC_STORE_N,     0x50},
-    {TC_MUST_BE,     0xA4196349},
+    {TC_MUST_BE,     0xC4196349},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,     0x51},
-    {TC_MUST_BE,     0xA4785396},
+    {TC_MUST_BE,     0xC4785396},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,     0x52},
-    {TC_MUST_BE,     0xA3196349},
+    {TC_MUST_BE,     0xC3196349},
     {TC_END_SECTION, 0},
    
     {TC_STORE_N,     0x53},
-    {TC_MUST_BE,     0xA4654497},
+    {TC_MUST_BE,     0xC4654497},
 
     {TC_END,     0},
   };
@@ -8685,12 +8685,12 @@ TEST_LOAD_STORE test_15_store =
     {
       0x00000000,    // 00
       0x00000000,    // 01
-      0xA1000025,    // 02  Set up r
+      0xC1000025,    // 02  Set up r
       0x00000000,    // 03
       0x00000000,    // 04
-      0xA5314159,    // 05  Set up Pi
-      0xA0000004,    // 06  Constant 4
-      0xA0000003,    // 07  Constant 3
+      0xC5314159,    // 05  Set up Pi
+      0xC0000004,    // 06  Constant 4
+      0xC0000003,    // 07  Constant 3
       0x00000000,    // 08
       0x00000000,    // 09
       0x78020507,    // 10  Input r; display 3.14159 and 3 (not executed)
@@ -8774,8 +8774,8 @@ TEST_LOAD_STORE test_16_store =
       0x00000000,    // 12
       0x00000000,    // 13
       0x00000000,    // 14
-      0xA2000500,    // 15
-      0xA1000050,    // 16
+      0xC2000500,    // 15
+      0xC1000050,    // 16
       -1},
   };
 
@@ -8794,9 +8794,9 @@ INIT_INFO test_init_17[] =
     {IC_SET_REG_N,    1},
     {IC_SET_REG_V,    SW_PLUS(0x0)},
     {IC_SET_REG_N,    8},
-    {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
+    {IC_SET_REG_V,    DW_PLUS (0xC600000000314159L)},
     {IC_SET_REG_N,    9},
-    {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
+    {IC_SET_REG_V,    DW_PLUS (0xC600012345314159L)},
 
     {IC_END,          0},
   };
@@ -8855,27 +8855,27 @@ TEST_INFO test_res_17[] =
   {
    
     {TC_REG_N,   8},
-    {TC_MUST_BE, 0xA000000000314160},
+    {TC_MUST_BE, 0xC000000000314160},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   8},
-    {TC_MUST_BE, 0xA000000000314162L},
+    {TC_MUST_BE, 0xC000000000314162L},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   8},
-    {TC_MUST_BE, 0xA000000000314171L},
+    {TC_MUST_BE, 0xC000000000314171L},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   8},
-    {TC_MUST_BE, 0xA600012345314159L},
+    {TC_MUST_BE, 0xC600012345314159L},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   9},
-    {TC_MUST_BE, 0xA000000000112233L},
+    {TC_MUST_BE, 0xC000000000112233L},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xA0314159},
+    {TC_MUST_BE, 0xC0314159},
    
     {TC_END,     0},
   };
@@ -8917,9 +8917,9 @@ INIT_INFO test_init_18[] =
     {IC_SET_REG_N,    1},
     {IC_SET_REG_V,    SW_PLUS(0x0)},
     {IC_SET_REG_N,    8},
-    {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
+    {IC_SET_REG_V,    DW_PLUS (0xC600000000314159L)},
     {IC_SET_REG_N,    9},
-    {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
+    {IC_SET_REG_V,    DW_PLUS (0xC600012345314159L)},
 
     {IC_END,          0},
   };
@@ -8960,15 +8960,15 @@ TOKEN test_seq_18[] =
 TEST_INFO test_res_18[] =
   {
     {TC_STORE_N,     0x10},
-    {TC_MUST_BE,     0xA6142857},
+    {TC_MUST_BE,     0xC6142857},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,     0x13},
-    {TC_MUST_BE,     0xA6142857},
+    {TC_MUST_BE,     0xC6142857},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,     0x07},
-    {TC_MUST_BE,     0xB6000353},
+    {TC_MUST_BE,     0xD6000353},
 
     {TC_END,     0},
   };
@@ -8984,14 +8984,14 @@ TEST_LOAD_STORE test_18_store =
       0x19200000,     //05   Stop for results check
       0x00000000,     //06
       0x00000000,     //07
-      0xA6001410,     //08
-      0xB5400000,     //09
+      0xC6001410,     //08
+      0xD5400000,     //09
       0x00000000,     //10
-      0xA5100000,     //11
-      0xA5700000,     //12
+      0xC5100000,     //11
+      0xC5700000,     //12
       0x00000000,
-      0xA0000001,     //14
-      0xA0000007,     //15
+      0xC0000001,     //14
+      0xC0000007,     //15
       -1},
   };
 
@@ -9010,9 +9010,9 @@ INIT_INFO test_init_19[] =
     {IC_SET_REG_N,    1},
     {IC_SET_REG_V,    SW_PLUS(0x0)},
     {IC_SET_REG_N,    8},
-    {IC_SET_REG_V,    DW_PLUS (0xA600000000314159L)},
+    {IC_SET_REG_V,    DW_PLUS (0xC600000000314159L)},
     {IC_SET_REG_N,    9},
-    {IC_SET_REG_V,    DW_PLUS (0xA600012345314159L)},
+    {IC_SET_REG_V,    DW_PLUS (0xC600012345314159L)},
 
     {IC_END,          0},
   };
@@ -9066,34 +9066,34 @@ TEST_INFO test_res_19[] =
   {
    
     {TC_REG_N,   0},
-    {TC_MUST_BE, 0xA0000004},
+    {TC_MUST_BE, 0xC0000004},
     //{TC_END_SECTION, 0},
 
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xA0000005},
+    {TC_MUST_BE, 0xC0000005},
     {TC_END_SECTION, 0},
 
     //{TC_MUST_BE_STOPPED, 0},
     //{TC_END_SECTION, 0},
 
     {TC_REG_N,   0},
-    {TC_MUST_BE, 0xA0000007},
+    {TC_MUST_BE, 0xC0000007},
     //{TC_END_SECTION, 0},
 
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xA0000008},
+    {TC_MUST_BE, 0xC0000008},
     {TC_END_SECTION, 0},
 
     //{TC_MUST_BE_STOPPED, 0},
     //{TC_END_SECTION, 0},
 
     {TC_REG_N,   0},
-    {TC_MUST_BE, 0xA0000001},
+    {TC_MUST_BE, 0xC0000001},
     {TC_END_SECTION, 0},
 
 #if 0
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xA0000002},
+    {TC_MUST_BE, 0xC0000002},
     {TC_MUST_BE_NOT_STOPPED, 0},
 #endif
    
@@ -9114,11 +9114,11 @@ TEST_LOAD_STORE test_19_store =
       0x00000000,
       0x00000000,
       0x00000000,     //10
-      0xA4062500,     //11
-      0xA5314159,     //12
+      0xC4062500,     //11
+      0xC5314159,     //12
       0x00000000,     //13
-      0xA0000001,
-      0xA0000007,
+      0xC0000001,
+      0xC0000007,
       -1},
   };
 ////////////////////////////////////////////////////////////////////////////////
@@ -9174,10 +9174,10 @@ TOKEN test_seq_20[] =
 TEST_INFO test_res_20[] =
   {
     {TC_STORE_N,   0x09},
-    {TC_MUST_BE, 0xA6326471},
+    {TC_MUST_BE, 0xC6326471},
 
     {TC_STORE_N,   0x10},
-    {TC_MUST_BE, 0xB5003621},
+    {TC_MUST_BE, 0xD5003621},
 
     {TC_END,     0},
   };
@@ -9194,12 +9194,12 @@ TEST_LOAD_STORE test_20_store =
       0x00000000,    // 00 spare
       0x00000000,    // 01 spare
       0x00000000,    // 02 spare
-      0xA0000010,    // 03 a     10
-      0xA1000034,    // 04 b     3.4
-      0xA5314159,    // 05 p     3.14159
-      0xA3007812,    // 06 c     7.812
-      0xA1000152,    // 07 d     15.2
-      0xA0000002,    // 08 q     2
+      0xC0000010,    // 03 a     10
+      0xC1000034,    // 04 b     3.4
+      0xC5314159,    // 05 p     3.14159
+      0xC3007812,    // 06 c     7.812
+      0xC1000152,    // 07 d     15.2
+      0xC0000002,    // 08 q     2
       0x00000000,    // 09 r     
       0x00000000,    // 10 s
       0x00000000,    // 11 u
@@ -9286,7 +9286,7 @@ TOKEN test_seq_21[] =
 TEST_INFO test_res_21[] =
   {
     {TC_STORE_N,   0x3},
-    {TC_MUST_BE, 0xA5141422},
+    {TC_MUST_BE, 0xC5141422},
     {TC_END,     0},
   };
 
@@ -9295,11 +9295,11 @@ TEST_LOAD_STORE test_21_store =
     {
       0x00000000,    // 00 spare
       0x00000000,    // 01 spare
-      0xA0000002,    // 02 v
+      0xC0000002,    // 02 v
       0x00000000,    // 03 q
       0x00000000,    // 04 p
-      0xA0000002,    // 05 2
-      0xA0000000,    // 06 0
+      0xC0000002,    // 05 2
+      0xC0000000,    // 06 0
       0x00000000,    // 07 spare
       0x78020506,    // 08 
       0x73030205,    // 09 
@@ -9347,7 +9347,7 @@ TOKEN test_seq_22[] =
 TEST_INFO test_res_22[] =
   {
     {TC_STORE_N,   0x3},
-    {TC_MUST_BE, 0xA6841471},
+    {TC_MUST_BE, 0xC6841471},
    
     {TC_END,     0},
   };
@@ -9357,13 +9357,13 @@ TEST_LOAD_STORE test_22_store =
     {
       0x00000000,    // 00 spare
       0x00000000,    // 01 spare
-      0xA0000001,    // 02 x
+      0xC0000001,    // 02 x
       0x00000000,    // 03 s
       0x00000000,    // 04 a
-      0xA0000002,    // 05 b
-      0xA0000000,    // 06 t
+      0xC0000002,    // 05 b
+      0xC0000000,    // 06 t
       0x00000000,    // 07 0
-      0xA0000001,    // 08 1
+      0xC0000001,    // 08 1
       0x00000000,    // 09 spare 
       0x78020708,    // 10 
       0x70030707,    // 11 
@@ -9434,27 +9434,27 @@ TEST_INFO test_res_23[] =
   {
    
     {TC_STORE_N,   0x10},
-    {TC_MUST_BE, 0xA6142857},
+    {TC_MUST_BE, 0xC6142857},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,   0x13},
-    {TC_MUST_BE, 0xA6142857},
+    {TC_MUST_BE, 0xC6142857},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,   0x7},
-    {TC_MUST_BE, 0xB6000353},
+    {TC_MUST_BE, 0xD6000353},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,   0x16},
-    {TC_MUST_BE, 0xA6000014},
+    {TC_MUST_BE, 0xC6000014},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,   0x19},
-    {TC_MUST_BE, 0xA0000002},
+    {TC_MUST_BE, 0xC0000002},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,   0x22},
-    {TC_MUST_BE, 0xA0000017},
+    {TC_MUST_BE, 0xC0000017},
 
     {TC_END,     0},
   };
@@ -9470,29 +9470,29 @@ TEST_LOAD_STORE test_23_store =
       0x70222324,
       0x19100000,     //06 Stop for result checking
       0x00000000,     //07
-      0xA6001410,     //08
-      0xB5400000,     //09
+      0xC6001410,     //08
+      0xD5400000,     //09
       0x00000000,     //10
-      0xA5100000,     //11
-      0xA5700000,     //12
+      0xC5100000,     //11
+      0xC5700000,     //12
       0x00000000,     //13
-      0xA0000001,     //14
-      0xA0000007,     //15
+      0xC0000001,     //14
+      0xC0000007,     //15
       0x00000000,     //16
-      0xA4000001,     //17
-      0xA5700000,     //18
+      0xC4000001,     //17
+      0xC5700000,     //18
       0x00000000,     //19
-      0xA5100000,     //20
-      0xA5100000,     //21
+      0xC5100000,     //20
+      0xC5100000,     //21
       0x00000000,     //22
-      0xA5900000,     //23
-      0xA5800000,     //24
+      0xC5900000,     //23
+      0xC5800000,     //24
       0x00000000,     //25
-      0xA0000001,     //26
-      0xA0000007,     //27
+      0xC0000001,     //26
+      0xC0000007,     //27
       0x00000000,     //28
-      0xA0000001,     //29
-      0xA0000007,     //30
+      0xC0000001,     //29
+      0xC0000007,     //30
     
       -1},
   };
@@ -9552,11 +9552,11 @@ TEST_INFO test_res_24[] =
   {
    
     {TC_STORE_N,   0x95},
-    {TC_MUST_BE, 0xB6026415},
+    {TC_MUST_BE, 0xD6026415},
     {TC_END_SECTION, 0},
 
     {TC_STORE_N,   0x03},
-    {TC_MUST_BE, 0xB1003552},
+    {TC_MUST_BE, 0xD1003552},
 
     {TC_END,     0},
   };
@@ -9575,7 +9575,7 @@ TEST_LOAD_STORE test_24_store =
       0x00000000,     //08
       0x00000000,     //09
       0x00000000,     //10
-      0xA5938261,     //11
+      0xC5938261,     //11
       0x00000000,     //12
       0x00000000,     //13
       0x00000000,     //14
@@ -9584,11 +9584,11 @@ TEST_LOAD_STORE test_24_store =
       0x00000000,     //17
       0x00000000,     //18
       0x00000000,     //19
-      0xA0000003,     //20
+      0xC0000003,     //20
       0x00000000,     //21
-      0xA0000095,     //22
+      0xC0000095,     //22
       0x00000000,     //23
-      0xA0000011,     //24
+      0xC0000011,     //24
       0x93202422,     //25
       0x19200000,     //26   Stop and check results
       0x00000000,     //27
@@ -9610,7 +9610,7 @@ TEST_LOAD_STORE test_24_store =
 INIT_INFO test_init_25[] =
   {
     {IC_SET_REG_N,    3},
-    {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+    {IC_SET_REG_V,    SW_PLUS(0xC0000071)},
 
     {IC_END,          0},
   };
@@ -9664,14 +9664,14 @@ TEST_INFO test_res_25[] =
   {
    
     {TC_STORE_N,   0x68},
-    {TC_MUST_BE, 0xB3821346},
+    {TC_MUST_BE, 0xD3821346},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   0x00},
-    {TC_MUST_BE, 0xA0000003},
+    {TC_MUST_BE, 0xC0000003},
 
     {TC_REG_N,   0x01},
-    {TC_MUST_BE, 0xB0821346},
+    {TC_MUST_BE, 0xD0821346},
 
     {TC_END_SECTION, 0},
    
@@ -9727,7 +9727,7 @@ TEST_LOAD_STORE test_25_store =
 INIT_INFO test_init_26[] =
   {
     {IC_SET_REG_N,    3},
-    {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+    {IC_SET_REG_V,    SW_PLUS(0xC0000071)},
 
     {IC_END,          0},
   };
@@ -9747,14 +9747,14 @@ TEST_INFO test_res_26[] =
   {
    
     {TC_STORE_N,   0x68},
-    {TC_MUST_BE, 0xB3821346},
+    {TC_MUST_BE, 0xD3821346},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   0x00},
-    {TC_MUST_BE, 0xA0000003},
+    {TC_MUST_BE, 0xC0000003},
 
     {TC_REG_N,   0x01},
-    {TC_MUST_BE, 0xB0821346},
+    {TC_MUST_BE, 0xD0821346},
 
     {TC_END_SECTION, 0},
    
@@ -9813,7 +9813,7 @@ TEST_LOAD_STORE test_26_store =
 INIT_INFO test_init_27[] =
   {
     {IC_SET_REG_N,    3},
-    {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+    {IC_SET_REG_V,    SW_PLUS(0xC0000071)},
 
     {IC_END,          0},
   };
@@ -9833,14 +9833,14 @@ TEST_INFO test_res_27[] =
   {
    
     {TC_STORE_N,   0x68},
-    {TC_MUST_BE, 0xB3821346},
+    {TC_MUST_BE, 0xD3821346},
     {TC_END_SECTION, 0},
 
     {TC_REG_N,   0x00},
-    {TC_MUST_BE, 0xA0000003},
+    {TC_MUST_BE, 0xC0000003},
 
     {TC_REG_N,   0x01},
-    {TC_MUST_BE, 0xB0821346},
+    {TC_MUST_BE, 0xD0821346},
 
     {TC_END_SECTION, 0},
    
@@ -9890,7 +9890,7 @@ TEST_LOAD_STORE test_27_store =
       //
       // Program for N <- b ^ L
       //
-      0xA0000001,     //30          1    Constant (load with program)
+      0xC0000001,     //30          1    Constant (load with program)
       0x73023030,     //31  START   N <- 1
       0x28032800,     //32          Input b    Input L
       0x20032101,     //33          J <- b
@@ -9929,7 +9929,7 @@ TEST_LOAD_STORE test_27_store =
 INIT_INFO test_init_28[] =
   {
     {IC_SET_REG_N,    3},
-    {IC_SET_REG_V,    SW_PLUS(0xA0000071)},
+    {IC_SET_REG_V,    SW_PLUS(0xC0000071)},
 
     {IC_END,          0},
   };
@@ -9958,7 +9958,7 @@ TEST_INFO test_res_28[] =
   {
    
     {TC_STORE_N,   0x20},
-    {TC_MUST_BE, 0xA0200000},
+    {TC_MUST_BE, 0xC0200000},
     {TC_END_SECTION, 0},
 
     {TC_END,     0},
@@ -9990,9 +9990,9 @@ TEST_LOAD_STORE test_28_store =
       0x21002413,  // 17
       0x73010106,  // 18
       0x71290105,  // 19
-      0xA0222222,  // 20
-      0xA0100000,  // 21
-      0xA0100000,  // 22
+      0xC0222222,  // 20
+      0xC0100000,  // 21
+      0xC0100000,  // 22
       0x74292918,  // 
       0x73040403,  // 
       0x70000001,  // 
@@ -10072,11 +10072,11 @@ TOKEN test_seq_29[] =
 TEST_INFO test_res_29[] =
   {
     {TC_STORE_N,   0x00},
-    {TC_MUST_BE,   0xA6142857},
+    {TC_MUST_BE,   0xC6142857},
     {TC_END_SECTION, 0},
     
     {TC_STORE_N,   0x00},
-    {TC_MUST_BE,   0xA1000475},
+    {TC_MUST_BE,   0xC1000475},
     {TC_END,       0},
   };
 

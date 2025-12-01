@@ -21,10 +21,10 @@
 #define STORE_SIZE             200
 
 
-#define EMPTY_REGISTER         0xA0000000
+#define EMPTY_REGISTER         0xC0000000
 
 // Address of +0
-#define EMPTY_ADDRESS          0xA0000000
+#define EMPTY_ADDRESS          0xC0000000
 #define NO_VALUE               -1
 
 #define DISPLAY_UPDATE         1
@@ -33,8 +33,8 @@
 #define NUM_LINES              6
 #define MAX_FILE_LINE          200
 
-#define WORD_SIGN_PLUS         0xA
-#define WORD_SIGN_MINUS        0xB
+#define WORD_SIGN_PLUS         0xC
+#define WORD_SIGN_MINUS        0xD
 #define WORD_SIGN_NONE         0xF
 
 typedef uint32_t SINGLE_WORD;
