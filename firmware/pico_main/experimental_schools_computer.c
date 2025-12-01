@@ -1467,29 +1467,18 @@ void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
   
   if( IS_SW_REGISTER(regno) )
     {
-<<<<<<< HEAD
       //      int reg_contents = SW_REG_CONTENTS(regno);
       //      SW_REG_CONTENTS(regno) = (reg_contents & 0xF0000000) | rh6;
       write_register(s, regno, (reg_contents & 0xF0000000) | rh6);
-=======
-      int reg_contents = SW_REG_CONTENTS(regno);
-      
-      SW_REG_CONTENTS(regno) = (reg_contents & 0xFF000000) | rh6;
->>>>>>> cd_signs
       return;
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-<<<<<<< HEAD
       //int reg_contents = DW_REG_CONTENTS(regno);
       //      int reg_contents = (REGISTER_SINGLE_WORD)read_register(s, regno);
       //DW_REG_CONTENTS(regno) = (reg_contents & 0xF000000000000000) | rh6;
       write_register(s, regno, (reg_contents & 0xF000000000000000) | rh6);
-=======
-      int reg_contents = DW_REG_CONTENTS(regno);
-      DW_REG_CONTENTS(regno) = (reg_contents & 0xFFFFFFFFF000000) | rh6;
->>>>>>> cd_signs
       return;
     }
 
