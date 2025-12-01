@@ -166,8 +166,10 @@ typedef struct _ESC_STATE
   // Main store
   SINGLE_WORD store[STORE_SIZE];
 
+#if 0
   REGISTER_SINGLE_WORD  R[NUM_WORD_REGISTERS];
   REGISTER_DOUBLE_WORD RD[NUM_DBL_WORD_REGISTERS];
+#endif
   
   SINGLE_WORD    keyboard_register;
   int            dot_entered;

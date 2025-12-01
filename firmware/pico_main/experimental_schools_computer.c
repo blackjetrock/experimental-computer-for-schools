@@ -3734,9 +3734,15 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      
 	      if( IS_SW_REGISTER(s->reginst_rc) )
 		{
+#if DEBUG_TEST
+		  printf("\nR%d = %016X", s->reginst_rc, read_register(s, s->reginst_rc));
+                  printf("\nR%d = %08X", s->reginst_rc, read_register(s, s->reginst_rc));
+                  printf("\nR%d = %08X", s->reginst_rc, SW_SIGN(read_register(s, s->reginst_rc)));
+#endif
+
                   //		  if( (SW_SIGN(SW_REG_CONTENTS(s->reginst_rc)) == WORD_SIGN_PLUS) && ((SW_REG_CONTENTS(s->reginst_rc) & 0xFFFFFF) != 0) )
-                  if( (SW_SIGN(DW_TO_SW(read_register(s, s->reginst_rc))) == WORD_SIGN_PLUS) &&
-                      ((DW_TO_SW(read_register(s, s->reginst_rc)) & 0xFFFFFF) != 0) )
+                  if( (SW_SIGN(read_register(s, s->reginst_rc)) == WORD_SIGN_PLUS) &&
+                      ((read_register(s, s->reginst_rc) & 0xFFFFFF) != 0) )
 		    {
 		      is_gt_zero = 1;
 		    }
@@ -4891,7 +4897,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           break;
           
         default:
-          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), DW_TO_SW(read_register(s, 3))));
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), read_register(s, 3)));
           s->inst_aa = BOUND_ADDRESS(s->inst_aa);
           
           s->reginst_rc = s->inst_digit_c;
@@ -4913,7 +4919,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           break;
           
         default:
-          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), DW_TO_SW(read_register(s,4))));
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), read_register(s,4)));
           s->inst_aa = BOUND_ADDRESS(s->inst_aa);
                     
           display_line_2(s, display);
@@ -4932,7 +4938,7 @@ void stage_a_decode(ESC_STATE *s, int display)
           break;
           
         default:
-          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), DW_TO_SW(read_register(s, 5))));
+          s->inst_aa = REMOVED_SW_SIGN(bcd_sw_addition(s, SET_SW_SIGN(s->inst_ap, WORD_SIGN_PLUS), read_register(s, 5)));
           s->inst_aa = BOUND_ADDRESS(s->inst_aa);
                     
           display_line_2(s, display);
@@ -6802,12 +6808,12 @@ void cli_dump_state(void)
   
   for(int i=0; i<NUM_WORD_REGISTERS; i++)
     {
-      printf("\nR%d    : %s", i, display_register_single_word(s->R[i]));
+      printf("\nR%d    : %s", i, display_register_single_word(read_register(s, i)));
     }
 
   for(int i=0; i<NUM_DBL_WORD_REGISTERS; i++)
     {
-      printf("\nR%d    : %s", i+NUM_WORD_REGISTERS, display_register_double_word(s->RD[i]));
+      printf("\nR%d    : %s", i+NUM_WORD_REGISTERS, display_register_double_word(read_register(s, i+NUM_WORD_REGISTERS)));
     }
   
   printf("\n");
@@ -7148,15 +7154,15 @@ void cli_load_test_code_2(void)
   // test copying of six and RH six digits from one register to another
 
   // Set registers up
-  s->R[0] = 0x00123456;
-  s->RD[0] = 0x00876543008765432L;
-  s->R[1] = 0x00000000;
+  write_register(s, 0, 0x00123456);
+  write_register(s, 0, 0x00876543008765432L);
+  write_register(s, 1, 0x00000000);
 
   // Copy d into c: 0 into 1
   s->store[i++] = 0x14101418;
 
   printf("\nSetup Test 2");
-  printf("\nSet up R[8] = %016llX", s->RD[0]);
+  printf("\nSet up R[8] = %016llX", read_register(s, 0));
 #endif
   
 }
@@ -10872,12 +10878,12 @@ int write_state_to_file(ESC_STATE *es, char *fn)
     
   for(int i=0;i<NUM_WORD_REGISTERS; i++)
     {
-      f_printf(&fp, "\n*R%d:%08X", i, es->R[i]);
+      f_printf(&fp, "\n*R%d:%08X", i, read_register(es, i));
     }
 
   for(int i=0;i<NUM_DBL_WORD_REGISTERS; i++)
     {
-      f_printf(&fp, "\n*R%d:%016lX", i+NUM_WORD_REGISTERS, es->R[i]);
+      f_printf(&fp, "\n*R%d:%016lX", i+NUM_WORD_REGISTERS, read_register(es, i));
     }
 
   f_printf(&fp, "\n*STORE:");
@@ -11460,12 +11466,12 @@ char *display_register_and_contents(ESC_STATE *s, int regno)
   
   if( IS_SW_REGISTER(regno) )
     {
-      sprintf(result, "R%d %s", regno, display_register_single_word(s->R[regno]));
+      sprintf(result, "R%d %s", regno, display_register_single_word(DW_TO_SW(read_register(s, regno))));
     }
 
   if( IS_DW_REGISTER(regno) )
     {
-      snprintf(result, MAX_LINE, "R%d %s", regno, display_register_double_word(s->R[regno]));
+      snprintf(result, MAX_LINE, "R%d %s", regno, display_register_double_word(read_register(s, regno)));
     }
 
   return(result);
