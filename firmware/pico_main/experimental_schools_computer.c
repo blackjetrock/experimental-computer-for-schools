@@ -2216,7 +2216,7 @@ void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int l
 
       t = SET_SW_SIGN((REGISTER_SINGLE_WORD) literal, WORD_SIGN_PLUS);
 
-      write_register(s, dest, bcd_sw_addition(s, DW_TO_SW(read_register(s, src)), t));
+      write_register(s, dest, bcd_sw_addition(s, read_register(s, src), t));
     //SW_REG_CONTENTS(dest) = bcd_sw_addition(s, SW_REG_CONTENTS(src), t);
     }
   
@@ -11493,7 +11493,7 @@ char *display_register_and_contents(ESC_STATE *s, int regno)
   
   if( IS_SW_REGISTER(regno) )
     {
-      sprintf(result, "R%d %s", regno, display_register_single_word(DW_TO_SW(read_register(s, regno))));
+      sprintf(result, "R%d %s", regno, display_register_single_word(read_register(s, regno)));
     }
 
   if( IS_DW_REGISTER(regno) )
