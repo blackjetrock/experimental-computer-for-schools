@@ -95,7 +95,7 @@
 #define DEBUG_LOAD_FROM_STORE  1
 #define DEBUG_STAGE_DISPLAY    1
 #define DEBUG_LOAD_IAR         1
-#define DEBUG_SUPPRESSED       1
+#define DEBUG_SUPPRESSED       0
 #endif
 
 //------------------------------------------------------------------------------

@@ -1469,7 +1469,7 @@ void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
     {
       //      int reg_contents = SW_REG_CONTENTS(regno);
       //      SW_REG_CONTENTS(regno) = (reg_contents & 0xF0000000) | rh6;
-      write_register(s, regno, (reg_contents & 0xF0000000) | rh6);
+      write_register(s, regno, (reg_contents & 0xFF000000) | rh6);
       return;
     }
 
@@ -1478,7 +1478,7 @@ void set_any_size_rh6(ESC_STATE *s, int regno, int rh6)
       //int reg_contents = DW_REG_CONTENTS(regno);
       //      int reg_contents = (REGISTER_SINGLE_WORD)read_register(s, regno);
       //DW_REG_CONTENTS(regno) = (reg_contents & 0xF000000000000000) | rh6;
-      write_register(s, regno, (reg_contents & 0xF000000000000000) | rh6);
+      write_register(s, regno, (reg_contents & 0xFFFFFFFFFF000000) | rh6);
       return;
     }
 
@@ -7591,10 +7591,14 @@ INIT_INFO test_init_4[] =
     {IC_SET_REG_V,    SW_PLUS(0x0)},
     {IC_SET_REG_N,    3},
     {IC_SET_REG_V,    SW_PLUS(0x0)},
+    {IC_SET_REG_N,    4},
+    {IC_SET_REG_V,    SW_PLUS(0x0D000000)},
+    {IC_SET_REG_N,    5},
+    {IC_SET_REG_V,    SW_MINUS(0x03000001)},
     {IC_SET_REG_N,    8},
-    {IC_SET_REG_V,    DW_PLUS (0xC000000987654321L)},
+    {IC_SET_REG_V,    DW_PLUS (0x0000000987654321L)},
     {IC_SET_REG_N,    9},
-    {IC_SET_REG_V,    DW_MINUS(0xC000112233445566L)},
+    {IC_SET_REG_V,    DW_MINUS(0x0000112233445566L)},
     {IC_END,          0},
   };
 
@@ -7602,7 +7606,17 @@ TOKEN test_seq_4[] =
   {
     TOK_KEY_NORMAL_RESET,
     TOK_KEY_0,
+    TOK_KEY_0,
     TOK_KEY_LOAD_IAR,
+
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
     TOK_TEST_CHECK_RES,
@@ -7620,15 +7634,27 @@ TEST_INFO test_res_4[] =
   {
     // Original register contents must be unchanged
     {TC_REG_N,   1},
-    {TC_MUST_BE, 0xc0123456},
+    {TC_MUST_BE, 0xC0123456},
     {TC_END_SECTION, 0},
    
     {TC_REG_N,   2},
-    {TC_MUST_BE, 0xc0654321},
+    {TC_MUST_BE, 0xC0654321},
     {TC_END_SECTION, 0},   
 
     {TC_REG_N,   3},
-    {TC_MUST_BE, 0xd0445566},
+    {TC_MUST_BE, 0xD0445566},
+    {TC_END_SECTION, 0},   
+
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xC000000987123456L},
+    {TC_END_SECTION, 0},
+    
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xC000112233123456L},
+    {TC_END_SECTION, 0},
+    
+    {TC_REG_N,   4},
+    {TC_MUST_BE, 0xCD123456},
 
     {TC_END,     0},
 
@@ -7638,7 +7664,8 @@ TEST_LOAD_STORE test_4_store =
   {
     {
       0x14101428,      // RH 6 dig of R0 into R1, RH 6 dig of R8 into R2
-      0x14390000,      // RH 6 dig of R9 into R3
+      0x14391480,      // RH 6 dig of R9 into R3, RH 6 dig of R0 into R8
+      0x14901440,      // RH 6 dig of R0 into R9, RH 6 dig of R0 into R4
       -1},
   };
 
