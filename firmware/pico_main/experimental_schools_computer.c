@@ -11558,13 +11558,10 @@ void suppress_output(char *t)
 
   // Now start at the front and blank any zero that is followed by a zero
 
-  // We remove any zero that is before a non zero, but only once
-  int first_zero = 1;
-  
   for(int i=0; i<strlen(suppressed); i++)
     {
 #if DEBUG_SUPPRESSED
-      printf("\n%s:i:%d:'%s'", __FUNCTION__, i, suppressed);
+      printf("\n%s:A  i:%d:'%s'", __FUNCTION__, i, suppressed);
 #endif
 
       // If we see a '-' then skip over it
@@ -11573,16 +11570,15 @@ void suppress_output(char *t)
           continue;
         }
 
+#if DEBUG_SUPPRESSED
+      printf("\n%s:B  i:%d:'%s'", __FUNCTION__, i, suppressed);
+#endif
+
+
       // Skip spaces
       if( suppressed[i] == ' ' )
         {
           continue;
-        }
-
-      // Lose leading zero in front of a digit, but only once
-      if( (suppressed[i] == '0') && (suppressed[i+1] != '0') && first_zero )
-        {
-          suppressed[i] = ' ';
         }
 
       // If we see anything other than a zero then we stop, as only leading zeroes are being removed.
@@ -11590,21 +11586,79 @@ void suppress_output(char *t)
         {
           break;
         }
+
+      //------------------  Do not modify above this line
       
+#if DEBUG_SUPPRESSED
+      printf("\n%s:E  i:%d:'%s'", __FUNCTION__, i, suppressed);
+#endif
+
+#if DEBUG_SUPPRESSED
+      printf("\n%s:C  i:%d:'%s'", __FUNCTION__, i, suppressed);
+#endif
+
+      // Lose leading zero in front of a digit, but only if not last character
+      if( (suppressed[i] == '0') )
+        {
+          switch(suppressed[i+1])
+            {
+            case'.':
+            case '\0':
+              break;
+
+            case '0':
+            default:
+              suppressed[i] = ' ';
+              break;
+            }
+        }
+      
+#if DEBUG_SUPPRESSED
+      printf("\n%s:D  i:%d:'%s'", __FUNCTION__, i, suppressed);
+#endif
+
+
       if( (suppressed[i] == '0') && (suppressed[i+1] == '0') )
         {
           suppressed[i] = ' ';
         }
+
+#if DEBUG_SUPPRESSED
+      printf("\n%s:F  i:%d:'%s'", __FUNCTION__, i, suppressed);
+#endif
+
     }
 
+#if DEBUG_SUPPRESSED
+  printf("\n%s:After leading zero removal'%s'", __FUNCTION__, suppressed);
+#endif
+  
   // Lose any trailing point
   int last = strlen(suppressed)-1;
   
-  if( (suppressed[last] == '.') && (suppressed[last+1] == '\0') )
+  if( (suppressed[last] == '.') && (suppressed[last+1] == '\0') && (strlen(suppressed) != 2) )
     {
+      // Move everything over to cover the point
+#if 0 
       suppressed[last] = ' ';
+#else
+      for(int i = strlen(suppressed)-1; i>0; i--)
+        {
+          suppressed[i] = suppressed[i-1];
+        }
+      suppressed[0] = ' ';
+#endif      
     }
 
+#if DEBUG_SUPPRESSED
+  printf("\n%s:After trailing point removal'%s'", __FUNCTION__, suppressed);
+#endif
+
+  // Don't allow a blank display
+  if( strlen(suppressed) == 0 )
+    {
+      strcpy(suppressed, "0");
+    }
   
 #if DEBUG_SUPPRESSED
   printf("\n%s:'%s'", __FUNCTION__, suppressed);
