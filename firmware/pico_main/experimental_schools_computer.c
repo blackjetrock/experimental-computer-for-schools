@@ -6836,7 +6836,8 @@ void cli_dump_state(void)
 
   printf("\nTest");
   printf("\n====");
-  printf("\nTest running          : %d", test_running);
+  printf("\nTest running          : %s", test_running?"Yes":"No ");
+  printf("\nTest number           : %d", test_number);
   printf("\nTest loop count       : %d", test_loop_count);
   printf("\nTest waiting for stop : %d", test_waiting_for_stop);
   
@@ -7325,7 +7326,7 @@ TOKEN test_seq_1[] =
     TOK_KEY_NORMAL_RESET,
     TOK_KEY_0,
     TOK_KEY_LOAD_IAR,
-    TOK_KEY_C,
+    TOK_KEY_C,                 // copy R0 to R1
     TOK_TEST_CHECK_RES,
    
     TOK_KEY_C,                 // One added to R1
@@ -7334,26 +7335,37 @@ TOKEN test_seq_1[] =
     TOK_KEY_C,                // r1-2
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,                 //
+    TOK_KEY_C,                 // r2 = 8-r2
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 // r1 = 2
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 // r1 = r1 -9
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 // r1 = r2
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 // r1 = r1 + r2
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 // R1 = 5
+    TOK_KEY_C,                 // r1 = r1 -r2
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 //  r0 = r0 -r1
     TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
-    TOK_TEST_CHECK_RES,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
+    TOK_KEY_C,
 
-    TOK_KEY_C,
-    TOK_TEST_CHECK_RES,
-
-    TOK_KEY_C,
-    TOK_TEST_CHECK_RES,
-
-    TOK_KEY_C,
-    TOK_TEST_CHECK_RES,
-
-    TOK_KEY_C,
-    TOK_KEY_C,
-    TOK_TEST_CHECK_RES,
-
-    TOK_KEY_C,
     TOK_TEST_CHECK_RES,
 
     TOK_NONE,
@@ -7415,7 +7427,12 @@ TEST_INFO test_res_1[] =
     //Subtract R1 from R0
     {TC_REG_N,   0},
     {TC_MUST_BE, 0xd0123455},
-   
+    {TC_END_SECTION, 0},
+
+    // After small sequence, R% = 1
+    {TC_REG_N,   5},
+    {TC_MUST_BE, 0xc0000001},
+
     {TC_END,     0},
 
   };
@@ -7429,6 +7446,10 @@ TEST_LOAD_STORE test_1_store =
       0x13121012,      // Assign R1, R2,  Add R1 and R2
       0x03251112,      // load R1 with 5, subtract R2 from R1
       0x12010000,      // Subtract R1 from R0
+      0x03510000,      //  R5 = 1
+      0x01590000,      //  R5 = R5 – 9  {R5 now -8}
+      0x00590000,      //  R5 = R5 + 9  {R5 now -1}
+
       -1},
   };
 
