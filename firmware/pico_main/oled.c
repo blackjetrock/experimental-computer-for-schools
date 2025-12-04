@@ -12,6 +12,7 @@
 #include "hardware/flash.h"
 #include "hardware/structs/bus_ctrl.h"
 
+#include "switches.h"
 
 #include "oled.h"
 
@@ -472,6 +473,11 @@ void oled_set_xy(I2C_SLAVE_DESC *slave, int x, int y)
 
   x = x % 128;
   y = y % 64;
+  if( x>(9*6) )
+    {
+      x++;
+    }
+
   seq[0] = 0xB0+y/8;      // Set page
   seq[1] = 0x00+x%16;     // Set low part of start address
   seq[2] = 0x10+x/16;     // Set high part
@@ -538,16 +544,23 @@ const unsigned char font_5x7_letters[] = {
 					  0x08, 0x08, 0x08, 0x08, 0x08,// -
 					  0x00, 0x18, 0x18, 0x00, 0x00,// .
 					  0x20, 0x10, 0x08, 0x04, 0x02,// /
-					  0x3E, 0x51, 0x49, 0x45, 0x3E,// 0
-					  0x00, 0x42, 0x7F, 0x40, 0x00,// 1
-					  0x42, 0x61, 0x51, 0x49, 0x46,// 2
-					  0x21, 0x41, 0x45, 0x4B, 0x31,// 3
+					  // 0x3E, 0x51, 0x49, 0x45, 0x3E,// 0
+                                          0x3E, 0x41, 0x41, 0x41, 0x3E,// 0
+                                          //  0x00, 0x42, 0x7F, 0x40, 0x00,// 1
+                                          0x00, 0x00, 0x7F, 0x00, 0x00,// 1
+					  //  0x42, 0x61, 0x51, 0x49, 0x46,// 2
+                                          0x62, 0x51, 0x49, 0x49, 0x46,// 2
+					  //  0x21, 0x41, 0x45, 0x4B, 0x31,// 3
+                                          0x22, 0x41, 0x49, 0x49, 0x36,// 3
 					  0x18, 0x14, 0x12, 0x7F, 0x10,// 4
 					  0x27, 0x45, 0x45, 0x45, 0x39,// 5
-					  0x3C, 0x4A, 0x49, 0x49, 0x30,// 6
-					  0x01, 0x71, 0x09, 0x05, 0x03,// 7
+					  //0x3C, 0x4A, 0x49, 0x49, 0x30,// 6
+                                          0x3E, 0x49, 0x49, 0x49, 0x30,// 6
+					  //0x01, 0x71, 0x09, 0x05, 0x03,// 7
+                                          0x00, 0x71, 0x09, 0x05, 0x03,// 7
 					  0x36, 0x49, 0x49, 0x49, 0x36,// 8
-					  0x06, 0x49, 0x49, 0x29, 0x1E,// 9
+					  // 0x06, 0x49, 0x49, 0x29, 0x1E,// 9
+                                          0x06, 0x49, 0x49, 0x49, 0x3E,// 9
 					  0x00, 0x36, 0x36, 0x00, 0x00,// :
 					  0x00, 0x56, 0x36, 0x00, 0x00,// ;
 					  0x00, 0x08, 0x14, 0x22, 0x41,// <
@@ -634,9 +647,22 @@ const unsigned char on_seq = {
 // Prints a character gap
 void oled_gap(I2C_SLAVE_DESC *slave)
 {
-  unsigned char zero = 0;
+  unsigned char zero[3] = {0, 0, 0};
 
-  oled_send_cmd(slave, 1, &zero, I2C_DATA, I2C_NO_REPEAT);
+#if ORIGINAL_CHARACTERS
+  oled_send_cmd(slave, 3, &(zero[0]), I2C_DATA, I2C_NO_REPEAT);
+#else
+  oled_send_cmd(slave, 1, &(zero[0]), I2C_DATA, I2C_NO_REPEAT);
+#endif
+}
+
+// Character gap that contains a dot.
+
+void oled_dot_gap(I2C_SLAVE_DESC *slave)
+{
+  unsigned char zero[3] = {0x00, 0x18, 0x00};
+
+  oled_send_cmd(slave, 3, &(zero[0]), I2C_DATA, I2C_NO_REPEAT);
 }
 
 // Displays an integer in decimal, number of digits displayed is specified, MS digits dropped
@@ -680,7 +706,25 @@ void oled_display_string(I2C_SLAVE_DESC *slave, char *string)
   for(j=0; j<len; j++)
     {
       oled_send_cmd(slave, 5, font_5x7_letters+((*string++) - ' ')*5, I2C_DATA, I2C_NO_REPEAT);
+
+#if ORIGINAL_CHARACTERS      
+      if( *string == '.' )
+        {
+          oled_dot_gap(slave);
+          if( *(string+1) != '\0' )
+            {
+              string++;
+            }
+          len--;
+        }
+      else
+        {
+          oled_gap(slave);
+        }
+#else
       oled_gap(slave);
+#endif
+      
     }
 }
 

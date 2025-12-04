@@ -4358,7 +4358,7 @@ void stage_b_decode(ESC_STATE *s, int display)
           // Only stop if we aren't in an extracode subroutine and running the instruction
           // action. 
 
-          if( s->run )
+          if( s->run, 1 )
             {
               s->stop = 1;
             }
@@ -4375,7 +4375,7 @@ void stage_b_decode(ESC_STATE *s, int display)
 
 	  // Stop and display (Aa)
           // If running extracode we don't stop, but use the stage step stops
-          if( s->run )
+          if( s->run,1 )
             {
               s->stop = 1;
             }
@@ -5315,7 +5315,9 @@ void state_esc_numeric(FSM_DATA *fd, TOKEN tok)
 
 //------------------------------------------------------------------------------
 //
-// Dot pressed, so set the exponent digit and also the sign as positive
+// Dot pressed, so set the exponent digit
+//
+// Set sign to positive if it isn't set
 //
 
 void state_esc_dot(FSM_DATA *fs, TOKEN tok)
@@ -5333,7 +5335,16 @@ void state_esc_dot(FSM_DATA *fs, TOKEN tok)
 
   // Sign set to plus
   // Minus key will over-ride at the end of entry
-  s->keyboard_register = STORE_SET_SIGN(s->keyboard_register, WORD_SIGN_PLUS);
+  switch(SW_SIGN(s->keyboard_register))
+    {
+    case WORD_SIGN_PLUS:
+    case WORD_SIGN_MINUS:
+      break;
+
+    default:
+      s->keyboard_register = STORE_SET_SIGN(s->keyboard_register, WORD_SIGN_PLUS);
+      break;
+    }
 
   sprintf(line, "%02s %8s", display_iar(s, SPEC_IAR), display_store_word(s->keyboard_register));
   display_on_line(s, 1, DISPLAY_UPDATE, line);
@@ -5629,8 +5640,16 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
       prepare_instruction(s);
       
       run_stage_a(s, display_flag);
-      run_stage_b(s, display_flag);
-      run_stage_c(s, display_flag);
+
+      if( !s->stop )
+        {
+          run_stage_b(s, display_flag);
+        }
+      
+      if( !s->stop )
+        {
+          run_stage_c(s, display_flag);
+        }
       break;
 
     case 'A':
@@ -5646,8 +5665,14 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
       prepare_instruction(s);
       run_stage_a(s, display_flag);
 
-      run_stage_b(s, display_flag);
-      run_stage_c(s, display_flag);
+      if( !s->stop )
+        {
+          run_stage_b(s, display_flag);
+        }
+      if( !s->stop )
+        {
+          run_stage_c(s, display_flag);
+        }
       break;
     }
 }
@@ -7619,7 +7644,7 @@ INIT_INFO test_init_4[] =
     {IC_SET_REG_N,    8},
     {IC_SET_REG_V,    DW_PLUS (0x0000000987654321L)},
     {IC_SET_REG_N,    9},
-    {IC_SET_REG_V,    DW_MINUS(0x0000112233445566L)},
+    {IC_SET_REG_V,    DW_MINUS(0x01CD112233445566L)},
     {IC_END,          0},
   };
 
@@ -7671,9 +7696,10 @@ TEST_INFO test_res_4[] =
     {TC_END_SECTION, 0},
     
     {TC_REG_N,   9},
-    {TC_MUST_BE, 0xC000112233123456L},
+    {TC_MUST_BE, 0xC1CD112233123456L},
     {TC_END_SECTION, 0},
-    
+
+    // Check digits other than lower 6 aren't affected
     {TC_REG_N,   4},
     {TC_MUST_BE, 0xCD123456},
 
@@ -12621,7 +12647,7 @@ int main(void)
   //stdio_init_all();
   stdio_usb_init();
   
-  sleep_ms(2000);
+  sleep_ms(3000);
 
   printf("\n");
   printf("\n                                  ********************************************");

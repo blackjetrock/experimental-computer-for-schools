@@ -4446,6 +4446,7 @@ CMakeFiles/experimental_schools_computer.dir/oled.c.o: /home/menadue/tree/github
   generated/pico_base/pico/config_autogen.h \
   generated/pico_base/pico/version.h \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/oled.h \
+  /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/switches.h \
   /usr/arm-none-eabi/include/_ansi.h \
   /usr/arm-none-eabi/include/_newlib_version.h \
   /usr/arm-none-eabi/include/alloca.h \
