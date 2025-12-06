@@ -2334,8 +2334,17 @@ void register_assign_sum_register_register(ESC_STATE *s, int dest, int src1, int
   error_msg("Registers of different sizes");
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
+#if 0
 void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int src2)
 {
+#if DEBUG_REGISTER_ASSIGN
+  printf("\n%s: dest:%d src1:%d src2:%d", __FUNCTION__, dest, src1, src2);
+  printf("\n%s: issw:%d issw:%d issw:%d", __FUNCTION__, IS_SW_REGISTER(dest), IS_SW_REGISTER(src1), IS_SW_REGISTER(src2) );
+  printf("\n%s: isdw:%d isdw:%d isdw:%d", __FUNCTION__, IS_DW_REGISTER(dest), IS_DW_REGISTER(src1), IS_DW_REGISTER(src2) );
+  
+#endif
   
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_SW_REGISTER(src2) )
     {
@@ -2370,6 +2379,7 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
 
   if( IS_SW_REGISTER(dest) && IS_SW_REGISTER(src1) && IS_DW_REGISTER(src2) )
     {
+        
 #if DEBUG_REGISTER_ASSIGN
       printf("\nSW SW DW");
 #endif
@@ -2381,6 +2391,62 @@ void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int
   // error
   error_msg("Registers of different sizes");
 }
+#else
+void register_assign_sub_register_register(ESC_STATE *s, int dest, int src1, int src2)
+{
+  int is_dest_dw = 0;
+  int is_src1_dw = 0;
+  int is_src2_dw = 0;
+
+  is_dest_dw = IS_DW_REGISTER(dest);
+  is_src1_dw = IS_DW_REGISTER(src1);
+  is_src2_dw = IS_DW_REGISTER(src2);
+
+  REGISTER_DOUBLE_WORD w_dest = read_register(s, dest);
+  REGISTER_DOUBLE_WORD w_src1 = read_register(s, src1);
+  REGISTER_DOUBLE_WORD w_src2 = read_register(s, src2);
+
+#if DEBUG_REGISTER_ASSIGN
+  printf("\n%s: dest:%d src1:%d src2:%d", __FUNCTION__, dest, src1, src2);
+  printf("\n%s: isdw:%d isdw:%d isdw:%d", __FUNCTION__, is_dest_dw, is_src1_dw, is_src2_dw );
+  
+#endif
+
+  // Convert SW values to DW
+  if( !is_src1_dw )
+    {
+      w_src1 = SW_TO_DW(w_src1);
+    }
+
+  if( !is_src2_dw )
+    {
+      w_src2 = SW_TO_DW(w_src2);
+    }
+
+  // Perform arithmetic
+  w_dest = bcd_dw_addition(w_src1, invert_dw_sign( w_src2));
+
+  // Convert DW back to SW if needed
+  if( !is_dest_dw )
+    {
+      w_dest = DW_TO_SW(w_dest);
+    }
+  
+  // Write value back
+
+#if DEBUG_REGISTER_ASSIGN
+  printf("\n%s: src1:%016X", __FUNCTION__, w_src1 );
+  printf("\n%s: src2:%016X", __FUNCTION__, w_src2 );
+  printf("\n%s: src3:%016X", __FUNCTION__, w_dest );
+  
+#endif
+  
+  write_register(s, dest, w_dest);
+
+}
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
 
 void register_assign_register_uint64(ESC_STATE *s, int dest, uint64_t n)
 {
@@ -3578,7 +3644,7 @@ void stage_c_decode(ESC_STATE *s, int display)
   FN_ENTRY_DISPLAY;
   
 #if DEBUG_STAGES
-  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] (top entry)", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
 #endif
 
   // The input instructions stop at stage B so that the keyboard register can be loaded with
@@ -3639,7 +3705,7 @@ void stage_c_decode(ESC_STATE *s, int display)
 #endif
 
 #if DEBUG_STAGES
-  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] ", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
+  printf(" [Stage C: AUXIAR:%03X%s IAR:%03X%s] (entry)", s->aux_iar.address, s->aux_iar.a_flag?"A":" ", s->iar.address, s->iar.a_flag?"A":" ");
 #endif
 
   switch(s->inst_digit_a)
@@ -3949,6 +4015,9 @@ void stage_c_decode(ESC_STATE *s, int display)
       break;
       
     case 1:
+#if DEBUG_STAGES
+      printf("\ninst_digit_b:%d", s->inst_digit_b);
+#endif
       switch(s->inst_digit_b)
 	{
 	case 0:
@@ -3967,6 +4036,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  
 	case 2:
 	  // Subtract registers (Rd)-(Rc)
+#if DEBUG_STAGES
+          printf("\nSubtract registers (Rd)-(Rc)");
+#endif
+
 	  register_assign_sub_register_register(s, s->reginst_rc, s->reginst_rd, s->reginst_rc);
 	  display_line_2(s, display);
 	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
@@ -5633,6 +5706,8 @@ void state_esc_c_core(FSM_DATA *es, TOKEN tok, int display_flag)
   s = (ESC_STATE *)es;
 
   //  s->update_display = display_flag;
+
+  s->stop = 0;
   
   switch(s->stage)
     {
@@ -5990,8 +6065,8 @@ int setup_step_extracode = 0;
 
 SETUP_ENTRY setup_entries[] =
   {
-    {"Numbers  : ", &suppressed_display,   "Original", "Full    "},
-    {"Extracode: ", &setup_step_extracode, "Step",     "Run "},
+    {"Numbers  : ", &suppressed_display,   "Orig", "Full"},
+    {"Extracode: ", &setup_step_extracode, "Step", "Run "},
   };
 
 #define NUM_SETUP_ENTRIES (sizeof(setup_entries)/sizeof(SETUP_ENTRY))
@@ -7337,10 +7412,14 @@ INIT_INFO test_init_1[] =
   {
     {IC_SET_REG_N,    0},
     {IC_SET_REG_V,    SW_PLUS(0x123456)},
+    {IC_SET_REG_N,    1},
+    {IC_SET_REG_V,    SW_PLUS(0x40)},
     {IC_SET_REG_N,    2},
     {IC_SET_REG_V,    SW_PLUS(0x5)},
     {IC_SET_REG_N,    8},
     {IC_SET_REG_V,    DW_MINUS(0x987654321)},
+    {IC_SET_REG_N,    9},
+    {IC_SET_REG_V,    DW_PLUS(0x000000000010)},
     {IC_END,          0},
   };
 
@@ -7391,6 +7470,11 @@ TOKEN test_seq_1[] =
     TOK_KEY_C,
     TOK_KEY_C,
 
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 // Skip NOP
+    TOK_KEY_C,                 //  load r1 with 2
+    TOK_KEY_C,                 //  r1 = r1 - r9
     TOK_TEST_CHECK_RES,
 
     TOK_NONE,
@@ -7454,9 +7538,14 @@ TEST_INFO test_res_1[] =
     {TC_MUST_BE, 0xd0123455},
     {TC_END_SECTION, 0},
 
-    // After small sequence, R% = 1
+    // After small sequence, R5 = 1
     {TC_REG_N,   5},
     {TC_MUST_BE, 0xc0000001},
+    {TC_END_SECTION, 0},
+
+    // R1 = 30
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xc0000008},
 
     {TC_END,     0},
 
@@ -7470,11 +7559,11 @@ TEST_LOAD_STORE test_1_store =
       0x03120119,      // Load R1 with 2, subtract 9 from R1
       0x13121012,      // Assign R1, R2,  Add R1 and R2
       0x03251112,      // load R1 with 5, subtract R2 from R1
-      0x12010000,      // Subtract R1 from R0
+      0x12010000,      // Subtract R0 from R1
       0x03510000,      //  R5 = 1
       0x01590000,      //  R5 = R5 – 9  {R5 now -8}
       0x00590000,      //  R5 = R5 + 9  {R5 now -1}
-
+      0x03121219,      // Load R1 with 2, Subtract R1 from R9
       -1},
   };
 
@@ -11472,6 +11561,7 @@ char *display_word(SINGLE_WORD w)
   
 }
 
+
 char *display_register_single_word(REGISTER_SINGLE_WORD x)
 {
   static char result[MAX_LINE];
@@ -11900,14 +11990,14 @@ char *display_store_word(SINGLE_WORD w)
     case 8:
     case 9:
       // Instruction
-      sprintf(result, "%08X", w);
+      sprintf(result, "&%08X", w);
       break;
 
     default:
       // Floating point
       sprintf(result, "%c%08X", sign_char, w);
 
-      sprintf(result2, "%c", sign_char);
+      sprintf(result2, "&%c", sign_char);
       
       // Insert decimal point
       strncat(result2, result+3, 6-digit_b);
@@ -12106,6 +12196,8 @@ char *display_presumptive_address_2(ESC_STATE *s)
 // The text for the lower four lines (and the upper but they aren't used)
 // A flag is provided to indicate whether the display should be updated (on OLED etc)
 //
+// If the string starts with a '&' then the data is a value. That needs special spacing to
+// accomodate the decimal poijnt and also match the original.
 
 char display_line[NUM_LINES][MAX_LINE+3];
 
@@ -12232,6 +12324,9 @@ void clear_lines_3_to_6(ESC_STATE *s, int display)
 
 					    
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Updates the display for the schools computer screen
+//
 
 void update_computer_display(ESC_STATE *es)
 {

@@ -169,9 +169,13 @@
 #define ERRORS_ON              0
 #define WARNINGS_ON            0
 
-// Original type display layout. Wider charactyer areas, and decimal point
+// Original type display layout. Wider character areas, and decimal point
 // squashed between characters
 #define ORIGINAL_CHARACTERS    1
+
+// Modern font is stabdard 5x7 font. Not modern is the original font.
+#define MODERN_FONT            0
+#define FONT_WIDTH             8
 
 #define PIXEL_SCALE  3
 #define PIXEL_SCALE2 2

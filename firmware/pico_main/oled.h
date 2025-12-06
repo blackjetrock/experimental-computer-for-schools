@@ -42,7 +42,7 @@ void oled_send_cmd(I2C_SLAVE_DESC *slave, int n, const unsigned char *data, int 
 void oled_set_xy(I2C_SLAVE_DESC *slave, int x, int y);
 void oled_set_pixel_xy(I2C_SLAVE_DESC *slave, int x, int y);
 void oled_set_byte_xy(I2C_SLAVE_DESC *slave, int x, int y, int b);
-void oled_gap(I2C_SLAVE_DESC *slave);
+void oled_gap(I2C_SLAVE_DESC *slave, int additional);
 void oled_display_int(I2C_SLAVE_DESC *slave, long int n, int num_digits);
 void oled_display_string(I2C_SLAVE_DESC *slave, char *string);
 void oled_clear_display(I2C_SLAVE_DESC *slave);

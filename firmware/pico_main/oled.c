@@ -326,7 +326,7 @@ void oled_send_cmd(I2C_SLAVE_DESC *slave, int n, const unsigned char *data, int 
 void oled_set_xy(I2C_SLAVE_DESC *slave, int x, int y);
 void oled_set_pixel_xy(I2C_SLAVE_DESC *slave, int x, int y);
 void oled_set_byte_xy(I2C_SLAVE_DESC *slave, int x, int y, int b);
-void oled_gap(I2C_SLAVE_DESC *slave);
+void oled_gap(I2C_SLAVE_DESC *slave, int additional);
 void oled_display_int(I2C_SLAVE_DESC *slave, long int n, int num_digits);
 void oled_display_string(I2C_SLAVE_DESC *slave, char *string);
 void oled_clear_display(I2C_SLAVE_DESC *slave);
@@ -463,14 +463,23 @@ void oled_set_brightness(I2C_SLAVE_DESC *slave, int percent)
   oled_send_cmd(slave, sizeof(seq), &(seq[0]), I2C_CMD, I2C_NO_REPEAT);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
 // Set XY to given position
 // We attempt to position to the byte that holds the pixel (x,y)
 // Page addressing mode
+
+int last_set_x = 0;
+int last_set_y = 0;
 
 void oled_set_xy(I2C_SLAVE_DESC *slave, int x, int y)
 {
   unsigned char seq[3];
 
+  // Save position for possible later modification
+  last_set_x = x;
+  last_set_y = y;
+  
   x = x % 128;
   y = y % 64;
   if( x>(9*6) )
@@ -544,23 +553,44 @@ const unsigned char font_5x7_letters[] = {
 					  0x08, 0x08, 0x08, 0x08, 0x08,// -
 					  0x00, 0x18, 0x18, 0x00, 0x00,// .
 					  0x20, 0x10, 0x08, 0x04, 0x02,// /
-					  // 0x3E, 0x51, 0x49, 0x45, 0x3E,// 0
+#if MODERN_FONT
+					  0x3E, 0x51, 0x49, 0x45, 0x3E,// 0
+#else                                          
                                           0x3E, 0x41, 0x41, 0x41, 0x3E,// 0
-                                          //  0x00, 0x42, 0x7F, 0x40, 0x00,// 1
+#endif                                          
+#if MODERN_FONT
+                                          0x00, 0x42, 0x7F, 0x40, 0x00,// 1
+#else                                          
                                           0x00, 0x00, 0x7F, 0x00, 0x00,// 1
-					  //  0x42, 0x61, 0x51, 0x49, 0x46,// 2
+#endif                                          
+#if MODERN_FONT
+					  0x42, 0x61, 0x51, 0x49, 0x46,// 2
+#else                                          
                                           0x62, 0x51, 0x49, 0x49, 0x46,// 2
-					  //  0x21, 0x41, 0x45, 0x4B, 0x31,// 3
+#endif                                          
+#if MODERN_FONT
+					  0x21, 0x41, 0x45, 0x4B, 0x31,// 3
+#else                                          
                                           0x22, 0x41, 0x49, 0x49, 0x36,// 3
+#endif                                          
 					  0x18, 0x14, 0x12, 0x7F, 0x10,// 4
 					  0x27, 0x45, 0x45, 0x45, 0x39,// 5
-					  //0x3C, 0x4A, 0x49, 0x49, 0x30,// 6
+#if MODERN_FONT
+					  0x3C, 0x4A, 0x49, 0x49, 0x30,// 6
+#else                                          
                                           0x3E, 0x49, 0x49, 0x49, 0x30,// 6
-					  //0x01, 0x71, 0x09, 0x05, 0x03,// 7
+#endif                                          
+#if MODERN_FONT
+					  0x01, 0x71, 0x09, 0x05, 0x03,// 7
+#else                                          
                                           0x00, 0x71, 0x09, 0x05, 0x03,// 7
+#endif                                          
 					  0x36, 0x49, 0x49, 0x49, 0x36,// 8
-					  // 0x06, 0x49, 0x49, 0x29, 0x1E,// 9
+#if MODERN_FONT
+					  0x06, 0x49, 0x49, 0x29, 0x1E,// 9
+#else                                          
                                           0x06, 0x49, 0x49, 0x49, 0x3E,// 9
+#endif                                          
 					  0x00, 0x36, 0x36, 0x00, 0x00,// :
 					  0x00, 0x56, 0x36, 0x00, 0x00,// ;
 					  0x00, 0x08, 0x14, 0x22, 0x41,// <
@@ -645,12 +675,16 @@ const unsigned char on_seq = {
 
 
 // Prints a character gap
-void oled_gap(I2C_SLAVE_DESC *slave)
+void oled_gap(I2C_SLAVE_DESC *slave, int additional)
 {
   unsigned char zero[3] = {0, 0, 0};
 
 #if ORIGINAL_CHARACTERS
   oled_send_cmd(slave, 3, &(zero[0]), I2C_DATA, I2C_NO_REPEAT);
+  if( additional )
+    {
+      oled_send_cmd(slave, 3, &(zero[0]), I2C_DATA, I2C_NO_REPEAT);
+    }
 #else
   oled_send_cmd(slave, 1, &(zero[0]), I2C_DATA, I2C_NO_REPEAT);
 #endif
@@ -658,11 +692,16 @@ void oled_gap(I2C_SLAVE_DESC *slave)
 
 // Character gap that contains a dot.
 
-void oled_dot_gap(I2C_SLAVE_DESC *slave)
+void oled_dot_gap(I2C_SLAVE_DESC *slave, int additional)
 {
-  unsigned char zero[3] = {0x00, 0x18, 0x00};
+  unsigned char zero[4] = {0x00, 0x18, 0x18, 0x00};
 
-  oled_send_cmd(slave, 3, &(zero[0]), I2C_DATA, I2C_NO_REPEAT);
+  oled_send_cmd(slave, 4, &(zero[0]), I2C_DATA, I2C_NO_REPEAT);
+
+  if( additional )
+    {
+      oled_send_cmd(slave, 1, &(zero[0]), I2C_DATA, I2C_NO_REPEAT);
+    }
 }
 
 // Displays an integer in decimal, number of digits displayed is specified, MS digits dropped
@@ -693,24 +732,50 @@ void oled_display_int(I2C_SLAVE_DESC *slave, long int n, int num_digits)
       if ( i <= num_digits )
 	{
 	  oled_send_cmd(slave, 5, font_5x7_letters+('0'-' ')*5+dig*5, I2C_DATA, I2C_NO_REPEAT);
-	  oled_gap(slave);
+	  oled_gap(slave, 0);
 	}
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Display a string.
+//
+// If we are displ;aying in the original format, then if this struing starts with a
+// '&' then we create special spacing so that the decimal point can be inserted
+// between characters. For this spacing we start two pixels left of ordinary spacing
+// and also insert a gap after four characters (not counting sign)
+
 void oled_display_string(I2C_SLAVE_DESC *slave, char *string)
 {
   int j;
+  int val_spacing = 0;
+  int n_spaced = 0;
+  int num_printed = 0;
+  
   int len = strlen(string);
 
   for(j=0; j<len; j++)
     {
+      // Special spacing needed?
+      if( *string == '&' )
+        {
+          // Yes
+          val_spacing = 1;
+          n_spaced = 0;
+          string++;
+          len--;
+          
+          oled_set_xy(slave, last_set_x-2+num_printed*FONT_WIDTH, last_set_y);
+        }
+
       oled_send_cmd(slave, 5, font_5x7_letters+((*string++) - ' ')*5, I2C_DATA, I2C_NO_REPEAT);
 
-#if ORIGINAL_CHARACTERS      
+#if ORIGINAL_CHARACTERS
       if( *string == '.' )
         {
-          oled_dot_gap(slave);
+          // No extra column
+          oled_dot_gap(slave, 0);
           if( *(string+1) != '\0' )
             {
               string++;
@@ -719,11 +784,26 @@ void oled_display_string(I2C_SLAVE_DESC *slave, char *string)
         }
       else
         {
-          oled_gap(slave);
+          if( val_spacing && (n_spaced == 3) )
+            {
+              // Gap plus one
+              oled_gap(slave, 1);
+            }
+          else
+            {
+              oled_gap(slave, 0);
+            }
+        }
+
+      if( val_spacing )
+        {
+          n_spaced++;
         }
 #else
-      oled_gap(slave);
+      oled_gap(slave, 0);
 #endif
+
+      num_printed++;
       
     }
 }
@@ -823,7 +903,7 @@ void oled_display_scaled_string_xy(I2C_SLAVE_DESC *slave, char *string, int x, i
 	      oled_send_cmd(slave, 1, &(scaled_line[i+j]), I2C_DATA, I2C_NO_REPEAT);
 	    }
 	}
-      oled_gap(slave);
+      oled_gap(slave, 0);
     }
 
 #if 0
