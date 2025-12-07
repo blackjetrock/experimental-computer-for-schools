@@ -122,10 +122,10 @@ CMakeFiles/experimental_schools_computer.dir/esc_desktop_display.c.o: /home/mena
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/esc_fsms.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.c \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/esc_fsms.h \
@@ -257,10 +257,10 @@ CMakeFiles/experimental_schools_computer.dir/experimental_schools_computer.c.o: 
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/extracode.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -387,10 +387,10 @@ CMakeFiles/experimental_schools_computer.dir/extracode.c.o: /home/menadue/tree/g
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/extracode_basic.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c
 
@@ -418,9 +418,9 @@ CMakeFiles/experimental_schools_computer.dir/fsms.c.o: /home/menadue/tree/github
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.o: /home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c \
   /home/menadue/pico-extras/src/common/pico_sd_card/include/pico/sd_card.h \
@@ -503,10 +503,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico-extras/src/rp2_co
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -543,10 +543,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc.h \
@@ -618,10 +618,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -658,10 +658,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -698,10 +698,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -738,10 +738,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -778,10 +778,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -818,10 +818,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -858,10 +858,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -898,10 +898,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -938,10 +938,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.h \
@@ -1012,10 +1012,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_compiler.h \
@@ -1052,10 +1052,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_common.h \
@@ -1122,10 +1122,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc.h \
@@ -1200,10 +1200,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc.h \
@@ -1278,10 +1278,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_common.h \
@@ -1362,10 +1362,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_common.h \
@@ -1438,10 +1438,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc.h \
@@ -1515,10 +1515,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/lib/tiny
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.o: /home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1553,9 +1553,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.o: /home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1596,9 +1596,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.o: /home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1638,9 +1638,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.o: /home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1683,9 +1683,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.o: /home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1726,9 +1726,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.o: /home/menadue/pico/pico-sdk/src/common/pico_time/time.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1795,9 +1795,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/features.h \
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.o: /home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1835,9 +1835,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.o: /home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1891,10 +1891,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/timespec.h \
   /usr/arm-none-eabi/include/sys/types.h \
   /usr/arm-none-eabi/include/time.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.o: /home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1935,10 +1935,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.o: /home/menadue/pico/pico-sdk/src/common/pico_util/queue.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -1990,9 +1990,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/comm
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o: /home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2026,9 +2026,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp20
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2080,9 +2080,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2116,9 +2116,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2170,9 +2170,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2219,10 +2219,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2274,9 +2274,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2324,9 +2324,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2376,9 +2376,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2432,9 +2432,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2475,9 +2475,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2525,9 +2525,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2569,9 +2569,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2606,9 +2606,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2642,9 +2642,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2680,9 +2680,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2727,9 +2727,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2775,9 +2775,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2812,9 +2812,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2868,10 +2868,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2908,9 +2908,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2948,9 +2948,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -2995,10 +2995,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdatomic.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdatomic.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3046,9 +3046,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3085,9 +3085,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3154,10 +3154,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/unistd.h \
   /usr/arm-none-eabi/include/time.h \
   /usr/arm-none-eabi/include/unistd.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp
 
@@ -3205,9 +3205,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3245,9 +3245,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/features.h \
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3301,9 +3301,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3351,9 +3351,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3399,9 +3399,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3439,10 +3439,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/features.h \
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/float.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/float.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3491,9 +3491,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/features.h \
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3550,9 +3550,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3603,10 +3603,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/types.h \
   /usr/arm-none-eabi/include/sys/unistd.h \
   /usr/arm-none-eabi/include/unistd.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3644,11 +3644,11 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/float.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/float.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3681,9 +3681,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3729,9 +3729,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3786,9 +3786,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3823,9 +3823,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3861,9 +3861,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3926,10 +3926,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -3989,10 +3989,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc.h \
@@ -4077,10 +4077,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc.h \
@@ -4165,10 +4165,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c \
   /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc.h \
@@ -4243,10 +4243,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -4307,10 +4307,10 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/cdefs.h \
   /usr/arm-none-eabi/include/sys/config.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -4357,9 +4357,9 @@ CMakeFiles/experimental_schools_computer.dir/home/menadue/pico/pico-sdk/src/rp2_
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/match_token.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/match_token.c \
   /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/esc.h \
@@ -4382,9 +4382,9 @@ CMakeFiles/experimental_schools_computer.dir/match_token.c.o: /home/menadue/tree
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/oled.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/oled.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -4474,10 +4474,10 @@ CMakeFiles/experimental_schools_computer.dir/oled.c.o: /home/menadue/tree/github
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/sdcard.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -4565,10 +4565,10 @@ CMakeFiles/experimental_schools_computer.dir/sdcard.c.o: /home/menadue/tree/gith
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/diskio.h \
@@ -4580,8 +4580,8 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/_intsup.h \
   /usr/arm-none-eabi/include/sys/_stdint.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
@@ -4604,8 +4604,8 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/features.h \
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
@@ -4616,11 +4616,11 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/_intsup.h \
   /usr/arm-none-eabi/include/sys/_stdint.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c \
   /usr/arm-none-eabi/include/_ansi.h \
@@ -4637,8 +4637,8 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -4714,10 +4714,10 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -4796,10 +4796,10 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -4871,10 +4871,10 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -4954,10 +4954,10 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
@@ -4968,7 +4968,7 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/_intsup.h \
   /usr/arm-none-eabi/include/sys/_stdint.h \
   /usr/arm-none-eabi/include/sys/features.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h \
@@ -5002,11 +5002,11 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
   /usr/arm-none-eabi/include/sys/string.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/limits.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/limits.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -5081,10 +5081,10 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c \
   /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/my_debug.h \
@@ -5102,8 +5102,8 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/lock.h \
   /usr/arm-none-eabi/include/sys/reent.h \
   /usr/arm-none-eabi/include/sys/stdio.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h
 
 CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c \
   /home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h \
@@ -5194,10 +5194,10 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
   /usr/arm-none-eabi/include/sys/timespec.h \
   /usr/arm-none-eabi/include/sys/types.h \
   /usr/arm-none-eabi/include/time.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h \
-  /usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h \
+  /usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h
 
 
 /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/include/rtc.h:
@@ -5208,7 +5208,7 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
 
 /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c:
 
-/usr/lib/gcc/arm-none-eabi/15.1.0/include/limits.h:
+/usr/lib/gcc/arm-none-eabi/15.2.0/include/limits.h:
 
 /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c:
 
@@ -5318,11 +5318,23 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/usb.h:
 
+/usr/lib/gcc/arm-none-eabi/15.2.0/include/stdatomic.h:
+
+/usr/lib/gcc/arm-none-eabi/15.2.0/include/stdbool.h:
+
+/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/include/pico/bootrom/lock.h:
+
+/usr/lib/gcc/arm-none-eabi/15.2.0/include/stdarg.h:
+
+/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.h:
+
+/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c:
+
 /usr/arm-none-eabi/include/sys/config.h:
 
 /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c:
 
-/usr/lib/gcc/arm-none-eabi/15.1.0/include/stdint.h:
+/home/menadue/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pll.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb/reset_interface.h:
 
@@ -5354,6 +5366,10 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h:
 
+/usr/arm-none-eabi/include/sys/errno.h:
+
+/usr/arm-none-eabi/include/assert.h:
+
 /home/menadue/pico/pico-sdk/src/rp2_common/boot_bootrom_headers/include/boot/bootrom_constants.h:
 
 /usr/arm-none-eabi/include/sys/_sigset.h:
@@ -5371,8 +5387,6 @@ CMakeFiles/experimental_schools_computer.dir/tree/downloaded_tools/pico/ajm-no-O
 /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.h:
 
 /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/oled.h:
-
-/usr/lib/gcc/arm-none-eabi/15.1.0/include/stdbool.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/ssi.h:
 
@@ -5396,10 +5410,6 @@ generated/pico_base/pico/version.h:
 
 /usr/arm-none-eabi/include/errno.h:
 
-/home/menadue/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pll.h:
-
-/usr/lib/gcc/arm-none-eabi/15.1.0/include/stdarg.h:
-
 /home/menadue/pico/pico-sdk/src/common/pico_base_headers/include/pico.h:
 
 /home/menadue/pico/pico-sdk/src/common/pico_base_headers/include/pico/error.h:
@@ -5411,12 +5421,6 @@ generated/pico_base/pico/version.h:
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/include/pico/bootrom_constants.h:
-
-/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/include/pico/bootrom/lock.h:
-
-/usr/arm-none-eabi/include/assert.h:
-
-/usr/arm-none-eabi/include/sys/errno.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/include/pico/flash.h:
 
@@ -5462,17 +5466,15 @@ generated/pico_base/pico/version.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h:
 
-/usr/lib/gcc/arm-none-eabi/15.1.0/include/float.h:
-
 /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c:
-
-/usr/arm-none-eabi/include/sys/lock.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pio.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h:
+
+/usr/lib/gcc/arm-none-eabi/15.2.0/include/float.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_qspi.h:
 
@@ -5512,11 +5514,11 @@ generated/pico_base/pico/version.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h:
 
-/home/menadue/pico/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h:
-
-/home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h:
-
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h:
+
+/usr/arm-none-eabi/include/sys/lock.h:
+
+/usr/lib/gcc/arm-none-eabi/15.2.0/include/stdint.h:
 
 /home/menadue/pico/pico-sdk/src/common/pico_time/include/pico/timeout_helper.h:
 
@@ -5562,7 +5564,11 @@ generated/pico_base/pico/version.h:
 
 /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_debug.h:
 
-/usr/arm-none-eabi/include/sys/time.h:
+/usr/lib/gcc/arm-none-eabi/15.2.0/include/stddef.h:
+
+/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/include/pico/unique_id.h:
+
+/home/menadue/pico-extras/src/common/pico_sd_card/include/pico/sd_card.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/xip.h:
 
@@ -5672,8 +5678,6 @@ generated/pico_base/pico/config_autogen.h:
 
 /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/version.h:
 
-/usr/lib/gcc/arm-none-eabi/15.1.0/include/stdatomic.h:
-
 /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/match_token.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c:
@@ -5686,15 +5690,15 @@ generated/pico_base/pico/config_autogen.h:
 
 /home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c:
 
-/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/include/pico/unique_id.h:
-
-/home/menadue/pico-extras/src/common/pico_sd_card/include/pico/sd_card.h:
-
 /home/menadue/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/rtc.h:
 
 /home/menadue/pico/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h:
 
 /home/menadue/pico/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/defs.h:
+
+/home/menadue/pico/pico-sdk/src/boards/include/boards/pico.h:
+
+/home/menadue/pico/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h:
 
 pico_extras/src/rp2_common/pico_sd_card/sd_card.pio.h:
 
@@ -5737,10 +5741,6 @@ pico_extras/src/rp2_common/pico_sd_card/sd_card.pio.h:
 /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_types.h:
 
 /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_verify.h:
-
-/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.h:
-
-/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c:
 
 /home/menadue/pico/pico-sdk/lib/tinyusb/src/osal/osal.h:
 
@@ -5804,8 +5804,6 @@ pico_extras/src/rp2_common/pico_sd_card/sd_card.pio.h:
 
 /home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c:
 
-/usr/lib/gcc/arm-none-eabi/15.1.0/include/stddef.h:
-
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h:
 
 /home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c:
@@ -5839,6 +5837,8 @@ pico_extras/src/rp2_common/pico_sd_card/sd_card.pio.h:
 /usr/arm-none-eabi/include/sys/_timespec.h:
 
 /usr/arm-none-eabi/include/sys/select.h:
+
+/usr/arm-none-eabi/include/sys/time.h:
 
 /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c:
 

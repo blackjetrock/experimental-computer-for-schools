@@ -2181,6 +2181,7 @@ void register_assign_register(ESC_STATE *s, int dest, int src)
     }
 }
 
+//------------------------------------------------------------------------------
 
 void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
 {
@@ -2198,6 +2199,8 @@ void register_assign_register_literal(ESC_STATE *s, int dest,  int literal)
     }
 }
 
+//------------------------------------------------------------------------------
+//
 // Literal is always positive.
 
 void register_assign_sum_register_literal(ESC_STATE *s, int dest, int src, int literal)
@@ -6908,39 +6911,39 @@ void cli_dump_state(void)
   
   for(int i=0; i<NUM_WORD_REGISTERS; i++)
     {
-      printf("\nR%d    : %s", i, display_register_single_word(read_register(s, i)));
+      if( (i % 4) == 0 )
+        {
+          printf("\n");
+        }
+      printf("  R%d: %s", i, display_register_single_word(read_register(s, i)));
     }
 
+  printf("\n");
   for(int i=0; i<NUM_DBL_WORD_REGISTERS; i++)
     {
-      printf("\nR%d    : %s", i+NUM_WORD_REGISTERS, display_register_double_word(read_register(s, i+NUM_WORD_REGISTERS)));
+      printf("  R%d: %s", i+NUM_WORD_REGISTERS, display_register_double_word(read_register(s, i+NUM_WORD_REGISTERS)));
     }
   
   printf("\n");
   printf("\nInternal");
   printf("\n========");
 
-  printf("\nStage             : '%c'",                s->stage);
-  printf("\nReg Inst Rc       : %d",                s->reginst_rc);
-  printf("\nReg Inst Rd       : %d",                s->reginst_rd);
-  printf("\nReg Inst Lit      : %d",                s->reginst_literal);
-  printf("\nInst Aa           : %02X ap:  %02X ",   s->inst_aa, s->inst_ap);
-  printf("\nAp1..3            : %03X %03X %03X",    s->Ap1, s->Ap2, s->Ap3);
-  printf("\nAa1..3            : %03X %03X %03X",    s->Aa1, s->Aa2, s->Aa3);
-  printf("\nKI Reset          : %d",                s->ki_reset_flag);
-
-  printf("\nError             : %d",                s->error);
-  printf("\nExtracode         : %d",                IS_EXTRACODE);
-  printf("\nExiting extracode : %d",                s->exiting_extracode);
+  printf("\nStage   :'%c'",       s->stage);
+  printf("\nabcd    : %d%d%d%d   rc=%d rd=%d",  s->inst_digit_a,  s->inst_digit_b,  s->inst_digit_c,  s->inst_digit_d, s->reginst_rc, s->reginst_rd);
+  printf("\nAa      : %02X ap:  %02X ",                s->inst_aa, s->inst_ap);
+  printf("\nAp1..3  : %03X %03X %03X",                 s->Ap1, s->Ap2, s->Ap3);
+  printf("\nAa1..3  : %03X %03X %03X",                 s->Aa1, s->Aa2, s->Aa3);
+  printf("\nReg Inst Lit      : %d",                   s->reginst_literal);
+  printf("\nKI Reset          : %d",                   s->ki_reset_flag);
+  printf("\nError             : %d",                   s->error);
+  printf("\nExtracode         : %s    Exiting : %d",   IS_EXTRACODE?"Yes":"No ", s->exiting_extracode);
   printf("\n");
 
-  printf("\nTest");
-  printf("\n====");
-  printf("\nTest running          : %s", test_running?"Yes":"No ");
-  printf("\nTest number           : %d", test_number);
-  printf("\nTest loop count       : %d", test_loop_count);
-  printf("\nTest waiting for stop : %d", test_waiting_for_stop);
-  
+  printf("\nTest:  running: %s", test_running?"Yes":"No ");
+  printf("  number: %d", test_number);
+  printf("  loop count: %d", test_loop_count);
+  printf("  waiting for stop: %d", test_waiting_for_stop);
+  printf("\n");
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7468,13 +7471,19 @@ TOKEN test_seq_1[] =
     TOK_KEY_C,
     TOK_KEY_C,
     TOK_KEY_C,
-    TOK_KEY_C,
 
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,                 // Skip NOP
     TOK_KEY_C,                 //  load r1 with 2
     TOK_KEY_C,                 //  r1 = r1 - r9
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 //  10: 
+    TOK_KEY_C,                 //  r1 = r9 - r1
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 //  11: 
+    TOK_KEY_C,                 // 
     TOK_TEST_CHECK_RES,
 
     TOK_NONE,
@@ -7546,6 +7555,18 @@ TEST_INFO test_res_1[] =
     // R1 = 30
     {TC_REG_N,   1},
     {TC_MUST_BE, 0xc0000008},
+    {TC_END_SECTION, 0},
+
+    // 10: Load R1 with 2, Subtract R9 from R1
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xD0000008},
+    {TC_END_SECTION, 0},
+    
+    // 11: R8 = 8, R9 = 9
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xC000000000000008},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xC000000000000009},
 
     {TC_END,     0},
 
@@ -7554,16 +7575,21 @@ TEST_INFO test_res_1[] =
 TEST_LOAD_STORE test_1_store =
   {
     {
-      0x13100011,      // Copy R0 to R1, Add 1 to R1
-      0x01120228,      // Subtract 2 from R1, subtract R2 from 8
-      0x03120119,      // Load R1 with 2, subtract 9 from R1
-      0x13121012,      // Assign R1, R2,  Add R1 and R2
-      0x03251112,      // load R1 with 5, subtract R2 from R1
-      0x12010000,      // Subtract R0 from R1
-      0x03510000,      //  R5 = 1
-      0x01590000,      //  R5 = R5 – 9  {R5 now -8}
-      0x00590000,      //  R5 = R5 + 9  {R5 now -1}
-      0x03121219,      // Load R1 with 2, Subtract R1 from R9
+      0x13100011,      // 00  Copy R0 to R1, Add 1 to R1
+      0x01120228,      // 01  Subtract 2 from R1, subtract R2 from 8
+      0x03120119,      // 02  Load R1 with 2, subtract 9 from R1
+      0x13121012,      // 03  Assign R1, R2,  Add R1 and R2
+      0x03251112,      // 04  load R1 with 5, subtract R2 from R1
+      0x12010000,      // 05  Subtract R0 from R1
+      0x03510000,      // 06  R5 = 1
+      0x01590000,      // 07  R5 = R5 – 9  {R5 now -8}
+      0x00590000,      // 08  R5 = R5 + 9  {R5 now -1}
+      0x03121219,      // 09 Load R1 with 2, Subtract R1 from R9
+      0x03121119,      // 10 Load R1 with 2, Subtract R9 from R1
+
+      // Double word register instructions
+      0x03880399,      // 11: R8 = 8, R9 = 9
+      
       -1},
   };
 
