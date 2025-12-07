@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 //
 // Experimental Schools Computer Simulator
 //
@@ -245,6 +245,7 @@ char tc_reg_buffer[MAX_TC_REG_BUF+1];
 
 void serial_help(void);
 void prompt(void);
+void prompt_breakpoint(void);
 
 int write_state_to_file(ESC_STATE *es, char *fn);
 int read_file_into_state(char *fn, ESC_STATE *es);
@@ -252,6 +253,8 @@ int cat_file(char *fn);
 
 int wfn_iar_address(ESC_STATE *es, void *fi, char *line);
 int wfn_iar_a_flag(ESC_STATE *es, void *fi, char *line);
+int wfn_breakpoint_address(ESC_STATE *es, void *fi, char *line);
+int wfn_breakpoint_a_flag(ESC_STATE *es, void *fi, char *line);
 int wfn_kb_register(ESC_STATE *es, void *fi, char *line);
 #if 0
 int wfn_address_register(ESC_STATE *es, void *fi, char *line);
@@ -446,6 +449,8 @@ void load_store_from_test(ESC_STATE *s, int test_number)
 
 int keypress = 0;
 int parameter = 0;
+int parameter_a_flag = 0;
+
 int auto_increment_parameter = 0;
 int auto_increment_address   = 0;
 char text_parameter[TEXT_PARAMETER_LEN+1] = "";
@@ -3729,22 +3734,22 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // (Rc) <= d - (Rc)
 	  register_assign_sub_literal_register(s, s->reginst_rc, s->reginst_literal, s->reginst_rc);
 
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
+	  // display_line_2(s, display);
+	  // display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
+	  // display_on_line(s, display, 4, "               ");
+	  // display_on_line(s, display, 5, "               ");
+	  // display_on_line(s, display, 6, "               ");
 	  break;
 	  
 	case 3:
 	  // (Rc) <= d
 	  register_assign_register_literal(s, s->reginst_rc, s->reginst_literal);
 
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 4, "               ");
-	  display_on_line(s, display, 5, "               ");
-	  display_on_line(s, display, 6, "               ");
+	  // display_line_2(s, display);
+	  // display_on_line(s, display, 3, "%s", display_register_and_contents(s, s->reginst_rc));
+	  // display_on_line(s, display, 4, "               ");
+	  // display_on_line(s, display, 5, "               ");
+	  // display_on_line(s, display, 6, "               ");
 	  break;
 
 	case 4:
@@ -3977,10 +3982,10 @@ void stage_c_decode(ESC_STATE *s, int display)
 	      
 	    }
 
-	  display_line_2(s, display);
-	  clear_lines_3_to_6(s, display);
-	  display_any_size_register_on_line(s, display, 3, s->reginst_rc,  CONTENTS);
-	  display_on_line(s, display, 6, "CL            %d", s->control_latch);
+	  // display_line_2(s, display);
+	  // clear_lines_3_to_6(s, display);
+	  // display_any_size_register_on_line(s, display, 3, s->reginst_rc,  CONTENTS);
+	  // display_on_line(s, display, 6, "CL            %d", s->control_latch);
 	  
 	  break;
 	  
@@ -3988,18 +3993,18 @@ void stage_c_decode(ESC_STATE *s, int display)
 	case 6:
 	  register_left_shift(s, s->reginst_rc, s->reginst_literal);
 
-	  display_line_2(s, display);
-	  clear_lines_3_to_6(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+	  // display_line_2(s, display);
+	  // clear_lines_3_to_6(s, display);
+	  // display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	  // Shift (Rc) right d places
 	case 7:
 	  register_right_shift(s, s->reginst_rc, s->reginst_literal);
 
-	  display_line_2(s, display);
-	  clear_lines_3_to_6(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+	  // display_line_2(s, display);
+	  // clear_lines_3_to_6(s, display);
+	  // display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 8:
@@ -4026,15 +4031,15 @@ void stage_c_decode(ESC_STATE *s, int display)
 	case 0:
 	  // Add registers
 	  register_assign_sum_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
-	  display_line_2(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+	  // display_line_2(s, display);
+	  // display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 1:
 	  // Subtract registers (Rc)-(Rd)
 	  register_assign_sub_register_register(s, s->reginst_rc, s->reginst_rc, s->reginst_rd);
-	  display_line_2(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+	  // display_line_2(s, display);
+	  // display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	case 2:
@@ -4044,15 +4049,15 @@ void stage_c_decode(ESC_STATE *s, int display)
 #endif
 
 	  register_assign_sub_register_register(s, s->reginst_rc, s->reginst_rd, s->reginst_rc);
-	  display_line_2(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+	  // display_line_2(s, display);
+	  // display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	case 3:
 	  // Register assign (Rc) <-(Rd)
 	  register_assign_register(s, s->reginst_rc, s->reginst_rd);
-	  display_line_2(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+	  // display_line_2(s, display);
+	  // display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	  // Copy right hand 6 digits of Rd into Rc. Works with single and double length registers
@@ -4070,8 +4075,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  set_any_size_rh6(s, s->reginst_rc, rh6);
 	  //printf("\nR[]=%08X", s->R[s->reginst_rc]);
 
-	  display_line_2(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+	  // display_line_2(s, display);
+	  // display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 5:
@@ -4082,16 +4087,16 @@ void stage_c_decode(ESC_STATE *s, int display)
 	case 6:
 	  register_left_shift(s, s->reginst_rc, read_any_size_register_absolute(s, s->reginst_rd));
 
-	  display_line_2(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+	  // display_line_2(s, display);
+	  // display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 	  
 	  // Shift (Rc) right (Rd) places
 	case 7:
 	  register_right_shift(s, s->reginst_rc, read_any_size_register_absolute(s, s->reginst_rd));
 
-	  display_line_2(s, display);
-	  display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+	  // display_line_2(s, display);
+	  // display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
 	  break;
 
 	case 8:
@@ -4110,11 +4115,11 @@ void stage_c_decode(ESC_STATE *s, int display)
               // 
               s->stop = 1;
               s->inst_update_display = 1;
-              display_line_2(s, DISPLAY_UPDATE);
-              display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
-              display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
-              display_on_line(s, DISPLAY_UPDATE, 5, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
-              display_on_line(s, DISPLAY_UPDATE, 6, "               ");
+              // display_line_2(s, DISPLAY_UPDATE);
+              // display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+              // display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+              // display_on_line(s, DISPLAY_UPDATE, 5, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+              // display_on_line(s, DISPLAY_UPDATE, 6, "               ");
 
             }
           else
@@ -4123,8 +4128,8 @@ void stage_c_decode(ESC_STATE *s, int display)
               // 
               s->stop = 1;
               s->inst_update_display = 1;
-              display_line_2(s, DISPLAY_UPDATE);
-              display_two_any_size_register_on_line(s, DISPLAY_UPDATE, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+              // display_line_2(s, DISPLAY_UPDATE);
+              // display_two_any_size_register_on_line(s, DISPLAY_UPDATE, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
             }
 	  break;
 	}
@@ -4188,11 +4193,11 @@ void stage_c_decode(ESC_STATE *s, int display)
 
 	  next_iar(s);
 	  
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "               ");
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
+	  // display_line_2(s, display);
+	  // display_on_line(s, display, 3, "               ");
+	  // display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  // display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  // display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
 	  break;
 	  
 	case 1:
@@ -4218,11 +4223,11 @@ void stage_c_decode(ESC_STATE *s, int display)
 #endif
 
           next_iar(s);
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "               ");
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
+	  // display_line_2(s, display);
+	  // display_on_line(s, display, 3, "               ");
+	  // display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  // display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  // display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
 	  break;
 	  
 	case 2:
@@ -4244,11 +4249,11 @@ void stage_c_decode(ESC_STATE *s, int display)
 #endif
 
           next_iar(s);
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "               ");
-	  display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
-	  display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
-	  display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
+	  // display_line_2(s, display);
+	  // display_on_line(s, display, 3, "               ");
+	  // display_on_line(s, display, 4, "%s", display_store_and_contents(s, s->inst_aa));
+	  // display_on_line(s, display, 5, "%s", display_register_and_contents(s, s->reginst_rc));
+	  // display_on_line(s, display, 6, "%s", display_register_and_contents(s, s->reginst_rd));
 	  break;
 	  
 	case 4:
@@ -4268,8 +4273,8 @@ void stage_c_decode(ESC_STATE *s, int display)
 	  // Unconditional branch
 	  // IAR already set up.
 
-	  display_line_2(s, display);
-	  display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
+	  // display_line_2(s, display);
+	  // display_on_line(s, display, 3, "%s", display_store_and_contents(s, s->inst_aa));
 	  break;
 
         case 5:
@@ -4595,10 +4600,59 @@ void stage_b_display(ESC_STATE *s, int display, int a)
     {
       // Register instructions
     case 0:
+      switch(s->inst_digit_b)
+        {
+        case 5:
+	  display_line_2(s, display);
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc,  CONTENTS);
+	  display_on_line(s, display, 6, "CL            %d", s->control_latch);
+          break;
+
+        default:
+          display_line_2(s, display);
+          clear_lines_3_to_6(s, display);
+          display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+          break;
+        }
+      break;
+      
     case 1:
-      display_line_2(s, display);
-      clear_lines_3_to_6(s, display);
-      display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+      switch(s->inst_digit_b)
+        {
+        case 9:
+          if( IS_EXTRACODE )
+            {
+              //
+              // Display X, Y, Z
+              // 
+              display_line_2(s, DISPLAY_UPDATE);
+              display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+              display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+              display_on_line(s, DISPLAY_UPDATE, 5, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+              display_on_line(s, DISPLAY_UPDATE, 6, "               ");
+
+            }
+          else
+            {
+              // Display (Rc) and (Rd)
+              // 
+              display_line_2(s, DISPLAY_UPDATE);
+              display_two_any_size_register_on_line(s, DISPLAY_UPDATE, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+            }
+
+          break;
+
+        default:
+          display_line_2(s, display);
+          clear_lines_3_to_6(s, display);
+
+          display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+          //display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+          break;
+        }
+      // display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+      // display_any_size_register_on_line(s, display, 3, s->reginst_rd, CONTENTS);
       break;
 
     case 2:
@@ -4717,10 +4771,60 @@ void stage_c_display(ESC_STATE *s, int display, int a)
     {
       // Register instructions
     case 0:
+      switch(s->inst_digit_b)
+        {
+        case 5:
+	  display_line_2(s, display);
+	  clear_lines_3_to_6(s, display);
+	  display_any_size_register_on_line(s, display, 3, s->reginst_rc,  CONTENTS);
+	  display_on_line(s, display, 6, "CL            %d", s->control_latch);
+          break;
+
+        default:
+          display_line_2(s, display);
+          clear_lines_3_to_6(s, display);
+          display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+          break;
+        }
+      
+      break;
+          
     case 1:
-      display_line_2(s, display);
-      clear_lines_3_to_6(s, display);
-      display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+      switch(s->inst_digit_b)
+        {
+        case 9:
+                    if( IS_EXTRACODE )
+            {
+              //
+              // Display X, Y, Z
+              // 
+              display_line_2(s, DISPLAY_UPDATE);
+              display_on_line(s, DISPLAY_UPDATE, 3, "%3X    %s", s->Aa1, display_store_word(load_from_store(s, s->Aa1)));
+              display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
+              display_on_line(s, DISPLAY_UPDATE, 5, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
+              display_on_line(s, DISPLAY_UPDATE, 6, "               ");
+
+            }
+          else
+            {
+              // Display (Rc) and (Rd)
+              // 
+              display_line_2(s, DISPLAY_UPDATE);
+              display_two_any_size_register_on_line(s, DISPLAY_UPDATE, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+            }
+
+          break;
+
+        default:
+          display_line_2(s, display);
+          clear_lines_3_to_6(s, display);
+
+          display_two_any_size_register_on_line(s, DISPLAY_UPDATE, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+          //display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+          break;
+        }
+      // display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
+      // display_any_size_register_on_line(s, display, 3, s->reginst_rd, CONTENTS);
       break;
 
     case 2:
@@ -5473,6 +5577,7 @@ void state_esc_normal_reset(FSM_DATA *fs, TOKEN tok)
   s->stage = ' ';
   clear_keyboard_register(s);
 
+  
   s->extracode         = 0;
   s->exiting_extracode = 0;
   
@@ -5511,6 +5616,10 @@ void state_esc_ki_reset(FSM_DATA *fs, TOKEN tok)
   s = (ESC_STATE *)fs;
 
   // Everything cleared except IAR
+
+  // Unreachable address
+  s->breakpoint.address = 0xFFF;
+  s->breakpoint.a_flag  = 0;
 
   s->stage = ' ';
   s->keyboard_register = 0x00;
@@ -5892,7 +6001,18 @@ void state_esc_execute(FSM_DATA *es, TOKEN tok)
 #if DEBUG_EXECUTE
       printf("  EXEC:RUN(%s%c)", display_iar(s, SPEC_IAR), s->stage);
 #endif
-
+#if 1
+      // Check for breakpoint
+      if( s->breakpoint_on && (s->breakpoint.address == s->iar.address) && (s->breakpoint.a_flag == s->iar.a_flag) )
+        {
+          if( (s->stop != 1) && (s->run != 0) )
+            {
+              printf("\n**** Breakpoint at %s ****", display_iar(s, SPEC_BREAKPOINT));
+              s->stop = 1;
+              s->run = 0;
+            }
+        }
+#endif 
       // Check for stop
       if( s->stop )
 	{
@@ -6862,15 +6982,17 @@ void cli_update_display(void)
   s->update_display = 1;
 }
 
-char str_state[500];
+char str_state[600];
 
 char *get_string_state(void)
 {
   char line[80];
   ESC_STATE *s = &esc_state;
   
-  sprintf(str_state, "\nIAR           : %s", display_iar(s, SPEC_FORCE_IAR));
-  sprintf(line,      "\nAux IAR       : %s", display_iar(s, SPEC_FORCE_AUX_IAR));
+  sprintf(str_state, "\nIAR: %s", display_iar(s, SPEC_FORCE_IAR));
+  sprintf(line,      "   Aux IAR: %s", display_iar(s, SPEC_FORCE_AUX_IAR));
+  strcat(str_state, line);
+  sprintf(line,      "\nBreakpoint: %s %s", s->breakpoint_on?"ON ":"OFF", display_iar(s, SPEC_BREAKPOINT));
   strcat(str_state, line);
   sprintf(line,      "\nKI            : %s", display_register_double_word(s->keyboard_register));
   strcat(str_state, line);
@@ -7099,6 +7221,131 @@ void cli_check(void)
 {
   queue_token(TOK_KEY_CHECK);
 }
+
+//------------------------------------------------------------------------------
+//
+// Set the breakpoint
+//
+// If parameter ends in A then that is a set a_flag, otherwise set flag to 0
+//
+
+void cli_breakpoint_old(void)
+{
+  ESC_STATE *s = &esc_state;
+  
+  if( parameter_a_flag )
+    {
+      s->breakpoint.a_flag = 1;
+    }
+  else
+    {
+      s->breakpoint.a_flag = 0;
+    }
+  
+  s->breakpoint.address = parameter;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Set breakpoint address
+//
+
+void cli_breakpoint(void)
+{
+  int  key;
+  int done = 0;
+  ESC_STATE *s = &esc_state;
+  
+  printf("\nEnter breakpoint address: (ESC or <RETURN> to exit)");
+  
+  parameter = 0;
+  parameter_a_flag = 0;
+  
+  while(!done)
+    {
+      if( ((key = getchar_timeout_us(1000)) != PICO_ERROR_TIMEOUT))
+	{
+	  switch(key)
+	    {
+	    case '0':
+	    case '1':
+	    case '2':
+	    case '3':
+	    case '4':
+	    case '5':
+	    case '6':
+	    case '7':
+	    case '8':
+	    case '9':
+	      parameter *= 16;
+	      parameter += (key - '0');
+	      prompt_breakpoint();
+	      break;
+
+              // A digit for IAR entry of breakpoint
+            case 'A':
+            case 'a':
+              parameter_a_flag = 1;
+              prompt_breakpoint();
+              break;
+
+#if 1
+            case '-':
+	      parameter *= 16;
+	      parameter += 0xD;
+              prompt_breakpoint();
+              break;
+
+            case '+':
+	      parameter *= 16;
+	      parameter += 0xC;
+              prompt_breakpoint();
+              break;
+#endif         
+	    case 27:
+	    case 13:
+	    case 10:
+              // Set the breakpoint
+              s->breakpoint.address = parameter;
+              s->breakpoint.a_flag  = parameter_a_flag;            
+	      done = 1;
+	      break;
+	      
+	    default:
+	      break;
+	    }
+	}
+      else
+	{
+	  // I have found that I need to send something if the serial USB times out
+	  // otherwise I get lockups on the serial communications.
+	  // So, if we get a timeout we send a space and backspace it. And
+	  // flush the stdio, but that didn't fix the problem but seems like a good idea.
+	  stdio_flush();
+	  //printf(" \b");
+	}
+    }
+}
+
+void cli_breakpoint_toggle(void)
+{
+  ESC_STATE *s = &esc_state;
+
+  s->breakpoint_on = !s->breakpoint_on;
+  
+  if( s->breakpoint_on )
+    {
+      printf("\nBreakpoint ON");    
+    }
+  else
+    {
+      printf("\nBreakpoint OFF");    
+    }
+  
+}
+
+
+//------------------------------------------------------------------------------
 
 void cli_load_test_code(void)
 {
@@ -10639,6 +10886,7 @@ void cli_enter_parameter()
   printf("\nEnter parameter: (ESC or <RETURN> to exit)");
   
   parameter = 0;
+  parameter_a_flag = 0;
   
   while(!done)
     {
@@ -10660,7 +10908,26 @@ void cli_enter_parameter()
 	      parameter += (key - '0');
 	      prompt();
 	      break;
-	      
+
+              // A digit for IAR entry of breakpoint
+            case 'A':
+            case 'a':
+              parameter_a_flag = 1;
+              break;
+
+#if 0
+            case '-':
+	      parameter *= 10;
+	      parameter += 0xD;
+	      prompt();
+              break;
+
+            case '+':
+	      parameter *= 10;
+	      parameter += 0xC;
+	      prompt();
+              break;
+#endif         
 	    case 27:
 	    case 13:
 	    case 10:
@@ -10732,6 +10999,8 @@ FIELD_INFO  field_info[] =
   {
     {"*IAR_ADDRESS:",            wfn_iar_address},
     {"*IAR_A_FLAG:",             wfn_iar_a_flag},
+    {"*BREAKPOINT_ADDRESS:",     wfn_breakpoint_address},
+    {"*BREAKPOINT_A_FLAG:",      wfn_breakpoint_a_flag},
     {"*KB_REGISTER:",            wfn_kb_register},
 #if 0
     {"*ADDRESS_REGISTER_%*d:",   wfn_address_register},
@@ -10758,6 +11027,37 @@ int wfn_iar_address(ESC_STATE *es, void *fi, char *line)
       es->iar.address = (ADDRESS)value;
       
       printf("\nIAR address now:%08X", es->iar.address);
+      return(1);
+    }
+  
+  return(0);
+}
+
+int wfn_breakpoint_address(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
+  
+  if( sscanf(line, "*BREAKPOINT_ADDRESS:%X", &value) == 1 )
+    {
+      es->breakpoint.address = (ADDRESS)value;
+      
+      printf("\nBreakpoint now:%03X", es->breakpoint.address);
+      return(1);
+    }
+  
+  return(0);
+}
+
+int wfn_breakpoint_a_flag(ESC_STATE *es, void *fi, char *line)
+{
+  FIELD_INFO *info = (FIELD_INFO *) fi;
+  int value;
+  
+  if( sscanf(line, "*BREAKPOINT_A_FLAG:%X", &value) == 1 )
+    {
+      es->breakpoint.a_flag = (BOOLEAN) value;
+      printf("\nIAR a_flag now:%08X", es->breakpoint.a_flag);
       return(1);
     }
   
@@ -11053,6 +11353,8 @@ int write_state_to_file(ESC_STATE *es, char *fn)
 
   f_printf(&fp, "\n*IAR_ADDRESS:%08X",          es->iar.address);
   f_printf(&fp, "\n*IAR_A_FLAG:%08X",           es->iar.a_flag);
+  f_printf(&fp, "\n*BREAKPOINT_ADDRESS:%03X",   es->breakpoint.address);
+  f_printf(&fp, "\n*BREAKPOINT_A_FLAG:%03X",    es->breakpoint.a_flag);
   f_printf(&fp, "\n*KB_REGISTER:%08X",          es->keyboard_register);
 #if 0
   f_printf(&fp, "\n*ADDRESS_REGISTER_0:%08X",   es->address_register0);
@@ -11387,6 +11689,16 @@ SERIAL_COMMAND serial_cmds[] =
       cli_load_iar,
     },
     {
+      'B',
+      "Breakpoint",
+      cli_breakpoint,
+    },
+    {
+      '~',
+      "Breakpoint toggle",
+      cli_breakpoint_toggle,
+    },
+    {
       'A',
       "Load ADDR",
       cli_load_addr,
@@ -11570,6 +11882,14 @@ void prompt(void)
   printf("\n\n(Text Parameter:'%s'", text_parameter);
   printf("\n(Parameter (Program Num):%d (%04X) %c, Address (Slot Num):%d (%04X) %c) >",
 	 parameter, parameter, auto_increment_parameter?'A':' ',
+	 address,   address,   auto_increment_address?  'A':' ');
+}
+
+void prompt_breakpoint(void)
+{
+  printf("\n\n(Text Parameter:'%s'", text_parameter);
+  printf("\n(Breakpoint:%03X%c %c, Address (Slot Num):%d (%04X) %c) >",
+	 parameter, parameter_a_flag?'A':' ', auto_increment_parameter?'A':' ',
 	 address,   address,   auto_increment_address?  'A':' ');
 }
 
@@ -12142,6 +12462,11 @@ char *display_iar(ESC_STATE *s, IAR_SPEC spec_iar)
     case SPEC_AUX_IAR:
       val = s->aux_iar;
       force = 0;
+      break;
+
+    case SPEC_BREAKPOINT:
+      val = s->breakpoint;
+      force = 1;
       break;
 
     case SPEC_FORCE_IAR:

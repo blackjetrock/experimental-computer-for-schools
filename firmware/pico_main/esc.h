@@ -173,7 +173,7 @@ typedef struct _ESC_STATE
   
   SINGLE_WORD    keyboard_register;
   int            dot_entered;
-
+  
   ADDRESS address_register;
   
   ADDRESS address_register0;
@@ -184,6 +184,8 @@ typedef struct _ESC_STATE
 
   IAR iar;
   IAR aux_iar;
+  IAR breakpoint;
+  int breakpoint_on;
   
   ADDRESS link_register;
   
@@ -261,6 +263,7 @@ typedef enum
     SPEC_IAR,
     SPEC_FORCE_AUX_IAR,
     SPEC_FORCE_IAR,
+    SPEC_BREAKPOINT
   } IAR_SPEC;
 
 char *display_iar(ESC_STATE *s, IAR_SPEC aux);
