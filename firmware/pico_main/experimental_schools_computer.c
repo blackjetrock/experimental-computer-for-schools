@@ -7743,6 +7743,18 @@ TOKEN test_seq_1[] =
     TOK_KEY_C,                 //  13A:
     TOK_TEST_CHECK_RES,
 
+    TOK_KEY_C,                 //  14:
+    TOK_TEST_CHECK_RES,
+    
+    TOK_KEY_C,                 //  14A:
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 //  15:
+    TOK_TEST_CHECK_RES,
+    
+    TOK_KEY_C,                 //  15A:
+    TOK_TEST_CHECK_RES,
+
     TOK_NONE,
   };
 
@@ -7845,7 +7857,36 @@ TEST_INFO test_res_1[] =
     {TC_MUST_BE, 0xC000000000000008},
     {TC_REG_N,   9},
     {TC_MUST_BE, 0xC000000000000010},
+    {TC_END_SECTION, 0},
+    
+    // 14:
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xC000000000000008},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xC000000000000002},
+    {TC_END_SECTION, 0},
+    
+    // 14A:
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xC000000000000008},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xC000000000000006},
+    {TC_END_SECTION, 0},
+    
+    // 15:
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xC000000000000008},
+    {TC_REG_N,   1},
+    {TC_MUST_BE, 0xC0000008},
+    {TC_END_SECTION, 0},
 
+    // 15A:
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xC000000000000005},
+    {TC_REG_N,   2},
+    {TC_MUST_BE, 0xC0000005},
+    {TC_END_SECTION, 0},
+    
     {TC_END,     0},
 
   };
@@ -7867,8 +7908,10 @@ TEST_LOAD_STORE test_1_store =
 
       // Double word register instructions
       0x03880399,      // 11: R8 = 8, R9 = 9
-      0x00910181,      // R9=R9+1, R8=R8-1
-      0x02851089,      // R8=5-R8, R8+R8+R9
+      0x00910181,      // 12: R9=R9+1, R8=R8-1
+      0x02851089,      // 13: R8=5-R8, R8+R8+R9
+      0x11981298,      // 14: R9=R9-R8, R9=R8-R9
+      0x13181392,      // 15: R1=R8,    R9=R2
       -1},
   };
 
@@ -8293,28 +8336,34 @@ TOKEN test_seq_6[] =
     TOK_KEY_0,
     TOK_KEY_LOAD_IAR,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //00:
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //00A:
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //01:
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //01A:
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //02:
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //02A:
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //03:
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //03A:
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,            //04:
+    TOK_TEST_CHECK_RES,
+    
+    TOK_KEY_C,            //04A:
     TOK_TEST_CHECK_RES,
 
     TOK_NONE,
@@ -8353,6 +8402,14 @@ TEST_INFO test_res_6[] =
 
     {TC_REG_N,   9},
     {TC_MUST_BE, 0xc000456789012000},
+    {TC_END_SECTION, 0},
+
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xc000000000000002},
+    {TC_END_SECTION, 0},
+    
+    {TC_REG_N,   4},
+    {TC_MUST_BE, 0xc0004560},
 
     {TC_END,     0},
   };
@@ -8360,10 +8417,11 @@ TEST_INFO test_res_6[] =
 TEST_LOAD_STORE test_6_store =
   {
     {
-      0x06310632,
-      0x16401641,
-      0x06810682,
-      0x16901691,
+      0x06310632,  //00:
+      0x16401641,  //01:
+      0x06810682,  //02:
+      0x16901691,  //03:
+      0x03921749,  //04: R9=2, R shift R4 by R9
       -1},
   };
 
