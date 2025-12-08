@@ -8412,7 +8412,7 @@ TEST_INFO test_res_6[] =
     {TC_END_SECTION, 0},
     
     {TC_REG_N,   4},
-    {TC_MUST_BE, 0xc0004560},
+    {TC_MUST_BE, 0xc0600000},
     {TC_END_SECTION, 0},
     
     {TC_REG_N,   8},
@@ -8428,8 +8428,8 @@ TEST_LOAD_STORE test_6_store =
       0x16401641,  //01:
       0x06810682,  //02:
       0x16901691,  //03:
-      0x03921749,  //04: R9=2, R shift R4 by R9
-      0x16890000,  //05: R8 R shift by R9
+      0x03921649,  //04: R9=2, L shift R4 by R9
+      0x16890000,  //05: R8 L shift by R9
       -1},
   };
 
@@ -8463,6 +8463,15 @@ TOKEN test_seq_7[] =
     TOK_KEY_NORMAL_RESET,
     TOK_KEY_0,
     TOK_KEY_LOAD_IAR,
+
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
     TOK_TEST_CHECK_RES,
@@ -8524,6 +8533,18 @@ TEST_INFO test_res_7[] =
 
     {TC_REG_N,   9},
     {TC_MUST_BE, 0xc000000123456789},
+    {TC_END_SECTION, 0},
+    
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xc000000000000002},
+    {TC_END_SECTION, 0},
+    
+    {TC_REG_N,   4},
+    {TC_MUST_BE, 0xc0000001},
+    {TC_END_SECTION, 0},
+    
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xc000000001234567},
 
     {TC_END,     0},
   };
@@ -8531,10 +8552,12 @@ TEST_INFO test_res_7[] =
 TEST_LOAD_STORE test_7_store =
   {
     {
-      0x07310732,
-      0x17401741,
-      0x07810782,
-      0x17901791,
+      0x07310732,  //00:
+      0x17401741,  //01:
+      0x07810782,  //02:
+      0x17901791,  //03:
+      0x03921749,  //04: R9=2, R shift R4 by R9
+      0x17890000,  //05: R8 R shift by R9
       -1},
   };
 
