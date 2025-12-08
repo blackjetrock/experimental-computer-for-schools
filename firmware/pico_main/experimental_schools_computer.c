@@ -8186,46 +8186,71 @@ TOKEN test_seq_5[] =
     TOK_KEY_0,
     TOK_KEY_LOAD_IAR,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //00:
     TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //01:
     TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //02:
     TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //03:
     TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //04:
     TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //05:
     TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
     TOK_TEST_CHECK_RES,
 
-    TOK_KEY_C,
+    TOK_KEY_C,            //06:
     TOK_TEST_CHECK_RES,
 
     TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,            //07:
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,            //08:
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,            //08A
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,            //09
+    TOK_KEY_C,            //09A
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,            //10
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,            //10A
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,            //11
     TOK_TEST_CHECK_RES,
 
     TOK_NONE,
@@ -8234,7 +8259,39 @@ TOKEN test_seq_5[] =
 TEST_INFO test_res_5[] =
   {
     // Test control latch after TEST instructions
-    {TC_CL,          0},
+    {TC_CL,          0},  // 00:
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
+
+    {TC_CL,          0},  // 00A:
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
+
+    {TC_CL,          0},  // 01:
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
+
+    {TC_CL,          0},  // 01A:
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
+
+    {TC_CL,          0},  // 02:
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
+
+    {TC_CL,          0},  // 02A:
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
+
+    {TC_CL,          0},  // 03:
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
+
+    {TC_CL,          0},  // 03A:
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
+
+    {TC_CL,          0},  // 04:
     {TC_MUST_BE,     1},
     {TC_END_SECTION, 0},
 
@@ -8242,7 +8299,7 @@ TEST_INFO test_res_5[] =
     {TC_MUST_BE,     0},
     {TC_END_SECTION, 0},
 
-    {TC_CL,          0},
+    {TC_CL,          0},  // 05:
     {TC_MUST_BE,     1},
     {TC_END_SECTION, 0},
 
@@ -8250,44 +8307,43 @@ TEST_INFO test_res_5[] =
     {TC_MUST_BE,     0},
     {TC_END_SECTION, 0},
 
-    {TC_CL,          0},
+    {TC_CL,          0},  // 06:
     {TC_MUST_BE,     1},
     {TC_END_SECTION, 0},
 
     {TC_CL,          0},
     {TC_MUST_BE,     0},
     {TC_END_SECTION, 0},
-
-    {TC_CL,          0},
+    
+    {TC_CL,          0},   // 07:
     {TC_MUST_BE,     1},
     {TC_END_SECTION, 0},
 
-    {TC_CL,          0},
+    {TC_CL,          0},   // 07A:
     {TC_MUST_BE,     0},
     {TC_END_SECTION, 0},
 
-    {TC_CL,          0},
+    {TC_CL,          0},   // 08:
+    {TC_MUST_BE,     0},
+    {TC_END_SECTION, 0},
+
+    {TC_CL,          0},   // 08A:
+    {TC_MUST_BE,     1},
+    {TC_END_SECTION, 0},
+    
+    {TC_CL,          0},   // 09A:
     {TC_MUST_BE,     1},
     {TC_END_SECTION, 0},
 
-    {TC_CL,          0},
+    {TC_CL,          0},   // 10:
     {TC_MUST_BE,     0},
-    {TC_END_SECTION, 0},
 
-    {TC_CL,          0},
-    {TC_MUST_BE,     1},
-    {TC_END_SECTION, 0},
-
-    {TC_CL,          0},
+    {TC_CL,          0},   // 10A:
     {TC_MUST_BE,     0},
-    {TC_END_SECTION, 0},
 
-    {TC_CL,          0},
-    {TC_MUST_BE,     1},
-    {TC_END_SECTION, 0},
-
-    {TC_CL,          0},
+    {TC_CL,          0},   // 11:
     {TC_MUST_BE,     0},
+
 
     {TC_END,     0},
   };
@@ -8295,13 +8351,18 @@ TEST_INFO test_res_5[] =
 TEST_LOAD_STORE test_5_store =
   {
     {
-      0x05000510,      // TEST R0=0, TEST R1=0
-      0x05110501,      // TEST R1>0, TEST R0>0
-      0x05220502,      // TEST R1<0, TEST R0<0
-      0x05330543,      // TEST LH digit R3=0, TEST LH digit R4=0
-      0x05440534,      // TEST RH digit R4=0, TEST RH digit R3=0
-      0x05830593,      // TEST LH digit R8=0, TEST LH digit R9=0
-      0x05940584,      // TEST RH digit R9=0, TEST RH digit R8=0
+      0x05000510,      // 00: TEST R0=0, TEST R1=0
+      0x05110501,      // 01: TEST R1>0, TEST R0>0
+      0x05220502,      // 02: TEST R1<0, TEST R0<0
+      0x05330543,      // 03: TEST LH digit R3=0, TEST LH digit R4=0
+      0x05440534,      // 04: TEST RH digit R4=0, TEST RH digit R3=0
+      0x05830593,      // 05: TEST LH digit R8=0, TEST LH digit R9=0
+      0x05940584,      // 06: TEST RH digit R9=0, TEST RH digit R8=0
+      0x05810582,      // 07: TEST R8>0,          TEST R8<0
+      0x05910592,      // 08: TEST R9>0,          TEST R9<0
+      0x03900590,      // 09: R9 = 0,             TEST R9=0
+      0x05800591,      // 10: TEST R8 = 0         TEST R9>0
+      0x05920000,      // 11: TEST R9<0
       -1},
   };
 
