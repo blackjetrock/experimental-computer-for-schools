@@ -4393,7 +4393,7 @@ void stage_c_decode(ESC_STATE *s, int display)
       stage_c_display(s, display, s->inst_digit_a);
     }
 
-  if( s->exiting_extracode )
+  if( s->exiting_extracode && !s->run)
     {
 #if DEBUG_EXTRACODE
       printf("\nExiting extracode...");
@@ -4638,7 +4638,7 @@ void stage_b_display(ESC_STATE *s, int display, int a)
               // Display (Rc) and (Rd)
               // 
               display_line_2(s, DISPLAY_UPDATE);
-              display_two_any_size_register_on_line(s, DISPLAY_UPDATE, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+              display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
             }
 
           break;
@@ -4793,7 +4793,7 @@ void stage_c_display(ESC_STATE *s, int display, int a)
       switch(s->inst_digit_b)
         {
         case 9:
-                    if( IS_EXTRACODE )
+          if( IS_EXTRACODE )
             {
               //
               // Display X, Y, Z
@@ -4803,30 +4803,30 @@ void stage_c_display(ESC_STATE *s, int display, int a)
               display_on_line(s, DISPLAY_UPDATE, 4, "%3X    %s", s->Aa2, display_store_word(load_from_store(s, s->Aa2)));
               display_on_line(s, DISPLAY_UPDATE, 5, "%3X    %s", s->Aa3, display_store_word(load_from_store(s, s->Aa3)));
               display_on_line(s, DISPLAY_UPDATE, 6, "               ");
-
+              
             }
           else
             {
               // Display (Rc) and (Rd)
               // 
-              display_line_2(s, DISPLAY_UPDATE);
-              display_two_any_size_register_on_line(s, DISPLAY_UPDATE, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+              display_line_2(s, display);
+              display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
             }
-
+          
           break;
 
         default:
           display_line_2(s, display);
           clear_lines_3_to_6(s, display);
 
-          display_two_any_size_register_on_line(s, DISPLAY_UPDATE, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
+          display_two_any_size_register_on_line(s, display, 3, s->reginst_rc, s->reginst_rd, CONTENTS);
           //display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
           break;
         }
       // display_any_size_register_on_line(s, display, 3, s->reginst_rc, CONTENTS);
       // display_any_size_register_on_line(s, display, 3, s->reginst_rd, CONTENTS);
       break;
-
+      
     case 2:
     case 3:
     case 4:
@@ -6183,7 +6183,7 @@ typedef struct {
   char *val1;
 } SETUP_ENTRY;
 
-int suppressed_display = 0;
+int suppressed_display = 1;
 int setup_step_extracode = 0;
 
 SETUP_ENTRY setup_entries[] =
