@@ -2281,7 +2281,7 @@ void register_assign_sub_literal_register(ESC_STATE *s, int dest, int literal, i
       literal = SET_DW_SIGN((REGISTER_DOUBLE_WORD) literal,   WORD_SIGN_PLUS);
 
     //DW_REG_CONTENTS(dest) = bcd_dw_addition((REGISTER_DOUBLE_WORD) literal, t);
-      write_register(s, dest, bcd_dw_addition((REGISTER_SINGLE_WORD) literal, t));
+      write_register(s, dest, bcd_dw_addition((REGISTER_DOUBLE_WORD) literal, t));
     }
 }
 
@@ -7733,6 +7733,16 @@ TOKEN test_seq_1[] =
     TOK_KEY_C,                 // 
     TOK_TEST_CHECK_RES,
 
+    TOK_KEY_C,                 //  12: 
+    TOK_KEY_C,                 // 
+    TOK_TEST_CHECK_RES,
+
+    TOK_KEY_C,                 //  13:
+    TOK_TEST_CHECK_RES,
+    
+    TOK_KEY_C,                 //  13A:
+    TOK_TEST_CHECK_RES,
+
     TOK_NONE,
   };
 
@@ -7814,6 +7824,27 @@ TEST_INFO test_res_1[] =
     {TC_MUST_BE, 0xC000000000000008},
     {TC_REG_N,   9},
     {TC_MUST_BE, 0xC000000000000009},
+    {TC_END_SECTION, 0},
+
+    // 12:
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xC000000000000007},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xC000000000000010},
+    {TC_END_SECTION, 0},
+    
+    // 13:
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xD000000000000002},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xC000000000000010},
+    {TC_END_SECTION, 0},
+    
+    // 13A:
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xC000000000000008},
+    {TC_REG_N,   9},
+    {TC_MUST_BE, 0xC000000000000010},
 
     {TC_END,     0},
 
@@ -7836,7 +7867,8 @@ TEST_LOAD_STORE test_1_store =
 
       // Double word register instructions
       0x03880399,      // 11: R8 = 8, R9 = 9
-      
+      0x00910181,      // R9=R9+1, R8=R8-1
+      0x02851089,      // R8=5-R8, R8+R8+R9
       -1},
   };
 
@@ -12091,6 +12123,12 @@ void suppress_output(char *t)
           continue;
         }
 
+      // Skip the '&' that is for pixel spacing.
+      if( suppressed[i] == '&' )
+        {
+          continue;
+        }
+      
       // If we see anything other than a zero then we stop, as only leading zeroes are being removed.
       if( (suppressed[i] != '0' ) )
         {
@@ -12548,7 +12586,7 @@ char *display_presumptive_address_2(ESC_STATE *s)
 // A flag is provided to indicate whether the display should be updated (on OLED etc)
 //
 // If the string starts with a '&' then the data is a value. That needs special spacing to
-// accomodate the decimal poijnt and also match the original.
+// accomodate the decimal point and also match the original.
 
 char display_line[NUM_LINES][MAX_LINE+3];
 
@@ -12786,7 +12824,7 @@ void update_computer_display(ESC_STATE *es)
 #endif
     }
 
-#if DEBUG_DISPLAY
+#if DEBUG_DISPLAY_SCREEN
   // Now update the display output device(s)
   printf("\n%s\n", dsp);
 #endif
