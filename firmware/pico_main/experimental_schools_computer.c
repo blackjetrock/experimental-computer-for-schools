@@ -8366,6 +8366,9 @@ TOKEN test_seq_6[] =
     TOK_KEY_C,            //04A:
     TOK_TEST_CHECK_RES,
 
+    TOK_KEY_C,            //05:
+    TOK_TEST_CHECK_RES,
+
     TOK_NONE,
   };
 
@@ -8410,7 +8413,11 @@ TEST_INFO test_res_6[] =
     
     {TC_REG_N,   4},
     {TC_MUST_BE, 0xc0004560},
-
+    {TC_END_SECTION, 0},
+    
+    {TC_REG_N,   8},
+    {TC_MUST_BE, 0xc000678901200000},
+    
     {TC_END,     0},
   };
 
@@ -8422,6 +8429,7 @@ TEST_LOAD_STORE test_6_store =
       0x06810682,  //02:
       0x16901691,  //03:
       0x03921749,  //04: R9=2, R shift R4 by R9
+      0x16890000,  //05: R8 R shift by R9
       -1},
   };
 
