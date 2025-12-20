@@ -13377,7 +13377,10 @@ int main(void)
       printf("\n/ESC directory found");
     }
   unmount_sd();
-  
+
+  // Read auto.esc into memory, if there is one
+  read_file_into_state("auto.esc", &esc_state);
+    
   sleep_ms(1000);
 #endif
 
