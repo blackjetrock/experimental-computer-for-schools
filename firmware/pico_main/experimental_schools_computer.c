@@ -11421,7 +11421,7 @@ int wfn_step_extracode(ESC_STATE *es, void *fi, char *line)
   
   if( sscanf(line, "*STEP_EXTRACODE:%X", &value) == 1 )
     {
-      suppressed_display = (ADDRESS)value;
+      setup_step_extracode = (ADDRESS)value;
       
       printf("\nStep_extracode now:%08X", setup_step_extracode);
       return(1);
