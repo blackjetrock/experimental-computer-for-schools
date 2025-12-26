@@ -34,7 +34,9 @@ add_executable(escw
   dnsserver/dnsserver.c
   ../pico_main/oled.c
   ../pico_main/sdcard.c
-
+  ../pico_main/extracode.c
+  ../pico_main/extracode_fp.c
+  ../pico_main/extracode_basic.c
   )
 
 #add_executable(escw

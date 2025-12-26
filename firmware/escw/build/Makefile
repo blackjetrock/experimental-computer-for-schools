@@ -4763,6 +4763,78 @@ home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/ex
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c.s
 .PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.c.s
 
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.o: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.o
+
+# target to build an object file
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o
+
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.i: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.i
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.i
+
+# target to preprocess a source file
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.i
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.i
+
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.s: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.s
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.s
+
+# target to generate assembly for a file
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.s
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.s
+
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.o: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.o
+
+# target to build an object file
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o
+
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.i: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.i
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.i
+
+# target to preprocess a source file
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.i
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.i
+
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.s: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.s
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.s
+
+# target to generate assembly for a file
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.s
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.s
+
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.o: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.o
+
+# target to build an object file
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o
+
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.i: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.i
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.i
+
+# target to preprocess a source file
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.i
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.i
+
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.s: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.s
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.s
+
+# target to generate assembly for a file
+home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/escw.dir/build.make CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.s
+.PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.s
+
 home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/fsms.o: home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/fsms.c.o
 .PHONY : home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/fsms.o
 
@@ -5777,6 +5849,15 @@ help:
 	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.o"
 	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.i"
 	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/experimental_schools_computer.s"
+	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.o"
+	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.i"
+	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.s"
+	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.o"
+	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.i"
+	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.s"
+	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.o"
+	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.i"
+	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.s"
 	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/fsms.o"
 	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/fsms.i"
 	@echo "... home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/fsms.s"

@@ -198,10 +198,52 @@ CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/f
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.s"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c -o CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.s
 
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o -MF CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o.d -o CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o -c /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c
+
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c > CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.i
+
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c -o CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.s
+
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o -MF CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o.d -o CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o -c /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c
+
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c > CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.i
+
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c -o CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.s
+
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o: CMakeFiles/escw.dir/flags.make
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o: /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o: CMakeFiles/escw.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o -MF CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o.d -o CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o -c /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c
+
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.i"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c > CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.i
+
+CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.s"
+	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c -o CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.s
+
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i: cmake_force
@@ -215,7 +257,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i: cmake_force
@@ -229,7 +271,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o: /home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o -c /home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.i: cmake_force
@@ -243,7 +285,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.i: cmake_force
@@ -257,7 +299,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_platform_pani
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.o: /home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.o -c /home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c.i: cmake_force
@@ -271,7 +313,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/hardware_claim/claim.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.i: cmake_force
@@ -285,7 +327,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync/sync
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.i: cmake_force
@@ -299,7 +341,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_sync_spin
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.i: cmake_force
@@ -312,7 +354,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.i: cmake_force
@@ -326,7 +368,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_irq/irq_h
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.o: /home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.o -c /home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.i: cmake_force
@@ -340,7 +382,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/sem.c.s: cma
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.o: /home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.o -c /home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.i: cmake_force
@@ -354,7 +396,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/lock_core.c.
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.o: /home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.o -c /home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.i: cmake_force
@@ -368,7 +410,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/mutex.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.o: /home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.o -c /home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_section.c.i: cmake_force
@@ -382,7 +424,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_sync/critical_sec
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.o: /home/menadue/pico/pico-sdk/src/common/pico_time/time.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.o -c /home/menadue/pico/pico-sdk/src/common/pico_time/time.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.i: cmake_force
@@ -396,7 +438,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/time.c.s: cm
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.o: /home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.o -c /home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_helper.c.i: cmake_force
@@ -410,7 +452,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_time/timeout_help
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.i: cmake_force
@@ -424,7 +466,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_timer/tim
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.o: /home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.o -c /home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.i: cmake_force
@@ -438,7 +480,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/datetime.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.o: /home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.o -c /home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.i: cmake_force
@@ -452,7 +494,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/pheap.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.o: /home/menadue/pico/pico-sdk/src/common/pico_util/queue.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.o -c /home/menadue/pico/pico-sdk/src/common/pico_util/queue.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.i: cmake_force
@@ -466,7 +508,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/common/pico_util/queue.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.i: cmake_force
@@ -480,7 +522,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_uart/uart
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i: cmake_force
@@ -494,7 +536,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_clocks/cl
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.i: cmake_force
@@ -508,7 +550,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i: cmake_force
@@ -522,7 +564,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i: cmake_force
@@ -536,7 +578,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_watchdog/
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.i: cmake_force
@@ -550,7 +592,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_ticks/tic
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i: cmake_force
@@ -564,7 +606,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootr
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.i: cmake_force
@@ -578,7 +620,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bootrom/bootr
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.i: cmake_force
@@ -592,7 +634,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_boot_lock
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.i: cmake_force
@@ -606,7 +648,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_flash/flash.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i: cmake_force
@@ -619,7 +661,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.i: cmake_force
@@ -633,7 +675,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_divider/d
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i: cmake_force
@@ -647,7 +689,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime/runti
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.i: cmake_force
@@ -661,7 +703,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.i: cmake_force
@@ -675,7 +717,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.i: cmake_force
@@ -688,7 +730,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_runtime_init/
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.i: cmake_force
@@ -701,7 +743,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_o
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.i: cmake_force
@@ -714,7 +756,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_divider/divid
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.i: cmake_force
@@ -728,7 +770,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i: cmake_force
@@ -742,7 +784,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.i: cmake_force
@@ -755,7 +797,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.i: cmake_force
@@ -768,7 +810,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_double/double
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.i: cmake_force
@@ -781,7 +823,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_int64_ops/pic
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.i: cmake_force
@@ -795,7 +837,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_a
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i: cmake_force
@@ -809,7 +851,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_i
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.i: cmake_force
@@ -822,7 +864,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_m
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.i: cmake_force
@@ -836,7 +878,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_float/float_v
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.i: cmake_force
@@ -849,7 +891,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_malloc/malloc
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.i: cmake_force
@@ -863,7 +905,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_o
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.i: cmake_force
@@ -877,7 +919,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_atomic/atomic
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o"
 	/usr/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.i: cmake_force
@@ -891,7 +933,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cxx_options/n
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.i: cmake_force
@@ -905,7 +947,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_standard_bina
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.i: cmake_force
@@ -918,7 +960,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_printf/printf
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building ASM object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.o   -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.i: cmake_force
@@ -932,7 +974,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.i: cmake_force
@@ -946,7 +988,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_clib_interfac
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i: cmake_force
@@ -960,7 +1002,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i: cmake_force
@@ -974,7 +1016,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_uart/st
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.i: cmake_force
@@ -988,7 +1030,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/res
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.i: cmake_force
@@ -1002,7 +1044,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/std
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.i: cmake_force
@@ -1016,7 +1058,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdio_usb/std
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.i: cmake_force
@@ -1030,7 +1072,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_unique_id/uni
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.i: cmake_force
@@ -1044,7 +1086,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_flash/fla
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.i: cmake_force
@@ -1058,7 +1100,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_xip_cache
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.i: cmake_force
@@ -1072,7 +1114,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberr
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.i: cmake_force
@@ -1086,7 +1128,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/portable/raspberr
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.i: cmake_force
@@ -1100,7 +1142,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.i: cmake_force
@@ -1114,7 +1156,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/device/usbd_contr
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.i: cmake_force
@@ -1128,7 +1170,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/audio/audio
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.i: cmake_force
@@ -1142,7 +1184,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_dev
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.i: cmake_force
@@ -1156,7 +1198,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_dev
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.i: cmake_force
@@ -1170,7 +1212,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.i: cmake_force
@@ -1184,7 +1226,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_dev
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.i: cmake_force
@@ -1198,7 +1240,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_d
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.i: cmake_force
@@ -1212,7 +1254,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_dev
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.i: cmake_force
@@ -1226,7 +1268,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rnd
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.i: cmake_force
@@ -1240,7 +1282,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_dev
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.i: cmake_force
@@ -1254,7 +1296,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbt
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.i: cmake_force
@@ -1268,7 +1310,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/vendor/vend
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.i: cmake_force
@@ -1282,7 +1324,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/class/video/video
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.i: cmake_force
@@ -1296,7 +1338,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/tusb.c.s: cmake_f
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o: /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o -c /home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.i: cmake_force
@@ -1310,7 +1352,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.i: cmake_force
@@ -1324,7 +1366,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_us
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nosys.c.i: cmake_force
@@ -1338,7 +1380,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_lwip/lwip_nos
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_base.c.i: cmake_force
@@ -1352,7 +1394,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.i: cmake_force
@@ -1366,7 +1408,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_rand/rand.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.i: cmake_force
@@ -1380,7 +1422,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/init.c.s: cmake
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.i: cmake_force
@@ -1394,7 +1436,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/def.c.s: cmake_
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.i: cmake_force
@@ -1408,7 +1450,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/dns.c.s: cmake_
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.i: cmake_force
@@ -1422,7 +1464,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/inet_chksum.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.i: cmake_force
@@ -1436,7 +1478,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ip.c.s: cmake_f
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.i: cmake_force
@@ -1450,7 +1492,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/mem.c.s: cmake_
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.i: cmake_force
@@ -1464,7 +1506,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/memp.c.s: cmake
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.i: cmake_force
@@ -1478,7 +1520,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/netif.c.s: cmak
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.i: cmake_force
@@ -1492,7 +1534,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/pbuf.c.s: cmake
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.i: cmake_force
@@ -1506,7 +1548,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/raw.c.s: cmake_
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.i: cmake_force
@@ -1520,7 +1562,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/stats.c.s: cmak
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.i: cmake_force
@@ -1534,7 +1576,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/sys.c.s: cmake_
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.i: cmake_force
@@ -1548,7 +1590,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp.c.s: cmak
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.i: cmake_force
@@ -1562,7 +1604,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_alloc.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.i: cmake_force
@@ -1576,7 +1618,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/altcp_tcp.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.i: cmake_force
@@ -1590,7 +1632,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp.c.s: cmake_
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.i: cmake_force
@@ -1604,7 +1646,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_in.c.s: cma
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.i: cmake_force
@@ -1618,7 +1660,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/tcp_out.c.s: cm
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.i: cmake_force
@@ -1632,7 +1674,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/timeouts.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.i: cmake_force
@@ -1646,7 +1688,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/udp.c.s: cmake_
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.i: cmake_force
@@ -1660,7 +1702,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/autoip.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.i: cmake_force
@@ -1674,7 +1716,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/dhcp.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.i: cmake_force
@@ -1688,7 +1730,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/etharp.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.i: cmake_force
@@ -1702,7 +1744,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/icmp.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.i: cmake_force
@@ -1716,7 +1758,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/igmp.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c.i: cmake_force
@@ -1730,7 +1772,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_frag.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.i: cmake_force
@@ -1744,7 +1786,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c.i: cmake_force
@@ -1758,7 +1800,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/ip4_addr.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.i: cmake_force
@@ -1772,7 +1814,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv4/acd.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.i: cmake_force
@@ -1786,7 +1828,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/dhcp6.c.s:
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.i: cmake_force
@@ -1800,7 +1842,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ethip6.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.i: cmake_force
@@ -1814,7 +1856,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/icmp6.c.s:
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.i: cmake_force
@@ -1828,7 +1870,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/inet6.c.s:
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.i: cmake_force
@@ -1842,7 +1884,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c.i: cmake_force
@@ -1856,7 +1898,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_addr.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c.i: cmake_force
@@ -1870,7 +1912,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/ip6_frag.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.i: cmake_force
@@ -1884,7 +1926,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/mld6.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.i: cmake_force
@@ -1898,7 +1940,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/core/ipv6/nd6.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.i: cmake_force
@@ -1912,7 +1954,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_lib.c.s: cma
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.i: cmake_force
@@ -1926,7 +1968,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/api_msg.c.s: cma
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.i: cmake_force
@@ -1940,7 +1982,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/err.c.s: cmake_f
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.i: cmake_force
@@ -1954,7 +1996,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/if_api.c.s: cmak
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.i: cmake_force
@@ -1968,7 +2010,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netbuf.c.s: cmak
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.i: cmake_force
@@ -1982,7 +2024,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netdb.c.s: cmake
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.i: cmake_force
@@ -1996,7 +2038,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/netifapi.c.s: cm
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.i: cmake_force
@@ -2010,7 +2052,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/sockets.c.s: cma
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.i: cmake_force
@@ -2024,7 +2066,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/api/tcpip.c.s: cmake
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.i: cmake_force
@@ -2038,7 +2080,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ethernet.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.i: cmake_force
@@ -2052,7 +2094,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c.i: cmake_force
@@ -2066,7 +2108,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/bridgeif_fdb.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.i: cmake_force
@@ -2080,7 +2122,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/slipif.c.s: cm
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common.c.i: cmake_force
@@ -2094,7 +2136,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_common
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.i: cmake_force
@@ -2108,7 +2150,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.i: cmake_force
@@ -2122,7 +2164,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/lowpan6_ble.c.
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.i: cmake_force
@@ -2136,7 +2178,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/zepif.c.s: cma
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.i: cmake_force
@@ -2150,7 +2192,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/auth.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.i: cmake_force
@@ -2164,7 +2206,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ccp.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c.i: cmake_force
@@ -2178,7 +2220,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-md5.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.i: cmake_force
@@ -2192,7 +2234,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap_ms.c.
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c.i: cmake_force
@@ -2206,7 +2248,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/chap-new.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.i: cmake_force
@@ -2220,7 +2262,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/demand.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.i: cmake_force
@@ -2234,7 +2276,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eap.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.i: cmake_force
@@ -2248,7 +2290,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ecp.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.i: cmake_force
@@ -2262,7 +2304,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/eui64.c.s:
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.i: cmake_force
@@ -2276,7 +2318,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/fsm.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.i: cmake_force
@@ -2290,7 +2332,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipcp.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.i: cmake_force
@@ -2304,7 +2346,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ipv6cp.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.i: cmake_force
@@ -2318,7 +2360,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/lcp.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.i: cmake_force
@@ -2332,7 +2374,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/magic.c.s:
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.i: cmake_force
@@ -2346,7 +2388,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/mppe.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.c.i: cmake_force
@@ -2360,7 +2402,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/multilink.
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.i: cmake_force
@@ -2374,7 +2416,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/ppp.c.s: c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.i: cmake_force
@@ -2388,7 +2430,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppapi.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c.i: cmake_force
@@ -2402,7 +2444,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppcrypt.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.i: cmake_force
@@ -2416,7 +2458,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppoe.c.s:
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c.i: cmake_force
@@ -2430,7 +2472,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppol2tp.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.i: cmake_force
@@ -2444,7 +2486,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/pppos.c.s:
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.i: cmake_force
@@ -2458,7 +2500,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/upap.c.s: 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.i: cmake_force
@@ -2472,7 +2514,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/utils.c.s:
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.i: cmake_force
@@ -2486,7 +2528,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/vj.c.s: cm
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/arc4.c.i: cmake_force
@@ -2500,7 +2542,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/a
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/des.c.i: cmake_force
@@ -2514,7 +2556,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/d
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md4.c.i: cmake_force
@@ -2528,7 +2570,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/m
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/md5.c.i: cmake_force
@@ -2542,7 +2584,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/m
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.o: /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.o -c /home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/sha1.c.i: cmake_force
@@ -2556,7 +2598,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/lwip/src/netif/ppp/polarssl/s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_182) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch.c.i: cmake_force
@@ -2570,7 +2612,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cy
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_183) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_poll.c.i: cmake_force
@@ -2584,7 +2626,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cy
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_184) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_threadsafe_background.c.i: cmake_force
@@ -2598,7 +2640,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cy
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_182) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_185) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cyw43_arch_freertos.c.i: cmake_force
@@ -2612,7 +2654,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/cy
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_183) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_186) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c.i: cmake_force
@@ -2626,7 +2668,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.o: /home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_184) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_187) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.o -c /home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.i: cmake_force
@@ -2640,7 +2682,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ll.c.s
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.o: /home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_185) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_188) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.o -c /home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.c.i: cmake_force
@@ -2654,7 +2696,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_stats.
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.o: /home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_186) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_189) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.o -c /home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c.i: cmake_force
@@ -2668,7 +2710,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_lwip.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.o: /home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_187) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_190) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.o -c /home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c.i: cmake_force
@@ -2682,7 +2724,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/lib/cyw43-driver/src/cyw43_ctrl.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_188) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_191) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus.c.i: cmake_force
@@ -2696,7 +2738,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_189) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_192) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cybt_shared_bus/cybt_shared_bus_driver.c.i: cmake_force
@@ -2710,7 +2752,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_190) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_193) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.i: cmake_force
@@ -2724,7 +2766,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_191) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_194) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.i: cmake_force
@@ -2738,7 +2780,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_192) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_195) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception/exception.c.i: cmake_force
@@ -2752,7 +2794,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_exception
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_193) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_196) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_driver.c.i: cmake_force
@@ -2766,7 +2808,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_cyw43_driver/
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_194) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_197) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context/async_context_threadsafe_background.c.i: cmake_force
@@ -2780,7 +2822,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_async_context
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_195) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_198) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i: cmake_force
@@ -2794,7 +2836,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_multicore/mul
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_196) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_199) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c.i: cmake_force
@@ -2808,7 +2850,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c
 CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.o: /home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c
 CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_197) "Building C object CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_200) "Building C object CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.o -MF CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.o -c /home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c
 
 CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i: cmake_force
@@ -2822,7 +2864,7 @@ CMakeFiles/escw.dir/home/menadue/pico-extras/src/rp2_common/pico_sd_card/sd_card
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_198) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_201) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c.i: cmake_force
@@ -2836,7 +2878,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_199) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_202) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c.i: cmake_force
@@ -2850,7 +2892,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_200) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_203) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c.i: cmake_force
@@ -2864,7 +2906,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_201) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_204) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i: cmake_force
@@ -2878,7 +2920,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_202) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_205) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i: cmake_force
@@ -2892,7 +2934,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_203) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_206) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c.i: cmake_force
@@ -2906,7 +2948,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_204) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_207) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i: cmake_force
@@ -2920,7 +2962,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_205) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_208) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i: cmake_force
@@ -2934,7 +2976,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_206) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_209) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i: cmake_force
@@ -2948,7 +2990,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_207) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_210) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i: cmake_force
@@ -2962,7 +3004,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_208) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_211) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i: cmake_force
@@ -2976,7 +3018,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_209) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_212) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i: cmake_force
@@ -2990,7 +3032,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_210) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_213) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i: cmake_force
@@ -3004,7 +3046,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o: /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_211) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_214) "Building C object CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o -MF CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o.d -o CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o -c /tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c
 
 CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i: cmake_force
@@ -3018,7 +3060,7 @@ CMakeFiles/escw.dir/tree/downloaded_tools/pico/ajm-no-OS-FatFS-SD-SPI-RPi-Pico/F
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_212) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_215) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.i: cmake_force
@@ -3032,7 +3074,7 @@ CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o: CMakeFiles/escw.dir/flags.make
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o: /home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o: CMakeFiles/escw.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_213) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_216) "Building C object CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o"
 	/usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o -MF CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o.d -o CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o -c /home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c
 
 CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i: cmake_force
@@ -3054,6 +3096,9 @@ escw_OBJECTS = \
 "CMakeFiles/escw.dir/dnsserver/dnsserver.c.o" \
 "CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/oled.c.o" \
 "CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.o" \
+"CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o" \
+"CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o" \
+"CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o" \
 "CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o" \
 "CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o" \
 "CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o" \
@@ -3271,6 +3316,9 @@ escw.elf: CMakeFiles/escw.dir/dhcpserver/dhcpserver.c.o
 escw.elf: CMakeFiles/escw.dir/dnsserver/dnsserver.c.o
 escw.elf: CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/oled.c.o
 escw.elf: CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/sdcard.c.o
+escw.elf: CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode.c.o
+escw.elf: CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_fp.c.o
+escw.elf: CMakeFiles/escw.dir/home/menadue/tree/github/experimental-computer-for-schools/firmware/pico_main/extracode_basic.c.o
 escw.elf: CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.o
 escw.elf: CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.o
 escw.elf: CMakeFiles/escw.dir/home/menadue/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o
@@ -3479,7 +3527,7 @@ escw.elf: CMakeFiles/escw.dir/build.make
 escw.elf: pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/bs2_default_padded_checksummed.S.o
 escw.elf: /home/menadue/pico/pico-sdk/src/rp2_common/pico_crt0/rp2040/memmap_default.ld
 escw.elf: CMakeFiles/escw.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_214) "Linking CXX executable escw.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_217) "Linking CXX executable escw.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/escw.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/arm-none-eabi-objdump -h /home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/escw.elf > escw.dis
 	/usr/bin/arm-none-eabi-objdump -d /home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/escw.elf >> escw.dis

@@ -1,5 +1,0 @@
-/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/_deps/picotool/picotool
-/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/_deps/picotool/picotoolTargets.cmake
-/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/_deps/picotool/picotoolTargets-release.cmake
-/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/_deps/picotool/picotoolConfig.cmake
-/home/menadue/tree/github/experimental-computer-for-schools/firmware/escw/build/_deps/picotool/picotoolConfigVersion.cmake
